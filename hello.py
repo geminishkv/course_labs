@@ -2,57 +2,42 @@
 # -*- coding: utf-8 -*-
 """
 Hello AppSec World - приветственное приложение
-Демонстрация работы с Python для лабораторной работы
+Демонстрация работы с Python и typer для лабораторной работы
 """
 
-import sys
-import os
+import typer
 from datetime import datetime
+import sys
 
-def hello_world():
-    """Простое приветствие"""
-    print("Hello AppSec World!")
-    return "Hello AppSec World!"
-
-def hello_user(name):
-    """Приветствие с именем пользователя"""
-    message = f"Hello AppSec World from {name}!"
-    print(message)
-    return message
-
-def get_user_info():
-    """Получение информации о пользователе"""
-    username = os.getenv('USER', 'Unknown')
-    hostname = os.getenv('HOSTNAME', 'Unknown')
-    return username, hostname
-
-def show_system_info():
-    """Показать информацию о системе"""
-    print(f"Python version: {sys.version}")
-    print(f"Platform: {sys.platform}")
-    print(f"Current time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-
-def interactive_greeting():
-    """Интерактивное приветствие с запросом имени"""
-    name = input("Введите ваше имя: ")
-    if name:
-        hello_user(name)
-        username, hostname = get_user_info()
-        print(f"Вы работаете как: {username}@{hostname}")
-    else:
-        hello_world()
-
-def main():
-    """Главная функция"""
-    if len(sys.argv) > 1:
-        # Если передан аргумент - используем его как имя
-        hello_user(sys.argv[1])
-    else:
-        # Иначе интерактивный режим
-        interactive_greeting()
+def main(
+    name: str,
+    lastname: str = typer.Option("", help="Фамилия пользователя."),
+    formal: bool = typer.Option(
+        False, "--formal", "-f", help="Использовать формальное приветствие."
+    ),
+):
+    """
+    Говорит "Привет" пользователю, опционально используя фамилию и формальный стиль.
     
-    show_system_info()
+    Args:
+        name: Имя пользователя (обязательный параметр)
+        lastname: Фамилия пользователя (опционально)
+        formal: Флаг для формального приветствия (опционально)
+    """
+    # Проверяем, нужно ли использовать формальный стиль
+    if formal:
+        # Формальное приветствие с фамилией, если указана
+        greeting = f"Добрый день, {name} {lastname}!" if lastname else f"Добрый день, {name}!"
+        print(greeting)
+    else:
+        # Неформальное приветствие
+        greeting = f"Привет, {name}!"
+        print(greeting)
+    
+    # Дополнительная информация о системе
+    print(f"\nТекущее время: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Версия Python: {sys.version.split()[0]}")
 
 if __name__ == "__main__":
-    main()
+    typer.run(main)
 

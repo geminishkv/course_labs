@@ -1,17 +1,67 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Hello AppSec World - приветственное приложение
+Демонстрация работы с Python для лабораторной работы
+
+История версий:
+- Первоначальная версия (коммит aed3b26): код с множеством функций
+- Версия с "грязным" кодом (коммит 2381a32): минималистичный код для patch1
+- Текущая версия: восстановленный первоначальный код
+"""
+
+# Первоначальный код (коммит aed3b26):
+# Этот код был создан в первой версии hello.py с множеством функций
+# для демонстрации работы с Python и различными возможностями языка
+
 import sys
-import time
+import os
+from datetime import datetime
 
+def hello_world():
+    """Простое приветствие"""
+    print("Hello AppSec World!")
+    return "Hello AppSec World!"
 
-def colorful_print(text):
-    colors = ["\033[91m", "\033[92m", "\033[93m", "\033[94m", "\033[95m"]
-    reset = "\033[0m"
-    for i, char in enumerate(text):
-        color = colors[i % len(colors)]
-        sys.stdout.write(color + char + reset)
-        sys.stdout.flush()
-        time.sleep(0.2)
-    print()
+def hello_user(name):
+    """Приветствие с именем пользователя"""
+    message = f"Hello AppSec World from {name}!"
+    print(message)
+    return message
 
+def get_user_info():
+    """Получение информации о пользователе"""
+    username = os.getenv('USER', 'Unknown')
+    hostname = os.getenv('HOSTNAME', 'Unknown')
+    return username, hostname
+
+def show_system_info():
+    """Показать информацию о системе"""
+    print(f"Python version: {sys.version}")
+    print(f"Platform: {sys.platform}")
+    print(f"Current time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+def interactive_greeting():
+    """Интерактивное приветствие с запросом имени"""
+    name = input("Введите ваше имя: ")
+    if name:
+        hello_user(name)
+        username, hostname = get_user_info()
+        print(f"Вы работаете как: {username}@{hostname}")
+    else:
+        hello_world()
+
+def main():
+    """Главная функция"""
+    if len(sys.argv) > 1:
+        # Если передан аргумент - используем его как имя
+        hello_user(sys.argv[1])
+    else:
+        # Иначе интерактивный режим
+        interactive_greeting()
+    
+    show_system_info()
 
 if __name__ == "__main__":
-    colorful_print("hello appsec world")
+    main()
+

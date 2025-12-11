@@ -79,4 +79,6 @@ build/
 
 # Node.js
 node_modules/
-/node_modules
+/node_modules*.tar
+labs/lab05/source/*.tar
+*.tar

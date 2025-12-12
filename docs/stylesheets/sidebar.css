@@ -3,16 +3,22 @@
   font-size: 0.6rem;
 }
 
+.md-sidebar--primary .md-sidebar__inner > .md-nav {
+  margin-top: 0.75rem;
+}
+
 .md-sidebar--primary .md-nav__link,
 .md-sidebar--primary .md-nav__link:visited {
   font-size: 0.7rem;
   color: #1953ff;
+  margin: 0.35rem 0;
 }
 
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 .md-sidebar--primary .md-nav__link--active {
   font-weight: 700;
   color: #1953ff;
+  margin: 0.15rem 0;
 }
 
 .md-sidebar--primary .md-sidebar__inner .md-header-nav {

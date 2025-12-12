@@ -1,12 +1,24 @@
+# Core
 mkdocs==1.6.0
 mkdocs-material==9.5.0
-mkdocs-macros-plugin==1.0.5
-types-PyYAML
-PyYAML==6.0.2
+mkdocs-macros-plugin==1.5.0
+mkdocs-material-extensions==1.3.1
+mkdocs-include-markdown-plugin
+
+# Markdown extensions
+pymdown-extensions==10.8.1
+
+# PDF (embed PDF в страницы, как у тебя)
+mkdocs-pdf==0.1.2
+
+# Search
 lunr==0.6.2
+PyYAML==6.0.2
+types-PyYAML==6.0.12.20240808
+
+# Linting & static analysis
 ruff==0.7.0
-bandit==1.7.10
 flake8==7.1.1
+bandit==1.7.10
 mypy==1.11.0
 safety==3.2.0
-mkdocs-pdf==0.1.2

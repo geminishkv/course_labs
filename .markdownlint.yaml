@@ -1,0 +1,15 @@
+default: true
+
+MD013:
+  line_length: 150
+  heading_line_length: 150
+  code_block_line_length: 0
+  tables: false
+
+MD025:
+  front_matter_title: false
+
+MD026:
+  punctuation: ".,;:!?"
+
+MD033: false

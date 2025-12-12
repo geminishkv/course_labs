@@ -1,0 +1,9 @@
+# for AppSecCource docs
+
+User-agent: *
+Disallow: /search/
+Disallow: /404.html
+Disallow: /draft/
+Disallow: /tmp/
+
+Sitemap: https://geminishkv.github.io/course_labs/sitemap.xml

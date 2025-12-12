@@ -11,6 +11,7 @@ theme:
     text: Montserrat
     code: Roboto Mono
   features:
+    - navigation.indexes
     - search.highlight
     - content.code.copy
     - navigation.tabs.sticky
@@ -25,11 +26,52 @@ plugins:
   - search
   - macros
   - mkdocs-pdf
+  - include-markdown:
+      heading_offset: 0
+      preserve_includer_indent: false
+      dedent: true
 
 markdown_extensions:
   - def_list
   - md_in_html
   - attr_list
+  - admonition
+  - toc:
+      permalink: false
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets:
+      check_paths: true
+
+watch:
+  - docs
+
+extra_css:
+  - stylesheets/header.css
+  - stylesheets/footer.css
+  - stylesheets/search.css
+  - stylesheets/sidebar.css
+  - stylesheets/typeset.css
+  - stylesheets/tools-overlay.css
+  - stylesheets/burger.css
+  - stylesheets/mobile-logo.css
+  - stylesheets/layout.css
+
+extra_javascript:
+  - javascripts/custom-title.js
+  - javascripts/typewriter-target.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/geminishkv
+    - icon: fontawesome/solid/code-branch
+      link: https://github.com/geminishkv/course_labs
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/shmakovis_appsec
+    - icon: fontawesome/regular/envelope
+      link: mailto:shmakovis@inbox.ru
 
 nav:
   - "Главная страница": index.md
@@ -39,13 +81,17 @@ nav:
       - "Лабораторная работа №3": labs/lab03.md
       - "Лабораторная работа №4": labs/lab04.md
       - "Лабораторная работа №5": labs/lab05.md
-  - "Приложение": APPENDIX.md
+      - "Лабораторная работа №6": labs/lab06.md
+      - "Лабораторная работа №7": labs/lab07.md
+      - "Лабораторная работа №8": labs/lab08.md
+      - "Лабораторная работа №9": labs/lab09.md
+      - "Лабораторная работа №10": labs/lab10.md
+      - "pet_project": labs/pet_project.md
   - "Материалы":
-      - "Лекции": course.md
       - "Примеры":
           - "Аналитические кейсы": exmpl.md
           - "Использование MultiSiq": Multisignature.md
-          - "PrintNightmare Vulnerability": PrintNightmare.md
+          - "PrintNightmare": PrintNightmare.md
           - "Risk Analysis": RA.md
       - "Лицензии ПО": licenses.md
       - "Классификация инструментов": appsec_tt.md
@@ -63,36 +109,11 @@ nav:
       - "GitHub CLI": artifacts/cheatsheet/CHEATSHEET_GH_CLI.md
       - "GitSCM": artifacts/cheatsheet/CHEATSHEET_GIT.md
       - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
-  - "Contributor Covenant": Contributor Covenant.md
-  - "Политика безопасности": Security.md
-  - "Карта сертификации ГОСТ 56939-2024":
-      >-
-        https://storage.yandexcloud.net/aft-tilda/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D1%84%D0%B8%D0%BD%D1%82%D0%B5%D1%85%D0%B0.pdf
+  - "Приложение": APPENDIX.md
   - "AppSec Toolchain Map": "https://geminishkv.github.io/oss_toolchainmap/research-notes/"
   - "FinDevSecOps": "https://findevsecops.ru/"
   - "АО ЛАНИТ": "https://www.lanit.ru"
+  - "Блог": channel.md
   - "О проекте": about.md
-
-extra_css:
-  - stylesheets/header.css
-  - stylesheets/footer.css
-  - stylesheets/search.css
-  - stylesheets/sidebar.css
-  - stylesheets/typeset.css
-  - stylesheets/tools-overlay.css
-  - stylesheets/burger.css
-  - stylesheets/mobile-logo.css
-
-extra_javascript:
-  - javascripts/custom-title.js
-
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/geminishkv
-    - icon: fontawesome/solid/code-branch
-      link: https://github.com/geminishkv/course_labs
-    - icon: fontawesome/brands/telegram
-      link: https://t.me/shmakovis_appsec
-    - icon: fontawesome/regular/envelope
-      link: mailto:shmakovis@inbox.ru
+  - "Релизы": RELEASE_NOTES.md
+  - "Политика безопасности": Security.md

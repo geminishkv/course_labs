@@ -1,44 +1,50 @@
-# Автоматическое определение текстовых файлов и нормализация переводов строк
-# * text=auto
-
-# Скрипты shell - всегда LF
-# *.sh text eol=lf
-
-# Файлы конфигурации Docker и Compose с LF
-# Dockerfile text eol=lf
-# docker-compose.yml text eol=lf
-# *.dockerfile text eol=lf
-
-# Файлы Windows-ориентированных проектов с CRLF
-# *.sln text eol=crlf
-# *.vcxproj text eol=crlf
-# *.csproj text eol=crlf
-
-# Уже бинарные файлы (не трогать)
-# *.png binary
-# *.jpg binary
-# *.jpeg binary
-# *.gif binary
-# *.ico binary
-# *.pdf binary
-# *.zip binary
-# *.tar.gz binary
-# *.exe binary
-# *.dll binary
-
 # Файлы сборок и артефакты - не включать в diff/merge
-# *.jar binary
-# *.war binary
-# *.ear binary
-# *.class binary
+ *.jar binary
+ *.war binary
+ *.ear binary
+ *.class binary
 
 # Исключить временные и локальные файлы из архивов
-# .gitignore export-ignore
-# *.log export-ignore
-# *.tmp export-ignore
-# *.swp export-ignore
-# .vscode/ export-ignore
-# node_modules/ export-ignore
+ .gitignore export-ignore
+ *.log export-ignore
+ *.tmp export-ignore
+ *.swp export-ignore
+ .vscode/ export-ignore
+ node_modules/ export-ignore
 
 # Вставлять версию из файла VERSION при экспорте
 # VERSION export-subst
+
+* text=auto
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.dockerfile text eol=lf
+docker-compose.yml text eol=lf
+
+# Windows‑проектные файлы – CRLF
+*.sln text eol=crlf
+*.vcxproj text eol=crlf
+*.csproj text eol=crlf
+
+# Бинарники
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.tar.gz binary
+*.exe  binary
+*.dll  binary
+*.jar  binary
+*.war  binary
+*.ear  binary
+*.class binary
+
+.gitignore    export-ignore
+*.log         export-ignore
+*.tmp         export-ignore
+*.swp         export-ignore
+.vscode/      export-ignore
+node_modules/ export-ignore

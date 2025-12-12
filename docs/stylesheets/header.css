@@ -43,7 +43,14 @@
   max-width: 32px;
 }
 
-.md-header .md-header__title .md-header__topic {
+.md-header-nav__link
+.md-header-nav__list .md-nav__item {
+  margin: 0 0.75rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.md-header__title .md-header__topic {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
 }

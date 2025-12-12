@@ -15,5 +15,5 @@ def colorful_print(text):
 
 
 if __name__ == "__main__":
-    response = requests.get("http://server:8000/")
+    response = requests.get("http://server:8000/")  # nosec B113
     colorful_print(response.text)

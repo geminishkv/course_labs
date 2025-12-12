@@ -9,7 +9,7 @@
 
 <div align="center">
 
-![Repo Size](https://img.shields.io/github/repo-size/geminishkv/course_labs)![License](https://img.shields.io/github/license/geminishkv/course_labs)![CI](https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=master)![Status](https://img.shields.io/badge/status-active-success)![Release](https://img.shields.io/github/v/release/geminishkv/course_labs)![Contributor Badge](https://img.shields.io/badge/Contributor-%D0%A8%D0%BC%D0%B0%D0%BA%D0%BE%D0%B2_%D0%98._%D0%A1.-8b9aff?style=flat)![Contributors](https://img.shields.io/github/contributors/geminishkv/course_labs)![Open pull requests](https://img.shields.io/github/issues-pr/geminishkv/course_labs)![Commit Activity](https://img.shields.io/github/commit-activity/m/geminishkv/course_labs)![Last commit](https://img.shields.io/github/last-commit/geminishkv/course_labs)
+![Repo Size](https://img.shields.io/github/repo-size/geminishkv/course_labs)![License](https://img.shields.io/github/license/geminishkv/course_labs)![CI](https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop)![Status](https://img.shields.io/badge/status-active-success)![Release](https://img.shields.io/github/v/release/geminishkv/course_labs)![Contributor Badge](https://img.shields.io/badge/Contributor-%D0%A8%D0%BC%D0%B0%D0%BA%D0%BE%D0%B2_%D0%98._%D0%A1.-8b9aff?style=flat)![Contributors](https://img.shields.io/github/contributors/geminishkv/course_labs)![Open pull requests](https://img.shields.io/github/issues-pr/geminishkv/course_labs)![Commit Activity](https://img.shields.io/github/commit-activity/m/geminishkv/course_labs)![Last commit](https://img.shields.io/github/last-commit/geminishkv/course_labs)
 
 </div>
 
@@ -17,7 +17,7 @@
 Отмечу основные моменты:
 
 *  Цель - сформировать навыки работы с `git`, `CI`, `CD`, `docker`, `packages`, `appsec toolchain`, `yml`, etc. 
-*  *Часть работ базируется на на `Go`, `Python`, `JAVA`, `js` и и.д.
+*  *Часть работ базируется на на `Go`, `Python`, `JAVA`, `Shell` и и.д.
 *  Рассматриваются инструменты `SAST`, `SCA`, `Container Security`, `DAST`, `Secret Detection`, etc. 
 *  Работы направлены на углубление и изучение материалов анализа рисков и оценки защищенности приложений, которые необходимы для итерационной разработки, также дают дополнительно возможности для изучения паттернов программирования, прототипирования
 *  Каждый мини проект должен будет собран по формату из представленных лабораторных работ и размещен на сервисе `GitHub`, с формирование соответствующего отчета в виде `gistup` для демонстрации выполненной работы и скриншотами результатов (**где это требуется**). 
@@ -42,23 +42,30 @@
 2. Ознакомиться с [примерами](artifacts/exmpls/)
 3. Каждый репозиторий должен содержать `.gitignore`, `code of condact`, `contributing`, `license`, `notice`, `security` и должен быть адаптирован под конкретную лабораторную работу, проект.
     * **Обратите внимание**, что тип лицензий должен быть подобран правильно при переиспользовании материалов проекта и следует ознакомиться с ними дополнительно.
+    * Пример отчета [тут](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411)
 4. Выполнить следующие работы порядково:
 
 -  [ ] lab01 - [Лабораторная работа посвящена изучению **gitscm** и подготовительными материалами для последующих работ](labs/lab01/README.md)
     -  Материалы для работы [тут](labs/lab01/)
 -  [ ] lab02 - [Лабораторная работа посвящена изучению работы *nix, контролей прав доступа, оперированию процессов](labs/lab02/README.md)
     -  Материалы для работы [тут](labs/lab02/)
-    -  Пример отчета [тут](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411). [Исходник]()
 -  [ ] lab03 - [Лабораторная работа посвящена изучению **nmap** и анализа выявленных уязвимостей](labs/lab03/README.md)
     -  Материалы для работы [тут](labs/lab03/)
 -  [ ] lab04 - [Данная лабораторная работа посвящена практическому **анализу и определению мер** снижения рисков ИБ](labs/lab04/README.md)
 -  [ ] lab05 - [Данная лабораторная работа посвящена изучению **Docker** и как с ним работать](labs/lab05/README.md)
     -  Материалы для работы [тут](labs/lab05/)
--  [ ] **Обновление будет предоставлено позднее**
+-  [ ] lab06 - [Данная лабораторная работа посвящена изучению **Docker CIS Benchmark** для выявления уязвимостей, проверки Docker-host и как с ним работать](labs/lab06/README.md)
+    -  Материалы для работы [тут](labs/lab06/)
+-  [ ] lab07 - [Данная лабораторная работа посвящена изучению SAST, SCA для выявления уязвимостей и как с ним работать на примере Semgrep, Checkov, Dependency Check](labs/lab07/README.md)
+    -  Материалы для работы [тут](labs/lab07/)
+-  [ ] lab 08 - [Данная лабораторная работа посвящена изучению DAST OWASP ZAP и ручного тестирования уязвимого приложения](labs/lab08/README.md)
+    -  Материалы для работы [тут](labs/lab08/)
+-  [ ] lab 09 - *Обновление будет предоставлено позднее**
+-  [ ] lab 10 - [Данная лабораторная работа посвящена оценке анализов рисков ИБ и отработке практических знаний](labs/lab10/README.md)
 
 5. Реализовать итоговую работу и составить отчет
 
--  [ ] **Обновление будет предоставлено позднее** 
+-  [ ] pet_project - [Данная лабораторная работа посвящена оценке анализов рисков ИБ и отработке практических навыков для инстурментария Application Security](labs/pet_project/README.md) *Обновление будет предоставлено позднее**
 
 ***
 
@@ -68,15 +75,14 @@
 - ✔️ Все функции по работе с деревом должны находиться в пространстве имен
 - ✔️ Оформление `README.md` в соответствии с содержанием проекта
 - ✔️ Оформление `.gitignore` в соответствии с содержанием проекта
-- ✔️ Использовать подходящий тип `LICENSE` для проекта
+- ✔️ Оформление `.dockerignore` в соответствии с содержанием проекта
+- ✔️ Использовать подходящий тип `LICENSE` для проекта и `NOTICE`
 - ✔️ Создать и использовать скрипты для автоматизации сборки проекта, примеров, тестов, пакетирования
-- ✔️ Обеспечить непрерывный процесс сборки проекта с использованием сервиса **Travis CI/ AppVeyor** (**community edition**)
-- ✔️ Обеспечить 100% покрытие кода с использованием фреймворков
-- ✔️ Написать документацию к проекту с использованием инструмента **doxygen** и разместить ее на сервисе GitHub Pages
-- ✔️ Обеспечить размещение пакета проекта на сервисе GitHub Release при успешном слияние ветки develop и master
-- ✔️ Проконтролировать корректную эксплуатацию проекта
+- ✔️ Обеспечить непрерывный процесс сборки проекта с использованием сервиса `GitHub Actions`
+- ✔️ Написать документацию к проекту с использованием инструмента **doxygen**
+- ✔️ Обеспечить размещение пакета проекта на сервисе `GitHub Release` при успешном слияние ветки `develop`
 - ✔️ Рефакторинг и поддержка лабораторных работ в процессной деятельности
-- ✔️ Все команды выполняться строго из терминала/ консоли без использования WebUI за исключениям работы с токенами, ключами и специфичными настройками.
+- ✔️ Все команды выполняться строго из `терминала/ консоли` без использования `WebUI` за исключениям работы с токенами, ключами и специфичными настройками
 
 ***
 
@@ -87,26 +93,20 @@
 ```bash
 $ python3 -m venv .venv
 $ source .venv/bin/activate
-
 $ pip install -r requirements.txt
-$ pip install mkdocs mkdocs-material mkdocs-macros-plugin # must-have
-$ pip install pyyaml
-$ pip install mkdocs-macros-plugin
-
 $ ruff format .
-
-$ pip show mkdocs-macros-plugin
-$ pip show mkdocs
-
-$ python -m mkdocs serve
+$ pip install mkdocs-include-markdown-plugin
+$ python -m mkdocs serve --livereload
 # or
 $ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
+
+$ pip show mkdocs # debug
 ```
 
 * Очистка локального репозитория
 
 ```bash
-$ rm -rf __pycache__ scripts/__pycache__ docs/assets/search/tools.json
+$ rm -rf __pycache__ scripts/__pycache__  # etc.
 $ lsof -i :8000
 $ kill <PID>
 ```
@@ -121,15 +121,45 @@ $ git push origin v1.0.0
 $ git tag -a v1.0.0 -m "v1.0.0"
 $ git add "Release Notes.md" && git commit -m "Update notes for v1.0.0" 
 
-# текущий релиз
-$ git tag -a v1.1.0 -m "v1.1.0"
+$ git tag -a v1.1.0 -m "v1.1.0" # текущий релиз
 $ git push origin v1.1.0
+$ git tag -d v0.1.0 # удалить локальный тег
+$ git push origin :refs/tags/v0.1.0 # удалить тот же тег на GitHub
+```
 
-# удалить локальный тег
-$ git tag -d v0.1.0
+* Локальное тестирование ci.yml
 
-# удалить тот же тег на GitHub
-$ git push origin :refs/tags/v0.1.0
+```bash
+$ act -l
+$ act -j имя_job #  или общий act push
+$ act push -b -v
+
+$ act push -j build -b
+$ act pull_request -j linter_checks_ruff_shell # конкретный job
+$ act pull_request -j docs-preview -b # docs-preview и все зависимые job
+
+$ ACT_SKIP_CHOWN=true act push -j linter_checks_ruff_shell -b
+```
+
+* Тестирование
+
+```bash
+$ abandit -r labs
+$ aruff check .
+
+$ anpx eslint "docs/**/*.js" "javascripts/**/*.js"
+npx stylelint "docs/**/*.css" "stylesheets/**/*.css"
+
+$ a$ agit ls-files '*.sh' \
+  | grep -v 'labs/lab08/dast/zap_scan.sh' \
+  | grep -v 'labs/lab07/sca/dependency-check.sh' \
+  | grep -v 'labs/lab06/audit.sh' \
+  | xargs -r shellcheck -e SC2086,SC1090,SC1091
+
+$ ayamllint .github/workflows mkdocs.yml
+$ anpx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" "README.md"
+
+$ mkdocs build --strict --clean --config-file mkdocs.yml --site-dir /tmp/mkdocs-check
 ```
 
 ***
@@ -159,10 +189,9 @@ $ git push origin :refs/tags/v0.1.0
 │   │   │   ├── CHEATSHEET_GIT.md
 │   │   │   └── CHEATSHEET_GITIGNORE.md
 │   │   ├── exmpls
-│   │   │   ├── exmpl.pdf
-│   │   │   ├── Multisignature.pdf
-│   │   │   ├── PrintNightmare.pdf
-│   │   │   └── RA.pdf
+│   │   │   ├── risk-analysis.png
+│   │   │   ├── table1.png
+│   │   │   └── transaction.png
 │   │   ├── owasp
 │   │   │   ├── Authentication.pdf
 │   │   │   ├── Authorization.pdf
@@ -175,37 +204,48 @@ $ git push origin :refs/tags/v0.1.0
 │   │       └── Лекция_Управление Рисками ИБ_intro.pdf
 │   ├── Authentication.md
 │   ├── Authorization.md
+│   ├── channel.md
 │   ├── Client-side Attacks.md
 │   ├── Command Execution.md
-│   ├── Contributor Covenant.md
-│   ├── course.md
 │   ├── exmpl.md
 │   ├── index.md
 │   ├── Information Disclosure.md
 │   ├── javascripts
-│   │   └── custom-title.js
+│   │   ├── custom-title.js
+│   │   └── typewriter-target.js
 │   ├── labs
 │   │   ├── lab01.md
 │   │   ├── lab02.md
 │   │   ├── lab03.md
 │   │   ├── lab04.md
-│   │   └── lab05.md
+│   │   ├── lab05.md
+│   │   ├── lab06.md
+│   │   ├── lab07.md
+│   │   ├── lab08.md
+│   │   ├── lab09.md
+│   │   ├── lab10.md
+│   │   └── pet_project.md
 │   ├── licenses.md
 │   ├── Logical Attacks.md
 │   ├── Multisignature.md
 │   ├── OWASP_Top_10_CICD_Risks.md
 │   ├── PrintNightmare.md
 │   ├── RA.md
+│   ├── RELEASE_NOTES.md
+│   ├── robots.txt
 │   ├── Security.md
-│   └── stylesheets
-│       ├── burger.css
-│       ├── footer.css
-│       ├── header.css
-│       ├── mobile-logo.css
-│       ├── search.css
-│       ├── sidebar.css
-│       ├── tools-overlay.css
-│       └── typeset.css
+│   ├── stylesheets
+│   │   ├── burger.css
+│   │   ├── footer.css
+│   │   ├── header.css
+│   │   ├── layout.css
+│   │   ├── mobile-logo.css
+│   │   ├── search.css
+│   │   ├── sidebar.css
+│   │   ├── tools-overlay.css
+│   │   └── typeset.css
+│   └── tmp
+├── eslint.config.js
 ├── labs
 │   ├── lab01
 │   │   ├── README.md
@@ -235,50 +275,68 @@ $ git push origin :refs/tags/v0.1.0
 │   │       ├── hello.py
 │   │       ├── image.tar
 │   │       └── requirements.txt
-│   └── lab06
+│   ├── lab06
+│   │   ├── audit_reports
+│   │   ├── audit.sh
+│   │   ├── config
+│   │   │   └── nginx.conf
+│   │   ├── docker-compose.yml
+│   │   ├── README.md
+│   │   └── vulnerable-app.yml
+│   ├── lab07
+│   │   ├── cheat_check_yuorself.sh
+│   │   ├── docker-compose.yml
+│   │   ├── README.md
+│   │   ├── sast
+│   │   │   ├── checkov-config.yaml
+│   │   │   └── semgrep-rules.yml
+│   │   ├── sca
+│   │   │   ├── dependency-check.sh
+│   │   │   └── pom.xml
+│   │   └── vulnerable-app
+│   │       ├── app.py
+│   │       ├── config.yaml
+│   │       ├── Dockerfile
+│   │       └── requirements.txt
+│   ├── lab08
+│   │   ├── dast
+│   │   │   ├── convert_reports.py
+│   │   │   ├── reports
+│   │   │   ├── zap_scan.sh
+│   │   │   └── zap-baseline.conf
+│   │   ├── docker-compose.yml
+│   │   ├── README.md
+│   │   ├── requirements.txt
+│   │   └── vulnerable-app
+│   │       ├── app.py
+│   │       ├── Dockerfile
+│   │       ├── files
+│   │       │   └── secret.txt
+│   │       └── requirements.txt
+│   ├── lab09
+│   │   └── README.md
+│   ├── lab10
+│   │   └── README.md
+│   └── pet_project
 │       └── README.md
 ├── LICENSE.md
 ├── mkdocs.yml
 ├── mypy.ini
 ├── NOTICE.md
+├── overrides
+│   └── material
+│       └── partials
+│           └── toc.html
 ├── README.md
 ├── RELEASE_NOTES.md
 ├── requirements.txt
-└── SECURITY.md
+├── ruff.toml
+├── SECURITY.md
+└── stylelint.config.cjs
 ```
 
 ***
 
-### Ресурсы:
-
-* 📘  **Аннотационный материал:**
-
-    * [OWASP TOP 10](artifacts/owasp/)
-    * `gistup`
-
-```bash
-$ npm install -g gistup
-$ gh <command> <subcommand> --help
-$ gh gist create -d "my test gist" -f some_local_file.txt  test_gist
-```
-
-* 📦 **Releases**:
-
-* **Links:**
-    * [Google Sheets](https://www.google.ru/intl/ru/sheets/about/)
-    * [Google Docs](https://www.google.ru/intl/ru/docs/about/)
-    * [GitHub SSH Key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
-    * [Markdown](https://stackedit.io)
-    * [Gist](https://gist.github.com)
-    * [GitHub Personal Token](https://github.com/settings/tokens/new)
-    * [GitHub CLI](https://cli.github.com)
-    * [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
-    * [Docker](https://docs.docker.com/)
-    * [Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
-    * [Code of Conduct](https://www.contributor-covenant.org)
-
 Copyright (c) 2025 Elijah S Shmakov
 
-
 ![Logo](assets/logotype/logo.jpg)
-

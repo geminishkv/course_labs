@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 <div align="center">
 <h1><a id="intro">CheatSheet</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
@@ -73,3 +78,5 @@ $ git fetch origin # Жесткая перезапись репозитория
 $ git branch -u origin/gpages gpages
 $ git branch -m master gpages
 ```
+
+![Logo](../assets/logotypemd.jpg)

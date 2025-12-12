@@ -8,10 +8,33 @@
 
 ***
 
-<br>Салют :wave:, </br>
+Салют :wave:,<br>
 Данная лабораторная работа посвещена изучению Docker и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканирования контейнеров при сборке приложений. 
 
 Для сдачи данной работы также будет требоваться ответить на дополнительыне вопросы по описанным темам.
+
+***
+
+## Структура репозитория лабораторной работы
+
+```bash
+lab05
+├── client
+│   ├── client.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── docker-compose.yml
+├── README.md
+├── server
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+└── source
+    ├── Dockerfile
+    ├── hello.py
+    ├── image.tar
+    └── requirements.txt
+```
 
 ***
 
@@ -211,10 +234,16 @@ $ docker-compose down
 
 ## Links
 
-- [Docker](https://docs.docker.com/)
 - [Markdown](https://stackedit.io)
 - [Gist](https://gist.github.com)
 - [GitHub CLI](https://cli.github.com)
+- [GitHub Docs](https://docs.github.com/en)
+- [Docker](https://docs.docker.com/)
+- [Docker Engine overview](https://docs.docker.com/engine/)
+- [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
+- [Docker Compose documentation](https://docs.docker.com/compose/)
+- [Docker Hub](https://hub.docker.com/)
+- [Docker security overview](https://docs.docker.com/engine/security/)
 
 Copyright (c) 2025 Elijah S Shmakov
 

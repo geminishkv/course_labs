@@ -1,0 +1,43 @@
+framework:
+  - docker
+  - helm
+
+quiet: false
+soft-fail: false
+download_external_modules: false
+run_all_checks: false
+
+enforce:
+  docker:
+    - CKV_DOCKER_2     # Контейнер не должен запускаться под root
+    - CKV_DOCKER_3     # Минимизировать лишние пакеты и слои
+    - CKV_DOCKER_5     # Избегать latest без необходимости
+    - CKV_DOCKER_7     # Не использовать ADD вместо COPY
+    - CKV_DOCKER_8     # Явно задавать non-root пользователя
+    - CKV_DOCKER_9     # Минимизировать размер/attack surface образа
+    - CKV_DOCKER_10    # Наличие HEALTHCHECK
+    - CKV_DOCKER_12    # Не хранить секреты в ENV
+    - CKV_DOCKER_13    # Запрет привилегированного режима
+    - CKV_DOCKER_14    # Ограничить capabilities
+    - CKV_DOCKER_16    # Предпочитать read-only root filesystem
+
+# policy:
+#  docker:
+#    require_non_root_user: true
+#    require_healthcheck: true
+#    require_explicit_user: true
+#    forbid_secrets_in_env: true
+#    forbid_default_credentials: true
+#    drop_all_capabilities_by_default: true
+#    forbid_privileged: true
+#    forbid_host_network: true
+#    prefer_read_only_rootfs: true
+
+directory:
+  - .
+
+file:
+  - vulnerable-app/Dockerfile
+  - docker-compose.yml
+
+# skip_check:

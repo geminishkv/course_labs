@@ -8,10 +8,20 @@
 
 ***
 
-<br>Салют :wave:, </br>
+Салют :wave:,<br>
 Данная лабораторная работа посвещена изучению `nmap` и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканера портов, что бы освоить базовые методы сканирования. 
 
 Для сдачи данной работы также будет требоваться ответить на дополнительыне вопросы по описанным темам.
+
+***
+
+## Структура репозитория лабораторной работы
+
+```bash
+lab03
+├── exmp_targets.txt
+└── README.md
+```
 
 ***
 
@@ -59,11 +69,12 @@ $ nmap -iL targets.txt # множествнные цели сканирован�
 
 -  **Типы сканирований и опции nmap**
 
-<link rel="stylesheet" href="../../assets/style/style.css">
-<div class="compact-table">
-<table width="100%">
+<table>
   <thead>
-    <tr><th>Scan type</th><th>nmap option</th></tr>
+    <tr>
+      <th>Scan type</th>
+      <th>nmap option</th>
+    </tr>
   </thead>
   <tbody>
     <tr><td>TCP (connect)</td><td>-sT</td></tr>
@@ -74,14 +85,18 @@ $ nmap -iL targets.txt # множествнные цели сканирован�
     <tr><td>TCP idle (zombie)</td><td>-sI</td></tr>
     <tr><td>UDP</td><td>-sU</td></tr>
     <tr><td>OS</td><td>-A</td></tr>
-  </tbody></table></div>
+  </tbody>
+</table>
 
 - **Порты**
 
-<div class="compact-table">
 <table>
   <thead>
-    <tr><th>Port</th><th>Service</th><th>Protocole</th></tr>
+    <tr>
+      <th>Port</th>
+      <th>Service</th>
+      <th>Protocol</th>
+    </tr>
   </thead>
   <tbody>
     <tr><td>20/21</td><td>FTP (File Transfer)</td><td>TCP</td></tr>
@@ -95,9 +110,12 @@ $ nmap -iL targets.txt # множествнные цели сканирован�
     <tr><td>110</td><td>POP3 (Post Office Protocol version 3)</td><td>TCP</td></tr>
     <tr><td>443</td><td>HTTPS (HTTP Secure)</td><td>TCP</td></tr>
     <tr><td>3306</td><td>MySQL Database</td><td>TCP</td></tr>
-</tbody></table></div>
+  </tbody>
+</table>
 
-- **Пример результата**
+***
+
+### Пример результата
 
 ```bash
 nmap scan report for 10.1.1.10
@@ -171,7 +189,7 @@ $ xsltproc ~/project/reports/nmapres_new.xml -o ~/project/reports/nmapres_new.ht
 - [ ] 4.Найдите IP сетевой карты `Ethernet`, которая соответствует вашей виртуальной машине используя `ifconfig` и выполните команду
 
 ```bash
-nmap -sP inet_addr
+$ nmap -sP inet_addr
 ```
 
 - [ ] 5. Определите ОС, данные ssh, telnet  с помощью `nmap` и выведитео них информацию.
@@ -184,11 +202,16 @@ nmap -sP inet_addr
 ## Links
 
 - [Markdown](https://stackedit.io)
-- [Gist](https://gist.github.com)
-- [nmap.org](https://nmap.org/book/port-scanning-options.html)
-- [nmap github](https://github.com/nmap/nmap?ysclid=mi7x8wdde7291330856)
-- [IANA](https://www.iana.org)
 - [GitHub CLI](https://cli.github.com)
+- [Gist](https://gist.github.com)
+- [IANA](https://www.iana.org)
+- [IANA Port Numbers](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml)
+- [Nmap GitHub](https://github.com/nmap/nmap)
+- [Официальная документация nmap](https://nmap.org/book/)
+- [Nmap Reference Guide](https://nmap.org/book/man.html)
+- [Nmap Script (NSE) Reference](https://nmap.org/nsedoc/)
+- [Nmap Tutorial (Hackers-Arise)](https://nmap.org/docs.html)
+- [OWASP Testing Guide – Network Scanning](https://owasp.org/www-project-web-security-testing-guide/)
 
 Copyright (c) 2025 Elijah S Shmakov
 

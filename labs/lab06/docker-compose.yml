@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  vulnerable-web:
+    image: nginx:alpine
+    container_name: vulnerable-nginx
+    depends_on:
+      - insecure-db
+      - app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    security_opt:
+      - no-new-privileges:true
+    user: "nginx"
+  insecure-db:
+    image: postgres:16-alpine
+    container_name: insecure-db
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=vulnapp
+      - POSTGRES_USER=vulnuser
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+  app:
+    image: python:3.11-alpine
+    container_name: vulnerable-app
+    depends_on:
+      - insecure-db
+    working_dir: /app
+    volumes:
+      - ./app:/app:rw
+    command: ["python", "app.py"]
+    environment:
+      - APP_SECRET_KEY=hardcoded-in-env
+      - DB_URL=postgresql://vulnuser:root@insecure-db:5432/vulnapp
+      - DEBUG=true
+    ports:
+      - "5001:5000"

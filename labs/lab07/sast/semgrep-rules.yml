@@ -1,0 +1,185 @@
+rules:
+  # CRITICAL
+
+  - id: py-sql-injection-critical
+    languages: [python]
+    severity: CRITICAL
+    message: "Возможная SQL-инъекция через конкатенацию строки в SQL-запросе."
+    patterns:
+      - pattern: |
+          cursor.execute("SELECT " + ...)
+      - pattern: |
+          cursor.execute(f"SELECT " + ...)
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-os-system-rce
+    languages: [python]
+    severity: CRITICAL
+    message: "RCE через os.system с данными пользователя."
+    pattern: os.system(...)
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-subprocess-rce
+    languages: [python]
+    severity: CRITICAL
+    message: "Возможная командная инъекция через subprocess/sh -c."
+    pattern: subprocess.call(["sh", "-c", ...])
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-arbitrary-file-read
+    languages: [python]
+    severity: CRITICAL
+    message: "Чтение произвольного файла по пути из запроса (LFI/Path Traversal)."
+    pattern: open(..., "r")
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-unsafe-pickle-deserialization
+    languages: [python]
+    severity: CRITICAL
+    message: "Небезопасная десериализация через pickle.loads."
+    pattern: pickle.loads(...)
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  # HIGH
+
+  - id: py-reflected-xss
+    languages: [python]
+    severity: HIGH
+    message: "Reflected XSS: прямой вывод пользовательского входа в HTML."
+    patterns:
+      - pattern: |
+          html = f"<h1>Results for: {q}</h1>"
+      - pattern: |
+          return f"<h1>Results for: {q}</h1>"
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-hardcoded-db-credentials
+    languages: [python]
+    severity: HIGH
+    message: "Захардкоженные учётные данные для БД."
+    patterns:
+      - pattern: DB_USER = "..."
+      - pattern: DB_PASSWORD = "..."
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-eval-user-input
+    languages: [python]
+    severity: HIGH
+    message: "Опасное использование eval на пользовательском вводе."
+    pattern: eval(...)
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: yaml-hardcoded-secrets-config
+    languages: [yaml]
+    severity: HIGH
+    message: "Секреты и учётные данные в YAML-конфиге."
+    patterns:
+      - pattern: 'password: "..."'
+      - pattern: 'default_admin_password: "..."'
+      - pattern: 'jwt_secret: "..."'
+    paths:
+      include:
+        - "vulnerable-app/config.yaml"
+
+  # MEDIUM / LOW / INFO
+
+  - id: py-debug-mode-enabled
+    languages: [python]
+    severity: MEDIUM
+    message: "DEBUG-режим включен в приложении."
+    patterns:
+      - pattern: app.config["DEBUG"] = True
+      - pattern: app.run(..., debug=True)
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-verbose-logging-sensitive
+    languages: [python]
+    severity: MEDIUM
+    message: "Подробные логи, потенциальная утечка чувствительных данных."
+    patterns:
+      - pattern: logging.basicConfig(level=logging.DEBUG)
+      - pattern: app.logger.debug(...)
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-info-version-disclosure
+    languages: [python]
+    severity: LOW
+    message: "Раскрытие версии приложения в ответе."
+    pattern: return "Vulnerable lab07 app v1.0"
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  - id: py-debug-endpoint-exposes-env
+    languages: [python]
+    severity: MEDIUM
+    message: "Debug endpoint раскрывает заголовки и часть окружения."
+    patterns:
+      - pattern: env = dict(os.environ)
+      - pattern: "return {\"headers\": headers, \"env_sample\": env_sample}"
+    paths:
+      include:
+        - "vulnerable-app/app.py"
+
+  # config.yaml
+
+  - id: yaml-hardcoded-secrets-2
+    languages: [yaml]
+    severity: HIGH
+    message: "Секреты и учётные данные в config.yaml (дополнительная проверка)."
+    patterns:
+      - pattern: |
+          password: "..."
+      - pattern: |
+          default_admin_password: "..."
+      - pattern: |
+          jwt_secret: "..."
+    paths:
+      include:
+        - "vulnerable-app/config.yaml"
+
+  - id: yaml-insecure-security-flags
+    languages: [yaml]
+    severity: MEDIUM
+    message: "Небезопасные флаги безопасности в config.yaml (CSRF, cookies, rate limiting)."
+    patterns:
+      - pattern: "enable_csrf_protection: false"
+      - pattern: "enable_rate_limit: false"
+      - pattern: "allow_insecure_cookies: true"
+      - pattern: "session_cookie_secure: false"
+      - pattern: "session_cookie_httponly: false"
+    paths:
+      include:
+        - vulnerable-app/config.yaml
+
+  - id: yaml-debug-and-unsafe-features
+    languages: [yaml]
+    severity: LOW
+    message: "Включены debug-режим и экспериментальные/опасные фичи."
+    patterns:
+      - pattern: "debug: true"
+      - pattern: "enable_unsafe_eval: true"
+      - pattern: "enable_remote_shell: true"
+    paths:
+      include:
+        - vulnerable-app/config.yaml

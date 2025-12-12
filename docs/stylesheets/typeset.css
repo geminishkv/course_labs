@@ -1,5 +1,6 @@
 .md-main__inner {
   margin-left: 0;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 1680px) {
@@ -10,7 +11,18 @@
 
   .md-main__inner {
     margin-left: 10rem;
+    max-width: 100%;
   }
+}
+
+.md-content {
+  max-width: 100%;
+}
+
+.md-content__inner {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .md-content h1,

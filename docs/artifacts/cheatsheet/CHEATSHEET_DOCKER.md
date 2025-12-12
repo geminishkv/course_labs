@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 <div align="center">
 <h1><a id="intro">CheatSheet</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
@@ -45,3 +50,5 @@ docker exec -it <container_name_or_id> <command> # выполнение кома
             -t  # выделяет псевдотерминал (tty) для взаимодействия.
             <container_name_or_id>  # имя или ID контейнера.
 ```
+
+![Logo](../assets/logotypemd.jpg)

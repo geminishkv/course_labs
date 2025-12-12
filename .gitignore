@@ -1,28 +1,20 @@
-# OS generated files
+# OS generated files (macOS / Windows / misc)
 .DS_Store
 .DS_Store?
 ._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
 .AppleDouble
 .LSOverride
+.Spotlight-V100
+.Trashes
 .DocumentRevisions-V100
 .fseventsd
-.Spotlight-V100
 .TemporaryItems
-.Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+ehthumbs.db
+Thumbs.db
 *.icloud
-
-# Python cache and compiled files
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-.ruff_cache
+CACHEDIR.TAG
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -31,7 +23,51 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Compiled source #
+# Python: bytecode, cache, tooling
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.ruff_cache
+
+# Virtual environments
+venv/
+
+# IDE / editor configs
+.vscode/
+.idea/
+*.swp
+
+# Project-specific reports / tools output
+sast/semgrep-report.json
+sast/checkov-report.json
+sca/dependency-check-report/
+reports/
+lib/
+.dependency-check-data
+audit_reports/
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+
+# Data exports / office docs
+*.odt
+*.xlsx
+*.xls
+
+# Build / dist artifacts (site, bundles, etc.)
+dist/
+build/
+site
+
+# Databases / dumps
+*.sqlite
+*.db
+*.sql
+
+# Compiled source
 *.com
 *.class
 *.dll
@@ -39,46 +75,23 @@ Temporary Items
 *.o
 *.so
 
-# Packages #
+# Archive / package formats
 *.7z
 *.dmg
 *.gz
 *.iso
 *.jar
 *.rar
-# *.tar
 *.zip
+# *.tar
 
-# Secrets and environment configs
+# Secrets и env-конфиги
 .env
 .env.*
 *.env
-venv/
-.venv/
-.vscode/
-.idea/
-*.swp
-
-# Logs and runtime files
-*.log
-logs/
-*.pid
-
-# Data exports
-*.odt
-*.xlsx
-*.xls
-# site
-dist/
-build/
-
-# Databases
-*.sqlite
-*.db
-*.sql
 
 # Node.js
 node_modules/
-/node_modules*.tar
-labs/lab05/source/*.tar
 *.tar
+labs/lab05/source/*.tar
+labs/lab06/source/*.tar

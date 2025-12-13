@@ -134,7 +134,18 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 6. Docker Security Operations (6.1 - 6.2)
 7. Docker Swarm Configuration (7.1 - 7.10)
 
-**Отчет сохранен в:** `audit_reports/text/cis_audit.txt` (231 строка)
+**Отчет сохранен в:** `/root/course_labs/labs/lab06/audit_reports/text/cis_audit.txt` (231 строка, 16093 байт)
+
+**Структура директории audit_reports:**
+```
+/root/course_labs/labs/lab06/audit_reports/
+├── json/          (Trivy JSON outputs) - пусто (Trivy не установлен)
+├── text/          (CIS audit text outputs)
+│   ├── cis_audit.txt (231 строка)
+│   └── docker-bench-security-cis.txt
+├── xlsx/          (Excel spreadsheets) - пусто
+└── odt/           (OpenDocument Text files) - пусто
+```
 
 ---
 

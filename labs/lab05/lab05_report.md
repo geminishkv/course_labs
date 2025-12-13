@@ -196,7 +196,7 @@ $ docker buildx build -t hello-appsec-world .
 # Образ успешно собран: sha256:42cab5e27bf24914df59b647b4fbae6e0d4605d9a0ca78844e501bef2f10f381
 ```
 
-**Результат запуска:**
+**Результат запуска (до исправления):**
 ```bash
 $ docker run --rm hello-appsec-world
 Введите ваше имя: Traceback (most recent call last):
@@ -210,7 +210,19 @@ $ docker run --rm hello-appsec-world
 EOFError: EOF when reading a line
 ```
 
-**Примечание:** Скрипт требует интерактивного ввода, поэтому при неинтерактивном запуске возникает ошибка. Для работы в контейнере нужно модифицировать скрипт или использовать переменные окружения.
+**Исправление:**
+В функции `main()` заменен вызов `interactive_greeting()` на `hello_world()` для работы в неинтерактивном режиме Docker.
+
+**Результат запуска (после исправления):**
+```bash
+$ docker run --rm hello-appsec-world
+Hello AppSec World!
+Python version: 3.11.14 (main, Dec  8 2025, 23:39:47) [GCC 14.2.0]
+Platform: linux
+Current time: 2025-12-13 11:37:39
+```
+
+**Примечание:** После исправления скрипт работает корректно в Docker контейнере без интерактивного ввода.
 
 **Commit:** Выполнен коммит `cfc403c` с изменениями Dockerfile и hello.py
 

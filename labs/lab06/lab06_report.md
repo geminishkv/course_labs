@@ -498,7 +498,7 @@ audit_reports/
 $ gh gist create --public --desc "Lab06: Аудит безопасности Docker с использованием Docker Bench Security" labs/lab06/lab06_report.md
 ```
 
-**Ссылка на Gist:** https://gist.github.com/might-might/2b7fd8999234ef5177f4d06fc4c21cba
+**Ссылка на Gist:** https://gist.github.com/might-might/8e682ee58f10fa291edf3cc65740e813
 
 **Статус:** Отчет успешно опубликован в GitHub Gist
 

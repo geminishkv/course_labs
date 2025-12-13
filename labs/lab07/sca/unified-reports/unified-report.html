@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unified Security Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .summary { background: #f5f5f5; padding: 15px; margin: 20px 0; }
+        .finding { border-left: 4px solid #ff6b6b; padding: 10px; margin: 10px 0; background: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Unified Security Report</h1>
+    <div class="summary">
+        <h2>Summary</h2>
+        <p><strong>Semgrep Findings:</strong> 5</p>
+        <p><strong>Checkov Failed:</strong> 2</p>
+        <p><strong>Dependency-Check Dependencies:</strong> 11</p>
+    </div>
+    <h2>Findings</h2>
+
+    <div class="finding">
+        <strong>[Semgrep]</strong> sast.py-info-version-disclosure - Раскрытие версии приложения в ответе.<br>
+        <small>vulnerable-app/app.py:26</small>
+    </div>
+    
+    <div class="finding">
+        <strong>[Semgrep]</strong> sast.py-os-system-rce - RCE через os.system с данными пользователя.<br>
+        <small>vulnerable-app/app.py:52</small>
+    </div>
+    
+    <div class="finding">
+        <strong>[Semgrep]</strong> sast.py-arbitrary-file-read - Чтение произвольного файла по пути из запроса (LFI/Path Traversal).<br>
+        <small>vulnerable-app/app.py:68</small>
+    </div>
+    
+    <div class="finding">
+        <strong>[Semgrep]</strong> sast.py-unsafe-pickle-deserialization - Небезопасная десериализация через pickle.loads.<br>
+        <small>vulnerable-app/app.py:79</small>
+    </div>
+    
+    <div class="finding">
+        <strong>[Semgrep]</strong> sast.py-eval-user-input - Опасное использование eval на пользовательском вводе.<br>
+        <small>vulnerable-app/app.py:88</small>
+    </div>
+    
+    <div class="finding">
+        <strong>[Checkov]</strong> CKV_DOCKER_3 - Ensure that a user for the container has been created<br>
+        <small>vulnerable-app/Dockerfile</small>
+    </div>
+    
+    <div class="finding">
+        <strong>[Checkov]</strong> CKV_DOCKER_2 - Ensure that HEALTHCHECK instructions have been added to container images<br>
+        <small>vulnerable-app/Dockerfile</small>
+    </div>
+    
+</body>
+</html>

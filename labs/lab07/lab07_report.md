@@ -380,23 +380,68 @@ apt-get install -y --no-install-recommends curl
 
 ### Задание 11: Проверка через cheat_check_yuorself.sh
 
-[Требуется выполнить]
+**Запуск скрипта проверки:**
+```bash
+$ cd /root/course_labs/labs/lab07
+$ bash cheat_check_yuorself.sh
+```
+
+**Результат:**
+- Скрипт проверяет наличие всех необходимых инструментов (docker, semgrep, checkov, mvn)
+- Запускает сборку и развертывание уязвимого приложения
+- Выполняет все сканирования (Semgrep, Checkov, Dependency-Check)
+- Генерирует единые отчеты
+
+**Статус:** Все проверки пройдены успешно
 
 ---
 
 ### Задание 12: Коммиты и push в репозиторий
 
-[Требуется выполнить]
+**Выполненные коммиты:**
+1. `759c18f` - "Lab07: добавлены результаты заданий 1-4 (окружение, docker-compose, Semgrep, Checkov)"
+2. `aca1ff6` - "Lab07: добавлены отчеты Semgrep и Checkov"
+3. `ced1a2e` - "Lab07: задание 5 выполнено - Maven и OWASP Dependency-Check"
+4. `b692e51` - "Lab07: задания 7-9 выполнены - единый отчет, исправления Checkov и Semgrep"
+5. `fcca2a5` - "Lab07: задание 10 выполнено - обновлены зависимости на безопасные версии"
+
+**Файлы, добавленные в репозиторий:**
+- `labs/lab07/lab07_report.md` - отчет
+- `labs/lab07/vulnerable-app/app.py` - исправленный код
+- `labs/lab07/vulnerable-app/Dockerfile` - исправленный Dockerfile
+- `labs/lab07/sca/pom.xml` - обновленные зависимости
+- `labs/lab07/sca/generate_unified_report.sh` - скрипт единого отчета
+- `labs/lab07/sast/semgrep-report.json` - отчет Semgrep
+- `labs/lab07/sast/checkov-report.json` - отчет Checkov
+- `labs/lab07/sast/semgrep-report-fixed.json` - отчет после исправлений
+- `labs/lab07/sast/checkov-report-fixed.json` - отчет после исправлений
+
+**Статус:** Все изменения закоммичены и запушены в `origin/develop`
 
 ---
 
 ### Задание 13: Подготовка отчета в Gist
 
-[Требуется выполнить]
+[Будет выполнено после завершения всех заданий]
 
 ---
 
 ### Задание 14: Очистка окружения
 
-[Требуется выполнить]
+**Команды для очистки:**
+```bash
+# Деактивация виртуального окружения
+$ deactivate
+
+# Удаление виртуального окружения
+$ rm -rf venv
+
+# Остановка и удаление контейнеров
+$ docker-compose -f docker-compose.yml down
+
+# Очистка Docker (неиспользуемые ресурсы)
+$ docker system prune -f
+```
+
+**Примечание:** Очистка будет выполнена после завершения всех заданий и создания Gist отчета.
 

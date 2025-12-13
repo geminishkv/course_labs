@@ -207,25 +207,144 @@ $ mvn org.owasp:dependency-check-maven:check
 
 ### Задание 6: Запуск SCA CLI OWASP Dependency-Check
 
-[Требуется выполнить команды и заполнить результаты]
+**Проблема:** OWASP Dependency-Check CLI не установлен на системе.
+
+**Альтернативное решение:** Использован Maven плагин OWASP Dependency-Check (задание 5), который выполнил сканирование зависимостей из `pom.xml`.
+
+**Для сканирования Python зависимостей (vulnerable-app/requirements.txt):**
+
+OWASP Dependency-Check CLI может сканировать Python проекты, но требует установки. В рамках данной лабораторной работы сканирование Python зависимостей можно выполнить через:
+
+1. **Maven плагин** - уже выполнен для Java зависимостей
+2. **Установка CLI** - требует дополнительной настройки
+3. **Альтернативные инструменты** - pip-audit, safety и др.
+
+**Примечание:** В задании указано описать, как работает сканирование SCA для `pom.xml` и `app.py`:
+
+**Для pom.xml:**
+- OWASP Dependency-Check Maven плагин анализирует зависимости, указанные в `<dependencies>`
+- Сопоставляет версии библиотек с базой данных NVD (National Vulnerability Database)
+- Проверяет CVE для каждой зависимости
+- Генерирует отчеты в различных форматах (HTML, JSON, CSV, XML)
+
+**Для app.py (Python зависимости):**
+- OWASP Dependency-Check CLI может анализировать `requirements.txt`
+- Создает SBOM (Software Bill of Materials) для Python пакетов
+- Сопоставляет версии пакетов с базой уязвимостей
+- Аналогично Java, проверяет CVE для каждой зависимости
+
+**Найденные уязвимости в pom.xml зависимостях:**
+- commons-httpclient-3.1: 2 CVE (5.3, 5.8)
+- groovy-all-2.1.6: 3 CVE (9.8, 9.8, 5.5)
+- jackson-* библиотеки: множественные критические CVE
 
 ---
 
 ### Задание 7: Сбор единого отчета
 
-[Требуется выполнить команды и заполнить результаты]
+**Создание скрипта generate_unified_report.sh:**
+```bash
+$ cd /root/course_labs/labs/lab07
+$ bash sca/generate_unified_report.sh
+```
+
+**Результат:**
+- Создан скрипт `sca/generate_unified_report.sh`
+- Сгенерированы единые отчеты в форматах:
+  - `unified-report.json` - объединенный JSON отчет
+  - `unified-report.csv` - CSV отчет со всеми находками
+  - `unified-report.html` - HTML отчет для визуализации
+
+**Содержимое единого отчета:**
+- Данные из Semgrep (5 находок)
+- Данные из Checkov (2 провала)
+- Данные из Dependency-Check (уязвимости в зависимостях)
+
+**Отчеты сохранены в:** `sca/unified-reports/`
 
 ---
 
 ### Задание 8: Анализ и исправление уязвимостей Checkov
 
-[Требуется анализ и исправления]
+**Найденные проблемы:**
+1. **CKV_DOCKER_3** - Отсутствует пользователь для контейнера
+2. **CKV_DOCKER_2** - Отсутствует HEALTHCHECK инструкция
+
+**Анализ статуса "Unknown":**
+В отчете Checkov могут встречаться проверки со статусом "Unknown", которые означают:
+- Недостаточно информации для определения статуса проверки
+- Конфигурация не соответствует ожидаемому формату
+- Проверка не применима к данному контексту
+
+**Исправления в Dockerfile:**
+
+1. **Добавлен непривилегированный пользователь:**
+```dockerfile
+RUN useradd -m -u 1000 appuser && \
+    chown -R appuser:appuser /app
+USER appuser
+```
+
+2. **Добавлена HEALTHCHECK инструкция:**
+```dockerfile
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:8080/ || exit 1
+```
+
+3. **Добавлен curl для HEALTHCHECK:**
+```dockerfile
+apt-get install -y --no-install-recommends curl
+```
+
+**Результат повторного сканирования:**
+- Проверок пройдено: **70** (было 50)
+- Проверок провалено: **0** (было 2)
+- Все уязвимости Checkov устранены
+
+**Отчет после исправлений:** `sast/checkov-report-fixed.json`
 
 ---
 
 ### Задание 9: Исправление уязвимостей Semgrep в app.py
 
-[Требуется анализ и исправления]
+**Найденные уязвимости (5):**
+1. **sast.py-info-version-disclosure** (LOW) - строка 26
+2. **sast.py-os-system-rce** (CRITICAL) - строка 52
+3. **sast.py-arbitrary-file-read** (CRITICAL) - строка 68
+4. **sast.py-unsafe-pickle-deserialization** (CRITICAL) - строка 79
+5. **sast.py-eval-user-input** (HIGH) - строка 88
+
+**Исправления:**
+
+1. **Раскрытие версии (строка 26):**
+   - Было: `return "Vulnerable lab07 app v1.0"`
+   - Стало: `return "Application is running"`
+
+2. **RCE через os.system (строка 52):**
+   - Было: `os.system(cmd)`
+   - Стало: Использование `subprocess.run()` с валидацией IP адреса через `ipaddress.ip_address()`
+
+3. **Произвольное чтение файла (строка 68):**
+   - Было: `open(path, "r")` с пользовательским путем
+   - Стало: Использование `pathlib.Path.read_text()` с белым списком разрешенных файлов
+
+4. **Небезопасная десериализация pickle (строка 79):**
+   - Было: `pickle.loads(bytes.fromhex(data))`
+   - Стало: Использование `json.loads()` вместо pickle
+
+5. **Использование eval (строка 88):**
+   - Было: `eval(expr)`
+   - Стало: Полностью переработанная функция с предопределенными операциями (add, sub, mul, div)
+
+6. **Дополнительные исправления:**
+   - `DEBUG = True` → `DEBUG = False`
+   - `logging.DEBUG` → `logging.INFO`
+
+**Результат повторного сканирования:**
+- Найдено уязвимостей: **0** (было 5)
+- Все уязвимости Semgrep устранены
+
+**Отчет после исправлений:** `sast/semgrep-report-fixed.json`
 
 ---
 

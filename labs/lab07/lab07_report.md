@@ -427,7 +427,7 @@ $ bash cheat_check_yuorself.sh
 $ gh gist create --public --desc "Lab07: SAST и SCA анализ безопасности приложения" labs/lab07/lab07_report.md
 ```
 
-**Ссылка на Gist:** https://gist.github.com/might-might/40e680f1f9ce10e8b91c6629d1f0fec9
+**Ссылка на Gist:** https://gist.github.com/might-might/7893a493252338fe360077f6f10e55e2
 
 **Статус:** Отчет успешно опубликован в GitHub Gist
 

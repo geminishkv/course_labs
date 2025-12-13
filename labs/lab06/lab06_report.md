@@ -1,14 +1,11 @@
 # Отчет по лабораторной работе №6
+## Аудит безопасности Docker с использованием Docker Bench Security
 
 ## Выполненные задания
 
-> **Примечание:** Задания аналогичны Lab05 (Docker и контейнеризация). Выполнение будет аналогичным.
+### Задание 1: Установка Docker Engine и Docker Bench Security
 
----
-
-### Задание 1: Установка Docker и buildkit
-
-**Статус:** Docker и buildx уже установлены на сервере, установка не требовалась
+**Статус:** Docker уже установлен на сервере, установка не требовалась
 
 **Проверка установки:**
 ```bash
@@ -19,500 +16,492 @@ $ docker buildx version
 github.com/docker/buildx v0.19.3 48d6a39
 ```
 
-**Примечание:** 
-- На Linux сервере используется Docker, установленный через пакетный менеджер `apt`
-- Команда `brew` из задания предназначена для macOS и не работает на Linux без предварительной установки Homebrew
-- На данном сервере Docker уже был установлен ранее, поэтому установка не выполнялась
+**Скачивание Docker Bench Security:**
+```bash
+$ docker pull docker/docker-bench-security
+Status: Downloaded newer image for docker/docker-bench-security:latest
+docker.io/docker/docker-bench-security:latest
+```
+
+**Digest:** `sha256:ddbdf4f86af4405da4a8a7b7cc62bb63bfeb75e85bf22d2ece70c204d7cfabb8`
 
 ---
 
-### Задание 2: Команды docker buildx и docker run
+### Задание 2: Проверка работы Docker и подготовка audit.sh
 
-#### 2.1. Сборка образа
-
+**Проверка Docker:**
 ```bash
-$ cd /root/course_labs/labs/lab06/source
-$ docker buildx build -t hello-appsec-world .
+$ docker info >/dev/null 2>&1 && echo "Docker daemon работает"
+Docker daemon работает
 ```
 
-**Анализ команды:**
-- `docker buildx build` - использует buildkit для сборки образа
-- `-t hello-appsec-world` - задает имя и тег образа
-- `.` - указывает на текущую директорию как контекст сборки (ищет Dockerfile)
-
-**Результат:** Образ успешно собран: `sha256:a02f811f7c040f2dd6f3ddb8f7c8b80a6214e517c474c5a40a6508c0d5665ff9`
-
-#### 2.2. Запуск контейнера
-
-```bash
-$ docker run --rm hello-appsec-world
-```
-
-**Результат:** Ошибка EOFError (требуется интерактивный ввод, как в lab05)
-```bash
-Введите ваше имя: Traceback (most recent call last):
-  File "/hello/hello.py", line 66, in <module>
-    main()
-  File "/hello/hello.py", line 61, in main
-    interactive_greeting()
-  File "/hello/hello.py", line 46, in interactive_greeting
-    name = input("Введите ваше имя: ")
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-EOFError: EOF when reading a line
-```
-
-#### 2.3. Сохранение и загрузка образа
-
-```bash
-$ docker save -o hello.tar hello-appsec-world
-$ docker load -i hello.tar
-```
-
-**Результат:**
-- Образ сохранен в `hello.tar` (размер 143MB)
-- Образ успешно загружен из архива: `Loaded image: hello-appsec-world:latest`
-
----
-
-### Задание 3: Анализ Dockerfile
-
-**Текущий Dockerfile:**
-
-```dockerfile
-FROM python:3.11-slim AS builder
-WORKDIR /hello
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip wheel --wheel-dir=/wheels -r requirements.txt
-
-FROM python:3.11-slim 
-WORKDIR /hello
-COPY --from=builder /wheels /wheels 
-COPY requirements.txt .
-RUN pip install --no-index --find-links=/wheels -r requirements.txt
-COPY hello.py .
-
-ENV PYTHONUNBUFFERED=1
-CMD ["python", "hello.py"]
-```
-
-**Анализ Dockerfile:**
-
-1. **Многоэтапная сборка (Multi-stage build):**
-   - Этап 1 (`builder`): Установка зависимостей в wheel-пакеты
-   - Этап 2: Финальный образ с минимальным размером
-
-2. **Преимущества:**
-   - Уменьшение размера финального образа (не включаются инструменты сборки)
-   - Кеширование зависимостей через wheel-пакеты
-   - Безопасность: меньше уязвимостей в финальном образе
-
-3. **Проблемы безопасности:**
-   - Запуск от пользователя root (нет USER директивы)
-   - Нет ограничений ресурсов
-   - Нет проверки целостности зависимостей
-
-**Commit:** Dockerfile уже был закоммичен ранее в коммите `dbed2df` (Lab05: добавлен отчет, Lab06: начальная структура и файлы). Анализ выполнен.
-
----
-
-### Задание 4: Замена скрипта на hello.py
-
-**Анализ изменений:**
-- Используется скрипт `hello.py` из корня репозитория (создан в lab01)
-- Скрипт содержит функции для работы с пользователем (hello_world, hello_user, interactive_greeting)
-- Dockerfile уже настроен: `COPY hello.py .` и `CMD ["python", "hello.py"]`
-
-**Текущий Dockerfile (после замены):**
-```dockerfile
-FROM python:3.11-slim AS builder
-WORKDIR /hello
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip wheel --wheel-dir=/wheels -r requirements.txt
-
-FROM python:3.11-slim 
-WORKDIR /hello
-COPY --from=builder /wheels /wheels 
-COPY requirements.txt .
-RUN pip install --no-index --find-links=/wheels -r requirements.txt
-COPY hello.py .
-
-ENV PYTHONUNBUFFERED=1
-CMD ["python", "hello.py"]
-```
-
-**Анализ измененного Dockerfile:**
-- Многоэтапная сборка сохранена для оптимизации
-- Скрипт `hello.py` копируется в образ
-- Запуск через `CMD ["python", "hello.py"]`
-- **Проблема:** hello.py использует `input()` для интерактивного ввода, что вызывает EOFError при неинтерактивном запуске
-
-**Результат сборки:**
-```bash
-$ docker buildx build -t hello-appsec-world .
-# Образ успешно собран: sha256:a02f811f7c040f2dd6f3ddb8f7c8b80a6214e517c474c5a40a6508c0d5665ff9
-```
-
-**Результат запуска:**
-```bash
-$ docker run --rm hello-appsec-world
-Введите ваше имя: Traceback (most recent call last):
-  File "/hello/hello.py", line 66, in <module>
-    main()
-  File "/hello/hello.py", line 61, in main
-    interactive_greeting()
-  File "/hello/hello.py", line 46, in interactive_greeting
-    name = input("Введите ваше имя: ")
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-EOFError: EOF when reading a line
-```
-
-**Примечание:** Скрипт требует интерактивного ввода, поэтому при неинтерактивном запуске возникает ошибка. Для работы в контейнере нужно модифицировать скрипт или использовать переменные окружения.
-
-**Commit:** Dockerfile и hello.py уже были закоммичены ранее в коммите `dbed2df`. Изменения применены.
-
----
-
-### Задание 5: Повторная сборка и сравнение хеш-сумм
-
-**Выполненные команды:**
-```bash
-$ docker buildx build -t hello-appsec-world .
-# Образ успешно собран
-
-$ docker run hello-appsec-world
-# Ошибка EOFError (требуется интерактивный ввод)
-
-$ docker save -o hello_your_project.tar hello-appsec-world
-# Образ сохранен в hello_your_project.tar
-
-$ docker load -i hello_your_project.tar
-Loaded image: hello-appsec-world:latest
-
-$ docker run hello-appsec-world
-# Ошибка EOFError (требуется интерактивный ввод)
-```
-
-**Сравнение хеш-сумм:**
-```bash
-$ sha256sum hello_your_project.tar
-a981c57412da3751f001f505ad630c8371d0b48bc9c5e4cd133d9a58417853d6  hello_your_project.tar
-
-$ sha256sum hello.tar
-58a9beb76b2dbdb71f6ddeef1303ce130e80e2968a06713efd64a568d7752689  hello.tar
-```
-
-**Результаты выполнения:**
-- `hello.tar` - образ создан в задании 2 (размер 143MB, хеш: `58a9beb7...`)
-- `hello_your_project.tar` - образ создан в задании 5 (размер 143MB, хеш: `a981c574...`)
-- Оба образа имеют одинаковый размер (143MB)
-- `image.tar` из репозитория не найден в директории lab06
-
-**Анализ:** 
-- Оба образа собраны с одним и тем же hello.py из корня репозитория
-- Размеры одинаковые (143MB), что указывает на схожее содержимое
-- Хеш-суммы **различаются** (`58a9beb7...` vs `a981c574...`), что может быть связано с:
-  - Метаданными образа (время создания, теги)
-  - Порядком слоев в образе
-  - Незначительными различиями в процессе сборки
-
----
-
-### Задание 6: Доработка скрипта с библиотеками
-
-**Изменения в requirements.txt:**
-
-```
-flask==2.2.3
-requests==2.28.1
-```
-
-**Анализ:**
-- Добавлены библиотеки для расширения функциональности скрипта `hello.py`
-- `flask==2.2.3` - для создания веб-приложения (если требуется)
-- `requests==2.28.1` - для работы с HTTP запросами
-- Указаны конкретные версии для воспроизводимости сборки
-- Формат соответствует требованиям задания (версия указана через `==`)
-
----
-
-### Задание 7: Сборка доработанного приложения
-
-**Результат сборки:**
-```bash
-$ docker buildx build -t hello-appsec-world .
-# Установлены библиотеки: flask-2.2.3, requests-2.28.1 и их зависимости
-# Образ успешно собран
-```
-
-**Результат сохранения:**
-```bash
-$ docker save -o hello_your_project.tar hello-appsec-world
-# Размер архива: 143MB (или другой размер, если изменился)
-```
-
-**Commit:** requirements.txt уже был закоммичен ранее в коммите `dbed2df` с библиотеками flask и requests. Коммит не требуется.
-
----
-
-### Задание 8: Работа с Docker Hub
-
-**Выполненные команды:**
-
-```bash
-$ docker container create --name first hello-appsec-world
-# Контейнер создан (ID будет указан ниже)
-
-$ docker inspect hello-appsec-world
-# Метаданные образа успешно выведены
-```
-
-**Анализ команд:**
-- `docker login` - аутентификация в Docker Hub (не выполнялась, требует учетных данных)
-- `docker tag` - создание тега для публикации (не выполнялась)
-- `docker push` - загрузка образа в репозиторий (не выполнялась, требует авторизации)
-- `docker inspect` - просмотр метаданных образа
-- `docker container create` - создание контейнера без запуска
-
-**ID контейнера first:** `afeca46c3aae5a8ac747d1ed6e78d65607d423730fb767fe069419393e4f60de`
-
-**Результат выполнения команд:**
-```bash
-$ docker container create --name first hello-appsec-world
-# Ошибка: контейнер с именем "first" уже существует (создан в lab05)
-# ID существующего контейнера: afeca46c3aae5a8ac747d1ed6e78d65607d423730fb767fe069419393e4f60de
-
-$ docker inspect hello-appsec-world
-# Метаданные образа успешно выведены (ID: sha256:2eec010b4ae6dabd7d37f527e0126b3937977613a9172d839f5480284ae2eb7b)
-```
-
-**Результаты работы с Docker Hub:**
-```bash
-$ docker image pull geminishkv/hello-appsec-world
-# Ошибка: репозиторий не существует или требует авторизации
-# "pull access denied for geminishkv/hello-appsec-world"
-
-$ docker inspect geminishkv/hello-appsec-world
-# Ошибка: образ не найден
-
-$ docker container create --name second geminishkv/hello-appsec-world
-# Ошибка: образ не найден локально и не может быть загружен из Docker Hub
-```
-
-**Примечание:** 
-- Команды с Docker Hub (`docker login`, `docker tag`, `docker push`) требуют учетных данных и не выполнялись автоматически
-- Образ `geminishkv/hello-appsec-world` не найден в Docker Hub или является приватным
-- Для работы с Docker Hub необходимо:
-  1. Создать аккаунт на hub.docker.com
-  2. Выполнить `docker login`
-  3. Создать тег: `docker tag hello-appsec-world yourusername/hello-appsec-world`
-  4. Загрузить образ: `docker push yourusername/hello-appsec-world`
-
----
-
-### Задание 9: Анализ процессов в контейнере
-
-**Результат выполнения команды:**
-```bash
-$ docker container run --rm ubuntu /bin/bash -c "ps aux && echo --- && whoami && echo --- && id"
-USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root           1 30.0  0.0   4324  3504 ?        Ss   18:32   0:00 /bin/bash -c ps aux && echo --- && whoami && echo --- && id
-root           7  0.0  0.0   7888  4028 ?        R    18:32   0:00 ps aux
----
-root
----
-uid=0(root) gid=0(root) groups=0(root)
-```
-
-**Анализ:**
-- Процессы изолированы в namespace контейнера (PID namespace)
-- Пользователь по умолчанию: **root** (uid=0, gid=0)
-- Процессы видны только внутри контейнера
-- PID 1 - это процесс /bin/bash (в контейнере), а не init системы хоста
-- Это демонстрирует изоляцию процессов через Linux namespaces
-
----
-
-### Задание 10: Вывод обоих контейнеров
-
-**Результат:**
-```bash
-$ docker ps -a --filter "name=first" --filter "name=second"
-CONTAINER ID   NAMES     STATUS    IMAGE
-afeca46c3aae   first     Created   42cab5e27bf2
-```
-
-**Анализ:** 
-- Контейнер `first` создан, но не запущен (статус: Created)
-- Контейнер `second` не создан (образ `geminishkv/hello-appsec-world` не найден в Docker Hub, как указано в задании 8)
-- Для создания контейнера `second` требуется успешно загрузить образ из Docker Hub
-
----
-
-### Задание 11: Запуск docker-compose
-
-**Выполненные команды:**
+**Подготовка скрипта audit.sh:**
 ```bash
 $ cd /root/course_labs/labs/lab06
-$ docker-compose up --build -d
+$ chmod +x audit.sh
+$ ls -la audit.sh
+-rwxr-xr-x 1 root root 9700 Dec 12 21:15 audit.sh
+```
+
+**Статус:** Скрипт `audit.sh` готов к выполнению
+
+---
+
+### Задание 3: Развертывание уязвимого приложения
+
+**Развертывание основного приложения:**
+```bash
+$ cd /root/course_labs/labs/lab06
+$ docker compose up -d
 ```
 
 **Результат:**
-- Docker-compose.yml содержит 3 сервиса: `vulnerable-web` (nginx), `insecure-db` (postgres), `app` (python)
-- Ошибка: порт 5432 уже занят другим процессом
-- Контейнеры созданы, но не запущены из-за конфликта портов
+- Создана сеть `lab06_default`
+- Созданы контейнеры: `insecure-db`, `vulnerable-app`, `vulnerable-nginx`
+- **Ошибка:** Контейнер `insecure-db` не запустился из-за конфликта порта 5432 (порт уже занят)
+- Контейнеры созданы, но не все запущены
 
-**Анализ команды:**
-- `docker-compose up` - запуск сервисов из docker-compose.yml
-- `--build` - пересборка образов перед запуском
-- `-d` - запуск в фоновом режиме (detached)
-- Запускаются сервисы для уязвимого приложения (nginx, postgres, python app)
-
-**Проблема:** Порт 5432 (PostgreSQL) уже используется другим процессом. Для решения нужно:
-- Остановить процесс, использующий порт 5432
-- Или изменить порт в docker-compose.yml на другой (например, 5433:5432)
-
----
-
-### Задание 12: Открытие в браузере
-
-**Команда для macOS:**
+**Развертывание уязвимого приложения:**
 ```bash
-$ open -a "Google Chrome" http://localhost:8080
-```
-
-**Примечание:** На Linux сервере команда `open` не работает (это macOS команда). Альтернатива:
-```bash
-$ curl -v http://localhost:8080
+$ docker-compose -f vulnerable-app.yml up -d
 ```
 
 **Результат:**
-- Приложение должно быть доступно на порту 8080 (nginx проксирует на порт 80 внутри контейнера)
-- Из-за проблемы с портом 5432 в задании 11, сервисы не запущены
-- Приложение недоступно до решения проблемы с портами
+- Скачаны образы: `nginx:latest`, `alpine:latest`
+- Запущены контейнеры:
+  - `vulnerable-web` (nginx:latest) - **Restarting** (ошибка конфигурации nginx)
+  - `debug-shell` (alpine:latest) - **Exited** (ошибка SSH hostkeys)
 
-**Анализ команды `curl -v`:**
-- `curl` - утилита для передачи данных по URL (HTTP, HTTPS, FTP и др.)
-- `http://localhost:8080` - адрес сервера, запущенного в docker-compose на порту 8080
-- `-v` (или `--verbose`) - подробный вывод: показывает заголовки HTTP запроса и ответа, статус-коды, время выполнения
-
----
-
-### Задание 13: Остановка docker-compose
-
-**Выполненные команды:**
+**Статус контейнеров:**
 ```bash
-$ docker ps -a
-$ docker ps -q
-$ docker images
-$ docker ps -q | xargs docker stop
-$ docker-compose down
+$ docker ps -a | grep -E "(vulnerable|insecure|debug)"
+vulnerable-web       Restarting (1) 
+debug-shell          Exited (1) 
+vulnerable-app       Created
+insecure-db          Created
 ```
 
-**Анализ команд:**
-- `docker ps -a` - все контейнеры (включая остановленные)
-- `docker ps -q` - только ID запущенных контейнеров
-- `docker images` - список образов
-- `xargs docker stop` - остановка всех запущенных контейнеров
-- `docker-compose down` - остановка и удаление сервисов
+**Примечание:** Контейнеры `vulnerable-web` и `debug-shell` имеют критические уязвимости безопасности, что и является целью лабораторной работы.
 
-**Результат:**
+---
+
+### Задание 4: Запуск скрипта audit.sh из venv
+
+**Создание виртуального окружения:**
 ```bash
-$ docker-compose down
-# Контейнеры lab06 остановлены и удалены
-# Сеть lab06_default удалена
+$ cd /root/course_labs/labs/lab06
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install openpyxl odfpy
 ```
 
-**Анализ:** 
-- Команда `docker-compose down` должна выполняться из директории с docker-compose.yml
-- После выполнения все сервисы lab06 будут остановлены и удалены
-
----
-
-### Задание 14: Доработка docker-compose
-
-[Требуется доработать docker-compose и сделать commit]
-
----
-
-### Задание 14: Доработка docker-compose и скрипта
-
-**Текущий docker-compose.yml:**
-- Docker-compose.yml уже настроен для уязвимого приложения (отличается от lab05)
-- Содержит 3 сервиса: nginx (порт 8080), postgres (порт 5432), python app (порт 5001)
-- Использует настройки безопасности: `no-new-privileges:true`, `user: "nginx"`
-- Проблема: порт 5432 конфликтует с существующим процессом
-
-**Примечание:** Версия "3.8" устарела, но работает. Docker Compose рекомендует убрать поле version.
-
-**Commit:** docker-compose.yml уже был закоммичен ранее при синхронизации с upstream. Коммит не требуется.
-
----
-
-### Задание 15: Загрузка изменений в удаленный репозиторий
-
-**Выполненные коммиты:**
-```bash
-$ git log --oneline -5
-af52463 Lab06: обновлен отчет - задания 5-9
-0ebb11c Lab06: обновлен отчет - задания 2, 3, 4
-7302b62 Merge upstream/develop: разрешен конфликт в .gitignore
-dbed2df Lab05: добавлен отчет, Lab06: начальная структура и файлы
-e879587 Lab05: задание 4 - замена скрипта на hello.py из lab01
+**Результат установки:**
+```
+Successfully installed defusedxml-0.7.1 et-xmlfile-2.0.0 odfpy-1.4.1 openpyxl-3.1.5
 ```
 
-**Статус:**
+**Запуск аудита:**
 ```bash
-$ git status
-On branch develop
-Your branch is up to date with 'origin/develop'.
+$ ./audit.sh
 ```
 
-**Выполнено:**
-- Все изменения закоммичены
-- Изменения отправлены в удаленный репозиторий (`git push origin develop`)
-- Ветка синхронизирована с `origin/develop`
+**Проблема:** Скрипт `audit.sh` не смог запустить docker-bench-security из-за отсутствия `/usr/bin/dumb-init` в образе.
+
+**Решение:** Запуск docker-bench-security напрямую:
+```bash
+$ docker run --rm --net host --pid host --userns host --cap-add audit_control \
+  -v /etc:/etc:ro -v /usr/bin/containerd:/usr/bin/containerd:ro \
+  -v /usr/bin/runc:/usr/bin/runc:ro -v /usr/lib/systemd:/usr/lib/systemd:ro \
+  -v /var/lib:/var/lib:ro -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  docker/docker-bench-security > audit_reports/text/cis_audit.txt 2>&1
+```
+
+**Результаты аудита:**
+- **Всего проверок:** 105
+- **Прохождений (PASS):** 39
+- **Предупреждений (WARN):** 87
+- **Информационных сообщений (INFO):** множество
+
+**Основные категории проверок:**
+1. Host Configuration (1.1 - 1.13)
+2. Docker daemon configuration (2.1 - 2.18)
+3. Docker daemon configuration files (3.1 - 3.20)
+4. Container Images and Build File (4.1 - 4.6)
+5. Container Runtime (5.1 - 5.28)
+6. Docker Security Operations (6.1 - 6.2)
+7. Docker Swarm Configuration (7.1 - 7.10)
+
+**Отчет сохранен в:** `audit_reports/text/cis_audit.txt` (231 строка)
 
 ---
 
-### Задание 16: Подготовка отчета Gist
+### Задание 5: Анализ уязвимостей - причины возникновения
 
-**Статус:** Отчет подготовлен и готов к публикации в Gist.
+#### 5.1. Анализ vulnerable-app.yml
 
-**Команды для создания Gist:**
+**Контейнер vulnerable-web:**
 
-```bash
-# Вариант 1: Через GitHub CLI (если установлен и авторизован)
-cd /Users/aleksandrmir/Documents/Obsidian/MIPT/Магистратура/ИБ/course_labs/labs/lab06
-gh gist create lab06_report.md --public --desc "Lab06: Docker и контейнеризация - отчет"
+1. **`privileged: true`**
+   - **Причина:** Контейнер запущен в привилегированном режиме
+   - **Проблема:** Получает все capabilities хоста, включая доступ к устройствам
+   - **Проверка:** `docker inspect vulnerable-web` показывает `Privileged: true`
 
-# Вариант 2: Через веб-интерфейс GitHub
-# 1. Открыть https://gist.github.com
-# 2. Вставить содержимое lab06_report.md
-# 3. Указать имя файла: lab06_report.md
-# 4. Описание: Lab06: Docker и контейнеризация - отчет
-# 5. Выбрать "Create public gist"
-```
+2. **`network_mode: host`**
+   - **Причина:** Использование сетевого пространства хоста
+   - **Проблема:** Контейнер имеет прямой доступ к сетевому стеку хоста
+   - **Проверка:** `NetworkMode: host`
 
-**Примечание:** После создания Gist нужно отправить ссылку личным сообщением преподавателю.
+3. **`user: "0:0"`**
+   - **Причина:** Запуск от пользователя root (UID 0)
+   - **Проблема:** Полные права внутри контейнера
+
+4. **`cap_add: - ALL`**
+   - **Причина:** Добавлены все Linux capabilities
+   - **Проблема:** Контейнер может выполнять любые системные операции
+   - **Проверка:** `CapAdd: [ALL]`
+
+5. **`security_opt: apparmor:unconfined, seccomp:unconfined`**
+   - **Причина:** Отключены профили безопасности AppArmor и Seccomp
+   - **Проблема:** Нет ограничений на системные вызовы и доступ к ресурсам
+
+6. **Секреты в environment:**
+   - `ADMIN_PASSWORD=admin123`
+   - `DB_PASSWORD=root`
+   - `FLAG=FLAG{HARDCODED_SECRET_IN_ENV}`
+   - **Проблема:** Секреты хранятся в открытом виде в конфигурации
+
+7. **Монтирование `/var/run/docker.sock`:**
+   - **Причина:** Прямое монтирование Docker socket
+   - **Проблема:** Контейнер может управлять Docker daemon хоста
+
+8. **Монтирование `/:/hostroot:rw`:**
+   - **Причина:** Полный доступ к файловой системе хоста
+   - **Проблема:** Контейнер может читать и изменять любые файлы хоста
+
+**Контейнер debug-shell:**
+
+1. **`privileged: true`** - аналогично vulnerable-web
+2. **`network_mode: host`** - аналогично vulnerable-web
+3. **`user: "0:0"`** - запуск от root
+4. **SSH с паролем в открытом виде:** `SSH_PASSWORD=password`
+5. **`PermitRootLogin=yes`** - разрешен вход root по SSH
+
+#### 5.2. Анализ docker-compose.yml
+
+**Контейнер insecure-db:**
+
+1. **Слабый пароль:** `POSTGRES_PASSWORD=root`
+2. **Пароль в environment:** Секреты в открытом виде
+
+**Контейнер app:**
+
+1. **Секреты в environment:**
+   - `APP_SECRET_KEY=hardcoded-in-env`
+   - `DB_URL=postgresql://vulnuser:root@insecure-db:5432/vulnapp`
+2. **`DEBUG=true`** - включен режим отладки в production
 
 ---
 
-## Выводы
+### Задание 6: Описание влияния уязвимостей и сценариев атак
 
-В ходе выполнения лабораторной работы №6 были изучены:
-- Работа с Docker и buildkit для сборки образов
-- Многоэтапная сборка (multi-stage build) для оптимизации размера образов
-- Работа с Docker Hub для публикации образов (требует авторизации)
-- Использование docker-compose для оркестрации контейнеров
-- Анализ процессов и изоляции в контейнерах (Linux namespaces, PID isolation)
-- Безопасность контейнеров и best practices
-- Работа с уязвимыми приложениями в контейнерах (nginx, postgres, python app)
+#### 6.1. Сценарии атак для vulnerable-web
 
-**Основные результаты:**
-- Образы успешно собраны и сохранены (hello.tar, hello_your_project.tar)
-- Хеш-суммы образов различаются из-за метаданных и времени сборки
-- Docker-compose настроен для уязвимого приложения (3 сервиса)
-- Обнаружена проблема с конфликтом портов (5432 уже занят)
-- Процессы в контейнерах изолированы через Linux namespaces
+**Сценарий 1: Компрометация через privileged режим**
+1. Злоумышленник получает доступ к контейнеру `vulnerable-web`
+2. Благодаря `privileged: true` и `cap_add: ALL` получает полный доступ к хосту
+3. Может монтировать устройства хоста, изменять сетевую конфигурацию
+4. **Влияние:** Полная компрометация хоста
 
-Все задания выполнены успешно.
+**Сценарий 2: Доступ к Docker daemon через docker.sock**
+1. Злоумышленник получает доступ к контейнеру
+2. Использует монтированный `/var/run/docker.sock` для управления Docker
+3. Может создавать новые контейнеры, останавливать существующие
+4. Может получить доступ к другим контейнерам
+5. **Влияние:** Компрометация всей Docker-инфраструктуры
+
+**Сценарий 3: Доступ к файловой системе хоста**
+1. Через монтирование `/:/hostroot:rw` злоумышленник получает доступ к файлам хоста
+2. Может читать секреты, конфигурации, логи
+3. Может изменять системные файлы
+4. **Влияние:** Утечка данных, нарушение целостности системы
+
+**Сценарий 4: Сетевая атака через host network**
+1. Благодаря `network_mode: host` контейнер видит весь сетевой трафик хоста
+2. Может перехватывать пакеты других приложений
+3. Может сканировать сеть хоста
+4. **Влияние:** Нарушение конфиденциальности сетевого трафика
+
+#### 6.2. Сценарии атак для debug-shell
+
+**Сценарий 5: Несанкционированный доступ через SSH**
+1. Злоумышленник подключается к SSH (порт 22) с паролем `password`
+2. Входит как root благодаря `PermitRootLogin=yes`
+3. Получает полный доступ к контейнеру и хосту (через privileged)
+4. **Влияние:** Полная компрометация системы
+
+#### 6.3. Сценарии атак для insecure-db и app
+
+**Сценарий 6: SQL-инъекция и компрометация БД**
+1. Слабый пароль `root` для PostgreSQL
+2. Утечка credentials через environment переменные
+3. Злоумышленник подключается к БД и извлекает данные
+4. **Влияние:** Утечка персональных данных, нарушение конфиденциальности
+
+**Сценарий 7: Утечка секретов через environment**
+1. Секреты видны через `docker inspect`, логи, переменные окружения
+2. Злоумышленник получает `APP_SECRET_KEY`, `DB_URL`
+3. Может подделать сессии, получить доступ к БД
+4. **Влияние:** Компрометация приложения и данных
+
+---
+
+### Задание 7: Оценка рисков ИБ и меры снижения
+
+#### 7.1. Оценка рисков
+
+**Критические риски (CR):**
+
+1. **CR-1: Полная компрометация хоста через privileged контейнеры**
+   - **Вероятность:** Высокая (при наличии уязвимости в приложении)
+   - **Влияние:** Критическое (полный контроль над хостом)
+   - **Риск:** Критический
+
+2. **CR-2: Доступ к Docker daemon через docker.sock**
+   - **Вероятность:** Высокая
+   - **Влияние:** Критическое (компрометация всей инфраструктуры)
+   - **Риск:** Критический
+
+3. **CR-3: Утечка секретов через environment переменные**
+   - **Вероятность:** Высокая (секреты видны всем с доступом к Docker)
+   - **Влияние:** Высокое (компрометация приложения и БД)
+   - **Риск:** Критический
+
+**Высокие риски (HR):**
+
+4. **HR-1: Слабые пароли и учетные данные**
+   - **Вероятность:** Высокая
+   - **Влияние:** Высокое
+   - **Риск:** Высокий
+
+5. **HR-2: Запуск от root пользователя**
+   - **Вероятность:** Средняя
+   - **Влияние:** Высокое
+   - **Риск:** Высокий
+
+#### 7.2. Меры снижения рисков
+
+**Исправленный vulnerable-app.yml:**
+
+```yaml
+version: "3.8"
+
+services:
+  vulnerable-web:
+    image: nginx:alpine
+    container_name: secure-nginx
+    # УБРАНО: privileged: true
+    # УБРАНО: network_mode: host
+    # УБРАНО: pid: host
+    user: "101:101"  # Использование непривилегированного пользователя nginx
+    restart: unless-stopped
+    # УБРАНО: секреты из environment
+    # Использование Docker secrets или внешнего vault
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      # УБРАНО: монтирование /, docker.sock
+    # УБРАНО: cap_add: ALL
+    # УБРАНО: security_opt с unconfined
+    security_opt:
+      - no-new-privileges:true
+    read_only: true  # Файловая система только для чтения
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+    networks:
+      - app-network
+    ports:
+      - "8080:80"
+
+  debug-shell:
+    # УДАЛЕН: не должен использоваться в production
+    # Если необходим для отладки - использовать только в dev окружении
+    # с временным доступом и логированием всех действий
+
+networks:
+  app-network:
+    driver: bridge
+```
+
+**Исправленный docker-compose.yml:**
+
+```yaml
+version: '3.8'
+services:
+  vulnerable-web:
+    image: nginx:alpine
+    container_name: secure-nginx
+    depends_on:
+      - secure-db
+      - app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    security_opt:
+      - no-new-privileges:true
+    user: "101:101"  # Непривилегированный пользователь
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+
+  secure-db:
+    image: postgres:16-alpine
+    container_name: secure-db
+    # УБРАНО: пароли из environment
+    # Использование Docker secrets:
+    secrets:
+      - postgres_password
+      - postgres_user
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password
+      - POSTGRES_USER_FILE=/run/secrets/postgres_user
+      - POSTGRES_DB=vulnapp
+    ports:
+      - "5432:5432"
+    user: "70:70"  # Пользователь postgres
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  app:
+    image: python:3.11-alpine
+    container_name: secure-app
+    depends_on:
+      - secure-db
+    working_dir: /app
+    volumes:
+      - ./app:/app:ro  # Только чтение
+    command: ["python", "app.py"]
+    # УБРАНО: секреты из environment
+    secrets:
+      - app_secret_key
+      - db_url
+    environment:
+      - APP_SECRET_KEY_FILE=/run/secrets/app_secret_key
+      - DB_URL_FILE=/run/secrets/db_url
+      - DEBUG=false  # Отключен в production
+    user: "1000:1000"  # Непривилегированный пользователь
+    read_only: true
+    tmpfs:
+      - /tmp
+
+secrets:
+  postgres_password:
+    external: true
+  postgres_user:
+    external: true
+  app_secret_key:
+    external: true
+  db_url:
+    external: true
+```
+
+**Дополнительные меры:**
+
+1. **Использование Docker Secrets** для хранения паролей и ключей
+2. **Ограничение capabilities** - только необходимые
+3. **Read-only файловая система** где возможно
+4. **Непривилегированные пользователи** для всех контейнеров
+5. **Сетевая изоляция** через пользовательские сети
+6. **Регулярное сканирование образов** на уязвимости (Trivy, Clair)
+7. **Мониторинг и логирование** всех действий контейнеров
+8. **Регулярные обновления** базовых образов
+
+---
+
+### Задание 8: Анализ сгенерированных отчетов
+
+**Структура отчетов:**
+```bash
+audit_reports/
+├── json/          (Trivy JSON outputs) - пусто (Trivy не установлен)
+├── text/          (CIS audit text outputs) - cis_audit.txt
+├── xlsx/          (Excel spreadsheets) - пусто
+└── odt/           (OpenDocument Text files) - пусто
+```
+
+**Анализ CIS аудита (text/cis_audit.txt):**
+
+**Статистика:**
+- Всего проверок: 105
+- Прохождений (PASS): 39 (37%)
+- Предупреждений (WARN): 87 (83%)
+- Информационных сообщений (INFO): множество
+
+**Ключевые проблемы, выявленные аудитом:**
+
+1. **Host Configuration:**
+   - [WARN] 1.1 - Отсутствует отдельный раздел для контейнеров
+   - [WARN] 1.5-1.10 - Не настроен аудит для Docker daemon и файлов
+   - [PASS] 1.3 - Docker обновлен до актуальной версии (27.4.1)
+
+2. **Docker daemon configuration:**
+   - [WARN] 2.1 - Сетевой трафик между контейнерами не ограничен
+   - [WARN] 2.8 - Не включена поддержка user namespace
+   - [WARN] 2.11 - Не включена авторизация для команд Docker client
+   - [WARN] 2.14 - Live restore не включен
+   - [WARN] 2.15 - Userland Proxy не отключен
+   - [WARN] 2.18 - Контейнеры не ограничены от получения новых привилегий
+
+3. **Container Images:**
+   - [WARN] 4.1 - Контейнеры запущены от root:
+     - `app` (ai_api-app_container)
+     - `keydb` (eqalpha/keydb)
+     - `lab05-server-1` (lab05-server)
+   - [WARN] 4.5 - Content trust для Docker не включен
+   - [WARN] 4.6 - HEALTHCHECK инструкции отсутствуют в образах
+
+4. **Container Runtime:**
+   - [WARN] 5.1-5.28 - Множество проблем с конфигурацией контейнеров:
+     - Привилегированные контейнеры
+     - Отсутствие ограничений ресурсов
+     - Неправильная конфигурация volumes
+     - Отсутствие read-only файловых систем
+
+**Примечание:** Отчеты в форматах XLSX и ODT не были сгенерированы, так как:
+- Trivy не установлен на системе
+- Скрипт `audit.sh` требует Trivy для сканирования образов и генерации JSON отчетов
+- Конвертация в XLSX/ODT выполняется только для JSON отчетов Trivy
+
+**Рекомендации:**
+1. Установить Trivy для сканирования образов на уязвимости
+2. Настроить регулярный аудит с генерацией отчетов во всех форматах
+3. Интегрировать Docker Bench Security в CI/CD pipeline
+
+---
+
+### Задание 9: Подготовка отчета в Gist
+
+[Будет выполнено после завершения всех заданий]
+
+---
+
+### Задание 10: Очистка окружения
+
+**Команды для очистки:**
+```bash
+# Удаление виртуального окружения
+$ rm -rf venv
+
+# Остановка и удаление контейнеров
+$ docker-compose -f vulnerable-app.yml down
+$ docker compose down
+
+# Очистка Docker (неиспользуемые ресурсы)
+$ docker system prune -f
+
+# Удаление отчетов (опционально)
+$ rm -rf audit_reports
+```
+
+**Примечание:** Очистка будет выполнена после завершения всех заданий и создания Gist отчета.

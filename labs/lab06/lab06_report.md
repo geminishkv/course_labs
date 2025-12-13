@@ -506,20 +506,37 @@ $ gh gist create --public --desc "Lab06: Аудит безопасности Doc
 
 ### Задание 10: Очистка окружения
 
-**Команды для очистки:**
+**Выполненные команды очистки:**
 ```bash
 # Удаление виртуального окружения
 $ rm -rf venv
+venv удален
 
-# Остановка и удаление контейнеров
+# Остановка и удаление контейнеров уязвимого приложения
 $ docker-compose -f vulnerable-app.yml down
+Container debug-shell  Stopped
+Container debug-shell  Removed
+Container vulnerable-nginx  Stopped
+Container vulnerable-nginx  Removed
+
+# Остановка и удаление контейнеров основного приложения
 $ docker compose down
+Container vulnerable-app  Stopped
+Container vulnerable-app  Removed
+Container insecure-db  Stopped
+Container insecure-db  Removed
+Network lab06_default  Removed
 
 # Очистка Docker (неиспользуемые ресурсы)
 $ docker system prune -f
-
-# Удаление отчетов (опционально)
-$ rm -rf audit_reports
+Total reclaimed space: 7.631GB
 ```
 
-**Примечание:** Очистка будет выполнена после завершения всех заданий и создания Gist отчета.
+**Результат очистки:**
+- ✅ Виртуальное окружение `venv` удалено
+- ✅ Все контейнеры уязвимого приложения остановлены и удалены
+- ✅ Все контейнеры основного приложения остановлены и удалены
+- ✅ Сеть `lab06_default` удалена
+- ✅ Освобождено 7.631GB дискового пространства
+
+**Примечание:** Директория `audit_reports` с отчетами оставлена для проверки результатов аудита.

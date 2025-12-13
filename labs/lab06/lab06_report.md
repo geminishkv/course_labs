@@ -482,7 +482,14 @@ audit_reports/
 
 ### Задание 9: Подготовка отчета в Gist
 
-[Будет выполнено после завершения всех заданий]
+**Создан Gist с отчетом:**
+```bash
+$ gh gist create --public --desc "Lab06: Аудит безопасности Docker с использованием Docker Bench Security" labs/lab06/lab06_report.md
+```
+
+**Ссылка на Gist:** https://gist.github.com/might-might/3f989d183472de906ce73450f798e259
+
+**Статус:** Отчет успешно опубликован в GitHub Gist
 
 ---
 

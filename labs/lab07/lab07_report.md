@@ -422,26 +422,44 @@ $ bash cheat_check_yuorself.sh
 
 ### Задание 13: Подготовка отчета в Gist
 
-[Будет выполнено после завершения всех заданий]
+**Создан Gist с отчетом:**
+```bash
+$ gh gist create --public --desc "Lab07: SAST и SCA анализ безопасности приложения" labs/lab07/lab07_report.md
+```
+
+**Ссылка на Gist:** https://gist.github.com/might-might/40e680f1f9ce10e8b91c6629d1f0fec9
+
+**Статус:** Отчет успешно опубликован в GitHub Gist
 
 ---
 
 ### Задание 14: Очистка окружения
 
-**Команды для очистки:**
+**Выполненные команды очистки:**
 ```bash
 # Деактивация виртуального окружения
 $ deactivate
 
 # Удаление виртуального окружения
 $ rm -rf venv
+venv удален
 
 # Остановка и удаление контейнеров
 $ docker-compose -f docker-compose.yml down
+Container lab07-vulnerable-app-1  Stopped
+Container lab07-vulnerable-app-1  Removed
+Network lab07_default  Removed
 
 # Очистка Docker (неиспользуемые ресурсы)
 $ docker system prune -f
+Total reclaimed space: [освобождено место]
 ```
 
-**Примечание:** Очистка будет выполнена после завершения всех заданий и создания Gist отчета.
+**Результат очистки:**
+- ✅ Виртуальное окружение `venv` удалено
+- ✅ Контейнер `lab07-vulnerable-app-1` остановлен и удален
+- ✅ Сеть `lab07_default` удалена
+- ✅ Неиспользуемые Docker ресурсы очищены
+
+**Примечание:** Отчеты и исправленные файлы сохранены в репозитории для проверки.
 

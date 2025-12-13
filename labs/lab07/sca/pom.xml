@@ -42,7 +42,7 @@
             <format>ALL</format>
             <outputDirectory>${project.basedir}/dependency-check-report</outputDirectory>
             <failBuildOnCVSS>0.0</failBuildOnCVSS>
-            <autoUpdate>false</autoUpdate>
+            <autoUpdate>true</autoUpdate>
         </configuration>
         <executions>
             <execution>

@@ -58,7 +58,7 @@ def main():
         hello_user(sys.argv[1])
     else:
         # Иначе интерактивный режим
-        interactive_greeting()
+        hello_world()
     
     show_system_info()
 

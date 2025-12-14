@@ -13,6 +13,7 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 PYTHON_BIN="${SCRIPT_DIR}/../venv/bin/python"
 
 mkdir -p "${REPORT_DIR}"
+chmod 777 "${REPORT_DIR}"
 
 echo "[*] Running OWASP ZAP baseline scan against ${TARGET_URL}"
 echo "[i] Using image: ${ZAP_IMAGE}"
@@ -20,7 +21,8 @@ echo "[i] Reports will be saved to ${REPORT_DIR}"
 
 docker run --rm \
   --network host \
-  -v "${REPORT_DIR}:/zap/wrk" \
+  --user root \
+  -v "${REPORT_DIR}:/zap/wrk:rw" \
   "${ZAP_IMAGE}" \
   zap-baseline.py \
     -t "${TARGET_URL}" \

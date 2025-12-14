@@ -529,11 +529,7 @@ $ bash dast/zap_scan.sh
 - **Низкие:** 4 (Spectre, Permissions Policy, Server Info, X-Content-Type-Options)
 - **Информационные:** 3 (Authentication, Session Management, Non-Storable)
 
-**Рекомендации:**
-1. Добавить security headers (CSP, X-Frame-Options, X-Content-Type-Options)
-2. Настроить cookies с флагами HttpOnly, Secure, SameSite
-3. Скрыть информацию о версии сервера
-4. Исправить раскрытие SQL-кода в ответах
+**Примечание:** Все выявленные риски и рекомендации были проанализированы и исправлены в задании 10. Детали исправлений описаны в соответствующем разделе.
 
 ---
 

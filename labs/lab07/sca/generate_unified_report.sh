@@ -7,15 +7,18 @@ mkdir -p "${OUT_DIR}"
 
 echo "Generating unified security reports..."
 
-python3 << "PYTHON_EOF"
+# Объединение JSON отчетов
+if [ -f "${ROOT_DIR}/sast/semgrep-report.json" ] && [ -f "${ROOT_DIR}/sast/checkov-report.json" ]; then
+    python3 << 'PYTHON_EOF'
 import json
 import csv
 import os
 from datetime import datetime
 
-root = os.environ.get("ROOT_DIR", ".")
-out_dir = os.environ.get("OUT_DIR", "./unified-reports")
+root = os.environ.get('ROOT_DIR', '.')
+out_dir = os.environ.get('OUT_DIR', './unified-reports')
 
+# Чтение отчетов
 semgrep_data = {}
 checkov_data = {}
 dependency_check_data = {}
@@ -32,6 +35,7 @@ if os.path.exists(f"{root}/sca/dependency-check-report/dependency-check-report.j
     with open(f"{root}/sca/dependency-check-report/dependency-check-report.json") as f:
         dependency_check_data = json.load(f)
 
+# Объединенный отчет
 unified = {
     "timestamp": datetime.now().isoformat(),
     "semgrep": {
@@ -49,15 +53,18 @@ unified = {
     }
 }
 
+# Сохранение JSON
 with open(f"{out_dir}/unified-report.json", "w") as f:
     json.dump(unified, f, indent=2)
 
 print(f"✓ Unified JSON report: {out_dir}/unified-report.json")
 
+# CSV отчет
 with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["Tool", "Type", "Severity", "File", "Line", "Description"])
     
+    # Semgrep findings
     for r in semgrep_data.get("results", []):
         writer.writerow([
             "Semgrep",
@@ -68,6 +75,7 @@ with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
             r.get("extra", {}).get("message", "")
         ])
     
+    # Checkov findings
     for c in checkov_data.get("results", {}).get("failed_checks", []):
         writer.writerow([
             "Checkov",
@@ -78,6 +86,7 @@ with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
             c.get("check_name", "")
         ])
     
+    # Dependency-Check findings
     for dep in dependency_check_data.get("dependencies", []):
         for vuln in dep.get("vulnerabilities", []):
             writer.writerow([
@@ -91,6 +100,7 @@ with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
 
 print(f"✓ Unified CSV report: {out_dir}/unified-report.csv")
 
+# HTML отчет (простой)
 html_content = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -100,6 +110,10 @@ html_content = f"""<!DOCTYPE html>
         h1 {{ color: #333; }}
         .summary {{ background: #f5f5f5; padding: 15px; margin: 20px 0; }}
         .finding {{ border-left: 4px solid #ff6b6b; padding: 10px; margin: 10px 0; background: #fff; }}
+        .critical {{ border-color: #d32f2f; }}
+        .high {{ border-color: #f57c00; }}
+        .medium {{ border-color: #fbc02d; }}
+        .low {{ border-color: #388e3c; }}
     </style>
 </head>
 <body>
@@ -114,8 +128,9 @@ html_content = f"""<!DOCTYPE html>
 """
 
 for r in semgrep_data.get("results", []):
+    severity = r.get("extra", {}).get("severity", "UNKNOWN").lower()
     html_content += f"""
-    <div class="finding">
+    <div class="finding {severity}">
         <strong>[Semgrep]</strong> {r.get("check_id", "")} - {r.get("extra", {}).get("message", "")}<br>
         <small>{r.get("path", "")}:{r.get("start", {}).get("line", "")}</small>
     </div>
@@ -139,5 +154,6 @@ with open(f"{out_dir}/unified-report.html", "w") as f:
 
 print(f"✓ Unified HTML report: {out_dir}/unified-report.html")
 PYTHON_EOF
+fi
 
 echo "[+] Unified reports generated in: ${OUT_DIR}"

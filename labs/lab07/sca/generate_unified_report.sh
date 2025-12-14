@@ -11,8 +11,9 @@ echo "Generating unified security reports..."
 if [ -f "${ROOT_DIR}/sast/semgrep-report.json" ] && [ -f "${ROOT_DIR}/sast/checkov-report.json" ]; then
     python3 << 'PYTHON_EOF'
 import json
+import csv
 import os
-from pathlib import Path
+from datetime import datetime
 
 root = os.environ.get('ROOT_DIR', '.')
 out_dir = os.environ.get('OUT_DIR', './unified-reports')
@@ -36,7 +37,7 @@ if os.path.exists(f"{root}/sca/dependency-check-report/dependency-check-report.j
 
 # Объединенный отчет
 unified = {
-    "timestamp": __import__("datetime").datetime.now().isoformat(),
+    "timestamp": datetime.now().isoformat(),
     "semgrep": {
         "findings_count": len(semgrep_data.get("results", [])),
         "results": semgrep_data.get("results", [])
@@ -59,7 +60,6 @@ with open(f"{out_dir}/unified-report.json", "w") as f:
 print(f"✓ Unified JSON report: {out_dir}/unified-report.json")
 
 # CSV отчет
-import csv
 with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["Tool", "Type", "Severity", "File", "Line", "Description"])
@@ -82,7 +82,7 @@ with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
             c.get("check_id", ""),
             c.get("severity", ""),
             c.get("file_path", ""),
-            c.get("file_line_range", [0, 0])[0] if c.get("file_line_range") else "",
+            str(c.get("file_line_range", [0, 0])[0]) if c.get("file_line_range") else "",
             c.get("check_name", "")
         ])
     
@@ -95,14 +95,13 @@ with open(f"{out_dir}/unified-report.csv", "w", newline="") as f:
                 vuln.get("severity", ""),
                 dep.get("filePath", ""),
                 "",
-                vuln.get("description", "")
+                vuln.get("description", "")[:100]
             ])
 
 print(f"✓ Unified CSV report: {out_dir}/unified-report.csv")
 
 # HTML отчет (простой)
-html_content = f"""
-<!DOCTYPE html>
+html_content = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>Unified Security Report</title>
@@ -121,9 +120,9 @@ html_content = f"""
     <h1>Unified Security Report</h1>
     <div class="summary">
         <h2>Summary</h2>
-        <p><strong>Semgrep Findings:</strong> {unified['semgrep']['findings_count']}</p>
-        <p><strong>Checkov Failed:</strong> {unified['checkov']['failed']}</p>
-        <p><strong>Dependency-Check Dependencies:</strong> {unified['dependency_check']['dependencies_count']}</p>
+        <p><strong>Semgrep Findings:</strong> {unified["semgrep"]["findings_count"]}</p>
+        <p><strong>Checkov Failed:</strong> {unified["checkov"]["failed"]}</p>
+        <p><strong>Dependency-Check Dependencies:</strong> {unified["dependency_check"]["dependencies_count"]}</p>
     </div>
     <h2>Findings</h2>
 """

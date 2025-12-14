@@ -13,6 +13,7 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 PYTHON_BIN="${SCRIPT_DIR}/../venv/bin/python"
 
 mkdir -p "${REPORT_DIR}"
+chmod 777 "${REPORT_DIR}"
 
 echo "[*] Running OWASP ZAP baseline scan against ${TARGET_URL}"
 echo "[i] Using image: ${ZAP_IMAGE}"

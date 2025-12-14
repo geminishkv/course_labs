@@ -641,7 +641,7 @@ Permissions-Policy: geolocation=(), microphone=(), camera=()
 $ gh gist create --public --desc "Lab08: DAST анализ безопасности веб-приложения с OWASP ZAP" labs/lab08/lab08_report.md
 ```
 
-**Ссылка на Gist:** https://gist.github.com/might-might/199827195b3dce5e4e5485d2dfff188d
+**Ссылка на Gist:** https://gist.github.com/might-might/79fa34c8ec1fe4d96a1e561f7ea1a047
 
 **Статус:** Отчет успешно опубликован в GitHub Gist
 

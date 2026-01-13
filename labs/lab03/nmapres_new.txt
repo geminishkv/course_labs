@@ -1,0 +1,16 @@
+# Nmap 7.95 scan initiated Tue Jan 13 17:06:01 2026 as: /usr/lib/nmap/nmap --privileged -sV --script vuln -oN nmapres_new.txt localhost
+Pre-scan script results:
+| broadcast-avahi-dos: 
+|   Discovered hosts:
+|     224.0.0.251
+|   After NULL UDP avahi packet DoS (CVE-2011-1002).
+|_  Hosts are all up (not vulnerable).
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.0000030s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE    SERVICE VERSION
+5000/tcp filtered upnp
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Jan 13 17:06:37 2026 -- 1 IP address (1 host up) scanned in 35.89 seconds

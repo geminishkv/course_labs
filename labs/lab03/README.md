@@ -6,24 +6,6 @@
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
 <a href="https://img.shields.io/badge/Risk_Analyze-2448a2"><img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/AppSec-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge"></a></div>
 
-***
-
-Салют :wave:,<br>
-Данная лабораторная работа посвещена изучению `nmap` и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканера портов, что бы освоить базовые методы сканирования. 
-
-Для сдачи данной работы также будет требоваться ответить на дополнительыне вопросы по описанным темам.
-
-***
-
-## Структура репозитория лабораторной работы
-
-```bash
-lab03
-├── exmp_targets.txt
-└── README.md
-```
-
-***
 
 ## Материал
 
@@ -69,12 +51,11 @@ $ nmap -iL targets.txt # множествнные цели сканирован�
 
 -  **Типы сканирований и опции nmap**
 
-<table>
+<link rel="stylesheet" href="../../assets/style/style.css">
+<div class="compact-table">
+<table width="100%">
   <thead>
-    <tr>
-      <th>Scan type</th>
-      <th>nmap option</th>
-    </tr>
+    <tr><th>Scan type</th><th>nmap option</th></tr>
   </thead>
   <tbody>
     <tr><td>TCP (connect)</td><td>-sT</td></tr>
@@ -85,18 +66,14 @@ $ nmap -iL targets.txt # множествнные цели сканирован�
     <tr><td>TCP idle (zombie)</td><td>-sI</td></tr>
     <tr><td>UDP</td><td>-sU</td></tr>
     <tr><td>OS</td><td>-A</td></tr>
-  </tbody>
-</table>
+  </tbody></table></div>
 
 - **Порты**
 
+<div class="compact-table">
 <table>
   <thead>
-    <tr>
-      <th>Port</th>
-      <th>Service</th>
-      <th>Protocol</th>
-    </tr>
+    <tr><th>Port</th><th>Service</th><th>Protocole</th></tr>
   </thead>
   <tbody>
     <tr><td>20/21</td><td>FTP (File Transfer)</td><td>TCP</td></tr>
@@ -110,12 +87,9 @@ $ nmap -iL targets.txt # множествнные цели сканирован�
     <tr><td>110</td><td>POP3 (Post Office Protocol version 3)</td><td>TCP</td></tr>
     <tr><td>443</td><td>HTTPS (HTTP Secure)</td><td>TCP</td></tr>
     <tr><td>3306</td><td>MySQL Database</td><td>TCP</td></tr>
-  </tbody>
-</table>
+</tbody></table></div>
 
-***
-
-### Пример результата
+- **Пример результата**
 
 ```bash
 nmap scan report for 10.1.1.10
@@ -148,8 +122,80 @@ OS:CK=11AA%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
 
 ## Задание
 
-- [ ] 1. Опишите используемые методы по их назначению, как они функционируют и какие результаты могут дать для оценки. Используйте сноску из материалов выше по флагам команд.
-- [ ] 2. Выведите на терминале и проанализируйте следующие команды консоли
+- [х] 1. Опишите используемые методы по их назначению, как они функционируют и какие результаты могут дать для оценки. Используйте сноску из материалов выше по флагам команд.
+
+1.1 Ping Scan (-sn, -sP) - определение активных узлов в сети без сканирования портов.
+
+Принцип работы:
+Используются ICMP Echo Request, а также TCP/UDP probing (в зависимости от настроек). Хост считается доступным, если получен ответ.
+
+Используется на начальном этапе разведки (reconnaissance) для выявления доступных устройств.
+
+1.2 TCP Connect Scan (-sT) - определение открытых TCP-портов.
+
+Принцип работы:
+Используется стандартное TCP-соединение (3-х этапное рукопожатие). Если соединение успешно установлено — порт открыт.
+
+Легко обнаруживается средствами IDS/IPS, так как соединение полностью устанавливается.
+
+1.3 TCP SYN Scan (-sS) - скрытое (stealth) сканирование TCP-портов.
+
+Принцип работы:
+Отправляется SYN-пакет:
+SYN-ACK → порт открыт;
+RST → порт закрыт.
+Соединение не завершается.
+
+Позволяет определить сервисы при минимальном шуме в логах.
+
+1.4 UDP Scan (-sU) - определение открытых UDP-портов.
+
+Принцип работы:
+Отправляются UDP-пакеты на целевые порты. Отсутствие ответа или ICMP-сообщения интерпретируется как возможный открытый порт.
+
+1.5 FIN / NULL / Xmas Scans (-sF, -sN, -sX) - обход фильтрации и межсетевых экранов.
+
+Принцип работы:
+Отправляются TCP-пакеты с нестандартными флагами:
+FIN — только FIN;
+NULL — без флагов;
+Xmas — FIN, PSH, URG.
+
+Позволяют выявлять порты за простыми firewall-фильтрами.
+
+1.6 OS Detection (-O, -A) - определение операционной системы удалённого хоста.
+
+Принцип работы:
+Анализ TCP/IP-отпечатков (TTL, window size, flags) и сравнение с базой сигнатур Nmap.
+
+Позволяет подобрать релевантные уязвимости и эксплойты.
+
+1.7 Service & Version Detection (-sV) - определение сервисов и их версий на открытых портах.
+
+Принцип работы:
+Отправка специфичных probe-запросов и анализ ответов сервисов.
+
+Позволяет сопоставить сервис с известными CVE.
+
+1.8 Aggressive Scan (-A) - комплексный анализ хоста.
+
+Включает:
+* OS detection
+* version detection
+* traceroute
+* NSE-скрипты
+
+Полная картина состояния хоста и его сервисов.
+
+1.9 NSE — Nmap Scripting Engine - автоматизация поиска уязвимостей и конфигурационных ошибок.
+
+Применение:
+* SQL Injection
+* brute-force
+* проверка аутентификации
+* поиск CVE
+
+- [х] 2. Выведите на терминале и проанализируйте следующие команды консоли
 
 ```bash
 $ nmap localhost
@@ -185,34 +231,79 @@ $ nmap -sV -p 8080 --script vuln -oN ~/project/reports/nmapres_new.txt -oX ~/pro
 $ xsltproc ~/project/reports/nmapres_new.xml -o ~/project/reports/nmapres_new.html
 ```
 
-- [ ] 3. Используйте команду `tree` и выведите все вложенные файлы по директориям.
-- [ ] 4.Найдите IP сетевой карты `Ethernet`, которая соответствует вашей виртуальной машине используя `ifconfig` и выполните команду
+![alt text](image-7.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)
+![alt text](image-15.png)
+![alt text](image-16.png)
+![alt text](image-17.png)
+![alt text](image-18.png)
+![alt text](image-19.png)
+![alt text](image-21.png)
+![alt text](image-28.png)
+![alt text](image-29.png)
+
+- [х] 3. Используйте команду `tree` и выведите все вложенные файлы по директориям.
+
+![alt text](image-20.png)
+
+- [x] 4.Найдите IP сетевой карты `Ethernet`, которая соответствует вашей виртуальной машине используя `ifconfig` и выполните команду
 
 ```bash
-$ nmap -sP inet_addr
+nmap -sP inet_addr
 ```
 
-- [ ] 5. Определите ОС, данные ssh, telnet  с помощью `nmap` и выведитео них информацию.
-- [ ] 6. Результаты из `nmapres_new.txt` надо перенести в `nmapres.txt` и оставить оба файла рядом в локальном репозитории. Желательно использовать `cp` в консоли через редактор.
-- [ ] 7. Оформить `README.md` по аналогии и использовать `shield`, etc.
-- [ ] 8. Составить `gist` отчет и отправить ссылку личным сообщением
+![alt text](image-22.png)
+![alt text](image-25.png)
+
+- [х] 5. Определите ОС, данные ssh, telnet  с помощью `nmap` и выведите о них информацию.
+
+![alt text](image-26.png)
+
+- [х] 6. Результаты из `nmapres_new.txt` надо перенести в `nmapres.txt` и оставить оба файла рядом в локальном репозитории. Желательно использовать `cp` в консоли через редактор.
+
+![alt text](image-27.png)
+
+- [х] 7. Оформить `README.md` по аналогии и использовать `shield`, etc.
+
+- [х] 8. Составить `gist` отчет и отправить ссылку личным сообщением
 
 ***
 
 ## Links
 
 - [Markdown](https://stackedit.io)
-- [GitHub CLI](https://cli.github.com)
 - [Gist](https://gist.github.com)
+- [nmap.org](https://nmap.org/book/port-scanning-options.html)
+- [nmap github](https://github.com/nmap/nmap?ysclid=mi7x8wdde7291330856)
 - [IANA](https://www.iana.org)
-- [IANA Port Numbers](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml)
-- [Nmap GitHub](https://github.com/nmap/nmap)
-- [Официальная документация nmap](https://nmap.org/book/)
-- [Nmap Reference Guide](https://nmap.org/book/man.html)
-- [Nmap Script (NSE) Reference](https://nmap.org/nsedoc/)
-- [Nmap Tutorial (Hackers-Arise)](https://nmap.org/docs.html)
-- [OWASP Testing Guide – Network Scanning](https://owasp.org/www-project-web-security-testing-guide/)
+- [GitHub CLI](https://cli.github.com)
 
 Copyright (c) 2025 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)
+
+22 - SSH
+Безопасный удалённый доступ к серверу
+Передача файлов (scp, sftp)
+Используется Git при доступе по SSH
+Протокол: TCP
+
+80 - HTTP
+Обычный (нешифрованный) веб-трафик
+Сейчас часто используется только для:
+редиректа на HTTPS
+Протокол: TCP
+
+443 - HTTPS
+Защищённый веб-трафик
+Основной порт для сайтов, API, GitHub, OAuth
+Протокол: TCP
+
+8433 - веб-сервисов (админки, панели)
+API
+тестовых / dev-окружений
+кастомных HTTPS-сервисов

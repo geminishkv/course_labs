@@ -8,33 +8,10 @@
 
 ***
 
-Салют :wave:,<br>
+<br>Салют :wave:, </br>
 Данная лабораторная работа посвещена изучению Docker и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканирования контейнеров при сборке приложений. 
 
 Для сдачи данной работы также будет требоваться ответить на дополнительыне вопросы по описанным темам.
-
-***
-
-## Структура репозитория лабораторной работы
-
-```bash
-lab05
-├── client
-│   ├── client.py
-│   ├── Dockerfile
-│   └── requirements.txt
-├── docker-compose.yml
-├── README.md
-├── server
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-└── source
-    ├── Dockerfile
-    ├── hello.py
-    ├── image.tar
-    └── requirements.txt
-```
 
 ***
 
@@ -111,28 +88,38 @@ $ docker container run d \
 
 ## Задание
 
-- [ ] 1. Поставьте `Docker` и `buildkit`
+- [x] 1. Поставьте `Docker` и `buildkit`
 
 ```bash
 $ brew install buildkit
 $ brew install docker
 ```
 
-- [ ] 2. Перейдите в `source` и выведите на терминале, далее проанализируйте следующие команды консоли
+![alt text](image.png)
+
+- [х] 2. Перейдите в `source` и выведите на терминале, далее проанализируйте следующие команды консоли
 
 ```bash
 $ docker buildx build -t hellow-appsec-world .
 $ docker run hello-appsec-world
-$ docker run --rm -it hello-appsec-world
-
 $ docker save -o hello.tar hello-appsec-world
 $ docker load -i hello.tar
 $ docker load -i image.tar
 ```
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 
-- [ ] 3. Откройте `Dockerfile` и сделайте его анализ. Сделайте `commit`
+- [x3] 3. Откройте `Dockerfile` и сделайте его анализ. Сделайте `commit`
 
-- [ ] 4. Замените в `Dockerfile`значение скрипта на `python` тем, который вы сделали ранее в прошлых лабораторных работах. Вложите свой файл `python` в директорию. Сделайте анализ своего измененного `Dockerfile` и внесите изменения. Сделайте `commit`. 
+![alt text](image-5.png)
+![alt text](image-6.png)
+
+- [х] 4. Замените в `Dockerfile`значение скрипта на `python` тем, который вы сделали ранее в прошлых лабораторных работах. Вложите свой файл `python` в директорию. Сделайте анализ своего измененного `Dockerfile` и внесите изменения. Сделайте `commit`. 
+
+![alt text](image-7.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
 
 > Пример анализа по текущему `Dockerfile` в репозитории
 
@@ -162,7 +149,7 @@ ENV PYTHONUNBUFFERED=1
 CMD ["python", "hello.py"] 
 ```
 
-- [ ] 5. Выведите на терминале и проанализируйте следующие команды консоли. Сравните хеш сумму вашего архива с `image.tar` из репозитория, выведите на терминал.
+- [х] 5. Выведите на терминале и проанализируйте следующие команды консоли. Сравните хеш сумму вашего архива с `image.tar` из репозитория, выведите на терминал.
 
 ```bash
 $ docker buildx build -t hellow-appsec-world .
@@ -176,15 +163,23 @@ $ docker load -i image.tar
 $ docker run hello-appsec-world
 ```
 
-- [ ] 6. Доработайте свой `python` скрипт подключаемыми библиотеками, далее их необходимо разместить в `requirements.txt`. Размещение библиотек в следующем формате:
+![alt text](image-11.png)
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+
+- [х] 6. Доработайте свой `python` скрипт подключаемыми библиотеками, далее их необходимо разместить в `requirements.txt`. Размещение библиотек в следующем формате:
 
 ```
 flask==2.2.3
 requests==2.28.1
 ```
 
-- [ ] 7. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните `image` в виде .`tar` архива. Сделайте `commit`.
-- [ ] 8. Выведите на терминале и проанализируйте следующие команды консоли
+![alt text](image-14.png)
+![alt text](image-15.png)
+
+- [х] 7. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните `image` в виде .`tar` архива. Сделайте `commit`.
+- [х] 8. Выведите на терминале и проанализируйте следующие команды консоли
 
 ```bash
 $ docker login
@@ -199,26 +194,58 @@ $ docker container create --name second hello-appsec-world
 
 ``` 
 
-- [ ] 9. Выведите на терминале и проанализируйте в консоли процессы, которые запущены, владельцев по пользователям
+![alt text](image-16.png)
+![alt text](image-17.png)
+![alt text](image-18.png)
+
+980ff79fe6fca2d617b8e1cc7d95ade8a5e7ca75007af4b856d9bff244af6b45
+
+![alt text](image-19.png)
+
+- [х] 9. Выведите на терминале и проанализируйте в консоли процессы, которые запущены, владельцев по пользователям
 
 ```bash 
  $ docker container run -it ubuntu /bin/bash
 ``` 
  
-- [ ] 10. Выведите оба контейнера first и second на терминал
-- [ ] 11. Перейдите в основной корень `lab05` и выведите на терминале, и проанализируйте
+ ![alt text](image-20.png)
+
+Все процессы внутри контейнера принадлежат root.
+* PID 1 → /bin/bash — главный процесс контейнера.
+* PID 9 → ps aux — команда, которую вызвали, уже завершится после отображения.
+
+* Ss → S = спящий процесс, s = лидер сессии.
+* R+ → R = выполняется, + = на текущем терминале.
+
+В виде дерева видно, что /bin/bash – корневой процесс.
+
+Все остальные процессы, которые будут запускаться внутри контейнера, будут потомками PID 1.
+
+- [х] 10. Выведите оба контейнера first и second на терминал
+
+![alt text](image-21.png)
+
+То же, что и в предыдущем задании.
+
+- [х] 11. Перейдите в основной корень `lab05` и выведите на терминале, и проанализируйте
 
 ```bash 
 $ docker-compose up --build
 ``` 
 
-- [ ] 12. Откройте соседнее окно терминала и и выведите на терминале
+![alt text](image-22.png)
+![alt text](image-23.png)
+
+- [х] 12. Откройте соседнее окно терминала и и выведите на терминале
 
 ```bash 
 $ open -a "Google Chrome" http://localhost:8000
 ```
+![alt text](image-24.png)
+![alt text](image-25.png)
 
-- [ ] 13. Остановите работу `docker-compose`.
+
+- [х] 13. Остановите работу `docker-compose`.
 
 ```bash 
 $ docker ps -a
@@ -229,24 +256,29 @@ $ docker ps -q | xargs docker stop
 $ docker-compose down
 ```
 
-- [ ] 14. Доработайте `docker-compose` и скрипт, который вы подготовили ранее, что бы вы смогли воспроизвести шаги п.11 по п.13 с демонстрацией. Сделайте `commit`.
+![alt text](image-26.png)
+![alt text](image-27.png)
+![alt text](image-28.png)
+![alt text](image-29.png)
+![alt text](image-30.png)
+
+- [x] 14. Доработайте `docker-compose` и скрипт, который вы подготовили ранее, что бы вы смогли воспроизвести шаги п.11 по п.13 с демонстрацией. Сделайте `commit`.
+
+![alt text](image-32.png)
+
 - [ ] 15. Залейте изменения в свой удаленный репозиторий, проверьте историю `commit`.
-- [ ] 16. Подготовьте отчет `gist`.
+
+
+- [x] 16. Подготовьте отчет `gist`.
  
 ***
 
 ## Links
 
+- [Docker](https://docs.docker.com/)
 - [Markdown](https://stackedit.io)
 - [Gist](https://gist.github.com)
 - [GitHub CLI](https://cli.github.com)
-- [GitHub Docs](https://docs.github.com/en)
-- [Docker](https://docs.docker.com/)
-- [Docker Engine overview](https://docs.docker.com/engine/)
-- [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
-- [Docker Compose documentation](https://docs.docker.com/compose/)
-- [Docker Hub](https://hub.docker.com/)
-- [Docker security overview](https://docs.docker.com/engine/security/)
 
 Copyright (c) 2025 Elijah S Shmakov
 

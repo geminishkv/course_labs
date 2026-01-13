@@ -41,8 +41,8 @@ services:
     user: "0:0"
     environment:
       - SSH_PASSWORD=password
-    ports:
-      - "22:22"
+    # ports:
+    #  - "22:22"
     volumes:
       - /:/hostroot:rw
     command: ["/bin/sh", "-c", "apk add --no-cache openssh-server && echo 'root:password' | chpasswd && /usr/sbin/sshd -D -o PermitRootLogin=yes -o PasswordAuthentication=yes"]

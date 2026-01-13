@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     link.rel = "noopener noreferrer";
     link.textContent = "© AppSecTA";
 
-    // Вставляем ссылку внутрь блока
     topic.appendChild(link);
   }
 });

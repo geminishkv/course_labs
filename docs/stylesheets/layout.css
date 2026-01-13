@@ -2,7 +2,6 @@ img[src*="logo.jpg"] {
   display: none;
 }
 
-/* Растянуть таблицы на всю ширину контента */
 .md-typeset__table {
   width: 100%;
 }

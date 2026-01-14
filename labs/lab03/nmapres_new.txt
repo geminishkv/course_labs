@@ -1,0 +1,33 @@
+# Nmap 7.94SVN scan initiated Wed Jan 14 10:02:11 2026 as: /usr/lib/nmap/nmap --privileged -sV --script vuln -oN nmapres_new.txt localhost
+Pre-scan script results:
+| broadcast-avahi-dos: 
+|   Discovered hosts:
+|     224.0.0.251
+|   After NULL UDP avahi packet DoS (CVE-2011-1002).
+|_  Hosts are all up (not vulnerable).
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.0000010s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.9p1 Debian 3 (protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:9.9p1: 
+|     	PACKETSTORM:189283	6.8	https://vulners.com/packetstorm/PACKETSTORM:189283	*EXPLOIT*
+|     	CVE-2025-26465	6.8	https://vulners.com/cve/CVE-2025-26465
+|     	9D8432B9-49EC-5F45-BB96-329B1F2B2254	6.8	https://vulners.com/githubexploit/9D8432B9-49EC-5F45-BB96-329B1F2B2254	*EXPLOIT*
+|     	85FCDCC6-9A03-597E-AB4F-FA4DAC04F8D0	6.8	https://vulners.com/githubexploit/85FCDCC6-9A03-597E-AB4F-FA4DAC04F8D0	*EXPLOIT*
+|     	1337DAY-ID-39918	6.8	https://vulners.com/zdt/1337DAY-ID-39918	*EXPLOIT*
+|     	CVE-2025-26466	5.9	https://vulners.com/cve/CVE-2025-26466
+|     	CVE-2025-32728	4.3	https://vulners.com/cve/CVE-2025-32728
+|     	OSV:BELL-CVE-2025-32728	3.8	https://vulners.com/osv/OSV:BELL-CVE-2025-32728
+|     	OSV:BELL-CVE-2025-61985	3.6	https://vulners.com/osv/OSV:BELL-CVE-2025-61985
+|     	OSV:BELL-CVE-2025-61984	3.6	https://vulners.com/osv/OSV:BELL-CVE-2025-61984
+|     	CVE-2025-61985	3.6	https://vulners.com/cve/CVE-2025-61985
+|     	CVE-2025-61984	3.6	https://vulners.com/cve/CVE-2025-61984
+|     	B7EACB4F-A5CF-5C5A-809F-E03CCE2AB150	3.6	https://vulners.com/githubexploit/B7EACB4F-A5CF-5C5A-809F-E03CCE2AB150	*EXPLOIT*
+|_    	4C6E2182-0E99-5626-83F6-1646DD648C57	3.6	https://vulners.com/githubexploit/4C6E2182-0E99-5626-83F6-1646DD648C57	*EXPLOIT*
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Jan 14 10:02:46 2026 -- 1 IP address (1 host up) scanned in 34.99 seconds

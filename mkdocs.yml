@@ -139,6 +139,7 @@ nav:
           - "Аналитические кейсы": materials/examples/exmpl.md
           - "Использование MultiSiq": materials/examples/Multisignature.md
           - "PrintNightmare": materials/examples/PrintNightmare.md
+          - "Metro4Shell": materials/examples/Metro4Shell
           - "Risk Analysis": materials/examples/RA.md
       - "Лицензии ПО": licenses.md
       - "Классификация инструментов": appsec_tt.md

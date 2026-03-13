@@ -86,3 +86,8 @@ site
 
 # Node.js
 node_modules/
+*.tar
+labs/lab05/source/*.tar
+labs/lab06/source/*.tar
+!labs/lab06/audit_reports/text/cis_audit.txt
+labs/lab07/sca/dependency-check-report/

@@ -3,7 +3,7 @@ import sys
 import os
 
 # Подключаем файл из первой лабораторной
-sys.path.insert(0, "/root/course_labs/labs/lab01")
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'lab01'))
 from typersteel import main as get_user_info
 import typer
 
@@ -66,3 +66,5 @@ def run_pygame_app(greeting_text: str):
 
 if __name__ == "__main__":
     app()
+
+

@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-TARGET_URL="${TARGET_URL:-http://host.docker.internal:8080}"
+TARGET_URL="${TARGET_URL:-http://localhost:8080}"
 ZAP_IMAGE="${ZAP_IMAGE:-ghcr.io/zaproxy/zaproxy:stable}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,13 +13,16 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 PYTHON_BIN="${SCRIPT_DIR}/../venv/bin/python"
 
 mkdir -p "${REPORT_DIR}"
+chmod 777 "${REPORT_DIR}"
 
 echo "[*] Running OWASP ZAP baseline scan against ${TARGET_URL}"
 echo "[i] Using image: ${ZAP_IMAGE}"
 echo "[i] Reports will be saved to ${REPORT_DIR}"
 
 docker run --rm \
-  -v "${REPORT_DIR}:/zap/wrk" \
+  --network host \
+  --user root \
+  -v "${REPORT_DIR}:/zap/wrk:rw" \
   "${ZAP_IMAGE}" \
   zap-baseline.py \
     -t "${TARGET_URL}" \

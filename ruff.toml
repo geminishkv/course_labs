@@ -1,6 +1,7 @@
 [lint]
-select = ["F", "E", "W"]  # пример, если нужно
+select = ["F", "E", "W", "B", "I", "UP", "C4", "SIM"]
+ignore = ["E501"]
 
 [lint.per-file-ignores]
 "labs/lab08/dast/convert_reports.py" = ["F401"]
-"labs/lab08/vulnerable-app/app.py" = ["F401", "E501"]
+"labs/lab08/vulnerable-app/app.py"   = ["F401", "E501"]

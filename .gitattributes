@@ -1,46 +1,56 @@
-# Файлы сборок и артефакты - не включать в diff/merge
- *.jar binary
- *.war binary
- *.ear binary
- *.class binary
+# Binary — не включать в diff/merge
+*.jar    binary
+*.war    binary
+*.ear    binary
+*.class  binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.pdf    binary
+*.zip    binary
+*.tar.gz binary
+*.exe    binary
+*.dll    binary
+*.so     binary
 
-# Исключить временные и локальные файлы из архивов
- .gitignore export-ignore
- *.log export-ignore
- *.tmp export-ignore
- *.swp export-ignore
- .vscode/ export-ignore
- node_modules/ export-ignore
-
+# Text normalization
 * text=auto
-*.sh text eol=lf
-Dockerfile text eol=lf
-*.dockerfile text eol=lf
+*.py            text eol=lf
+*.sh            text eol=lf
+*.bash          text eol=lf
+*.yaml          text eol=lf
+*.yml           text eol=lf
+*.toml          text eol=lf
+*.json          text eol=lf
+*.md            text eol=lf
+*.txt           text eol=lf
+*.css           text eol=lf
+*.js            text eol=lf
+*.cjs           text eol=lf
+Dockerfile      text eol=lf
+*.dockerfile    text eol=lf
 docker-compose.yml text eol=lf
 
 # Windows CRLF
-*.sln text eol=crlf
+*.sln     text eol=crlf
 *.vcxproj text eol=crlf
-*.csproj text eol=crlf
+*.csproj  text eol=crlf
 
-*.png  binary
-*.jpg  binary
-*.jpeg binary
-*.gif  binary
-*.ico  binary
-*.pdf  binary
-*.zip  binary
-# *.tar.gz binary
-*.exe  binary
-*.dll  binary
-*.jar  binary
-*.war  binary
-*.ear  binary
-*.class binary
-
-.gitignore    export-ignore
-*.log         export-ignore
-*.tmp         export-ignore
-*.swp         export-ignore
-.vscode/      export-ignore
-node_modules/ export-ignore
+# Export ignore — исключить из git archive
+.gitignore       export-ignore
+.gitattributes   export-ignore
+.dockerignore    export-ignore
+.env             export-ignore
+.env.*           export-ignore
+*.log            export-ignore
+*.tmp            export-ignore
+*.swp            export-ignore
+.vscode/         export-ignore
+.idea/           export-ignore
+node_modules/    export-ignore
+.venv/           export-ignore
+venv/            export-ignore
+site/            export-ignore
+.github/         export-ignore

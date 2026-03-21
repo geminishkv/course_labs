@@ -30,6 +30,7 @@ __pycache__/
 *.pyd
 .ruff_cache
 venv/
+.venv/
 .vscode/
 .idea/
 *.swp
@@ -55,7 +56,8 @@ audit_reports/
 # Build / dist artifacts (site, bundles, etc.)
 dist/
 build/
-site
+site/
+site/sitemap.xml
 
 # Databases / dumps
 *.sqlite
@@ -87,8 +89,10 @@ site
 
 # Node.js
 node_modules/
+
+# Archives
 *.tar
-labs/lab05/source/*.tar
-labs/lab06/source/*.tar
+
+# Lab-specific
 !labs/lab06/audit_reports/text/cis_audit.txt
 labs/lab07/sca/dependency-check-report/

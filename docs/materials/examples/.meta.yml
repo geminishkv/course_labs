@@ -1,2 +1,4 @@
-title: OWASP Top 10 CI/CD Risks
-description: Конспекты и материалы по рискам ИБ на основве практических кейсов.
+title: Аналитические примеры и кейсы ИБ
+description: >
+  Разборы реальных кейсов ИБ: PrintNightmare, Metro4Shell, Risk Analysis, MultiSig —
+  практические примеры анализа рисков и уязвимостей.

@@ -1,10 +1,30 @@
-# for AppSecCource docs
+# AppSec Course — geminishkv.github.io/course_labs
+# Author: Elijah S Shmakov (geminishkv)
+# GitHub: https://github.com/geminishkv
+# Site:   https://geminishkv.tech
 
 User-agent: *
+Allow: /
+
 Disallow: /search/
 Disallow: /404.html
 Disallow: /draft/
 Disallow: /tmp/
+
+# Allow all major crawlers explicitly
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 Sitemap: https://geminishkv.github.io/course_labs/sitemap.xml

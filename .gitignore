@@ -45,6 +45,7 @@ reports/
 lib/
 .dependency-check-data
 audit_reports/
+.claudie/
 
 # Data exports
 *.odt

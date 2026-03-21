@@ -2,6 +2,5 @@
   .md-sidebar--primary .md-logo,
   .md-sidebar--primary .md-logo img {
     display: none !important;
-    opacity: 0;
   }
 }

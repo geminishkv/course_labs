@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Skill(onboard:onboard)",
+      "Skill(onboard:onboard:*)"
+    ]
+  },
+  "autoMemoryDirectory": "/Users/geminishkv/Desktop/DevSec_AppSec_BISO/AppSECTA/github/sbom_genformatter/.claude/memory"
+}

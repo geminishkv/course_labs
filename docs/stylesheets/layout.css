@@ -58,7 +58,7 @@ details.spoiler summary {
   flex: 0 0 340px;
 }
 
-@media (max-width: 960px) {
+@media screen and (max-width: 960px) {
   .tg-layout {
     flex-direction: column;
   }

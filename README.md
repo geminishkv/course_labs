@@ -145,6 +145,7 @@ $ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адре�
 
 ```bash
 $ rm -rf __pycache__ scripts/__pycache__  # etc.
+$ rm -rf .venv
 $ lsof -i :8000
 $ kill <PID>
 ```
@@ -157,41 +158,6 @@ $ git push origin v1.0.0
 
 $ git tag -d v0.1.0                    # удалить локальный тег
 $ git push origin :refs/tags/v0.1.0   # удалить тот же тег на GitHub
-```
-
-* Локальное тестирование ci.yml
-
-```bash
-$ act -l
-$ act -j имя_job #  или общий act push
-$ act push -b -v
-
-$ act push -j build -b
-$ act pull_request -j linter_checks_ruff_shell # конкретный job
-$ act pull_request -j docs-preview -b # docs-preview и все зависимые job
-
-$ ACT_SKIP_CHOWN=true act push -j linter_checks_ruff_shell -b
-```
-
-* Тестирование
-
-```bash
-$ bandit -r labs
-$ ruff check .
-
-$ npx eslint "docs/**/*.js" "javascripts/**/*.js"
-$ npx stylelint "docs/**/*.css" "stylesheets/**/*.css"
-
-$ git ls-files '*.sh' \
-  | grep -v 'labs/lab08/dast/zap_scan.sh' \
-  | grep -v 'labs/lab07/sca/dependency-check.sh' \
-  | grep -v 'labs/lab06/audit.sh' \
-  | xargs -r shellcheck -e SC2086,SC1090,SC1091
-
-$ yamllint .github/workflows mkdocs.yml
-$ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" "README.md"
-
-$ mkdocs build --strict --clean --config-file mkdocs.yml --site-dir /tmp/mkdocs-check
 ```
 
 ***

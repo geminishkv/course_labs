@@ -23,7 +23,16 @@ description: Описание курса для ИБ, а также матери
 <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff"></a>
 <a href="https://github.com/geminishkv/course_labs/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop&label=GitHub%20Actions&logo=githubactions&logoColor=white" alt="CI" /></a>
 <a href="https://github.com/geminishkv/course_labs/releases"><img src="https://img.shields.io/github/v/release/geminishkv/course_labs?label=Release" alt="Latest release" /></a>
-<a href="https://github.com/geminishkv/course_labs"><img src="https://img.shields.io/github/repo-size/geminishkv/course_labs?label=Repo%20size" alt="Repo size" /></a></div>
+<a href="https://github.com/geminishkv/course_labs"><img src="https://img.shields.io/github/repo-size/geminishkv/course_labs?label=Repo%20size" alt="Repo size" /></a>
+<img src="https://img.shields.io/github/last-commit/geminishkv/course_labs?label=Last%20commit" alt="Last commit">
+<img src="https://img.shields.io/github/commit-activity/m/geminishkv/course_labs?label=Commits%2Fmonth" alt="Commit activity">
+<img src="https://img.shields.io/github/contributors/geminishkv/course_labs?label=Contributors" alt="Contributors">
+<img src="https://img.shields.io/badge/Nmap-214478?style=flat&logo=nmap&logoColor=white" alt="Nmap">
+<img src="https://img.shields.io/badge/Semgrep-1B2333?style=flat" alt="Semgrep">
+<img src="https://img.shields.io/badge/Checkov-7B42F6?style=flat" alt="Checkov">
+<img src="https://img.shields.io/badge/Trivy-1904DA?style=flat&logo=aquasecurity&logoColor=white" alt="Trivy">
+<img src="https://img.shields.io/badge/OWASP_ZAP-333333?style=flat" alt="OWASP ZAP">
+<img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions"></div>
 
 <div class="tg-layout">
 
@@ -55,7 +64,8 @@ description: Описание курса для ИБ, а также матери
 <span>1. Ознакомление с учебными материалами по лекциям и примерами</span>
 <span>2. Каждый репозиторий должен содержать <code>.gitignore</code>, <code>CODE_OF_CONDUCT</code>, <code>CONTRIBUTING</code>, <code>LICENSE</code>, <code>NOTICE</code>, <code>SECURITY</code> и должен быть адаптирован под конкретную лабораторную работу или проект</span>
 <span>3. Выполнить следующие работы по порядку</span>
-<span>4. Реализовать итоговую работу и составить отчет по <code>pet_project</code>: Итоговая работа по оценке рисков ИБ и практическому использованию инструментов Application Security <b>обновление будет предоставлено позже</b></span>
+<span>4. Реализовать итоговую работу и составить отчет по <code>pet_project</code>: тема согласовывается с преподавателем,
+применяется весь стек AppSec/DevSecOps инструментов</span>
 <span><b>Обратите внимание</b>, что тип лицензий должен быть подобран правильно при переиспользовании материалов проекта и следует ознакомиться с ними дополнительно</span>
 <span><b>NB!</b> Пример отчета <a href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411">тут</a></span>
 </div> 
@@ -161,8 +171,15 @@ description: Описание курса для ИБ, а также матери
     </tr>
     <tr>
       <td><strong>lab09</strong></td>
-      <td><em>будет опубликована позже</em></td>
-      <td>—</td>
+      <td>
+        <a href="labs/lab09">
+          Лабораторная работа посвящена построению <strong>DevSecOps CI/CD конвейера</strong> на GitHub Actions
+          и встраиванию инструментов безопасности: Semgrep, Checkov, OWASP Dependency‑Check, Trivy, OWASP ZAP
+        </a>
+      </td>
+      <td>
+        <a href="https://github.com/geminishkv/course_labs/tree/develop/labs/lab09">Материалы в репозитории</a>
+      </td>
     </tr>
     <tr>
       <td><strong>lab10</strong></td>

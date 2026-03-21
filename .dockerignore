@@ -1,16 +1,91 @@
-build
-# nginx.conf
-# README.md
-# .git/
-monitoring/
+# VCS
+.git/
+.gitignore
+.gitattributes
+
+# CI / GitHub
+.github/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+._*
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+venv/
+.venv/
+
+# Node.js
 node_modules/
-screenshots/
-test/
-build/reports/
-dist/
-vagrant/
+
+# MkDocs source & built output
+docs/
+site/
+
+# Reports / artifacts / tool output
+reports/
+audit_reports/
+sast/semgrep-report.json
+sast/checkov-report.json
+sca/dependency-check-report/
+.dependency-check-data
+labs/lab07/sca/dependency-check-report/
+
+# Logs / tmp
+*.log
 logs/
-# Dockerfile
-.npmrc
-# /bom.json
-# /bom.xml
+*.pid
+
+# Build / dist
+dist/
+build/
+
+# Archives
+*.tar
+*.gz
+*.zip
+*.7z
+*.rar
+
+# Secrets
+.env
+.env.*
+*.env
+
+# Docs / meta (не нужны в образе)
+README.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+NOTICE.md
+RELEASE_NOTES.md
+LICENSE.md
+mkdocs.yml
+requirements.txt
+ruff.toml
+mypy.ini
+eslint.config.js
+stylelint.config.cjs
+sitemap.xml
+scripts/
+assets/
+
+# Данные / экспорты
+*.odt
+*.xlsx
+*.xls
+*.sqlite
+*.db
+*.sql

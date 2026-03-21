@@ -1,4 +1,4 @@
-#(macOS / Windows / misc)
+# macOS / Windows / misc
 .DS_Store
 .DS_Store?
 ._*
@@ -28,12 +28,21 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-.ruff_cache
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+coverage.xml
 venv/
 .venv/
+
+# IDE
 .vscode/
 .idea/
 *.swp
+
+# Logs / PID
 *.log
 logs/
 *.pid
@@ -57,7 +66,6 @@ audit_reports/
 dist/
 build/
 site/
-site/sitemap.xml
 
 # Databases / dumps
 *.sqlite
@@ -80,7 +88,7 @@ site/sitemap.xml
 *.jar
 *.rar
 *.zip
-# *.tar
+*.tar
 
 # Secrets и env-конфиги
 .env
@@ -89,9 +97,6 @@ site/sitemap.xml
 
 # Node.js
 node_modules/
-
-# Archives
-*.tar
 
 # Lab-specific
 !labs/lab06/audit_reports/text/cis_audit.txt

@@ -3,13 +3,19 @@
   font-size: 0.6rem;
 }
 
+.md-sidebar--primary .md-nav__item {
+  margin: 0;
+  padding: 0.18rem 0;
+}
+
 .md-sidebar--primary .md-nav__link,
 .md-sidebar--primary .md-nav__link:visited,
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 .md-sidebar--primary .md-nav__link--active {
   font-size: 0.7rem;
+  line-height: 1.35;
   color: #cc2200;
-  margin: 0.25rem 0;
+  margin: 0;
   padding-left: 0.6rem;
 }
 

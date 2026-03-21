@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     topic.textContent = "";
 
     var link = document.createElement("a");
-    link.href = "https://t.me/shmakovis_appsec";
+    link.href = "https://geminishkv.tech/";
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     link.textContent = "© AppSecTA";

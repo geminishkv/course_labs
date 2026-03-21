@@ -1,24 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const text = "Sic Parvis Magna. Auxilio Divino. Stay tuned ;) The most interesting part is just ahead";
+  const phrases = [
+    "Sic Parvis Magna",
+    "Auxilio Divino",
+    "Stay tuned ;)",
+  ];
   const el = document.getElementById("typewriter-target");
+  if (!el) return;
 
-  const typeSpeed = 100;
-  const pauseEnd  = 1250;
-  let i = 0;
+  const typeSpeed   = 100;
+  const deleteSpeed = 60;
+  const pauseEnd    = 1500;
+  const pauseStart  = 300;
 
-  function type() {
-    if (i < text.length) {
-      el.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, typeSpeed);
+  let phraseIndex = 0;
+  let charIndex   = 0;
+  let deleting    = false;
+
+  function tick() {
+    const current = phrases[phraseIndex];
+
+    if (!deleting) {
+      el.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(tick, pauseEnd);
+        return;
+      }
+      setTimeout(tick, typeSpeed);
     } else {
-      setTimeout(() => {
-        el.textContent = "";
-        i = 0;
-        type();
-      }, pauseEnd);
+      el.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(tick, pauseStart);
+        return;
+      }
+      setTimeout(tick, deleteSpeed);
     }
   }
 
-  type();
+  tick();
 });

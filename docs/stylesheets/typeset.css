@@ -30,6 +30,10 @@
   color: #cc2200;
 }
 
+#typewriter-target {
+  min-height: 1.8em;
+}
+
 .md-typeset {
   color: #000000;
   font-family:

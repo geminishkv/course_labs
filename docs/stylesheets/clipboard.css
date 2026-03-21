@@ -20,6 +20,6 @@
 
 .md-clipboard[aria-label="Copied!"],
 .md-clipboard[aria-label="Copied!"] + .md-tooltip {
-  color: #1953ff;
+  color: #cc2200;
   background: rgba(243, 244, 246, 0.96);
 }

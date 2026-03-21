@@ -87,7 +87,7 @@
 
 .app-search__item-title {
   font-size: 0.95rem;
-  color: #1953ff;
+  color: #cc2200;
   text-decoration: none;
 }
 
@@ -102,6 +102,6 @@
 }
 
 .md-header .md-search__icon svg {
-  color: #1953ff;
-  fill: #1953ff;
+  color: #cc2200;
+  fill: #cc2200;
 }

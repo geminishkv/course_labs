@@ -48,13 +48,15 @@ def search():
 @app.route("/ping")
 def ping():
     import ipaddress
+
     host = request.args.get("host", "127.0.0.1")
     try:
         # Валидация IP адреса
         ipaddress.ip_address(host)
         # Использование subprocess вместо os.system
-        result = subprocess.run(["ping", "-c", "1", host], 
-                              capture_output=True, text=True, timeout=5)
+        result = subprocess.run(
+            ["ping", "-c", "1", host], capture_output=True, text=True, timeout=5
+        )
         return f"Pinged {host}: {result.returncode}"
     except (ipaddress.AddressValueError, subprocess.TimeoutExpired) as e:
         return f"Invalid host or timeout: {e}", 400
@@ -71,14 +73,14 @@ def backup():
 @app.route("/read")
 def read_file():
     import pathlib
+
     # Полностью безопасная реализация - только предопределенные файлы
-    allowed_files = {
-        "config": "/app/config.yaml",
-        "readme": "/app/README.md"
-    }
+    allowed_files = {"config": "/app/config.yaml", "readme": "/app/README.md"}
     file_key = request.args.get("file", "")
     if not file_key or file_key not in allowed_files:
-        return "Invalid file parameter. Allowed: " + ", ".join(allowed_files.keys()), 400
+        return "Invalid file parameter. Allowed: " + ", ".join(
+            allowed_files.keys()
+        ), 400
     try:
         file_path = pathlib.Path(allowed_files[file_key])
         if not file_path.exists():
@@ -93,6 +95,7 @@ def read_file():
 @app.route("/load")
 def load():
     import json
+
     data = request.args.get("data", "")
     if not data:
         return "Data parameter required", 400
@@ -113,21 +116,21 @@ def calc():
     a = request.args.get("a", "0")
     b = request.args.get("b", "0")
     op = request.args.get("op", "add")
-    
+
     try:
         num_a = float(a)
         num_b = float(b)
-        
+
         operations = {
             "add": lambda x, y: x + y,
             "sub": lambda x, y: x - y,
             "mul": lambda x, y: x * y,
-            "div": lambda x, y: x / y if y != 0 else None
+            "div": lambda x, y: x / y if y != 0 else None,
         }
-        
+
         if op not in operations:
             return "Invalid operation. Allowed: add, sub, mul, div", 400
-        
+
         result = operations[op](num_a, num_b)
         if result is None:
             return "Division by zero", 400

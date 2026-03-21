@@ -12,11 +12,14 @@ pygame.init()
 # Используем typer для получения имени пользователя из первой лабораторной
 app = typer.Typer()
 
+
 @app.command()
 def main(
     name: str = typer.Argument("User", help="Имя пользователя"),
     lastname: str = typer.Option("", help="Фамилия пользователя."),
-    formal: bool = typer.Option(False, "--formal", "-f", help="Использовать формальное приветствие."),
+    formal: bool = typer.Option(
+        False, "--formal", "-f", help="Использовать формальное приветствие."
+    ),
 ):
     """Приветствие с использованием pygame и typer из первой лабораторной"""
     # Используем логику из первой лабораторной для формирования приветствия
@@ -24,15 +27,18 @@ def main(
         greeting = f"Добрый день, {name} {lastname}!"
     else:
         greeting = f"Привет, {name}!"
-    
+
     run_pygame_app(greeting)
+
 
 def run_pygame_app(greeting_text: str):
     # Устанавливаем размеры окна
     screen_width = 800
     screen_height = 600
     window_size = (screen_width, screen_height)
-    screen = pygame.display.set_mode(window_size)  # Создаем окно и присваиваем переменной
+    screen = pygame.display.set_mode(
+        window_size
+    )  # Создаем окно и присваиваем переменной
 
     # Задаем цвет фона
     bg_color = (255, 255, 255)
@@ -45,7 +51,7 @@ def run_pygame_app(greeting_text: str):
     text_rect = text.get_rect()
     text_rect.center = (400, 250)
     screen.blit(text, text_rect)
-    
+
     # Выводим приветствие из первой лабораторной
     greeting_font = pygame.font.SysFont(None, 50)
     greeting = greeting_font.render(greeting_text, True, (0, 0, 255))
@@ -63,6 +69,7 @@ def run_pygame_app(greeting_text: str):
 
     pygame.quit()
     sys.exit()
+
 
 if __name__ == "__main__":
     app()

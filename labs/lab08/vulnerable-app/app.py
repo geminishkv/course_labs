@@ -13,7 +13,7 @@ import hashlib
 import secrets
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secrets.token_hex(32)  # Для подписи сессий
+app.config["SECRET_KEY"] = secrets.token_hex(32)  # Для подписи сессий
 
 DB_PATH = os.environ.get("APP_DB_PATH", "app.db")
 
@@ -29,20 +29,22 @@ def set_secure_cookie(resp, name, value, max_age=3600):
         max_age=max_age,
         httponly=True,
         secure=False,  # True для HTTPS
-        samesite='Lax'
+        samesite="Lax",
     )
 
 
 @app.after_request
 def set_security_headers(response):
     """Установка security headers для всех ответов"""
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['X-Frame-Options'] = 'DENY'
-    response.headers['X-XSS-Protection'] = '1; mode=block'
-    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
-    response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+    )
+    response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
     # Скрываем версию сервера
-    response.headers['Server'] = 'WebServer'
+    response.headers["Server"] = "WebServer"
     return response
 
 
@@ -111,7 +113,9 @@ def search():
     # Параметризованный запрос для предотвращения SQL Injection
     rows = []
     try:
-        cur.execute("SELECT id, username, role FROM users WHERE username = ?", (username,))
+        cur.execute(
+            "SELECT id, username, role FROM users WHERE username = ?", (username,)
+        )
         rows = cur.fetchall()
     except Exception as e:
         # Не раскрываем детали SQL ошибок
@@ -159,7 +163,7 @@ def login():
     # Параметризованный запрос для предотвращения SQL Injection
     cur.execute(
         "SELECT id, username, role FROM users WHERE username = ? AND password = ?",
-        (username, password)
+        (username, password),
     )
     row = cur.fetchone()
     conn.close()
@@ -168,12 +172,12 @@ def login():
         _, uname, role = row
         # Создаем безопасную сессию
         session_id = secrets.token_urlsafe(32)
-        sessions[session_id] = {'user': uname, 'role': role}
-        
+        sessions[session_id] = {"user": uname, "role": role}
+
         resp = make_response(
             f"<h2>Добро пожаловать, {escape(uname)} ({escape(role)})!</h2><a href='/'>На главную</a>"
         )
-        
+
         set_secure_cookie(resp, "session_id", session_id)
         return resp
     else:
@@ -200,7 +204,9 @@ def profile():
     <p>Роль: {{ role }}</p>
     <a href="/">Назад</a>
     """
-    return render_template_string(template, username=escape(username), role=escape(role))
+    return render_template_string(
+        template, username=escape(username), role=escape(role)
+    )
 
 
 @app.route("/admin")
@@ -212,10 +218,10 @@ def admin():
             "<h2>Доступ запрещён: требуется авторизация</h2><a href='/login'>Войти</a>",
             403,
         )
-    
+
     session_data = sessions[session_id]
     role = session_data.get("role", "guest")
-    
+
     if role != "admin":
         return (
             "<h2>Доступ запрещён: недостаточно прав</h2><a href='/'>Назад</a>",
@@ -240,10 +246,10 @@ def files(subpath=""):
     # Ограничение доступа к файлам
     base_dir = os.path.abspath(os.path.dirname(__file__))
     target_dir = os.path.join(base_dir, "files")
-    
+
     # Нормализация пути для предотвращения path traversal
     full_path = os.path.normpath(os.path.join(target_dir, subpath))
-    
+
     # Проверка, что путь находится внутри разрешенной директории
     if not full_path.startswith(os.path.abspath(target_dir)):
         return "<h2>Доступ запрещён</h2><a href='/'>Назад</a>", 403
@@ -256,7 +262,7 @@ def files(subpath=""):
         return "<h2>Directory listing отключен</h2><a href='/'>Назад</a>", 403
 
     # Разрешенные расширения файлов
-    allowed_extensions = {'.txt', '.md', '.json'}
+    allowed_extensions = {".txt", ".md", ".json"}
     if not any(full_path.endswith(ext) for ext in allowed_extensions):
         return "<h2>Тип файла не разрешен</h2><a href='/'>Назад</a>", 403
 

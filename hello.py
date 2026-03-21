@@ -18,10 +18,12 @@ import sys
 import os
 from datetime import datetime
 
+
 def hello_world():
     """Простое приветствие"""
     print("Hello AppSec World!")
     return "Hello AppSec World!"
+
 
 def hello_user(name):
     """Приветствие с именем пользователя"""
@@ -29,17 +31,20 @@ def hello_user(name):
     print(message)
     return message
 
+
 def get_user_info():
     """Получение информации о пользователе"""
-    username = os.getenv('USER', 'Unknown')
-    hostname = os.getenv('HOSTNAME', 'Unknown')
+    username = os.getenv("USER", "Unknown")
+    hostname = os.getenv("HOSTNAME", "Unknown")
     return username, hostname
+
 
 def show_system_info():
     """Показать информацию о системе"""
     print(f"Python version: {sys.version}")
     print(f"Platform: {sys.platform}")
     print(f"Current time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
 
 def interactive_greeting():
     """Интерактивное приветствие с запросом имени"""
@@ -51,6 +56,7 @@ def interactive_greeting():
     else:
         hello_world()
 
+
 def main():
     """Главная функция"""
     if len(sys.argv) > 1:
@@ -59,9 +65,9 @@ def main():
     else:
         # Иначе интерактивный режим
         hello_world()
-    
+
     show_system_info()
+
 
 if __name__ == "__main__":
     main()
-

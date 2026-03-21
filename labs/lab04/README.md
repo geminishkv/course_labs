@@ -64,6 +64,6 @@ lab04
 - [GitHub CLI](https://cli.github.com)
 - <a href="https://github.com/geminishkv/course_labs/blob/develop/artifacts/exmpls/Пример_аналитических_отчетов_по_задачам_ИБ.pdf">Пример аналитических отчетов</a>
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

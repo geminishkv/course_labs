@@ -156,6 +156,6 @@ $ docker system prune -f
 - [Checkov](https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html) 
 - [GitHub Docs](https://docs.github.com/en)
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

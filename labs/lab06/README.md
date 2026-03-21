@@ -147,6 +147,6 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 - [GitHub Docs](https://docs.github.com/en)
 - [GitHub CLI](https://cli.github.com)
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

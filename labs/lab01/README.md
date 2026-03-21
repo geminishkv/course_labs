@@ -155,6 +155,6 @@ if __name__ == "__main__":
 - [GitHub Personal Token](https://github.com/settings/tokens/new)
 - [GitHub CLI](https://cli.github.com)
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

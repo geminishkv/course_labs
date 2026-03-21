@@ -1,11 +1,13 @@
 ---
-site_name: AppSecCource
+site_name: AppSec Course
 site_url: "https://geminishkv.github.io/course_labs/"
 site_description: >
   Практический курс по прикладной безопасности приложений: лабораторные работы и аннотационные материалы
   для прокачки навыков в ИБ (информационной безопасности), а также чеклисты и методички по AppSec, DevSecOps
   и OWASP Top 10.
 site_author: "Илья Шмаков"
+repo_url: https://github.com/geminishkv/course_labs
+repo_name: geminishkv/course_labs
 
 theme:
   name: material
@@ -19,9 +21,7 @@ theme:
     next: fontawesome/solid/angles-right
     close: fontawesome/solid/xmark
   favicon: artifacts/assets/favicon.ico
-  font:
-    text: Montserrat
-    code: Segoe UI
+  font: false
   features:
     - navigation.indexes
     - search.highlight
@@ -29,21 +29,35 @@ theme:
     - navigation.top
     - search.share
     - search.suggest
-    - analytics
-    - content.tables
     - content.code.copy
     - content.code.select
     - content.code.annotate
     - content.action.view
     - navigation.instant
     - navigation.instant.prefetch
-    - content.lazy
+    - toc.follow
+    - toc.integrate
 
 plugins:
   - search
   - meta-descriptions
   - macros
   - mkdocs-pdf
+  - minify:
+      minify_html: true
+      minify_css: true
+      minify_js: true
+      htmlmin_opts:
+        remove_comments: true
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: auto
+      height: auto
+      zoomable: true
+      draggable: true
   - include-markdown:
       heading_offset: 0
       preserve_includer_indent: false
@@ -57,10 +71,17 @@ markdown_extensions:
   - admonition
   - pymdownx.highlight:
       anchor_linenums: true
+      linenums: true
+      linenums_style: pymdownx-inline
       line_spans: __span
       pygments_lang_class: true
       use_pygments: true
-  - pymdownx.superfences
+      pygments_style: monokai
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.inlinehilite
   - toc:
       permalink: false
@@ -72,7 +93,9 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
-  - pymdownx.tasklist
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: false
   - pymdownx.magiclink
   - pymdownx.caret
   - pymdownx.mark
@@ -83,6 +106,7 @@ watch:
   - docs
 
 extra_css:
+  - stylesheets/fonts.css
   - stylesheets/header.css
   - stylesheets/footer.css
   - stylesheets/search.css
@@ -121,6 +145,7 @@ extra:
 #    property: G-XXXXXXXXXX
 
 nav:
+  - "geminishkv.tech": "https://geminishkv.tech/"
   - "Главная страница": index.md
   - "Лабораторные работы":
       - "Лабораторная работа №1": labs/lab01.md
@@ -139,7 +164,7 @@ nav:
           - "Аналитические кейсы": materials/examples/exmpl.md
           - "Использование MultiSiq": materials/examples/Multisignature.md
           - "PrintNightmare": materials/examples/PrintNightmare.md
-          - "Metro4Shell": materials/examples/Metro4Shell
+          - "Metro4Shell": materials/examples/Metro4Shell.md
           - "Risk Analysis": materials/examples/RA.md
       - "Лицензии ПО": licenses.md
       - "Классификация инструментов": appsec_tt.md
@@ -147,10 +172,10 @@ nav:
           - "CI/CD Risks": materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md
           - "Authorization": materials/OWASPTOP10/Authorization.md
           - "Authentication": materials/OWASPTOP10/Authentication.md
-          - "Client-side Attacks": materials/OWASPTOP10/Client-side Attacks.md
-          - "Command Execution": materials/OWASPTOP10/Command Execution.md
-          - "Logical Attacks": materials/OWASPTOP10/Logical Attacks.md
-          - "Information Disclosure": materials/OWASPTOP10/Information Disclosure.md
+          - "Client-side Attacks": materials/OWASPTOP10/client-side-attacks.md
+          - "Command Execution": materials/OWASPTOP10/command-execution.md
+          - "Logical Attacks": materials/OWASPTOP10/logical-attacks.md
+          - "Information Disclosure": materials/OWASPTOP10/information-disclosure.md
   - "CheatSheet":
       - "GitHub CLI": artifacts/cheatsheet/CHEATSHEET_GH_CLI.md
       - "GitSCM": artifacts/cheatsheet/CHEATSHEET_GIT.md
@@ -158,7 +183,6 @@ nav:
       - ".dockerignore": artifacts/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
       - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
   - "Приложение": APPENDIX.md
-  - "geminishkv.tech": "https://geminishkv.tech/"
   - "Блог": channel.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md

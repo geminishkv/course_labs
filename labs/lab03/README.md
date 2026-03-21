@@ -213,6 +213,6 @@ $ nmap -sP inet_addr
 - [Nmap Tutorial (Hackers-Arise)](https://nmap.org/docs.html)
 - [OWASP Testing Guide – Network Scanning](https://owasp.org/www-project-web-security-testing-guide/)
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

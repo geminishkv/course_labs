@@ -198,6 +198,6 @@ $ docker system prune -f
 - [ZAP Baseline Scan](https://www.zaproxy.org/docs/docker/baseline-scan/)  
 - [ZAP Automation Framework](https://www.zaproxy.org/docs/desktop/addons/automation-framework/)  
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

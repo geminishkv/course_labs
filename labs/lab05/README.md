@@ -248,6 +248,6 @@ $ docker-compose down
 - [Docker Hub](https://hub.docker.com/)
 - [Docker security overview](https://docs.docker.com/engine/security/)
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](../../assets/logotype/logo.jpg)

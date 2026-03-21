@@ -36,11 +36,89 @@
 
 .md-typeset {
   color: #000000;
-  font-family:
-    "Montserrat",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--md-text-font, "Montserrat", system-ui, sans-serif);
+}
+
+/* Lists */
+.md-typeset ul,
+.md-typeset ol {
+  padding-left: 1.75em;
+}
+
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.3em;
+}
+
+.md-typeset ul ul,
+.md-typeset ol ol,
+.md-typeset ul ol,
+.md-typeset ol ul {
+  margin-top: 0.3em;
+}
+
+/* Tasklist */
+.md-typeset .task-list-item [type="checkbox"] {
+  accent-color: #cc2200;
+}
+
+.md-typeset .task-list-control .task-list-indicator::before {
+  background-color: #cc2200;
+}
+
+.md-typeset .task-list-item input:checked + .task-list-indicator::before {
+  background-color: #cc2200;
+  mask-image: var(--md-tasklist-icon--checked);
+  -webkit-mask-image: var(--md-tasklist-icon--checked);
+}
+
+/* Admonitions — brand colours */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-width: 4px;
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-color: #cc2200;
+}
+
+.md-typeset .admonition.danger > .admonition-title,
+.md-typeset details.danger > summary {
+  background-color: rgba(204, 34, 0, 0.1);
+}
+
+.md-typeset .admonition.danger > .admonition-title::before,
+.md-typeset details.danger > summary::before {
+  background-color: #cc2200;
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: #d4a520;
+}
+
+.md-typeset .admonition.warning > .admonition-title,
+.md-typeset details.warning > summary {
+  background-color: rgba(212, 165, 32, 0.12);
+}
+
+.md-typeset .admonition.warning > .admonition-title::before,
+.md-typeset details.warning > summary::before {
+  background-color: #d4a520;
+}
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #d4a520;
+}
+
+.md-typeset .admonition.tip > .admonition-title,
+.md-typeset details.tip > summary {
+  background-color: rgba(212, 165, 32, 0.1);
+}
+
+.md-typeset .admonition.tip > .admonition-title::before,
+.md-typeset details.tip > summary::before {
+  background-color: #d4a520;
 }

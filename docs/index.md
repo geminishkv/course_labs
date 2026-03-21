@@ -36,7 +36,7 @@ description: Описание курса для ИБ, а также матери
 
 <div style="display:flex; flex-wrap:wrap; gap:0.5rem 1.5rem; align-items:flex-start;">
 <span>- Цель - сформировать навыки работы с  <code>git</code>, <code>CI/CD</code>, <code>Docker</code>, <code>Packages</code>, <code>AppSec Toolchain</code>, <code>YAML</code>, etc.</span>
-<span>- Часть работ базируется на на <code>Go</code>, <code>Python</code>, <code>JAVA</code>, <code>Shell</code> и и.д.</span>
+<span>- Часть работ базируется на <code>Go</code>, <code>Python</code>, <code>JAVA</code>, <code>Shell</code> и т.д.</span>
 <span>- Рассматриваются инструменты <code>SAST</code>, <code>SCA</code>, <code>Container Security</code>, <code>DAST</code>, <code>Secret Detection</code>, etc.</span>
 <span>- Работы направлены на углубление и изучение материалов анализа рисков и оценки защищенности приложений, которые необходимы для итерационной разработки, также дают дополнительно возможности для изучения паттернов программирования, прототипирования</span>
 <span>- Каждый мини проект должен будет собран по формату из представленных лабораторных работ и размещен на сервисе <code>GitHub</code>, с формирование соответствующего отчета в виде <code>gistup</code> для демонстрации выполненной работы и скриншотами результатов (<b>где это требуется</b>)</span>

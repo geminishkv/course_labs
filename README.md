@@ -345,6 +345,6 @@ $ mkdocs build --strict --clean --config-file mkdocs.yml --site-dir /tmp/mkdocs-
 
 ***
 
-Copyright (c) 2025 Elijah S Shmakov
+Copyright (c) 2026 Elijah S Shmakov
 
 ![Logo](assets/logotype/logo.jpg)

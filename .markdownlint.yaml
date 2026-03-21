@@ -21,3 +21,19 @@ MD033:
     - summary
     - span
     - div
+    - h1
+    - a
+    - table
+    - thead
+    - tbody
+    - tr
+    - th
+    - td
+    - ul
+    - li
+    - strong
+    - em
+    - code
+    - sup
+    - b
+    - script

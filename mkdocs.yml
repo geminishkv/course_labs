@@ -158,6 +158,7 @@ nav:
       - ".dockerignore": artifacts/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
       - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
   - "Приложение": APPENDIX.md
+  - "geminishkv.tech": "https://geminishkv.tech/"
   - "Блог": channel.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md

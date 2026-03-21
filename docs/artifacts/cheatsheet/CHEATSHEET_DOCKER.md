@@ -3,52 +3,130 @@ hide:
   - toc
 ---
 
+<!-- markdownlint-disable MD013 -->
 <div align="center">
-<h1><a id="intro">CheatSheet</a><br></h1>
+<h1><a id="intro">CheatSheet — Docker</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
-<a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a> 
-<a href="https://symbl.cc/en/unicode-table"><img src="https://img.shields.io/static/v1?logo=unicode&logoColor=fff&label=&message=Unicode&color=36393f&style=flat" alt="Unicode"></a> 
+<a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
-<a href="https://img.shields.io/badge/Risk_Analyze-2448a2"><img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/AppSec-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge"></a></div>
+<img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt="RA">
+<img src="https://img.shields.io/badge/AppSec-2448a2" alt="AppSec">
+<img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge">
+</div>
+<!-- markdownlint-enable MD013 -->
 
 ***
 
-- Docker
+## Образы
 
 ```bash
-$ docker image ls all # все образы
-$ docker container ls # все запущенные контейнеры
-$ docker container ls -all # все контейнеры
-$ docker run -d --privileged --name docker go:1.16 # привилегированный режим
-
-$ docker compose build	 
-$ docker compose build --no-cache # Создает образы без использования кэша
-$ docker compose build <service> # Создает только определенную службу
-
-$ docker compose up	
-$ docker compose up -d	 # Запускает контейнеры в отсоединенном режиме в фоновом режиме
-$ docker compose start	 # Запускает уже созданные контейнеры (не перестраивает и не создает заново)
-$ docker compose up --build	# Создает изображения, а затем запускает контейнеры
-$ docker compose up --force-recreate # Воссоздает контейнеры, даже если ничего не изменилось
-$ docker compose up --build --force-recreate # Полностью перестраивает и воссоздает контейнеры
-
-$ docker compose stop	
-$ docker compose down	# Останавливает и удаляет контейнеры, сети и тома по умолчанию
-$ docker compose down --volumes	 # Удаляет контейнеры, сети и именованные/анонимные тома
-$ docker compose down --rmi all	 # Также удаляет все построенные изображения
-$ docker compose rm	 # Удаляет остановленные контейнеры служб (после остановки)
-$ docker compose kill # Принудительно останавливает запуск контейнеров
-
-$ docker compose ps	# Списки запущенных служб и их состояние
-$ docker compose logs # Отображение журналов для всех служб
-$ docker compose logs -f	
-$ docker compose exec <service> sh # Открывает оболочку внутри работающего контейнера
-$ docker compose config
-
-docker exec -it <container_name_or_id> <command> # выполнение команды
-            -i  # интерактивный режим (позволяет передать ввод)
-            -t  # выделяет псевдотерминал (tty) для взаимодействия.
-            <container_name_or_id>  # имя или ID контейнера.
+docker images                                 # Список всех образов
+docker image ls                               # Список образов (алиас)
+docker pull <image>:<tag>                     # Скачать образ
+docker build -t <name>:<tag> .                # Собрать образ из Dockerfile
+docker build --no-cache -t <name>:<tag> .     # Собрать без кэша
+docker rmi <image>                            # Удалить образ
+docker image prune                            # Удалить неиспользуемые образы
+docker image prune -a                         # Удалить все неиспользуемые образы
+docker tag <image> <new-name>:<tag>           # Переименовать/пометить образ
+docker push <image>:<tag>                     # Отправить образ в registry
+docker save -o <file>.tar <image>             # Экспортировать образ в файл
+docker load -i <file>.tar                     # Импортировать образ из файла
+docker history <image>                        # История слоёв образа
+docker inspect <image>                        # Подробная информация об образе
 ```
+
+## Контейнеры
+
+```bash
+docker ps                                     # Список запущенных контейнеров
+docker ps -a                                  # Все контейнеры (включая остановленные)
+docker run <image>                            # Запустить контейнер
+docker run -d <image>                         # Запустить в фоновом режиме
+docker run -it <image> bash                   # Интерактивный запуск с shell
+docker run --name <name> <image>              # Запустить с именем
+docker run -p 8080:80 <image>                 # Проброс порта host:container
+docker run -v /host/path:/container/path <image>  # Монтирование тома
+docker run --rm <image>                       # Удалить контейнер после остановки
+docker run --env-file .env <image>            # Передать переменные из файла
+docker start <container>                      # Запустить остановленный контейнер
+docker stop <container>                       # Остановить контейнер (SIGTERM)
+docker kill <container>                       # Принудительно остановить (SIGKILL)
+docker restart <container>                    # Перезапустить контейнер
+docker rm <container>                         # Удалить контейнер
+docker rm -f <container>                      # Принудительно удалить (включая запущенный)
+docker container prune                        # Удалить все остановленные контейнеры
+```
+
+## Выполнение команд и логи
+
+```bash
+docker exec -it <container> bash              # Открыть shell в запущенном контейнере
+docker exec -it <container> sh                # Открыть sh (для Alpine-образов)
+docker exec <container> <command>             # Выполнить команду в контейнере
+docker logs <container>                       # Показать логи контейнера
+docker logs -f <container>                    # Следить за логами в реальном времени
+docker logs --tail 100 <container>            # Последние 100 строк логов
+docker inspect <container>                    # Подробная информация о контейнере
+docker stats                                  # Мониторинг ресурсов контейнеров
+docker top <container>                        # Процессы внутри контейнера
+docker cp <container>:/path /host/path        # Скопировать файл из контейнера
+docker cp /host/path <container>:/path        # Скопировать файл в контейнер
+```
+
+## Docker Compose
+
+```bash
+docker compose build                          # Собрать образы
+docker compose build --no-cache               # Собрать без кэша
+docker compose build <service>                # Собрать отдельный сервис
+
+docker compose up                             # Запустить все сервисы
+docker compose up -d                          # Запустить в фоне
+docker compose up --build                     # Пересобрать и запустить
+docker compose up --force-recreate            # Пересоздать контейнеры
+docker compose up --build --force-recreate    # Полный пересбор и пересоздание
+
+docker compose stop                           # Остановить сервисы (без удаления)
+docker compose down                           # Остановить и удалить контейнеры и сети
+docker compose down --volumes                 # Также удалить тома
+docker compose down --rmi all                 # Также удалить образы
+docker compose rm                             # Удалить остановленные контейнеры
+
+docker compose ps                             # Состояние сервисов
+docker compose logs                           # Логи всех сервисов
+docker compose logs -f                        # Следить за логами
+docker compose logs -f <service>              # Логи конкретного сервиса
+docker compose exec <service> sh              # Shell внутри сервиса
+docker compose config                         # Проверить конфигурацию compose-файла
+docker compose restart <service>              # Перезапустить сервис
+```
+
+## Сети и тома
+
+```bash
+docker network ls                             # Список сетей
+docker network create <name>                  # Создать сеть
+docker network inspect <name>                 # Информация о сети
+docker network rm <name>                      # Удалить сеть
+docker network prune                          # Удалить неиспользуемые сети
+
+docker volume ls                              # Список томов
+docker volume create <name>                   # Создать том
+docker volume inspect <name>                  # Информация о томе
+docker volume rm <name>                       # Удалить том
+docker volume prune                           # Удалить неиспользуемые тома
+```
+
+## Очистка
+
+```bash
+docker system prune                           # Удалить неиспользуемые ресурсы
+docker system prune -a                        # Удалить всё неиспользуемое (включая образы)
+docker system prune -a --volumes              # Также удалить тома
+docker system df                              # Показать использование дискового пространства
+```
+
+***
 
 ![Logo](../assets/logotypemd.jpg)

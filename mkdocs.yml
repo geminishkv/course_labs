@@ -8,6 +8,7 @@ site_description: >
 site_author: "Илья Шмаков"
 repo_url: https://github.com/geminishkv/course_labs
 repo_name: geminishkv/course_labs
+edit_uri: edit/develop/docs/
 
 theme:
   name: material

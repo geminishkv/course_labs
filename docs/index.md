@@ -145,7 +145,7 @@ description: Описание курса для ИБ, а также матери
         </a>
       </td>
       <td>
-        <a href="https://github.com/geminishkv/course_labs/tree/develop/labs/lab01">Материалы в репозитории</a>
+        <a href="https://github.com/geminishkv/course_labs/tree/develop/labs/lab07">Материалы в репозитории</a>
       </td>
     </tr>
     <tr>

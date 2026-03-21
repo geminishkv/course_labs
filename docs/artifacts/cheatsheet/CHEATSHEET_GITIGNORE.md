@@ -3,28 +3,27 @@ hide:
   - toc
 ---
 
+<!-- markdownlint-disable MD013 -->
 <div align="center">
-<h1><a id="intro">CheatSheet</a><br></h1>
+<h1><a id="intro">CheatSheet — .gitignore</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
-<a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a> 
-<a href="https://symbl.cc/en/unicode-table"><img src="https://img.shields.io/static/v1?logo=unicode&logoColor=fff&label=&message=Unicode&color=36393f&style=flat" alt="Unicode"></a> 
+<a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
-<a href="https://img.shields.io/badge/Risk_Analyze-2448a2"><img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/AppSec-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge"></a></div>
+<img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt="RA">
+<img src="https://img.shields.io/badge/AppSec-2448a2" alt="AppSec">
+<img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge">
+</div>
+<!-- markdownlint-enable MD013 -->
 
 ***
 
-- .gitignore
+## Шаблон .gitignore
 
-```bash
-# OS generated files
+```gitignore
+# ── macOS ────────────────────────────────────────────────────────────────────
 .DS_Store
 .DS_Store?
 ._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-.DS_Store
 .AppleDouble
 .LSOverride
 .DocumentRevisions-V100
@@ -35,67 +34,83 @@ Thumbs.db
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 *.icloud
-
-# Coverage
-lib-cov
-.nyc_output
-
-# Node
-dist
-node_modules/
-/node_modules
-jspm_packages/
-.lock-wscript
-.node_repl_history
-.webpack/
-
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
-# Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
 Network Trash Folder
 Temporary Items
 .apdisk
 
-# Runtime data
-pids
-Icon
-*.pid
-*.seed
-*.pid.lock
-.npm
-.vscode
-.vscode-test
+# ── Windows ──────────────────────────────────────────────────────────────────
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# Compiled source #
-*.com
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.ruff_cache/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.pytest_cache/
+
+# ── Node.js ──────────────────────────────────────────────────────────────────
+node_modules/
+/node_modules
+jspm_packages/
+.lock-wscript
+.node_repl_history
+.webpack/
+.npm
+dist/
+
+# ── Yarn v2 ──────────────────────────────────────────────────────────────────
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ── Java / Kotlin ─────────────────────────────────────────────────────────────
 *.class
-*.dll
+*.jar
+*.war
+*.ear
+target/
+
+# ── Go ───────────────────────────────────────────────────────────────────────
 *.exe
+*.exe~
+*.test
+*.out
+vendor/
+
+# ── Compiled source ───────────────────────────────────────────────────────────
+*.com
+*.dll
 *.o
 *.so
 
-# Packages #
+# ── Archives / packages ───────────────────────────────────────────────────────
 *.7z
 *.dmg
 *.gz
-*.isof
-*.jar
+*.iso
 *.rar
 *.tar
 *.zip
 
-# Logs and databases #
+# ── Logs and databases ────────────────────────────────────────────────────────
 *.log
 *.sql
 *.sqlite
-logs
+*.db
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -103,12 +118,62 @@ lerna-debug.log*
 .pnpm-debug.log*
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# ENV
+# ── Coverage ──────────────────────────────────────────────────────────────────
+lib-cov/
+.nyc_output/
+coverage/
+*.lcov
+
+# ── IDE / Editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# ── Secrets / Environment ─────────────────────────────────────────────────────
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env.*
+*.env
+!.env.example
+
+# ── Build artifacts ───────────────────────────────────────────────────────────
+site/
+dist/
+build/
+out/
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.pid
+*.seed
+*.pid.lock
+pids/
+Icon
+CACHEDIR.TAG
 ```
+
+## Синтаксис
+
+```gitignore
+# Комментарий
+*.log          # Игнорировать все .log файлы
+!important.log # Исключение — не игнорировать этот файл
+/TODO          # Только в корне репозитория
+build/         # Директория
+doc/**/*.txt   # Все .txt внутри doc/ на любом уровне вложенности
+```
+
+## Полезные команды
+
+```bash
+git rm --cached <file>          # Убрать из отслеживания (файл остаётся на диске)
+git rm --cached -r <dir>        # То же для директории рекурсивно
+git ls-files --ignored \
+  --exclude-standard -o         # Показать игнорируемые файлы
+git check-ignore -v <file>      # Узнать, почему файл игнорируется
+```
+
+***
 
 ![Logo](../assets/logotypemd.jpg)

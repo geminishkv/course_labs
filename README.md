@@ -15,7 +15,7 @@
 
 <div align="center">
 
-![Repo Size](https://img.shields.io/github/repo-size/geminishkv/course_labs)![License](https://img.shields.io/github/license/geminishkv/course_labs)![CI](https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop)![Status](https://img.shields.io/badge/status-active-success)![Release](https://img.shields.io/github/v/release/geminishkv/course_labs)![Contributor Badge](https://img.shields.io/badge/Contributor-%D0%A8%D0%BC%D0%B0%D0%BA%D0%BE%D0%B2_%D0%98._%D0%A1.-8b9aff?style=flat)![Contributors](https://img.shields.io/github/contributors/geminishkv/course_labs)![Open pull requests](https://img.shields.io/github/issues-pr/geminishkv/course_labs)![Commit Activity](https://img.shields.io/github/commit-activity/m/geminishkv/course_labs)![Last commit](https://img.shields.io/github/last-commit/geminishkv/course_labs)
+![Repo Size](https://img.shields.io/github/repo-size/geminishkv/course_labs)![License](https://img.shields.io/github/license/geminishkv/course_labs)![CI](https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop)![Status](https://img.shields.io/badge/status-active-success)![Release](https://img.shields.io/github/v/release/geminishkv/course_labs)![Contributors](https://img.shields.io/github/contributors/geminishkv/course_labs)![Open pull requests](https://img.shields.io/github/issues-pr/geminishkv/course_labs)![Commit Activity](https://img.shields.io/github/commit-activity/m/geminishkv/course_labs)![Last commit](https://img.shields.io/github/last-commit/geminishkv/course_labs)
 
 </div>
 
@@ -29,6 +29,7 @@
 *  Каждый мини проект должен будет собран по формату из представленных лабораторных работ и размещен на сервисе `GitHub`, с формирование соответствующего отчета в виде `gistup` для демонстрации выполненной работы и скриншотами результатов (**где это требуется**). 
 *  Для каждой лабораторной работы следует создавать собственный репозиторий (возможно использование `fork` с родительского), в котором необходимо разместить исходный код проекта, далее составить отчет к нему в формате `gistup`. 
 *  Все лабораторные работы должны быть выполнены в ветке develop и необходимо cделать [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) по `pull request` на [geminishkv](https://github.com/geminishkv), тем самым будет финально подтверждаться согласование изменений и правок, которые были внесены удаленно 
+
 
 **Замечание:** 
 * Лабораторные работы - обязательны к прохождению, сдаче и итерационной разработке, при любом уровне подготовки
@@ -64,29 +65,66 @@
     -  Материалы для работы [тут](labs/lab07/)
 -  [ ] lab 08 - [Данная лабораторная работа посвящена изучению DAST OWASP ZAP и ручного тестирования уязвимого приложения](labs/lab08/README.md)
     -  Материалы для работы [тут](labs/lab08/)
--  [ ] lab 09 - *Обновление будет предоставлено позднее**
+-  [ ] lab 09 - [Данная лабораторная работа посвящена построению DevSecOps CI/CD конвейера на GitHub Actions и встраиванию инструментов безопасности](labs/lab09/README.md)
+    -  Материалы для работы [тут](labs/lab09/)
 -  [ ] lab 10 - [Данная лабораторная работа посвящена оценке анализов рисков ИБ и отработке практических знаний](labs/lab10/README.md)
 
 5. Реализовать итоговую работу и составить отчет
 
--  [ ] pet_project - [Данная лабораторная работа посвящена оценке анализов рисков ИБ и отработке практических навыков для инстурментария Application Security](labs/pet_project/README.md) *Обновление будет предоставлено позднее**
+-  [ ] pet_project - [Индивидуальный проект: тема согласовывается с преподавателем, применяется весь стек AppSec/DevSecOps инструментов](labs/pet_project/README.md)
+
+***
+
+### Карта
+
+```mermaid
+flowchart TD
+    subgraph Foundations["Основы"]
+        L01["Lab 01 · Git SCM"]
+        L02["Lab 02 · Linux & ACL"]
+        L03["Lab 03 · Nmap"]
+        L04["Lab 04 · Risk Analysis"]
+    end
+
+    subgraph Containers["Контейнеризация"]
+        L05["Lab 05 · Docker"]
+        L06["Lab 06 · Docker CIS Benchmark"]
+    end
+
+    subgraph AppSec["AppSec Toolchain"]
+        L07["Lab 07 · SAST · SCA\nSemgrep · Checkov · Dependency-Check"]
+        L08["Lab 08 · DAST\nOWASP ZAP"]
+    end
+
+    subgraph DevSecOps["DevSecOps"]
+        L09["Lab 09 · CI/CD Pipeline\nGitHub Actions"]
+        L10["Lab 10 · Risk Analysis · Practice"]
+    end
+
+    PET["Pet Project - индивидуальная работа"]
+
+    Foundations --> Containers
+    Containers --> AppSec
+    AppSec --> DevSecOps
+    DevSecOps --> PET
+```
 
 ***
 
 ### Формализованные требования 
 
-- ✔️ Единый стиль кода
-- ✔️ Все функции по работе с деревом должны находиться в пространстве имен
-- ✔️ Оформление `README.md` в соответствии с содержанием проекта
-- ✔️ Оформление `.gitignore` в соответствии с содержанием проекта
-- ✔️ Оформление `.dockerignore` в соответствии с содержанием проекта
-- ✔️ Использовать подходящий тип `LICENSE` для проекта и `NOTICE`
-- ✔️ Создать и использовать скрипты для автоматизации сборки проекта, примеров, тестов, пакетирования
-- ✔️ Обеспечить непрерывный процесс сборки проекта с использованием сервиса `GitHub Actions`
-- ✔️ Написать документацию к проекту с использованием инструмента **doxygen**
-- ✔️ Обеспечить размещение пакета проекта на сервисе `GitHub Release` при успешном слияние ветки `develop`
-- ✔️ Рефакторинг и поддержка лабораторных работ в процессной деятельности
-- ✔️ Все команды выполняться строго из `терминала/ консоли` без использования `WebUI` за исключениям работы с токенами, ключами и специфичными настройками
+- Единый стиль кода
+- Все функции по работе с деревом должны находиться в пространстве имен
+- Оформление `README.md` в соответствии с содержанием проекта
+- Оформление `.gitignore` в соответствии с содержанием проекта
+- Оформление `.dockerignore` в соответствии с содержанием проекта
+- Использовать подходящий тип `LICENSE` для проекта и `NOTICE`
+- Создать и использовать скрипты для автоматизации сборки проекта, примеров, тестов, пакетирования
+- Обеспечить непрерывный процесс сборки проекта с использованием сервиса `GitHub Actions`
+- Написать документацию к проекту с использованием инструмента **doxygen**
+- Обеспечить размещение пакета проекта на сервисе `GitHub Release` при успешном слияние ветки `develop`
+- Рефакторинг и поддержка лабораторных работ в процессной деятельности
+- Все команды выполняться строго из `терминала/ консоли` без использования `WebUI` за исключениям работы с токенами, ключами и специфичными настройками
 
 ***
 
@@ -98,13 +136,9 @@
 $ python3 -m venv .venv
 $ source .venv/bin/activate
 $ pip install -r requirements.txt
-$ ruff format .
-$ pip install mkdocs-include-markdown-plugin
 $ python -m mkdocs serve --livereload
 # or
 $ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
-
-$ pip show mkdocs # debug
 ```
 
 * Очистка локального репозитория
@@ -118,17 +152,11 @@ $ kill <PID>
 * Release
 
 ```bash
-$ git tag -a v1.0.0 -m “Основные изменения: …” 
+$ git tag -a v1.0.0 -m "v1.0.0"
 $ git push origin v1.0.0
 
-# Альтернатива для использования - это RELEASE_NOTES
-$ git tag -a v1.0.0 -m "v1.0.0"
-$ git add "Release Notes.md" && git commit -m "Update notes for v1.0.0" 
-
-$ git tag -a v1.1.0 -m "v1.1.0" # текущий релиз
-$ git push origin v1.1.0
-$ git tag -d v0.1.0 # удалить локальный тег
-$ git push origin :refs/tags/v0.1.0 # удалить тот же тег на GitHub
+$ git tag -d v0.1.0                    # удалить локальный тег
+$ git push origin :refs/tags/v0.1.0   # удалить тот же тег на GitHub
 ```
 
 * Локальное тестирование ci.yml
@@ -148,20 +176,20 @@ $ ACT_SKIP_CHOWN=true act push -j linter_checks_ruff_shell -b
 * Тестирование
 
 ```bash
-$ abandit -r labs
-$ aruff check .
+$ bandit -r labs
+$ ruff check .
 
-$ anpx eslint "docs/**/*.js" "javascripts/**/*.js"
-npx stylelint "docs/**/*.css" "stylesheets/**/*.css"
+$ npx eslint "docs/**/*.js" "javascripts/**/*.js"
+$ npx stylelint "docs/**/*.css" "stylesheets/**/*.css"
 
-$ agit ls-files '*.sh' \
+$ git ls-files '*.sh' \
   | grep -v 'labs/lab08/dast/zap_scan.sh' \
   | grep -v 'labs/lab07/sca/dependency-check.sh' \
   | grep -v 'labs/lab06/audit.sh' \
   | xargs -r shellcheck -e SC2086,SC1090,SC1091
 
-$ ayamllint .github/workflows mkdocs.yml
-$ anpx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" "README.md"
+$ yamllint .github/workflows mkdocs.yml
+$ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" "README.md"
 
 $ mkdocs build --strict --clean --config-file mkdocs.yml --site-dir /tmp/mkdocs-check
 ```

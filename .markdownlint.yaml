@@ -6,9 +6,13 @@ MD013:
   tables: false
 
 MD025:
-  front_matter_title: false
+  front_matter_title: ""
 
 MD041: false
+
+MD014: false
+
+MD032: false
 
 MD026:
   punctuation: ".,;:"

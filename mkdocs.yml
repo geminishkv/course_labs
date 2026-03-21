@@ -166,7 +166,6 @@ nav:
       - "Тест №3": tests/test03.md
       - "Тест №4": tests/test04.md
       - "Тест №5": tests/test05.md
-      - "Ответы": tests/answers.md
   - "Материалы":
       - "Примеры":
           - "Аналитические кейсы": materials/examples/exmpl.md

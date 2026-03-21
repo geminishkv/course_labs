@@ -4,17 +4,18 @@
 }
 
 .md-sidebar--primary .md-nav__link,
-.md-sidebar--primary .md-nav__link:visited {
+.md-sidebar--primary .md-nav__link:visited,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link,
+.md-sidebar--primary .md-nav__link--active {
   font-size: 0.7rem;
   color: #cc2200;
-  margin: 0.35rem 0;
+  margin: 0.25rem 0;
+  padding-left: 0.6rem;
 }
 
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 .md-sidebar--primary .md-nav__link--active {
   font-weight: 700;
-  color: #cc2200;
-  margin: 0.15rem 0;
 }
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {

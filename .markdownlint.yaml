@@ -8,6 +8,8 @@ MD013:
 MD025:
   front_matter_title: false
 
+MD041: false
+
 MD026:
   punctuation: ".,;:"
 

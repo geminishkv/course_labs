@@ -1,4 +1,3 @@
-# 
 
 {% include-markdown  "../../labs/lab09/README.md" %}
 

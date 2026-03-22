@@ -12,6 +12,8 @@ module.exports = {
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "length-zero-no-unit": null,
-    "declaration-property-value-no-unknown": null
+    "declaration-property-value-no-unknown": null,
+    "custom-property-pattern": null,
+    "property-no-vendor-prefix": null
   }
 };

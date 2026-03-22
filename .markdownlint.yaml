@@ -5,7 +5,11 @@ MD007: false
 MD009: false
 MD010: false
 MD012: false
-MD013: false
+MD013:
+  line_length: 100000
+  heading_line_length: 100000
+  code_block_line_length: 100000
+  tables: false
 MD014: false
 MD019: true
 MD022: false

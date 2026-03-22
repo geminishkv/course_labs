@@ -59,14 +59,11 @@ jobs:
           cd site
           zip -r "../site-${GITHUB_REF_NAME}.zip" .
 
-      - name: Set TAG env
-        run: echo "TAG=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
-
       - name: Extract release notes for tag from RELEASE_NOTES.md
         id: notes
         shell: bash
         run: |
-          TAG="${TAG}"
+          TAG="${GITHUB_REF_NAME}"
           FILE="RELEASE_NOTES.md"
 
           if [ ! -f "$FILE" ]; then
@@ -95,10 +92,10 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.TAG }}
-          name: ${{ env.TAG }}
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
           body: ${{ steps.notes.outputs.body }}
-          files: site-${{ env.TAG }}.zip
+          files: site-${{ github.ref_name }}.zip
           draft: false
           prerelease: false
         env:

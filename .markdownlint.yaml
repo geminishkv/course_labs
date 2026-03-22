@@ -3,20 +3,18 @@ default: true
 MD004: false
 MD007: false
 MD009: false
+MD010: false
 MD012: false
-MD013:
-  line_length: 140
-  heading_line_length: 120
-  code_block_line_length: 10000
-  tables: false
-
+MD013: false
 MD014: false
+MD019: true
+MD022: false
 MD025:
   front_matter_title: ""
-MD026:
-  punctuation: ".,;:"
+MD026: false
 MD029: false
 MD030: false
+MD031: false
 MD032: false
 MD033:
   allowed_elements:
@@ -28,7 +26,9 @@ MD033:
     - div
     - h1
     - h2
+    - h3
     - kbd
+    - p
     - a
     - table
     - thead
@@ -46,4 +46,8 @@ MD033:
     - script
     - hr
 
+MD034: false
+MD036: false
+MD040: false
 MD041: false
+MD047: true

@@ -104,16 +104,16 @@ jobs:
 
       - name: Lint JavaScript in docs
         run: |
-          if ls docs/**/*.js >/dev/null 2>&1; then
-            npx eslint "docs/**/*.js"
-          fi
-          if ls javascripts/**/*.js >/dev/null 2>&1; then
-            npx eslint "javascripts/**/*.js"
+          FILES=$(git ls-files 'docs/javascripts/*.js')
+          if [ -n "$FILES" ]; then
+            echo "$FILES" | xargs npx eslint
+          else
+            echo "No JS files found, skipping"
           fi
 
       - name: Lint CSS in docs
         run: |
-          npx stylelint "docs/**/*.css" "stylesheets/**/*.css"
+          npx stylelint "docs/stylesheets/**/*.css"
 
   dependency_audit_checks:
     runs-on: ubuntu-latest

@@ -1,16 +1,17 @@
+import hashlib
+import os
+import secrets
+import sqlite3
+
 from flask import (
     Flask,
-    request,
     make_response,
-    render_template_string,
     redirect,
+    render_template_string,
+    request,
     url_for,
 )
 from markupsafe import escape
-import sqlite3
-import os
-import hashlib
-import secrets
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = secrets.token_hex(32)  # Для подписи сессий
@@ -117,7 +118,7 @@ def search():
             "SELECT id, username, role FROM users WHERE username = ?", (username,)
         )
         rows = cur.fetchall()
-    except Exception as e:
+    except Exception:
         # Не раскрываем детали SQL ошибок
         pass
 
@@ -267,7 +268,7 @@ def files(subpath=""):
         return "<h2>Тип файла не разрешен</h2><a href='/'>Назад</a>", 403
 
     try:
-        with open(full_path, "r", encoding="utf-8", errors="ignore") as f:
+        with open(full_path, encoding="utf-8", errors="ignore") as f:
             content = f.read()
         return f"<pre>{escape(content)}</pre>"
     except Exception:

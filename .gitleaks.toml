@@ -1,0 +1,10 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Lab example files — intentionally contain test secrets"
+paths = [
+  "labs/lab07/vulnerable-app/.*",
+  "labs/lab08/vulnerable-app/.*",
+  "labs/lab08/dast/.*",
+]

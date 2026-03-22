@@ -5,7 +5,7 @@ import os
 import urllib.parse
 from xml.etree.ElementTree import Element, ElementTree, SubElement
 
-BASE_URL = "https://geminishkv.github.io/course_labs"
+BASE_URL = "https://course.geminishkv.tech"
 
 
 def main() -> None:

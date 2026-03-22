@@ -1,9 +1,9 @@
-from flask import Flask, request, make_response
-import sqlite3
-import os
-import subprocess
-import pickle
 import logging
+import os
+import sqlite3
+import subprocess
+
+from flask import Flask, make_response, request
 
 app = Flask(__name__)
 

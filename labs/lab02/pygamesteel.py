@@ -1,10 +1,9 @@
-import pygame
 import sys
-import os
+
+import pygame
 
 # Подключаем файл из первой лабораторной
 sys.path.insert(0, "/root/course_labs/labs/lab01")
-from typersteel import main as get_user_info
 import typer
 
 pygame.init()
@@ -23,7 +22,7 @@ def main(
 ):
     """Приветствие с использованием pygame и typer из первой лабораторной"""
     # Используем логику из первой лабораторной для формирования приветствия
-    if formal:
+    if formal:  # noqa: SIM108
         greeting = f"Добрый день, {name} {lastname}!"
     else:
         greeting = f"Привет, {name}!"

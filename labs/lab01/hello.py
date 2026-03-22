@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Hello AppSec World - приветственное приложение
 Демонстрация работы с Python для лабораторной работы
@@ -14,8 +13,8 @@ Hello AppSec World - приветственное приложение
 # Этот код был создан в первой версии hello.py с множеством функций
 # для демонстрации работы с Python и различными возможностями языка
 
-import sys
 import os
+import sys
 from datetime import datetime
 
 

@@ -7,8 +7,8 @@ print("[debug] python:", sys.executable)
 
 try:
     from odf.opendocument import OpenDocumentText
-    from odf.text import P, H
     from odf.style import Style, TextProperties
+    from odf.text import H, P
 
     HAS_ODF = True
     print("[debug] odf imported OK")
@@ -19,7 +19,7 @@ except ImportError as e:
 
 try:
     from openpyxl import Workbook
-    from openpyxl.styles import Font, PatternFill, Alignment
+    from openpyxl.styles import Alignment, Font, PatternFill
 
     HAS_OPENPYXL = True
 except ImportError:
@@ -28,7 +28,7 @@ except ImportError:
 
 
 def parse_zap_json(json_path: str) -> dict:
-    with open(json_path, "r") as f:
+    with open(json_path) as f:
         data = json.load(f)
 
     alerts = data.get("site", [{}])[0].get("alerts", [])

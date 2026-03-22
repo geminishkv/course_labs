@@ -76,7 +76,7 @@ tree ~/project 2>/dev/null || find ~/project -type f -exec ls -lh {} \;
 echo -e "\n=== Задание 4: Поиск IP адреса Ethernet ==="
 ETH_IP=$(ip addr show | grep -A 3 "eth\|ens\|enp" | grep "inet " | head -1 | awk '{print $2}' | cut -d/ -f1)
 echo "IP адрес Ethernet: $ETH_IP"
-if [ ! -z "$ETH_IP" ] && [ "$ETH_IP" != "" ]; then
+if [ -n "$ETH_IP" ]; then
     echo "--- nmap -sP $ETH_IP ---"
     nmap -sP $ETH_IP 2>&1 | head -20
 else

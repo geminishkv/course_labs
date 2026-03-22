@@ -50,6 +50,7 @@ ls -la nmapres.txt
 echo -e "\n=== Задание 11: Группы пользователей и права на каталоги ==="
 getent group | cut -d: -f1 | sort
 echo "--- Права на верхнеуровневые каталоги ---"
+# shellcheck disable=SC2012
 ls -ld /bin /sbin /dev /etc /lib /home /root /usr /var /tmp /proc /mnt /media /boot /sys 2>/dev/null | head -15
 
 echo -e "\n=== Задание 12: Права для файлов и директорий репозитория ==="

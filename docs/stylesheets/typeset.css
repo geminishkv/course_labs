@@ -26,7 +26,9 @@
 }
 
 .md-content h1,
-.md-content h2 {
+.md-content h2,
+.md-content h3 {
+  font-family: "Unbounded", "Roboto", sans-serif;
   color: #D51A1A;
 }
 
@@ -36,7 +38,7 @@
 
 .md-typeset {
   color: #000000;
-  font-family: var(--md-text-font, "Montserrat", system-ui, sans-serif);
+  font-family: var(--md-text-font, "Roboto", system-ui, sans-serif);
 }
 
 /* Lists */

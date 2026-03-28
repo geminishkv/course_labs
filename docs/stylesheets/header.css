@@ -105,3 +105,9 @@
   outline: 2px solid #F9B361;
   outline-offset: 2px;
 }
+
+/* поиск управляет своим фокусом сам */
+.md-search__form:focus-visible,
+.md-search__input:focus-visible {
+  outline: none;
+}

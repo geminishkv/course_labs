@@ -178,7 +178,7 @@ $ docker run hello-appsec-world
 
 - [ ] 6. Доработайте свой `python` скрипт подключаемыми библиотеками, далее их необходимо разместить в `requirements.txt`. Размещение библиотек в следующем формате:
 
-```
+```text
 flask==2.2.3
 requests==2.28.1
 ```
@@ -197,30 +197,30 @@ $ docker image pull geminishkv/hello-appsec-world
 $ docker inspect geminishkvdev/hello-appsec-world
 $ docker container create --name second hello-appsec-world
 
-``` 
+```
 
 - [ ] 9. Выведите на терминале и проанализируйте в консоли процессы, которые запущены, владельцев по пользователям
 
-```bash 
+```bash
  $ docker container run -it ubuntu /bin/bash
-``` 
+```
  
 - [ ] 10. Выведите оба контейнера first и second на терминал
 - [ ] 11. Перейдите в основной корень `lab05` и выведите на терминале, и проанализируйте
 
-```bash 
+```bash
 $ docker-compose up --build
-``` 
+```
 
 - [ ] 12. Откройте соседнее окно терминала и выведите на терминале
 
-```bash 
+```bash
 $ open -a "Google Chrome" http://localhost:8000
 ```
 
 - [ ] 13. Остановите работу `docker-compose`.
 
-```bash 
+```bash
 $ docker ps -a
 $ docker ps -q
 $ docker images

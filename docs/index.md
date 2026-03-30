@@ -12,6 +12,19 @@ description: Практический курс по прикладной без�
     <h1 class="hero-title">Application Security Course</h1>
     <p class="hero-sub">Практический курс по прикладной безопасности приложений</p>
     <p class="hero-typewriter" id="typewriter-target"></p>
+    <div class="hero-pills">
+      <a href="labs/lab01/" class="hero-pill">lab01</a>
+      <a href="labs/lab02/" class="hero-pill">lab02</a>
+      <a href="labs/lab03/" class="hero-pill">lab03</a>
+      <a href="labs/lab04/" class="hero-pill">lab04</a>
+      <a href="labs/lab05/" class="hero-pill">lab05</a>
+      <a href="labs/lab06/" class="hero-pill">lab06</a>
+      <a href="labs/lab07/" class="hero-pill">lab07</a>
+      <a href="labs/lab08/" class="hero-pill">lab08</a>
+      <a href="labs/lab09/" class="hero-pill">lab09</a>
+      <a href="labs/lab10/" class="hero-pill">lab10</a>
+      <a href="labs/pet_project/" class="hero-pill hero-pill--pet">pet</a>
+    </div>
   </div>
 </div>
 
@@ -71,19 +84,19 @@ description: Практический курс по прикладной без�
 
 ## Лабораторные работы
 
-| № | Лабораторная работа | Стек | Материалы |
-| --- | --- | --- | --- |
-| **lab01** | [GitSCM — подготовка рабочего окружения](labs/lab01.md) | `Git` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab01) |
-| **lab02** | [*nix — права доступа, управление процессами](labs/lab02.md) | `Linux` `Bash` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab02) |
-| **lab03** | [Nmap — сканирование сети и анализ уязвимостей](labs/lab03.md) | `Nmap` `Linux` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab03) |
-| **lab04** | [Анализ и определение мер снижения рисков ИБ](labs/lab04.md) | `Risk Analysis` | — |
-| **lab05** | [Docker — контейнеризация приложений](labs/lab05.md) | `Docker` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab05) |
-| **lab06** | [Docker CIS Benchmark — аудит Docker-хоста](labs/lab06.md) | `Docker` `CIS` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab06) |
-| **lab07** | [SAST и SCA — статический анализ и зависимости](labs/lab07.md) | `Semgrep` `Checkov` `OWASP DC` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab07) |
-| **lab08** | [DAST — динамическое тестирование уязвимого приложения](labs/lab08.md) | `OWASP ZAP` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab08) |
-| **lab09** | [DevSecOps CI/CD конвейер на GitHub Actions](labs/lab09.md) | `GH Actions` `Semgrep` `Trivy` `ZAP` | [→ repo](https://github.com/geminishkv/course_labs/tree/develop/labs/lab09) |
-| **lab10** | [Оценка анализа рисков ИБ — практика](labs/lab10.md) | `Risk Analysis` | — |
-| **pet** | [Pet-project — итоговая работа, полный AppSec/DevSecOps стек](labs/pet_project.md) | `Full stack` | — |
+<div class="lab-grid">
+<a class="lab-card" href="labs/lab01/"><div class="lab-card-num">01</div><div class="lab-card-body"><div class="lab-card-title">GitSCM — подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab02/"><div class="lab-card-num">02</div><div class="lab-card-body"><div class="lab-card-title">*nix — права доступа, управление процессами</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Bash</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab03/"><div class="lab-card-num">03</div><div class="lab-card-body"><div class="lab-card-title">Nmap — сканирование сети и анализ уязвимостей</div><div class="lab-card-tags"><span class="lab-tag">Nmap</span><span class="lab-tag">Linux</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab04/"><div class="lab-card-num">04</div><div class="lab-card-body"><div class="lab-card-title">Анализ и определение мер снижения рисков ИБ</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab05/"><div class="lab-card-num">05</div><div class="lab-card-body"><div class="lab-card-title">Docker — контейнеризация приложений</div><div class="lab-card-tags"><span class="lab-tag">Docker</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab06/"><div class="lab-card-num">06</div><div class="lab-card-body"><div class="lab-card-title">Docker CIS Benchmark — аудит Docker-хоста</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">CIS</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab07/"><div class="lab-card-num">07</div><div class="lab-card-body"><div class="lab-card-title">SAST и SCA — статический анализ и зависимости</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Checkov</span><span class="lab-tag">OWASP DC</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab08/"><div class="lab-card-num">08</div><div class="lab-card-body"><div class="lab-card-title">DAST — динамическое тестирование уязвимого приложения</div><div class="lab-card-tags"><span class="lab-tag">OWASP ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab09/"><div class="lab-card-num">09</div><div class="lab-card-body"><div class="lab-card-title">DevSecOps CI/CD конвейер на GitHub Actions</div><div class="lab-card-tags"><span class="lab-tag">GH Actions</span><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/lab10/"><div class="lab-card-num">10</div><div class="lab-card-body"><div class="lab-card-title">Оценка анализа рисков ИБ — практика</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card lab-card--pet" href="labs/pet_project/"><div class="lab-card-num">pet</div><div class="lab-card-body"><div class="lab-card-title">Pet-project — итоговая работа, полный AppSec/DevSecOps стек</div><div class="lab-card-tags"><span class="lab-tag">Full stack</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
 
 ---
 

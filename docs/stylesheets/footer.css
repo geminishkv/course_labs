@@ -9,7 +9,9 @@
   display: none;
 }
 
-.md-footer {
+.md-footer,
+.md-footer-meta,
+.md-footer__inner {
   font-family:
     "Roboto",
     system-ui,
@@ -18,6 +20,9 @@
     "Segoe UI",
     sans-serif;
   background-color: #1A1919;
+}
+
+.md-footer {
   border-top: 1px solid rgba(249, 179, 97, 0.15);
 }
 

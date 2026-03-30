@@ -31,13 +31,19 @@ img[src*="logo.jpg"] {
 }
 
 .hero-logo {
-  width: 100px;
-  height: 100px;
+  width: 128px;
+  height: 128px;
   flex-shrink: 0;
   object-fit: contain;
   filter: drop-shadow(0 4px 24px rgba(213, 26, 26, 0.45));
   position: relative;
   z-index: 1;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.hero-logo:hover {
+  filter: drop-shadow(0 6px 36px rgba(213, 26, 26, 0.75));
+  transform: scale(1.06);
 }
 
 .hero-content {
@@ -280,6 +286,237 @@ details.spoiler summary {
   background: #F9B361 !important;
   color: #1A1919 !important;
   text-decoration: none !important;
+}
+
+/* ══════════════════════════════════════════
+   Hero pills
+══════════════════════════════════════════ */
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.hero-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.63rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.18rem 0.5rem;
+  border-radius: 3px;
+  text-decoration: none !important;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.hero-pill:hover {
+  color: #F9B361 !important;
+  background: rgba(249, 179, 97, 0.1);
+  border-color: rgba(249, 179, 97, 0.3);
+  text-decoration: none !important;
+}
+
+.hero-pill--pet {
+  color: #F9B361 !important;
+  background: rgba(249, 179, 97, 0.08);
+  border-color: rgba(249, 179, 97, 0.25);
+}
+
+/* ══════════════════════════════════════════
+   Lab cards grid
+══════════════════════════════════════════ */
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 0.7rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.lab-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(213, 26, 26, 0.1);
+  border-left: 3px solid #D51A1A;
+  border-radius: 0 6px 6px 0;
+  background: #fafafa;
+  text-decoration: none !important;
+  color: inherit;
+  transition: border-left-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.lab-card:hover {
+  border-left-color: #F9B361;
+  background: rgba(249, 179, 97, 0.06);
+  transform: translateX(3px);
+  text-decoration: none !important;
+}
+
+.lab-card-num {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #D51A1A;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+}
+
+.lab-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.lab-card-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #1A1919;
+  line-height: 1.35;
+  margin-bottom: 0.3rem;
+}
+
+.lab-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.lab-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: rgba(213, 26, 26, 0.75);
+  background: rgba(213, 26, 26, 0.07);
+  border: 1px solid rgba(213, 26, 26, 0.13);
+  padding: 0.08rem 0.38rem;
+  border-radius: 3px;
+}
+
+.lab-card-arrow {
+  color: rgba(213, 26, 26, 0.3);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.lab-card:hover .lab-card-arrow {
+  color: #F9B361;
+  transform: translateX(2px);
+}
+
+.lab-card--pet {
+  border-left-color: #F9B361;
+  background: rgba(249, 179, 97, 0.03);
+}
+
+.lab-card--pet .lab-card-num {
+  color: #F9B361;
+}
+
+.lab-card--pet:hover {
+  border-left-color: #D51A1A;
+}
+
+/* ══════════════════════════════════════════
+   Lab page hero
+══════════════════════════════════════════ */
+.lab-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #1A1919 0%, #2d0a0a 60%, #1A1919 100%);
+  margin: 0.5rem -1.5rem 2rem;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(213, 26, 26, 0.2);
+}
+
+.lab-hero::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(213, 26, 26, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.lab-hero-num {
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: rgba(213, 26, 26, 0.2);
+  flex-shrink: 0;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
+}
+
+.lab-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.lab-hero-title {
+  font-family: "Unbounded", sans-serif !important;
+  color: #ffffff !important;
+  font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
+  font-weight: 700 !important;
+  margin: 0 0 0.5rem !important;
+  line-height: 1.2;
+}
+
+.lab-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.lab-hero--pet .lab-hero-num {
+  color: rgba(249, 179, 97, 0.35);
+}
+
+@media screen and (max-width: 768px) {
+  .lab-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.5rem 1.5rem;
+    margin: 0.5rem -1rem 1.5rem;
+  }
+
+  .lab-hero-num { font-size: 2rem; }
+
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════
+   Lab README included content
+══════════════════════════════════════════ */
+
+/* hide the README h1 — lab-hero already shows the title */
+.lab-readme > div[align="center"] h1,
+.lab-readme div[align="center"] h1 {
+  display: none;
+}
+
+/* badge block at top of each README */
+.lab-readme div[align="center"]:first-child {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1rem 0.85rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  line-height: 2;
 }
 
 /* ══════════════════════════════════════════

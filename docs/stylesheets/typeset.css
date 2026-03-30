@@ -27,9 +27,28 @@
 
 .md-content h1,
 .md-content h2,
-.md-content h3 {
+.md-content h3,
+.md-content h4,
+.md-content h5,
+.md-content h6,
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
   font-family: "Unbounded", "Roboto", sans-serif;
   color: #D51A1A;
+}
+
+.md-typeset p,
+.md-typeset li,
+.md-typeset td,
+.md-typeset th,
+.md-typeset blockquote,
+.md-typeset dt,
+.md-typeset dd {
+  font-family: "Roboto", system-ui, sans-serif;
 }
 
 #typewriter-target {
@@ -140,10 +159,24 @@
 
 /* ── Inline code ── */
 .md-typeset code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
   background-color: rgba(213, 26, 26, 0.07);
   color: #B51515;
   border-radius: 3px;
   padding: 0.05em 0.3em;
+}
+
+/* ── Code blocks — let Pygments monokai handle colours ── */
+.md-typeset pre {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+.md-typeset pre > code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 0;
+  padding: 0;
 }
 
 /* ── Text selection ── */
@@ -156,4 +189,15 @@
 .md-search-result mark {
   color: #D51A1A;
   background-color: rgba(249, 179, 97, 0.25);
+}
+
+/* ── Heading anchor links ── */
+.md-typeset .headerlink {
+  color: rgba(213, 26, 26, 0.25);
+  transition: color 0.18s ease;
+}
+
+.md-typeset .headerlink:hover {
+  color: #D51A1A;
+  text-decoration: none !important;
 }

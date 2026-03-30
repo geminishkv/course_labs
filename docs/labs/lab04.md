@@ -15,5 +15,3 @@
 </div>
 
 ***
-
-![Логотип](../artifacts/assets/logotypemd.jpg)

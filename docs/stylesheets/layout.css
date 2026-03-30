@@ -35,14 +35,14 @@ img[src*="logo.jpg"] {
   height: 128px;
   flex-shrink: 0;
   object-fit: contain;
-  filter: drop-shadow(0 4px 24px rgba(213, 26, 26, 0.45));
+  filter: drop-shadow(0 0 32px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 64px rgba(213, 26, 26, 0.5));
   position: relative;
   z-index: 1;
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .hero-logo:hover {
-  filter: drop-shadow(0 6px 36px rgba(213, 26, 26, 0.75));
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 80px rgba(213, 26, 26, 0.7));
   transform: scale(1.06);
 }
 
@@ -517,6 +517,89 @@ details.spoiler summary {
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   line-height: 2;
+}
+
+/* ══════════════════════════════════════════
+   Risk / measure two-column grid
+══════════════════════════════════════════ */
+.risk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.risk-col-header {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.85rem;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0.4rem;
+}
+
+.risk-col-header--urgent {
+  background: rgba(213, 26, 26, 0.1);
+  color: #D51A1A;
+  border-left: 3px solid #D51A1A;
+}
+
+.risk-col-header--nonurgent {
+  background: rgba(249, 179, 97, 0.1);
+  color: #c48a20;
+  border-left: 3px solid #F9B361;
+}
+
+.risk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid rgba(213, 26, 26, 0.08);
+  border-left: 3px solid #D51A1A;
+  border-radius: 0 4px 4px 0;
+  background: #fafafa;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+  transition: background 0.15s ease, border-left-color 0.15s ease;
+}
+
+.risk-item:hover {
+  background: rgba(213, 26, 26, 0.04);
+  border-left-color: #F9B361;
+}
+
+.risk-item--nonurgent {
+  border-left-color: #F9B361;
+  border-color: rgba(249, 179, 97, 0.15);
+}
+
+.risk-item--nonurgent:hover {
+  background: rgba(249, 179, 97, 0.07);
+  border-left-color: #D51A1A;
+}
+
+.risk-item-num {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #D51A1A;
+  flex-shrink: 0;
+  min-width: 1.2rem;
+  padding-top: 0.05rem;
+}
+
+.risk-item--nonurgent .risk-item-num {
+  color: #c48a20;
+}
+
+@media screen and (max-width: 768px) {
+  .risk-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ══════════════════════════════════════════

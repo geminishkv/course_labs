@@ -117,4 +117,4 @@ lab10
 
 Copyright (c) 2026 Elijah S Shmakov
 
-![Logo](../../assets/logotype/logo.jpg)
+![Logo](../../docs/artifacts/assets/logotypemd.jpg)

@@ -3,21 +3,13 @@ hide:
   - toc
 
 title: Описание основных типов лицензий Open Source
-description: Описание лицензий и их типов для open-source инструментов.
----
-
----
-hide:
-  - toc
-
-title: Описание основных типов лицензий
 description: Описание популярных лицензий, их типов и отнесения к свободному/проприетарному ПО.
 ---
 
-> Note!
-> 
-> Важно: данная таблица носит **справочный характер** и не является юридической консультацией.  
-> Для принятия решений по лицензированию в продуктах и контрактах рекомендуется консультироваться с юристами.
+<div style="display:flex; align-items:flex-start; gap:0.65rem; padding:0.75rem 1rem; background:rgba(249,179,97,0.08); border-left:3px solid #F9B361; border-radius:0 6px 6px 0; margin-bottom:1.5rem; font-size:0.82rem; color:#7a5c10;">
+  <span style="font-family:'Unbounded',sans-serif; font-size:0.62rem; font-weight:700; color:#c48a20; flex-shrink:0; padding-top:0.1rem;">NOTE</span>
+  <span>Данная таблица носит <strong>справочный характер</strong> и не является юридической консультацией. Для принятия решений по лицензированию в продуктах и контрактах рекомендуется консультироваться с юристами.</span>
+</div>
 
 <table>
   <thead>

@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div style="text-align:center;"><img src="../../../artifacts/exmpls/risk-analysis.png" alt="table1"></div>
+<div style="text-align:center;"><img src="/artifacts/exmpls/risk-analysis.png" alt="risk-analysis"></div>
 
 ## Vulnerability Description NC (HIGH): 
 Нарушение требований к защите КИИ (к применяемым программным средствам, к информационному взаимодействию с иными информационными системами, информационно-телекоммуникационными сетями и т.д.) в следствии нотификаций инфраструктурных логов в telegram чат - незащищенный канал передачи данных, который не контролируется средствами и методами СЗИ.

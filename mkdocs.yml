@@ -13,7 +13,7 @@ edit_uri: edit/develop/docs/
 theme:
   name: material
   language: ru
-  logo: artifacts/assets/logo.png
+  logo: artifacts/assets/logo.svg
   icon:
     menu: fontawesome/solid/bars-staggered
     top: fontawesome/solid/angles-up
@@ -189,10 +189,9 @@ nav:
           - ".dockerignore": artifacts/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
           - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
       - "Приложение": APPENDIX.md
-  - "Блог": channel.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md
   - "Политика безопасности": Security.md
-  - "AppSec Toolchain Map": "https://geminishkv.github.io/oss_toolchainmap/research-notes/"
+  - "Application Security Toolchain Map": "https://geminishkv.github.io/oss_toolchainmap/"
   - "FinDevSecOps": "https://findevsecops.ru/"
   - "АО ЛАНИТ": "https://www.lanit.ru"

@@ -7,7 +7,7 @@ description: Практический курс по прикладной без�
 ---
 
 <div class="hero-section">
-  <img src="artifacts/assets/logo-hero.png" class="hero-logo" alt="AppSecTA">
+  <img src="artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
     <h1 class="hero-title">Application Security Course</h1>
     <p class="hero-sub">Практический курс по прикладной безопасности приложений</p>
@@ -132,7 +132,7 @@ description: Практический курс по прикладной без�
 
 <div class="tg-channel-card">
   <div class="tg-channel-header">
-    <img src="artifacts/assets/logo.png" class="tg-channel-logo" alt="AppSecTA">
+    <img src="artifacts/assets/logo.svg" class="tg-channel-logo" alt="AppSecTA">
     <div class="tg-channel-info">
       <span class="tg-channel-name">AppSECT.A.</span>
       <span class="tg-channel-desc">AppSec · DevSecOps · ИБ</span>

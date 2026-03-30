@@ -52,6 +52,18 @@
   align-items: center;
 }
 
+.md-header__button.md-logo,
+.md-header__button.md-logo:hover,
+.md-header__button.md-logo:focus,
+.md-header__button.md-logo:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  opacity: 1 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
 .md-header .md-logo img {
   height: 32px;
   width: auto;

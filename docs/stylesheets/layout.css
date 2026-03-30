@@ -2,6 +2,106 @@ img[src*="logo.jpg"] {
   display: none;
 }
 
+/* ══════════════════════════════════════════
+   Hero section
+══════════════════════════════════════════ */
+.hero-section {
+  background: linear-gradient(135deg, #1A1919 0%, #2d0a0a 60%, #1A1919 100%);
+  margin: 0.5rem -1.5rem 2.5rem;
+  padding: 3.5rem 3rem 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* радиальный красный glow сверху */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(213, 26, 26, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-logo {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(213, 26, 26, 0.45));
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: "Unbounded", "Roboto", sans-serif !important;
+  font-size: clamp(1.8rem, 4vw, 3rem) !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.hero-typewriter {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #F9B361;
+  letter-spacing: 0.04em;
+  min-height: 1.6em;
+  margin: 0.2rem 0 0;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 1.5rem 2rem;
+    gap: 1.5rem;
+    margin: 0 -1rem 2rem;
+  }
+
+  .hero-logo { width: 72px; height: 72px; }
+
+  .hero-title { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
+}
+
+/* ══════════════════════════════════════════
+   Content headings
+══════════════════════════════════════════ */
+.md-typeset h2 {
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid rgba(213, 26, 26, 0.18);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ══════════════════════════════════════════
+   Tables
+══════════════════════════════════════════ */
 .md-typeset__table {
   width: 100%;
 }
@@ -16,14 +116,19 @@ img[src*="logo.jpg"] {
 }
 
 .md-typeset table th {
-  background-color: #D51A1A;
+  background-color: #1A1919;
   color: #ffffff;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .md-typeset table th,
 .md-typeset table td {
-  border-right: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 0.4rem 0.6rem;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.55rem 0.75rem;
 }
 
 .md-typeset table th:last-child,
@@ -31,31 +136,60 @@ img[src*="logo.jpg"] {
   border-right: none;
 }
 
+.md-typeset table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
 .md-typeset__table tbody tr:nth-child(even) {
   background-color: #f9fafb;
 }
 
+.md-typeset table tbody tr:hover {
+  background-color: rgba(249, 179, 97, 0.12);
+}
+
+/* ══════════════════════════════════════════
+   Layout: tg-layout + widget
+══════════════════════════════════════════ */
 details.spoiler summary {
   cursor: pointer;
   font-weight: 600;
 }
 
-.tg-widget {
-  margin-top: 1rem;
-}
-
 .tg-layout {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .tg-layout-main {
   flex: 1 1 auto;
+  min-width: 0;
 }
 
 .tg-layout-side {
   flex: 0 0 340px;
+}
+
+.tg-widget {
+  position: sticky;
+  top: 4.5rem;
+  flex: 0 0 320px;
+  background: #fafafa;
+  border: 1px solid rgba(213, 26, 26, 0.12);
+  border-top: 3px solid #D51A1A;
+  border-radius: 0 0 8px 8px;
+  padding: 1.25rem 1rem 1rem;
+}
+
+.tg-widget h3 {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: #D51A1A !important;
+  margin: 0 0 0.85rem !important;
+  border-bottom: none !important;
 }
 
 @media screen and (max-width: 960px) {
@@ -63,11 +197,94 @@ details.spoiler summary {
     flex-direction: column;
   }
 
-  .tg-layout-side {
+  .tg-widget {
+    position: static;
     flex: 0 0 auto;
+    width: 100%;
+    max-width: 340px;
   }
 }
 
+/* ══════════════════════════════════════════
+   Telegram channel card
+══════════════════════════════════════════ */
+.tg-channel-card {
+  background: linear-gradient(135deg, #1A1919 0%, #2a0808 100%);
+  border-radius: 6px;
+  padding: 0.9rem 0.85rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid rgba(213, 26, 26, 0.2);
+}
+
+.tg-channel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.tg-channel-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: rgba(213, 26, 26, 0.15);
+  padding: 4px;
+}
+
+.tg-channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.tg-channel-name {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tg-channel-desc {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tg-channel-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  background: #D51A1A;
+  color: #ffffff !important;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none !important;
+  border-radius: 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tg-channel-btn:hover {
+  background: #F9B361 !important;
+  color: #1A1919 !important;
+  text-decoration: none !important;
+}
+
+/* ══════════════════════════════════════════
+   Misc
+══════════════════════════════════════════ */
 .my-list li {
   margin-left: 5rem;
 }

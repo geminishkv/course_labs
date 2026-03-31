@@ -603,6 +603,13 @@ details.spoiler summary {
 }
 
 /* ══════════════════════════════════════════
+   Home page — hide integrated TOC in left nav
+══════════════════════════════════════════ */
+body.page--home .md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav {
+  display: none !important;
+}
+
+/* ══════════════════════════════════════════
    Misc
 ══════════════════════════════════════════ */
 .my-list li {

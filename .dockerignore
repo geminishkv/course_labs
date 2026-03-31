@@ -29,6 +29,8 @@ venv/
 
 # Node.js
 node_modules/
+package.json
+package-lock.json
 
 # MkDocs source & built output
 docs/
@@ -74,11 +76,10 @@ RELEASE_NOTES.md
 LICENSE.md
 mkdocs.yml
 requirements.txt
-ruff.toml
 mypy.ini
 eslint.config.js
 stylelint.config.cjs
-sitemap.xml
+hooks.py
 scripts/
 assets/
 

@@ -1,0 +1,45 @@
+# AppSec Course
+
+> Практический курс по прикладной безопасности приложений (Application Security).
+> Лабораторные работы, материалы и чек-листы по AppSec, DevSecOps, OWASP Top 10.
+> Автор: Илья Шмаков (geminishkv) · https://course.geminishkv.tech
+
+## О курсе
+
+Учебный репозиторий для разработчиков и инженеров ИБ. Охватывает полный стек практик:
+Git, Linux, Docker, SAST, SCA, DAST, CI/CD, анализ рисков, OWASP Top 10.
+Каждая лабораторная работа — самостоятельный мини-проект с отчётом.
+
+## Лабораторные работы
+
+- [Lab 01 — GitSCM](https://course.geminishkv.tech/labs/lab01/): настройка Git, первый репозиторий
+- [Lab 02 — Linux/*nix](https://course.geminishkv.tech/labs/lab02/): права доступа, управление процессами
+- [Lab 03 — Nmap](https://course.geminishkv.tech/labs/lab03/): сканирование сети, анализ уязвимостей
+- [Lab 04 — Risk Analysis](https://course.geminishkv.tech/labs/lab04/): оценка и снижение рисков ИБ
+- [Lab 05 — Docker](https://course.geminishkv.tech/labs/lab05/): контейнеризация приложений
+- [Lab 06 — Docker CIS Benchmark](https://course.geminishkv.tech/labs/lab06/): аудит безопасности Docker
+- [Lab 07 — SAST/SCA](https://course.geminishkv.tech/labs/lab07/): Semgrep, Checkov, OWASP Dependency Check
+- [Lab 08 — DAST](https://course.geminishkv.tech/labs/lab08/): OWASP ZAP, динамическое тестирование
+- [Lab 09 — DevSecOps CI/CD](https://course.geminishkv.tech/labs/lab09/): GitHub Actions, Trivy, ZAP
+- [Lab 10 — Risk Analysis (итог)](https://course.geminishkv.tech/labs/lab10/): итоговая оценка рисков
+
+## Материалы
+
+- [OWASP Top 10 CI/CD Risks](https://course.geminishkv.tech/materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/)
+- [Аутентификация — OWASP](https://course.geminishkv.tech/materials/OWASPTOP10/Authentication/)
+- [Авторизация — OWASP](https://course.geminishkv.tech/materials/OWASPTOP10/Authorization/)
+- [Лицензии Open Source](https://course.geminishkv.tech/licenses/)
+- [Классификация AppSec инструментов](https://course.geminishkv.tech/appsec_tt/)
+- [Приложение: команды и справочник](https://course.geminishkv.tech/APPENDIX/)
+
+## Чит-листы
+
+- [GitHub CLI](https://course.geminishkv.tech/artifacts/cheatsheet/CHEATSHEET_GH_CLI/)
+- [Git SCM](https://course.geminishkv.tech/artifacts/cheatsheet/CHEATSHEET_GIT/)
+- [Docker](https://course.geminishkv.tech/artifacts/cheatsheet/CHEATSHEET_DOCKER/)
+
+## Контакты
+
+- GitHub: https://github.com/geminishkv
+- Telegram: https://t.me/shmakovis_appsec
+- Email: shmakovis@inbox.ru

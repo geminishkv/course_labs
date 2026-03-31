@@ -3,42 +3,60 @@
 {% block extrahead %}
   {{ super() }}
 
+  {% if page %}
   {% set page_title = page.meta.title if page.meta.title else page.title %}
   {% set page_desc = page.meta.description if page.meta.description else config.site_description %}
-  {% set page_url = page.canonical_url %}
+
+  <!-- Author -->
+  <meta name="author" content="{{ config.site_author }}">
 
   <!-- Keywords -->
   {% if page.meta.keywords %}
   <meta name="keywords" content="{{ page.meta.keywords }}">
   {% endif %}
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="{{ config.site_name }}">
-  <meta property="og:title" content="{{ page_title | striptags }}">
-  <meta property="og:description" content="{{ page_desc }}">
-  <meta property="og:url" content="{{ page_url }}">
-  <meta property="og:locale" content="ru_RU">
-  {% if config.extra.og_image %}
-  <meta property="og:image" content="{{ config.extra.og_image }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{{ config.site_name }}">
-  {% endif %}
-
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page_title | striptags }}">
   <meta name="twitter:description" content="{{ page_desc }}">
-  {% if config.extra.og_image %}
-  <meta name="twitter:image" content="{{ config.extra.og_image }}">
-  {% endif %}
   {% if config.extra.twitter_handle %}
   <meta name="twitter:site" content="{{ config.extra.twitter_handle }}">
   <meta name="twitter:creator" content="{{ config.extra.twitter_handle }}">
   {% endif %}
 
-  <!-- Canonical -->
-  <link rel="canonical" href="{{ page_url }}">
+  <!-- Open Graph: locale + site_name -->
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+
+  <!-- JSON-LD: WebPage structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{% if page.is_homepage %}WebSite{% else %}WebPage{% endif %}",
+    "name": "{{ page_title | striptags | e }}",
+    "description": "{{ page_desc | e }}",
+    "url": "{{ page.canonical_url }}",
+    "inLanguage": "ru",
+    "author": {
+      "@type": "Person",
+      "name": "{{ config.site_author }}",
+      "url": "https://geminishkv.tech"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ config.site_name }}",
+      "url": "{{ config.site_url }}"
+    }{% if page.is_homepage %},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "{{ config.site_url }}?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }{% endif %}
+  }
+  </script>
+  {% endif %}
 
 {% endblock %}

@@ -42,6 +42,12 @@ theme:
 
 plugins:
   - search
+  - social:
+      cards: true
+      cards_layout_options:
+        background_color: "#1A1919"
+        color: "#ffffff"
+        font_family: Roboto
   - meta-descriptions
   - macros
   - mkdocs-pdf
@@ -126,7 +132,6 @@ extra_javascript:
   - javascripts/home-toc.js
 
 extra:
-  og_image: https://course.geminishkv.tech/artifacts/assets/og-cover.png
   twitter_handle: "@geminishkv"
   social:
     - icon: fontawesome/brands/github

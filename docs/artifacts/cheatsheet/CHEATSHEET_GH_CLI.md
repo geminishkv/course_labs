@@ -3,6 +3,13 @@ hide:
   - toc
 ---
 
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">GitHub CLI</h1>
+    <p class="hero-sub">Команды и флаги gh</p>
+  </div>
+</div>
+
 <!-- markdownlint-disable MD013 -->
 <div align="center">
 <h1><a id="intro">CheatSheet — GitHub CLI</a><br></h1>

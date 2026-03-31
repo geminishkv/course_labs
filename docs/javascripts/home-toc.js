@@ -1,16 +1,3 @@
-(function () {
-  function applyHomeState() {
-    document.body.classList.toggle('page--home', !!document.querySelector('.hero-section'));
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    applyHomeState();
-
-    // <title> is reliably replaced on every instant navigation in MkDocs Material.
-    // Observing it as a childList change on document.head catches all page switches.
-    new MutationObserver(function () {
-      // Defer one tick so the new page content is already in the DOM.
-      requestAnimationFrame(applyHomeState);
-    }).observe(document.head, { childList: true });
-  });
-})();
+// Integrated TOC in the primary sidebar is hidden globally via CSS
+// (.md-sidebar--primary .md-nav--secondary { display: none }).
+// This file is kept as a placeholder.

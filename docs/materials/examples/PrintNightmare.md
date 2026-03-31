@@ -3,6 +3,13 @@ hide:
   - toc
 ---
 
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">PrintNightmare</h1>
+    <p class="hero-sub">Анализ уязвимости Windows Print Spooler (CVE-2021-34527)</p>
+  </div>
+</div>
+
 ## Введение
 
 Исследователи из **Sangfor** опубликовали на `GitHub` техническое описание `CVE-2021-1675`, которая вытекает в `CVE-2021-34527` -> `CVE-2021-36958` -> `CVE-2021-1678` и `PoC` в открытом доступе. Ошибку назвали `PrintNightmare`, представляет дырку в диспетчере очереди печати `spoolsv.exe`. По умолчанию `Print Spooler` включен на всех машинах, за исключением `Windows Server Core`.

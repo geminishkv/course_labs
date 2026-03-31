@@ -3,16 +3,12 @@ title: Тест №5
 description: Тестовое задание №5 по курсу AppSec — 10 вопросов по Git, Linux, Nmap, Docker, DAST и рискам ИБ.
 ---
 
-<!-- markdownlint-disable MD013 -->
-<div align="center">
-<h1><a id="intro">Тест №5</a><br></h1>
-<img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt="RA">
-<img src="https://img.shields.io/badge/AppSec-2448a2" alt="AppSec">
-<img src="https://img.shields.io/badge/Вопросов-10-d4a520" alt="10 questions">
-<img src="https://img.shields.io/badge/Темы-Git_·_Linux_·_Nmap_·_Docker_·_DAST_·_Риски-cc2200" alt="Topics">
-<img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge">
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Тест №5</h1>
+    <p class="hero-sub">Git · Linux · Nmap · Docker · DAST · Risk Analysis</p>
+  </div>
 </div>
-<!-- markdownlint-enable MD013 -->
 
 ***
 

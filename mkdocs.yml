@@ -193,6 +193,6 @@ nav:
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md
   - "Политика безопасности": Security.md
-  - "Application Security Toolchain Map": "https://geminishkv.github.io/oss_toolchainmap/"
+  - "Application Security Toolchain Map": "https://findevsecops.github.io/oss_toolchainmap/"
   - "FinDevSecOps": "https://findevsecops.ru/"
   - "АО ЛАНИТ": "https://www.lanit.ru"

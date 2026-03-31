@@ -6,6 +6,14 @@ title: Описание проекта для курса AppSec
 description: Описывают принципы, структура и каких целей достигает курс лабораторных работ по AppSec.
 ---
 
+<div class="hero-section">
+  <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
+  <div class="hero-content">
+    <h1 class="hero-title">О проекте</h1>
+    <p class="hero-sub">Принципы, цели и структура курса AppSec</p>
+  </div>
+</div>
+
 Лабораторные работы по курсам для AppSec, Risk Analysis, Securty Champion: Toolchain, Orchestration, CI/CD, UML, etc.
 
 ## Описание

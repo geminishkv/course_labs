@@ -6,6 +6,13 @@ title: Приложения для курса AppSec
 description: Полезные материалы по командам и их описанию для лабораторных работ по AppSec
 ---
 
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Приложение</h1>
+    <p class="hero-sub">Команды и утилиты для лабораторных работ</p>
+  </div>
+</div>
+
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">

@@ -603,9 +603,10 @@ details.spoiler summary {
 }
 
 /* ══════════════════════════════════════════
-   Home page — hide integrated TOC in left nav
+   Hide integrated TOC (md-nav--secondary) in left nav on all pages
+   toc.integrate injects TOC as .md-nav--secondary inside the primary sidebar
 ══════════════════════════════════════════ */
-body.page--home .md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav {
+.md-sidebar--primary .md-nav--secondary {
   display: none !important;
 }
 

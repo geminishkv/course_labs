@@ -3,6 +3,13 @@ hide:
   - toc
 ---
 
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Risk Analysis</h1>
+    <p class="hero-sub">Оценка и управление рисками информационной безопасности</p>
+  </div>
+</div>
+
 <div style="text-align:center;"><img src="/artifacts/exmpls/risk-analysis.png" alt="risk-analysis"></div>
 
 ## Vulnerability Description NC (HIGH): 

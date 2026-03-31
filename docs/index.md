@@ -13,19 +13,6 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
     <h1 class="hero-title">Application Security Course</h1>
     <p class="hero-sub">Практический курс по прикладной безопасности приложений</p>
     <p class="hero-typewriter" id="typewriter-target"></p>
-    <div class="hero-pills">
-      <a href="labs/lab01/" class="hero-pill">lab01</a>
-      <a href="labs/lab02/" class="hero-pill">lab02</a>
-      <a href="labs/lab03/" class="hero-pill">lab03</a>
-      <a href="labs/lab04/" class="hero-pill">lab04</a>
-      <a href="labs/lab05/" class="hero-pill">lab05</a>
-      <a href="labs/lab06/" class="hero-pill">lab06</a>
-      <a href="labs/lab07/" class="hero-pill">lab07</a>
-      <a href="labs/lab08/" class="hero-pill">lab08</a>
-      <a href="labs/lab09/" class="hero-pill">lab09</a>
-      <a href="labs/lab10/" class="hero-pill">lab10</a>
-      <a href="labs/pet_project/" class="hero-pill hero-pill--pet">pet</a>
-    </div>
   </div>
 </div>
 

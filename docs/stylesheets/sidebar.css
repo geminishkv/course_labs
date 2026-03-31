@@ -6,7 +6,7 @@
 
 .md-sidebar--primary .md-nav__item {
   margin: 0;
-  padding: 0.3rem 0;
+  padding: 0.15rem 0;
 }
 
 .md-sidebar--primary .md-nav__link,
@@ -14,10 +14,13 @@
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 .md-sidebar--primary .md-nav__link--active {
   font-size: 0.72rem;
-  line-height: 1.5;
+  line-height: 1.25;
   color: #D51A1A;
   margin: 0;
   padding-left: 0.6rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  white-space: normal;
 }
 
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,

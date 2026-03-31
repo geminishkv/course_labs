@@ -6,10 +6,11 @@
   document.addEventListener('DOMContentLoaded', function () {
     applyHomeState();
 
-    // MkDocs Material instant navigation replaces .md-content__inner children on page switch
-    var inner = document.querySelector('.md-content__inner');
-    if (inner) {
-      new MutationObserver(applyHomeState).observe(inner, { childList: true });
-    }
+    // <title> is reliably replaced on every instant navigation in MkDocs Material.
+    // Observing it as a childList change on document.head catches all page switches.
+    new MutationObserver(function () {
+      // Defer one tick so the new page content is already in the DOM.
+      requestAnimationFrame(applyHomeState);
+    }).observe(document.head, { childList: true });
   });
 })();

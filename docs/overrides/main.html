@@ -5,7 +5,7 @@
 
   {% if page %}
   {% set page_title = page.meta.title if page.meta.title else page.title %}
-  {% set page_desc = page.meta.description if page.meta.description else config.site_description %}
+  {% set page_desc  = page.meta.description if page.meta.description else config.site_description %}
 
   <!-- Author -->
   <meta name="author" content="{{ config.site_author }}">
@@ -20,15 +20,17 @@
   <meta name="twitter:title" content="{{ page_title | striptags }}">
   <meta name="twitter:description" content="{{ page_desc }}">
   {% if config.extra.twitter_handle %}
-  <meta name="twitter:site" content="{{ config.extra.twitter_handle }}">
+  <meta name="twitter:site"    content="{{ config.extra.twitter_handle }}">
   <meta name="twitter:creator" content="{{ config.extra.twitter_handle }}">
   {% endif %}
 
-  <!-- Open Graph: locale + site_name -->
-  <meta property="og:locale" content="ru_RU">
+  <!-- Open Graph: locale + site_name (social plugin injects og:image/title/description) -->
+  <meta property="og:locale"    content="ru_RU">
   <meta property="og:site_name" content="{{ config.site_name }}">
 
-  <!-- JSON-LD: WebPage structured data -->
+  <!-- ─── JSON-LD ────────────────────────────────────────────────────────── -->
+
+  <!-- 1. WebPage / WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,8 +41,8 @@
     "inLanguage": "ru",
     "author": {
       "@type": "Person",
-      "name": "{{ config.site_author }}",
-      "url": "https://geminishkv.tech"
+      "@id": "https://geminishkv.tech/#person",
+      "name": "{{ config.site_author }}"
     },
     "publisher": {
       "@type": "Organization",
@@ -57,6 +59,85 @@
     }{% endif %}
   }
   </script>
+
+  <!-- 2. BreadcrumbList -->
+  {% if not page.is_homepage %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "{{ config.site_name }}",
+        "item": "{{ config.site_url }}"
+      }{% if page.parent %},{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ page.parent.title | e }}"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page_title | striptags | e }}",
+        "item": "{{ page.canonical_url }}"
+      }{% else %},{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ page_title | striptags | e }}",
+        "item": "{{ page.canonical_url }}"
+      }{% endif %}
+    ]
+  }
+  </script>
+  {% endif %}
+
+  <!-- 3. Person — личный бренд (только главная страница) -->
+  {% if page.is_homepage %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://geminishkv.tech/#person",
+    "name": "Elijah S Shmakov",
+    "alternateName": ["geminishkv", "Илья Шмаков"],
+    "url": "https://geminishkv.tech",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg",
+      "width": 400,
+      "height": 400
+    },
+    "jobTitle": "Application Security Engineer",
+    "description": "AppSec / DevSecOps инженер. Разработчик практического курса по прикладной безопасности приложений, Security Champion, OWASP-практик.",
+    "knowsAbout": [
+      "Application Security",
+      "DevSecOps",
+      "OWASP Top 10",
+      "SAST",
+      "DAST",
+      "SCA",
+      "SBOM",
+      "Risk Analysis",
+      "Docker Security",
+      "CI/CD Security",
+      "GitHub Actions"
+    ],
+    "sameAs": [
+      "https://github.com/geminishkv",
+      "https://t.me/shmakovis_appsec",
+      "https://www.linkedin.com/in/geminishkvdev",
+      "https://instagram.com/geminishkv",
+      "https://hub.docker.com/u/geminishkvdev"
+    ],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ config.site_url }}"
+    }
+  }
+  </script>
+  {% endif %}
+
   {% endif %}
 
 {% endblock %}

@@ -110,6 +110,9 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.smartsymbols
 
+hooks:
+  - hooks.py
+
 watch:
   - docs
 

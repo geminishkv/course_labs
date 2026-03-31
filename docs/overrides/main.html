@@ -6,6 +6,16 @@
   {% if page %}
   {% set page_title = page.meta.title if page.meta.title else page.title %}
   {% set page_desc  = page.meta.description if page.meta.description else config.site_description %}
+  {% set is_release = page.file.src_path == "RELEASE_NOTES.md" %}
+
+  <!-- ─── Preconnect / Resource hints (Core Web Vitals / LCP) ─────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://github.com">
+
+  <!-- ─── Hreflang (сигнал: сайт только на русском) ───────────────────────── -->
+  <link rel="alternate" hreflang="ru"      href="{{ page.canonical_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.canonical_url }}">
 
   <!-- ─── Верификация поисковиков ──────────────────────────────────────────── -->
   {% if config.extra.yandex_verification %}
@@ -24,13 +34,12 @@
   <meta name="keywords" content="{{ page.meta.keywords }}">
   {% endif %}
 
-  <!-- ─── Open Graph (социальные сети + Яндекс читает og:) ─────────────────── -->
+  <!-- ─── Open Graph ───────────────────────────────────────────────────────── -->
   <meta property="og:locale"    content="ru_RU">
   <meta property="og:site_name" content="{{ config.site_name }}">
-  <!-- article:author нужен Яндексу для атрибуции автора -->
   {% if not page.is_homepage %}
-  <meta property="article:author"     content="https://github.com/geminishkv">
-  <meta property="article:publisher"  content="https://course.geminishkv.tech">
+  <meta property="article:author"    content="https://github.com/geminishkv">
+  <meta property="article:publisher" content="https://course.geminishkv.tech">
   {% endif %}
 
   <!-- ─── Twitter / X Card ─────────────────────────────────────────────────── -->
@@ -81,7 +90,7 @@
   }
   </script>
 
-  <!-- 2. BreadcrumbList (Яндекс отображает хлебные крошки в сниппете) -->
+  <!-- 2. BreadcrumbList -->
   {% if not page.is_homepage %}
   <script type="application/ld+json">
   {
@@ -113,7 +122,41 @@
   </script>
   {% endif %}
 
-  <!-- 3. Person — личный бренд (главная, Яндекс строит Knowledge Card) -->
+  <!-- 3. TechArticle — для страницы RELEASE_NOTES -->
+  {% if is_release %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "{{ page_title | striptags | e }}",
+    "description": "{{ page_desc | e }}",
+    "url": "{{ page.canonical_url }}",
+    "inLanguage": "ru",
+    "dateModified": "2026-04-01",
+    "author": {
+      "@type": "Person",
+      "@id": "https://geminishkv.tech/#person",
+      "name": "{{ config.site_author }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "{{ config.site_url }}#organization",
+      "name": "{{ config.site_name }}",
+      "url": "{{ config.site_url }}"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.canonical_url }}"
+    }
+  }
+  </script>
+  {% endif %}
+
+  <!-- 4. Person + EducationalOrganization + Course — только главная -->
   {% if page.is_homepage %}
   <script type="application/ld+json">
   {
@@ -133,17 +176,9 @@
     "jobTitle": "Application Security Engineer",
     "description": "AppSec / DevSecOps инженер. Разработчик практического курса по прикладной безопасности приложений, Security Champion, OWASP-практик.",
     "knowsAbout": [
-      "Application Security",
-      "DevSecOps",
-      "OWASP Top 10",
-      "SAST",
-      "DAST",
-      "SCA",
-      "SBOM",
-      "Risk Analysis",
-      "Docker Security",
-      "CI/CD Security",
-      "GitHub Actions"
+      "Application Security", "DevSecOps", "OWASP Top 10",
+      "SAST", "DAST", "SCA", "SBOM", "Risk Analysis",
+      "Docker Security", "CI/CD Security", "GitHub Actions"
     ],
     "sameAs": [
       "https://github.com/geminishkv",
@@ -159,7 +194,6 @@
   }
   </script>
 
-  <!-- 4. Organization (Яндекс использует для сниппетов и карточек организации) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -188,6 +222,53 @@
       "@type": "ContactPoint",
       "email": "shmakovis@inbox.ru",
       "contactType": "customer support"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "@id": "{{ config.site_url }}#course",
+    "name": "AppSec Course — Прикладная безопасность приложений",
+    "description": "Практический курс по прикладной безопасности приложений: лабораторные работы по Git, Docker, Nmap, SAST, SCA, DAST, CI/CD и анализу рисков ИБ.",
+    "url": "{{ config.site_url }}",
+    "inLanguage": "ru",
+    "isAccessibleForFree": true,
+    "courseCode": "APPSEC-MGTU",
+    "numberOfCredits": 10,
+    "educationalLevel": "Intermediate",
+    "teaches": [
+      "Работа с Git и GitHub",
+      "Права доступа Linux и управление процессами",
+      "Сетевое сканирование с Nmap",
+      "Контейнеризация с Docker",
+      "Аудит безопасности Docker по CIS Benchmark",
+      "SAST с Semgrep и Checkov",
+      "SCA с OWASP Dependency Check",
+      "DAST с OWASP ZAP",
+      "DevSecOps CI/CD на GitHub Actions",
+      "Анализ и оценка рисков ИБ"
+    ],
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "inLanguage": "ru",
+      "instructor": {
+        "@type": "Person",
+        "@id": "https://geminishkv.tech/#person",
+        "name": "Elijah S Shmakov"
+      }
+    },
+    "provider": {
+      "@type": "EducationalOrganization",
+      "@id": "{{ config.site_url }}#organization",
+      "name": "AppSec Course"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg"
     }
   }
   </script>

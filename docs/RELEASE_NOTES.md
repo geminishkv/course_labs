@@ -6,7 +6,7 @@ description: Описание изменений для проекта и стр
 <div class="hero-section">
   <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
-    <h1 class="hero-title">Release Notes</h1>
+    <h1 class="hero-title">Официальные релизы</h1>
     <p class="hero-sub">История изменений курса и лабораторных работ</p>
   </div>
 </div>

@@ -10,18 +10,6 @@ hide:
   </div>
 </div>
 
-<!-- markdownlint-disable MD013 -->
-<div align="center">
-<h1><a id="intro">CheatSheet — GitSCM</a><br></h1>
-<a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
-<a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
-<a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
-<img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt="RA">
-<img src="https://img.shields.io/badge/AppSec-2448a2" alt="AppSec">
-<img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge">
-</div>
-<!-- markdownlint-enable MD013 -->
-
 ***
 
 ## Инициализация и подключение

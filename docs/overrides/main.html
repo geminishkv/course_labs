@@ -7,28 +7,42 @@
   {% set page_title = page.meta.title if page.meta.title else page.title %}
   {% set page_desc  = page.meta.description if page.meta.description else config.site_description %}
 
-  <!-- Author -->
-  <meta name="author" content="{{ config.site_author }}">
+  <!-- ─── Верификация поисковиков ──────────────────────────────────────────── -->
+  {% if config.extra.yandex_verification %}
+  <meta name="yandex-verification" content="{{ config.extra.yandex_verification }}">
+  {% endif %}
+  {% if config.extra.google_verification %}
+  <meta name="google-site-verification" content="{{ config.extra.google_verification }}">
+  {% endif %}
 
-  <!-- Keywords -->
+  <!-- ─── Основные мета ────────────────────────────────────────────────────── -->
+  <meta name="author"    content="{{ config.site_author }}">
+  <meta name="copyright" content="© 2026 Elijah S Shmakov (geminishkv)">
+  <meta name="robots"    content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
   {% if page.meta.keywords %}
   <meta name="keywords" content="{{ page.meta.keywords }}">
   {% endif %}
 
-  <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page_title | striptags }}">
+  <!-- ─── Open Graph (социальные сети + Яндекс читает og:) ─────────────────── -->
+  <meta property="og:locale"    content="ru_RU">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <!-- article:author нужен Яндексу для атрибуции автора -->
+  {% if not page.is_homepage %}
+  <meta property="article:author"     content="https://github.com/geminishkv">
+  <meta property="article:publisher"  content="https://course.geminishkv.tech">
+  {% endif %}
+
+  <!-- ─── Twitter / X Card ─────────────────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="{{ page_title | striptags }}">
   <meta name="twitter:description" content="{{ page_desc }}">
   {% if config.extra.twitter_handle %}
   <meta name="twitter:site"    content="{{ config.extra.twitter_handle }}">
   <meta name="twitter:creator" content="{{ config.extra.twitter_handle }}">
   {% endif %}
 
-  <!-- Open Graph: locale + site_name (social plugin injects og:image/title/description) -->
-  <meta property="og:locale"    content="ru_RU">
-  <meta property="og:site_name" content="{{ config.site_name }}">
-
-  <!-- ─── JSON-LD ────────────────────────────────────────────────────────── -->
+  <!-- ─── JSON-LD ──────────────────────────────────────────────────────────── -->
 
   <!-- 1. WebPage / WebSite -->
   <script type="application/ld+json">
@@ -46,8 +60,15 @@
     },
     "publisher": {
       "@type": "Organization",
+      "@id": "{{ config.site_url }}#organization",
       "name": "{{ config.site_name }}",
-      "url": "{{ config.site_url }}"
+      "url": "{{ config.site_url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ config.site_url }}artifacts/assets/logo.png",
+        "width": 64,
+        "height": 64
+      }
     }{% if page.is_homepage %},
     "potentialAction": {
       "@type": "SearchAction",
@@ -60,7 +81,7 @@
   }
   </script>
 
-  <!-- 2. BreadcrumbList -->
+  <!-- 2. BreadcrumbList (Яндекс отображает хлебные крошки в сниппете) -->
   {% if not page.is_homepage %}
   <script type="application/ld+json">
   {
@@ -92,7 +113,7 @@
   </script>
   {% endif %}
 
-  <!-- 3. Person — личный бренд (только главная страница) -->
+  <!-- 3. Person — личный бренд (главная, Яндекс строит Knowledge Card) -->
   {% if page.is_homepage %}
   <script type="application/ld+json">
   {
@@ -102,6 +123,7 @@
     "name": "Elijah S Shmakov",
     "alternateName": ["geminishkv", "Илья Шмаков"],
     "url": "https://geminishkv.tech",
+    "email": "shmakovis@inbox.ru",
     "image": {
       "@type": "ImageObject",
       "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg",
@@ -133,6 +155,39 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "{{ config.site_url }}"
+    }
+  }
+  </script>
+
+  <!-- 4. Organization (Яндекс использует для сниппетов и карточек организации) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "{{ config.site_url }}#organization",
+    "name": "AppSec Course",
+    "alternateName": "AppSecTA",
+    "description": "Практический курс по прикладной безопасности приложений: AppSec, DevSecOps, OWASP Top 10, анализ рисков.",
+    "url": "{{ config.site_url }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg",
+      "width": 400,
+      "height": 400
+    },
+    "founder": {
+      "@type": "Person",
+      "@id": "https://geminishkv.tech/#person",
+      "name": "Elijah S Shmakov"
+    },
+    "sameAs": [
+      "https://github.com/geminishkv/course_labs",
+      "https://t.me/shmakovis_appsec"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "shmakovis@inbox.ru",
+      "contactType": "customer support"
     }
   }
   </script>

@@ -16,6 +16,22 @@ Crawl-delay: 3
 
 User-agent: Yandex
 Allow: /
+Disallow: /search/
+Disallow: /404.html
+Disallow: /draft/
+Disallow: /tmp/
+Disallow: /*.json$
+Crawl-delay: 3
+
+User-agent: YandexImages
+Allow: /
+Crawl-delay: 5
+
+User-agent: YandexVideo
+Disallow: /
+
+User-agent: YandexBot
+Allow: /
 Crawl-delay: 3
 
 User-agent: Baiduspider
@@ -116,6 +132,10 @@ Disallow: /*.json$
 Disallow: /sitemap.xml.gz
 Crawl-delay: 10
 
-# ─── Sitemap ───────────────────────────────────────────────────────────────────
+# ─── Sitemaps ──────────────────────────────────────────────────────────────────
 
 Sitemap: https://course.geminishkv.tech/sitemap.xml
+
+# ─── Yandex: Host directive (указывает главное зеркало) ────────────────────────
+
+Host: course.geminishkv.tech

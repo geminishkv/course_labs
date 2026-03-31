@@ -133,6 +133,10 @@ extra_javascript:
 
 extra:
   twitter_handle: "@geminishkv"
+  # Вставить код после верификации в Яндекс.Вебмастере:
+  # yandex_verification: "XXXXXXXXXXXXXXXX"
+  # Вставить код после верификации в Google Search Console:
+  # google_verification: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/geminishkv

@@ -23,7 +23,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Cache pip
         uses: actions/cache@v4
@@ -37,29 +37,22 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build search data
-        if: hashFiles('scripts/build_search_data.py') != ''
-        run: |
-          python scripts/build_search_data.py
-
-      - name: Validate MkDocs config
-        run: |
-          mkdocs build --clean --config-file mkdocs.yml --site-dir /tmp/mkdocs-check
-        env:
-          PYTHONPATH: .
-
       - name: Build MkDocs site
-        run: |
-          mkdocs build --site-dir site
+        run: mkdocs build --site-dir site
         env:
           PYTHONPATH: .
+
+      - name: Verify site and sitemap
+        run: |
+          [ -d "site" ]             || { echo "site dir missing";    exit 1; }
+          [ -f "site/sitemap.xml" ] || { echo "sitemap.xml missing"; exit 1; }
 
       - name: Zip site
         run: |
           cd site
           zip -r "../site-${GITHUB_REF_NAME}.zip" .
 
-      - name: Extract release notes for tag from RELEASE_NOTES.md
+      - name: Extract release notes for tag
         id: notes
         shell: bash
         run: |

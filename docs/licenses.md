@@ -11,135 +11,122 @@ description: Описание популярных лицензий, их тип
   <span>Данная таблица носит <strong>справочный характер</strong> и не является юридической консультацией. Для принятия решений по лицензированию в продуктах и контрактах рекомендуется консультироваться с юристами.</span>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th style="width:20%;">Лицензия</th>
-      <th style="width:20%;">Тип ПО</th>
-      <th style="width:60%;">Краткое описание</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
-    <tr>
-      <td><a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
-      <td>Свободное ПО (разрешительная)</td>
-      <td>Разрешительная лицензия: можно использовать, модифицировать и распространять ПО (в т.ч. в проприетарных продуктах) при условии сохранения уведомлений об авторских правах и лицензии, указания изменений и включения уведомлений из NOTICE. Содержит положения о патентной лицензии и отзыве прав при патентных исках.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.apache.org/licenses/LICENSE-2.0" style="color:#D51A1A; text-decoration:none;">Apache License 2.0</a></div>
+    <span class="lab-tag">Свободное ПО · разрешительная</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Можно использовать, модифицировать и распространять (в т.ч. в проприетарных продуктах) при сохранении уведомлений об авторских правах и NOTICE. Содержит патентную лицензию с отзывом при исках.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://opensource.org/license/mit/">MIT License</a></td>
-      <td>Свободное ПО (разрешительная)</td>
-      <td>Очень короткая разрешительная лицензия: практически не ограничивает использование, модификацию и распространение, кроме требования сохранять уведомление об авторских правах и текст лицензии. Широко используется в экосистеме JavaScript, Python и др.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://opensource.org/license/mit/" style="color:#D51A1A; text-decoration:none;">MIT License</a></div>
+    <span class="lab-tag">Свободное ПО · разрешительная</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Минимум ограничений: только сохранять уведомление об авторских правах. Самая популярная лицензия в экосистемах JavaScript, Python и других.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://opensource.org/license/bsd-2-clause/">BSD 2-Clause</a></td>
-      <td>Свободное ПО (разрешительная)</td>
-      <td>Краткая разрешительная лицензия: допускает практически любое использование при сохранении уведомления об авторских правах и отказа от ответственности. Близка по духу к MIT.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://opensource.org/license/bsd-2-clause/" style="color:#D51A1A; text-decoration:none;">BSD 2-Clause</a></div>
+    <span class="lab-tag">Свободное ПО · разрешительная</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Практически любое использование при сохранении уведомления об авторских правах и отказа от ответственности. Близка к MIT.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://opensource.org/license/bsd-3-clause/">BSD 3-Clause</a></td>
-      <td>Свободное ПО (разрешительная)</td>
-      <td>Вариант BSD с дополнительным запретом использовать имена авторов/организаций для продвижения производных продуктов без явного разрешения. Остальные условия аналогичны BSD‑2‑Clause.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://opensource.org/license/bsd-3-clause/" style="color:#D51A1A; text-decoration:none;">BSD 3-Clause</a></div>
+    <span class="lab-tag">Свободное ПО · разрешительная</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">BSD‑2 плюс запрет использовать имена авторов для продвижения производных продуктов без явного разрешения.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.boost.org/users/license.html">Boost Software License 1.0</a></td>
-      <td>Свободное ПО (разрешительная)</td>
-      <td>Разрешительная лицензия, специально разработанная для библиотеки Boost: совместима как с открытыми, так и с закрытыми проектами и предъявляет минимум требований (сохранение уведомления об авторских правах и отказе от ответственности).</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.boost.org/users/license.html" style="color:#D51A1A; text-decoration:none;">Boost Software License 1.0</a></div>
+    <span class="lab-tag">Свободное ПО · разрешительная</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Для библиотеки Boost. Совместима с открытыми и закрытыми проектами, минимум требований — сохранение уведомлений об авторских правах.</p>
+  </div>
 
-    <tr>
-      <td>The Unlicense</td>
-      <td>Свободное ПО (публичное достояние‑стиль)</td>
-      <td>Декларация отказа от авторских прав: автор максимально возможным по закону образом передаёт работу в общественное достояние, разрешая свободное использование без ограничений. Не во всех юрисдикциях трактуется однозначно.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">The Unlicense</div>
+    <span class="lab-tag">Свободное ПО · публичное достояние</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Автор максимально возможным образом передаёт работу в общественное достояние. Не во всех юрисдикциях трактуется однозначно.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td>
-      <td>Свободное ПО / Общественное достояние</td>
-      <td>Инструмент Creative Commons для помещения произведения в общественное достояние: автор отказывается от максимально возможного набора прав. Часто используется для данных, документации, примеров и не‑кода.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://creativecommons.org/publicdomain/zero/1.0/" style="color:#D51A1A; text-decoration:none;">CC0 1.0</a></div>
+    <span class="lab-tag">Общественное достояние</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Creative Commons: автор отказывается от максимального набора прав. Используется для данных, документации, примеров и не‑кода.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.eclipse.org/legal/epl-2.0/">Eclipse Public License 2.0</a></td>
-      <td>Свободное ПО (слабый копилефт)</td>
-      <td>Слабый копилефт: изменения исходников под EPL должны оставаться под EPL, но можно комбинировать с проприетарными модулями и распространять их под другими лицензиями. Подходит для плагинной архитектуры и коммерческих дополнений.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.eclipse.org/legal/epl-2.0/" style="color:#D51A1A; text-decoration:none;">Eclipse Public License 2.0</a></div>
+    <span class="lab-tag">Свободное ПО · слабый копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Изменения исходников под EPL остаются под EPL, но возможна комбинация с проприетарными модулями. Удобна для плагинной архитектуры.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">GNU LGPL v3.0</a></td>
-      <td>Свободное ПО (слабый копилефт)</td>
-      <td>«Более мягкая» версия GPL для библиотек: разрешает связывать библиотеку с проприетарным ПО без перевода всего приложения под GPL, при условии соблюдения требований к возможности замены/обновления библиотеки.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/lgpl-3.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU LGPL v3.0</a></div>
+    <span class="lab-tag">Свободное ПО · слабый копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">«Мягкая» GPL для библиотек: позволяет связывать с проприетарным ПО без распространения GPL на всё приложение.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.mozilla.org/en-US/MPL/2.0/">Mozilla Public License 2.0</a></td>
-      <td>Свободное ПО (файловый копилефт)</td>
-      <td>Файловый копилефт: изменения в файлах, распространяемых под MPL, должны оставаться под MPL, но проект в целом может иметь смешанную лицензию. Удобна для проектов, где совмещаются открытые и закрытые части.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.mozilla.org/en-US/MPL/2.0/" style="color:#D51A1A; text-decoration:none;">Mozilla Public License 2.0</a></div>
+    <span class="lab-tag">Свободное ПО · файловый копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Изменения в файлах под MPL остаются под MPL, но проект в целом может иметь смешанную лицензию.</p>
+  </div>
 
-    <!-- Полный копилефт -->
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/lgpl-2.1.en.html" style="color:#D51A1A; text-decoration:none;">GNU LGPL v2.1</a></div>
+    <span class="lab-tag">Свободное ПО · слабый копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Старая версия LGPL, широко используемая в библиотеках C/C++. Разрешает связывание с проприетарным ПО при возможности замены библиотеки.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL v3.0</a></td>
-      <td>Свободное ПО (копилефт)</td>
-      <td>Сильный копилефт: производные работы должны распространяться на условиях GPL, с предоставлением исходного кода и сохранением свобод пользователей. Включает дополнительные гарантии против патентных ловушек и ограничений DRM</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.eclipse.org/legal/cpl-v10.html" style="color:#D51A1A; text-decoration:none;">Common Public License 1.0</a></div>
+    <span class="lab-tag">Свободное ПО · копилефт / слабый</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Предшественник EPL (IBM/Eclipse). Требует CPL для модификаций, но допускает комбинацию с проприетарным кодом. Заменяется на EPL‑2.0.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GNU GPL v2.0</a></td>
-      <td>Свободное ПО (копилефт)</td>
-      <td>Более ранняя версия GPL с аналогичной идеей копилефта, но без некоторых уточнений и защит, появившихся в v3 (например, в части патентных соглашений и аппаратных ограничений)</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://opensource.org/license/artistic-2-0/" style="color:#D51A1A; text-decoration:none;">Artistic License 2.0</a></div>
+    <span class="lab-tag">Свободное ПО</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Связана с Perl. Комбинирует разрешительные и копилефт‑подходы, совместима с GPL.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU AGPL v3.0</a></td>
-      <td>Свободное ПО (сетевой копилефт)</td>
-      <td>GPL‑совместимая лицензия, закрывающая «SaaS‑дыру»: если пользователи взаимодействуют с программой по сети (web‑сервис), им также должен предоставляться исходный код модифицированной версии. Часто используется для серверных приложений.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU GPL v3.0</a></div>
+    <span class="lab-tag">Свободное ПО · сильный копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Производные работы должны распространяться под GPL с предоставлением исходного кода. Включает защиту от патентных ловушек и DRM.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html">GNU LGPL v2.1</a></td>
-      <td>Свободное ПО (слабый копилефт)</td>
-      <td>Более старая версия LGPL, широко используемая для библиотек на C/C++ и других языках. Разрешает связывание с проприетарным ПО при соблюдении требований по возможной замене библиотеки.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU GPL v2.0</a></div>
+    <span class="lab-tag">Свободное ПО · сильный копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Ранняя версия GPL с той же идеей копилефта, без уточнений v3 в части патентов и аппаратных ограничений.</p>
+  </div>
 
-    <!-- Другие OSS-лицензии -->
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/agpl-3.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU AGPL v3.0</a></div>
+    <span class="lab-tag">Свободное ПО · сетевой копилефт</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Закрывает «SaaS‑дыру»: при использовании через сеть пользователи должны получать исходный код. Для серверных приложений.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://www.eclipse.org/legal/cpl-v10.html">Common Public License 1.0 (CPL)</a></td>
-      <td>Свободное ПО (копилефт / слабый)</td>
-      <td>Предшественник EPL, использовавшийся для ряда проектов IBM и Eclipse. Требует распространять модификации под CPL, но допускает комбинацию с проприетарным кодом. В новых проектах обычно заменяется на EPL‑2.0.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
+    <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">SSPL (Server Side Public License)</div>
+    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Проприетарное ПО · условно свободное</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Используется рядом вендоров (MongoDB, Elastic). Формально на базе GPL, но с ограничениями для SaaS. Не признаётся OSI совместимой с Open Source.</p>
+  </div>
 
-    <tr>
-      <td><a href="https://opensource.org/license/artistic-2-0/">Artistic License 2.0</a></td>
-      <td>Свободное ПО</td>
-      <td>Лицензия, изначально связанная с Perl. Позволяет модификации и распространение при соблюдении ряда условий, комбинируя элементы разрешительных и копилефт‑подходов. Считается совместимой с GPL.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
+    <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">BUSL (Business Source License)</div>
+    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Проприетарное ПО · исходники доступны</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Исходники доступны, но использование ограничено (запрет SaaS‑конкурентов). Через N лет автоматически переходит под OSS‑лицензию.</p>
+  </div>
 
-    <tr>
-      <td>SSPL (Server Side Public License)</td>
-      <td>Проприетарное ПО / условно свободное</td>
-      <td>Лицензия, используемая рядом вендоров (например, в старых версиях Elastic/MongoDB). Формально основана на GPL, но содержит дополнительные ограничения для использования в качестве предоставляемого сервиса, из‑за чего не признаётся OSI совместимой с Open Source в классическом смысле.</td>
-    </tr>
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
+    <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">Custom / Vendor License</div>
+    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Проприетарное ПО</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">EULA и коммерческие лицензии вендора. Условия определяются договором и, как правило, не соответствуют Open Source Definition.</p>
+  </div>
 
-    <tr>
-      <td>BUSL (Business Source License)</td>
-      <td>Проприетарное ПО / исходники доступны</td>
-      <td>Лицензия с отложенным открытием: исходный код доступен, но использование ограничено бизнес‑условиями (например, запрет на SaaS‑конкурентов). Через N лет код может автоматически переходить под OSS‑лицензию. Используется некоторыми базами данных и инструментами</td>
-    </tr>
-
-    <tr>
-      <td>Custom / Vendor License</td>
-      <td>Проприетарное ПО</td>
-      <td>Индивидуальные лицензионные соглашения вендора (EULA, коммерческие лицензии, trial‑лицензии и т.п.): условия использования, распространения и модификации определяются текстом договора и, как правило, не соответствуют критериям Open Source Definition.</td>
-    </tr>
-
-  </tbody>
-</table>
+</div>
 
 ![Логотип](artifacts/assets/logotypemd.jpg)

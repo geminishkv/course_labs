@@ -56,6 +56,7 @@ lib/
 .dependency-check-data
 audit_reports/
 .claude/
+.sixth/
 
 # Data exports
 *.odt

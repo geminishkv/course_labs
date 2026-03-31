@@ -10,16 +10,16 @@
 }
 
 .md-footer,
+.md-footer__inner,
+.md-footer-nav,
+.md-footer__link,
 .md-footer-meta,
-.md-footer__inner {
-  font-family:
-    "Roboto",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  background-color: #1A1919;
+.md-footer-meta__inner,
+.md-footer__title,
+.md-footer__direction {
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #1A1919 !important;
+  --md-primary-fg-color: #1A1919 !important;
 }
 
 .md-footer {

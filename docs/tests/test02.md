@@ -3,7 +3,7 @@ title: Тест №2
 description: Тестовое задание №2 по курсу AppSec — 10 вопросов по Linux, Nmap, Docker, SCA, DAST и анализу рисков.
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Тест №2</h1>
     <p class="hero-sub">Linux · Nmap · Docker · SCA · DAST · Risk Analysis</p>

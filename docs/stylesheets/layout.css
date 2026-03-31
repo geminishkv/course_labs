@@ -603,6 +603,34 @@ details.spoiler summary {
 }
 
 /* ══════════════════════════════════════════
+   Hero compact — for content pages
+══════════════════════════════════════════ */
+.hero-section--compact {
+  padding: 1.75rem 2.5rem 1.5rem;
+  gap: 1.75rem;
+  margin: 0.5rem -1.5rem 1.75rem;
+}
+
+.hero-section--compact .hero-logo {
+  width: 64px;
+  height: 64px;
+}
+
+.hero-section--compact .hero-title {
+  font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section--compact {
+    padding: 1.25rem 1.25rem 1rem;
+    margin: 0.5rem -1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .hero-section--compact .hero-logo { width: 44px; height: 44px; }
+}
+
+/* ══════════════════════════════════════════
    Hide integrated TOC (md-nav--secondary) in left nav on all pages
    toc.integrate injects TOC as .md-nav--secondary inside the primary sidebar
 ══════════════════════════════════════════ */

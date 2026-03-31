@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">OWASP — Logical Attacks</h1>
     <p class="hero-sub">Атаки на логику приложения · OWASP Top 10</p>

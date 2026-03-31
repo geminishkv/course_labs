@@ -3,7 +3,7 @@ title: Тест №1
 description: Тестовое задание №1 по курсу AppSec — 10 вопросов по Git, Linux, Nmap, Docker, SAST и анализу рисков.
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Тест №1</h1>
     <p class="hero-sub">Git · Linux · Nmap · Docker · SAST · Risk Analysis</p>

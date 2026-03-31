@@ -6,7 +6,7 @@ title: Аббревиатурное описание AppSec инструмент
 description: Расшифровка аббревиатур, их класс, область применения и описание для AppSec/DevSecOps инструментов.
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Application Security Toolchain</h1>
     <p class="hero-sub">Аббревиатуры и классы инструментов AppSec / DevSecOps</p>

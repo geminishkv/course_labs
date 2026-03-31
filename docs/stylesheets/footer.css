@@ -38,19 +38,31 @@
 
 /* Footer nav links (prev / next page) */
 .md-footer__link {
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease;
+  color: rgba(255, 255, 255, 0.75);
+  border-top: 2px solid rgba(213, 26, 26, 0.25);
+  padding-top: 0.85rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .md-footer__link:hover {
   color: #F9B361;
+  border-top-color: #F9B361;
 }
 
 .md-footer__title {
   color: #ffffff;
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .md-footer__direction {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.65rem;
+  color: #D51A1A;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }

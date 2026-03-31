@@ -6,7 +6,7 @@ title: Приложения для курса AppSec
 description: Полезные материалы по командам и их описанию для лабораторных работ по AppSec
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Приложение</h1>
     <p class="hero-sub">Команды и утилиты для лабораторных работ</p>

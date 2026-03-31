@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Git SCM</h1>
     <p class="hero-sub">Команды и флаги git</p>

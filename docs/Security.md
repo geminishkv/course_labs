@@ -6,7 +6,7 @@ title: Политика безопасности
 description: Ответственное раскрытие уязвимостей и правила сообщения об инцидентах безопасности.
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
     <h1 class="hero-title">Политика безопасности</h1>

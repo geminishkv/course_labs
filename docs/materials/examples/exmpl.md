@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Аналитические кейсы</h1>
     <p class="hero-sub">Разбор реальных ситуаций информационной безопасности</p>

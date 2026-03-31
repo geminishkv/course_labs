@@ -6,7 +6,7 @@ title: Описание основных типов лицензий Open Source
 description: Описание популярных лицензий, их типов и отнесения к свободному/проприетарному ПО.
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">Лицензии ПО</h1>
     <p class="hero-sub">Типы и применение open-source лицензий</p>

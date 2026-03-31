@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">PrintNightmare</h1>
     <p class="hero-sub">Анализ уязвимости Windows Print Spooler (CVE-2021-34527)</p>

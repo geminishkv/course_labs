@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">OWASP — Authentication</h1>
     <p class="hero-sub">Нарушения аутентификации · OWASP Top 10</p>

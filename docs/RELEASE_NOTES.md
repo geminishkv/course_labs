@@ -3,7 +3,7 @@ title: RELEASE NOTES
 description: Описание изменений для проекта и структуры Лабораторных Работ для AppSec и анализа рисков ИБ.
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
     <h1 class="hero-title">Официальные релизы</h1>

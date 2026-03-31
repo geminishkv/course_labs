@@ -93,55 +93,131 @@
   -webkit-mask-image: var(--md-tasklist-icon--checked);
 }
 
-/* Admonitions — brand colours */
+/* ── Admonitions — brand colours ── */
 .md-typeset .admonition,
 .md-typeset details {
   border-left-width: 4px;
+  border-radius: 0 6px 6px 0;
 }
 
-.md-typeset .admonition.danger,
-.md-typeset details.danger {
+.md-typeset .admonition-title,
+.md-typeset details > summary {
+  font-family: "Unbounded", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* danger / failure / bug → red */
+.md-typeset .admonition.danger,  .md-typeset details.danger,
+.md-typeset .admonition.failure, .md-typeset details.failure,
+.md-typeset .admonition.bug,     .md-typeset details.bug {
   border-color: #D51A1A;
 }
 
-.md-typeset .admonition.danger > .admonition-title,
-.md-typeset details.danger > summary {
-  background-color: rgba(213, 26, 26, 0.1);
+.md-typeset .admonition.danger > .admonition-title,  .md-typeset details.danger > summary,
+.md-typeset .admonition.failure > .admonition-title, .md-typeset details.failure > summary,
+.md-typeset .admonition.bug > .admonition-title,     .md-typeset details.bug > summary {
+  background-color: rgba(213, 26, 26, 0.08);
+  color: #D51A1A;
 }
 
-.md-typeset .admonition.danger > .admonition-title::before,
-.md-typeset details.danger > summary::before {
+.md-typeset .admonition.danger > .admonition-title::before,  .md-typeset details.danger > summary::before,
+.md-typeset .admonition.failure > .admonition-title::before, .md-typeset details.failure > summary::before,
+.md-typeset .admonition.bug > .admonition-title::before,     .md-typeset details.bug > summary::before {
   background-color: #D51A1A;
 }
 
-.md-typeset .admonition.warning,
-.md-typeset details.warning {
+/* warning / tip / question / example → gold */
+.md-typeset .admonition.warning,  .md-typeset details.warning,
+.md-typeset .admonition.tip,      .md-typeset details.tip,
+.md-typeset .admonition.question, .md-typeset details.question,
+.md-typeset .admonition.example,  .md-typeset details.example {
   border-color: #F9B361;
 }
 
-.md-typeset .admonition.warning > .admonition-title,
-.md-typeset details.warning > summary {
-  background-color: rgba(249, 179, 97, 0.12);
-}
-
-.md-typeset .admonition.warning > .admonition-title::before,
-.md-typeset details.warning > summary::before {
-  background-color: #F9B361;
-}
-
-.md-typeset .admonition.tip,
-.md-typeset details.tip {
-  border-color: #F9B361;
-}
-
-.md-typeset .admonition.tip > .admonition-title,
-.md-typeset details.tip > summary {
+.md-typeset .admonition.warning > .admonition-title,  .md-typeset details.warning > summary,
+.md-typeset .admonition.tip > .admonition-title,      .md-typeset details.tip > summary,
+.md-typeset .admonition.question > .admonition-title, .md-typeset details.question > summary,
+.md-typeset .admonition.example > .admonition-title,  .md-typeset details.example > summary {
   background-color: rgba(249, 179, 97, 0.1);
+  color: #c48a20;
 }
 
-.md-typeset .admonition.tip > .admonition-title::before,
-.md-typeset details.tip > summary::before {
+.md-typeset .admonition.warning > .admonition-title::before,  .md-typeset details.warning > summary::before,
+.md-typeset .admonition.tip > .admonition-title::before,      .md-typeset details.tip > summary::before,
+.md-typeset .admonition.question > .admonition-title::before, .md-typeset details.question > summary::before,
+.md-typeset .admonition.example > .admonition-title::before,  .md-typeset details.example > summary::before {
   background-color: #F9B361;
+}
+
+/* info / note / abstract / success / quote → dark brand */
+.md-typeset .admonition.info,     .md-typeset details.info,
+.md-typeset .admonition.note,     .md-typeset details.note,
+.md-typeset .admonition.abstract, .md-typeset details.abstract,
+.md-typeset .admonition.success,  .md-typeset details.success,
+.md-typeset .admonition.quote,    .md-typeset details.quote {
+  border-color: #1A1919;
+}
+
+.md-typeset .admonition.info > .admonition-title,     .md-typeset details.info > summary,
+.md-typeset .admonition.note > .admonition-title,     .md-typeset details.note > summary,
+.md-typeset .admonition.abstract > .admonition-title, .md-typeset details.abstract > summary,
+.md-typeset .admonition.success > .admonition-title,  .md-typeset details.success > summary,
+.md-typeset .admonition.quote > .admonition-title,    .md-typeset details.quote > summary {
+  background-color: rgba(26, 25, 25, 0.07);
+  color: #1A1919;
+}
+
+.md-typeset .admonition.info > .admonition-title::before,     .md-typeset details.info > summary::before,
+.md-typeset .admonition.note > .admonition-title::before,     .md-typeset details.note > summary::before,
+.md-typeset .admonition.abstract > .admonition-title::before, .md-typeset details.abstract > summary::before,
+.md-typeset .admonition.success > .admonition-title::before,  .md-typeset details.success > summary::before,
+.md-typeset .admonition.quote > .admonition-title::before,    .md-typeset details.quote > summary::before {
+  background-color: #1A1919;
+}
+
+/* ── Blockquote → gold left border ── */
+.md-typeset blockquote {
+  border-left: 3px solid #F9B361;
+  background: rgba(249, 179, 97, 0.05);
+  border-radius: 0 4px 4px 0;
+  padding: 0.6rem 1rem;
+  color: #555;
+  font-style: normal;
+  margin: 1rem 0;
+}
+
+.md-typeset blockquote p {
+  margin: 0;
+}
+
+/* ── Horizontal rule → red→transparent gradient ── */
+.md-typeset hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%);
+  margin: 1.75rem 0;
+}
+
+/* ── Code block title / filename label ── */
+.md-typeset .highlight > .filename,
+.md-typeset .highlight [data-md-language]:not(:empty)::before {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  background: #111010;
+  border-bottom: 1px solid rgba(249, 179, 97, 0.2);
+  padding: 0.35rem 0.85rem;
+  display: block;
+  letter-spacing: 0.03em;
+  border-radius: 6px 6px 0 0;
+}
+
+.md-typeset .highlight:has(> .filename) pre {
+  border-radius: 0 0 6px 6px;
+  margin-top: 0;
 }
 
 /* ── Content links ── */

@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="hero-section">
+<div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">OWASP — Information Disclosure</h1>
     <p class="hero-sub">Раскрытие конфиденциальных данных · OWASP Top 10</p>

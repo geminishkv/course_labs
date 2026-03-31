@@ -3,7 +3,8 @@ hide:
   - toc
 
 title: Введение в курс AppSec
-description: Практический курс по прикладной безопасности приложений — лабораторные работы, материалы по AppSec, DevSecOps, OWASP Top 10 и анализу рисков.
+description: Практический курс по прикладной безопасности приложений — лабораторные работы, AppSec, DevSecOps, OWASP Top 10.
+keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, безопасность приложений, SAST, DAST, Docker, GitHub Actions"
 ---
 
 <div class="hero-section">

@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: "Risk Analysis — оценка рисков ИБ"
+description: "Практический пример оценки рисков ИБ: описание уязвимостей HIGH/MEDIUM/LOW, вероятность и меры устранения."
+keywords: "анализ рисков, ИБ, уязвимости, оценка угроз, информационная безопасность, AppSec"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: ".gitignore Cheatsheet — шпаргалка"
+description: "Шпаргалка по .gitignore: правила исключения файлов из репозитория Git, шаблоны для Python, Node, Docker."
+keywords: "gitignore, Git, cheatsheet, шпаргалка, репозиторий, исключение, Python, Node, Docker"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -1,3 +1,9 @@
+---
+title: "Лаб. №9 — DevSecOps CI/CD конвейер на GitHub Actions"
+description: "Лабораторная работа №9: построение DevSecOps-конвейера на GitHub Actions с Semgrep, Trivy и OWASP ZAP."
+keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, конвейер"
+---
+
 <div class="lab-hero">
   <div class="lab-hero-num">09</div>
   <div class="lab-hero-content">

@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: "Мультиподпись — схемы криптографических подписей"
+description: "Разбор схем мультиподписи для защиты транзакций: M-of-N подписи, криптографические протоколы и Bitcoin-транзакции."
+keywords: "мультиподпись, multisig, криптография, Bitcoin, транзакции, AppSec, безопасность"
 ---
 
 <div class="hero-section hero-section--compact">

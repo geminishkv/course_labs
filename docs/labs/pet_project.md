@@ -1,3 +1,9 @@
+---
+title: "Pet-project — итоговая работа по курсу AppSec"
+description: "Итоговый pet-project курса AppSec: самостоятельная разработка с применением DevSecOps-практик и анализа безопасности."
+keywords: "pet project, AppSec, DevSecOps, итоговая работа, безопасность приложений, CI/CD"
+---
+
 <div class="lab-hero lab-hero--pet">
   <div class="lab-hero-num">★</div>
   <div class="lab-hero-content">

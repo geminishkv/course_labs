@@ -1,3 +1,9 @@
+---
+title: "Лаб. №1 — GitSCM: подготовка рабочего окружения"
+description: "Лабораторная работа №1: настройка Git, создание репозитория, базовые команды и первый коммит в курсе AppSec."
+keywords: "Git, SCM, GitSCM, лабораторная работа, AppSec, репозиторий, коммит, настройка"
+---
+
 <div class="lab-hero">
   <div class="lab-hero-num">01</div>
   <div class="lab-hero-content">

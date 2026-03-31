@@ -1,6 +1,7 @@
 ---
 title: Тест №3
 description: Тестовое задание №3 по курсу AppSec — 10 вопросов по Git, Linux, Nmap, Docker, DAST и анализу рисков.
+keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, анализ рисков, лабораторная работа"
 ---
 
 <div class="hero-section hero-section--compact">

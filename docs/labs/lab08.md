@@ -1,3 +1,9 @@
+---
+title: "Лаб. №8 — DAST: динамическое тестирование уязвимостей"
+description: "Лабораторная работа №8: динамический анализ безопасности с OWASP ZAP, тестирование веб-приложений на уязвимости."
+keywords: "DAST, OWASP ZAP, динамическое тестирование, уязвимости, AppSec, веб-безопасность"
+---
+
 <div class="lab-hero">
   <div class="lab-hero-num">08</div>
   <div class="lab-hero-content">

@@ -3,7 +3,8 @@ hide:
   - toc
 
 title: Приложения для курса AppSec
-description: Полезные материалы по командам и их описанию для лабораторных работ по AppSec
+description: Справочные материалы и команды для лабораторных работ AppSec — Git, Docker, Linux, Python, pip, venv.
+keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпаргалка, справочник"
 ---
 
 <div class="hero-section hero-section--compact">

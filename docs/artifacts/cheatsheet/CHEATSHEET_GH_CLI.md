@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: "GitHub CLI Cheatsheet — шпаргалка по gh"
+description: "Шпаргалка по командам GitHub CLI: управление репозиториями, PR, issues, releases и аутентификация через gh."
+keywords: "GitHub CLI, gh, cheatsheet, шпаргалка, DevOps, AppSec, pull request, issues"
 ---
 
 <div class="hero-section hero-section--compact">

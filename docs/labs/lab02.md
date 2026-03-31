@@ -1,3 +1,9 @@
+---
+title: "Лаб. №2 — *nix: права доступа, управление процессами"
+description: "Лабораторная работа №2: права доступа в Linux, управление процессами, Bash-скрипты и базовые команды Unix."
+keywords: "Linux, Unix, Bash, права доступа, процессы, AppSec, лабораторная работа"
+---
+
 <div class="lab-hero">
   <div class="lab-hero-num">02</div>
   <div class="lab-hero-content">

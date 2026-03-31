@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: "OWASP — Authentication: нарушения аутентификации"
+description: "OWASP Top 10: нарушения аутентификации — слабые пароли, отсутствие MFA, уязвимые сессии и методы защиты."
+keywords: "OWASP, аутентификация, authentication, AppSec, MFA, безопасность, сессии, пароли"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -1,6 +1,7 @@
 ---
 title: Тест №5
 description: Тестовое задание №5 по курсу AppSec — 10 вопросов по Git, Linux, Nmap, Docker, DAST и рискам ИБ.
+keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, риски ИБ, лабораторная работа"
 ---
 
 <div class="hero-section hero-section--compact">

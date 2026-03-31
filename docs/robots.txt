@@ -1,30 +1,121 @@
-# AppSec Course — geminishkv.github.io/course_labs
+# AppSec Course — course.geminishkv.tech
 # Author: Elijah S Shmakov (geminishkv)
 # GitHub: https://github.com/geminishkv
-# Site:   https://geminishkv.tech
+# Site:   https://course.geminishkv.tech
+# Updated: 2026-03-31
+
+# ─── Allow all legitimate search engines ───────────────────────────────────────
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 3
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 5
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 5
+
+User-agent: Sogou
+Allow: /
+Crawl-delay: 5
+
+# ─── Block AI training crawlers ────────────────────────────────────────────────
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: /
+
+# ─── Block bad bots and scrapers ───────────────────────────────────────────────
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Pinterestbot
+Disallow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# ─── Default rule for all other crawlers ───────────────────────────────────────
 
 User-agent: *
 Allow: /
-
 Disallow: /search/
 Disallow: /404.html
 Disallow: /draft/
 Disallow: /tmp/
+Disallow: /*.json$
+Disallow: /sitemap.xml.gz
+Crawl-delay: 10
 
-# Allow all major crawlers explicitly
-User-agent: Googlebot
-Allow: /
+# ─── Sitemap ───────────────────────────────────────────────────────────────────
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Yandex
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-Sitemap: https://geminishkv.github.io/course_labs/sitemap.xml
+Sitemap: https://course.geminishkv.tech/sitemap.xml

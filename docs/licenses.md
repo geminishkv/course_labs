@@ -3,7 +3,8 @@ hide:
   - toc
 
 title: Описание основных типов лицензий Open Source
-description: Описание популярных лицензий, их типов и отнесения к свободному/проприетарному ПО.
+description: Описание популярных лицензий Open Source, их типов и отнесения к свободному или проприетарному ПО.
+keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, AppSec, DevSecOps, свободное ПО"
 ---
 
 <div class="hero-section hero-section--compact">

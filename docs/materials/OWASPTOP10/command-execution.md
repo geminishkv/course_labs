@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: "OWASP — Command Execution: инъекции и RCE"
+description: "OWASP Top 10: выполнение произвольных команд — SQL injection, OS injection, SSTI, XXE и методы защиты."
+keywords: "OWASP, SQL injection, OS injection, SSTI, XXE, AppSec, RCE, инъекции, уязвимости"
 ---
 
 <div class="hero-section hero-section--compact">

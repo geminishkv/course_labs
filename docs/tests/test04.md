@@ -1,6 +1,7 @@
 ---
 title: Тест №4
 description: Тестовое задание №4 по курсу AppSec — 10 вопросов по Git, Linux, Nmap, Docker, SBOM и анализу рисков.
+keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рисков, лабораторная работа"
 ---
 
 <div class="hero-section hero-section--compact">

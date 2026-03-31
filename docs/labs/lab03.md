@@ -1,3 +1,9 @@
+---
+title: "Лаб. №3 — Nmap: сканирование сети и анализ уязвимостей"
+description: "Лабораторная работа №3: сканирование портов и сервисов с Nmap, обнаружение уязвимостей в сетевой инфраструктуре."
+keywords: "Nmap, сканирование сети, уязвимости, AppSec, pentest, порты, сервисы"
+---
+
 <div class="lab-hero">
   <div class="lab-hero-num">03</div>
   <div class="lab-hero-content">

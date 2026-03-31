@@ -13,6 +13,7 @@ edit_uri: edit/develop/docs/
 theme:
   name: material
   language: ru
+  custom_dir: docs/overrides
   logo: artifacts/assets/logo.svg
   icon:
     menu: fontawesome/solid/bars-staggered
@@ -125,6 +126,8 @@ extra_javascript:
   - javascripts/home-toc.js
 
 extra:
+  og_image: https://course.geminishkv.tech/artifacts/assets/og-cover.png
+  twitter_handle: "@geminishkv"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/geminishkv
@@ -140,8 +143,6 @@ extra:
       link: https://www.linkedin.com/in/geminishkvdev
     - icon: fontawesome/regular/envelope-open
       link: mailto:shmakovis@inbox.ru
-    - icon: fontawesome/solid/rss
-      link: https://geminishkv.github.io/course_labs/feed.xml
 #  analytics:
 #    provider: google
 #    property: G-XXXXXXXXXX

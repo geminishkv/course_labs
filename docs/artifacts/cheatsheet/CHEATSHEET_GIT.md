@@ -1,6 +1,9 @@
 ---
 hide:
   - toc
+title: "Git SCM Cheatsheet — шпаргалка по Git"
+description: "Шпаргалка по Git: ветки, коммиты, rebase, stash, remote, cherry-pick и основные команды для работы с репозиторием."
+keywords: "Git, SCM, cheatsheet, шпаргалка, коммит, ветка, rebase, stash, cherry-pick"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -3,7 +3,8 @@ hide:
   - toc
 
 title: Описание проекта для курса AppSec
-description: Описывают принципы, структура и каких целей достигает курс лабораторных работ по AppSec.
+description: Принципы, структура и цели курса лабораторных работ по AppSec, DevSecOps и анализу рисков ИБ.
+keywords: "AppSec, DevSecOps, курс, лабораторные работы, информационная безопасность, МГТУ, OWASP"
 ---
 
 <div class="hero-section hero-section--compact">

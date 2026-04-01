@@ -21,12 +21,4 @@ document.addEventListener("DOMContentLoaded", function () {
     logo.rel = "noopener noreferrer";
   }
 
-  // Скрыть интегрированный TOC в левом сайдбаре только на главной странице
-  var p = location.pathname;
-  if (p === "/" || p.endsWith("/index.html") || p.endsWith("/")) {
-    document.querySelectorAll(".md-sidebar--primary .md-nav--secondary").forEach(function (el) {
-      el.style.display = "none";
-    });
-  }
-
 });

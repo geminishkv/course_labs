@@ -183,6 +183,24 @@
   background-color: var(--brand-dark);
 }
 
+/* ── Spoiler (details.spoiler) — brand gold ── */
+.md-typeset details.spoiler {
+  border-color: var(--brand-gold);
+}
+
+.md-typeset details.spoiler > summary {
+  background-color: rgba(249, 179, 97, 0.08);
+  color: var(--brand-gold-dark);
+}
+
+.md-typeset details.spoiler > summary::before {
+  background-color: var(--brand-gold);
+}
+
+.md-typeset details.spoiler > summary::after {
+  color: var(--brand-gold-dark);
+}
+
 /* ── Blockquote → gold left border ── */
 .md-typeset blockquote {
   border-left: 3px solid var(--brand-gold);

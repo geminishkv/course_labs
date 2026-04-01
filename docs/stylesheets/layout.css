@@ -429,6 +429,7 @@ details.spoiler summary {
   text-decoration: none !important;
   color: inherit;
   transition: border-left-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  line-height: 1.5;
 }
 
 .lab-card:hover {
@@ -732,13 +733,6 @@ details.spoiler summary {
   }
 
   .hero-section--compact .hero-logo { width: 44px; height: 44px; }
-}
-
-/* ══════════════════════════════════════════
-   Hide integrated TOC in left nav
-══════════════════════════════════════════ */
-.md-sidebar--primary .md-nav--secondary {
-  display: none !important;
 }
 
 /* ══════════════════════════════════════════

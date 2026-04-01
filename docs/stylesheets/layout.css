@@ -749,7 +749,6 @@ details.spoiler summary {
 }
 
 /* ── Prevent horizontal overflow ── */
-.md-content,
-.md-main {
+.md-content {
   overflow-x: hidden;
 }

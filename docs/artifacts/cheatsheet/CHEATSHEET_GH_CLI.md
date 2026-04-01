@@ -110,5 +110,3 @@ gh gist edit <id>                             # Редактировать gist
 ```
 
 ***
-
-![Logo](../assets/logotypemd.jpg)

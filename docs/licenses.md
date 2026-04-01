@@ -329,5 +329,3 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
   </div>
 
 </div>
-
-![Логотип](artifacts/assets/logotypemd.jpg)

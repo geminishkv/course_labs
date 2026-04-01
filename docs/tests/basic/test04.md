@@ -107,5 +107,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 - D) `X-Frame-Options`
 
 ***
-
-![Logo](../../artifacts/assets/logotypemd.jpg)

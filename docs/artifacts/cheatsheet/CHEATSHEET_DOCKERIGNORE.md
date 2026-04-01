@@ -129,5 +129,3 @@ docker build --no-cache . 2>&1 | head -5     # Показывает размер
 ```
 
 ***
-
-![Logo](../assets/logotypemd.jpg)

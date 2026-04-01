@@ -126,5 +126,3 @@ docker system df                              # Показать использ�
 ```
 
 ***
-
-![Logo](../assets/logotypemd.jpg)

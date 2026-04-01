@@ -107,5 +107,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, анализ рис
 - D) Risk Acceptance (принятие риска)
 
 ***
-
-![Logo](../../artifacts/assets/logotypemd.jpg)

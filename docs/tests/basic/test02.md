@@ -107,5 +107,3 @@ keywords: "тест, AppSec, Linux, Nmap, Docker, SCA, DAST, анализ рис
 - D) Включить `X11Forwarding yes` и `AllowAgentForwarding yes` для удобства администрирования
 
 ***
-
-![Logo](../../artifacts/assets/logotypemd.jpg)

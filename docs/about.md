@@ -8,7 +8,6 @@ keywords: "AppSec, DevSecOps, курс, лабораторные работы, �
 ---
 
 <div class="hero-section hero-section--compact">
-  <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
     <h1 class="hero-title">О проекте</h1>
     <p class="hero-sub">Принципы, цели и структура курса AppSec</p>
@@ -38,5 +37,3 @@ keywords: "AppSec, DevSecOps, курс, лабораторные работы, �
 ## Что ожидается от слушателя
 - Для каждой лабораторной работы создаётся отдельный репозиторий с исходным кодом и конфигурацией
 - Результаты оформляются в отчётах <code>gistup</code> с выводами инструментов и пояснениями к использованным командам
-
-![Логотип](artifacts/assets/logotypemd.jpg)

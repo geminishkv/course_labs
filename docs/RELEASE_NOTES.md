@@ -7,7 +7,6 @@ keywords: release notes, changelog, AppSec, лабораторные работ�
 ---
 
 <div class="hero-section hero-section--compact">
-  <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
     <h1 class="hero-title">Официальные релизы</h1>
     <p class="hero-sub">История изменений курса и лабораторных работ</p>
@@ -17,5 +16,3 @@ keywords: release notes, changelog, AppSec, лабораторные работ�
 {% include-markdown  "../RELEASE_NOTES.md" %}
 
 ***
-
-![Логотип](artifacts/assets/logotypemd.jpg)

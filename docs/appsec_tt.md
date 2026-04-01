@@ -378,5 +378,3 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
   </div>
 
 </div>
-
-![Логотип](artifacts/assets/logotypemd.jpg)

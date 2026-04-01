@@ -96,5 +96,3 @@ git stash list                                # Список сохранённ�
 ```
 
 ***
-
-![Logo](../assets/logotypemd.jpg)

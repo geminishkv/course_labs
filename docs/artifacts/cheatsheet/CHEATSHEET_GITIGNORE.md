@@ -173,5 +173,3 @@ git check-ignore -v <file>      # Узнать, почему файл игнор
 ```
 
 ***
-
-![Logo](../assets/logotypemd.jpg)

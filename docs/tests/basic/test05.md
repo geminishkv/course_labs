@@ -113,5 +113,3 @@ result = eval(request.args.get("formula"))
 - D) Список всех тегов с аннотациями
 
 ***
-
-![Logo](../../artifacts/assets/logotypemd.jpg)

@@ -107,5 +107,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рис
 - D) Сделать `git revert` последнего коммита
 
 ***
-
-![Logo](../../artifacts/assets/logotypemd.jpg)

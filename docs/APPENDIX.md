@@ -265,5 +265,3 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
   </div>
 
 </div>
-
-![Логотип](artifacts/assets/logotypemd.jpg)

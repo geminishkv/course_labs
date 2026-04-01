@@ -1,5 +1,4 @@
-img[src*="logo.jpg"],
-img[src*="logotypemd.jpg"] {
+img[src*="logo.jpg"] {
   display: none;
 }
 
@@ -709,30 +708,33 @@ details.spoiler summary {
 
 /* ══════════════════════════════════════════
    Hero compact — for content pages
+   Фиксированная высота для консистентности при переходах
 ══════════════════════════════════════════ */
 .hero-section--compact {
-  padding: 1.75rem var(--space-10) var(--space-6);
-  gap: 1.75rem;
+  min-height: 120px;
+  padding: var(--space-6) var(--space-10);
+  gap: 0;
   margin: var(--space-2) calc(-1 * var(--space-6)) 1.75rem;
-}
-
-.hero-section--compact .hero-logo {
-  width: 64px;
-  height: 64px;
+  display: flex;
+  align-items: center;
 }
 
 .hero-section--compact .hero-title {
-  font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+  font-size: clamp(1.3rem, 3vw, 1.8rem) !important;
+  margin: 0 !important;
+}
+
+.hero-section--compact .hero-sub {
+  font-size: var(--text-base);
+  margin: 0.25rem 0 0;
 }
 
 @media screen and (max-width: 960px) {
   .hero-section--compact {
-    padding: var(--space-5) var(--space-5) var(--space-4);
+    min-height: 100px;
+    padding: var(--space-5) var(--space-5);
     margin: var(--space-2) 0 var(--space-5);
-    gap: var(--space-4);
   }
-
-  .hero-section--compact .hero-logo { width: 44px; height: 44px; }
 }
 
 /* ══════════════════════════════════════════

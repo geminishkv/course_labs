@@ -8,7 +8,6 @@ keywords: "политика безопасности, уязвимости, от
 ---
 
 <div class="hero-section hero-section--compact">
-  <img src="/artifacts/assets/logo.svg" class="hero-logo" alt="AppSecTA">
   <div class="hero-content">
     <h1 class="hero-title">Политика безопасности</h1>
     <p class="hero-sub">Ответственное раскрытие уязвимостей</p>
@@ -71,5 +70,3 @@ keywords: "политика безопасности, уязвимости, от
 ---
 
 Спасибо за ваш вклад в безопасность нашего проекта!
-
-![Логотип](artifacts/assets/logotypemd.jpg)

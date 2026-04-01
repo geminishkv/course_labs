@@ -229,17 +229,19 @@ $ rm test_secret.py
 
 ## Links
 
-- [Docker](https://docs.docker.com/)
-- [Markdown](https://stackedit.io)
-- [Gist](https://gist.github.com)
-- [GitHub CLI](https://cli.github.com)
-- [OWASP Top Ten и Software Composition Analysis](https://pvs-studio.ru/ru/blog/posts/csharp/0876/)
-- [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
-- [Semgrep CLI – Local scans](https://semgrep.dev/docs/getting-started/cli)
-- [Semgrep CLI reference](https://semgrep.dev/docs/cli-reference/)
-- [Checkov CLI Command Reference](https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html)
-- [Gitleaks](https://github.com/gitleaks/gitleaks)
-- [TruffleHog](https://github.com/trufflesecurity/trufflehog)
-- [detect-secrets](https://github.com/Yelp/detect-secrets)
-- [Pre-commit](https://pre-commit.com/)
-- [GitHub Docs](https://docs.github.com/en)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://stackedit.io" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown</div><div class="lab-card-tags"><span class="lab-tag">stackedit.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://pvs-studio.ru/ru/blog/posts/csharp/0876/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Top Ten и Software Composition Analysis</div><div class="lab-card-tags"><span class="lab-tag">pvs-studio.ru</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://owasp.org/www-project-dependency-check/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Dependency-Check</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://semgrep.dev/docs/getting-started/cli" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Semgrep CLI – Local scans</div><div class="lab-card-tags"><span class="lab-tag">semgrep.dev</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://semgrep.dev/docs/cli-reference/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Semgrep CLI reference</div><div class="lab-card-tags"><span class="lab-tag">semgrep.dev</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Checkov CLI Command Reference</div><div class="lab-card-tags"><span class="lab-tag">checkov.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/gitleaks/gitleaks" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gitleaks</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/trufflesecurity/trufflehog" target="_blank"><div class="lab-card-body"><div class="lab-card-title">TruffleHog</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/Yelp/detect-secrets" target="_blank"><div class="lab-card-body"><div class="lab-card-title">detect-secrets</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://pre-commit.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Pre-commit</div><div class="lab-card-tags"><span class="lab-tag">pre-commit.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.github.com/en" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Docs</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

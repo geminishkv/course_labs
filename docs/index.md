@@ -80,7 +80,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 ---
 
-## Лабораторные работы
+## Базовые Лабораторные работы
 
 <div class="lab-grid">
 <a class="lab-card" href="labs/basic/lab01/"><div class="lab-card-num">01</div><div class="lab-card-body"><div class="lab-card-title">GitSCM — подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>

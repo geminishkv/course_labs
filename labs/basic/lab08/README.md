@@ -190,16 +190,18 @@ $ docker system prune -f
 
 ## Links
 
-- [Docker](https://docs.docker.com/)
-- [Flask Documentation](https://flask.palletsprojects.com/)  
-- [odfpy – OpenDocument API for Python](https://github.com/eea/odfpy) 
-- [openpyxl – Excel files in Python](https://openpyxl.readthedocs.io/)  
-- [Markdown](https://stackedit.io)
-- [Gist](https://gist.github.com)
-- [GitHub CLI](https://cli.github.com)
-- [OWASP ZAP](https://www.zaproxy.org/)
-- [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)  
-- [OWASP Top 10 Web Application Security Risks](https://owasp.org/www-project-top-ten/)  
-- [ZAP Docker images](https://www.zaproxy.org/docs/docker/)  
-- [ZAP Baseline Scan](https://www.zaproxy.org/docs/docker/baseline-scan/)  
-- [ZAP Automation Framework](https://www.zaproxy.org/docs/desktop/addons/automation-framework/)  
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://flask.palletsprojects.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Flask Documentation</div><div class="lab-card-tags"><span class="lab-tag">flask.palletsprojects.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/eea/odfpy" target="_blank"><div class="lab-card-body"><div class="lab-card-title">odfpy – OpenDocument API for Python</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://openpyxl.readthedocs.io/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">openpyxl – Excel files in Python</div><div class="lab-card-tags"><span class="lab-tag">openpyxl.readthedocs.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://stackedit.io" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown</div><div class="lab-card-tags"><span class="lab-tag">stackedit.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.zaproxy.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP ZAP</div><div class="lab-card-tags"><span class="lab-tag">zaproxy.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Web Security Testing Guide</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://owasp.org/www-project-top-ten/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Top 10 Web Application Security Risks</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.zaproxy.org/docs/docker/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">ZAP Docker images</div><div class="lab-card-tags"><span class="lab-tag">zaproxy.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.zaproxy.org/docs/docker/baseline-scan/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">ZAP Baseline Scan</div><div class="lab-card-tags"><span class="lab-tag">zaproxy.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.zaproxy.org/docs/desktop/addons/automation-framework/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">ZAP Automation Framework</div><div class="lab-card-tags"><span class="lab-tag">zaproxy.org</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

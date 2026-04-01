@@ -366,18 +366,20 @@ fail_action: true
 
 ## Links
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [GitHub Actions — Workflow syntax](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions)
-- [Trivy — aquasecurity/trivy-action](https://github.com/aquasecurity/trivy-action)
-- [Trivy Documentation](https://aquasecurity.github.io/trivy/)
-- [OWASP ZAP — zaproxy/action-baseline](https://github.com/zaproxy/action-baseline)
-- [OWASP ZAP Baseline Scan](https://www.zaproxy.org/docs/docker/baseline-scan/)
-- [OWASP Dependency-Check Action](https://github.com/dependency-check/Dependency-Check_Action)
-- [Semgrep CLI reference](https://semgrep.dev/docs/cli-reference/)
-- [Checkov CLI Command Reference](https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html)
-- [Docker](https://docs.docker.com/)
-- [Markdown](https://stackedit.io)
-- [Gist](https://gist.github.com)
-- [GitHub CLI](https://cli.github.com)
-- [DevSecOps — OWASP](https://owasp.org/www-project-devsecops-guideline/)
-- [Shift-Left Security — NIST](https://csrc.nist.gov/publications/detail/white-paper/2021/11/09/devsecops-a-security-model-for-software-development/final)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://docs.github.com/en/actions" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Actions Documentation</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Actions — Workflow syntax</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/aquasecurity/trivy-action" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Trivy — aquasecurity/trivy-action</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://aquasecurity.github.io/trivy/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Trivy Documentation</div><div class="lab-card-tags"><span class="lab-tag">aquasecurity.github.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/zaproxy/action-baseline" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP ZAP — zaproxy/action-baseline</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.zaproxy.org/docs/docker/baseline-scan/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP ZAP Baseline Scan</div><div class="lab-card-tags"><span class="lab-tag">zaproxy.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/dependency-check/Dependency-Check_Action" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Dependency-Check Action</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://semgrep.dev/docs/cli-reference/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Semgrep CLI reference</div><div class="lab-card-tags"><span class="lab-tag">semgrep.dev</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Checkov CLI Command Reference</div><div class="lab-card-tags"><span class="lab-tag">checkov.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://stackedit.io" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown</div><div class="lab-card-tags"><span class="lab-tag">stackedit.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://owasp.org/www-project-devsecops-guideline/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">DevSecOps — OWASP</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://csrc.nist.gov/publications/detail/white-paper/2021/11/09/devsecops-a-security-model-for-software-development/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Shift-Left Security — NIST</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

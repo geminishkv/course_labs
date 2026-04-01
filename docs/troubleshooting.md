@@ -188,6 +188,38 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ---
 
+## VirtualBox и VM (Подготовка окружения)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">VT-x is not available</div>
+    <span class="lab-tag">VirtualBox</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Включите виртуализацию в BIOS: Intel VT-x / AMD-V. На ноутбуках часто отключена по умолчанию.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">VM не загружается с ISO</div>
+    <span class="lab-tag">VirtualBox</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Проверьте порядок загрузки: Настройки → Система → Оптический диск первым. Убедитесь что ISO подключён в Носителях.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Нет интернета в VM</div>
+    <span class="lab-tag">VirtualBox · Сеть</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Сетевой адаптер: NAT. Если не помогает — перезагрузите VM. Для доступа к VM с хоста: Host-only Adapter.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Маленький экран VM</div>
+    <span class="lab-tag">Guest Additions</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Установите Guest Additions: <code>Устройства → Подключить образ диска Дополнений</code> → <code>sudo /mnt/VBoxLinuxAdditions.run</code> → reboot</p>
+  </div>
+
+</div>
+
+---
+
 ## Python и venv (общее)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">

@@ -207,14 +207,16 @@ $ nmap -sP inet_addr
 
 ## Links
 
-- [Markdown](https://stackedit.io)
-- [GitHub CLI](https://cli.github.com)
-- [Gist](https://gist.github.com)
-- [IANA](https://www.iana.org)
-- [IANA Port Numbers](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml)
-- [Nmap GitHub](https://github.com/nmap/nmap)
-- [Официальная документация nmap](https://nmap.org/book/)
-- [Nmap Reference Guide](https://nmap.org/book/man.html)
-- [Nmap Script (NSE) Reference](https://nmap.org/nsedoc/)
-- [Nmap Tutorial (Hackers-Arise)](https://nmap.org/docs.html)
-- [OWASP Testing Guide – Network Scanning](https://owasp.org/www-project-web-security-testing-guide/)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://stackedit.io" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown</div><div class="lab-card-tags"><span class="lab-tag">stackedit.io</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.iana.org" target="_blank"><div class="lab-card-body"><div class="lab-card-title">IANA</div><div class="lab-card-tags"><span class="lab-tag">iana.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml" target="_blank"><div class="lab-card-body"><div class="lab-card-title">IANA Port Numbers</div><div class="lab-card-tags"><span class="lab-tag">iana.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/nmap/nmap" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap GitHub</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://nmap.org/book/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Официальная документация nmap</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://nmap.org/book/man.html" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Reference Guide</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://nmap.org/nsedoc/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Script (NSE) Reference</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://nmap.org/docs.html" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Tutorial (Hackers-Arise)</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Testing Guide – Network Scanning</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

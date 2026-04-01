@@ -69,7 +69,7 @@ Git — распределённая система контроля верси�
 
 ## Tutorial
 
-> Подготовка рабочего окружения (VirtualBox, Linux) описана в отдельном руководстве: [vmbox_tutorial](../intro/vmbox_tutorial.md)
+> Подготовка рабочего окружения (VirtualBox, Linux) описана в отдельном руководстве: [Подготовка рабочего окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/)
 
 -  Подготовить переменные окружения через конфигурацию git config на одном из трёх уровней:
     - Локальный (--local) - только для текущего репозитория, файл .git/config
@@ -112,13 +112,13 @@ $ git config --global commit.gpgsign true # Подпись всех фиксац
 $ git config --global tag.gpgSign true # Подпись всех тегов
 ```
 
-- [ ] 14. Создайте локальный репозиторий на машине и проинициализируйте его
-- [ ] 15. Авторизуйтесь и используйте `GitHub CLI` для создания удаленного репозитория
-- [ ] 16. Создайте пустой README.md и используйте указание URL своего созданного репозитория для присвоения ветки `master` статуса `origin`
-- [ ] 17. В локальном репозитории сделайте `commit` и публикацию с флагом `-S` в удаленный репозиторий
-- [ ] 18. Создайте файл `hello.py`. Реализуйте **Hello appsec world** на языке python используя несколько интерпретаторов с "грязным" кодом. Сделайте `commit` с флагом `-S`
-- [ ] 19. Измените исходный код, чтобы скрипт запрашивал имя пользователя и выводил `Hello appsec world from @name`. Сделайте `commit` с флагом `-S` и публикацию. Проверьте историю изменений
-- [ ] 20. В локальном репозитории создайте ветку `patch1` и внесите изменения исправлению кода и модернизации до следующего вида, чтобы код был рабочим. Сделайте публикацию своего `commit` с флагом `-S` в удаленный репозиторий:
+- [ ] 1. Создайте локальный репозиторий на машине и проинициализируйте его
+- [ ] 2. Авторизуйтесь и используйте `GitHub CLI` для создания удаленного репозитория
+- [ ] 3. Создайте пустой README.md и используйте указание URL своего созданного репозитория для присвоения ветки `master` статуса `origin`
+- [ ] 4. В локальном репозитории сделайте `commit` и публикацию с флагом `-S` в удаленный репозиторий
+- [ ] 5. Создайте файл `hello.py`. Реализуйте **Hello appsec world** на языке python используя несколько интерпретаторов с "грязным" кодом. Сделайте `commit` с флагом `-S`
+- [ ] 6. Измените исходный код, чтобы скрипт запрашивал имя пользователя и выводил `Hello appsec world from @name`. Сделайте `commit` с флагом `-S` и публикацию. Проверьте историю изменений
+- [ ] 7. В локальном репозитории создайте ветку `patch1` и внесите изменения исправлению кода и модернизации до следующего вида, чтобы код был рабочим. Сделайте публикацию своего `commit` с флагом `-S` в удаленный репозиторий:
 
 ```bash
 import typer
@@ -140,18 +140,18 @@ if __name__ == "__main__":
     typer.run(main)
 ```
 
-- [ ] 21. Проверьте, что ветка `patch1` в удалённом репозитории
-- [ ] 22. Создайте `pull-request` в виде `patch1 -> master`
-- [ ] 23. В ветке `patch1` добавьте в исходный код комментарии и убедитесь, что есть указанные изменения в `pull-request`
-- [ ] 24. В удалённом репозитории выполните слияние `pull-request` для `patch1 -> master` и удалите ветку `patch1`
-- [ ] 25. Стяните последние актуальные изменения и просмотрите историю изменений для `master`. Удалите локальную ветку `patch1`
-- [ ] 26. Создайте новую локальную ветку `patch2`. Измените *code style* по своему усмотрению
-- [ ] 27. Сделайте публикацию своего `commit` с флагом `-S` и создайте pull-request `patch2 -> master`
-- [ ] 28. В ветке **master** удаленного репозитория явно измените комментарий. Увидите, что в `pull-request` появились расхождения
-- [ ] 29. Локально сделайте **rebase** и исправьте расхождения (это называется **конфликт**)
-- [ ] 30. Сделайте `commit` и опубликуйте изменения в ветке `patch2`. Убедитесь, что пропали конфликты
-- [ ] 31. Сделайте `merge` для `pull-request` `patch2 -> master`
-- [ ] 32. Подготовьте отчет `gist`. Продемонстрируйте историю коммитов на локальном и удаленном репозитории
+- [ ] 8. Проверьте, что ветка `patch1` в удалённом репозитории
+- [ ] 9. Создайте `pull-request` в виде `patch1 -> master`
+- [ ] 10. В ветке `patch1` добавьте в исходный код комментарии и убедитесь, что есть указанные изменения в `pull-request`
+- [ ] 11. В удалённом репозитории выполните слияние `pull-request` для `patch1 -> master` и удалите ветку `patch1`
+- [ ] 12. Стяните последние актуальные изменения и просмотрите историю изменений для `master`. Удалите локальную ветку `patch1`
+- [ ] 13. Создайте новую локальную ветку `patch2`. Измените *code style* по своему усмотрению
+- [ ] 14. Сделайте публикацию своего `commit` с флагом `-S` и создайте pull-request `patch2 -> master`
+- [ ] 15. В ветке **master** удаленного репозитория явно измените комментарий. Увидите, что в `pull-request` появились расхождения
+- [ ] 16. Локально сделайте **rebase** и исправьте расхождения (это называется **конфликт**)
+- [ ] 17. Сделайте `commit` и опубликуйте изменения в ветке `patch2`. Убедитесь, что пропали конфликты
+- [ ] 18. Сделайте `merge` для `pull-request` `patch2 -> master`
+- [ ] 19. Подготовьте отчет `gist`. Продемонстрируйте историю коммитов на локальном и удаленном репозитории
 
 ***
 
@@ -161,12 +161,14 @@ if __name__ == "__main__":
 
 ## Links
 
-- [Pro Git Book](https://git-scm.com/book/ru/v2) — полный справочник по Git на русском
-- [GitHub Docs](https://docs.github.com/en)
-- [GitHub SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
-- [GitHub CLI](https://cli.github.com)
-- [GitHub Personal Token](https://github.com/settings/tokens/new)
-- [GnuPG](https://gnupg.org/)
-- [Markdown Guide](https://www.markdownguide.org/)
-- [Gist](https://gist.github.com)
-- [Typer Documentation](https://typer.tiangolo.com/)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://git-scm.com/book/ru/v2" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Pro Git Book</div><div class="lab-card-tags"><span class="lab-tag">git-scm.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.github.com/en" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Docs</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub SSH Key</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/settings/tokens/new" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Personal Token</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gnupg.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GnuPG</div><div class="lab-card-tags"><span class="lab-tag">gnupg.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://www.markdownguide.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown Guide</div><div class="lab-card-tags"><span class="lab-tag">markdownguide.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://typer.tiangolo.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Typer Documentation</div><div class="lab-card-tags"><span class="lab-tag">typer.tiangolo.com</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

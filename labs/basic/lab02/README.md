@@ -296,21 +296,23 @@ $ getfacl nmapres.txt
 
 ## Links
 
-- [Gist](https://gist.github.com)
-- [GitHub CLI](https://cli.github.com)
-- [cat](https://en.wikipedia.org/wiki/Cat_(Unix))
-- [cd](https://en.wikipedia.org/wiki/Cd_(command))
-- [cp](https://en.wikipedia.org/wiki/Cp_(Unix))
-- [echo](https://en.wikipedia.org/wiki/Echo_(command))
-- [env](https://en.wikipedia.org/wiki/Env_(shell))
-- [file](https://en.wikipedia.org/wiki/File_(command))
-- [ls](https://en.wikipedia.org/wiki/Ls)
-- [mkdir](https://en.wikipedia.org/wiki/Mkdir)
-- [mv](https://en.wikipedia.org/wiki/Mv)
-- [ps](https://en.wikipedia.org/wiki/Ps_(Unix))
-- [pwd](https://en.wikipedia.org/wiki/Pwd)
-- [rm](https://en.wikipedia.org/wiki/Rm_(Unix))
-- [touch](https://en.wikipedia.org/wiki/Touch_(Unix))
-- [apt](http://help.ubuntu.ru/wiki/apt)
-- [brew](https://brew.sh)
-- [npm](https://docs.npmjs.com)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Cat_(Unix)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">cat</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Cd_(command)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">cd</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Cp_(Unix)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">cp</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Echo_(command)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">echo</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Env_(shell)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">env</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/File_(command)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">file</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Ls" target="_blank"><div class="lab-card-body"><div class="lab-card-title">ls</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Mkdir" target="_blank"><div class="lab-card-body"><div class="lab-card-title">mkdir</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Mv" target="_blank"><div class="lab-card-body"><div class="lab-card-title">mv</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Ps_(Unix)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">ps</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Pwd" target="_blank"><div class="lab-card-body"><div class="lab-card-title">pwd</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Rm_(Unix)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">rm</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://en.wikipedia.org/wiki/Touch_(Unix)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">touch</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="http://help.ubuntu.ru/wiki/apt" target="_blank"><div class="lab-card-body"><div class="lab-card-title">apt</div><div class="lab-card-tags"><span class="lab-tag">help.ubuntu.ru</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://brew.sh" target="_blank"><div class="lab-card-body"><div class="lab-card-title">brew</div><div class="lab-card-tags"><span class="lab-tag">brew.sh</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.npmjs.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">npm</div><div class="lab-card-tags"><span class="lab-tag">docs.npmjs.com</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

@@ -206,35 +206,14 @@ $ gh --version
 
 Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">VT-x is not available</div>
-    <p style="font-size:0.75rem; margin:0; color:#555; line-height:1.5;">Включите виртуализацию в BIOS: Intel VT-x / AMD-V</p>
-  </div>
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">VM не загружается с ISO</div>
-    <p style="font-size:0.75rem; margin:0; color:#555; line-height:1.5;">Проверьте порядок загрузки: Настройки → Система → Оптический диск первым</p>
-  </div>
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Нет интернета в VM</div>
-    <p style="font-size:0.75rem; margin:0; color:#555; line-height:1.5;">Сетевой адаптер: NAT, перезагрузите VM</p>
-  </div>
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Docker: permission denied</div>
-    <p style="font-size:0.75rem; margin:0; color:#555; line-height:1.5;"><code>sudo usermod -aG docker $USER</code> → перелогиньтесь</p>
-  </div>
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Маленький экран</div>
-    <p style="font-size:0.75rem; margin:0; color:#555; line-height:1.5;">Установите Guest Additions (раздел 7)</p>
-  </div>
-</div>
-
 ***
 
 ## Links
 
-- [VirtualBox Documentation](https://www.virtualbox.org/manual/)
-- [Ubuntu Installation Guide](https://ubuntu.com/tutorials/install-ubuntu-desktop)
-- [Fedora Installation Guide](https://docs.fedoraproject.org/en-US/fedora/latest/install-guide/)
-- [Docker Engine Installation](https://docs.docker.com/engine/install/)
-- [GitHub CLI Installation](https://github.com/cli/cli#installation)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://www.virtualbox.org/manual/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">VirtualBox Documentation</div><div class="lab-card-tags"><span class="lab-tag">virtualbox.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://ubuntu.com/tutorials/install-ubuntu-desktop" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Ubuntu Installation Guide</div><div class="lab-card-tags"><span class="lab-tag">ubuntu.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.fedoraproject.org/en-US/fedora/latest/install-guide/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Fedora Installation Guide</div><div class="lab-card-tags"><span class="lab-tag">docs.fedoraproject.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://docs.docker.com/engine/install/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Engine Installation</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/cli/cli#installation" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI Installation</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

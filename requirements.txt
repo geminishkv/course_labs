@@ -12,12 +12,16 @@ mkdocs-glightbox==0.5.2
 mkdocs-pdf==0.1.2
 
 # ─── Markdown extensions ────────────────────────────────────────────────────
-pymdown-extensions==10.16.1
+pymdown-extensions==10.21.2
 Pygments==2.20.0
 
 # ─── Social cards (Material plugin dependency) ──────────────────────────────
 pillow>=10.0.0
 cairosvg>=2.7.0
+
+# ─── Transitive deps (pinned for CVE fixes) ─────────────────────────────────
+requests>=2.33.0
+cryptography>=46.0.6
 
 # ─── Runtime ────────────────────────────────────────────────────────────────
 PyYAML==6.0.2

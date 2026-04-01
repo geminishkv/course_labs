@@ -80,6 +80,24 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Хост блокирует ICMP. Используйте <code>nmap -Pn target</code> для пропуска ping-проверки. Или проверьте, что таргет доступен: <code>ping target</code></p>
   </div>
 
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">xsltproc: command not found</div>
+    <span class="lab-tag">nmap XML → HTML</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Утилита для конвертации XML-отчёта в HTML. Ubuntu: <code>sudo apt install xsltproc</code>. macOS: <code>brew install libxslt</code></p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">NSE scripts: not found</div>
+    <span class="lab-tag">nmap --script</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">NSE-скрипты не установлены или путь неверен. Обновите базу: <code>sudo nmap --script-updatedb</code>. Проверьте: <code>ls /usr/share/nmap/scripts/</code></p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Scan takes too long</div>
+    <span class="lab-tag">nmap -p-</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Сканирование всех 65535 портов долгое. Используйте <code>-T4</code> для ускорения или ограничьте порты: <code>-p 22,80,443,3306,8080</code></p>
+  </div>
+
 </div>
 
 ---

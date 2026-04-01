@@ -80,16 +80,26 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 ---
 
+## Intro
+
+<div class="lab-grid">
+<a class="lab-card" href="labs/intro/vmbox_tutorial/"><div class="lab-card-body"><div class="lab-card-title">Подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">VirtualBox</span><span class="lab-tag">Ubuntu</span><span class="lab-tag">Fedora</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/intro/git_setup/"><div class="lab-card-body"><div class="lab-card-title">Настройка Git, GPG и GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">SSH</span><span class="lab-tag">GPG</span><span class="lab-tag">gh</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/intro/gistup_guide/"><div class="lab-card-body"><div class="lab-card-title">Оформление отчётов Gistup</div><div class="lab-card-tags"><span class="lab-tag">Gist</span><span class="lab-tag">Markdown</span><span class="lab-tag">Отчёт</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
+
+---
+
 ## Базовые Лабораторные работы
 
 <div class="lab-grid">
 <a class="lab-card" href="labs/basic/lab01/"><div class="lab-card-num">01</div><div class="lab-card-body"><div class="lab-card-title">GitSCM — подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab02/"><div class="lab-card-num">02</div><div class="lab-card-body"><div class="lab-card-title">*nix — права доступа, управление процессами</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Bash</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab03/"><div class="lab-card-num">03</div><div class="lab-card-body"><div class="lab-card-title">Nmap — сканирование сети и анализ уязвимостей</div><div class="lab-card-tags"><span class="lab-tag">Nmap</span><span class="lab-tag">Linux</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/basic/lab02/"><div class="lab-card-num">02</div><div class="lab-card-body"><div class="lab-card-title">*nix — права доступа, SUID, ACL, процессы</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Bash</span><span class="lab-tag">POSIX ACL</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/basic/lab03/"><div class="lab-card-num">03</div><div class="lab-card-body"><div class="lab-card-title">Nmap — сканирование сети, NSE и защита результатов</div><div class="lab-card-tags"><span class="lab-tag">Nmap</span><span class="lab-tag">NSE</span><span class="lab-tag">ACL</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/basic/lab04/"><div class="lab-card-num">04</div><div class="lab-card-body"><div class="lab-card-title">Анализ и определение мер снижения рисков ИБ</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/basic/lab05/"><div class="lab-card-num">05</div><div class="lab-card-body"><div class="lab-card-title">Docker — контейнеризация приложений</div><div class="lab-card-tags"><span class="lab-tag">Docker</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab06/"><div class="lab-card-num">06</div><div class="lab-card-body"><div class="lab-card-title">Docker CIS Benchmark — аудит Docker-хоста</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">CIS</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab07/"><div class="lab-card-num">07</div><div class="lab-card-body"><div class="lab-card-title">SAST и SCA — статический анализ и зависимости</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Checkov</span><span class="lab-tag">OWASP DC</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/basic/lab06/"><div class="lab-card-num">06</div><div class="lab-card-body"><div class="lab-card-title">Docker CIS Benchmark и Trivy</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">CIS</span><span class="lab-tag">Trivy</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/basic/lab07/"><div class="lab-card-num">07</div><div class="lab-card-body"><div class="lab-card-title">SAST, SCA и Secret Detection</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Checkov</span><span class="lab-tag">OWASP DC</span><span class="lab-tag">Gitleaks</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/basic/lab08/"><div class="lab-card-num">08</div><div class="lab-card-body"><div class="lab-card-title">DAST — динамическое тестирование уязвимого приложения</div><div class="lab-card-tags"><span class="lab-tag">OWASP ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/basic/lab09/"><div class="lab-card-num">09</div><div class="lab-card-body"><div class="lab-card-title">DevSecOps CI/CD конвейер на GitHub Actions</div><div class="lab-card-tags"><span class="lab-tag">GH Actions</span><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/basic/lab10/"><div class="lab-card-num">10</div><div class="lab-card-body"><div class="lab-card-title">Оценка анализа рисков ИБ — практика</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>

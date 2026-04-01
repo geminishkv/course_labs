@@ -69,48 +69,10 @@ Git — распределённая система контроля верси�
 
 ## Tutorial
 
-> Подготовка рабочего окружения (VirtualBox, Linux) описана в отдельном руководстве: [Подготовка рабочего окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/)
-
--  Подготовить переменные окружения через конфигурацию git config на одном из трёх уровней:
-    - Локальный (--local) - только для текущего репозитория, файл .git/config
-    - Глобальный (--global) - для пользователя, файл ~/.gitconfig
-    - Системный (--system) - для всех пользователей /etc/gitconfig
-
-```bash
-$ git config --global user.name "Ваше Имя" # Установить имя пользователя (глобально)
-$ git config --global user.email "email@example.com" # Установить email пользователя (глобально)
-$ git config --global core.editor "vim" # Установить текстовый редактор по умолчанию или nano
-$ git config unset --global user.email # Удалить глобальную настройку email. Допустима замена "unset" на "--unset"
-$ git config edit --global # Редактирование конфига на указанном уровне в редакторе "core.editor". Допустима замена "edit" на "-e"
-$ git config list # Показать все текущие настройки. Допустима замена "list" на "--list"
-$ git config user.name # Показать имя пользователя. Без атрибутов — локальная настройка
-$ git config --global alias.co checkout # Создать псевдоним (например, "git co" вместо "git checkout")
-$ git config --global help.autocorrect prompt # Предложения автозамены при ошибке набора команды.
-$ git config --global core.autocrlf true # Настроить конвертацию концов строк (для Windows: "true", для Linux/macOS: "input")
-$ git config --global credential.helper cache # Кэшировать учётные данные. По умолчанию 15 минут. Укажи "cache --timeout=3600" для часа. Не работает для пассфраз ключей.
-$ git config --global commit.gpgsign true # Настроить автоматическое подписание коммитов
-```
-
-- Поставьте на машину необходимые компоненты для `gitscm`, `GitHub CLI`
-- Поставьте дополнительные пакеты для своего удобства, рекомендуется поставить `zsh` 
-
-```bash
-$ echo $SHELL
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # Homebrew
-$ brew install zsh
-$ zsh --version
-```
-- Поставьте `GnuPG` и используйте для подписания коммитов флагом `-S`
-
-```bash
-$ gpg --full-generate-key # Создание ключа с выбором его типа
-$ gpg --list-secret-keys --keyid-format=long # Вывод всех ключей в длинной форме
-$ gpg --armor --export xxxxxx  # Экспорт публичного ключа в ASCII формате (замените xxxxxx на ваш ключ)
-$ git config --global --unset gpg.format
-$ git config --global user.signingkey # Внесение вложенного ключа (обоих)
-$ git config --global commit.gpgsign true # Подпись всех фиксаций
-$ git config --global tag.gpgSign true # Подпись всех тегов
-```
+> Перед началом выполните подготовительные инструкции:
+>
+> - [Подготовка рабочего окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/) — VirtualBox, установка Linux
+> - [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/labs/intro/git_setup/) — git config, SSH, GnuPG, gh
 
 - [ ] 1. Создайте локальный репозиторий на машине и проинициализируйте его
 - [ ] 2. Авторизуйтесь и используйте `GitHub CLI` для создания удаленного репозитория

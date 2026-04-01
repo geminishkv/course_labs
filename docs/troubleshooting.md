@@ -220,6 +220,124 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ---
 
+## GPG и подпись коммитов (Lab 01)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">error: gpg failed to sign the data</div>
+    <span class="lab-tag">git commit -S</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">GPG не может получить доступ к TTY. Решение: <code>export GPG_TTY=$(tty)</code> (добавьте в <code>~/.bashrc</code> или <code>~/.zshrc</code>)</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Коммит без бейджа Verified</div>
+    <span class="lab-tag">GitHub · GPG</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Email в GPG-ключе не совпадает с email в GitHub. Проверьте: <code>gpg --list-keys</code> и <code>git config user.email</code> — должны совпадать. Публичный ключ должен быть добавлен в GitHub.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">gpg: keyserver receive failed</div>
+    <span class="lab-tag">gpg</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Проблема с сетью или keyserver. Генерируйте ключ локально: <code>gpg --full-generate-key</code> — keyserver не нужен для GitHub.</p>
+  </div>
+
+</div>
+
+---
+
+## Gist и отчёты
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">gh gist create: 401 Unauthorized</div>
+    <span class="lab-tag">GitHub CLI · Gist</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Не авторизованы или токен без scope <code>gist</code>. Решение: <code>gh auth login</code> → выбрать HTTPS → вставить токен с правами <code>gist</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Markdown не рендерится в Gist</div>
+    <span class="lab-tag">Gist · Markdown</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Файл должен иметь расширение <code>.md</code>. Проверьте имя: <code>lab01_report.md</code>, не <code>.txt</code>. Превью: откройте Gist в браузере.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Код в отчёте не подсвечивается</div>
+    <span class="lab-tag">Markdown</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Указывайте язык после тройных бэктиков: <code>```bash</code>, <code>```python</code>, <code>```yaml</code>. Без указания языка — подсветки не будет.</p>
+  </div>
+
+</div>
+
+---
+
+## Secret Detection (Lab 07)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">gitleaks: command not found</div>
+    <span class="lab-tag">gitleaks</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Не установлен. macOS: <code>brew install gitleaks</code>. Linux: скачайте бинарник с <a href="https://github.com/gitleaks/gitleaks/releases">GitHub Releases</a>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">pre-commit hook не блокирует коммит</div>
+    <span class="lab-tag">pre-commit · gitleaks</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Хуки не установлены: <code>pre-commit install</code>. Проверьте <code>.pre-commit-config.yaml</code> в корне репо. Тест: <code>pre-commit run --all-files</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Секрет уже попал в публичный репо</div>
+    <span class="lab-tag">Инцидент · Ротация</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">1) Немедленно ротировать секрет. 2) Очистить историю: <code>git filter-repo</code> или BFG. 3) Force push. Секрет считается скомпрометированным с момента push.</p>
+  </div>
+
+</div>
+
+---
+
+## Trivy и Container Scanning (Lab 06)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">trivy: command not found</div>
+    <span class="lab-tag">trivy</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">macOS: <code>brew install aquasecurity/trivy/trivy</code>. Linux: <code>curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh</code></p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Trivy: db download timeout</div>
+    <span class="lab-tag">trivy · сеть</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Первый запуск скачивает базу уязвимостей (~30 MB). При медленном интернете: <code>trivy image --download-db-only</code> заранее. В CI используйте кэш.</p>
+  </div>
+
+</div>
+
+---
+
+## Risk Analysis (Lab 04, 10)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Не понимаю как оценить риск</div>
+    <span class="lab-tag">Risk Analysis</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Используйте матрицу 5×5: Вероятность × Ущерб. Начните с актива (что защищаем), угрозы (от чего), уязвимости (через что), затем оцените вероятность и последствия.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Как выбрать стратегию снижения риска</div>
+    <span class="lab-tag">Стратегии</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><strong>Снижение</strong> — патч, WAF. <strong>Передача</strong> — страховка, SLA. <strong>Принятие</strong> — осознанное, с мониторингом. <strong>Избежание</strong> — отказ от фичи. Выбор зависит от стоимости меры vs ущерба.</p>
+  </div>
+
+</div>
+
+---
+
 ## Python и venv (общее)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">

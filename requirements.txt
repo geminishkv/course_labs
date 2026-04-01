@@ -13,6 +13,7 @@ mkdocs-pdf==0.1.2
 
 # ─── Markdown extensions ────────────────────────────────────────────────────
 pymdown-extensions==10.16.1
+Pygments==2.19.2
 
 # ─── Social cards (Material plugin dependency) ──────────────────────────────
 pillow>=10.0.0

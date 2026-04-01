@@ -129,6 +129,7 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
   </div>
 </div>
 
+<div class="tg-embed-desktop">
 <script async
         src="https://telegram.org/js/telegram-widget.js?22"
         data-telegram-post="shmakovis_appsec/61"
@@ -137,6 +138,7 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
         data-mode="compact"
         data-color="D51A1A"
         data-dark="0"></script>
+</div>
 
 </div>
 </div>

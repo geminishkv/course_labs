@@ -1,0 +1,90 @@
+/* ══════════════════════════════════════════
+   Design Tokens — AppSec Course
+   Single source of truth for all design values
+══════════════════════════════════════════ */
+:root {
+  /* ── Brand colors ── */
+  --brand-red:            #D51A1A;
+  --brand-red-light:      #E23535;
+  --brand-red-dark:       #B51515;
+  --brand-gold:           #F9B361;
+  --brand-gold-dark:      #c48a20;
+  --brand-dark:           #1A1919;
+  --brand-hero-stop:      #2d0a0a;
+
+  /* ── Surfaces ── */
+  --surface-page:         #ffffff;
+  --surface-card:         #fafafa;
+  --surface-zebra:        #f9fafb;
+  --surface-code:         #111010;
+  --surface-overlay:      rgba(0, 0, 0, 0.5);
+
+  /* ── Text ── */
+  --text-primary:         #000000;
+  --text-secondary:       #3a3a3a;
+  --text-muted:           rgba(255, 255, 255, 0.75);
+  --text-inverse:         #ffffff;
+  --text-inverse-muted:   rgba(255, 255, 255, 0.6);
+
+  /* ── Borders ── */
+  --border-red:           rgba(213, 26, 26, 0.18);
+  --border-red-light:     rgba(213, 26, 26, 0.1);
+  --border-gold:          rgba(249, 179, 97, 0.15);
+  --border-gold-strong:   rgba(249, 179, 97, 0.2);
+  --border-subtle:        rgba(0, 0, 0, 0.06);
+  --border-subtle-light:  rgba(0, 0, 0, 0.1);
+
+  /* ── Typography ── */
+  --font-display:         "Unbounded", "Roboto", sans-serif;
+  --font-body:            "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code:            "Roboto Mono", "Roboto", ui-monospace, monospace;
+
+  /* ── Type scale ── */
+  --text-2xs:             0.6rem;
+  --text-xs:              0.65rem;
+  --text-sm:              0.75rem;
+  --text-base:            0.85rem;
+  --text-md:              0.95rem;
+  --text-lg:              1.1rem;
+
+  /* ── Spacing ── */
+  --space-1:              0.25rem;
+  --space-2:              0.5rem;
+  --space-3:              0.75rem;
+  --space-4:              1rem;
+  --space-5:              1.25rem;
+  --space-6:              1.5rem;
+  --space-8:              2rem;
+  --space-10:             2.5rem;
+  --space-12:             3rem;
+
+  /* ── Radii ── */
+  --radius-sm:            3px;
+  --radius-md:            6px;
+  --radius-lg:            10px;
+  --radius-full:          9999px;
+
+  /* ── Shadows ── */
+  --shadow-overlay:       0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-glow-white:    0 0 32px rgba(255, 255, 255, 0.55);
+  --shadow-glow-red:      0 0 64px rgba(213, 26, 26, 0.5);
+
+  /* ── Transitions ── */
+  --transition-fast:      0.15s ease;
+  --transition-base:      0.2s ease;
+  --transition-slow:      0.3s ease;
+
+  /* ── Material overrides ── */
+  --md-primary-fg-color:             var(--brand-red);
+  --md-primary-fg-color--light:      var(--brand-red-light);
+  --md-primary-fg-color--dark:       var(--brand-red-dark);
+  --md-primary-bg-color:             var(--text-inverse);
+  --md-primary-bg-color--light:      rgba(255, 255, 255, 0.7);
+  --md-accent-fg-color:              var(--brand-gold);
+  --md-accent-fg-color--transparent: rgba(249, 179, 97, 0.1);
+  --md-accent-bg-color:              var(--brand-dark);
+  --md-accent-bg-color--light:       rgba(26, 25, 25, 0.1);
+  --md-typeset-a-color:              var(--brand-red);
+  --md-text-font:                    "Roboto", system-ui, -apple-system, sans-serif;
+  --md-code-font:                    "Roboto Mono", "Roboto", ui-monospace, monospace;
+}

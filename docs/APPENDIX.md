@@ -21,11 +21,12 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
       <span class="lab-card-num">01</span>
       <span class="lab-card-title" style="font-weight:700;">Git — Указатели</span>
     </div>
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Понимание указателей — ключ к отладке ситуаций с «потерянными» коммитами и merge-конфликтами</p>
     <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
-      <li><code>HEAD</code> — указатель на текущий коммит/ветку; родитель следующего коммита</li>
-      <li><code>ORIG_HEAD</code> — коммит, с которого был перемещён HEAD (например, после <code>git reset</code>)</li>
-      <li><code>master</code>, <code>develop</code> — указатели на коммит; перемещаются при добавлении коммита</li>
-      <li><code>tags</code> — неизменяемые указатели на конкретные коммиты</li>
+      <li><code>HEAD</code> — указатель на текущий коммит/ветку; родитель следующего коммита. Если HEAD указывает на коммит напрямую — это <em>detached HEAD</em></li>
+      <li><code>ORIG_HEAD</code> — коммит, с которого был перемещён HEAD (спасает после неудачного <code>git reset</code>: <code>git reset ORIG_HEAD</code>)</li>
+      <li><code>master</code>, <code>develop</code> — указатели на коммит; перемещаются при добавлении коммита. Ветка — это просто файл с SHA-хешем</li>
+      <li><code>tags</code> — неизменяемые указатели на конкретные коммиты. Используются для маркировки релизов (<code>v1.0.0</code>)</li>
     </ul>
   </div>
 
@@ -134,6 +135,133 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
       <li><code>deactivate</code> — выйти из окружения</li>
     </ul>
     <span class="lab-tag"><a href="https://docs.python.org/3/library/venv.html" style="color:inherit; text-decoration:none;">docs.python.org/3/library/venv</a></span>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">09</span>
+      <span class="lab-card-title" style="font-weight:700;">Nmap — Сетевое сканирование</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Первый этап разведки: определить открытые порты, сервисы и потенциальные точки входа</p>
+      <li><code>nmap -sV &lt;target&gt;</code> — определение версий сервисов (позволяет сопоставить с CVE)</li>
+      <li><code>nmap -sS -p 1-65535 &lt;target&gt;</code> — SYN-сканирование всех портов (быстрое, не завершает TCP-handshake)</li>
+      <li><code>nmap -sU -p 53,161 &lt;target&gt;</code> — UDP-сканирование (DNS, SNMP — часто забытые сервисы)</li>
+      <li><code>nmap -O &lt;target&gt;</code> — определение ОС (fingerprinting по TTL и TCP window)</li>
+      <li><code>nmap --script vuln &lt;target&gt;</code> — NSE-скрипты для проверки известных уязвимостей</li>
+      <li><code>nmap -oX report.xml &lt;target&gt;</code> — экспорт в XML для последующего парсинга</li>
+    </ul>
+    <span class="lab-tag"><a href="https://nmap.org/book/man.html" style="color:inherit; text-decoration:none;">nmap.org/book/man</a></span>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">10</span>
+      <span class="lab-card-title" style="font-weight:700;">SAST — Статический анализ</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Анализ кода без запуска — ищет паттерны уязвимостей, мисконфигурации и нарушения best practices</p>
+      <li><code>semgrep scan --config auto .</code> — авто-правила: инъекции, XSS, hardcoded secrets</li>
+      <li><code>semgrep scan --config p/owasp-top-ten .</code> — проверка по OWASP Top 10 категориям</li>
+      <li><code>semgrep scan --json -o report.json .</code> — машиночитаемый отчёт для CI</li>
+      <li><code>checkov -d . --framework dockerfile</code> — Checkov: IaC-мисконфигурации (Dockerfile, Terraform, K8s)</li>
+      <li><code>bandit -r src/ -f json -o bandit.json</code> — Bandit: Python-специфичные уязвимости (eval, pickle, subprocess)</li>
+      <li>В отчёте смотреть: <strong>severity</strong> (ERROR/WARNING), <strong>CWE ID</strong> для маппинга на стандарты</li>
+    </ul>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">11</span>
+      <span class="lab-card-title" style="font-weight:700;">SCA — Анализ зависимостей</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Проверка зависимостей на известные CVE — одна из самых частых причин компрометации (supply chain attacks)</p>
+      <li><code>pip-audit</code> — проверяет Python-пакеты по базе OSV/PyPI Advisory</li>
+      <li><code>trivy fs --scanners vuln .</code> — Trivy: универсальный сканер (Python, Node, Go, Java, Ruby)</li>
+      <li><code>trivy image &lt;name&gt;:&lt;tag&gt;</code> — сканирование Docker-образа (ОС-пакеты + языковые зависимости)</li>
+      <li><code>dependency-check.sh -s . -o ./reports</code> — OWASP DC: маппинг CPE → NVD, HTML-отчёт</li>
+      <li><code>npm audit</code> / <code>npm audit fix</code> — встроенный аудит Node.js</li>
+      <li>В отчёте искать: <strong>CRITICAL/HIGH</strong> с публичным эксплойтом → приоритет на обновление</li>
+    </ul>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">12</span>
+      <span class="lab-card-title" style="font-weight:700;">DAST — Динамическое тестирование</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Тестирование запущенного приложения — находит то, что SAST не видит: IDOR, broken auth, misconfigured CORS</p>
+      <li><code>zap-baseline.py -t &lt;url&gt;</code> — быстрый baseline-скан (пассивные проверки, ~2 мин)</li>
+      <li><code>zap-full-scan.py -t &lt;url&gt; -r report.html</code> — полное сканирование (активные атаки, ~15–30 мин)</li>
+      <li><code>zap-api-scan.py -t &lt;openapi.json&gt; -f openapi</code> — API-скан по спецификации OpenAPI</li>
+      <li>В отчёте: <strong>High/Medium</strong> алерты → воспроизвести вручную → подтвердить → исправить</li>
+      <li>HUD Mode — интерактивный прокси: видите алерты прямо в браузере при ручном тестировании</li>
+    </ul>
+    <span class="lab-tag"><a href="https://www.zaproxy.org/docs/" style="color:inherit; text-decoration:none;">zaproxy.org/docs</a></span>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">13</span>
+      <span class="lab-card-title" style="font-weight:700;">Docker CIS Benchmark</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Аудит Docker-окружения по CIS Benchmark — 100+ проверок хоста, демона, образов и контейнеров</p>
+      <li><code>docker-bench-security</code> — автоматизированная проверка по 7 разделам CIS (PASS/WARN/NOTE)</li>
+      <li>Разделы: Host Configuration, Docker Daemon, Images &amp; Build, Container Runtime, Security Operations</li>
+      <li><code>hadolint Dockerfile</code> — линтинг: <code>DL3008</code> (pin versions), <code>DL3003</code> (use WORKDIR), <code>SC2086</code> (quote vars)</li>
+      <li><code>dockle &lt;image&gt;</code> — проверка собранного образа: лишние пакеты, рутовый пользователь, healthcheck</li>
+    </ul>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">14</span>
+      <span class="lab-card-title" style="font-weight:700;">Secret Detection</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Секреты в git-истории — одна из топ причин утечек. Даже удалённый коммит остаётся в reflog</p>
+      <li><code>gitleaks detect -v</code> — сканирует всю git-историю по regex-паттернам (AWS keys, tokens, passwords)</li>
+      <li><code>gitleaks detect --source . --report-path report.json</code> — машиночитаемый отчёт для CI</li>
+      <li><code>trufflehog git file://.</code> — поиск по entropy (высокая энтропия = вероятный секрет)</li>
+      <li><code>detect-secrets scan &gt; .secrets.baseline</code> — baseline: отслеживает новые секреты между коммитами</li>
+      <li>Pre-commit hook: <code>gitleaks protect --staged</code> — блокирует коммит если найден секрет</li>
+    </ul>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">15</span>
+      <span class="lab-card-title" style="font-weight:700;">GitHub Actions — CI/CD</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Автоматизация DevSecOps конвейера — каждый push проходит через lint → SAST → SCA → build → DAST → deploy</p>
+      <li><code>on: push / pull_request</code> — триггеры (push для CI, PR для review gates)</li>
+      <li><code>jobs.&lt;id&gt;.runs-on: ubuntu-latest</code> — GitHub-hosted раннер (бесплатно для public repos)</li>
+      <li><code>needs: [sast, sca]</code> — зависимости: DAST ждёт завершения SAST и SCA</li>
+      <li><code>env / secrets.{% raw %}${{ secrets.TOKEN }}{% endraw %}</code> — секреты хранятся в Settings → Secrets, не в коде</li>
+      <li><code>if: github.ref == 'refs/heads/main'</code> — deploy только из main (защита от случайного деплоя)</li>
+      <li><code>actions/upload-artifact@v4</code> — сохранение отчётов SAST/DAST как артефактов</li>
+    </ul>
+    <span class="lab-tag"><a href="https://docs.github.com/en/actions" style="color:inherit; text-decoration:none;">docs.github.com/actions</a></span>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+      <span class="lab-card-num">16</span>
+      <span class="lab-card-title" style="font-weight:700;">Анализ рисков ИБ</span>
+    </div>
+    <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
+    <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Риск-ориентированный подход: не все уязвимости одинаково опасны — приоритизация по бизнес-импакту</p>
+      <li><strong>Актив</strong> → <strong>Угроза</strong> → <strong>Уязвимость</strong> → <strong>Риск</strong> → <strong>Мера</strong> (цепочка анализа)</li>
+      <li>Вероятность × Ущерб = Уровень риска (матрица 5×5: от незначительного до критического)</li>
+      <li>Стратегии: <strong>снижение</strong> (патч), <strong>передача</strong> (страховка), <strong>принятие</strong> (осознанное), <strong>избежание</strong> (отказ от фичи)</li>
+      <li>CVSS v3.1: Base (техническая критичность) + Temporal (есть ли эксплойт) + Environmental (ваш контекст)</li>
+      <li>Стандарты: ISO 27005, NIST SP 800-30, ГОСТ Р ИСО/МЭК 27005 — выбор зависит от требований регулятора</li>
+      <li>Практика: CVSS ≥ 9.0 + публичный эксплойт + доступ из интернета = <strong>немедленный патч</strong></li>
+    </ul>
   </div>
 
 </div>

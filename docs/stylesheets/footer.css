@@ -2,7 +2,7 @@
   content: " · © 2026 AppSecTA by geminishkv";
   color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
-  font-size: 0.6rem;
+  font-size: var(--text-2xs);
 }
 
 .md-footer__meta__inner {
@@ -17,50 +17,50 @@
 .md-footer-meta__inner,
 .md-footer__title,
 .md-footer__direction {
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: #1A1919 !important;
-  --md-primary-fg-color: #1A1919 !important;
+  font-family: var(--font-body);
+  background-color: var(--brand-dark) !important;
+  --md-primary-fg-color: var(--brand-dark) !important;
 }
 
 .md-footer {
-  border-top: 1px solid rgba(249, 179, 97, 0.15);
+  border-top: 1px solid var(--border-gold);
 }
 
 /* Social icons */
 .md-social__link svg {
   fill: rgba(255, 255, 255, 0.5);
-  transition: fill 0.2s ease;
+  transition: fill var(--transition-base);
 }
 
 .md-social__link:hover svg {
-  fill: #F9B361;
+  fill: var(--brand-gold);
 }
 
 /* Footer nav links (prev / next page) */
 .md-footer__link {
   color: rgba(255, 255, 255, 0.75);
   border-top: 2px solid rgba(213, 26, 26, 0.25);
-  padding-top: 0.85rem;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  padding-top: var(--space-3);
+  transition: color var(--transition-base), border-color var(--transition-base);
 }
 
 .md-footer__link:hover {
-  color: #F9B361;
-  border-top-color: #F9B361;
+  color: var(--brand-gold);
+  border-top-color: var(--brand-gold);
 }
 
 .md-footer__title {
-  color: #ffffff;
-  font-family: "Unbounded", sans-serif;
-  font-size: 0.72rem;
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .md-footer__direction {
-  color: #D51A1A;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.6rem;
+  color: var(--brand-red);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;

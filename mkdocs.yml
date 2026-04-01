@@ -1,5 +1,5 @@
 ---
-site_name: AppSec Course
+site_name: Application Security Course
 site_url: "https://course.geminishkv.tech/"
 site_description: >
   Практический курс по прикладной безопасности приложений: лабораторные работы и аннотационные материалы
@@ -117,6 +117,7 @@ watch:
   - docs
 
 extra_css:
+  - stylesheets/tokens.css
   - stylesheets/fonts.css
   - stylesheets/header.css
   - stylesheets/footer.css
@@ -133,6 +134,7 @@ extra_javascript:
   - javascripts/custom-title.js
   - javascripts/typewriter-target.js
   - javascripts/home-toc.js
+  - javascripts/repo-stats.js
 
 extra:
   twitter_handle: "@geminishkv"
@@ -180,7 +182,7 @@ nav:
               - "Тест №3": tests/basic/test03.md
               - "Тест №4": tests/basic/test04.md
               - "Тест №5": tests/basic/test05.md
-          - "pet_project": labs/pet_project.md
+      - "pet_project": labs/pet_project.md
   - "Материалы":
       - "Примеры":
           - "Аналитические кейсы": materials/examples/exmpl.md

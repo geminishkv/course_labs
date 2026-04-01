@@ -12,7 +12,7 @@
 .tools-overlay__backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--surface-overlay);
 }
 
 .tools-overlay__dialog {
@@ -20,10 +20,10 @@
   inset: 5vh 3vw;
   max-width: none;
   margin: 0;
-  padding: 1.5rem;
-  background: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  padding: var(--space-6);
+  background: var(--surface-page);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-overlay);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -31,7 +31,7 @@
 
 .tools-overlay__close {
   align-self: flex-end;
-  margin: 0.5rem 0.75rem 0;
+  margin: var(--space-2) var(--space-3) 0;
   border: none;
   background: transparent;
   font-size: 1.4rem;
@@ -42,7 +42,7 @@
 .tools-overlay__table {
   flex: 1;
   overflow: auto;
-  padding: 0.5rem 1rem 1rem;
+  padding: var(--space-2) var(--space-4) var(--space-4);
 }
 
 .tools-overlay__table .md-typeset__table {
@@ -63,5 +63,5 @@
 .tools-overlay__table table,
 .tools-overlay__table table th,
 .tools-overlay__table table td {
-  border: 1.5px solid #F9B361;
+  border: 1.5px solid var(--brand-gold);
 }

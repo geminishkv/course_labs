@@ -5,29 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>404 — Страница не найдена | AppSec Course</title>
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#1A1919" />
 
   <link rel="icon" type="image/png" href="/artifacts/assets/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:     #0a0a0a;
-      --border: #1e1e1e;
+      --bg:     #1A1919;
+      --border: rgba(249, 179, 97, 0.15);
       --text:   #e8e8e8;
-      --muted:  #6b7280;
-      --accent: #cc2200;
-      --gold:   #d4a520;
+      --muted:  rgba(255, 255, 255, 0.55);
+      --accent: #D51A1A;
+      --gold:   #F9B361;
     }
 
     html, body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Montserrat', system-ui, sans-serif;
+      font-family: 'Roboto', system-ui, sans-serif;
       min-height: 100dvh;
       display: flex;
       align-items: center;
@@ -41,7 +41,18 @@
       text-align: center;
     }
 
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      box-shadow:
+        0 0 24px 6px rgba(255, 255, 255, 0.4),
+        0 0 48px 12px rgba(213, 26, 26, 0.35);
+    }
+
     .code {
+      font-family: 'Unbounded', sans-serif;
       font-size: clamp(80px, 20vw, 120px);
       font-weight: 700;
       line-height: 1;
@@ -53,6 +64,7 @@
     }
 
     .title {
+      font-family: 'Unbounded', sans-serif;
       font-size: 20px;
       font-weight: 600;
       color: #fff;
@@ -78,30 +90,32 @@
       align-items: center;
       gap: 6px;
       padding: 11px 22px;
-      border-radius: 10px;
-      font-size: 14px;
+      border-radius: 6px;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 13px;
       font-weight: 600;
+      letter-spacing: 0.02em;
       transition: background .2s, border-color .2s, color .2s;
       text-decoration: none;
     }
 
     .btn--primary {
-      background: rgba(204,34,0,.12);
-      border: 1px solid rgba(204,34,0,.3);
+      background: rgba(213, 26, 26, 0.15);
+      border: 1px solid rgba(213, 26, 26, 0.35);
       color: #fff;
     }
-    .btn--primary:hover { background: rgba(204,34,0,.2); border-color: rgba(204,34,0,.5); }
+    .btn--primary:hover { background: rgba(213, 26, 26, 0.25); border-color: rgba(213, 26, 26, 0.6); }
 
     .btn--ghost {
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--muted);
     }
-    .btn--ghost:hover { border-color: #444; color: #fff; }
+    .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
 
     .divider {
       height: 1px;
-      background: var(--border);
+      background: linear-gradient(to right, var(--accent), rgba(213, 26, 26, 0.15), transparent);
       margin: 48px 0 24px;
     }
 
@@ -109,12 +123,13 @@
       font-size: 12px;
       color: var(--muted);
     }
-    .footer a { color: var(--accent); transition: color .2s; }
+    .footer a { color: var(--accent); transition: color .2s; text-decoration: none; }
     .footer a:hover { color: var(--gold); }
   </style>
 </head>
 <body>
   <div class="page">
+    <img src="/artifacts/assets/logo.svg" alt="AppSecTA" class="logo" />
     <div class="code">404</div>
     <p class="title">Страница не найдена</p>
     <p class="desc">Такой страницы не существует или она была удалена.<br />Вернитесь на главную или загляните в лабораторные работы.</p>

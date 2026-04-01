@@ -1,41 +1,21 @@
-/* Brand tokens — override MkDocs Material defaults globally */
-:root {
-  --md-primary-fg-color:             #D51A1A;
-  --md-primary-fg-color--light:      #E23535;
-  --md-primary-fg-color--dark:       #B51515;
-  --md-primary-bg-color:             #ffffff;
-  --md-primary-bg-color--light:      rgba(255, 255, 255, 0.7);
-
-  --md-accent-fg-color:              #F9B361;
-  --md-accent-fg-color--transparent: rgba(249, 179, 97, 0.1);
-  --md-accent-bg-color:              #1A1919;
-  --md-accent-bg-color--light:       rgba(26, 25, 25, 0.1);
-
-  --md-typeset-a-color:              #D51A1A;
-}
+/* Brand tokens moved to tokens.css */
 
 /* ── Header ── */
 .md-header,
 .md-header__inner,
 .md-header-nav,
 .md-header-nav__inner {
-  background-color: #1A1919;
+  background-color: var(--brand-dark);
 }
 
 .md-header .md-header__title,
 .md-header .md-header__title a {
-  color: #ffffff;
+  color: var(--text-inverse);
 }
 
 .md-nav,
 .md-header {
-  font-family:
-    "Roboto",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: var(--font-body);
 }
 
 .md-header .md-header__title {
@@ -84,23 +64,67 @@
 
 /* ── Navigation tabs ── */
 .md-tabs {
-  background-color: #1A1919;
-  border-bottom: 1px solid rgba(249, 179, 97, 0.15);
+  background-color: var(--brand-dark);
+  border-bottom: 1px solid var(--border-gold);
 }
 
 .md-tabs__link {
   color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease;
+  transition: color var(--transition-base);
 }
 
 .md-tabs__link:hover,
 .md-tabs__link:focus {
-  color: #F9B361;
+  color: var(--brand-gold);
 }
 
 .md-tabs__link--active {
-  color: #F9B361;
-  border-bottom: 2px solid #F9B361;
+  color: var(--brand-gold);
+  border-bottom: 2px solid var(--brand-gold);
+}
+
+/* ── Repo source block (header + sidebar drawer) ── */
+.md-source {
+  background-color: var(--brand-dark);
+}
+
+.md-nav--primary .md-source,
+.md-sidebar .md-source {
+  background-color: var(--brand-dark);
+}
+
+/* ── Repo stats ── */
+.md-source__fact::before {
+  display: none !important;
+}
+
+.md-source__fact {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.md-source__fact svg {
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.md-source__facts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+@media screen and (max-width: 480px) {
+  .md-source__repository {
+    font-size: 0.6rem;
+  }
+
+  .md-source__fact svg {
+    width: 11px;
+    height: 11px;
+  }
 }
 
 /* ── Header icons (search, repo) ── */
@@ -109,12 +133,12 @@
 }
 
 .md-header__button.md-icon:hover {
-  color: #F9B361;
+  color: var(--brand-gold);
 }
 
 /* ── Focus ring — replace browser blue ── */
 :focus-visible {
-  outline: 2px solid #F9B361;
+  outline: 2px solid var(--brand-gold);
   outline-offset: 2px;
 }
 

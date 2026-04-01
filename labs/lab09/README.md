@@ -183,7 +183,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t ${{ env.IMAGE_NAME }}:${{ github.sha }} app/
+        run: docker build -t {% raw %}${{ env.IMAGE_NAME }}:${{ github.sha }}{% endraw %} app/
 
       - name: Trivy image scan
         uses: aquasecurity/trivy-action@master
@@ -209,7 +209,7 @@ jobs:
       - name: Wait for app readiness
         run: |
           for i in $(seq 1 30); do
-            curl -sf http://localhost:${{ env.APP_PORT }} && break
+            curl -sf http://localhost:{% raw %}${{ env.APP_PORT }}{% endraw %} && break
             echo "Waiting... ($i)"
             sleep 2
           done
@@ -217,7 +217,7 @@ jobs:
       - name: ZAP baseline scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: "http://localhost:${{ env.APP_PORT }}"
+          target: "http://localhost:{% raw %}${{ env.APP_PORT }}{% endraw %}"
           rules_file_name: "pipeline/dast/zap-baseline.conf"
           cmd_options: "-J pipeline/dast/zap-report.json -r pipeline/dast/zap-report.html"
           fail_action: false

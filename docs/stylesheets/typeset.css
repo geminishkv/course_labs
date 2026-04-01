@@ -22,7 +22,13 @@
 .md-content__inner {
   max-width: 1680px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--space-6);
+}
+
+@media screen and (max-width: 480px) {
+  .md-content__inner {
+    padding: 0 var(--space-3);
+  }
 }
 
 .md-content h1,
@@ -37,8 +43,8 @@
 .md-typeset h4,
 .md-typeset h5,
 .md-typeset h6 {
-  font-family: "Unbounded", "Roboto", sans-serif;
-  color: #D51A1A;
+  font-family: var(--font-display);
+  color: var(--brand-red);
 }
 
 .md-typeset p,
@@ -48,7 +54,7 @@
 .md-typeset blockquote,
 .md-typeset dt,
 .md-typeset dd {
-  font-family: "Roboto", system-ui, sans-serif;
+  font-family: var(--font-body);
 }
 
 #typewriter-target {
@@ -56,8 +62,8 @@
 }
 
 .md-typeset {
-  color: #000000;
-  font-family: var(--md-text-font, "Roboto", system-ui, sans-serif);
+  color: var(--text-primary);
+  font-family: var(--md-text-font, var(--font-body));
 }
 
 /* Lists */
@@ -80,15 +86,15 @@
 
 /* Tasklist */
 .md-typeset .task-list-item [type="checkbox"] {
-  accent-color: #D51A1A;
+  accent-color: var(--brand-red);
 }
 
 .md-typeset .task-list-control .task-list-indicator::before {
-  background-color: #D51A1A;
+  background-color: var(--brand-red);
 }
 
 .md-typeset .task-list-item input:checked + .task-list-indicator::before {
-  background-color: #D51A1A;
+  background-color: var(--brand-red);
   mask-image: var(--md-tasklist-icon--checked);
   -webkit-mask-image: var(--md-tasklist-icon--checked);
 }
@@ -97,13 +103,13 @@
 .md-typeset .admonition,
 .md-typeset details {
   border-left-width: 4px;
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .md-typeset .admonition-title,
 .md-typeset details > summary {
-  font-family: "Unbounded", sans-serif;
-  font-size: 0.68rem;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -112,20 +118,20 @@
 .md-typeset .admonition.danger,  .md-typeset details.danger,
 .md-typeset .admonition.failure, .md-typeset details.failure,
 .md-typeset .admonition.bug,     .md-typeset details.bug {
-  border-color: #D51A1A;
+  border-color: var(--brand-red);
 }
 
 .md-typeset .admonition.danger > .admonition-title,  .md-typeset details.danger > summary,
 .md-typeset .admonition.failure > .admonition-title, .md-typeset details.failure > summary,
 .md-typeset .admonition.bug > .admonition-title,     .md-typeset details.bug > summary {
   background-color: rgba(213, 26, 26, 0.08);
-  color: #D51A1A;
+  color: var(--brand-red);
 }
 
 .md-typeset .admonition.danger > .admonition-title::before,  .md-typeset details.danger > summary::before,
 .md-typeset .admonition.failure > .admonition-title::before, .md-typeset details.failure > summary::before,
 .md-typeset .admonition.bug > .admonition-title::before,     .md-typeset details.bug > summary::before {
-  background-color: #D51A1A;
+  background-color: var(--brand-red);
 }
 
 /* warning / tip / question / example → gold */
@@ -133,7 +139,7 @@
 .md-typeset .admonition.tip,      .md-typeset details.tip,
 .md-typeset .admonition.question, .md-typeset details.question,
 .md-typeset .admonition.example,  .md-typeset details.example {
-  border-color: #F9B361;
+  border-color: var(--brand-gold);
 }
 
 .md-typeset .admonition.warning > .admonition-title,  .md-typeset details.warning > summary,
@@ -141,14 +147,14 @@
 .md-typeset .admonition.question > .admonition-title, .md-typeset details.question > summary,
 .md-typeset .admonition.example > .admonition-title,  .md-typeset details.example > summary {
   background-color: rgba(249, 179, 97, 0.1);
-  color: #c48a20;
+  color: var(--brand-gold-dark);
 }
 
 .md-typeset .admonition.warning > .admonition-title::before,  .md-typeset details.warning > summary::before,
 .md-typeset .admonition.tip > .admonition-title::before,      .md-typeset details.tip > summary::before,
 .md-typeset .admonition.question > .admonition-title::before, .md-typeset details.question > summary::before,
 .md-typeset .admonition.example > .admonition-title::before,  .md-typeset details.example > summary::before {
-  background-color: #F9B361;
+  background-color: var(--brand-gold);
 }
 
 /* info / note / abstract / success / quote → dark brand */
@@ -157,7 +163,7 @@
 .md-typeset .admonition.abstract, .md-typeset details.abstract,
 .md-typeset .admonition.success,  .md-typeset details.success,
 .md-typeset .admonition.quote,    .md-typeset details.quote {
-  border-color: #1A1919;
+  border-color: var(--brand-dark);
 }
 
 .md-typeset .admonition.info > .admonition-title,     .md-typeset details.info > summary,
@@ -166,7 +172,7 @@
 .md-typeset .admonition.success > .admonition-title,  .md-typeset details.success > summary,
 .md-typeset .admonition.quote > .admonition-title,    .md-typeset details.quote > summary {
   background-color: rgba(26, 25, 25, 0.07);
-  color: #1A1919;
+  color: var(--brand-dark);
 }
 
 .md-typeset .admonition.info > .admonition-title::before,     .md-typeset details.info > summary::before,
@@ -174,18 +180,18 @@
 .md-typeset .admonition.abstract > .admonition-title::before, .md-typeset details.abstract > summary::before,
 .md-typeset .admonition.success > .admonition-title::before,  .md-typeset details.success > summary::before,
 .md-typeset .admonition.quote > .admonition-title::before,    .md-typeset details.quote > summary::before {
-  background-color: #1A1919;
+  background-color: var(--brand-dark);
 }
 
 /* ── Blockquote → gold left border ── */
 .md-typeset blockquote {
-  border-left: 3px solid #F9B361;
+  border-left: 3px solid var(--brand-gold);
   background: rgba(249, 179, 97, 0.05);
-  border-radius: 0 4px 4px 0;
-  padding: 0.6rem 1rem;
-  color: #555;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: var(--space-2) var(--space-4);
+  color: var(--text-secondary);
   font-style: normal;
-  margin: 1rem 0;
+  margin: var(--space-4) 0;
 }
 
 .md-typeset blockquote p {
@@ -196,59 +202,59 @@
 .md-typeset hr {
   border: none;
   height: 2px;
-  background: linear-gradient(to right, #D51A1A 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%);
+  background: linear-gradient(to right, var(--brand-red) 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%);
   margin: 1.75rem 0;
 }
 
 /* ── Code block title / filename label ── */
 .md-typeset .highlight > .filename,
 .md-typeset .highlight [data-md-language]:not(:empty)::before {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.65rem;
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);
-  background: #111010;
-  border-bottom: 1px solid rgba(249, 179, 97, 0.2);
-  padding: 0.35rem 0.85rem;
+  background: var(--surface-code);
+  border-bottom: 1px solid var(--border-gold-strong);
+  padding: 0.35rem var(--space-3);
   display: block;
   letter-spacing: 0.03em;
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .md-typeset .highlight:has(> .filename) pre {
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
   margin-top: 0;
 }
 
 /* ── Content links ── */
 .md-typeset a {
-  color: #D51A1A;
+  color: var(--brand-red);
   text-decoration: none;
-  transition: color 0.18s ease;
+  transition: color var(--transition-base);
 }
 
 .md-typeset a:hover,
 .md-typeset a:focus {
-  color: #F9B361;
+  color: var(--brand-gold);
   text-decoration: underline;
 }
 
 /* ── Inline code ── */
 .md-typeset code {
-  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  font-family: var(--font-code);
   background-color: rgba(213, 26, 26, 0.07);
-  color: #B51515;
-  border-radius: 3px;
+  color: var(--brand-red-dark);
+  border-radius: var(--radius-sm);
   padding: 0.05em 0.3em;
 }
 
 /* ── Code blocks — let Pygments monokai handle colours ── */
 .md-typeset pre {
-  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  font-family: var(--font-code);
 }
 
 .md-typeset pre > code {
-  font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  font-family: var(--font-code);
   background-color: transparent;
   color: inherit;
   border-radius: 0;
@@ -258,22 +264,16 @@
 /* ── Text selection ── */
 ::selection {
   background-color: rgba(249, 179, 97, 0.3);
-  color: #1A1919;
-}
-
-/* ── Search result highlight ── */
-.md-search-result mark {
-  color: #D51A1A;
-  background-color: rgba(249, 179, 97, 0.25);
+  color: var(--brand-dark);
 }
 
 /* ── Heading anchor links ── */
 .md-typeset .headerlink {
   color: rgba(213, 26, 26, 0.25);
-  transition: color 0.18s ease;
+  transition: color var(--transition-base);
 }
 
 .md-typeset .headerlink:hover {
-  color: #D51A1A;
+  color: var(--brand-red);
   text-decoration: none !important;
 }

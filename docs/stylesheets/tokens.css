@@ -17,7 +17,6 @@
   --surface-card:         #fafafa;
   --surface-zebra:        #f9fafb;
   --surface-code:         #111010;
-  --surface-overlay:      rgba(0, 0, 0, 0.5);
 
   /* ── Text ── */
   --text-primary:         #000000;
@@ -45,7 +44,6 @@
   --text-sm:              0.75rem;
   --text-base:            0.85rem;
   --text-md:              0.95rem;
-  --text-lg:              1.1rem;
 
   /* ── Spacing ── */
   --space-1:              0.25rem;
@@ -62,17 +60,10 @@
   --radius-sm:            3px;
   --radius-md:            6px;
   --radius-lg:            10px;
-  --radius-full:          9999px;
-
-  /* ── Shadows ── */
-  --shadow-overlay:       0 8px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow-white:    0 0 32px rgba(255, 255, 255, 0.55);
-  --shadow-glow-red:      0 0 64px rgba(213, 26, 26, 0.5);
 
   /* ── Transitions ── */
   --transition-fast:      0.15s ease;
   --transition-base:      0.2s ease;
-  --transition-slow:      0.3s ease;
 
   /* ── Material overrides ── */
   --md-primary-fg-color:             var(--brand-red);

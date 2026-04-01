@@ -183,8 +183,8 @@ nav:
       - "pet_project": labs/pet_project.md
   - "Материалы":
       - "Примеры":
-          - "Аналитические кейсы": materials/examples/exmpl.md
-          - "Использование MultiSiq": materials/examples/Multisignature.md
+          - "Cases": materials/examples/exmpl.md
+          - "MultiSiq": materials/examples/Multisignature.md
           - "PrintNightmare": materials/examples/PrintNightmare.md
           - "Risk Analysis": materials/examples/RA.md
       - "Лицензии ПО": licenses.md

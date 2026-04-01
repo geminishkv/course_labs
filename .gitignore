@@ -46,6 +46,7 @@ venv/
 *.log
 logs/
 *.pid
+.cache/
 
 # Project-specific reports / tools output
 sast/semgrep-report.json

@@ -1,8 +1,3 @@
 /* Google Fonts loaded via <link> in main.html for performance */
 /* @import removed — was render-blocking (PERF-001) */
-
-:root {
-  --md-text-font: "Roboto", system-ui, -apple-system, sans-serif;
-  --md-code-font: "Roboto Mono", "Roboto", ui-monospace, monospace;
-  --font-display: "Unbounded", "Roboto", sans-serif;
-}
+/* Font tokens defined in tokens.css (:root) */

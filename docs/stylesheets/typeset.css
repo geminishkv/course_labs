@@ -230,7 +230,7 @@
   font-family: var(--font-code);
   font-size: var(--text-xs);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-inverse-muted);
   background: var(--surface-code);
   border-bottom: 1px solid var(--border-gold-strong);
   padding: 0.35rem var(--space-3);
@@ -272,7 +272,6 @@
 }
 
 .md-typeset pre > code {
-  font-family: var(--font-code);
   background-color: transparent;
   color: inherit;
   border-radius: 0;

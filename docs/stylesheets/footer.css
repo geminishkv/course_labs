@@ -1,12 +1,8 @@
 .md-footer-meta .md-footer-meta__inner > :first-child::after {
   content: " · © 2026 AppSecTA by geminishkv";
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-inverse-muted);
   font-weight: 400;
   font-size: var(--text-2xs);
-}
-
-.md-footer__meta__inner {
-  display: none;
 }
 
 .md-footer,
@@ -38,7 +34,7 @@
 
 /* Footer nav links (prev / next page) */
 .md-footer__link {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-muted);
   border-top: 2px solid rgba(213, 26, 26, 0.25);
   padding-top: var(--space-3);
   transition: color var(--transition-base), border-color var(--transition-base);

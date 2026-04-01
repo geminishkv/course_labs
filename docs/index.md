@@ -142,7 +142,3 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
 
 </div>
 </div>
-
----
-
-<img src="artifacts/assets/logotypemd.jpg" alt="Логотип">

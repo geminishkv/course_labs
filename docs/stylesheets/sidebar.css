@@ -21,14 +21,14 @@
   white-space: normal;
 }
 
-/* Разделитель между корневыми группами */
-.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
-  margin-top: 0.15rem;
-}
-
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 .md-sidebar--primary .md-nav__link--active {
   font-weight: 700;
+}
+
+/* Разделитель между корневыми группами */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
+  margin-top: 0.15rem;
 }
 
 .md-sidebar--primary .md-nav__link:hover,

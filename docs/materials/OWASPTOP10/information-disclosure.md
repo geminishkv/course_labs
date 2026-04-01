@@ -19,7 +19,7 @@ keywords: "OWASP, утечка данных, information disclosure, AppSec, к�
 
 Чувствительные заголовки (`Server`, `X-Powered-By`, `X-AspNet-Version`) дают атакующему информацию о стеке технологий и упрощают выбор эксплойтов. Утечки через verbose error messages и подробные сообщения об ошибках валидации (например, «пользователь не существует» vs «неверный пароль») позволяют перечислять пользователей (user enumeration).
 
-Выявляется инструментами DAST в [лабораторной работе №8](../../labs/lab08.md) и статическим анализом в [лабораторной работе №7](../../labs/lab07.md). Смотри также: [Authentication](Authentication.md), [Logical Attacks](logical-attacks.md).
+Выявляется инструментами DAST в [лабораторной работе №8](../../labs/basic/lab08.md) и статическим анализом в [лабораторной работе №7](../../labs/basic/lab07.md). Смотри также: [Authentication](Authentication.md), [Logical Attacks](logical-attacks.md).
 
 ## OWASP материалы
 

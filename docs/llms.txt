@@ -12,16 +12,16 @@ Git, Linux, Docker, SAST, SCA, DAST, CI/CD, анализ рисков, OWASP Top
 
 ## Лабораторные работы
 
-- [Lab 01 — GitSCM](https://course.geminishkv.tech/labs/lab01/): настройка Git, первый репозиторий
-- [Lab 02 — Linux/*nix](https://course.geminishkv.tech/labs/lab02/): права доступа, управление процессами
-- [Lab 03 — Nmap](https://course.geminishkv.tech/labs/lab03/): сканирование сети, анализ уязвимостей
-- [Lab 04 — Risk Analysis](https://course.geminishkv.tech/labs/lab04/): оценка и снижение рисков ИБ
-- [Lab 05 — Docker](https://course.geminishkv.tech/labs/lab05/): контейнеризация приложений
-- [Lab 06 — Docker CIS Benchmark](https://course.geminishkv.tech/labs/lab06/): аудит безопасности Docker
-- [Lab 07 — SAST/SCA](https://course.geminishkv.tech/labs/lab07/): Semgrep, Checkov, OWASP Dependency Check
-- [Lab 08 — DAST](https://course.geminishkv.tech/labs/lab08/): OWASP ZAP, динамическое тестирование
-- [Lab 09 — DevSecOps CI/CD](https://course.geminishkv.tech/labs/lab09/): GitHub Actions, Trivy, ZAP
-- [Lab 10 — Risk Analysis (итог)](https://course.geminishkv.tech/labs/lab10/): итоговая оценка рисков
+- [Lab 01 — GitSCM](https://course.geminishkv.tech/labs/basic/lab01/): настройка Git, первый репозиторий
+- [Lab 02 — Linux/*nix](https://course.geminishkv.tech/labs/basic/lab02/): права доступа, управление процессами
+- [Lab 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/): сканирование сети, анализ уязвимостей
+- [Lab 04 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/): оценка и снижение рисков ИБ
+- [Lab 05 — Docker](https://course.geminishkv.tech/labs/basic/lab05/): контейнеризация приложений
+- [Lab 06 — Docker CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/): аудит безопасности Docker
+- [Lab 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/): Semgrep, Checkov, OWASP Dependency Check
+- [Lab 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/): OWASP ZAP, динамическое тестирование
+- [Lab 09 — DevSecOps CI/CD](https://course.geminishkv.tech/labs/basic/lab09/): GitHub Actions, Trivy, ZAP
+- [Lab 10 — Risk Analysis (итог)](https://course.geminishkv.tech/labs/basic/lab10/): итоговая оценка рисков
 
 ## Материалы
 

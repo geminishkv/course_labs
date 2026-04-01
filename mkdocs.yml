@@ -164,23 +164,23 @@ nav:
   - "Главная страница": index.md
   - "Лабораторные работы":
       - "Базовое ознакомление":
-          - "Лабораторная работа №1": labs/lab01.md
-          - "Лабораторная работа №2": labs/lab02.md
-          - "Лабораторная работа №3": labs/lab03.md
-          - "Лабораторная работа №4": labs/lab04.md
-          - "Лабораторная работа №5": labs/lab05.md
-          - "Лабораторная работа №6": labs/lab06.md
-          - "Лабораторная работа №7": labs/lab07.md
-          - "Лабораторная работа №8": labs/lab08.md
-          - "Лабораторная работа №9": labs/lab09.md
-          - "Лабораторная работа №10": labs/lab10.md
-      - "pet_project": labs/pet_project.md
-  - "Тесты":
-      - "Тест №1": tests/test01.md
-      - "Тест №2": tests/test02.md
-      - "Тест №3": tests/test03.md
-      - "Тест №4": tests/test04.md
-      - "Тест №5": tests/test05.md
+          - "Лабораторная работа №1": labs/basic/lab01.md
+          - "Лабораторная работа №2": labs/basic/lab02.md
+          - "Лабораторная работа №3": labs/basic/lab03.md
+          - "Лабораторная работа №4": labs/basic/lab04.md
+          - "Лабораторная работа №5": labs/basic/lab05.md
+          - "Лабораторная работа №6": labs/basic/lab06.md
+          - "Лабораторная работа №7": labs/basic/lab07.md
+          - "Лабораторная работа №8": labs/basic/lab08.md
+          - "Лабораторная работа №9": labs/basic/lab09.md
+          - "Лабораторная работа №10": labs/basic/lab10.md
+          - "Тесты":
+              - "Тест №1": tests/basic/test01.md
+              - "Тест №2": tests/basic/test02.md
+              - "Тест №3": tests/basic/test03.md
+              - "Тест №4": tests/basic/test04.md
+              - "Тест №5": tests/basic/test05.md
+          - "pet_project": labs/pet_project.md
   - "Материалы":
       - "Примеры":
           - "Аналитические кейсы": materials/examples/exmpl.md

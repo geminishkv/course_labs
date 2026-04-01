@@ -19,7 +19,7 @@ keywords: "OWASP, XSS, CSRF, Clickjacking, клиентские атаки, AppS
 
 DOM-based XSS особенно опасен, поскольку вредоносный код исполняется без обращения к серверу и не фиксируется в серверных логах. Эффективные меры защиты: Content Security Policy (CSP), заголовок `X-Frame-Options`, SameSite cookie-атрибуты и валидация всех пользовательских данных на стороне клиента.
 
-Данные уязвимости проверяются в [лабораторной работе №8 (DAST)](../../labs/lab08.md) с помощью OWASP ZAP. Смотри также: [Command Execution](command-execution.md), [Information Disclosure](information-disclosure.md).
+Данные уязвимости проверяются в [лабораторной работе №8 (DAST)](../../labs/basic/lab08.md) с помощью OWASP ZAP. Смотри также: [Command Execution](command-execution.md), [Information Disclosure](information-disclosure.md).
 
 ## OWASP материалы
 

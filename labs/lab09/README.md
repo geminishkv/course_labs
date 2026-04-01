@@ -109,8 +109,6 @@ $ curl -i http://localhost:8080
 
 - [ ] 3. Напишите файл `.github/workflows/devsecops.yml`. Пайплайн должен содержать пять jobs: `sast`, `sca`, `build-and-scan`, `dast`, `report`
 
-{% raw %}
-
 ```yaml
 name: DevSecOps Pipeline
 
@@ -183,7 +181,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t {% raw %}${{ env.IMAGE_NAME }}:${{ github.sha }}{% endraw %} app/
+        run: docker build -t $&#123;&#123; env.IMAGE_NAME &#125;&#125;:$&#123;&#123; github.sha &#125;&#125; app/
 
       - name: Trivy image scan
         uses: aquasecurity/trivy-action@master
@@ -209,7 +207,7 @@ jobs:
       - name: Wait for app readiness
         run: |
           for i in $(seq 1 30); do
-            curl -sf http://localhost:{% raw %}${{ env.APP_PORT }}{% endraw %} && break
+            curl -sf http://localhost:$&#123;&#123; env.APP_PORT &#125;&#125; && break
             echo "Waiting... ($i)"
             sleep 2
           done
@@ -217,7 +215,7 @@ jobs:
       - name: ZAP baseline scan
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: "http://localhost:{% raw %}${{ env.APP_PORT }}{% endraw %}"
+          target: "http://localhost:$&#123;&#123; env.APP_PORT &#125;&#125;"
           rules_file_name: "pipeline/dast/zap-baseline.conf"
           cmd_options: "-J pipeline/dast/zap-report.json -r pipeline/dast/zap-report.html"
           fail_action: false
@@ -260,8 +258,6 @@ jobs:
           name: unified-report
           path: pipeline/unified-report.html
 ```
-
-{% endraw %}
 
 - [ ] 4. Напишите файл `pipeline/sast/semgrep-rules.yml` — правила для обнаружения уязвимостей в Python. Минимум три правила: SQL-инъекция, жёстко заданный секрет, небезопасный `eval`
 - [ ] 5. Напишите файл `pipeline/sast/checkov-config.yaml` — конфигурация Checkov для проверки Dockerfile и docker-compose
@@ -360,7 +356,7 @@ fail_action: true
 - ZAP в режиме baseline scan не выполняет активных атак — для полного Active Scan используйте `zaproxy/action-full-scan`
 > Baseline scan безопасен для production-like стендов; active scan может сломать данные или перегрузить приложение, используйте только на изолированных тестовых окружениях
 - Не храните `secrets` (токены, ключи NVD API для Dependency-Check) в `.yml` файлах напрямую
-> Используйте `Settings → Secrets and variables → Actions` в репозитории и обращайтесь к ним через `{% raw %}${{ secrets.NVD_API_KEY }}{% endraw %}`
+> Используйте `Settings → Secrets and variables → Actions` в репозитории и обращайтесь к ним через `$&#123;&#123; secrets.NVD_API_KEY &#125;&#125;`
 
 ***
 

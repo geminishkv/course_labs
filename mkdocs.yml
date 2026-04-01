@@ -124,7 +124,6 @@ extra_css:
   - stylesheets/search.css
   - stylesheets/sidebar.css
   - stylesheets/typeset.css
-  - stylesheets/tools-overlay.css
   - stylesheets/burger.css
   - stylesheets/mobile-logo.css
   - stylesheets/layout.css

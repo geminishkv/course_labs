@@ -241,7 +241,7 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
       <li><code>on: push / pull_request</code> — триггеры (push для CI, PR для review gates)</li>
       <li><code>jobs.&lt;id&gt;.runs-on: ubuntu-latest</code> — GitHub-hosted раннер (бесплатно для public repos)</li>
       <li><code>needs: [sast, sca]</code> — зависимости: DAST ждёт завершения SAST и SCA</li>
-      <li><code>env / secrets.{% raw %}${{ secrets.TOKEN }}{% endraw %}</code> — секреты хранятся в Settings → Secrets, не в коде</li>
+      <li><code>env / secrets.$&#123;&#123; secrets.TOKEN &#125;&#125;</code> — секреты хранятся в Settings → Secrets, не в коде</li>
       <li><code>if: github.ref == 'refs/heads/main'</code> — deploy только из main (защита от случайного деплоя)</li>
       <li><code>actions/upload-artifact@v4</code> — сохранение отчётов SAST/DAST как артефактов</li>
     </ul>

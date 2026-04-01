@@ -1,6 +1,6 @@
 /* ── MkDocs Material search ── */
 .md-search__form {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #ffffff;
   border-radius: var(--radius-sm);
   outline: none !important;
   box-shadow: none !important;
@@ -9,26 +9,22 @@
 .md-search__form:focus-within {
   outline: none !important;
   box-shadow: none !important;
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: #ffffff;
 }
 
 .md-search__input {
-  color: var(--text-inverse);
+  color: #1A1919 !important;
   background-color: transparent !important;
 }
 
 .md-search__input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.md-search__input {
-  color: var(--text-inverse) !important;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .md-search__icon svg,
 .md-header .md-search__icon svg {
-  color: rgba(255, 255, 255, 0.7);
-  fill: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.45);
+  fill: rgba(0, 0, 0, 0.45);
 }
 
 /* Search results overlay */

@@ -1,7 +1,7 @@
 ---
-title: Аббревиатурное описание AppSec инструментов
-description: Расшифровка аббревиатур AppSec инструментов — класс, область применения для SAST, DAST, SCA, SBOM, IAST.
-keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инструменты, аббревиатуры"
+title: "AppSec Toolchain — расшифровка SAST, DAST, SCA, SBOM, IAST"
+description: "AppSec инструменты: расшифровка аббревиатур SAST, DAST, SCA, SBOM, IAST, RASP — класс, назначение и область применения в DevSecOps."
+keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инструменты, аббревиатуры, статический анализ, динамический анализ, toolchain"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -1,7 +1,7 @@
 ---
-title: Описание основных типов лицензий Open Source
-description: Описание популярных лицензий Open Source, их типов и отнесения к свободному или проприетарному ПО.
-keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, AppSec, DevSecOps, свободное ПО"
+title: "Лицензии Open Source — типы MIT, GPL, Apache, BSD для AppSec"
+description: "Лицензии Open Source в AppSec: сравнение MIT, GPL, Apache, BSD, SSPL, BUSL — типы, ограничения и выбор для безопасной разработки."
+keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, AppSec, DevSecOps, свободное ПО, SCA, license compliance"
 ---
 
 <div class="hero-section hero-section--compact">
@@ -274,57 +274,57 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
     <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">SSPL (Server Side Public License)</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Проприетарное ПО · условно свободное</span>
+    <span class="lab-tag lab-tag--gold">Проприетарное ПО · условно свободное</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Формально на базе GPL, но с ограничениями для SaaS. Не признаётся OSI. MongoDB.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
     <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">BUSL (Business Source License)</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Проприетарное ПО · исходники доступны</span>
+    <span class="lab-tag lab-tag--gold">Проприетарное ПО · исходники доступны</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Исходники доступны, но использование ограничено. Через N лет автоматически переходит под OSS‑лицензию. HashiCorp (Terraform, Vault).</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.elastic.co/licensing/elastic-license" style="color:#c48a20; text-decoration:none;">Elastic License 2.0</a></div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Source-available · запрет SaaS</span>
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.elastic.co/licensing/elastic-license" style="color:var(--brand-gold-dark); text-decoration:none;">Elastic License 2.0</a></div>
+    <span class="lab-tag lab-tag--gold">Source-available · запрет SaaS</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Разрешает всё, кроме предоставления как управляемого сервиса. Elasticsearch, Kibana. Причина появления форка OpenSearch.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://fsl.software/" style="color:#c48a20; text-decoration:none;">FSL (Functional Source License)</a></div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Source-available · автопереход в OSS</span>
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://fsl.software/" style="color:var(--brand-gold-dark); text-decoration:none;">FSL (Functional Source License)</a></div>
+    <span class="lab-tag lab-tag--gold">Source-available · автопереход в OSS</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Source-available с автоматическим переходом в Apache/MIT через 2 года. Sentry, GitButler. Новый тренд.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://redis.io/legal/licenses/" style="color:#c48a20; text-decoration:none;">Redis RSALv2</a></div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Source-available · двойная лицензия</span>
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://redis.io/legal/licenses/" style="color:var(--brand-gold-dark); text-decoration:none;">Redis RSALv2</a></div>
+    <span class="lab-tag lab-tag--gold">Source-available · двойная лицензия</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Двойная RSALv2/SSPL для модулей Redis, запрещает конкурирующие сервисы. Причина появления форка Valkey.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://commonsclause.com/" style="color:#c48a20; text-decoration:none;">Commons Clause</a></div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Надстройка · запрет продажи</span>
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://commonsclause.com/" style="color:var(--brand-gold-dark); text-decoration:none;">Commons Clause</a></div>
+    <span class="lab-tag lab-tag--gold">Надстройка · запрет продажи</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Дополнение к любой OSS-лицензии, запрещающее продажу ПО. Меняет суть базовой лицензии — делает её non-OSS.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/shield/1.0.0/" style="color:#c48a20; text-decoration:none;">Polyform Shield 1.0</a></div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Source-available · запрет конкуренции</span>
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/shield/1.0.0/" style="color:var(--brand-gold-dark); text-decoration:none;">Polyform Shield 1.0</a></div>
+    <span class="lab-tag lab-tag--gold">Source-available · запрет конкуренции</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Source-available, запрещает конкурирующее использование. Набирает популярность среди SaaS-вендоров.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" style="color:#c48a20; text-decoration:none;">Polyform Noncommercial 1.0</a></div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Source-available · только некоммерческое</span>
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" style="color:var(--brand-gold-dark); text-decoration:none;">Polyform Noncommercial 1.0</a></div>
+    <span class="lab-tag lab-tag--gold">Source-available · только некоммерческое</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Source-available, запрещает коммерческое использование. Альтернатива CC BY-NC для кода.</p>
   </div>
 
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem; border-left-color: #F9B361;">
+  <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
     <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">Custom / Vendor License</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Проприетарное ПО</span>
+    <span class="lab-tag lab-tag--gold">Проприетарное ПО</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">EULA и коммерческие лицензии вендора. Условия определяются договором и, как правило, не соответствуют Open Source Definition.</p>
   </div>
 

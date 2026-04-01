@@ -447,6 +447,20 @@
   border-left-color: var(--brand-red);
 }
 
+.lab-card--gold {
+  border-left-color: var(--brand-gold);
+}
+
+.lab-card--gold:hover {
+  border-left-color: var(--brand-red);
+}
+
+.lab-tag--gold {
+  border-color: rgba(249, 179, 97, 0.3);
+  color: var(--brand-gold-dark);
+  background: rgba(249, 179, 97, 0.08);
+}
+
 /* ══════════════════════════════════════════
    Lab page hero
 ══════════════════════════════════════════ */

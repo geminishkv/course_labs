@@ -1,7 +1,7 @@
 ---
-title: "Лаб. №5 — Docker: контейнеризация приложений"
-description: "Лабораторная работа №5: создание Docker-образов, написание Dockerfile, Docker Compose и контейнеризация приложений."
-keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, DevOps, AppSec, образ"
+title: "Лаб. №5 — Docker: Dockerfile, образы и контейнеризация | Курс AppSec"
+description: "Лабораторная работа №5 AppSec: создание Docker-образов, написание Dockerfile, Docker Compose и контейнеризация приложений."
+keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, DevOps, AppSec, образ, контейнер, лабораторная работа, курс AppSec"
 ---
 
 <div class="lab-hero">

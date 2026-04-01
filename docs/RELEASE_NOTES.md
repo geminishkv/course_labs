@@ -1,9 +1,9 @@
 ---
 hide:
   - toc
-title: RELEASE NOTES
-description: История изменений курса AppSec — обновления структуры лабораторных работ, материалов и анализа рисков ИБ.
-keywords: release notes, changelog, AppSec, лабораторные работы, обновления, DevSecOps
+title: "Release Notes — история изменений курса AppSec"
+description: "Release Notes курса AppSec: полная история обновлений лабораторных работ, материалов по OWASP, DevSecOps и анализу рисков ИБ."
+keywords: "release notes, changelog, AppSec, лабораторные работы, обновления, DevSecOps, история изменений, версии"
 ---
 
 <div class="hero-section hero-section--compact">

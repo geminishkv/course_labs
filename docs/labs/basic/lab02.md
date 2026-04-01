@@ -1,7 +1,7 @@
 ---
-title: "Лаб. №2 — *nix: права доступа, управление процессами"
-description: "Лабораторная работа №2: права доступа в Linux, управление процессами, Bash-скрипты и базовые команды Unix."
-keywords: "Linux, Unix, Bash, права доступа, процессы, AppSec, лабораторная работа"
+title: "Лаб. №2 — Linux: права доступа и управление процессами | Курс AppSec"
+description: "Лабораторная работа №2 курса AppSec: права доступа Linux (chmod, chown), управление процессами, Bash-скрипты и команды Unix."
+keywords: "Linux, Unix, Bash, права доступа, процессы, AppSec, лабораторная работа, chmod, chown, ps, kill, курс AppSec"
 ---
 
 <div class="lab-hero">

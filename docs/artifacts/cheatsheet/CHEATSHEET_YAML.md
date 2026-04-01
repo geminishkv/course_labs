@@ -1,7 +1,7 @@
 ---
-title: "YAML Cheatsheet — шпаргалка по YAML"
-description: "Шпаргалка по YAML: синтаксис, типы данных, якоря, многострочные строки и валидация для CI/CD, Docker Compose и Kubernetes."
-keywords: "YAML, cheatsheet, шпаргалка, синтаксис, CI/CD, Docker Compose, GitHub Actions, Kubernetes"
+title: "Шпаргалка YAML — синтаксис для CI/CD, Docker Compose и Kubernetes"
+description: "YAML шпаргалка: синтаксис, типы данных, якоря, многострочные строки и валидация для CI/CD, Docker Compose и GitHub Actions."
+keywords: "YAML, cheatsheet, шпаргалка, синтаксис, CI/CD, Docker Compose, GitHub Actions, Kubernetes, DevSecOps, AppSec, якоря, валидация"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -95,7 +95,10 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - abbr
   - pymdownx.snippets:
+      auto_append:
+        - docs/glossary.md
       check_paths: true
   - pymdownx.tabbed:
       alternate_style: true
@@ -205,7 +208,7 @@ nav:
           - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
           - "YAML": artifacts/cheatsheet/CHEATSHEET_YAML.md
       - "Приложение": APPENDIX.md
-  - "Troubleshooting": troubleshooting.md
+      - "Troubleshooting": troubleshooting.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md
   - "Политика безопасности": Security.md

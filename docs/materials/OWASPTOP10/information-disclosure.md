@@ -1,9 +1,9 @@
 ---
 hide:
   - toc
-title: "OWASP — Information Disclosure: раскрытие данных"
-description: "OWASP Top 10: раскрытие конфиденциальных данных — утечки, чувствительные заголовки, логи и меры защиты."
-keywords: "OWASP, утечка данных, information disclosure, AppSec, конфиденциальность, заголовки"
+title: "OWASP Information Disclosure — утечки данных, заголовки и логи"
+description: "OWASP Top 10 раскрытие данных: утечки конфиденциальной информации через заголовки, логи, stack traces и ошибки конфигурации."
+keywords: "OWASP, утечка данных, information disclosure, AppSec, конфиденциальность, заголовки, логи, stack trace, sensitive data exposure"
 ---
 
 <div class="hero-section hero-section--compact">

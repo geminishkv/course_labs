@@ -1,7 +1,7 @@
 ---
-title: "Лаб. №6 — Docker CIS Benchmark: аудит безопасности"
-description: "Лабораторная работа №6: аудит безопасности Docker по CIS Benchmark, docker-bench-security, hardening контейнеров."
-keywords: "Docker, CIS Benchmark, аудит, безопасность, hardening, docker-bench, AppSec"
+title: "Лаб. №6 — Docker CIS Benchmark: аудит и hardening контейнеров | Курс AppSec"
+description: "Лабораторная работа №6 AppSec: аудит безопасности Docker по CIS Benchmark — docker-bench-security и hardening контейнеров."
+keywords: "Docker, CIS Benchmark, аудит, безопасность, hardening, docker-bench-security, AppSec, лабораторная работа, курс AppSec, контейнер"
 ---
 
 <div class="lab-hero">

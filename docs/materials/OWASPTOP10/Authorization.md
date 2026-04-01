@@ -1,9 +1,9 @@
 ---
 hide:
   - toc
-title: "OWASP — Authorization: нарушения контроля доступа"
-description: "OWASP Top 10: нарушения контроля доступа — эскалация привилегий, горизонтальный IDOR, RBAC и меры защиты."
-keywords: "OWASP, авторизация, authorization, контроль доступа, AppSec, RBAC, привилегии, IDOR"
+title: "OWASP Authorization — контроль доступа, IDOR и эскалация привилегий"
+description: "OWASP Top 10 авторизация: нарушения контроля доступа — IDOR, эскалация привилегий, RBAC и практические методы защиты приложений."
+keywords: "OWASP, авторизация, authorization, контроль доступа, AppSec, RBAC, привилегии, IDOR, broken access control, эскалация, веб-безопасность"
 ---
 
 <div class="hero-section hero-section--compact">

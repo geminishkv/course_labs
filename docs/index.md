@@ -2,9 +2,9 @@
 hide:
   - toc
 
-title: Введение в курс AppSec
-description: Практический курс по прикладной безопасности приложений — лабораторные работы, AppSec, DevSecOps, OWASP Top 10.
-keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, безопасность приложений, SAST, DAST, Docker, GitHub Actions"
+title: "Курс AppSec — практическая безопасность приложений и DevSecOps"
+description: "Курс AppSec: лабораторные работы по безопасности приложений — OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD и анализ рисков ИБ."
+keywords: "AppSec, курс AppSec, DevSecOps, безопасность приложений, лабораторные работы, OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD, GitHub Actions, анализ рисков"
 ---
 
 <div class="hero-section">
@@ -43,30 +43,40 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
 
 ---
 
-## WHOA!
+## О курсе
 
 Цель курса — сформировать практические навыки в области AppSec и DevSecOps: от базовой работы с инструментами разработки до построения полноценного конвейера безопасности.
 
-- Стек: `git`, `CI/CD`, `Docker`, `Packages`, `AppSec Toolchain`, `YAML`
-- Языки в работах: `Python`, `Shell` (`Java` и `Go` — в контексте SCA и анализа зависимостей)
-- Инструменты: `SAST`, `SCA`, `Container Security`, `DAST`, `Secret Detection`
+Курс охватывает полный цикл безопасной разработки: от первого коммита до автоматизированного сканирования в CI/CD. Каждая лабораторная — самостоятельный мини-проект с реальными инструментами, которые используются в индустрии.
+
+### Что изучаем
+
+- **Инфраструктура:** `git`, `CI/CD`, `Docker`, `Packages`, `YAML`
+- **Языки:** `Python`, `Shell` (`Java` и `Go` — в контексте SCA и анализа зависимостей)
+- **Безопасность:** SAST, SCA, Container Security, DAST, Secret Detection
+- **Анализ рисков:** оценка, приоритизация, стратегии снижения рисков ИБ
+
+### Как устроен курс
+
+- 10 лабораторных работ + итоговый pet-project
 - Каждый мини-проект размещается на `GitHub` с отчётом в формате `gistup`
 - Для каждой лабораторной — отдельный репозиторий (или `fork`), исходный код + отчёт
+- Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Risk Analysis`
 
 ---
 
 ## Этапы
 
-1. Ознакомление с учебными материалами по лекциям и примерами
+1. Ознакомление с учебными материалами по [лекциям](artifacts/cheatsheet/CHEATSHEET_GIT.md) и [примерами](materials/examples/exmpl.md)
 2. Каждый репозиторий должен содержать: `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
-3. Выполнить лабораторные работы по порядку
+3. Выполнить лабораторные работы по порядку — от Lab 01 до Lab 10
 4. Итоговая работа — `pet_project` (тема согласовывается с преподавателем, применяется весь стек AppSec/DevSecOps)
 
 !!! warning "Лицензии"
-    Тип лицензии должен быть подобран корректно при переиспользовании материалов — ознакомьтесь дополнительно.
+    Тип лицензии должен быть подобран корректно при переиспользовании материалов — ознакомьтесь с [типами лицензий](licenses.md).
 
 !!! info "Пример отчёта"
-    [Пример gistup-отчёта](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411)
+    [Пример gistup-отчёта](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411) — шаблон для оформления всех лабораторных работ.
 
 ---
 
@@ -120,7 +130,7 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
 <a class="lab-card" href="licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="appsec_tt/"><div class="lab-card-body"><div class="lab-card-title">AppSec Toolchain — классификация инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">DAST</span><span class="lab-tag">SCA</span><span class="lab-tag">SBOM</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span><span class="lab-tag">CI/CD</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="artifacts/cheatsheet/CHEATSHEET_GIT/"><div class="lab-card-body"><div class="lab-card-title">CheatSheets — шпаргалки</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">YAML</span><span class="lab-tag">.gitignore</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="artifacts/cheatsheet/CHEATSHEET_GIT.md"><div class="lab-card-body"><div class="lab-card-title">CheatSheets — шпаргалки</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">YAML</span><span class="lab-tag">.gitignore</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="troubleshooting/"><div class="lab-card-body"><div class="lab-card-title">Troubleshooting — частые проблемы</div><div class="lab-card-tags"><span class="lab-tag">FAQ</span><span class="lab-tag">Ошибки</span><span class="lab-tag">Решения</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 

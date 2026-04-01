@@ -2,9 +2,9 @@
 hide:
   - toc
 
-title: Политика безопасности
-description: Ответственное раскрытие уязвимостей и правила сообщения об инцидентах безопасности в проекте AppSec.
-keywords: "политика безопасности, уязвимости, ответственное раскрытие, AppSec, security policy"
+title: "Политика безопасности — ответственное раскрытие уязвимостей"
+description: "Security Policy проекта AppSec: ответственное раскрытие уязвимостей, правила сообщения об инцидентах и контакты команды."
+keywords: "политика безопасности, уязвимости, ответственное раскрытие, AppSec, security policy, responsible disclosure, инциденты"
 ---
 
 <div class="hero-section hero-section--compact">

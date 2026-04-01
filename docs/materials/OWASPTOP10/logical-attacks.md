@@ -1,9 +1,9 @@
 ---
 hide:
   - toc
-title: "OWASP — Logical Attacks: атаки на бизнес-логику"
-description: "OWASP Top 10: атаки на бизнес-логику — обход платёжных потоков, гонки условий, обход валидации."
-keywords: "OWASP, бизнес-логика, logical attacks, AppSec, race condition, обход валидации"
+title: "OWASP Logical Attacks — атаки на бизнес-логику и race condition"
+description: "OWASP Top 10 логические атаки: обход бизнес-логики, race condition, манипуляция платёжными потоками и обход валидации данных."
+keywords: "OWASP, бизнес-логика, logical attacks, AppSec, race condition, обход валидации, business logic, TOCTOU, веб-безопасность"
 ---
 
 <div class="hero-section hero-section--compact">

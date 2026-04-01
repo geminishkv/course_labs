@@ -1,7 +1,7 @@
 ---
-title: Troubleshooting — частые проблемы и решения
-description: Решения частых проблем при выполнении лабораторных работ по AppSec — Git, Docker, Python, CI/CD, SAST, DAST.
-keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/CD, решения"
+title: "Troubleshooting — решение проблем в лабораторных работах AppSec"
+description: "Troubleshooting курса AppSec: решения частых ошибок Git, Docker, Python, CI/CD, SAST и DAST при выполнении лабораторных работ."
+keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/CD, SAST, DAST, решения, отладка, лабораторные работы"
 ---
 
 <div class="hero-section hero-section--compact">

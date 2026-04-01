@@ -1,9 +1,9 @@
 ---
 hide:
   - toc
-title: "OWASP — Client-side Attacks: XSS, CSRF, Clickjacking"
-description: "OWASP Top 10: клиентские атаки — XSS, CSRF, Clickjacking, DOM-уязвимости и методы защиты веб-приложений."
-keywords: "OWASP, XSS, CSRF, Clickjacking, клиентские атаки, AppSec, веб-безопасность, DOM"
+title: "OWASP Client-side Attacks — XSS, CSRF, Clickjacking и DOM-уязвимости"
+description: "OWASP Top 10 клиентские атаки: XSS (stored, reflected, DOM), CSRF, Clickjacking — векторы эксплуатации и защита приложений."
+keywords: "OWASP, XSS, CSRF, Clickjacking, клиентские атаки, AppSec, веб-безопасность, DOM, cross-site scripting, stored XSS, reflected XSS"
 ---
 
 <div class="hero-section hero-section--compact">

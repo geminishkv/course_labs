@@ -1,9 +1,9 @@
 ---
 hide:
   - toc
-title: "Docker Cheatsheet — шпаргалка по Docker"
-description: "Шпаргалка по Docker: образы, контейнеры, сети, тома, Docker Compose и основные команды для DevOps и AppSec."
-keywords: "Docker, cheatsheet, шпаргалка, контейнер, образ, Compose, DevOps, AppSec, тома"
+title: "Шпаргалка Docker — образы, контейнеры, Compose и сети"
+description: "Docker шпаргалка: команды для образов, контейнеров, сетей, томов и Docker Compose — справочник для DevOps и AppSec курса."
+keywords: "Docker, cheatsheet, шпаргалка, контейнер, образ, Docker Compose, DevOps, AppSec, тома, сети, Dockerfile, volumes"
 ---
 
 <div class="hero-section hero-section--compact">

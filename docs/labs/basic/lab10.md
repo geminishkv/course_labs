@@ -16,7 +16,7 @@ keywords: "риски ИБ, анализ рисков, информационн�
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../labs/lab10/README.md" %}
+{% include-markdown  "../../../labs/lab10/README.md" %}
 
 </div>
 

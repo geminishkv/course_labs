@@ -17,7 +17,7 @@ keywords: "Nmap, сканирование сети, уязвимости, AppSec
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../labs/lab03/README.md" %}
+{% include-markdown  "../../../labs/lab03/README.md" %}
 
 </div>
 

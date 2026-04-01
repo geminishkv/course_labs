@@ -17,7 +17,7 @@ keywords: "Linux, Unix, Bash, права доступа, процессы, AppSe
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../labs/lab02/README.md" %}
+{% include-markdown  "../../../labs/lab02/README.md" %}
 
 </div>
 

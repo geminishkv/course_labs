@@ -1,5 +1,27 @@
 # Release Notes
 
+## v2.0.0
+
+**Дизайн и UI/UX:**
+
+* Полная переработка дизайн-системы: создан `tokens.css` с CSS custom properties (цвета, типографика, spacing, радиусы, transitions)
+* Устранен render-blocking
+* Переработан адаптив: hero-section, lab-cards, TG-виджет, sidebar, таблицы
+* TG-виджет: на мобилке скрыт embed, оставлена компактная карточка канала
+* Переработана 404-страница: бренд-шрифты (Unbounded + Roboto), SVG-логотип как фон, адаптив через `clamp()`
+* Добавлен repo-stats.js: звёзды, форки и версия релиза в хедере через GitHub API с кэшированием в localStorage
+* Оптимизация CSS
+
+**Контент и материалы:**
+
+* Страница лицензий (`licenses.md`): 19 → 41 лицензия, разделение по 7 категориям (Permissive, Weak/Strong Copyleft, Network Copyleft, Public Domain, Creative Commons, Source-Available)
+* Страница AppSec Toolchain (`appsec_tt.md`): 22 → 29 карточек, разделение по 8 секциям (добавлены MAST, API Security, Fuzzing, IaC Security, KSPM, VDP, WAF, LLM Security)
+* Приложение (`APPENDIX.md`): 8 → 16 карточек с контекстом для слушателей (Nmap, SAST, SCA, DAST, CIS Benchmark, Secret Detection, GitHub Actions, Risk Analysis)
+* Создана страница Troubleshooting: ~20 карточек с решениями по Git, Linux, Docker, SAST/SCA, DAST, CI/CD, Python
+* Создан YAML Cheatsheet: синтаксис, типы данных, многострочные строки, якоря, подводные камни, примеры для GitHub Actions/Docker Compose/Semgrep
+
+---
+
 ## v1.5.0
 
 **Доработанные материалы:**

@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var cached = null;
-  try { cached = JSON.parse(localStorage.getItem(cacheKey)); } catch (_) {}
+  try { cached = JSON.parse(localStorage.getItem(cacheKey)); } catch (e) { void e; }
 
   if (cached && Date.now() - cached.ts < cacheTTL) {
     renderStats(cached.stars, cached.forks, cached.release);
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem(cacheKey, JSON.stringify({
         stars: stars, forks: forks, release: release, ts: Date.now()
       }));
-    } catch (_) {}
+    } catch (e) { void e; }
     renderStats(stars, forks, release);
   }).catch(function () {});
 

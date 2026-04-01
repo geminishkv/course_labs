@@ -5,15 +5,22 @@ export default [
   {
     files: ["docs/**/*.js", "javascripts/**/*.js"],
     languageOptions: {
-      sourceType: "module",
+      sourceType: "script",
       globals: {
         document: "readonly",
         window: "readonly",
         setTimeout: "readonly",
-        clearTimeout: "readonly"
+        clearTimeout: "readonly",
+        fetch: "readonly",
+        localStorage: "readonly",
+        Promise: "readonly",
+        console: "readonly",
+        location: "readonly"
       }
     },
     rules: {
+      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "no-empty": ["error", { "allowEmptyCatch": true }]
     }
   }
 ];

@@ -36,36 +36,28 @@
 * Часть инструментов требует установки дополнительных `open-source` пакетов 
 
 ### Этапы
-    
-1. Ознакомление с учебными материалами по [лекциям](artifacts/ppt/)
-2. Ознакомиться с [примерами](artifacts/exmpls/)
-3. Каждый репозиторий должен содержать `.gitignore`, `code of condact`, `contributing`, `license`, `notice`, `security` и должен быть адаптирован под конкретную лабораторную работу, проект.
-    * **Обратите внимание**, что тип лицензий должен быть подобран правильно при переиспользовании материалов проекта и следует ознакомиться с ними дополнительно.
-    * Пример отчета [тут](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411)
-4. Выполнить следующие работы порядково:
 
--  [ ] lab01 - [Лабораторная работа посвящена изучению **gitscm** и подготовительными материалами для последующих работ](labs/basic/lab01/README.md)
-    -  Материалы для работы [тут](labs/basic/lab01/)
--  [ ] lab02 - [Лабораторная работа посвящена изучению работы *nix, контролей прав доступа, оперированию процессов](labs/basic/lab02/README.md)
-    -  Материалы для работы [тут](labs/basic/lab02/)
--  [ ] lab03 - [Лабораторная работа посвящена изучению **nmap** и анализа выявленных уязвимостей](labs/basic/lab03/README.md)
-    -  Материалы для работы [тут](labs/basic/lab03/)
--  [ ] lab04 - [Данная лабораторная работа посвящена практическому **анализу и определению мер** снижения рисков ИБ](labs/basic/lab04/README.md)
--  [ ] lab05 - [Данная лабораторная работа посвящена изучению **Docker** и как с ним работать](labs/basic/lab05/README.md)
-    -  Материалы для работы [тут](labs/basic/lab05/)
--  [ ] lab06 - [Данная лабораторная работа посвящена изучению **Docker CIS Benchmark** для выявления уязвимостей, проверки Docker-host и как с ним работать](labs/basic/lab06/README.md)
-    -  Материалы для работы [тут](labs/basic/lab06/)
--  [ ] lab07 - [Данная лабораторная работа посвящена изучению SAST, SCA для выявления уязвимостей и как с ним работать на примере Semgrep, Checkov, Dependency Check](labs/basic/lab07/README.md)
-    -  Материалы для работы [тут](labs/basic/lab07/)
--  [ ] lab 08 - [Данная лабораторная работа посвящена изучению DAST OWASP ZAP и ручного тестирования уязвимого приложения](labs/basic/lab08/README.md)
-    -  Материалы для работы [тут](labs/basic/lab08/)
--  [ ] lab 09 - [Данная лабораторная работа посвящена построению DevSecOps CI/CD конвейера на GitHub Actions и встраиванию инструментов безопасности](labs/basic/lab09/README.md)
-    -  Материалы для работы [тут](labs/basic/lab09/)
--  [ ] lab 10 - [Данная лабораторная работа посвящена оценке анализов рисков ИБ и отработке практических знаний](labs/basic/lab10/README.md)
+1. Выполнить подготовительные инструкции:
+    * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux
+    * [Настройка Git, GPG и GitHub CLI](labs/intro/git_setup.md) — git config, SSH, GnuPG, gh
+    * [Оформление отчётов Gistup](labs/intro/gistup_guide.md) — формат, структура, правила
+2. Каждый репозиторий должен содержать `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
+3. Выполнить лабораторные работы по порядку:
 
-5. Реализовать итоговую работу и составить отчет
+-  [ ] lab01 — [GitSCM — подготовка рабочего окружения](labs/basic/lab01/README.md)
+-  [ ] lab02 — [*nix — права доступа, SUID, ACL, процессы](labs/basic/lab02/README.md)
+-  [ ] lab03 — [Nmap — сканирование сети, NSE и защита результатов](labs/basic/lab03/README.md)
+-  [ ] lab04 — [Анализ и определение мер снижения рисков ИБ](labs/basic/lab04/README.md)
+-  [ ] lab05 — [Docker — контейнеризация приложений](labs/basic/lab05/README.md)
+-  [ ] lab06 — [Docker CIS Benchmark и Trivy](labs/basic/lab06/README.md)
+-  [ ] lab07 — [SAST, SCA и Secret Detection](labs/basic/lab07/README.md)
+-  [ ] lab08 — [DAST — OWASP ZAP и ручное тестирование](labs/basic/lab08/README.md)
+-  [ ] lab09 — [DevSecOps CI/CD конвейер на GitHub Actions](labs/basic/lab09/README.md)
+-  [ ] lab10 — [Оценка анализа рисков ИБ — практика](labs/basic/lab10/README.md)
 
--  [ ] pet_project - [Индивидуальный проект: тема согласовывается с преподавателем, применяется весь стек AppSec/DevSecOps инструментов](labs/pet_project/README.md)
+4. Реализовать итоговую работу:
+
+-  [ ] pet_project — [Индивидуальный проект: полный стек AppSec/DevSecOps](labs/pet_project/README.md)
 
 ***
 
@@ -73,20 +65,26 @@
 
 ```mermaid
 flowchart TD
+    subgraph Intro["Подготовка"]
+        I01["VirtualBox & Linux"]
+        I02["Git, GPG, SSH, gh"]
+        I03["Gistup отчёты"]
+    end
+
     subgraph Foundations["Основы"]
         L01["Lab 01 · Git SCM"]
-        L02["Lab 02 · Linux & ACL"]
-        L03["Lab 03 · Nmap"]
+        L02["Lab 02 · Linux, SUID, ACL"]
+        L03["Lab 03 · Nmap, NSE"]
         L04["Lab 04 · Risk Analysis"]
     end
 
     subgraph Containers["Контейнеризация"]
         L05["Lab 05 · Docker"]
-        L06["Lab 06 · Docker CIS Benchmark"]
+        L06["Lab 06 · CIS Benchmark, Trivy"]
     end
 
     subgraph AppSec["AppSec Toolchain"]
-        L07["Lab 07 · SAST · SCA\nSemgrep · Checkov · Dependency-Check"]
+        L07["Lab 07 · SAST, SCA, Secret Detection\nSemgrep · Checkov · Gitleaks"]
         L08["Lab 08 · DAST\nOWASP ZAP"]
     end
 
@@ -95,8 +93,9 @@ flowchart TD
         L10["Lab 10 · Risk Analysis · Practice"]
     end
 
-    PET["Pet Project - индивидуальная работа"]
+    PET["Pet Project — индивидуальная работа"]
 
+    Intro --> Foundations
     Foundations --> Containers
     Containers --> AppSec
     AppSec --> DevSecOps
@@ -156,9 +155,40 @@ $ git push origin :refs/tags/v0.1.0   # удалить тот же тег на G
 
 ***
 
-### Структура репозитория
+### Структура
 
 ```
+├── docs/                          # MkDocs source
+│   ├── index.md                   # Главная
+│   ├── licenses.md                # 41 лицензия
+│   ├── appsec_tt.md               # 29 классов инструментов
+│   ├── APPENDIX.md                # Команды и утилиты
+│   ├── troubleshooting.md         # FAQ
+│   ├── glossary.md                # 39 аббревиатур
+│   ├── labs/
+│   │   ├── intro/                 # vmbox, git_setup, gistup
+│   │   ├── basic/                 # lab01-10
+│   │   └── pet_project.md
+│   ├── materials/                 # Примеры, OWASP Top 10
+│   ├── artifacts/                 # CheatSheets, PDF, assets
+│   ├── stylesheets/               # CSS (tokens, layout, ...)
+│   ├── javascripts/               # JS
+│   └── overrides/                 # main.html, 404.html
+├── labs/
+│   ├── intro/                     # vmbox, git_setup, gistup
+│   ├── basic/                     # lab01-10
+│   └── pet_project/
+├── .github/workflows/
+│   ├── ci.yml                     # Lint → Audit → Build → Deploy
+│   └── release-from-notes.yml
+├── hooks.py                       # Sitemap enrichment
+├── mkdocs.yml
+├── requirements.txt
+└── RELEASE_NOTES.md
+```
+
+<!-- legacy tree below kept for reference -->
+<!-- ```
 ├── assets
 │   └── logotype
 │       ├── logo.jpg
@@ -327,8 +357,4 @@ $ git push origin :refs/tags/v0.1.0   # удалить тот же тег на G
 ├── SECURITY.md
 ├── sitemap.xml
 └── stylelint.config.cjs
-```
-
-***
-
-Copyright (c) 2026 Elijah S Shmakov
+``` -->

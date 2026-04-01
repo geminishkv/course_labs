@@ -134,8 +134,7 @@ extra_javascript:
 
 extra:
   twitter_handle: "@geminishkv"
-  # Вставить код после верификации в Яндекс.Вебмастере:
-  # yandex_verification: "XXXXXXXXXXXXXXXX"
+  yandex_verification: "a0cf47e5e3a22cfc"
   # Вставить код после верификации в Google Search Console:
   # google_verification: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
   social:

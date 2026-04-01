@@ -134,8 +134,6 @@ extra_css:
 extra_javascript:
   - javascripts/custom-title.js
   - javascripts/typewriter-target.js
-  - javascripts/home-toc.js
-  - javascripts/repo-stats.js
 
 extra:
   twitter_handle: "@geminishkv"

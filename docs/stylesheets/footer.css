@@ -13,9 +13,10 @@
 .md-footer-meta__inner,
 .md-footer__title,
 .md-footer__direction {
+  --md-primary-fg-color: var(--brand-dark) !important;
+
   font-family: var(--font-body);
   background-color: var(--brand-dark) !important;
-  --md-primary-fg-color: var(--brand-dark) !important;
 }
 
 .md-footer {

@@ -13,6 +13,7 @@ MD013:
 MD014: false
 MD019: true
 MD022: false
+MD024: false
 MD025:
   front_matter_title: ""
 MD026: false
@@ -22,36 +23,43 @@ MD031: false
 MD032: false
 MD033:
   allowed_elements:
+    - a
+    - b
     - br
-    - img
+    - code
     - details
-    - summary
-    - span
     - div
+    - em
+    - footer
     - h1
     - h2
     - h3
-    - kbd
-    - p
-    - a
-    - table
-    - thead
-    - tbody
-    - tr
-    - th
-    - td
-    - ul
-    - li
-    - strong
-    - em
-    - code
-    - sup
-    - b
-    - script
+    - header
     - hr
+    - img
+    - kbd
+    - li
+    - nav
+    - p
+    - script
+    - section
+    - span
+    - strong
+    - style
+    - summary
+    - sup
+    - table
+    - tbody
+    - td
+    - th
+    - thead
+    - tr
+    - ul
 
 MD034: false
 MD036: false
 MD040: false
 MD041: false
+MD046: false
 MD047: true
+MD060: false

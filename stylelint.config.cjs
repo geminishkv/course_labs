@@ -14,6 +14,10 @@ module.exports = {
     "length-zero-no-unit": null,
     "declaration-property-value-no-unknown": null,
     "custom-property-pattern": null,
-    "property-no-vendor-prefix": null
+    "property-no-vendor-prefix": null,
+    "import-notation": null,
+    "selector-id-pattern": null,
+    "keyframes-name-pattern": null,
+    "declaration-block-no-shorthand-property-overrides": null
   }
 };

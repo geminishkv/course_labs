@@ -53,6 +53,7 @@
       0 0 24px 6px rgba(255, 255, 255, 0.4),
       0 0 48px 12px rgba(213, 26, 26, 0.35);
   }
+
   50% {
     box-shadow:
       0 0 48px 16px rgba(255, 255, 255, 0.65),
@@ -132,6 +133,7 @@
     opacity: 0.05;
     filter: drop-shadow(0 0 20px rgba(213, 26, 26, 0.2));
   }
+
   50% {
     opacity: 0.1;
     filter: drop-shadow(0 0 60px rgba(213, 26, 26, 0.4)) drop-shadow(0 0 120px rgba(255, 255, 255, 0.1));
@@ -657,8 +659,8 @@
 }
 
 .risk-item--nonurgent {
-  border-left-color: var(--brand-gold);
   border-color: var(--border-gold);
+  border-left-color: var(--brand-gold);
 }
 
 .risk-item--nonurgent:hover {

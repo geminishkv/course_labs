@@ -36,14 +36,29 @@
     0 0 64px 16px rgba(213, 26, 26, 0.5);
   position: relative;
   z-index: 1;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: glow-wave 4s ease-in-out infinite;
 }
 
 .hero-logo:hover {
+  animation-play-state: paused;
   box-shadow:
-    0 0 40px 12px rgba(255, 255, 255, 0.75),
-    0 0 80px 20px rgba(213, 26, 26, 0.7);
+    0 0 48px 16px rgba(255, 255, 255, 0.8),
+    0 0 96px 24px rgba(213, 26, 26, 0.7);
   transform: scale(1.06);
+}
+
+@keyframes glow-wave {
+  0%, 100% {
+    box-shadow:
+      0 0 24px 6px rgba(255, 255, 255, 0.4),
+      0 0 48px 12px rgba(213, 26, 26, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 48px 16px rgba(255, 255, 255, 0.65),
+      0 0 96px 28px rgba(213, 26, 26, 0.55),
+      0 0 128px 40px rgba(213, 26, 26, 0.15);
+  }
 }
 
 .hero-content {
@@ -95,7 +110,7 @@
     display: none;
   }
 
-  /* Логотип как фоновый элемент */
+  /* Логотип как фоновый элемент с анимацией волны */
   .hero-section::after {
     content: "";
     position: absolute;
@@ -108,8 +123,22 @@
     opacity: 0.08;
     pointer-events: none;
     z-index: 0;
+    animation: bg-glow-wave 4s ease-in-out infinite;
   }
+}
 
+@keyframes bg-glow-wave {
+  0%, 100% {
+    opacity: 0.05;
+    filter: drop-shadow(0 0 20px rgba(213, 26, 26, 0.2));
+  }
+  50% {
+    opacity: 0.1;
+    filter: drop-shadow(0 0 60px rgba(213, 26, 26, 0.4)) drop-shadow(0 0 120px rgba(255, 255, 255, 0.1));
+  }
+}
+
+@media screen and (max-width: 960px) {
   .hero-content {
     z-index: 1;
   }

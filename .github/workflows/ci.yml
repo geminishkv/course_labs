@@ -226,6 +226,10 @@ jobs:
         env:
           PYTHONPATH: .
 
+      - name: Inject Yandex Webmaster verification
+        run: |
+          printf '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>Verification: a0cf47e5e3a22cfc</body></html>\n' > site/yandex_a0cf47e5e3a22cfc.html
+
       - name: Verify site and sitemap
         run: |
           [ -d "site" ]        || { echo "site dir missing";    exit 1; }

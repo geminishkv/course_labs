@@ -174,7 +174,3 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 - [Gist](https://gist.github.com)
 - [GitHub Docs](https://docs.github.com/en)
 - [GitHub CLI](https://cli.github.com)
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

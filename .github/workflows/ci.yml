@@ -124,7 +124,7 @@ jobs:
       - name: Security scan with bandit
         run: |
           bandit -r labs -ll \
-            -x "labs/lab01/typersteel.py,labs/lab02/exmpl_hello.py,labs/lab02/pygamesteel.py,labs/lab05/client/client.py,labs/lab05/server/app.py,labs/lab05/source/hello.py,labs/lab07/vulnerable-app/app.py,labs/lab08/dast/convert_reports.py,labs/lab08/vulnerable-app/app.py"
+            -x "labs/basic/lab01/typersteel.py,labs/basic/lab02/exmpl_hello.py,labs/basic/lab02/pygamesteel.py,labs/basic/lab05/client/client.py,labs/basic/lab05/server/app.py,labs/basic/lab05/source/hello.py,labs/basic/lab07/vulnerable-app/app.py,labs/basic/lab08/dast/convert_reports.py,labs/basic/lab08/vulnerable-app/app.py"
 
   # ─── 6. Security: Dockerfile lint ───────────────────────────────────────────
   security_docker_checks:

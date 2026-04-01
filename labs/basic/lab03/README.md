@@ -201,6 +201,10 @@ $ nmap -sP inet_addr
 
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [Markdown](https://stackedit.io)
@@ -214,7 +218,3 @@ $ nmap -sP inet_addr
 - [Nmap Script (NSE) Reference](https://nmap.org/nsedoc/)
 - [Nmap Tutorial (Hackers-Arise)](https://nmap.org/docs.html)
 - [OWASP Testing Guide – Network Scanning](https://owasp.org/www-project-web-security-testing-guide/)
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

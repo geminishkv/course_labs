@@ -28,12 +28,12 @@ Pet Project — это финальная самостоятельная раб�
 
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [Markdown](https://stackedit.io)
 - [Gist](https://gist.github.com)
 - [GitHub CLI](https://cli.github.com)
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

@@ -16,7 +16,7 @@ keywords: "DAST, OWASP ZAP, динамическое тестирование, �
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/lab08/README.md" %}
+{% include-markdown  "../../../labs/basic/lab08/README.md" %}
 
 </div>
 

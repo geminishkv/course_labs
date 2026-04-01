@@ -16,7 +16,7 @@ keywords: "анализ рисков, ИБ, матрица рисков, угр�
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/lab04/README.md" %}
+{% include-markdown  "../../../labs/basic/lab04/README.md" %}
 
 </div>
 

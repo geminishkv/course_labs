@@ -158,7 +158,7 @@ $ ./zap_scan.sh
 - [ ] 10. Внесите исправления по данному отчету `DAST` для `vulnerable-app/app.py`
 - [ ] 11. Делайте все необходимые коммиты по шагам и отправляйте изменения в удалённый репозиторий
 - [ ] 12. Подготовьте отчет `gist`.
-- [ ] 14. Почистите кеш от `venv` и остановите уязвимое приложение
+- [ ] 13. Почистите кеш от `venv` и остановите уязвимое приложение
 
 ```bash
 $ deactivate
@@ -184,6 +184,10 @@ $ docker system prune -f
 
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [Docker](https://docs.docker.com/)
@@ -199,7 +203,3 @@ $ docker system prune -f
 - [ZAP Docker images](https://www.zaproxy.org/docs/docker/)  
 - [ZAP Baseline Scan](https://www.zaproxy.org/docs/docker/baseline-scan/)  
 - [ZAP Automation Framework](https://www.zaproxy.org/docs/desktop/addons/automation-framework/)  
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

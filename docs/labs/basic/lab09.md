@@ -19,7 +19,7 @@ keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, 
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/lab09/README.md" %}
+{% include-markdown  "../../../labs/basic/lab09/README.md" %}
 
 </div>
 

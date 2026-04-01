@@ -360,6 +360,10 @@ fail_action: true
 
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
@@ -377,7 +381,3 @@ fail_action: true
 - [GitHub CLI](https://cli.github.com)
 - [DevSecOps — OWASP](https://owasp.org/www-project-devsecops-guideline/)
 - [Shift-Left Security — NIST](https://csrc.nist.gov/publications/detail/white-paper/2021/11/09/devsecops-a-security-model-for-software-development/final)
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

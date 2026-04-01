@@ -116,6 +116,8 @@ lab10
 
 ***
 
-Copyright (c) 2026 Elijah S Shmakov
+## Troubleshooting
 
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
+***

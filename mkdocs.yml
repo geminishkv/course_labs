@@ -164,6 +164,7 @@ nav:
   - "geminishkv.tech": "https://geminishkv.tech/"
   - "Главная страница": index.md
   - "Лабораторные работы":
+      - "Подготовка рабочего окружения": labs/intro/vmbox_tutorial.md
       - "Базовое ознакомление":
           - "Лабораторная работа №1": labs/basic/lab01.md
           - "Лабораторная работа №2": labs/basic/lab02.md

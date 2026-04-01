@@ -290,6 +290,10 @@ $ getfacl nmapres.txt
 
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [Gist](https://gist.github.com)
@@ -310,7 +314,3 @@ $ getfacl nmapres.txt
 - [apt](http://help.ubuntu.ru/wiki/apt)
 - [brew](https://brew.sh)
 - [npm](https://docs.npmjs.com)
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

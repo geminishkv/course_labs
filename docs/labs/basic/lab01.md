@@ -16,7 +16,7 @@ keywords: "Git, SCM, лабораторная работа, AppSec, репози
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/lab01/README.md" %}
+{% include-markdown  "../../../labs/basic/lab01/README.md" %}
 
 </div>
 

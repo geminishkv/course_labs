@@ -223,6 +223,10 @@ $ rm test_secret.py
 
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [Docker](https://docs.docker.com/)
@@ -239,5 +243,3 @@ $ rm test_secret.py
 - [detect-secrets](https://github.com/Yelp/detect-secrets)
 - [Pre-commit](https://pre-commit.com/)
 - [GitHub Docs](https://docs.github.com/en)
-
-Copyright (c) 2026 Elijah S Shmakov

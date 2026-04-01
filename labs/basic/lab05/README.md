@@ -236,6 +236,10 @@ $ docker-compose down
  
 ***
 
+## Troubleshooting
+
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+
 ## Links
 
 - [Markdown](https://stackedit.io)
@@ -248,7 +252,3 @@ $ docker-compose down
 - [Docker Compose documentation](https://docs.docker.com/compose/)
 - [Docker Hub](https://hub.docker.com/)
 - [Docker security overview](https://docs.docker.com/engine/security/)
-
-Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

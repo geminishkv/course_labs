@@ -126,6 +126,31 @@ $ docker system prune -f
  
 ***
 
+## Container Vulnerability Scanning (Trivy)
+
+Помимо аудита конфигурации (CIS Benchmark), важно сканировать сами образы на известные CVE в OS-пакетах и языковых зависимостях.
+
+- [ ] 11. Установите Trivy и просканируйте образы из `docker-compose.yml`
+
+```bash
+# установка (macOS)
+$ brew install aquasecurity/trivy/trivy
+
+# установка (Linux)
+$ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+# сканирование образа из compose
+$ trivy image --severity HIGH,CRITICAL <image_name>:<tag>
+
+# JSON-отчёт для анализа
+$ trivy image --format json --output audit_reports/json/trivy-report.json <image_name>:<tag>
+```
+
+- [ ] 12. Проанализируйте результаты Trivy: определите, из каких слоёв приходят уязвимости — из базового образа или из установленных зависимостей. Предложите меры снижения: обновление base image, пиннинг версий, multi-stage build
+- [ ] 13. Сравните подходы: CIS Benchmark (конфигурация хоста) vs Trivy (CVE в образах). В каких ситуациях нужен каждый?
+
+***
+
 ## Troubleshooting
 
 - Права для исполнения скрипта

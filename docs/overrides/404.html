@@ -39,16 +39,26 @@
       width: 100%;
       padding: 0 24px;
       text-align: center;
+      position: relative;
     }
 
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 24px;
-      border-radius: 50%;
-      box-shadow:
-        0 0 24px 6px rgba(255, 255, 255, 0.4),
-        0 0 48px 12px rgba(213, 26, 26, 0.35);
+    .page::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      right: clamp(-40%, -20vw, -10%);
+      transform: translateY(-50%);
+      width: clamp(400px, 80vw, 1500px);
+      height: clamp(400px, 80vw, 1500px);
+      background: url("/artifacts/assets/logo.svg") center / contain no-repeat;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
     }
 
     .code {
@@ -125,11 +135,26 @@
     }
     .footer a { color: var(--accent); transition: color .2s; text-decoration: none; }
     .footer a:hover { color: var(--gold); }
+
+    @media screen and (max-width: 600px) {
+      .page { padding: 0 16px; }
+
+      .code { font-size: clamp(60px, 18vw, 80px); }
+
+      .title { font-size: 17px; }
+
+      .desc { font-size: 13px; margin-bottom: 28px; }
+
+      .actions { flex-direction: column; gap: 10px; }
+
+      .btn { width: 100%; justify-content: center; padding: 12px 16px; }
+
+      .divider { margin: 32px 0 16px; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
-    <img src="/artifacts/assets/logo.svg" alt="AppSecTA" class="logo" />
     <div class="code">404</div>
     <p class="title">Страница не найдена</p>
     <p class="desc">Такой страницы не существует или она была удалена.<br />Вернитесь на главную или загляните в лабораторные работы.</p>

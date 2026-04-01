@@ -203,7 +203,9 @@ nav:
           - "Docker": artifacts/cheatsheet/CHEATSHEET_DOCKER.md
           - ".dockerignore": artifacts/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
           - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
+          - "YAML": artifacts/cheatsheet/CHEATSHEET_YAML.md
       - "Приложение": APPENDIX.md
+  - "Troubleshooting": troubleshooting.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md
   - "Политика безопасности": Security.md

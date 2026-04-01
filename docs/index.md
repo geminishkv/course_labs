@@ -48,7 +48,7 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
 Цель курса — сформировать практические навыки в области AppSec и DevSecOps: от базовой работы с инструментами разработки до построения полноценного конвейера безопасности.
 
 - Стек: `git`, `CI/CD`, `Docker`, `Packages`, `AppSec Toolchain`, `YAML`
-- Языки в работах: `Go`, `Python`, `Java`, `Shell`
+- Языки в работах: `Python`, `Shell` (`Java` и `Go` — в контексте SCA и анализа зависимостей)
 - Инструменты: `SAST`, `SCA`, `Container Security`, `DAST`, `Secret Detection`
 - Каждый мини-проект размещается на `GitHub` с отчётом в формате `gistup`
 - Для каждой лабораторной — отдельный репозиторий (или `fork`), исходный код + отчёт
@@ -111,6 +111,18 @@ keywords: "AppSec, DevSecOps, лабораторные работы, OWASP, бе
 4. Отчёт сдаётся индивидуально с защитой: каждая команда — с описанием, флагами и выводом из терминала
 5. Часть инструментов требует установки дополнительных `open-source` пакетов
 6. В отчётах — вывод из консоли, не скриншоты; описание каждого флага и команды
+
+---
+
+## Полезные материалы
+
+<div class="lab-grid">
+<a class="lab-card" href="licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="appsec_tt/"><div class="lab-card-body"><div class="lab-card-title">AppSec Toolchain — классификация инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">DAST</span><span class="lab-tag">SCA</span><span class="lab-tag">SBOM</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span><span class="lab-tag">CI/CD</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="artifacts/cheatsheet/CHEATSHEET_GIT/"><div class="lab-card-body"><div class="lab-card-title">CheatSheets — шпаргалки</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">YAML</span><span class="lab-tag">.gitignore</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="troubleshooting/"><div class="lab-card-body"><div class="lab-card-title">Troubleshooting — частые проблемы</div><div class="lab-card-tags"><span class="lab-tag">FAQ</span><span class="lab-tag">Ошибки</span><span class="lab-tag">Решения</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
 
 </div>
 

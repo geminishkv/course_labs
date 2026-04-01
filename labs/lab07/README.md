@@ -146,6 +146,83 @@ $ docker system prune -f
 
 ***
 
+## Secret Detection (дополнительный блок)
+
+Секреты в коде (API-ключи, токены, пароли) — одна из топовых причин компрометации. Даже удалённый коммит остаётся в `git reflog` и может быть извлечён.
+
+### Инструменты Secret Detection
+
+- **Gitleaks** — сканирует git-историю по regex-паттернам: AWS keys, GitHub tokens, passwords, private keys
+- **TruffleHog** — поиск по entropy (высокая энтропия строки = вероятный секрет) + regex-паттерны
+- **detect-secrets** — генерирует baseline: отслеживает новые секреты между коммитами, позволяет вести whitelist для false positives
+- **Pre-commit hook** — блокирует коммит при обнаружении секрета до попадания в историю
+
+> Секреты, попавшие в публичный репозиторий, считаются скомпрометированными **немедленно** — боты сканируют GitHub в реальном времени. Ротация секрета — первый шаг, очистка истории — второй.
+
+### Практика Secret Detection
+
+- [ ] 15. Установите `gitleaks` и просканируйте репозиторий лабораторной работы
+
+```bash
+# установка (macOS)
+$ brew install gitleaks
+
+# установка (Linux)
+$ curl -sSfL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_linux_x64 -o /usr/local/bin/gitleaks && chmod +x /usr/local/bin/gitleaks
+
+# сканирование текущего репозитория (вся git-история)
+$ gitleaks detect -v
+
+# сканирование с JSON-отчётом
+$ gitleaks detect --source . --report-path gitleaks-report.json --report-format json
+```
+
+- [ ] 16. Изучите `vulnerable-app/app.py` и `vulnerable-app/config.yaml` — найдите в них захардкоженные секреты вручную. Сопоставьте с тем, что нашёл `gitleaks`
+
+- [ ] 17. Установите `trufflehog` и запустите сканирование. Сравните результаты с `gitleaks` — какой инструмент нашёл больше? Почему?
+
+```bash
+# установка
+$ pip install trufflehog
+
+# сканирование git-репозитория
+$ trufflehog git file://. --only-verified
+```
+
+- [ ] 18. Настройте pre-commit hook для блокировки коммитов с секретами
+
+```bash
+# установка pre-commit
+$ pip install pre-commit
+
+# создайте .pre-commit-config.yaml
+$ cat > .pre-commit-config.yaml << 'EOF'
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks
+EOF
+
+# установка хуков
+$ pre-commit install
+
+# проверка: попробуйте закоммитить файл с секретом
+$ echo 'API_KEY = "AKIAIOSFODNN7EXAMPLE"' > test_secret.py
+$ git add test_secret.py
+$ git commit -m "test: should be blocked"
+# ожидается: gitleaks заблокирует коммит
+$ rm test_secret.py
+```
+
+- [ ] 19. Опишите в отчёте:
+    - Какие секреты были найдены каждым инструментом
+    - Разница в подходах: regex (gitleaks) vs entropy (trufflehog)
+    - Как pre-commit hook предотвращает попадание секретов в историю
+    - Что делать, если секрет уже попал в публичный репозиторий (порядок действий)
+
+***
+
 ## Links
 
 - [Docker](https://docs.docker.com/)
@@ -157,9 +234,10 @@ $ docker system prune -f
 - [Semgrep CLI – Local scans](https://semgrep.dev/docs/getting-started/cli)
 - [Semgrep CLI reference](https://semgrep.dev/docs/cli-reference/)
 - [Checkov CLI Command Reference](https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html)
-- [Checkov](https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html) 
+- [Gitleaks](https://github.com/gitleaks/gitleaks)
+- [TruffleHog](https://github.com/trufflesecurity/trufflehog)
+- [detect-secrets](https://github.com/Yelp/detect-secrets)
+- [Pre-commit](https://pre-commit.com/)
 - [GitHub Docs](https://docs.github.com/en)
 
 Copyright (c) 2026 Elijah S Shmakov
-
-![Logo](../../docs/artifacts/assets/logotypemd.jpg)

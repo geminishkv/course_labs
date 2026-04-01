@@ -114,4 +114,4 @@ result = eval(request.args.get("formula"))
 
 ***
 
-![Logo](../artifacts/assets/logotypemd.jpg)
+![Logo](../../artifacts/assets/logotypemd.jpg)

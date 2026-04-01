@@ -108,4 +108,4 @@ keywords: "тест, AppSec, Linux, Nmap, Docker, SCA, DAST, анализ рис
 
 ***
 
-![Logo](../artifacts/assets/logotypemd.jpg)
+![Logo](../../artifacts/assets/logotypemd.jpg)

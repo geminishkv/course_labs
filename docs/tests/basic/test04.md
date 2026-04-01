@@ -108,4 +108,4 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 
 ***
 
-![Logo](../artifacts/assets/logotypemd.jpg)
+![Logo](../../artifacts/assets/logotypemd.jpg)

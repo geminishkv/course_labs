@@ -72,7 +72,7 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рис
 
 ***
 
-**7.** В GitHub Actions workflow секрет передаётся в шаг через `env: TOKEN: ${{ secrets.API_TOKEN }}`. Разработчик добавил шаг `run: echo $TOKEN` для отладки. Какой риск это создаёт?
+**7.** В GitHub Actions workflow секрет передаётся в шаг через `env: TOKEN: {% raw %}${{ secrets.API_TOKEN }}{% endraw %}`. Разработчик добавил шаг `run: echo $TOKEN` для отладки. Какой риск это создаёт?
 
 - A) Никакого — GitHub автоматически маскирует значения секретов в логах
 - B) Секрет будет виден только администраторам репозитория, что допустимо
@@ -108,4 +108,4 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рис
 
 ***
 
-![Logo](../artifacts/assets/logotypemd.jpg)
+![Logo](../../artifacts/assets/logotypemd.jpg)

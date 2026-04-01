@@ -27,35 +27,35 @@
   fill: rgba(0, 0, 0, 0.45);
 }
 
-/* Search results overlay */
+/* Search results overlay — светлая тема */
 .md-search__output {
-  background-color: #1e1e1e;
-  border-top: 1px solid var(--border-gold-strong);
+  background-color: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .md-search__scrollwrap {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
 }
 
 .md-search-result {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .md-search-result__meta {
-  background-color: #161616;
-  color: rgba(255, 255, 255, 0.35);
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .md-search-result__article {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
 }
 
 .md-search-result__title {
-  color: var(--text-inverse);
+  color: var(--brand-dark);
 }
 
 .md-search-result__teaser {
-  color: var(--text-inverse-muted);
+  color: var(--text-secondary);
 }
 
 .md-search-result__link {
@@ -64,7 +64,7 @@
 
 .md-search-result__link:hover,
 .md-search-result__link:focus {
-  background-color: rgba(249, 179, 97, 0.1);
+  background-color: rgba(249, 179, 97, 0.08);
 }
 
 .md-search-result__article--document .md-search-result__title {
@@ -73,5 +73,5 @@
 
 .md-search-result mark {
   color: var(--brand-red);
-  background-color: rgba(249, 179, 97, 0.25);
+  background-color: rgba(249, 179, 97, 0.3);
 }

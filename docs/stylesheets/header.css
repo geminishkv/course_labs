@@ -8,6 +8,11 @@
   background-color: var(--brand-dark);
 }
 
+.md-header__inner {
+  display: flex;
+  align-items: center;
+}
+
 .md-header .md-header__title,
 .md-header .md-header__title a {
   color: var(--text-inverse);
@@ -22,6 +27,7 @@
   display: flex;
   align-items: center;
   margin-right: auto;
+  position: relative;
 }
 
 .md-header .md-logo {
@@ -58,9 +64,14 @@
 }
 
 .md-header__title .md-header__topic {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
+
 
 /* ── Navigation tabs ── */
 .md-tabs {
@@ -86,6 +97,9 @@
 /* ── Repo source block (header + sidebar drawer) ── */
 .md-source {
   background-color: var(--brand-dark);
+  display: flex;
+  align-items: center;
+  align-self: center;
 }
 
 .md-nav--primary .md-source,

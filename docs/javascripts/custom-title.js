@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
     topic.appendChild(link);
   }
 
+  // Логотип в хедере → ссылка на geminishkv.tech
+  var logo = document.querySelector(".md-header .md-header__button.md-logo");
+  if (logo) {
+    logo.href = "https://geminishkv.tech/";
+    logo.target = "_blank";
+    logo.rel = "noopener noreferrer";
+  }
+
   // Скрыть интегрированный TOC в левом сайдбаре только на главной странице
   var p = location.pathname;
   if (p === "/" || p.endsWith("/index.html") || p.endsWith("/")) {

@@ -12,7 +12,7 @@
 ***
 
 Салют :wave:,<br>
-Данная лабораторная работа посвящена изучению *nix машин и как они работают, позволяет приобрести навыки для работы с терминалом/ консолью и приобрести знания по работе ОС. В лабоработрной работе описываются материалы по командам, скриптам и подключаемым приложениям.
+Данная лабораторная работа посвящена изучению *nix машин и как они работают, позволяет приобрести навыки для работы с терминалом/ консолью и приобрести знания по работе ОС. В лабораторной работе описываются материалы по командам, скриптам и подключаемым приложениям.
 
 Для сдачи данной работы также будет требоваться ответить на дополнительные вопросы по описанным темам.
 
@@ -24,6 +24,7 @@
 lab02
 ├── exmpl_hello.py
 ├── pygamesteel.py
+├── pygamesteel_fixed.py
 └── README.md
 ```
 
@@ -33,101 +34,19 @@ lab02
 
 Давайте начнем с описания как это работает, но следует подойти к этому вопросу изначально с **терминов** и **основных элементов**, таких как: 
 
-<table>
-  <thead>
-    <tr>
-      <th style="width:15%;">Раздел</th>
-      <th style="width:25%;">Описание</th>
-      <th style="width:60%;">Основные элементы</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Терминал</strong></td>
-      <td>Устройство ввода/ вывода</td>
-      <td>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Оболочка (shell)</strong></td>
-      <td>Интерпретатор команд, обеспечивающий интерфейс для взаимодействия пользователя с функциями ОС (в Linux по умолчанию bash).</td>
-      <td>
-        <ul>
-          <li><code>env</code> – вывод списка переменных окружения</li>
-          <li><code>export</code> – экспорт переменных окружения</li>
-          <li><code>echo</code> – вывод переданного параметра</li>
-          <li><code>reset</code> – сброс настроек терминала к значениям по умолчанию</li>
-          <li><code>logout</code> – завершение сеанса</li>
-          <li><code>exit</code> – завершение сеанса оболочки</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Консоль</strong></td>
-      <td>Интерфейс командной строки с командами для работы с файлами.</td>
-      <td>
-        <ul>
-          <li><code>ls</code> – вывод содержимого каталога</li>
-          <li><code>cd</code> – смена текущего каталога</li>
-          <li><code>touch</code> – создание файла</li>
-          <li><code>mkdir</code> – создание каталога</li>
-          <li><code>rm</code> / <code>rmdir</code> – удаление файла или каталога</li>
-          <li><code>cp</code> – копирование</li>
-          <li><code>mv</code> – перенос или переименование</li>
-          <li><code>ln</code> – создание ссылок на файлы</li>
-          <li><code>cat</code> / <code>tac</code> – вывод содержимого файла</li>
-          <li><code>df</code> – отчёт об использовании дискового пространства</li>
-          <li><code>du</code> – отчёт об используемом месте на диске</li>
-          <li><code>wc</code> – подсчёт строк, слов и символов</li>
-          <li><code>uniq</code> – нахождение/фильтрация дублирующихся строк</li>
-          <li><code>grep</code> – поиск по шаблону</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Файловая система</strong></td>
-      <td>Иерархия каталогов и файлов с правами доступа пользователей.</td>
-      <td>
-        <ul>
-          <li><code>/bin</code> – исполняемые файлы (программы и скрипты)</li>
-          <li><code>/sbin</code> – исполняемые файлы и системное ПО</li>
-          <li><code>/dev</code> – файлы устройств</li>
-          <li><code>/etc</code> – конфигурационные файлы системы и приложений</li>
-          <li><code>/lib</code> – системные библиотеки</li>
-          <li><code>/home</code> – домашние каталоги пользователей</li>
-          <li><code>/root</code> – домашний каталог суперпользователя</li>
-          <li><code>/usr</code> – приложения и дополнительные данные</li>
-          <li><code>/var</code> – изменяемые данные приложений</li>
-          <li><code>/tmp</code> – временный каталог системы</li>
-          <li><code>/var/tmp</code> – временные каталоги приложений</li>
-          <li><code>/proc</code> – файловый интерфейс ядра и процессов</li>
-          <li><code>/mnt</code> – точки монтирования сетевых файловых систем</li>
-          <li><code>/media</code> – точки монтирования съёмных носителей</li>
-          <li><code>/boot</code> – загрузчики и файлы ядра</li>
-          <li><code>/sys</code> – интерфейс к устройствам и подсистемам ядра</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Переменные окружения</strong></td>
-      <td>Переменные, задающие контекст работы пользователя и процессов.</td>
-      <td>
-        <ul>
-          <li><code>SHELL</code> – оболочка текущего пользователя</li>
-          <li><code>USER</code> – имя пользователя</li>
-          <li><code>HOME</code> – домашний каталог пользователя</li>
-          <li><code>PATH</code> – пути поиска исполняемых файлов</li>
-          <li><code>PWD</code> – текущий каталог</li>
-          <li><code>LANG</code> – текущая локаль (язык и формат)</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Терминал</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Устройство ввода/вывода — интерфейс между пользователем и системой.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Оболочка</span><span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">shell (bash, zsh)</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Интерпретатор команд, обеспечивающий интерфейс для взаимодействия пользователя с функциями ОС.</span><div class="lab-card-tags"><span class="lab-tag">env</span><span class="lab-tag">export</span><span class="lab-tag">echo</span><span class="lab-tag">reset</span><span class="lab-tag">logout</span><span class="lab-tag">exit</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Консоль</span><span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">CLI commands</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Интерфейс командной строки с командами для работы с файлами и каталогами.</span><div class="lab-card-tags"><span class="lab-tag">ls</span><span class="lab-tag">cd</span><span class="lab-tag">touch</span><span class="lab-tag">mkdir</span><span class="lab-tag">rm</span><span class="lab-tag">cp</span><span class="lab-tag">mv</span><span class="lab-tag">ln</span><span class="lab-tag">cat</span><span class="lab-tag">df</span><span class="lab-tag">du</span><span class="lab-tag">wc</span><span class="lab-tag">uniq</span><span class="lab-tag">grep</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">ФС</span><span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Filesystem Hierarchy</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Иерархия каталогов и файлов с правами доступа пользователей.</span><div class="lab-card-tags"><span class="lab-tag">/bin</span><span class="lab-tag">/sbin</span><span class="lab-tag">/dev</span><span class="lab-tag">/etc</span><span class="lab-tag">/lib</span><span class="lab-tag">/home</span><span class="lab-tag">/root</span><span class="lab-tag">/usr</span><span class="lab-tag">/var</span><span class="lab-tag">/tmp</span><span class="lab-tag">/proc</span><span class="lab-tag">/mnt</span><span class="lab-tag">/boot</span><span class="lab-tag">/sys</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">ENV</span><span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Environment Variables</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Переменные, задающие контекст работы пользователя и процессов.</span><div class="lab-card-tags"><span class="lab-tag">SHELL</span><span class="lab-tag">USER</span><span class="lab-tag">HOME</span><span class="lab-tag">PATH</span><span class="lab-tag">PWD</span><span class="lab-tag">LANG</span></div></div>
+</div>
 
 ***
 
 ### Права доступа
+
+Неправильно назначенные права — одна из частых причин эскалации привилегий (privilege escalation). Если скрипт запускается от root, а конфиг доступен на запись всем (`777`) — злоумышленник может подменить конфиг и получить root-shell. Именно поэтому контроль прав — базовый навык для AppSec-инженера.
 
 При монтировании образа для каждой *nix ОС задаются права доступа к файлам и путям каталогов, которые позволяют их индивидуально профилировать, а также изменять, но давайте посмотрим на общую картину, советую ознакомиться изначально с Петром Девянином и его описанием `take-grant` [модели](https://academia-moscow.ru/ftp_share/_books/fragments/fragment_20276.pdf). Система безопасности построена на:
 
@@ -157,7 +76,24 @@ $ chgrp [-R] group ... file # изменение группы файла для 
 > - w — право на запись в файл / создание, удаление файлов в директории
 > - x — право на исполнение / доступ в директорию и сабдиректории
 
-По умолчанию права для директории **777**, а для файлов **666**. А теперь давайте посмотрим, как можно поменять права. На сейчас все `*nix` поддерживают `POSIX ACL`, который позволяет указать права доступа для конкретных пользователей и групп.
+По умолчанию права для директории **777**, а для файлов **666**.
+
+### Специальные биты
+
+- **SUID** (Set User ID, `chmod u+s`) — при запуске файла процесс получает права **владельца** файла, а не запустившего пользователя. Пример: `/usr/bin/passwd` имеет SUID, чтобы обычный пользователь мог менять свой пароль (запись в `/etc/shadow` требует root). **Риск:** если SUID-бинарник содержит уязвимость — это прямой путь к privilege escalation
+- **SGID** (Set Group ID, `chmod g+s`) — аналогично для группы. На директории: все новые файлы наследуют группу каталога
+- **Sticky bit** (`chmod +t` или `1xxx`) — на директории: удалить файл может только его владелец или root, даже если права на директорию `777`. Пример: `/tmp` имеет sticky bit — все могут создавать файлы, но удалять только свои
+
+```bash
+$ chmod u+s script.sh    # SUID
+$ chmod g+s dir/          # SGID
+$ chmod +t dir/           # Sticky bit
+$ chmod 4755 script.sh   # SUID через octal (4 = SUID)
+$ chmod 1777 /tmp        # Sticky bit через octal (1 = sticky)
+$ ls -la /tmp            # drwxrwxrwt — буква 't' = sticky bit
+```
+
+А теперь давайте посмотрим, как можно поменять права. На сейчас все `*nix` поддерживают `POSIX ACL`, который позволяет указать права доступа для конкретных пользователей и групп.
 
 ```bash
 $ getfacl [option] file ... # показывает список access list
@@ -200,7 +136,7 @@ $ killall [-signal] # определение процесса по имени
 - [ ] 1. Выведите на терминале и проанализируйте следующие команды консоли
 
 ```bash
-$ who | wc -I
+$ who | wc -l
 $ id
 $ whoami
 $ hostnamectl
@@ -218,11 +154,13 @@ $ locate hello
 $ touch screen
 $ find ~ -name screen
 $ locate screen
-$ sudo updated
+$ sudo updatedb
 $ locate screen
 ```
 
-- [ ]  5. Используйте конструкцию и вставьте ее в созданный файл ранее. Подключите `pygame` - используем исключительно для стилизации окна.
+- [ ] 5. Используйте конструкцию и вставьте ее в созданный файл ранее. Подключите `pygame` - используем исключительно для стилизации окна.
+
+> **Hint:** в коде ниже есть намеренная ошибка — переменная `screen` не присвоена. Найдите и исправьте баг, сохраните исправленную версию как `pygamesteel_fixed.py`.
 
 ```py
 import pygame
@@ -284,9 +222,20 @@ $ getfacl nmapres.txt
 - [ ] 10. Сохраните файл внутри локального репозитория, так как следующая работа будет подразумевать запись в нее данных о nmap.
 - [ ] 11. Для закрепления выведите все списки групп пользователей на вашей ОС и права на верхнеуровневые каталоги.
 - [ ] 12. Выведите все права для файлов и директорий локального репозитория которые имеют различные пользователи  (без использования длинных путей)
-- [ ] 13. Выведите процессы которые у вас запущены в термине и вне его.
-- [ ] 14. Оформить `README.md` по аналогии и использовать `shield`, etc.
-- [ ] 15. Составить `gist` отчет и отправить ссылку личным сообщением
+- [ ] 13. Создайте скрипт `test_privesc.sh` с содержимым `echo "Running as $(whoami)"`. Сделайте его исполняемым (`chmod +x`), установите SUID-бит (`chmod u+s`) и запустите от другого пользователя. Опишите, почему SUID опасен и как это используется для privilege escalation
+- [ ] 14. Создайте директорию `shared/` с правами `770` и sticky bit (`chmod 1770`). Добавьте файлы от двух пользователей. Убедитесь, что каждый может удалить только свои файлы. Опишите разницу между `770` и `1770`
+- [ ] 15. Найдите все SUID-файлы в системе: `find / -perm -4000 2>/dev/null`. Опишите 3 найденных файла — зачем им SUID и какой риск они несут
+- [ ] 16. Выведите процессы которые у вас запущены в терминале и вне его.
+- [ ] 17. Оформить `README.md` по аналогии и использовать `shield`, etc.
+- [ ] 18. Составить `gist` отчет и отправить ссылку личным сообщением
+
+***
+
+## Смотри также
+
+- [CheatSheet: Git](https://course.geminishkv.tech/artifacts/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
+- [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
+- [Подготовка окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/) — если не настроена VM
 
 ***
 

@@ -182,6 +182,8 @@ nav:
               - "Тест №5": tests/basic/test05.md
       - "pet_project": labs/pet_project.md
   - "Материалы":
+      - "Лекции":
+          - "Fintech по-русски": materials/lectures/fintech_ru.md
       - "Примеры":
           - "Cases": materials/examples/exmpl.md
           - "MultiSiq": materials/examples/Multisignature.md

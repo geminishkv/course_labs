@@ -1,0 +1,50 @@
+app:
+  name: "lab07-vulnerable-app"
+  environment: "development"
+  debug: true
+  verbose_logging: true
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  enable_metrics: true
+  allow_origin: "*"
+
+database:
+  engine: "sqlite"
+  host: "localhost"
+  port: 5432
+  name: "vuln_db"
+  user: "admin"
+  password: "SuperSecret123"
+  pool_size: 20
+  debug_queries: true
+
+security:
+  allow_registration: true
+  default_admin_user: "admin"
+  default_admin_password: "Admin123!"
+  jwt_secret: "very-weak-jwt-secret"
+  jwt_algorithm: "HS256"
+  enable_csrf_protection: false
+  enable_rate_limit: false
+  allow_insecure_cookies: true
+  session_cookie_secure: false
+  session_cookie_httponly: false
+
+logging:
+  level: "DEBUG"
+  log_sql: true
+  log_sensitive_ true
+  log_file: "app-debug.log"
+
+features:
+  enable_experimental_api: true
+  enable_unsafe_eval: true
+  enable_remote_shell: true
+
+integrations:
+  debug_webhook_url: "http://example.com/debug-hook"
+  enable_unsafe_webhooks: true
+  trusted_proxies:
+    - "0.0.0.0/0"

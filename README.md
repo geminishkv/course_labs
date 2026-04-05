@@ -150,7 +150,7 @@ $ git tag -a v1.0.0 -m "v1.0.0"
 $ git push origin v1.0.0
 
 $ git tag -d v0.1.0                    # удалить локальный тег
-$ git push origin :refs/tags/v0.1.0   # удалить тот же тег на GitHub
+$ git push --delete origin v1.2.3   # удалить тот же тег на GitHub
 ```
 
 ***

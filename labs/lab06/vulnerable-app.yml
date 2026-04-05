@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  vulnerable-web:
+    image: nginx:latest
+    container_name: vulnerable-web
+    privileged: true
+    network_mode: host
+    pid: host
+    user: "0:0"
+    restart: always
+    environment:
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin123
+      - DB_HOST=127.0.0.1
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - FLAG=FLAG{HARDCODED_SECRET_IN_ENV}
+    volumes:
+      - /:/hostroot:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./backup:/var/backups:rw
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:rw
+    cap_add:
+      - ALL
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+    command: ["/bin/sh", "-c", "apt-get update && apt-get install -y vim net-tools iputils-ping && nginx -g 'daemon off;'"]
+
+  debug-shell:
+    image: alpine:latest
+    container_name: debug-shell
+    privileged: true
+    network_mode: host
+    pid: host
+    user: "0:0"
+    environment:
+      - SSH_PASSWORD=password
+    ports:
+      - "22:22"
+    volumes:
+      - /:/hostroot:rw
+    command: ["/bin/sh", "-c", "apk add --no-cache openssh-server && echo 'root:password' | chpasswd && /usr/sbin/sshd -D -o PermitRootLogin=yes -o PasswordAuthentication=yes"]

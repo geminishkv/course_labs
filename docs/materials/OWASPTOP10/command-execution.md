@@ -17,7 +17,7 @@ keywords: "OWASP, SQL injection, OS injection, SSTI, XXE, AppSec, RCE, инъе�
 
 SSTI (Server-Side Template Injection) возникает при подстановке пользовательских данных непосредственно в шаблонный движок (Jinja2, Twig, Freemarker) и зачастую приводит к Remote Code Execution (RCE). XXE (XML External Entity) — эксплуатация XML-парсеров для чтения произвольных файлов системы или SSRF.
 
-Данный класс уязвимостей обнаруживается инструментами SAST в [лабораторной работе №7](../../labs/basic/lab07.md) и DAST в [лабораторной работе №8](../../labs/basic/lab08.md). Смотри также: [классификация SAST/DAST инструментов](../../appsec_tt.md).
+Данный класс уязвимостей обнаруживается инструментами SAST в [лабораторной работе №7](../../labs/basic/lab07.md) и DAST в [лабораторной работе №8](../../labs/basic/lab08.md). Смотри также: [классификация SAST/DAST инструментов](../appsec_tt.md).
 
 ---
 

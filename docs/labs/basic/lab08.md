@@ -29,4 +29,4 @@ keywords: "DAST, OWASP ZAP, динамическое тестирование, �
 - [OWASP — Authentication](../../materials/OWASPTOP10/Authentication.md) — что проверяет ZAP в первую очередь
 - [OWASP — Authorization](../../materials/OWASPTOP10/Authorization.md) — контроль доступа и IDOR
 - [OWASP — Client-side Attacks](../../materials/OWASPTOP10/client-side-attacks.md) — XSS и CSRF в сканере
-- [Классификация AppSec-инструментов](../../appsec_tt.md) — место DAST в AppSec toolchain
+- [Классификация AppSec-инструментов](../../materials/appsec_tt.md) — место DAST в AppSec toolchain

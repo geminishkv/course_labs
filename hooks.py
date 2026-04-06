@@ -16,17 +16,19 @@ _RULES = [
     (r"^/labs/",                      "0.8", "weekly"),
     (r"^/labs/pet_project",           "0.7", "monthly"),
     # Tests
-    (r"^/tests/",                     "0.5", "monthly"),
+    (r"^/labs/tests/",                "0.5", "monthly"),
     # OWASP materials
     (r"^/materials/OWASPTOP10/",      "0.7", "monthly"),
     # Examples
     (r"^/materials/examples/",        "0.6", "monthly"),
     # Cheatsheets
-    (r"^/artifacts/cheatsheet/",      "0.7", "monthly"),
+    (r"^/materials/cheatsheet/",      "0.7", "monthly"),
     # Reference pages
-    (r"^/appsec_tt/",                 "0.7", "monthly"),
-    (r"^/licenses/",                  "0.6", "monthly"),
-    (r"^/APPENDIX/",                  "0.6", "monthly"),
+    (r"^/materials/appsec_tt/",       "0.7", "monthly"),
+    (r"^/materials/licenses/",        "0.6", "monthly"),
+    (r"^/materials/APPENDIX/",        "0.6", "monthly"),
+    (r"^/materials/troubleshooting/", "0.6", "monthly"),
+    (r"^/materials/ports/",           "0.6", "monthly"),
     # About / meta
     (r"^/about/",                     "0.5", "monthly"),
     (r"^/RELEASE_NOTES/",             "0.6", "monthly"),

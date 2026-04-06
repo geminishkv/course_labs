@@ -75,6 +75,7 @@
   padding-left: var(--space-4);
   gap: 0;
   color: var(--brand-red);
+  position: static;
 }
 
 /* ── Secondary sidebar (TOC) ── */

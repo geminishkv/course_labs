@@ -31,4 +31,4 @@ keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, 
 - [Лаб. №7 — SAST и SCA](lab07.md) — Semgrep и Checkov до интеграции в CI
 - [Лаб. №8 — DAST](lab08.md) — OWASP ZAP до интеграции в CI
 - [GitHub CLI Cheatsheet](../../materials/cheatsheet/CHEATSHEET_GH_CLI.md) — управление Actions из терминала
-- [Классификация AppSec-инструментов](../../appsec_tt.md) — полная карта инструментов DevSecOps
+- [Классификация AppSec-инструментов](../../materials/appsec_tt.md) — полная карта инструментов DevSecOps

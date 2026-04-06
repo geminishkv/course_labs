@@ -175,11 +175,11 @@ nav:
           - "Лабораторная работа №9": labs/basic/lab09.md
           - "Лабораторная работа №10": labs/basic/lab10.md
           - "Тесты":
-              - "Тест №1": tests/basic/test01.md
-              - "Тест №2": tests/basic/test02.md
-              - "Тест №3": tests/basic/test03.md
-              - "Тест №4": tests/basic/test04.md
-              - "Тест №5": tests/basic/test05.md
+              - "Тест №1": labs/tests/basic/test01.md
+              - "Тест №2": labs/tests/basic/test02.md
+              - "Тест №3": labs/tests/basic/test03.md
+              - "Тест №4": labs/tests/basic/test04.md
+              - "Тест №5": labs/tests/basic/test05.md
       - "pet_project": labs/pet_project.md
   - "Материалы":
       - "Лекции":
@@ -189,8 +189,9 @@ nav:
           - "MultiSiq": materials/examples/Multisignature.md
           - "PrintNightmare": materials/examples/PrintNightmare.md
           - "Risk Analysis": materials/examples/RA.md
-      - "Лицензии ПО": licenses.md
-      - "Классификация инструментов": appsec_tt.md
+      - "Порты и протоколы": materials/ports.md
+      - "Лицензии ПО": materials/licenses.md
+      - "Классификация инструментов": materials/appsec_tt.md
       - "OWASP TOP 10":
           - "CI/CD Risks": materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md
           - "Authorization": materials/OWASPTOP10/Authorization.md
@@ -206,8 +207,8 @@ nav:
           - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
           - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
           - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
-      - "Приложение": APPENDIX.md
-      - "Troubleshooting": troubleshooting.md
+      - "Приложение": materials/APPENDIX.md
+      - "Troubleshooting": materials/troubleshooting.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md
   - "Политика безопасности": Security.md

@@ -64,8 +64,21 @@
   font-family: var(--md-text-font, var(--font-body));
 }
 
-/* Lists */
-.md-typeset ul,
+/* Lists — arrow bullets */
+.md-typeset ul {
+  padding-left: 1.75em;
+  list-style: none;
+}
+
+.md-typeset ul > li::before {
+  content: "→";
+  color: var(--brand-red);
+  font-weight: 700;
+  display: inline-block;
+  width: 1.2em;
+  margin-left: -1.2em;
+}
+
 .md-typeset ol {
   padding-left: 1.75em;
 }

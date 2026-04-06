@@ -117,7 +117,7 @@
 
 .hero-sub {
   font-size: var(--text-md);
-  color: var(--text-muted);
+  color: var(--text-ice, #CADCFC);
   margin: 0;
 }
 
@@ -154,13 +154,32 @@
 }
 
 /* ══════════════════════════════════════════
-   Content headings
+   Content headings — numbered sections
 ══════════════════════════════════════════ */
+.md-content {
+  counter-reset: section;
+}
+
 .md-typeset h2 {
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--border-red);
   margin-top: var(--space-8);
   margin-bottom: var(--space-4);
+  counter-increment: section;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.md-typeset h2::before {
+  content: counter(section, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(213, 26, 26, 0.2);
+  line-height: 1;
 }
 
 /* ══════════════════════════════════════════
@@ -394,8 +413,14 @@
   color: rgba(213, 26, 26, 0.75);
   background: rgba(213, 26, 26, 0.07);
   border: 1px solid rgba(213, 26, 26, 0.13);
-  padding: 0.1rem 0.4rem;
-  border-radius: var(--radius-sm);
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+}
+
+.lab-tag--orange {
+  color: #E88020;
+  background: rgba(232, 128, 32, 0.08);
+  border-color: rgba(232, 128, 32, 0.2);
 }
 
 .lab-card-arrow {
@@ -435,6 +460,35 @@
   border-color: rgba(249, 179, 97, 0.3);
   color: var(--brand-gold-dark);
   background: rgba(249, 179, 97, 0.08);
+}
+
+/* ── Red circle icons for feature-lists ── */
+.icon-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.icon-list li::before {
+  content: attr(data-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--brand-red);
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  margin-top: 0.1rem;
 }
 
 /* ══════════════════════════════════════════

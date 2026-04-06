@@ -36,12 +36,12 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 
 ***
 
-**3.** Что такое NSE в контексте Nmap?
+**3.** Nmap обнаружил открытый порт `3306/tcp` (MySQL) на production-сервере. Администратор утверждает, что MySQL слушает только localhost. Какая команда Nmap с NSE-скриптами поможет определить, действительно ли MySQL доступен извне и какую версию использует?
 
-- A) Network Security Encryption — алгоритм шифрования трафика
-- B) Network Scan Export — формат экспорта результатов сканирования
-- C) Nmap Scripting Engine — движок для запуска скриптов при сканировании
-- D) Node Security Engine — анализатор Node.js-зависимостей
+- A) `nmap -sV -p 3306 --script=mysql-info,mysql-enum <host>` — определит версию MySQL и попытается получить список пользователей
+- B) `nmap -sU -p 3306 <host>` — UDP-сканирование покажет реальный статус порта
+- C) `nmap -Pn -p 3306 <host>` — достаточно для подтверждения доступности, NSE не нужен
+- D) `nmap --script=http-title -p 3306 <host>` — MySQL отдаёт HTTP-заголовки
 
 ***
 
@@ -63,12 +63,12 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 
 ***
 
-**6.** Что такое SBOM (Software Bill of Materials)?
+**6.** Регулятор требует предоставить SBOM для production-приложения в формате CycloneDX. Приложение: Python (pip) + Node.js (npm) + Docker-образ. Какой подход генерации SBOM наиболее полный?
 
-- A) Отчёт о производительности и нагрузке приложения
-- B) Полный список компонентов, библиотек и зависимостей приложения с их версиями
-- C) Журнал выполнения CI/CD пайплайна
-- D) Реестр Docker-образов организации
+- A) `pip freeze > requirements.txt` и `npm list --json` — этого достаточно, SBOM = список зависимостей
+- B) Использовать `syft` или `cdxgen` для сканирования Docker-образа — инструмент извлечёт зависимости из всех менеджеров пакетов + системные пакеты из базового образа
+- C) Экспортировать `package-lock.json` — npm lock-file содержит полное дерево зависимостей
+- D) Запросить SBOM у каждого вендора зависимостей — генерировать самостоятельно ненадёжно
 
 ***
 
@@ -99,11 +99,11 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 
 ***
 
-**10.** Какой HTTP-заголовок защищает от clickjacking-атак (встраивания страницы в `<iframe>`)?
+**10.** Пентестер обнаружил, что банковское приложение не отправляет заголовки `X-Frame-Options` и `Content-Security-Policy: frame-ancestors`. Он создал страницу с прозрачным `<iframe>` поверх кнопки «Перевести 10 000 ₽». Какой набор заголовков полностью закрывает этот вектор атаки?
 
-- A) `Content-Type`
-- B) `Authorization`
-- C) `Accept-Encoding`
-- D) `X-Frame-Options`
+- A) `X-Frame-Options: SAMEORIGIN` — достаточно одного заголовка
+- B) `Content-Security-Policy: frame-ancestors 'self'` + `X-Frame-Options: DENY` — CSP для современных браузеров, X-Frame-Options как fallback для устаревших
+- C) `X-Content-Type-Options: nosniff` — предотвращает все виды frame-атак
+- D) `Strict-Transport-Security: max-age=31536000` — HSTS автоматически блокирует iframe
 
 ***

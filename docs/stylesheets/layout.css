@@ -27,8 +27,8 @@
 
 .hero-logo-wrap {
   position: relative;
-  width: 136px;
-  height: 136px;
+  width: 120px;
+  height: 120px;
   flex-shrink: 0;
   border-radius: 50%;
   display: flex;
@@ -41,9 +41,9 @@
 .hero-logo-wrap::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -8px;
   border-radius: 50%;
-  background-image: linear-gradient(
+  background: conic-gradient(
     var(--brand-red, #D51A1A),
     var(--brand-gold, #F9B361),
     var(--brand-red, #D51A1A)
@@ -56,15 +56,15 @@
 .hero-logo-wrap::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -8px;
   border-radius: 50%;
-  background-image: linear-gradient(
+  background: conic-gradient(
     var(--brand-red, #D51A1A),
     var(--brand-gold, #F9B361),
     var(--brand-red, #D51A1A)
   );
   animation: logo-ring-rotate 2.4s linear infinite;
-  filter: blur(8px);
+  filter: blur(6px);
   opacity: 0.5;
   z-index: 0;
 }
@@ -75,10 +75,11 @@
   flex-shrink: 0;
   object-fit: contain;
   border-radius: 50%;
-  background: var(--brand-dark, #1A1919);
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  padding: 8px;
 }
 
 .hero-logo-wrap:hover {

@@ -19,10 +19,6 @@ SSTI (Server-Side Template Injection) возникает при подстано
 
 Данный класс уязвимостей обнаруживается инструментами SAST в [лабораторной работе №7](../../labs/basic/lab07.md) и DAST в [лабораторной работе №8](../../labs/basic/lab08.md). Смотри также: [классификация SAST/DAST инструментов](../../appsec_tt.md).
 
-## OWASP материалы
-
-![OWASP Top 10 - Command_Execution](../../artifacts/owasp/Command_Execution.pdf){ type=application/pdf style="min-height:80vh;width:100%" }
-
 ---
 
 ## Содержание документа

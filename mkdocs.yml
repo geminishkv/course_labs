@@ -127,10 +127,15 @@ extra_css:
   - stylesheets/mobile-logo.css
   - stylesheets/layout.css
   - stylesheets/clipboard.css
+  - stylesheets/logo-glow.css
+  - stylesheets/notice-bar.css
+  - stylesheets/cookie-banner.css
 
 extra_javascript:
   - javascripts/custom-title.js
   - javascripts/typewriter-target.js
+  - javascripts/notice-bar.js
+  - javascripts/cookie-banner.js
 
 extra:
   twitter_handle: "@geminishkv"
@@ -211,6 +216,7 @@ nav:
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md
   - "Политика безопасности": Security.md
+  - "Политика конфиденциальности": privacy.md
   - "Application Security Toolchain Map": "https://findevsecops.github.io/oss_toolchainmap/"
   - "FinDevSecOps": "https://findevsecops.ru/"
   - "АО ЛАНИТ": "https://www.lanit.ru"

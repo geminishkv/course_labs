@@ -19,10 +19,6 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
 
 Данный материал связан с [лабораторной работой №8 (DAST)](../../labs/basic/lab08.md), где OWASP ZAP проверяет реализацию аутентификации в тестовом приложении, а также с [лабораторной работой №9](../../labs/basic/lab09.md), где проверки встраиваются в CI/CD. Смотри также: [Authorization](Authorization.md).
 
-## OWASP материалы
-
-![OWASP Top 10 - Authentication](../../artifacts/owasp/Authentication.pdf){ type=application/pdf style="min-height:80vh;width:100%" }
-
 ---
 
 ## Содержание документа
@@ -41,20 +37,110 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
 
 Существует два вида подбора: **прямой** и **обратный**. При прямом подборе используются различные варианты пароля для одного имени пользователя. При обратном -- перебираются различные имена пользователей, а пароль остается неизменным. В системах с миллионами учетных записей вероятность использования различными пользователями одного пароля довольно высока. Несмотря на популярность и высокую эффективность, подбор может занимать несколько часов, дней или лет.
 
-**Пример:**
+!!! example "Пример: прямой и обратный подбор"
 
-```
-Имя пользователя = Jon
-Пароли = smith, michael-jordan, [pet names], [birthdays], [car names], ...
+    **Прямой подбор** -- перебор паролей для одного пользователя:
 
-Имена пользователей = Jon, Dan, Ed, Sara, Barbara, ...
-Пароль = 12345678
-```
+    ```
+    Имя пользователя = Jon
+    Пароли = smith, michael-jordan, [pet names], [birthdays], [car names], ...
+    ```
 
-**Ссылки:**
+    **Обратный подбор** -- перебор пользователей с одним паролем:
 
-- [Brute Force Attack -- Imperva Glossary](http://www.imperva.com/application_defense_center/glossary/brute_force.html)
-- [iDefense: Brute-Force Exploitation of Web Application Session ID's](http://www.cgisecurity.com/lib/SessionIDs.pdf) -- By David Endler, iDEFENSE Labs
+    ```
+    Имена пользователей = Jon, Dan, Ed, Sara, Barbara, ...
+    Пароль = 12345678
+    ```
+
+!!! warning "Внимание"
+
+    Без ограничения количества попыток входа атакующий может автоматизировать подбор и перебрать миллионы комбинаций за короткое время. Обязательно применяйте rate limiting и account lockout.
+
+#### Практический пример: защита от Brute Force
+
+=== "Уязвимый код"
+
+    ```javascript
+    const express = require("express");
+    const app = express();
+
+    app.use(express.json());
+
+    // Эндпоинт входа без какой-либо защиты от перебора
+    app.post("/login", (req, res) => {
+      const { username, password } = req.body;
+
+      const user = findUser(username);
+      if (user && user.password === password) {
+        return res.json({ success: true, token: generateToken(user) });
+      }
+
+      return res.status(401).json({ error: "Invalid credentials" });
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    const express = require("express");
+    const rateLimit = require("express-rate-limit");
+    const app = express();
+
+    app.use(express.json());
+
+    // Rate limiter: максимум 5 попыток входа за 15 минут с одного IP
+    const loginLimiter = rateLimit({
+      windowMs: 15 * 60 * 1000, // 15 минут
+      max: 5,                   // лимит попыток
+      message: { error: "Too many login attempts, please try again later" },
+      standardHeaders: true,
+      legacyHeaders: false,
+    });
+
+    // Дополнительно: отслеживание неудачных попыток по аккаунту
+    const failedAttempts = new Map();
+    const LOCKOUT_THRESHOLD = 5;
+    const LOCKOUT_DURATION_MS = 30 * 60 * 1000; // 30 минут
+
+    app.post("/login", loginLimiter, async (req, res) => {
+      const { username, password } = req.body;
+
+      // Проверка блокировки аккаунта
+      const attempts = failedAttempts.get(username);
+      if (attempts && attempts.count >= LOCKOUT_THRESHOLD) {
+        const elapsed = Date.now() - attempts.lastAttempt;
+        if (elapsed < LOCKOUT_DURATION_MS) {
+          return res.status(423).json({
+            error: "Account temporarily locked due to multiple failed attempts",
+          });
+        }
+        failedAttempts.delete(username);
+      }
+
+      const user = await findUser(username);
+      const isValid = user && (await bcrypt.compare(password, user.passwordHash));
+
+      if (!isValid) {
+        // Инкрементируем счётчик неудачных попыток
+        const current = failedAttempts.get(username) || { count: 0 };
+        failedAttempts.set(username, {
+          count: current.count + 1,
+          lastAttempt: Date.now(),
+        });
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+
+      // Сброс счётчика при успешном входе
+      failedAttempts.delete(username);
+      return res.json({ success: true, token: generateToken(user) });
+    });
+    ```
+
+!!! info "Ссылки"
+
+    - [OWASP Brute Force Attack](https://owasp.org/www-community/attacks/Brute_force_attack)
+    - [OWASP Testing for Brute Force](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/04-Testing_for_Brute_Force)
 
 ### 1.2. Недостаточная аутентификация (Insufficient Authentication)
 
@@ -64,35 +150,242 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
 
 Необходимый URL может быть найден перебором типичных файлов и директорий (таких как `/admin/`), с использованием сообщений об ошибках, журналов перекрестных ссылок или путем простого чтения документации. Подобные ресурсы должны быть защищены адекватно важности их содержимого и функциональных возможностей.
 
-**Пример:**
+!!! example "Пример: скрытая административная панель"
 
-Многие Web-приложения по умолчанию используют для административного доступа ссылку в корневой директории сервера (`/admin/`). Обычно ссылка на эту страницу не фигурирует в содержимом сервера, однако страница доступна с помощью стандартного браузера. Поскольку пользователь или разработчик предполагает, что никто не воспользуется этой страницей, так как ссылки на нее отсутствуют, зачастую реализацией аутентификации пренебрегают. И для получения контроля над сервером злоумышленнику достаточно зайти на эту страницу.
+    Многие Web-приложения по умолчанию используют для административного доступа ссылку в корневой директории сервера (`/admin/`). Обычно ссылка на эту страницу не фигурирует в содержимом сервера, однако страница доступна с помощью стандартного браузера. Поскольку пользователь или разработчик предполагает, что никто не воспользуется этой страницей, так как ссылки на нее отсутствуют, зачастую реализацией аутентификации пренебрегают. И для получения контроля над сервером злоумышленнику достаточно зайти на эту страницу.
+
+#### Практический пример: защита маршрутов middleware
+
+=== "Уязвимый код"
+
+    ```javascript
+    const express = require("express");
+    const app = express();
+
+    // Административная панель без аутентификации --
+    // "безопасность через сокрытие" (security by obscurity)
+    app.get("/super-secret-admin-panel", (req, res) => {
+      const users = getAllUsers();
+      const config = getSystemConfig();
+      res.json({ users, config });
+    });
+
+    app.delete("/super-secret-admin-panel/users/:id", (req, res) => {
+      deleteUser(req.params.id);
+      res.json({ success: true });
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    const express = require("express");
+    const jwt = require("jsonwebtoken");
+    const app = express();
+
+    // Middleware аутентификации -- проверяет наличие и валидность JWT
+    function authenticate(req, res, next) {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) {
+        return res.status(401).json({ error: "Authentication required" });
+      }
+      try {
+        req.user = jwt.verify(token, process.env.JWT_SECRET);
+        next();
+      } catch {
+        return res.status(401).json({ error: "Invalid or expired token" });
+      }
+    }
+
+    // Middleware авторизации -- проверяет роль пользователя
+    function requireRole(role) {
+      return (req, res, next) => {
+        if (req.user.role !== role) {
+          return res.status(403).json({ error: "Insufficient permissions" });
+        }
+        next();
+      };
+    }
+
+    // Все маршруты /admin защищены аутентификацией + проверкой роли
+    app.get("/admin/users", authenticate, requireRole("admin"), (req, res) => {
+      const users = getAllUsers();
+      res.json({ users });
+    });
+
+    app.delete(
+      "/admin/users/:id",
+      authenticate,
+      requireRole("admin"),
+      (req, res) => {
+        deleteUser(req.params.id);
+        res.json({ success: true });
+      }
+    );
+    ```
+
+!!! info "Ссылки"
+
+    - [OWASP Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+    - [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
 ### 1.3. Небезопасное восстановление паролей (Weak Password Recovery Validation)
 
 Эта уязвимость возникает, когда Web-сервер позволяет атакующему несанкционированно получать, модифицировать или восстанавливать пароли других пользователей.
 
-Часто аутентификация на Web-сервере требует от пользователя запоминания пароля или парольной фразы. Только пользователь должен знать пароль, причем помнить его отчетливо. Со временем пароль забывается. Ситуация усложняется, поскольку в среднем пользователь посещает около 20 сайтов, требующих ввода пароля ([RSA Survey](http://news.bbc.co.uk/1/hi/technology/3639679.stm)). Таким образом, функция восстановления пароля является важной составляющей предоставляемой Web-серверами сервиса.
+Часто аутентификация на Web-сервере требует от пользователя запоминания пароля или парольной фразы. Только пользователь должен знать пароль, причем помнить его отчетливо. Со временем пароль забывается. Ситуация усложняется, поскольку в среднем пользователь посещает около 20 сайтов, требующих ввода пароля. Таким образом, функция восстановления пароля является важной составляющей предоставляемой Web-серверами сервиса.
 
 Примером реализации подобной функции является использование "секретного вопроса", ответ на который указывается в процессе регистрации. Вопрос либо выбирается из списка или вводится самим пользователем. Еще один механизм позволяет пользователю указать "подсказку", которая поможет ему вспомнить пароль. Другие способы требуют от пользователя указать часть персональных данных, таких как номер соц. страхования, ИНН, домашний адрес, почтовый индекс и т.д., которые затем будут использоваться для установления личности.
 
 Уязвимости, связанные с недостаточной проверкой при восстановлении пароля, возникают, когда атакующий получает возможность обойти используемый механизм. Это случается, когда информацию, используемую для проверки пользователя, легко угадать или сам процесс подтверждения можно обойти. Система восстановления пароля может быть скомпрометирована путем использования подбора, уязвимостей системы или из-за легко угадываемого ответа на секретный вопрос.
 
-**Примеры:**
+!!! example "Пример: проверка информации"
 
-#### Проверка информации
+    Многие серверы требуют от пользователя указать его e-mail в комбинации с домашним адресом и номером телефона. Эта информация может быть легко получена из сетевых справочников. В результате, данные, используемые для проверки, не являются большим секретом. Кроме того, эта информация может быть получена злоумышленником с использованием других методов, таких как Cross-Site Scripting или фишинг (Phishing).
 
-Многие серверы требуют от пользователя указать его e-mail в комбинации с домашним адресом и номером телефона. Эта информация может быть легко получена из сетевых справочников. В результате, данные, используемые для проверки, не являются большим секретом. Кроме того, эта информация может быть получена злоумышленником с использованием других методов, таких как Cross-Site Scripting или фишинг (Phishing).
+!!! example "Пример: парольные подсказки"
 
-#### Парольные подсказки
+    Сервер, использующий подсказки для облегчения запоминания паролей, может быть атакован, поскольку подсказки помогают в реализации подбора паролей. Пользователь может использовать стойкий пароль, например, `221277King` с соответствующей подсказкой: "д-р+люб писатель". Атакующий может заключить, что пользовательский пароль состоит из даты рождения и имени любимого автора пользователя. Это помогает сформировать относительно короткий словарь для атаки путём перебора.
 
-Сервер, использующий подсказки для облегчения запоминания паролей, может быть атакован, поскольку подсказки помогают в реализации подбора паролей. Пользователь может использовать стойкий пароль, например, `221277King` с соответствующей подсказкой: "д-р+люб писатель". Атакующий может заключить, что пользовательский пароль состоит из даты рождения и имени любимого автора пользователя. Это помогает сформировать относительно короткий словарь для атаки путем перебора.
+!!! example "Пример: секретный вопрос и ответ"
 
-#### Секретный вопрос и ответ
+    Предположим, ответ пользователя "Бобруйск", а секретный вопрос "Место рождения". Злоумышленник может ограничить словарь для подбора секретного ответа названиями городов. Более того, если атакующий располагает некоторой информацией о пользователе, узнать его место рождения несложно.
 
-Предположим, ответ пользователя "Бобруйск", а секретный вопрос "Место рождения". Злоумышленник может ограничить словарь для подбора секретного ответа названиями городов. Более того, если атакующий располагает некоторой информацией о пользователе, узнать его место рождения несложно.
+#### Практический пример: генерация токена восстановления пароля
 
-**Ссылки:**
+=== "Уязвимый код"
 
-- [Protecting Secret Keys with Personal Entropy](http://www.schneier.com/paper-personal-entropy.html) -- By Carl Ellison, C. Hall, R. Milbert, and B. Schneier
-- [Emergency Key Recovery without Third Parties](http://theworld.com/~cme/html/rump96.html) -- Carl Ellison
+    ```javascript
+    const express = require("express");
+    const app = express();
+
+    app.use(express.json());
+
+    // Предсказуемый токен на основе timestamp + userId --
+    // атакующий может подобрать или вычислить токен
+    app.post("/forgot-password", async (req, res) => {
+      const { email } = req.body;
+      const user = await findUserByEmail(email);
+
+      if (!user) {
+        // Утечка информации: раскрывает, существует ли аккаунт
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      // Предсказуемый токен!
+      const resetToken = Buffer.from(`${user.id}-${Date.now()}`).toString("base64");
+
+      // Токен без срока действия
+      await saveResetToken(user.id, resetToken);
+      await sendEmail(email, `Reset link: https://example.com/reset?token=${resetToken}`);
+
+      return res.json({ success: true });
+    });
+
+    app.post("/reset-password", async (req, res) => {
+      const { token, newPassword } = req.body;
+      const record = await findResetToken(token);
+
+      if (!record) {
+        return res.status(400).json({ error: "Invalid token" });
+      }
+
+      // Нет проверки срока действия токена
+      // Нет проверки сложности нового пароля
+      await updatePassword(record.userId, newPassword);
+      // Токен остаётся валидным и может быть использован повторно!
+
+      return res.json({ success: true });
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    const express = require("express");
+    const crypto = require("crypto");
+    const bcrypt = require("bcrypt");
+    const app = express();
+
+    app.use(express.json());
+
+    const TOKEN_EXPIRY_MS = 60 * 60 * 1000; // 1 час
+
+    app.post("/forgot-password", async (req, res) => {
+      const { email } = req.body;
+      const user = await findUserByEmail(email);
+
+      // Единый ответ независимо от существования аккаунта --
+      // предотвращает перечисление пользователей (user enumeration)
+      if (!user) {
+        return res.json({
+          message: "If this email exists, a reset link has been sent",
+        });
+      }
+
+      // Криптографически стойкий случайный токен
+      const resetToken = crypto.randomBytes(32).toString("hex");
+
+      // Хэшируем токен перед сохранением в БД --
+      // даже при утечке базы атакующий не получит рабочие токены
+      const tokenHash = crypto
+        .createHash("sha256")
+        .update(resetToken)
+        .digest("hex");
+
+      await saveResetToken(user.id, tokenHash, Date.now() + TOKEN_EXPIRY_MS);
+      await sendEmail(
+        email,
+        `Reset link: https://example.com/reset?token=${resetToken}`
+      );
+
+      return res.json({
+        message: "If this email exists, a reset link has been sent",
+      });
+    });
+
+    app.post("/reset-password", async (req, res) => {
+      const { token, newPassword } = req.body;
+
+      // Хэшируем полученный токен для сравнения с БД
+      const tokenHash = crypto
+        .createHash("sha256")
+        .update(token)
+        .digest("hex");
+
+      const record = await findResetToken(tokenHash);
+
+      if (!record) {
+        return res.status(400).json({ error: "Invalid or expired token" });
+      }
+
+      // Проверка срока действия
+      if (Date.now() > record.expiresAt) {
+        await deleteResetToken(tokenHash);
+        return res.status(400).json({ error: "Invalid or expired token" });
+      }
+
+      // Проверка сложности пароля
+      if (newPassword.length < 12) {
+        return res
+          .status(400)
+          .json({ error: "Password must be at least 12 characters" });
+      }
+
+      const passwordHash = await bcrypt.hash(newPassword, 12);
+      await updatePassword(record.userId, passwordHash);
+
+      // Однократное использование: удаляем токен после сброса
+      await deleteResetToken(tokenHash);
+
+      // Инвалидируем все активные сессии пользователя
+      await invalidateAllSessions(record.userId);
+
+      return res.json({ success: true });
+    });
+    ```
+
+!!! info "Ссылки"
+
+    - [OWASP Forgot Password Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html)
+    - [OWASP Testing for Weak Password Recovery](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/09-Testing_for_Weak_Password_Change_or_Reset_Functionalities)

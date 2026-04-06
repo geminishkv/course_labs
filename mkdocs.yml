@@ -130,8 +130,7 @@ extra_javascript:
   - javascripts/typewriter-target.js
   - javascripts/notice-bar.js
   - javascripts/cookie-banner.js
-  - javascripts/fade-in.js
-  - javascripts/hero-border.js
+  - javascripts/effects.js
 
 extra:
   twitter_handle: "@geminishkv"

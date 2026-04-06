@@ -224,7 +224,7 @@ $ git commit -S -m "chore: ignore nmap scan results"
 - [Лаб. №2 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — права доступа и ACL, используемые для защиты результатов
 - [Лаб. №4 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — анализ рисков по результатам nmap
 - [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование найденных сервисов
-- [CheatSheet: Docker](https://course.geminishkv.tech/artifacts/cheatsheet/CHEATSHEET_DOCKER/) — контейнеры для изоляции тестовых стендов
+- [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — контейнеры для изоляции тестовых стендов
 
 ***
 

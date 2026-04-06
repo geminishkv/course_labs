@@ -69,7 +69,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 ## Этапы
 
-1. Ознакомление с учебными материалами по [лекциям](artifacts/cheatsheet/CHEATSHEET_GIT.md) и [примерами](materials/examples/exmpl.md)
+1. Ознакомление с учебными материалами по [лекциям](materials/cheatsheet/CHEATSHEET_GIT.md) и [примерами](materials/examples/exmpl.md)
 2. Каждый репозиторий должен содержать: `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
 3. Выполнить лабораторные работы по порядку — от Lab 01 до Lab 10
 4. Итоговая работа — `pet_project` (тема согласовывается с преподавателем, применяется весь стек AppSec/DevSecOps)
@@ -142,7 +142,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <a class="lab-card" href="licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="appsec_tt/"><div class="lab-card-body"><div class="lab-card-title">AppSec Toolchain — классификация инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">DAST</span><span class="lab-tag">SCA</span><span class="lab-tag">SBOM</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span><span class="lab-tag">CI/CD</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="artifacts/cheatsheet/CHEATSHEET_GIT.md"><div class="lab-card-body"><div class="lab-card-title">CheatSheets — шпаргалки</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">YAML</span><span class="lab-tag">.gitignore</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GIT.md"><div class="lab-card-body"><div class="lab-card-title">CheatSheets — шпаргалки</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">YAML</span><span class="lab-tag">.gitignore</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="troubleshooting/"><div class="lab-card-body"><div class="lab-card-title">Troubleshooting — частые проблемы</div><div class="lab-card-tags"><span class="lab-tag">FAQ</span><span class="lab-tag">Ошибки</span><span class="lab-tag">Решения</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 

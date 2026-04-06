@@ -233,7 +233,7 @@ $ getfacl nmapres.txt
 
 ## Смотри также
 
-- [CheatSheet: Git](https://course.geminishkv.tech/artifacts/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
+- [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
 - [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
 - [Подготовка окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/) — если не настроена VM
 

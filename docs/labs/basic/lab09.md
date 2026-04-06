@@ -30,5 +30,5 @@ keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, 
 - [OWASP Top 10 — CI/CD Risks](../../materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски, которые закрывает этот пайплайн
 - [Лаб. №7 — SAST и SCA](lab07.md) — Semgrep и Checkov до интеграции в CI
 - [Лаб. №8 — DAST](lab08.md) — OWASP ZAP до интеграции в CI
-- [GitHub CLI Cheatsheet](../../artifacts/cheatsheet/CHEATSHEET_GH_CLI.md) — управление Actions из терминала
+- [GitHub CLI Cheatsheet](../../materials/cheatsheet/CHEATSHEET_GH_CLI.md) — управление Actions из терминала
 - [Классификация AppSec-инструментов](../../appsec_tt.md) — полная карта инструментов DevSecOps

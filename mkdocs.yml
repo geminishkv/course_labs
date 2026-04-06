@@ -200,12 +200,12 @@ nav:
           - "Logical Attacks": materials/OWASPTOP10/logical-attacks.md
           - "Information Disclosure": materials/OWASPTOP10/information-disclosure.md
       - "CheatSheet":
-          - "GitHub CLI": artifacts/cheatsheet/CHEATSHEET_GH_CLI.md
-          - "GitSCM": artifacts/cheatsheet/CHEATSHEET_GIT.md
-          - "Docker": artifacts/cheatsheet/CHEATSHEET_DOCKER.md
-          - ".dockerignore": artifacts/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
-          - ".gitignore": artifacts/cheatsheet/CHEATSHEET_GITIGNORE.md
-          - "YAML": artifacts/cheatsheet/CHEATSHEET_YAML.md
+          - "GitHub CLI": materials/cheatsheet/CHEATSHEET_GH_CLI.md
+          - "GitSCM": materials/cheatsheet/CHEATSHEET_GIT.md
+          - "Docker": materials/cheatsheet/CHEATSHEET_DOCKER.md
+          - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
+          - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
+          - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
       - "Приложение": APPENDIX.md
       - "Troubleshooting": troubleshooting.md
   - "О проекте": about.md

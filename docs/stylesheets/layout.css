@@ -3,7 +3,7 @@
 ══════════════════════════════════════════ */
 .hero-section {
   margin: var(--space-2) calc(-1 * var(--space-6)) var(--space-10);
-  padding: 3.5rem var(--space-12) var(--space-12);
+  padding: 1.5rem var(--space-10) 1.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -444,12 +444,16 @@
   display: flex;
   align-items: center;
   gap: var(--space-6);
-  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-hero-stop) 60%, var(--brand-dark) 100%);
   margin: var(--space-2) calc(-1 * var(--space-6)) var(--space-8);
   padding: var(--space-8) var(--space-10);
   position: relative;
-  overflow: hidden;
-  border-bottom: 2px solid rgba(213, 26, 26, 0.2);
+  border: 6px solid transparent;
+  border-radius: var(--radius-md, 6px);
+  background-image:
+    linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-hero-stop) 60%, var(--brand-dark) 100%),
+    conic-gradient(from var(--hero-angle, 0deg), #D51A1A, #F9B361, #ff4422, #F9B361, #D51A1A);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 .lab-hero::before {

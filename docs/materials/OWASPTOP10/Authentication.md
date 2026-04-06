@@ -25,7 +25,7 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
 
 Раздел, посвященный аутентификации описывает атаки, направленные на используемые Web-приложением методы проверки идентификатора пользователя, службы или приложения. Аутентификация использует как минимум один из трех механизмов (факторов): "что-то, что мы имеем", "что-то, что мы знаем" или "что-то, что мы есть". В этом разделе описываются атаки, направленные на обход или эксплуатацию уязвимостей в механизмах реализации аутентификации Web-серверов.
 
-### 1.1. Подбор (Brute Force)
+### Подбор (Brute Force)
 
 Подбор -- автоматизированный процесс проб и ошибок, использующийся для того, чтобы угадать имя пользователя, пароль, номер кредитной карточки, ключ шифрования и т.д.
 
@@ -142,7 +142,7 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
     - [OWASP Brute Force Attack](https://owasp.org/www-community/attacks/Brute_force_attack)
     - [OWASP Testing for Brute Force](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/04-Testing_for_Brute_Force)
 
-### 1.2. Недостаточная аутентификация (Insufficient Authentication)
+### Недостаточная аутентификация (Insufficient Authentication)
 
 Эта уязвимость возникает, когда Web-сервер позволяет атакующему получать доступ к важной информации или функциям сервера без должной аутентификации. Интерфейсы администрирования через Web -- яркий пример критичных систем.
 
@@ -229,7 +229,7 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
     - [OWASP Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
     - [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
-### 1.3. Небезопасное восстановление паролей (Weak Password Recovery Validation)
+### Небезопасное восстановление паролей (Weak Password Recovery Validation)
 
 Эта уязвимость возникает, когда Web-сервер позволяет атакующему несанкционированно получать, модифицировать или восстанавливать пароли других пользователей.
 

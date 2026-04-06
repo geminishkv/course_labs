@@ -7,6 +7,8 @@ description: "Курс AppSec: лабораторные работы по без
 keywords: "AppSec, курс AppSec, DevSecOps, безопасность приложений, лабораторные работы, OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD, GitHub Actions, анализ рисков"
 ---
 
+<div class="no-section-nums" markdown="1">
+
 <div class="hero-section">
   <div class="hero-logo-wrap">
     <img src="artifacts/assets/logo_white.svg" class="hero-logo" alt="AppSecTA">
@@ -175,4 +177,6 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 </div>
 
 </div>
+</div>
+
 </div>

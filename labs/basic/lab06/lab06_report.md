@@ -151,7 +151,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 
 ### Задание 5: Анализ уязвимостей - причины возникновения
 
-#### 5.1. Анализ vulnerable-app.yml
+#### Анализ vulnerable-app.yml
 
 **Контейнер vulnerable-web:**
 
@@ -200,7 +200,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 4. **SSH с паролем в открытом виде:** `SSH_PASSWORD=password`
 5. **`PermitRootLogin=yes`** - разрешен вход root по SSH
 
-#### 5.2. Анализ docker-compose.yml
+#### Анализ docker-compose.yml
 
 **Контейнер insecure-db:**
 
@@ -218,7 +218,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 
 ### Задание 6: Описание влияния уязвимостей и сценариев атак
 
-#### 6.1. Сценарии атак для vulnerable-web
+#### Сценарии атак для vulnerable-web
 
 **Сценарий 1: Компрометация через privileged режим**
 1. Злоумышленник получает доступ к контейнеру `vulnerable-web`
@@ -245,7 +245,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 3. Может сканировать сеть хоста
 4. **Влияние:** Нарушение конфиденциальности сетевого трафика
 
-#### 6.2. Сценарии атак для debug-shell
+#### Сценарии атак для debug-shell
 
 **Сценарий 5: Несанкционированный доступ через SSH**
 1. Злоумышленник подключается к SSH (порт 22) с паролем `password`
@@ -253,7 +253,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 3. Получает полный доступ к контейнеру и хосту (через privileged)
 4. **Влияние:** Полная компрометация системы
 
-#### 6.3. Сценарии атак для insecure-db и app
+#### Сценарии атак для insecure-db и app
 
 **Сценарий 6: SQL-инъекция и компрометация БД**
 1. Слабый пароль `root` для PostgreSQL
@@ -271,7 +271,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
 
 ### Задание 7: Оценка рисков ИБ и меры снижения
 
-#### 7.1. Оценка рисков
+#### Оценка рисков
 
 **Критические риски (CR):**
 
@@ -302,7 +302,7 @@ $ docker run --rm --net host --pid host --userns host --cap-add audit_control \
    - **Влияние:** Высокое
    - **Риск:** Высокий
 
-#### 7.2. Меры снижения рисков
+#### Меры снижения рисков
 
 **Исправленный vulnerable-app.yml:**
 

@@ -49,7 +49,7 @@ $ docker buildx version
 
 ### Задание 2: Команды docker buildx и docker run
 
-#### 2.1. Сборка образа
+#### Сборка образа
 
 ```bash
 $ cd /root/course_labs/labs/lab05/source
@@ -63,7 +63,7 @@ $ docker buildx build -t hello-appsec-world .
 
 **Результат:** Образ успешно собран
 
-#### 2.2. Запуск контейнера
+#### Запуск контейнера
 
 ```bash
 $ docker run hello-appsec-world
@@ -76,7 +76,7 @@ $ docker run hello-appsec-world
 
 **Результат:** Выведено "hello appsec world" с цветным форматированием (ANSI коды цветов: [91m, [92m, [93m, [94m, [95m)
 
-#### 2.3. Запуск контейнера в интерактивном режиме
+#### Запуск контейнера в интерактивном режиме
 
 ```bash
 $ docker run --rm -it hello-appsec-world
@@ -87,7 +87,7 @@ $ docker run --rm -it hello-appsec-world
 - `-it` - интерактивный режим с псевдо-TTY
 - **Примечание:** При выполнении через SSH без TTY может возникнуть ошибка "the input device is not a TTY"
 
-#### 2.4. Сохранение образа в архив
+#### Сохранение образа в архив
 
 ```bash
 $ docker save -o hello.tar hello-appsec-world

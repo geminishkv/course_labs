@@ -12,7 +12,7 @@
 
 ***
 
-## 1. Переменные окружения Git
+## Переменные окружения Git
 
 Git config работает на трёх уровнях:
 
@@ -42,7 +42,7 @@ $ git config unset --global user.email                     # удалить на
 
 ***
 
-## 2. Установка Git и GitHub CLI
+## Установка Git и GitHub CLI
 
 ```bash
 # Ubuntu / Debian
@@ -67,7 +67,7 @@ $ gh auth status                                           # проверка
 
 ***
 
-## 3. SSH-ключ для GitHub
+## SSH-ключ для GitHub
 
 ```bash
 $ ssh-keygen -t ed25519 -C "email@example.com"             # генерация ключа
@@ -86,7 +86,7 @@ $ ssh -T git@github.com                                    # ожидается:
 
 ***
 
-## 4. GnuPG для подписания коммитов
+## GnuPG для подписания коммитов
 
 GPG-подпись подтверждает авторство коммита. GitHub показывает зелёный бейдж `Verified`.
 
@@ -122,7 +122,7 @@ $ git log --show-signature -1                              # проверка п
 
 ***
 
-## 5. Установка zsh (опционально)
+## Установка zsh (опционально)
 
 ```bash
 # Ubuntu / Debian
@@ -143,7 +143,7 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
 
 ***
 
-## 6. Personal Access Token
+## Personal Access Token
 
 Нужен для работы с Gist и API.
 

@@ -3,7 +3,7 @@
 ══════════════════════════════════════════ */
 .hero-section {
   margin: var(--space-2) calc(-1 * var(--space-6)) var(--space-10);
-  padding: 1.5rem var(--space-10) 1.5rem;
+  padding: 1rem var(--space-10) 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,7 +13,7 @@
   border-radius: var(--radius-md, 6px);
   background-image:
     linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-hero-stop) 60%, var(--brand-dark) 100%),
-    conic-gradient(from var(--hero-angle, 0deg), #D51A1A, #F9B361, #ff4422, #F9B361, #D51A1A);
+    conic-gradient(from var(--hero-angle, 0deg), var(--brand-red, #D51A1A), var(--brand-gold, #F9B361), var(--brand-red, #D51A1A));
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
@@ -160,25 +160,111 @@
   counter-reset: section;
 }
 
+/* Disable section numbers on pages with .no-section-nums */
+.no-section-nums h2,
+.no-section-nums h3,
+.no-section-nums h4,
+.no-section-nums h5 {
+  padding-left: 0 !important;
+}
+
+.no-section-nums h2::before,
+.no-section-nums h3::before,
+.no-section-nums h4::before,
+.no-section-nums h5::before {
+  display: none !important;
+}
+
+/* ── h2: 01, 02 ... ── */
 .md-typeset h2 {
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--border-red);
   margin-top: var(--space-8);
   margin-bottom: var(--space-4);
   counter-increment: section;
+  counter-reset: subsection;
   position: relative;
-  padding-left: 2.5rem;
+  padding-left: 3rem;
 }
 
 .md-typeset h2::before {
   content: counter(section, decimal-leading-zero);
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: rgba(213, 26, 26, 0.2);
+  background: linear-gradient(135deg, var(--brand-dark, #1A1919), var(--brand-red, #D51A1A));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+/* ── h3: 01.1, 01.2 ... ── */
+.md-typeset h3 {
+  counter-increment: subsection;
+  counter-reset: subsubsection;
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.md-typeset h3::before {
+  content: counter(section, decimal-leading-zero) "." counter(subsection);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--brand-dark, #1A1919), var(--brand-red, #D51A1A));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+/* ── h4: 01.1.1, 01.1.2 ... ── */
+.md-typeset h4 {
+  counter-increment: subsubsection;
+  counter-reset: subsubsubsection;
+  position: relative;
+  padding-left: 4rem;
+}
+
+.md-typeset h4::before {
+  content: counter(section, decimal-leading-zero) "." counter(subsection) "." counter(subsubsection);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--brand-red);
+  line-height: 1;
+}
+
+/* ── h5: 01.1.1.1 ... ── */
+.md-typeset h5 {
+  counter-increment: subsubsubsection;
+  position: relative;
+  padding-left: 4.5rem;
+}
+
+.md-typeset h5::before {
+  content: counter(section, decimal-leading-zero) "." counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-red);
   line-height: 1;
 }
 
@@ -505,7 +591,7 @@
   border-radius: var(--radius-md, 6px);
   background-image:
     linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-hero-stop) 60%, var(--brand-dark) 100%),
-    conic-gradient(from var(--hero-angle, 0deg), #D51A1A, #F9B361, #ff4422, #F9B361, #D51A1A);
+    conic-gradient(from var(--hero-angle, 0deg), var(--brand-red, #D51A1A), var(--brand-gold, #F9B361), var(--brand-red, #D51A1A));
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }

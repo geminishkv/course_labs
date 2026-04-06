@@ -94,7 +94,7 @@ Connection: close
 
 ### Задание 4: Ручное исследование уязвимостей
 
-#### 4.1. Reflected XSS на `/echo`
+#### Reflected XSS на `/echo`
 
 **URL для тестирования:**
 ```
@@ -119,7 +119,7 @@ Reflected XSS (Cross-Site Scripting) - это уязвимость, при ко�
 
 ---
 
-#### 4.2. SQL Injection на `/search`
+#### SQL Injection на `/search`
 
 **URL для тестирования:**
 ```
@@ -144,7 +144,7 @@ SQL Injection - это уязвимость, позволяющая злоумы
 
 ---
 
-#### 4.3. Небезопасный логин на `/login`
+#### Небезопасный логин на `/login`
 
 **Тестирование:**
 ```bash
@@ -170,7 +170,7 @@ username=admin&password=admin123
 
 ---
 
-#### 4.4. Подделка cookie на `/profile`
+#### Подделка cookie на `/profile`
 
 **Тестирование:**
 ```bash
@@ -198,7 +198,7 @@ Cookie: user=admin; role=admin
 
 ---
 
-#### 4.5. Небезопасная админка на `/admin`
+#### Небезопасная админка на `/admin`
 
 **Тестирование без прав:**
 ```bash
@@ -236,7 +236,7 @@ Cookie: role=admin
 
 ---
 
-#### 4.6. Directory listing на `/files/`
+#### Directory listing на `/files/`
 
 **Тестирование:**
 ```
@@ -265,7 +265,7 @@ Directory listing / Information disclosure - приложение раскрыв
 
 **Дополнительные примеры эксплуатации уязвимостей:**
 
-#### 5.1. Дополнительные XSS payloads для `/echo`:
+#### Дополнительные XSS payloads для `/echo`:
 
 1. **Stealing cookies:**
    ```
@@ -282,7 +282,7 @@ Directory listing / Information disclosure - приложение раскрыв
    http://localhost:8080/echo?msg=<img src=x onerror=alert('XSS')>
    ```
 
-#### 5.2. Дополнительные SQL Injection payloads для `/search`:
+#### Дополнительные SQL Injection payloads для `/search`:
 
 1. **Union-based injection:**
    ```
@@ -300,7 +300,7 @@ Directory listing / Information disclosure - приложение раскрыв
    http://localhost:8080/search?username=admin' AND (SELECT COUNT(*) FROM users WHERE LENGTH(password)>5)=1--
    ```
 
-#### 5.3. Дополнительные примеры для `/login`:
+#### Дополнительные примеры для `/login`:
 
 1. **SQL Injection в логине:**
    ```
@@ -314,7 +314,7 @@ Directory listing / Information disclosure - приложение раскрыв
    password: ' OR 1=1--
    ```
 
-#### 5.4. Дополнительные примеры для `/files/`:
+#### Дополнительные примеры для `/files/`:
 
 1. **Path traversal:**
    ```
@@ -431,7 +431,7 @@ $ bash dast/zap_scan.sh
 
 **Анализ найденных уязвимостей и рисков:**
 
-#### 1. Content Security Policy (CSP) Header Not Set
+#### Content Security Policy (CSP) Header Not Set
 **Риск:** Средний (Medium)
 **Описание:** Отсутствует заголовок Content Security Policy, который ограничивает источники, из которых могут загружаться ресурсы (скрипты, стили, изображения).
 **Последствия:** 
@@ -439,7 +439,7 @@ $ bash dast/zap_scan.sh
 - Позволяет загружать вредоносный контент с внешних источников
 - Нет защиты от инъекций скриптов
 
-#### 2. Missing Anti-clickjacking Header
+#### Missing Anti-clickjacking Header
 **Риск:** Средний (Medium)
 **Описание:** Отсутствует заголовок X-Frame-Options, который предотвращает встраивание страницы во фрейм.
 **Последствия:**
@@ -447,7 +447,7 @@ $ bash dast/zap_scan.sh
 - Злоумышленник может встроить страницу в iframe и обмануть пользователя
 - Риск несанкционированных действий от имени пользователя
 
-#### 3. Source Code Disclosure - SQL
+#### Source Code Disclosure - SQL
 **Риск:** Низкий (Low)
 **Описание:** SQL-запросы отображаются в ответе сервера, раскрывая структуру базы данных.
 **Последствия:**
@@ -455,7 +455,7 @@ $ bash dast/zap_scan.sh
 - Упрощает создание SQL Injection payloads
 - Информационная утечка для атакующего
 
-#### 4. Cookie No HttpOnly Flag
+#### Cookie No HttpOnly Flag
 **Риск:** Средний (Medium)
 **Описание:** Cookies не имеют флага HttpOnly, что позволяет JavaScript получать к ним доступ.
 **Последствия:**
@@ -463,7 +463,7 @@ $ bash dast/zap_scan.sh
 - Доступ к сессионным данным через `document.cookie`
 - Риск перехвата сессий
 
-#### 5. Cookie without SameSite Attribute
+#### Cookie without SameSite Attribute
 **Риск:** Средний (Medium)
 **Описание:** Cookies не имеют атрибута SameSite, что позволяет CSRF атакам.
 **Последствия:**
@@ -471,21 +471,21 @@ $ bash dast/zap_scan.sh
 - Cookies отправляются с запросами с других доменов
 - Возможность выполнения действий от имени пользователя
 
-#### 6. Insufficient Site Isolation Against Spectre Vulnerability
+#### Insufficient Site Isolation Against Spectre Vulnerability
 **Риск:** Низкий (Low)
 **Описание:** Недостаточная изоляция сайта от уязвимости Spectre.
 **Последствия:**
 - Теоретическая возможность утечки данных через side-channel атаки
 - В современных браузерах риск снижен, но заголовки безопасности помогают
 
-#### 7. Permissions Policy Header Not Set
+#### Permissions Policy Header Not Set
 **Риск:** Низкий (Low)
 **Описание:** Отсутствует заголовок Permissions-Policy (ранее Feature-Policy).
 **Последствия:**
 - Нет контроля над использованием браузерных API (камера, микрофон, геолокация)
 - Потенциальный риск несанкционированного доступа к функциям браузера
 
-#### 8. Server Leaks Version Information via "Server" HTTP Response Header Field
+#### Server Leaks Version Information via "Server" HTTP Response Header Field
 **Риск:** Низкий (Low)
 **Описание:** Заголовок Server раскрывает версию сервера (Werkzeug/2.2.3 Python/3.11.14).
 **Последствия:**
@@ -493,7 +493,7 @@ $ bash dast/zap_scan.sh
 - Упрощает поиск известных уязвимостей для конкретных версий
 - Информационная утечка
 
-#### 9. X-Content-Type-Options Header Missing
+#### X-Content-Type-Options Header Missing
 **Риск:** Низкий (Low)
 **Описание:** Отсутствует заголовок X-Content-Type-Options: nosniff.
 **Последствия:**
@@ -501,21 +501,21 @@ $ bash dast/zap_scan.sh
 - Риск MIME-sniffing атак
 - Потенциальная загрузка вредоносного контента
 
-#### 10. Authentication Request Identified
+#### Authentication Request Identified
 **Риск:** Информационный (Info)
 **Описание:** Обнаружен запрос аутентификации на `/login`.
 **Последствия:**
 - Информация о наличии формы входа
 - Помогает атакующему найти точку входа для атак
 
-#### 11. Session Management Response Identified
+#### Session Management Response Identified
 **Риск:** Информационный (Info)
 **Описание:** Обнаружены ответы управления сессией.
 **Последствия:**
 - Информация о механизме управления сессиями
 - Помогает в анализе системы аутентификации
 
-#### 12. Non-Storable Content
+#### Non-Storable Content
 **Риск:** Информационный (Info)
 **Описание:** Контент не может быть сохранен в кеше браузера.
 **Последствия:**
@@ -537,18 +537,18 @@ $ bash dast/zap_scan.sh
 
 **Выполненные исправления:**
 
-#### 1. Исправление XSS на `/echo`
+#### Исправление XSS на `/echo`
 - **Было:** Прямая подстановка `{msg}` в шаблон без экранирования
 - **Стало:** Использование `escape()` из `markupsafe` для экранирования HTML
 - **Код:** `msg_escaped = escape(msg)`
 
-#### 2. Исправление SQL Injection на `/search` и `/login`
+#### Исправление SQL Injection на `/search` и `/login`
 - **Было:** Конкатенация строки SQL-запроса с пользовательским вводом
 - **Стало:** Параметризованные запросы с использованием `?` плейсхолдеров
 - **Код:** `cur.execute("SELECT ... WHERE username = ?", (username,))`
 - **Дополнительно:** Убрано раскрытие SQL-кода в ответе (удален вывод `query`)
 
-#### 3. Исправление небезопасных cookies
+#### Исправление небезопасных cookies
 - **Было:** Cookies без флагов безопасности
 - **Стало:** 
   - Функция `set_secure_cookie()` с флагами:
@@ -557,7 +557,7 @@ $ bash dast/zap_scan.sh
     - `samesite='Lax'` - защита от CSRF
   - Использование сессий вместо прямого хранения роли в cookie
 
-#### 4. Добавление Security Headers
+#### Добавление Security Headers
 - **Реализация:** Декоратор `@app.after_request` для всех ответов
 - **Добавленные заголовки:**
   - `X-Content-Type-Options: nosniff` - предотвращение MIME-sniffing
@@ -567,18 +567,18 @@ $ bash dast/zap_scan.sh
   - `Permissions-Policy` - контроль браузерных API
   - `Server: WebServer` - скрытие версии сервера
 
-#### 5. Улучшение управления сессиями
+#### Улучшение управления сессиями
 - **Было:** Роль хранилась в cookie, которую можно было подделать
 - **Стало:** 
   - Использование серверных сессий с токенами
   - Хранение данных сессии в словаре `sessions` (в production - Redis/БД)
   - Проверка сессии на сервере перед доступом к защищенным ресурсам
 
-#### 6. Исправление авторизации на `/admin`
+#### Исправление авторизации на `/admin`
 - **Было:** Проверка только значения cookie `role=admin`
 - **Стало:** Проверка сессии на сервере, валидация токена
 
-#### 7. Ограничение Directory Listing на `/files/`
+#### Ограничение Directory Listing на `/files/`
 - **Было:** Полный directory listing без ограничений
 - **Стало:**
   - Directory listing отключен (возвращает 403)
@@ -586,7 +586,7 @@ $ bash dast/zap_scan.sh
   - Ограничение типов файлов (только `.txt`, `.md`, `.json`)
   - Экранирование содержимого файлов
 
-#### 8. Отключение debug режима
+#### Отключение debug режима
 - **Было:** `debug=True` в production
 - **Стало:** `debug=False`
 

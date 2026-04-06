@@ -1,3 +1,10 @@
+/* ── Primary sidebar ── */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 14rem;
+  }
+}
+
 /* ── Primary sidebar (navigation) ── */
 .md-sidebar--primary .md-nav,
 .md-sidebar--primary .md-sidebar__inner {
@@ -38,8 +45,8 @@
 }
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {
-  background-color: var(--brand-dark);
-  color: var(--text-inverse);
+  background-color: transparent;
+  color: var(--text-primary);
 }
 
 .md-sidebar--primary .md-sidebar__inner .md-header-nav {

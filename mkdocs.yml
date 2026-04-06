@@ -14,7 +14,7 @@ theme:
   name: material
   language: ru
   custom_dir: docs/overrides
-  logo: artifacts/assets/logo.svg
+  logo: artifacts/assets/logo_white.svg
   icon:
     menu: fontawesome/solid/bars-staggered
     top: fontawesome/solid/angles-up
@@ -130,12 +130,14 @@ extra_css:
   - stylesheets/logo-glow.css
   - stylesheets/notice-bar.css
   - stylesheets/cookie-banner.css
+  - stylesheets/animations.css
 
 extra_javascript:
   - javascripts/custom-title.js
   - javascripts/typewriter-target.js
   - javascripts/notice-bar.js
   - javascripts/cookie-banner.js
+  - javascripts/fade-in.js
 
 extra:
   twitter_handle: "@geminishkv"

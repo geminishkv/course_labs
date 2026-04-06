@@ -25,40 +25,76 @@
   pointer-events: none;
 }
 
+.hero-logo-wrap {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Rotating gradient ring */
+.hero-logo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    var(--brand-red, #D51A1A),
+    var(--brand-gold, #F9B361),
+    var(--brand-red, #D51A1A)
+  );
+  animation: logo-ring-rotate 2.4s linear infinite;
+  z-index: 0;
+}
+
+/* Blur glow layer */
+.hero-logo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    var(--brand-red, #D51A1A),
+    var(--brand-gold, #F9B361),
+    var(--brand-red, #D51A1A)
+  );
+  animation: logo-ring-rotate 2.4s linear infinite;
+  filter: blur(8px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
 .hero-logo {
-  width: 128px;
-  height: 128px;
+  width: 120px;
+  height: 120px;
   flex-shrink: 0;
   object-fit: contain;
   border-radius: 50%;
-  box-shadow:
-    0 0 32px 8px rgba(255, 255, 255, 0.55),
-    0 0 64px 16px rgba(213, 26, 26, 0.5);
+  background: var(--brand-dark, #1A1919);
   position: relative;
   z-index: 1;
-  animation: glow-wave 4s ease-in-out infinite;
+  padding: 8px;
 }
 
-.hero-logo:hover {
-  animation-play-state: paused;
-  box-shadow:
-    0 0 48px 16px rgba(255, 255, 255, 0.8),
-    0 0 96px 24px rgba(213, 26, 26, 0.7);
+.hero-logo-wrap:hover {
   transform: scale(1.06);
+  transition: transform 0.3s ease;
 }
 
-@keyframes glow-wave {
-  0%, 100% {
-    box-shadow:
-      0 0 24px 6px rgba(255, 255, 255, 0.4),
-      0 0 48px 12px rgba(213, 26, 26, 0.35);
-  }
+@keyframes logo-ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 
-  50% {
-    box-shadow:
-      0 0 48px 16px rgba(255, 255, 255, 0.65),
-      0 0 96px 28px rgba(213, 26, 26, 0.55),
-      0 0 128px 40px rgba(213, 26, 26, 0.15);
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-wrap::before,
+  .hero-logo-wrap::after {
+    animation: none;
   }
 }
 
@@ -75,10 +111,13 @@
   font-family: var(--font-display) !important;
   font-size: clamp(1.8rem, 4vw, 3rem) !important;
   font-weight: 700 !important;
-  color: var(--text-inverse) !important;
   margin: 0 !important;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-sub {
@@ -106,8 +145,8 @@
     margin: var(--space-2) 0 var(--space-8);
   }
 
-  /* Скрыть img-логотип */
-  .hero-logo {
+  /* Скрыть logo-wrap на мобилке */
+  .hero-logo-wrap {
     display: none;
   }
 
@@ -120,7 +159,7 @@
     transform: translateY(-50%);
     width: 420px;
     height: 420px;
-    background: url("../artifacts/assets/logo.svg") center / contain no-repeat;
+    background: url("../artifacts/assets/logo_white.svg") center / contain no-repeat;
     opacity: 0.08;
     pointer-events: none;
     z-index: 0;

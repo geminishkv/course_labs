@@ -11,6 +11,8 @@
 .md-header__inner {
   display: flex;
   align-items: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .md-header .md-header__title,
@@ -99,6 +101,10 @@
   display: flex;
   align-items: center;
   align-self: center;
+}
+
+.md-sidebar--primary .md-source {
+  background-color: transparent;
 }
 
 /* ── Repo stats ── */

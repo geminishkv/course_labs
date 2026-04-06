@@ -1,8 +1,17 @@
 .md-footer-meta .md-footer-meta__inner > :first-child::after {
-  content: " · © 2026 AppSecTA by geminishkv";
+  content: " · © 2026 AppSecTA by geminishkv · Sic Parvis Magna";
   color: var(--text-inverse-muted);
   font-weight: 400;
   font-size: var(--text-2xs);
+  font-style: italic;
+}
+
+/* Gradient divider above footer */
+.md-footer::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(to right, var(--brand-red), var(--brand-gold), transparent);
 }
 
 .md-footer,

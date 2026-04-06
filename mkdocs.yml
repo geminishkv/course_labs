@@ -119,16 +119,11 @@ extra_css:
   - stylesheets/tokens.css
   - stylesheets/header.css
   - stylesheets/footer.css
-  - stylesheets/search.css
   - stylesheets/sidebar.css
   - stylesheets/typeset.css
-  - stylesheets/burger.css
-  - stylesheets/logo-glow.css
   - stylesheets/layout.css
-  - stylesheets/clipboard.css
   - stylesheets/notice-bar.css
   - stylesheets/cookie-banner.css
-  - stylesheets/animations.css
 
 extra_javascript:
   - javascripts/custom-title.js

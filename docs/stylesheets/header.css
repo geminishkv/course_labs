@@ -1,4 +1,6 @@
-/* Brand tokens moved to tokens.css */
+/* ══════════════════════════════════════════
+   Header + Tabs + Search + Burger + Logo Glow
+══════════════════════════════════════════ */
 
 /* ── Header ── */
 .md-header,
@@ -37,6 +39,7 @@
   order: 2;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .md-header__button.md-logo,
@@ -55,6 +58,10 @@
   height: 32px;
   width: auto;
   max-width: 32px;
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  background: var(--brand-dark, #1A1919);
 }
 
 .md-header-nav__link,
@@ -94,7 +101,7 @@
   border-bottom: 2px solid var(--brand-gold);
 }
 
-/* ── Repo source block (header + sidebar drawer) ── */
+/* ── Repo source block ── */
 .md-source {
   background-color: var(--brand-dark);
   display: flex;
@@ -102,7 +109,6 @@
   align-self: center;
 }
 
-/* ── Repo stats ── */
 .md-source__fact::before {
   display: none !important;
 }
@@ -125,6 +131,186 @@
   gap: 0.6em;
 }
 
+/* ── Header icons ── */
+.md-header__button.md-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.md-header__button.md-icon:hover {
+  color: var(--brand-gold);
+}
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
+.md-search__form:focus-visible,
+.md-search__input:focus-visible {
+  outline: none;
+}
+
+/* ── Search ── */
+.md-search__form {
+  background-color: var(--surface-page);
+  border-radius: var(--radius-sm);
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.md-search__form:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.md-search__input {
+  color: var(--brand-dark) !important;
+  background-color: transparent !important;
+}
+
+.md-search__input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.md-search__icon svg,
+.md-header .md-search__icon svg {
+  color: rgba(0, 0, 0, 0.45);
+  fill: rgba(0, 0, 0, 0.45);
+}
+
+.md-search__output {
+  background-color: var(--surface-page);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.md-search__scrollwrap {
+  background-color: var(--surface-page);
+}
+
+.md-search-result {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.md-search-result__meta {
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.md-search-result__article {
+  background-color: var(--surface-page);
+}
+
+.md-search-result__title {
+  color: var(--brand-dark);
+}
+
+.md-search-result__teaser {
+  color: var(--text-secondary);
+}
+
+.md-search-result__link {
+  color: var(--brand-red);
+}
+
+.md-search-result__link:hover,
+.md-search-result__link:focus {
+  background-color: rgba(249, 179, 97, 0.08);
+}
+
+.md-search-result__article--document .md-search-result__title {
+  color: var(--brand-red);
+}
+
+.md-search-result mark {
+  color: var(--brand-red);
+  background-color: rgba(249, 179, 97, 0.3);
+}
+
+/* ── Burger menu ── */
+.md-header__button.md-icon[for="__drawer"] {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.md-header__button.md-icon[for="__drawer"] svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--text-inverse);
+  fill: currentColor;
+}
+
+.md-header__button.md-icon[for="__drawer"]:hover {
+  transform: translateY(-3px);
+}
+
+.md-header__button.md-icon[for="__drawer"]:active {
+  transform: translateY(0);
+}
+
+@media screen and (min-width: 3000px) {
+  .md-container {
+    max-width: 3000px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .md-header__button.md-icon[for="__drawer"] {
+    display: none;
+  }
+}
+
+/* ── Logo glow ring (header) ── */
+.md-header .md-logo::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    var(--brand-red, #D51A1A),
+    var(--brand-gold, #F9B361),
+    var(--brand-red, #D51A1A)
+  );
+  animation: logo-ring-rotate 2.4s linear infinite;
+  z-index: 0;
+}
+
+.md-header .md-logo::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    var(--brand-red, #D51A1A),
+    var(--brand-gold, #F9B361),
+    var(--brand-red, #D51A1A)
+  );
+  animation: logo-ring-rotate 2.4s linear infinite;
+  filter: blur(6px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+@keyframes logo-ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-header .md-logo::before,
+  .md-header .md-logo::after {
+    animation: none;
+  }
+}
+
+/* ── Responsive (≤480px) ── */
 @media screen and (max-width: 480px) {
   .md-source__repository {
     font-size: 0.6rem;
@@ -134,25 +320,4 @@
     width: 11px;
     height: 11px;
   }
-}
-
-/* ── Header icons (search, repo) ── */
-.md-header__button.md-icon {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.md-header__button.md-icon:hover {
-  color: var(--brand-gold);
-}
-
-/* ── Focus ring — replace browser blue ── */
-:focus-visible {
-  outline: 2px solid var(--brand-gold);
-  outline-offset: 2px;
-}
-
-/* поиск управляет своим фокусом сам */
-.md-search__form:focus-visible,
-.md-search__input:focus-visible {
-  outline: none;
 }

@@ -292,3 +292,30 @@
   color: var(--brand-red);
   text-decoration: none !important;
 }
+
+/* ── Clipboard button ── */
+.md-clipboard {
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  box-shadow: none;
+  transition: color 0.12s ease;
+}
+
+.md-clipboard > svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.md-typeset pre:hover .md-clipboard {
+  color: #4b5563;
+}
+
+.md-clipboard[aria-label="Copied!"],
+.md-clipboard[aria-label="Copied!"] + .md-tooltip {
+  color: var(--brand-red);
+  background: rgba(243, 244, 246, 0.96);
+}

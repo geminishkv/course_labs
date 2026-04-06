@@ -1,14 +1,19 @@
 (function () {
   "use strict";
 
-  var SESSION_KEY = "notice_dismissed";
+  var TS_KEY = "notice_ts";
+  var RESHOW_MS = 45 * 60 * 1000; // 45 минут
+
+  function shouldShow() {
+    try {
+      var ts = localStorage.getItem(TS_KEY);
+      if (!ts) return true;
+      return Date.now() - Number(ts) > RESHOW_MS;
+    } catch (_) { return true; }
+  }
 
   function createNoticeBar() {
-    try {
-      if (sessionStorage.getItem(SESSION_KEY)) return;
-    } catch (_) {
-      return;
-    }
+    if (!shouldShow()) return;
 
     var bar = document.createElement("div");
     bar.className = "notice-bar";
@@ -35,7 +40,7 @@
     bar.querySelector(".notice-bar__close").addEventListener("click", function () {
       bar.classList.remove("notice-bar--visible");
       try {
-        sessionStorage.setItem(SESSION_KEY, "1");
+        localStorage.setItem(TS_KEY, String(Date.now()));
       } catch (_) {}
     });
 

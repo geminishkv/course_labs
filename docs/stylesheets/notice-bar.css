@@ -44,7 +44,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--brand-red, #D51A1A);
-  margin: 0 0 6px 0;
+  margin: 0 0 6px;
 }
 
 .notice-bar__text {
@@ -55,7 +55,7 @@
 }
 
 .notice-bar__text p {
-  margin: 0 0 3px 0;
+  margin: 0 0 3px;
 }
 
 .notice-bar__text p:last-child {

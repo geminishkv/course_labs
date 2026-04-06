@@ -108,6 +108,7 @@
     opacity: 0;
     transform: translateY(-20px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -124,7 +125,10 @@
     gap: 10px;
   }
 
-  .cookie-banner__icon { width: 28px; height: 28px; }
+  .cookie-banner__icon {
+    width: 28px;
+    height: 28px;
+  }
   .cookie-banner__title { font-size: 0.8rem; }
   .cookie-banner__text { font-size: 0.6rem; }
   .cookie-banner__actions { width: 100%; }

@@ -1,5 +1,5 @@
 ---
-site_name: Application Security Course
+site_name: Application Security & DevSecOps
 site_url: "https://course.geminishkv.tech/"
 site_description: >
   Практический курс по прикладной безопасности приложений: лабораторные работы и аннотационные материалы
@@ -117,17 +117,15 @@ watch:
 
 extra_css:
   - stylesheets/tokens.css
-  - stylesheets/fonts.css
   - stylesheets/header.css
   - stylesheets/footer.css
   - stylesheets/search.css
   - stylesheets/sidebar.css
   - stylesheets/typeset.css
   - stylesheets/burger.css
-  - stylesheets/mobile-logo.css
+  - stylesheets/logo-glow.css
   - stylesheets/layout.css
   - stylesheets/clipboard.css
-  - stylesheets/logo-glow.css
   - stylesheets/notice-bar.css
   - stylesheets/cookie-banner.css
   - stylesheets/animations.css
@@ -138,6 +136,7 @@ extra_javascript:
   - javascripts/notice-bar.js
   - javascripts/cookie-banner.js
   - javascripts/fade-in.js
+  - javascripts/hero-border.js
 
 extra:
   twitter_handle: "@geminishkv"

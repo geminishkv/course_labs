@@ -20,7 +20,6 @@
   color: var(--text-inverse);
 }
 
-.md-nav,
 .md-header {
   font-family: var(--font-body);
 }
@@ -101,10 +100,6 @@
   display: flex;
   align-items: center;
   align-self: center;
-}
-
-.md-sidebar--primary .md-source {
-  background-color: transparent;
 }
 
 /* ── Repo stats ── */

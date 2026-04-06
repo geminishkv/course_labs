@@ -39,7 +39,6 @@
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {
   background-color: transparent;
-  color: var(--text-primary);
 }
 
 .md-sidebar--primary .md-sidebar__inner .md-header-nav {
@@ -86,6 +85,19 @@
   font-weight: 600;
   border-left: 2px solid var(--brand-red);
   padding-left: 0.4rem;
+}
+
+/* ── Repo source in sidebar drawer — transparent bg ── */
+.md-sidebar--primary .md-source {
+  background-color: transparent;
+}
+
+/* ── Hide logo in sidebar on tablet ── */
+@media screen and (max-width: 1220px) {
+  .md-sidebar--primary .md-logo,
+  .md-sidebar--primary .md-logo img {
+    display: none !important;
+  }
 }
 
 /* ── Scrollbar ── */

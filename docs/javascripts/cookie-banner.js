@@ -2,7 +2,7 @@
   "use strict";
 
   var TS_KEY = "cookie_ts";
-  var RESHOW_MS = 30 * 60 * 1000; // 30 минут
+  var RESHOW_MS = 45 * 60 * 1000; // 45 минут
 
   function shouldShow() {
     try {

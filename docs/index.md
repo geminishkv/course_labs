@@ -12,7 +12,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
     <img src="artifacts/assets/logo_white.svg" class="hero-logo" alt="AppSecTA">
   </div>
   <div class="hero-content">
-    <h1 class="hero-title">Application Security Course</h1>
+    <h1 class="hero-title">Application Security & DevSecOps Course</h1>
     <p class="hero-sub">Практический курс по прикладной безопасности приложений</p>
     <p class="hero-typewriter" id="typewriter-target"></p>
   </div>

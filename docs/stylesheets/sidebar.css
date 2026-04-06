@@ -14,10 +14,10 @@
 .md-sidebar--primary .md-nav__item--active > .md-nav__link,
 .md-sidebar--primary .md-nav__link--active {
   font-size: var(--text-sm);
-  line-height: 1.4;
+  line-height: 1.25;
   color: var(--brand-red);
   margin: 0;
-  padding: 0.35rem 0.6rem;
+  padding: 0.2rem 0.6rem;
   white-space: normal;
 }
 
@@ -28,7 +28,17 @@
 
 /* Разделитель между корневыми группами */
 .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
+}
+
+/* Вложенные списки — компактные, без лишних отступов */
+.md-sidebar--primary .md-nav__item .md-nav {
+  margin: 0;
+  padding: 0;
+}
+
+.md-sidebar--primary .md-nav__item .md-nav .md-nav__link {
+  padding: 0.15rem 0.6rem 0.15rem 0.6rem;
 }
 
 .md-sidebar--primary .md-nav__link:hover,
@@ -39,6 +49,8 @@
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {
   background-color: transparent;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
 }
 
 .md-sidebar--primary .md-sidebar__inner .md-header-nav {

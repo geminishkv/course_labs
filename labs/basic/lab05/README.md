@@ -41,7 +41,7 @@ lab05
 
 ## Материал
 
-- **Контейнеризация**
+### Контейнеризация
 
 Сборка приложения включает создание контейнерного образа, в котором упаковано приложение с конфигурациями, чтобы приложение функционировало. `Docker` основан на использовании общих функций ядра `ОС Linux` (`cgroups`, `namespace`) для изоляции и управления ресурсами.
 
@@ -55,7 +55,7 @@ lab05
 
 > **Контейнеризация** — это технология, позволяющая упаковать приложение вместе со всеми его зависимостями, библиотеками, настройками и средой выполнения в единый изолированный виртуальный контейнер. 
 
-- **Namespaces**
+### Namespaces
 
 Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создает набор пространств имен для данного контейнера, что создает изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
 
@@ -67,7 +67,7 @@ lab05
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">uts</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция hostname и domain — контейнер имеет собственное имя хоста</span></div>
 </div>
 
-- **Cgroups**
+### Cgroups
 
 Контрольные группы для изоляции ресурсов — предоставляют приложению только те ресурсы, которые указываем. Позволяют разделять ресурсы железа и устанавливать пределы, ограничения.
 
@@ -81,16 +81,16 @@ $ docker container run -d \
         nginx
 ```
 
--  **Основные проблемы**
+### Основные проблемы
 
-    - образ может содержать устаревшие или уязвимые версии библиотек CVE (Common Vulnerabilities and Exposures)
-    - поддельные и злонамеренные образы
-    - отсутствие подписей и проверки целостности
-    - ошибка конфигурации и избыток прав — образы с избыточными правами доступа, запуском от root или с небезопасными настройками
-    - присутствие секретов и конфиденциальных данных в образах
-    - отсутствие регулярного обновления из-за неподдерживаемых образов
+- образ может содержать устаревшие или уязвимые версии библиотек CVE (Common Vulnerabilities and Exposures)
+- поддельные и злонамеренные образы
+- отсутствие подписей и проверки целостности
+- ошибка конфигурации и избыток прав — образы с избыточными правами доступа, запуском от root или с небезопасными настройками
+- присутствие секретов и конфиденциальных данных в образах
+- отсутствие регулярного обновления из-за неподдерживаемых образов
 
--  **Контекст безопасности**
+### Контекст безопасности
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Не запускать от root</span><div class="lab-card-tags"><span class="lab-tag">USER</span><span class="lab-tag">Dockerfile</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Явно прописывать учётную запись с минимальными правами. Root внутри контейнера = root на хосте при побеге.</span></div>
@@ -103,7 +103,7 @@ $ docker container run -d \
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Минимальные образы</span><div class="lab-card-tags"><span class="lab-tag">alpine</span><span class="lab-tag">slim</span><span class="lab-tag">distroless</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Официальные образы с минимальным набором инструментов. Сканировать на CVE (Trivy, Docker Scout).</span></div>
 </div>
 
-- **Дополнительно**
+### Дополнительно
 
 В случае, если возникает проблема с вызовом `docker buildx` для macos `silicon`, следует использовать вот [это](https://gist.github.com/Aeonitis/cbd9f8b61eaec5a8a024c0a42f415ca3) описание из gistup для фикса `samelink`.
 
@@ -114,8 +114,22 @@ $ docker container run -d \
 - [ ] 1. Поставьте `Docker` и `buildkit`
 
 ```bash
-$ brew install buildkit
-$ brew install docker
+# Ubuntu / Debian
+$ sudo apt update && sudo apt install -y docker.io docker-compose
+$ sudo systemctl enable --now docker
+$ sudo usermod -aG docker $USER && newgrp docker
+
+# Fedora
+$ sudo dnf install -y docker docker-compose
+$ sudo systemctl enable --now docker
+$ sudo usermod -aG docker $USER
+
+# macOS
+$ brew install docker buildkit
+
+# Проверка
+$ docker --version
+$ docker run hello-world
 ```
 
 - [ ] 2. Перейдите в `source` и выведите на терминале, далее проанализируйте следующие команды консоли
@@ -130,9 +144,40 @@ $ docker load -i hello.tar
 $ docker load -i image.tar
 ```
 
-- [ ] 3. Откройте `Dockerfile` и сделайте его анализ. Сделайте `commit`
+- [ ] 3. Откройте `Dockerfile` и проведите аудит безопасности по чеклисту:
 
-- [ ] 4. Замените в `Dockerfile`значение скрипта на `python` тем, который вы сделали ранее в прошлых лабораторных работах. Вложите свой файл `python` в директорию. Сделайте анализ своего измененного `Dockerfile` и внесите изменения. Сделайте `commit`. 
+    - [ ] Какой базовый образ используется? Он официальный? Есть ли пиннинг версии (тег, не `latest`)?
+    - [ ] Используется ли multi-stage build? Зачем?
+    - [ ] Есть ли инструкция `USER`? От какого пользователя запускается приложение?
+    - [ ] Используется `COPY . .` или копируются только нужные файлы?
+    - [ ] Есть ли `.dockerignore`? Что он исключает?
+    - [ ] Есть ли секреты или пароли в `ENV`, `ARG` или `COPY`?
+    - [ ] Пиннингованы ли версии зависимостей в `requirements.txt`?
+
+    Зафиксируйте результат аудита в отчёте. Сделайте `commit`.
+
+- [ ] 4. Создайте файл `.dockerignore` в директории `source/` со следующим содержимым:
+
+```text
+.git
+.gitignore
+__pycache__
+*.pyc
+venv
+.env
+*.tar
+*.md
+```
+
+Соберите образ **до** и **после** добавления `.dockerignore`, сравните размеры:
+
+```bash
+$ docker images | grep hello-appsec-world
+```
+
+Опишите в отчёте: какие файлы попадали в образ без `.dockerignore` и почему это опасно.
+
+- [ ] 5. Замените в `Dockerfile` скрипт на свой `python`-файл из прошлых лабораторных работ. Вложите свой файл в директорию `source/`. Проанализируйте и доработайте `Dockerfile` под ваш скрипт. Сделайте `commit`.
 
 > Пример анализа по текущему `Dockerfile` в репозитории
 
@@ -184,7 +229,28 @@ requests==2.28.1
 ```
 
 - [ ] 7. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните `image` в виде .`tar` архива. Сделайте `commit`.
-- [ ] 8. Выведите на терминале и проанализируйте следующие команды консоли
+- [ ] 8. Проанализируйте слои и размер образа. Сравните single-stage и multi-stage build:
+
+```bash
+# Посмотреть слои образа
+$ docker history hello-appsec-world
+
+# Размер образа
+$ docker images hello-appsec-world
+```
+
+Опишите в отчёте: сколько слоёв, какой размер, какие слои самые тяжёлые. Если Dockerfile не использует multi-stage — переделайте на multi-stage и сравните размер до/после.
+
+- [ ] 9. Проверьте, от какого пользователя работает контейнер:
+
+```bash
+$ docker run --rm hello-appsec-world whoami
+$ docker run --rm hello-appsec-world id
+```
+
+Если выводит `root` — добавьте в Dockerfile инструкцию `USER` с непривилегированным пользователем. Пересоберите и проверьте повторно. Сделайте `commit`.
+
+- [ ] 10. Выведите на терминале и проанализируйте следующие команды консоли
 
 ```bash
 $ docker login
@@ -199,26 +265,70 @@ $ docker container create --name second hello-appsec-world
 
 ```
 
-- [ ] 9. Выведите на терминале и проанализируйте в консоли процессы, которые запущены, владельцев по пользователям
+- [ ] 11. Запустите контейнер Ubuntu и изучите изоляцию изнутри (связь с namespaces из материала):
 
 ```bash
- $ docker container run -it ubuntu /bin/bash
+$ docker container run -it --rm ubuntu /bin/bash
+
+# Внутри контейнера:
+$ whoami                    # от какого пользователя?
+$ id                        # uid, gid
+$ ps aux                    # какие процессы видны? (только свои — pid namespace)
+$ cat /etc/os-release       # какая ОС внутри?
+$ hostname                  # имя хоста (uts namespace)
+$ ls /proc/1/ns/            # namespace-файлы процесса PID 1
+$ exit
 ```
- 
-- [ ] 10. Выведите оба контейнера first и second на терминал
-- [ ] 11. Перейдите в основной корень `lab05` и выведите на терминале, и проанализируйте
+
+Опишите в отчёте: что показывает каждая команда и как это связано с namespaces (pid, uts, mnt).
+
+- [ ] 12. Проверьте ресурсные лимиты контейнера — запустите с ограничением памяти:
 
 ```bash
-$ docker-compose up --build
+# Запустить с лимитом 64 MB RAM
+$ docker run -d --name stress-test --memory=64m --cpus=0.5 ubuntu sleep 300
+
+# Проверить лимиты
+$ docker stats stress-test --no-stream
+
+# Почистить
+$ docker rm -f stress-test
 ```
 
-- [ ] 12. Откройте соседнее окно терминала и выведите на терминале
+Опишите в отчёте: что произойдёт, если приложение попробует выделить больше памяти, чем лимит? Зачем ограничивать ресурсы?
+
+- [ ] 13. Выведите оба контейнера first и second на терминал
+- [ ] 14. Создайте Docker-сеть и проверьте связность между контейнерами:
 
 ```bash
-$ open -a "Google Chrome" http://localhost:8000
+$ docker network create lab05-net
+$ docker network ls
+
+# Запустите два контейнера в одной сети
+$ docker run -d --name net-a --network lab05-net nginx
+$ docker run -it --rm --network lab05-net ubuntu bash -c "apt update && apt install -y iputils-ping && ping -c 3 net-a"
+
+# Почистить
+$ docker rm -f net-a
+$ docker network rm lab05-net
 ```
 
-- [ ] 13. Остановите работу `docker-compose`.
+Опишите в отчёте: как контейнеры находят друг друга по имени? Какой DNS использует Docker?
+
+- [ ] 15. Перейдите в основной корень `lab05` и запустите docker compose:
+
+```bash
+$ docker compose up --build
+```
+
+- [ ] 16. Откройте соседнее окно терминала и проверьте работу приложения
+
+```bash
+$ curl -i http://localhost:8000
+# или откройте в браузере: http://localhost:8000
+```
+
+- [ ] 17. Остановите docker compose и почистите ресурсы
 
 ```bash
 $ docker ps -a
@@ -226,12 +336,12 @@ $ docker ps -q
 $ docker images
 
 $ docker ps -q | xargs docker stop
-$ docker-compose down
+$ docker compose down
 ```
 
-- [ ] 14. Доработайте `docker-compose` и скрипт, который вы подготовили ранее, чтобы вы смогли воспроизвести шаги п.11 по п.13 с демонстрацией. Сделайте `commit`.
-- [ ] 15. Залейте изменения в свой удаленный репозиторий, проверьте историю `commit`.
-- [ ] 16. Подготовьте отчет `gist`.
+- [ ] 18. Доработайте `docker-compose.yml` и скрипт из предыдущих шагов, чтобы воспроизвести шаги п.15–п.17 с демонстрацией. Сделайте `commit`.
+- [ ] 19. Залейте изменения в свой удалённый репозиторий, проверьте историю `commit`.
+- [ ] 20. Подготовьте отчет `gist`.
  
 ***
 

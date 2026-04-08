@@ -43,6 +43,23 @@ We commit to responding within 48 hours to acknowledge receipt of your message.
 - Information about critical vulnerabilities will be published after a successful patch release.
 - We welcome collaboration with security researchers and the community.
 
+## Branch Protection
+
+The `develop` branch is protected with the following rules:
+
+- **Required reviews:** At least 1 approval from @geminishkv
+- **Required status checks:** All CI jobs must pass before merge
+- **No force-push:** History rewriting is prohibited
+- **CODEOWNERS:** Changes to `.github/workflows/`, `mkdocs.yml`, `hooks.py`, `requirements.txt` require owner approval
+
+## CI/CD Security
+
+- All GitHub Actions are pinned by SHA commit hash (not tags)
+- Dependabot monitors actions and pip dependencies weekly
+- Gitleaks scans for secrets on every push and PR
+- Bandit scans Python code for security issues
+- Hadolint validates Dockerfiles
+
 ## Additional Information
 
 - Documenting and maintaining security logs.

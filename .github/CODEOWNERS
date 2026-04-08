@@ -1,0 +1,8 @@
+# Protect CI/CD workflows and security-sensitive files
+.github/workflows/ @geminishkv
+.github/dependabot.yml @geminishkv
+.github/CODEOWNERS @geminishkv
+mkdocs.yml @geminishkv
+hooks.py @geminishkv
+requirements.txt @geminishkv
+SECURITY.md @geminishkv

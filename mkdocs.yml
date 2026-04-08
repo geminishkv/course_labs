@@ -160,6 +160,9 @@ nav:
       - "Подготовка рабочего окружения": labs/intro/vmbox_tutorial.md
       - "Настройка GitSCM": labs/intro/git_setup.md
       - "Оформление отчётов Gistup": labs/intro/gistup_guide.md
+      - "Введение в сети и TCP/IP": labs/intro/networking_basics.md
+      - "Основы Docker": labs/intro/docker_basics.md
+      - "Введение в CI/CD": labs/intro/cicd_basics.md
       - "Установка AppSec-инструментов": labs/intro/appsec_tools_setup.md
       - "Базовое ознакомление":
           - "Лабораторная работа №1": labs/basic/lab01.md

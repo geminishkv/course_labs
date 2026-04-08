@@ -16,13 +16,13 @@
 
 * **Инфраструктура:** `Git`, `CI/CD`, `Docker`, `Docker Compose`, `GitHub Actions`, `YAML`
 * **Языки:** `Python`, `Shell` (`Java` и `Go` — в контексте SCA и анализа зависимостей)
-* **AppSec инструменты:** `Semgrep`, `Checkov`, `OWASP Dependency-Check`, `Trivy`, `OWASP ZAP`, `Gitleaks`, `Hadolint`, `Bandit`
-* **Стандарты:** OWASP Top 10, CIS Benchmarks, CVSS, ISO 27005
+* **AppSec инструменты:** `Semgrep`, `Checkov`, `Bandit`, `OWASP Dependency-Check`, `Trivy`, `Docker Bench`, `OWASP ZAP`, `Gitleaks`, `TruffleHog`, `Hadolint`
+* **Стандарты:** OWASP Top 10, CIS Docker Benchmark, CVSS, ISO 27005, NIST SP 800-30, PCI DSS, ГОСТ 57580
 * **Анализ рисков:** оценка, приоритизация, стратегии снижения рисков ИБ
 
 **Как устроен курс:**
 
-* 10 лабораторных работ + итоговый pet-project + 5 тестов
+* 7 intro-руководств + 10 лабораторных работ + итоговый pet-project + 7 тестов (5 базовых + 2 лекционных)
 * Каждая лабораторная — отдельный репозиторий с исходным кодом и отчётом в формате `gistup`
 * Все работы выполняются в ветке `develop` → `pull request` → [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) от [geminishkv](https://github.com/geminishkv)
 * Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `Secret Detection` → `CI/CD` → `Risk Analysis`
@@ -41,6 +41,9 @@
     * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux
     * [Настройка Git, GPG и GitHub CLI](labs/intro/git_setup.md) — git config, SSH, GnuPG, gh
     * [Оформление отчётов Gistup](labs/intro/gistup_guide.md) — формат, структура, правила
+    * [Введение в сети и TCP/IP](labs/intro/networking_basics.md) — OSI, порты, DNS, HTTP
+    * [Основы Docker](labs/intro/docker_basics.md) — VM vs Container, Dockerfile, Compose
+    * [Введение в CI/CD](labs/intro/cicd_basics.md) — GitHub Actions, workflow, секреты
     * [Установка AppSec-инструментов](labs/intro/appsec_tools_setup.md) — Semgrep, Trivy, ZAP, Gitleaks, Checkov
 2. Каждый репозиторий должен содержать `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
 3. Выполнить лабораторные работы по порядку:
@@ -66,11 +69,14 @@
 
 ```mermaid
 flowchart TD
-    subgraph Intro["Подготовка"]
+    subgraph Intro["Подготовка (7 intro)"]
         I01["VirtualBox & Linux"]
         I02["Git, GPG, SSH, gh"]
         I03["Gistup отчёты"]
-        I04["AppSec Tools Setup"]
+        I04["Сети и TCP/IP"]
+        I05["Основы Docker"]
+        I06["Введение в CI/CD"]
+        I07["AppSec Tools Setup"]
     end
 
     subgraph Foundations["Основы"]
@@ -96,7 +102,8 @@ flowchart TD
     end
 
     subgraph Tests["Тесты"]
-        T01["Тест 01-05"]
+        T01["Базовые: Вариант 1-5"]
+        T02["Лекционные: Fintech V1-V2"]
     end
 
     PET["Pet Project — индивидуальная работа"]
@@ -165,40 +172,50 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 ### Структура
 
 ```
-├── docs/                              # MkDocs source
+├── docs/                              # MkDocs source (обёртки + материалы)
 │   ├── index.md                       # Главная (hero + lab cards + tg widget)
-│   ├── privacy.md                     # Политика конфиденциальности
 │   ├── about.md                       # О проекте
+│   ├── privacy.md                     # Политика конфиденциальности
 │   ├── Security.md                    # Политика безопасности
 │   ├── RELEASE_NOTES.md               # Релизы
-│   ├── glossary.md                    # 39 аббревиатур
+│   ├── glossary.md                    # 39 аббревиатур AppSec
+│   ├── robots.txt                     # Robots + AI-bot blocking
+│   ├── llms.txt                       # Описание для AI-поисковиков
+│   ├── turbo-feed.xml                 # Яндекс.Турбо RSS
 │   ├── labs/
-│   │   ├── intro/                     # vmbox, git_setup, gistup, appsec_tools_setup
-│   │   ├── basic/lab01-10.md          # 10 лабораторных
+│   │   ├── intro/                     # 7 docs-обёрток intro
+│   │   ├── basic/lab01-10.md          # 10 docs-обёрток лабораторных
 │   │   ├── pet_project.md             # Итоговый проект
-│   │   └── tests/basic/               # 5 тестов + ответы
+│   │   └── tests/
+│   │       ├── basic/                 # 5 вариантов базовых тестов
+│   │       └── lectures/              # 2 варианта теста Fintech
 │   ├── materials/
-│   │   ├── lectures/fintech_ru.md     # Лекция Fintech
-│   │   ├── examples/                  # Кейсы ИБ
+│   │   ├── lectures/fintech_ru.md     # Лекция Fintech по-русски
+│   │   ├── examples/                  # 5 кейсов ИБ
 │   │   ├── OWASPTOP10/               # 7 OWASP материалов
-│   │   ├── cheatsheet/               # 6 шпаргалок
+│   │   ├── cheatsheet/               # 9 шпаргалок
 │   │   ├── ports.md                   # Справочник портов
 │   │   ├── appsec_tt.md              # 29 классов инструментов
 │   │   ├── licenses.md               # 41 лицензия
 │   │   ├── APPENDIX.md               # Команды и утилиты
-│   │   └── troubleshooting.md        # FAQ
-│   ├── stylesheets/                   # 8 CSS файлов
-│   ├── javascripts/                   # 5 JS файлов
-│   ├── overrides/                     # main.html, 404.html
-│   └── artifacts/assets/             # Logo, favicon, images
+│   │   └── troubleshooting.md        # FAQ (~45 карточек)
+│   ├── stylesheets/                   # CSS (tokens, layout, header, sidebar, ...)
+│   ├── javascripts/                   # JS (header, typewriter, banners, effects)
+│   ├── overrides/                     # main.html (SEO, JSON-LD, Метрика), 404.html
+│   └── artifacts/
+│       ├── assets/                    # Logo (SVG), favicon (ICO), images
+│       └── diagrams/                  # 7 Mermaid SVG + .mmd исходники
 ├── labs/
-│   ├── intro/                         # Исходники intro (include-markdown)
-│   ├── basic/lab01-10/               # Код + отчёты + docker-compose
-│   └── pet_project/
+│   ├── intro/                         # 7 intro-руководств (исходники)
+│   ├── basic/lab01-10/               # 10 лабораторных (код + README + docker-compose)
+│   ├── pet_project/                   # Итоговый проект
+│   └── tests/
+│       ├── basic/                     # 5 базовых тестов (исходники)
+│       └── lectures/ru_fintech/       # 2 варианта теста Fintech (исходники)
 ├── .github/workflows/
-│   ├── ci.yml                         # Lint → Audit → Build → Deploy
+│   ├── ci.yml                         # Lint → Audit → Mermaid SVG → Build → Deploy
 │   └── release-from-notes.yml
-├── hooks.py                           # Sitemap enrichment
+├── hooks.py                           # Sitemap enrichment (priority + changefreq)
 ├── mkdocs.yml
 ├── requirements.txt
 └── RELEASE_NOTES.md

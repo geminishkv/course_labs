@@ -73,7 +73,7 @@ $ nmap -iL targets.txt # множественные цели сканирова�
      --traceroute
 ```
 
--  **Типы сканирований**
+### Типы сканирований
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP Connect</span><div class="lab-card-tags"><span class="lab-tag">-sT</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Полное TCP-соединение (3-way handshake). Надёжный, но заметный — логируется на стороне сервера. Работает без root.</span></div>
@@ -86,7 +86,7 @@ $ nmap -iL targets.txt # множественные цели сканирова�
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">OS Detection + Scripts</span><div class="lab-card-tags"><span class="lab-tag">-A</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Агрессивный режим: OS fingerprint, версии сервисов, traceroute и NSE-скрипты. Полная картина, но шумный.</span></div>
 </div>
 
-- **Основные порты**
+### Основные порты
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">20/21</span><span style="font-size:0.75rem; color:#555;">FTP (File Transfer Protocol)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Передача файлов. Данные и пароли в открытом виде — уязвим к перехвату. Заменяется на SFTP/SCP.</span></div>

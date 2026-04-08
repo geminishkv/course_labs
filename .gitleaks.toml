@@ -7,4 +7,5 @@ paths = [
   "labs/basic/lab07/vulnerable-app/.*",
   "labs/basic/lab08/vulnerable-app/.*",
   "labs/basic/lab08/dast/.*",
+  "docs/materials/cheatsheet/.*",
 ]

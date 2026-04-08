@@ -167,11 +167,13 @@ jobs:
 
       - name: Render Mermaid diagrams to SVG
         run: |
-          npx --yes @mermaid-js/mermaid-cli \
-            -i docs/artifacts/diagrams/ \
-            -o docs/artifacts/diagrams/ \
-            -c docs/artifacts/diagrams/mermaid-config.json \
-            -b transparent
+          for f in docs/artifacts/diagrams/*.mmd; do
+            name="${f%.mmd}"
+            npx --yes @mermaid-js/mermaid-cli \
+              -i "$f" -o "${name}.svg" \
+              -c docs/artifacts/diagrams/mermaid-config.json \
+              -b transparent
+          done
 
       - name: Build MkDocs site (preview)
         run: mkdocs build --site-dir site
@@ -227,11 +229,13 @@ jobs:
 
       - name: Render Mermaid diagrams to SVG
         run: |
-          npx --yes @mermaid-js/mermaid-cli \
-            -i docs/artifacts/diagrams/ \
-            -o docs/artifacts/diagrams/ \
-            -c docs/artifacts/diagrams/mermaid-config.json \
-            -b transparent
+          for f in docs/artifacts/diagrams/*.mmd; do
+            name="${f%.mmd}"
+            npx --yes @mermaid-js/mermaid-cli \
+              -i "$f" -o "${name}.svg" \
+              -c docs/artifacts/diagrams/mermaid-config.json \
+              -b transparent
+          done
 
       - name: Build MkDocs site
         run: mkdocs build --site-dir site

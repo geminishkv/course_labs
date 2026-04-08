@@ -68,6 +68,17 @@ lab07
 
 > - Анализирует используемые библиотеки Maven‑зависимости, JAR‑файлы, Python‑пакеты и др., сопоставляет их с базами уязвимостей и выдаёт список известных проблем для конкретных версий по CVE
 
+### Сравнение инструментов
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Semgrep</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">Code</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Структурный grep по AST. Python, Java, JS. Кастомные YAML-правила, OWASP Top 10. Ищет SQLi, XSS, hardcoded secrets.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Bandit</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">Python only</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Python-специфичный SAST. eval, pickle, subprocess, hardcoded passwords. Быстрый, но только Python.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Checkov</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">IaC</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">IaC-сканер: Dockerfile, docker-compose, Terraform, K8s YAML. Проверяет конфигурации на мисконфигурации.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">OWASP DC</span><div class="lab-card-tags"><span class="lab-tag">SCA</span><span class="lab-tag">CVE</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Анализ зависимостей: Maven (pom.xml), JAR, Python. Сопоставляет версии с NVD, GitHub Advisories.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Gitleaks</span><div class="lab-card-tags"><span class="lab-tag">Secret Detection</span><span class="lab-tag">regex</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Сканирует git-историю на секреты: AWS keys, tokens, passwords. Regex-паттерны, pre-commit hook.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TruffleHog</span><div class="lab-card-tags"><span class="lab-tag">Secret Detection</span><span class="lab-tag">entropy</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Поиск по энтропии строк + regex. Находит секреты, которые regex пропускает. Верификация найденного.</span></div>
+</div>
+
 ***
 
 ## Задание
@@ -220,6 +231,16 @@ $ rm test_secret.py
     - Разница в подходах: regex (gitleaks) vs entropy (trufflehog)
     - Как pre-commit hook предотвращает попадание секретов в историю
     - Что делать, если секрет уже попал в публичный репозиторий (порядок действий)
+
+***
+
+## Смотри также
+
+- [Лаб. №6 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит конфигурации Docker
+- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование (следующий этап)
+- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация SAST/SCA в пайплайне
+- [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка Semgrep, Checkov, Gitleaks
+- [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов
 
 ***
 

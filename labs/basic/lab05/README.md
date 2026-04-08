@@ -57,17 +57,19 @@ lab05
 
 - **Namespaces**
 
-Необходимы для организации изолированных рабочих пространств, - контейнеров. Когда мы запускаем контейнер, `Docker` создает набор пространств имен для данного контейнера, что создает изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе. Пространство имен:
+Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создает набор пространств имен для данного контейнера, что создает изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
 
-> - pid: для изоляции процесса
-> - net: для управления сетевыми интерфейсами
-> - ipc: для управления IPC ресурсами. (IPC: InterProcess Communication)
-> - mnt: для управления точками монтирования
-> - uts: для изолирования ядра и контроля генерации версий (UTS: Unix Timesharing System)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">pid</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция процессов — контейнер видит только свои процессы</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">net</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Управление сетевыми интерфейсами — собственный сетевой стек</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">ipc</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция IPC (InterProcess Communication) ресурсов</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">mnt</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Управление точками монтирования — собственная файловая система</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">uts</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция hostname и domain — контейнер имеет собственное имя хоста</span></div>
+</div>
 
 - **Cgroups**
 
-Необходимы для контрольных групп в изоляции, где предоставляется приложению только те ресурсы, которые указываем. Позволяют разделять ресурсы железа и устанавливать пределы, ограничения.
+Контрольные группы для изоляции ресурсов — предоставляют приложению только те ресурсы, которые указываем. Позволяют разделять ресурсы железа и устанавливать пределы, ограничения.
 
 ```bash
 $ docker container run -d \
@@ -90,19 +92,16 @@ $ docker container run -d \
 
 -  **Контекст безопасности**
 
-    - Не задавать пользователей с правами «root» для работы сервисов внутри контейнеров. 
-        > Если для функционирования сервиса не требуются расширенные привилегии, то в Dockerfile необходимо явно прописать учетную запись пользователя с минимально необходимыми правами.
-    - Не запускать контейнеры в привилегированном режиме. 
-        > Ключ «--privileged» отключает все средства изоляции (наложенные cgroup – контроллером устройства) docker-контейнера. Запуск контейнера с таким ключом обеспечит ему доступ к файловой системе и блочным устройствам (например, жесткому диску) хоста. Контейнеры должны быть запущены в непривилегированном режиме. Если контейнеру нужны дополнительные привилегии для корректной работы, то необходимо явно прописать или удалить требуемые docker capabilities.
-    - Не отключать профили безопасности Docker. 
-        > По умолчанию для запуска контейнеров Docker использует профили безопасности Linux, лучше использовать профили AppArmor, SELinux, grsecurity, seccomp, - позволяют ограничить активности контейнера, обеспечивая контроль сети, использования дополнительных возможностей (docker capabilities), контроль обращений к файловой системе хоста и пр. Контейнеры должны работать с активными профилями безопасности Docker, не docker-default. Если необходимо использовать другой профиль, то это можно сделать с помощью --security-opt.
-    - Не допускать запуск контейнеров, использующих тип сети «host»
-        > В режиме Host контейнер использует ту же сеть, что и хост, т.е. контейнерная сеть не изолируется от сети Docker хоста и контейнер не получает собственный IP-адрес, что дает доступ к REST API daemon docker изнутри контейнера, а также к устройствам, расположенным в сети хоста. Для реализации сетевого взаимодействия между контейнерами, они должны запускаться в режиме bridge или none.
-    - Не разрешать доступ к docker.socket изнутри контейнера. Не подключать docker socket в контейнер без необходимости, либо с использованием плагинов авторизации. 
-    - Не использовать секреты в открытом виде в Docker-файлах образов. По возможности не использовать переменные окружения и не хранить секреты внутри контейнера. Хранение и управление секретами возложить на сторонний сервис.
-    - Ограничивать и контролировать использование ресурсов контейнерами. Указывать ограничения на уровне самого ПО или на уровне контейнеров для использования ресурсов хоста.
-    - Контролировать качество базовых образов контейнеров. Использовать официальные образы и использовать образы с минимально необходимым набором инструментов.
-    - Сканировать образы на наличие уязвимостей и проверки требований ИБ (Compliance Checks)
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Не запускать от root</span><div class="lab-card-tags"><span class="lab-tag">USER</span><span class="lab-tag">Dockerfile</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Явно прописывать учётную запись с минимальными правами. Root внутри контейнера = root на хосте при побеге.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Без --privileged</span><div class="lab-card-tags"><span class="lab-tag">capabilities</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отключает все средства изоляции, даёт доступ к ФС и устройствам хоста. Явно прописывать только нужные capabilities.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Профили безопасности</span><div class="lab-card-tags"><span class="lab-tag">AppArmor</span><span class="lab-tag">seccomp</span><span class="lab-tag">SELinux</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Не отключать профили Linux security. Ограничивают syscalls, сеть, обращения к ФС хоста.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Не использовать host network</span><div class="lab-card-tags"><span class="lab-tag">bridge</span><span class="lab-tag">none</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">В режиме host контейнер делит сеть с хостом, включая доступ к Docker API. Использовать bridge или none.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Не монтировать docker.sock</span><div class="lab-card-tags"><span class="lab-tag">docker.socket</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Доступ к сокету = полный контроль над Docker daemon. Не подключать без крайней необходимости.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Секреты вне образа</span><div class="lab-card-tags"><span class="lab-tag">secrets</span><span class="lab-tag">env</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Не хранить секреты в Dockerfile/ENV. Использовать Docker secrets или внешние менеджеры.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Лимиты ресурсов</span><div class="lab-card-tags"><span class="lab-tag">--memory</span><span class="lab-tag">--cpus</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Ограничивать CPU/RAM на уровне контейнера. Без лимитов один контейнер может забрать все ресурсы хоста.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Минимальные образы</span><div class="lab-card-tags"><span class="lab-tag">alpine</span><span class="lab-tag">slim</span><span class="lab-tag">distroless</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Официальные образы с минимальным набором инструментов. Сканировать на CVE (Trivy, Docker Scout).</span></div>
+</div>
 
 - **Дополнительно**
 
@@ -236,6 +235,16 @@ $ docker-compose down
  
 ***
 
+## Смотри также
+
+- [Основы Docker](https://course.geminishkv.tech/labs/intro/docker_basics/) — введение в контейнеризацию перед этой лабой
+- [Лаб. №6 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит безопасности Docker
+- [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — шпаргалка по командам
+- [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов
+- [CheatSheet: .dockerignore](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/) — исключения при сборке
+
+***
+
 ## Troubleshooting
 
 Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
@@ -243,14 +252,12 @@ $ docker-compose down
 ## Links
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-<a class="lab-card" href="https://stackedit.io" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown</div><div class="lab-card-tags"><span class="lab-tag">stackedit.io</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="https://docs.github.com/en" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Docs</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/engine/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Engine overview</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/reference/dockerfile/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Dockerfile reference</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/compose/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Compose documentation</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://hub.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Hub</div><div class="lab-card-tags"><span class="lab-tag">hub.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/engine/security/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker security overview</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>

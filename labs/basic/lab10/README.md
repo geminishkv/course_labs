@@ -26,6 +26,39 @@
 
 ***
 
+## Материал
+
+### Методология оценки рисков
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">1. Инвентаризация</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Определить активы: ПДн, коммерческие данные, инфраструктура, репутация. Классифицировать по критичности.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">2. Идентификация угроз</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Описать сценарии: утечка ПДн, взлом ЛК, подмена данных, DDoS, инъекции, social engineering.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">3. Оценка рисков</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Вероятность × Влияние. Качественная (Высокий/Средний/Низкий) или количественная (CVSS, денежная оценка).</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">4. Меры снижения</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Техническое решение + организационные меры. Баланс стоимости меры и ущерба от реализации риска.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">5. Остаточный риск</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Документирование принятых рисков с обоснованием. Мониторинг и пересмотр при изменении контекста.</span></div>
+</div>
+
+### Структура аналитической записки
+
+> 1. **Описание ситуации** — что обнаружено, контекст бизнеса
+> 2. **Классификация рисков** — регуляторные, утечки, киберпреступления
+> 3. **Оценка** — вероятность, влияние, приоритет
+> 4. **Меры снижения** — техническое решение, организационные меры
+> 5. **Заключение** — остаточный риск, принятые риски, контроли
+
+### Инструментарий AppSec для проекта
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">SAST</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Checkov</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">SCA</div><div class="lab-card-tags"><span class="lab-tag">OWASP DC</span><span class="lab-tag">Trivy</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">DAST</div><div class="lab-card-tags"><span class="lab-tag">OWASP ZAP</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">Secrets</div><div class="lab-card-tags"><span class="lab-tag">Gitleaks</span><span class="lab-tag">TruffleHog</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">CI/CD</div><div class="lab-card-tags"><span class="lab-tag">GitHub Actions</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">Container</div><div class="lab-card-tags"><span class="lab-tag">Trivy</span><span class="lab-tag">CIS Bench</span></div></div>
+</div>
+
+***
+
 ### Цель 
 
 - Закрепить полученные знания 
@@ -116,8 +149,31 @@ lab10
 
 ***
 
+## Смотри также
+
+- [Лаб. №4 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — первая лаба по анализу рисков ИБ
+- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ и зависимости
+- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование
+- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
+- [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — атаки на цепочку поставок
+
+***
+
 ## Troubleshooting
 
 Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
 
 ***
+
+## Links
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<a class="lab-card" href="https://owasp.org/www-community/OWASP_Risk_Rating_Methodology" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Risk Rating Methodology</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://owasp.org/www-project-top-ten/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Top 10</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://csrc.nist.gov/pubs/sp/800/30/r1/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">NIST SP 800-30 — Risk Assessment</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gdpr-info.eu/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GDPR — General Data Protection Regulation</div><div class="lab-card-tags"><span class="lab-tag">gdpr-info.eu</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cwe.mitre.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">CWE — Common Weakness Enumeration</div><div class="lab-card-tags"><span class="lab-tag">cwe.mitre.org</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://github.com/geminishkv/course_labs/blob/develop/artifacts/exmpls/Пример_аналитических_отчетов_по_задачам_ИБ.pdf" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчетов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

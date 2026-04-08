@@ -171,16 +171,23 @@ $ docker system prune -f
 
 ## Рекомендации
 
-- `XSS` на `echo` — отражение входных данных без экранирования
->Заменить прямую подстановку строки на безопасный рендер с автоматическим экранированием или ручной фильтрацией
-- `SQL Injection` на `search` — небезопасная конкатенация строки запроса
->Перейти на параметризованные запросы `sqlite` и передачей параметров отдельным аргументом, включая отказа от конкатенации `SQL`‑строк с пользовательским вводом
-- Небезопасные `cookies` (`session`, `user`, `role` ) — без  `Secure`,  `HttpOnly`, `SameSite`
->Задать флаги  `HttpOnly`,  `Secure` (если `HTTPS`), `SameSite=Lax/ Strict`
-- Отсутствие основных `security‑headers` (`X-Frame-Options`, `X-Content-Type-Options`, `Content-Security-Policy` и т.д.)
-- Усилить авторизацию на  `admin`  из-за доступа по подделанному cookie
-- `Directory listing` на  `files`
-> Ограничить список отдаваемых ресурсов, либо скрыть `directory listing`, либо добавить проверки и фильтрацию путей.
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">XSS на /echo</span><div class="lab-card-tags"><span class="lab-tag">Reflected XSS</span><span class="lab-tag">CWE-79</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отражение входных данных без экранирования. Мера: Jinja2 autoescape.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">SQLi на /search</span><div class="lab-card-tags"><span class="lab-tag">SQL Injection</span><span class="lab-tag">CWE-89</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Конкатенация ввода в SQL. Мера: параметризованные запросы.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Небезопасные cookies</span><div class="lab-card-tags"><span class="lab-tag">HttpOnly</span><span class="lab-tag">Secure</span><span class="lab-tag">SameSite</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">session, user, role без защитных флагов. Мера: HttpOnly, Secure, SameSite.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Security headers</span><div class="lab-card-tags"><span class="lab-tag">X-Frame-Options</span><span class="lab-tag">CSP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отсутствуют X-Frame-Options, X-Content-Type-Options, CSP. Мера: middleware.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Broken Access Control</span><div class="lab-card-tags"><span class="lab-tag">/admin</span><span class="lab-tag">CWE-284</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Доступ по подделанному cookie. Мера: серверная авторизация, подписанные сессии.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Directory listing</span><div class="lab-card-tags"><span class="lab-tag">/files/</span><span class="lab-tag">CWE-548</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Открытый листинг с конфиденциальными файлами. Мера: отключить listing.</span></div>
+</div>
+
+***
+
+## Смотри также
+
+- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ (предыдущий этап)
+- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
+- [OWASP Top 10 — Client-side Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/client-side-attacks/) — XSS и атаки на клиента
+- [CheatSheet: HTTP Security Headers](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/) — заголовки безопасности
 
 ***
 

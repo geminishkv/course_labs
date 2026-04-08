@@ -356,6 +356,122 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ---
 
+## Сети и TCP/IP (Intro)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">dig / nslookup: command not found</div>
+    <span class="lab-tag">DNS · диагностика</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Утилиты DNS не установлены. Ubuntu: <code>sudo apt install dnsutils</code>. Fedora: <code>sudo dnf install bind-utils</code>. macOS: встроены.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">ss: command not found</div>
+    <span class="lab-tag">Порты · сеть</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">На macOS <code>ss</code> нет — используйте <code>netstat -an</code> или <code>lsof -i -P</code>. На Linux: <code>sudo apt install iproute2</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">traceroute: Network unreachable</div>
+    <span class="lab-tag">traceroute</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Нет маршрута. Проверьте интернет: <code>ping 8.8.8.8</code>. В VM — адаптер должен быть NAT. Альтернатива: <code>mtr target</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">curl: Connection refused</div>
+    <span class="lab-tag">HTTP · порты</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Сервис не слушает на указанном порту. Проверьте: <code>ss -tlnp | grep :PORT</code>. Убедитесь, что приложение запущено и биндится на <code>0.0.0.0</code>, а не <code>127.0.0.1</code>.</p>
+  </div>
+
+</div>
+
+---
+
+## Docker Compose и Dockerfile (Intro, Lab 05)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">docker compose vs docker-compose</div>
+    <span class="lab-tag">Docker Compose v2</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Docker Compose v2 — плагин: <code>docker compose</code> (без дефиса). Старый v1: <code>docker-compose</code>. Если v2 не работает: <code>sudo apt install docker-compose-plugin</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">COPY failed: file not found</div>
+    <span class="lab-tag">Dockerfile · COPY</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">COPY работает относительно build context, а не Dockerfile. Убедитесь, что файл не исключён в <code>.dockerignore</code> и путь верный.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Image build: pip install fails</div>
+    <span class="lab-tag">Dockerfile · pip</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Нет <code>requirements.txt</code> в контексте сборки или ошибка версий. Проверьте: <code>COPY requirements.txt .</code> стоит до <code>RUN pip install</code>. Пиньте версии: <code>flask==3.0.0</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">docker buildx: unknown flag</div>
+    <span class="lab-tag">buildx · buildkit</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Buildx не установлен. Используйте <code>docker build</code> вместо <code>docker buildx build</code>. Или установите: <code>sudo apt install docker-buildx-plugin</code>.</p>
+  </div>
+
+</div>
+
+---
+
+## GitHub Actions YAML (Intro CI/CD, Lab 09)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">YAML syntax error: mapping values not allowed</div>
+    <span class="lab-tag">YAML · Actions</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Отступы — только пробелы, не табы. 2 пробела на уровень. Двоеточие требует пробел после: <code>key: value</code>. Валидируйте: <code>yamllint file.yml</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Actions: Resource not accessible by integration</div>
+    <span class="lab-tag">Permissions</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Workflow не имеет прав. Добавьте в YAML: <code>permissions: contents: read</code> (или <code>write</code> для push). Settings → Actions → General → Workflow permissions.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Artifact upload: No files found</div>
+    <span class="lab-tag">upload-artifact</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Путь в <code>path:</code> не совпадает с реальным выводом инструмента. Проверьте, куда пишет отчёт: <code>ls -la pipeline/</code>. Путь чувствителен к регистру.</p>
+  </div>
+
+</div>
+
+---
+
+## CMS Security (Lab 10)
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Где искать CVE для CMS</div>
+    <span class="lab-tag">Lab 10 · WordPress · Битрикс</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">NVD: <code>nvd.nist.gov</code> поиск по CPE. WordPress: <code>wpscan.com/wordpresses</code>. Битрикс: <code>bdu.fstec.ru</code>. Также: <code>cve.mitre.org</code>, <code>exploit-db.com</code>.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Как описать Proof-of-Concept</div>
+    <span class="lab-tag">Lab 10 · CWE · PoC</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Структура: CWE-ID → описание уязвимости → условия эксплуатации → шаги воспроизведения → ожидаемый результат → мера устранения. Не нужен работающий exploit — достаточно вектора.</p>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
+    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Как оформить матрицу рисков</div>
+    <span class="lab-tag">Lab 10 · Risk Matrix</span>
+    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Таблица: Риск | Актив | Вероятность (1-5) | Влияние (1-5) | Оценка | Стратегия | Мера | Остаточный риск. Сортируйте по убыванию оценки (Вероятность × Влияние).</p>
+  </div>
+
+</div>
+
+---
+
 ## Python и venv (общее)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">

@@ -96,6 +96,8 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - abbr
   - pymdownx.snippets:
+      auto_append:
+        - docs/glossary.md
       check_paths: true
   - pymdownx.tabbed:
       alternate_style: true

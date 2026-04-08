@@ -16,13 +16,13 @@
 
 * **Инфраструктура:** `Git`, `CI/CD`, `Docker`, `Docker Compose`, `GitHub Actions`, `YAML`
 * **Языки:** `Python`, `Shell` (`Java` и `Go` — в контексте SCA и анализа зависимостей)
-* **AppSec инструменты:** `Semgrep`, `Checkov`, `OWASP Dependency-Check`, `Trivy`, `OWASP ZAP`, `Gitleaks`
+* **AppSec инструменты:** `Semgrep`, `Checkov`, `OWASP Dependency-Check`, `Trivy`, `OWASP ZAP`, `Gitleaks`, `Hadolint`, `Bandit`
 * **Стандарты:** OWASP Top 10, CIS Benchmarks, CVSS, ISO 27005
 * **Анализ рисков:** оценка, приоритизация, стратегии снижения рисков ИБ
 
 **Как устроен курс:**
 
-* 10 лабораторных работ + итоговый pet-project
+* 10 лабораторных работ + итоговый pet-project + 5 тестов
 * Каждая лабораторная — отдельный репозиторий с исходным кодом и отчётом в формате `gistup`
 * Все работы выполняются в ветке `develop` → `pull request` → [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) от [geminishkv](https://github.com/geminishkv)
 * Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `Secret Detection` → `CI/CD` → `Risk Analysis`
@@ -33,7 +33,7 @@
 * Каждая работа разбивается на атомарные коммиты для трекинга изменений
 * Отчёт сдаётся индивидуально с защитой: каждая команда — с описанием флагов и выводом из терминала
 * В отчётах — вывод из консоли, не скриншоты
-* Часть инструментов требует установки дополнительных `open-source` пакетов 
+* Часть инструментов требует установки дополнительных `open-source` пакетов
 
 ### Этапы
 
@@ -41,6 +41,7 @@
     * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux
     * [Настройка Git, GPG и GitHub CLI](labs/intro/git_setup.md) — git config, SSH, GnuPG, gh
     * [Оформление отчётов Gistup](labs/intro/gistup_guide.md) — формат, структура, правила
+    * [Установка AppSec-инструментов](labs/intro/appsec_tools_setup.md) — Semgrep, Trivy, ZAP, Gitleaks, Checkov
 2. Каждый репозиторий должен содержать `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
 3. Выполнить лабораторные работы по порядку:
 
@@ -69,6 +70,7 @@ flowchart TD
         I01["VirtualBox & Linux"]
         I02["Git, GPG, SSH, gh"]
         I03["Gistup отчёты"]
+        I04["AppSec Tools Setup"]
     end
 
     subgraph Foundations["Основы"]
@@ -93,18 +95,23 @@ flowchart TD
         L10["Lab 10 · Risk Analysis · Practice"]
     end
 
+    subgraph Tests["Тесты"]
+        T01["Тест 01-05"]
+    end
+
     PET["Pet Project — индивидуальная работа"]
 
     Intro --> Foundations
     Foundations --> Containers
     Containers --> AppSec
     AppSec --> DevSecOps
-    DevSecOps --> PET
+    DevSecOps --> Tests
+    Tests --> PET
 ```
 
 ***
 
-### Формализованные требования 
+### Формализованные требования
 
 - Единый стиль кода
 - Все функции по работе с деревом должны находиться в пространстве имен
@@ -137,7 +144,7 @@ $ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адре�
 * Очистка локального репозитория
 
 ```bash
-$ rm -rf __pycache__ scripts/__pycache__  # etc.
+$ rm -rf __pycache__ scripts/__pycache__
 $ rm -rf .venv
 $ lsof -i :8000
 $ kill <PID>
@@ -158,203 +165,41 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 ### Структура
 
 ```
-├── docs/                          # MkDocs source
-│   ├── index.md                   # Главная
-│   ├── licenses.md                # 41 лицензия
-│   ├── appsec_tt.md               # 29 классов инструментов
-│   ├── APPENDIX.md                # Команды и утилиты
-│   ├── troubleshooting.md         # FAQ
-│   ├── glossary.md                # 39 аббревиатур
+├── docs/                              # MkDocs source
+│   ├── index.md                       # Главная (hero + lab cards + tg widget)
+│   ├── privacy.md                     # Политика конфиденциальности
+│   ├── about.md                       # О проекте
+│   ├── Security.md                    # Политика безопасности
+│   ├── RELEASE_NOTES.md               # Релизы
+│   ├── glossary.md                    # 39 аббревиатур
 │   ├── labs/
-│   │   ├── intro/                 # vmbox, git_setup, gistup
-│   │   ├── basic/                 # lab01-10
-│   │   └── pet_project.md
-│   ├── materials/                 # Примеры, OWASP Top 10
-│   ├── artifacts/                 # CheatSheets, PDF, assets
-│   ├── stylesheets/               # CSS (tokens, layout, ...)
-│   ├── javascripts/               # JS
-│   └── overrides/                 # main.html, 404.html
+│   │   ├── intro/                     # vmbox, git_setup, gistup, appsec_tools_setup
+│   │   ├── basic/lab01-10.md          # 10 лабораторных
+│   │   ├── pet_project.md             # Итоговый проект
+│   │   └── tests/basic/               # 5 тестов + ответы
+│   ├── materials/
+│   │   ├── lectures/fintech_ru.md     # Лекция Fintech
+│   │   ├── examples/                  # Кейсы ИБ
+│   │   ├── OWASPTOP10/               # 7 OWASP материалов
+│   │   ├── cheatsheet/               # 6 шпаргалок
+│   │   ├── ports.md                   # Справочник портов
+│   │   ├── appsec_tt.md              # 29 классов инструментов
+│   │   ├── licenses.md               # 41 лицензия
+│   │   ├── APPENDIX.md               # Команды и утилиты
+│   │   └── troubleshooting.md        # FAQ
+│   ├── stylesheets/                   # 8 CSS файлов
+│   ├── javascripts/                   # 5 JS файлов
+│   ├── overrides/                     # main.html, 404.html
+│   └── artifacts/assets/             # Logo, favicon, images
 ├── labs/
-│   ├── intro/                     # vmbox, git_setup, gistup
-│   ├── basic/                     # lab01-10
+│   ├── intro/                         # Исходники intro (include-markdown)
+│   ├── basic/lab01-10/               # Код + отчёты + docker-compose
 │   └── pet_project/
 ├── .github/workflows/
-│   ├── ci.yml                     # Lint → Audit → Build → Deploy
+│   ├── ci.yml                         # Lint → Audit → Build → Deploy
 │   └── release-from-notes.yml
-├── hooks.py                       # Sitemap enrichment
+├── hooks.py                           # Sitemap enrichment
 ├── mkdocs.yml
 ├── requirements.txt
 └── RELEASE_NOTES.md
 ```
-
-<!-- legacy tree below kept for reference -->
-<!-- ```
-├── assets
-│   └── logotype
-│       ├── logo.jpg
-│       └── logo2.jpg
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── docs
-│   ├── about.md
-│   ├── APPENDIX.md
-│   ├── appsec_tt.md
-│   ├── artifacts
-│   │   ├── assets
-│   │   │   ├── favicon.ico
-│   │   │   ├── logo.png
-│   │   │   └── logotypemd.jpg
-│   │   ├── cheatsheet
-│   │   │   ├── CHEATSHEET_DOCKER.md
-│   │   │   ├── CHEATSHEET_DOCKERIGNORE.md
-│   │   │   ├── CHEATSHEET_GH_CLI.md
-│   │   │   ├── CHEATSHEET_GIT.md
-│   │   │   └── CHEATSHEET_GITIGNORE.md
-│   │   ├── exmpls
-│   │   │   ├── risk-analysis.png
-│   │   │   ├── table1.png
-│   │   │   └── transaction.png
-│   │   ├── owasp
-│   │   │   ├── Authentication.pdf
-│   │   │   ├── Authorization.pdf
-│   │   │   ├── Client-side_Attacks.pdf
-│   │   │   ├── Command_Execution.pdf
-│   │   │   ├── Information_Disclosure.pdf
-│   │   │   ├── Logical_Attacks.pdf
-│   │   │   └── OWASP_Top_10_CICD_Risks.pdf
-│   │   └── ppt
-│   │       └── Лекция_Управление Рисками ИБ_intro.pdf
-│   ├── channel.md
-│   ├── index.md
-│   ├── javascripts
-│   │   ├── custom-title.js
-│   │   └── typewriter-target.js
-│   ├── labs
-│   │   ├── lab01.md
-│   │   ├── lab02.md
-│   │   ├── lab03.md
-│   │   ├── lab04.md
-│   │   ├── lab05.md
-│   │   ├── lab06.md
-│   │   ├── lab07.md
-│   │   ├── lab08.md
-│   │   ├── lab09.md
-│   │   ├── lab10.md
-│   │   └── pet_project.md
-│   ├── licenses.md
-│   ├── materials
-│   │   ├── examples
-│   │   │   ├── exmpl.md
-│   │   │   ├── Multisignature.md
-│   │   │   ├── PrintNightmare.md
-│   │   │   └── RA.md
-│   │   └── OWASPTOP10
-│   │       ├── Authentication.md
-│   │       ├── Authorization.md
-│   │       ├── Client-side Attacks.md
-│   │       ├── Command Execution.md
-│   │       ├── Information Disclosure.md
-│   │       ├── Logical Attacks.md
-│   │       └── OWASP_Top_10_CICD_Risks.md
-│   ├── RELEASE_NOTES.md
-│   ├── robots.txt
-│   ├── Security.md
-│   └── stylesheets
-│       ├── burger.css
-│       ├── clipboard.css
-│       ├── footer.css
-│       ├── header.css
-│       ├── layout.css
-│       ├── mobile-logo.css
-│       ├── search.css
-│       ├── sidebar.css
-│       ├── tools-overlay.css
-│       └── typeset.css
-├── eslint.config.js
-├── labs
-│   ├── lab01
-│   │   ├── README.md
-│   │   └── typersteel.py
-│   ├── lab02
-│   │   ├── exmpl_hello.py
-│   │   ├── pygamesteel.py
-│   │   └── README.md
-│   ├── lab03
-│   │   ├── exmp_targets.txt
-│   │   └── README.md
-│   ├── lab04
-│   │   └── README.md
-│   ├── lab05
-│   │   ├── client
-│   │   │   ├── client.py
-│   │   │   ├── Dockerfile
-│   │   │   └── requirements.txt
-│   │   ├── docker-compose.yml
-│   │   ├── README.md
-│   │   ├── server
-│   │   │   ├── app.py
-│   │   │   ├── Dockerfile
-│   │   │   └── requirements.txt
-│   │   └── source
-│   │       ├── Dockerfile
-│   │       ├── hello.py
-│   │       ├── image.tar
-│   │       └── requirements.txt
-│   ├── lab06
-│   │   ├── audit_reports
-│   │   ├── audit.sh
-│   │   ├── config
-│   │   │   └── nginx.conf
-│   │   ├── docker-compose.yml
-│   │   ├── README.md
-│   │   └── vulnerable-app.yml
-│   ├── lab07
-│   │   ├── cheat_check_yuorself.sh
-│   │   ├── docker-compose.yml
-│   │   ├── README.md
-│   │   ├── sast
-│   │   │   ├── checkov-config.yaml
-│   │   │   └── semgrep-rules.yml
-│   │   ├── sca
-│   │   │   ├── dependency-check.sh
-│   │   │   └── pom.xml
-│   │   └── vulnerable-app
-│   │       ├── app.py
-│   │       ├── config.yaml
-│   │       ├── Dockerfile
-│   │       └── requirements.txt
-│   ├── lab08
-│   │   ├── dast
-│   │   │   ├── convert_reports.py
-│   │   │   ├── reports
-│   │   │   ├── zap_scan.sh
-│   │   │   └── zap-baseline.conf
-│   │   ├── docker-compose.yml
-│   │   ├── README.md
-│   │   ├── requirements.txt
-│   │   └── vulnerable-app
-│   │       ├── app.py
-│   │       ├── Dockerfile
-│   │       ├── files
-│   │       │   └── secret.txt
-│   │       └── requirements.txt
-│   ├── lab09
-│   │   └── README.md
-│   ├── lab10
-│   │   └── README.md
-│   └── pet_project
-│       └── README.md
-├── LICENSE.md
-├── mkdocs.yml
-├── mypy.ini
-├── NOTICE.md
-├── README.md
-├── RELEASE_NOTES.md
-├── requirements.txt
-├── ruff.toml
-├──  scripts
-│   └── generate_sitemap.py
-├── SECURITY.md
-├── sitemap.xml
-└── stylelint.config.cjs
-``` -->

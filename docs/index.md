@@ -45,7 +45,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 </div>
 
----
+***
 
 ## О курсе
 
@@ -67,7 +67,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 - Для каждой лабораторной — отдельный репозиторий (или `fork`), исходный код + отчёт
 - Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Risk Analysis`
 
----
+***
 
 ## Этапы
 
@@ -82,7 +82,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 !!! info "Пример отчёта"
     [Пример gistup-отчёта](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411) — шаблон для оформления всех лабораторных работ.
 
----
+***
 
 ## Intro
 
@@ -96,7 +96,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <a class="lab-card" href="labs/intro/appsec_tools_setup/"><div class="lab-card-body"><div class="lab-card-title">Установка AppSec-инструментов</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span><span class="lab-tag">Gitleaks</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 
----
+***
 
 ## Базовые Лабораторные работы
 
@@ -114,19 +114,28 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <a class="lab-card lab-card--pet" href="labs/pet_project/"><div class="lab-card-num">pet</div><div class="lab-card-body"><div class="lab-card-title">Pet-project — итоговая работа, полный AppSec/DevSecOps стек</div><div class="lab-card-tags"><span class="lab-tag">Full stack</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 
----
+***
 
 ## Тесты
 
+### Базовое ознакомление
+
 <div class="lab-grid">
-<a class="lab-card" href="labs/tests/basic/test01/"><div class="lab-card-num">T1</div><div class="lab-card-body"><div class="lab-card-title">Тест №1</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">SAST</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test02/"><div class="lab-card-num">T2</div><div class="lab-card-body"><div class="lab-card-title">Тест №2</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Nmap</span><span class="lab-tag">SCA</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test03/"><div class="lab-card-num">T3</div><div class="lab-card-body"><div class="lab-card-title">Тест №3</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Nmap</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test04/"><div class="lab-card-num">T4</div><div class="lab-card-body"><div class="lab-card-title">Тест №4</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">SBOM</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test05/"><div class="lab-card-num">T5</div><div class="lab-card-body"><div class="lab-card-title">Тест №5</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test01/"><div class="lab-card-num">V1</div><div class="lab-card-body"><div class="lab-card-title">Вариант №1</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">SAST</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test02/"><div class="lab-card-num">V2</div><div class="lab-card-body"><div class="lab-card-title">Вариант №2</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Nmap</span><span class="lab-tag">SCA</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test03/"><div class="lab-card-num">V3</div><div class="lab-card-body"><div class="lab-card-title">Вариант №3</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Nmap</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test04/"><div class="lab-card-num">V4</div><div class="lab-card-body"><div class="lab-card-title">Вариант №4</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">SBOM</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test05/"><div class="lab-card-num">V5</div><div class="lab-card-body"><div class="lab-card-title">Вариант №5</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 
----
+### Лекционные тесты
+
+<div class="lab-grid">
+<a class="lab-card" href="labs/tests/lectures/test_fintech/"><div class="lab-card-num">TF1</div><div class="lab-card-body"><div class="lab-card-title">Fintech по-русски — Вариант 1</div><div class="lab-card-tags"><span class="lab-tag">Fintech</span><span class="lab-tag">AML</span><span class="lab-tag">Compliance</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/lectures/test_fintech_v2/"><div class="lab-card-num">TF2</div><div class="lab-card-body"><div class="lab-card-title">Fintech по-русски — Вариант 2</div><div class="lab-card-tags"><span class="lab-tag">FinDevSecOps</span><span class="lab-tag">IR</span><span class="lab-tag">ГОСТ 57580</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
+
+***
 
 ## Формализованные требования
 
@@ -141,7 +150,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 - [x] Рефакторинг и поддержка лабораторных в процессе работы
 - [x] Все команды — строго из терминала, без `WebUI` (кроме токенов и специфичных настроек)
 
----
+***
 
 ## Замечания
 
@@ -152,7 +161,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 5. Часть инструментов требует установки дополнительных `open-source` пакетов
 6. В отчётах — вывод из консоли, не скриншоты; описание каждого флага и команды
 
----
+***
 
 ## Полезные материалы
 
@@ -230,3 +239,5 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 </div>
 
 </div>
+
+***

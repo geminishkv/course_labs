@@ -1,0 +1,21 @@
+flowchart TD
+    subgraph VM["Виртуальная машина"]
+        direction TB
+        VA["App A\nLibs · Guest OS"] ~~~ VB["App B\nLibs · Guest OS"] ~~~ VC["App C\nLibs · Guest OS"]
+        HV["Hypervisor (VBox)"]
+        VH["Host OS"]
+        VA --> HV
+        VB --> HV
+        VC --> HV
+        HV --> VH
+    end
+    subgraph CT["Контейнеры"]
+        direction TB
+        CA["App A\nLibs"] ~~~ CB["App B\nLibs"] ~~~ CC["App C\nLibs"]
+        DE["Docker Engine — общее ядро"]
+        CH["Host OS"]
+        CA --> DE
+        CB --> DE
+        CC --> DE
+        DE --> CH
+    end

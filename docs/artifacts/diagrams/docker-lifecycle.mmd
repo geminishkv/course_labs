@@ -1,0 +1,6 @@
+flowchart LR
+    Dockerfile -- "docker build" --> Image
+    Image -- "docker run" --> Running["Container\n(Running)"]
+    Running -- "docker stop" --> Stopped["Container\n(Stopped)"]
+    Stopped -- "docker rm" --> Removed["Удалён"]
+    Stopped -- "docker start" --> Running

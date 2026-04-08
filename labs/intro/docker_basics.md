@@ -19,87 +19,15 @@
 
 ### VM vs Container
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│                   Виртуальная машина                        │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐                   │
-│  │   App A  │  │   App B  │  │   App C  │                   │
-│  │ Libs/Deps│  │ Libs/Deps│  │ Libs/Deps│                   │
-│  │ Guest OS │  │ Guest OS │  │ Guest OS │   ← у каждой      │
-│  └──────────┘  └──────────┘  └──────────┘     своя ОС       │
-│  ┌─────────────────────────────────────────┐                │
-│  │            Hypervisor (VBox)            │                │
-│  └─────────────────────────────────────────┘                │
-│  ┌─────────────────────────────────────────┐                │
-│  │              Host OS                    │                │
-│  └─────────────────────────────────────────┘                │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│                      Контейнеры                             │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐                   │
-│  │   App A  │  │   App B  │  │   App C  │                   │
-│  │ Libs/Deps│  │ Libs/Deps│  │ Libs/Deps│                   │
-│  └──────────┘  └──────────┘  └──────────┘                   │
-│  ┌─────────────────────────────────────────┐                │
-│  │          Docker Engine                  │  ← общее ядро  │
-│  └─────────────────────────────────────────┘                │
-│  ┌─────────────────────────────────────────┐                │
-│  │              Host OS                    │                │
-│  └─────────────────────────────────────────┘                │
-└─────────────────────────────────────────────────────────────┘
-```
+<img class="off-glb" src="/artifacts/diagrams/vm-vs-container.svg" alt="Vm Vs Container" style="max-width:600px; width:100%;">
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Изоляция</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: полная (отдельная ОС)</span></div>
-    <div class="lab-card-tags"><span class="lab-tag">Container: уровень процесса</span></div>
-  </div>
-
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Размер</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: гигабайты</span></div>
-    <div class="lab-card-tags"><span class="lab-tag">Container: мегабайты</span></div>
-  </div>
-
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Запуск</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: минуты</span></div>
-    <div class="lab-card-tags"><span class="lab-tag">Container: секунды</span></div>
-  </div>
-
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Накладные расходы</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: высокие (hypervisor)</span></div>
-    <div class="lab-card-tags"><span class="lab-tag">Container: минимальные</span></div>
-  </div>
-
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Безопасность</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: сильная изоляция</span></div>
-    <div class="lab-card-tags"><span class="lab-tag">Container: слабее (общее ядро)</span></div>
-  </div>
-
-  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Портируемость</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: ограниченная</span></div>
-    <div class="lab-card-tags"><span class="lab-tag">Container: высокая (образ = артефакт)</span></div>
-  </div>
-
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Изоляция</span></div><div class="lab-card-tags"><span class="lab-tag">VM: полная (отдельная ОС)</span></div><div class="lab-card-tags"><span class="lab-tag">Container: уровень процесса</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Размер</span></div><div class="lab-card-tags"><span class="lab-tag">VM: гигабайты</span></div><div class="lab-card-tags"><span class="lab-tag">Container: мегабайты</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Запуск</span></div><div class="lab-card-tags"><span class="lab-tag">VM: минуты</span></div><div class="lab-card-tags"><span class="lab-tag">Container: секунды</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Накладные расходы</span></div><div class="lab-card-tags"><span class="lab-tag">VM: высокие (hypervisor)</span></div><div class="lab-card-tags"><span class="lab-tag">Container: минимальные</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Безопасность</span></div><div class="lab-card-tags"><span class="lab-tag">VM: сильная изоляция</span></div><div class="lab-card-tags"><span class="lab-tag">Container: слабее (общее ядро)</span></div></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Портируемость</span></div><div class="lab-card-tags"><span class="lab-tag">VM: ограниченная</span></div><div class="lab-card-tags"><span class="lab-tag">Container: высокая (образ = артефакт)</span></div></div>
 </div>
 
 ***
@@ -110,15 +38,7 @@
 
 Неизменяемый шаблон для создания контейнеров. Состоит из слоёв (layers):
 
-```text
-┌──────────────────────┐
-│    App code + deps   │  ← ваш слой
-├──────────────────────┤
-│    python:3.12-slim  │  ← базовый образ
-├──────────────────────┤
-│    debian:bookworm   │  ← ОС-слой
-└──────────────────────┘
-```
+<img class="off-glb" src="/artifacts/diagrams/docker-layers.svg" alt="Docker Layers" style="max-width:360px; width:100%;">
 
 ### Container (контейнер)
 
@@ -289,18 +209,7 @@ $ docker compose ps
 
 ## Жизненный цикл контейнера
 
-```text
-   docker build       docker run
-Dockerfile ──→ Image ──→ Container (Running)
-                              │
-                    docker stop│
-                              ▼
-                      Container (Stopped)
-                              │
-                    docker rm  │
-                              ▼
-                          Удалён
-```
+<img class="off-glb" src="/artifacts/diagrams/docker-lifecycle.svg" alt="Docker Lifecycle" style="max-width:680px; width:100%;">
 
 ***
 

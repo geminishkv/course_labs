@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant C as Клиент
+    participant S as Сервер
+    C->>S: SYN
+    S->>C: SYN-ACK
+    C->>S: ACK
+    Note over C,S: Соединение установлено
+    C->>S: Данные
+    S->>C: Данные
+    C->>S: FIN
+    S->>C: ACK

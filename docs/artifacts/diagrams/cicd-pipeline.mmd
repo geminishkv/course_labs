@@ -1,0 +1,10 @@
+flowchart LR
+    Code["Code\n(push)"] --> Build --> Test --> Review["Review\n(PR)"] --> Deploy["Deploy\n(release)"]
+    subgraph CI
+        Build
+        Test
+    end
+    subgraph CD
+        Review
+        Deploy
+    end

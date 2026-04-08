@@ -21,13 +21,7 @@
 
 **CD (Continuous Delivery / Deployment)** — автоматическая доставка проверенного кода в staging или production.
 
-```text
-┌─────────┐    ┌─────────┐    ┌─────────┐    ┌──────────┐    ┌────────────┐
-│  Code   │───→│  Build  │───→│  Test   │───→│  Review  │───→│  Deploy    │
-│  (push) │    │         │    │         │    │  (PR)    │    │  (release) │
-└─────────┘    └─────────┘    └─────────┘    └──────────┘    └────────────┘
-     └──────── CI ────────────────────┘            └──── CD ──────────────┘
-```
+<img class="off-glb" src="/artifacts/diagrams/cicd-pipeline.svg" alt="Cicd Pipeline" style="max-width:680px; width:100%;">
 
 ### Зачем это нужно
 
@@ -342,23 +336,7 @@ jobs:
 ```
 {% endraw %}
 
-```text
-    ┌────────┐
-    │  lint  │
-    └───┬────┘
-        │
-   ┌────┴────┐
-   ▼         ▼
-┌──────┐ ┌───────────────┐
-│ sast │ │ container-scan│
-└──┬───┘ └──────┬────────┘
-   │            │
-   └─────┬──────┘
-         ▼
-    ┌─────────┐
-    │ deploy  │
-    └─────────┘
-```
+<img class="off-glb" src="/artifacts/diagrams/devsecops-dag.svg" alt="Devsecops Dag" style="max-width:360px; width:100%;">
 
 ***
 

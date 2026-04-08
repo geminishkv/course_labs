@@ -1,0 +1,5 @@
+flowchart TD
+    L1["App code + deps — ваш слой"]
+    L2["python:3.12-slim — базовый образ"]
+    L3["debian:bookworm — ОС-слой"]
+    L1 --> L2 --> L3

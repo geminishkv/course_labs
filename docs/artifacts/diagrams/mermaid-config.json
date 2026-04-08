@@ -1,0 +1,28 @@
+{
+  "theme": "dark",
+  "themeVariables": {
+    "primaryColor": "#cc2200",
+    "primaryTextColor": "#ffffff",
+    "primaryBorderColor": "#cc2200",
+    "lineColor": "#d4a520",
+    "secondaryColor": "#1a1919",
+    "tertiaryColor": "#2a2a2a",
+    "noteBkgColor": "#2a2a2a",
+    "noteTextColor": "#d4a520",
+    "noteBorderColor": "#d4a520",
+    "actorBkg": "#1a1919",
+    "actorBorder": "#cc2200",
+    "actorTextColor": "#ffffff",
+    "signalColor": "#d4a520",
+    "signalTextColor": "#1a1919",
+    "messageFontColor": "#1a1919",
+    "labelBoxBkgColor": "#1a1919",
+    "labelBoxBorderColor": "#cc2200",
+    "labelTextColor": "#ffffff",
+    "edgeLabelBackground": "transparent",
+    "edgeLabelColor": "#1a1919",
+    "clusterBkg": "rgba(204,34,0,0.08)",
+    "clusterBorder": "rgba(204,34,0,0.3)",
+    "titleColor": "#ffffff"
+  }
+}

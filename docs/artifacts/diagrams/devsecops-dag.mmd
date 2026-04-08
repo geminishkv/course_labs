@@ -1,0 +1,5 @@
+flowchart TD
+    lint --> sast
+    lint --> container-scan
+    sast --> deploy
+    container-scan --> deploy

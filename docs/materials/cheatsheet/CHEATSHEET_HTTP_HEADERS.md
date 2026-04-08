@@ -1,5 +1,5 @@
 ---
-title: "HTTP Security Headers — чеклист заголовков безопасности"
+title: "CheatSheet: HTTP Security Headers | Курс AppSec"
 description: "HTTP Security Headers: CSP, HSTS, X-Frame-Options, X-Content-Type-Options — настройка для nginx и Express с примерами."
 keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, nginx, Express, AppSec, веб-безопасность"
 ---

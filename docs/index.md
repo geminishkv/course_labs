@@ -93,6 +93,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <a class="lab-card" href="labs/intro/networking_basics/"><div class="lab-card-body"><div class="lab-card-title">Введение в сети и TCP/IP</div><div class="lab-card-tags"><span class="lab-tag">TCP/IP</span><span class="lab-tag">DNS</span><span class="lab-tag">HTTP</span><span class="lab-tag">Порты</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/intro/docker_basics/"><div class="lab-card-body"><div class="lab-card-title">Основы Docker и контейнеризации</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">Containers</span><span class="lab-tag">Dockerfile</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/intro/cicd_basics/"><div class="lab-card-body"><div class="lab-card-title">Введение в CI/CD и GitHub Actions</div><div class="lab-card-tags"><span class="lab-tag">CI/CD</span><span class="lab-tag">GitHub Actions</span><span class="lab-tag">YAML</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/intro/appsec_tools_setup/"><div class="lab-card-body"><div class="lab-card-title">Установка AppSec-инструментов</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span><span class="lab-tag">Gitleaks</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 
 ---
@@ -111,6 +112,18 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <a class="lab-card" href="labs/basic/lab09/"><div class="lab-card-num">09</div><div class="lab-card-body"><div class="lab-card-title">DevSecOps CI/CD конвейер на GitHub Actions</div><div class="lab-card-tags"><span class="lab-tag">GH Actions</span><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="labs/basic/lab10/"><div class="lab-card-num">10</div><div class="lab-card-body"><div class="lab-card-title">Оценка анализа рисков ИБ — практика</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card lab-card--pet" href="labs/pet_project/"><div class="lab-card-num">pet</div><div class="lab-card-body"><div class="lab-card-title">Pet-project — итоговая работа, полный AppSec/DevSecOps стек</div><div class="lab-card-tags"><span class="lab-tag">Full stack</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
+
+---
+
+## Тесты
+
+<div class="lab-grid">
+<a class="lab-card" href="labs/tests/basic/test01/"><div class="lab-card-num">T1</div><div class="lab-card-body"><div class="lab-card-title">Тест №1</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">SAST</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test02/"><div class="lab-card-num">T2</div><div class="lab-card-body"><div class="lab-card-title">Тест №2</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Nmap</span><span class="lab-tag">SCA</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test03/"><div class="lab-card-num">T3</div><div class="lab-card-body"><div class="lab-card-title">Тест №3</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Nmap</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test04/"><div class="lab-card-num">T4</div><div class="lab-card-body"><div class="lab-card-title">Тест №4</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">SBOM</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="labs/tests/basic/test05/"><div class="lab-card-num">T5</div><div class="lab-card-body"><div class="lab-card-title">Тест №5</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 
 ---
@@ -143,11 +156,45 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 ## Полезные материалы
 
+### OWASP Top 10
+
 <div class="lab-grid">
-<a class="lab-card" href="materials/licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/"><div class="lab-card-body"><div class="lab-card-title">CI/CD Risks</div><div class="lab-card-tags"><span class="lab-tag">Pipeline</span><span class="lab-tag">Supply Chain</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/Authentication/"><div class="lab-card-body"><div class="lab-card-title">Authentication</div><div class="lab-card-tags"><span class="lab-tag">Brute Force</span><span class="lab-tag">OTP</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/Authorization/"><div class="lab-card-body"><div class="lab-card-title">Authorization</div><div class="lab-card-tags"><span class="lab-tag">IDOR</span><span class="lab-tag">RBAC</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/client-side-attacks/"><div class="lab-card-body"><div class="lab-card-title">Client-side Attacks</div><div class="lab-card-tags"><span class="lab-tag">XSS</span><span class="lab-tag">CSRF</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/command-execution/"><div class="lab-card-body"><div class="lab-card-title">Command Execution</div><div class="lab-card-tags"><span class="lab-tag">SQLi</span><span class="lab-tag">RCE</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/logical-attacks/"><div class="lab-card-body"><div class="lab-card-title">Logical Attacks</div><div class="lab-card-tags"><span class="lab-tag">Business Logic</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/OWASPTOP10/information-disclosure/"><div class="lab-card-body"><div class="lab-card-title">Information Disclosure</div><div class="lab-card-tags"><span class="lab-tag">Утечки</span><span class="lab-tag">Debug</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
+
+### Примеры и кейсы
+
+<div class="lab-grid">
+<a class="lab-card" href="materials/examples/exmpl/"><div class="lab-card-body"><div class="lab-card-title">Cases — разбор инцидентов ИБ</div><div class="lab-card-tags"><span class="lab-tag">Кейсы</span><span class="lab-tag">Анализ</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/examples/supply_chain_attacks/"><div class="lab-card-body"><div class="lab-card-title">Supply Chain Attacks</div><div class="lab-card-tags"><span class="lab-tag">SolarWinds</span><span class="lab-tag">Log4Shell</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/examples/PrintNightmare/"><div class="lab-card-body"><div class="lab-card-title">PrintNightmare</div><div class="lab-card-tags"><span class="lab-tag">CVE-2021-34527</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/examples/Multisignature/"><div class="lab-card-body"><div class="lab-card-title">MultiSig — мультиподпись</div><div class="lab-card-tags"><span class="lab-tag">Crypto</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/examples/RA/"><div class="lab-card-body"><div class="lab-card-title">Risk Analysis — пример отчёта</div><div class="lab-card-tags"><span class="lab-tag">RA</span><span class="lab-tag">Template</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>
+
+### Справочники и шпаргалки
+
+<div class="lab-grid">
 <a class="lab-card" href="materials/appsec_tt/"><div class="lab-card-body"><div class="lab-card-title">AppSec Toolchain — классификация инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">DAST</span><span class="lab-tag">SCA</span><span class="lab-tag">SBOM</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span><span class="lab-tag">CI/CD</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GIT.md"><div class="lab-card-body"><div class="lab-card-title">CheatSheets — шпаргалки</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">YAML</span><span class="lab-tag">.gitignore</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/ports/"><div class="lab-card-body"><div class="lab-card-title">Порты и протоколы</div><div class="lab-card-tags"><span class="lab-tag">TCP</span><span class="lab-tag">UDP</span><span class="lab-tag">Сервисы</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GIT/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Git</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_DOCKER/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Docker</div><div class="lab-card-tags"><span class="lab-tag">Docker</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_YAML/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: YAML</div><div class="lab-card-tags"><span class="lab-tag">YAML</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: HTTP Security Headers</div><div class="lab-card-tags"><span class="lab-tag">CSP</span><span class="lab-tag">HSTS</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Dockerfile Security</div><div class="lab-card-tags"><span class="lab-tag">Hardening</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: GitHub Actions Security</div><div class="lab-card-tags"><span class="lab-tag">CI/CD</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GH_CLI/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">gh</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GITIGNORE/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: .gitignore</div><div class="lab-card-tags"><span class="lab-tag">Шаблоны</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: .dockerignore</div><div class="lab-card-tags"><span class="lab-tag">Шаблоны</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="materials/lectures/fintech_ru/"><div class="lab-card-body"><div class="lab-card-title">Лекция: Fintech по-русски</div><div class="lab-card-tags"><span class="lab-tag">FinTech</span><span class="lab-tag">ИБ</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="materials/troubleshooting/"><div class="lab-card-body"><div class="lab-card-title">Troubleshooting — частые проблемы</div><div class="lab-card-tags"><span class="lab-tag">FAQ</span><span class="lab-tag">Ошибки</span><span class="lab-tag">Решения</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 

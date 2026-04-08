@@ -1,5 +1,5 @@
 ---
-title: "OWASP Information Disclosure — утечки данных, заголовки и логи"
+title: "Information Disclosure — OWASP | Курс AppSec"
 description: "OWASP Top 10 раскрытие данных: утечки конфиденциальной информации через заголовки, логи, stack traces и ошибки конфигурации."
 keywords: "OWASP, утечка данных, information disclosure, AppSec, конфиденциальность, заголовки, логи, stack trace, sensitive data exposure"
 ---

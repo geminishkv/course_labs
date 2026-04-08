@@ -1,5 +1,5 @@
 ---
-title: "OWASP Authorization — контроль доступа, IDOR и эскалация привилегий"
+title: "Authorization — OWASP | Курс AppSec"
 description: "OWASP Top 10 авторизация: нарушения контроля доступа — IDOR, эскалация привилегий, RBAC и практические методы защиты приложений."
 keywords: "OWASP, авторизация, authorization, контроль доступа, AppSec, RBAC, привилегии, IDOR, broken access control, эскалация, веб-безопасность"
 ---

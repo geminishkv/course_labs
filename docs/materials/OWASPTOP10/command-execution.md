@@ -1,5 +1,5 @@
 ---
-title: "OWASP Command Execution — SQL injection, OS injection, SSTI и XXE"
+title: "Command Execution — OWASP | Курс AppSec"
 description: "OWASP Top 10 инъекции: SQL injection, OS command injection, SSTI и XXE — векторы RCE-атак и практические методы защиты AppSec."
 keywords: "OWASP, SQL injection, OS injection, SSTI, XXE, AppSec, RCE, инъекции, уязвимости, command execution, Remote Code Execution"
 ---

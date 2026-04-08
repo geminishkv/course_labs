@@ -1,5 +1,5 @@
 ---
-title: "OWASP Logical Attacks — атаки на бизнес-логику и race condition"
+title: "Logical Attacks — OWASP | Курс AppSec"
 description: "OWASP Top 10 логические атаки: обход бизнес-логики, race condition, манипуляция платёжными потоками и обход валидации данных."
 keywords: "OWASP, бизнес-логика, logical attacks, AppSec, race condition, обход валидации, business logic, TOCTOU, веб-безопасность"
 ---

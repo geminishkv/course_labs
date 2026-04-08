@@ -1,5 +1,5 @@
 ---
-title: "Dockerfile Security Best Practices — безопасность контейнеров"
+title: "CheatSheet: Dockerfile Security | Курс AppSec"
 description: "Dockerfile security: USER, multi-stage, distroless, hadolint, pinning versions — лучшие практики безопасной контейнеризации."
 keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER, AppSec, контейнеры, CIS Benchmark"
 ---

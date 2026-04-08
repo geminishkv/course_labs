@@ -1,5 +1,5 @@
 ---
-title: "Шпаргалка YAML — синтаксис для CI/CD, Docker Compose и Kubernetes"
+title: "CheatSheet: YAML синтаксис | Курс AppSec"
 description: "YAML шпаргалка: синтаксис, типы данных, якоря, многострочные строки и валидация для CI/CD, Docker Compose и GitHub Actions."
 keywords: "YAML, cheatsheet, шпаргалка, синтаксис, CI/CD, Docker Compose, GitHub Actions, Kubernetes, DevSecOps, AppSec, якоря, валидация"
 ---

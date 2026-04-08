@@ -1,7 +1,7 @@
 ---
 hide:
   - toc
-title: "Шпаргалка GitHub CLI — команды gh для PR, issues и releases"
+title: "CheatSheet: GitHub CLI | Курс AppSec"
 description: "GitHub CLI шпаргалка: команды gh для управления PR, issues, releases, репозиториями и аутентификации в DevSecOps-конвейере."
 keywords: "GitHub CLI, gh, cheatsheet, шпаргалка, pull request, issues, releases, DevOps, AppSec, DevSecOps, аутентификация"
 ---

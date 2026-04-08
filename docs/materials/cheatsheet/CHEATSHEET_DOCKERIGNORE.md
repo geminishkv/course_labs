@@ -1,7 +1,7 @@
 ---
 hide:
   - toc
-title: "Шпаргалка .dockerignore — правила исключения файлов при сборке Docker"
+title: "CheatSheet: .dockerignore | Курс AppSec"
 description: ".dockerignore шпаргалка: синтаксис и паттерны исключения файлов при сборке Docker-образов — шаблоны для AppSec и DevOps проектов."
 keywords: "dockerignore, Docker, cheatsheet, шпаргалка, сборка образа, исключение файлов, паттерны, AppSec, DevOps, безопасность"
 ---

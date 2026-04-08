@@ -148,6 +148,17 @@ $ python -m mkdocs serve --livereload
 $ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
 ```
 
+* Перегенерация Mermaid-диаграмм (при изменении `.mmd` файлов)
+
+```bash
+$ cd docs/artifacts/diagrams
+$ for f in *.mmd; do
+    npx --yes @mermaid-js/mermaid-cli \
+      -i "$f" -o "${f%.mmd}.svg" \
+      -c mermaid-config.json -b transparent
+  done
+```
+
 * Очистка локального репозитория
 
 ```bash

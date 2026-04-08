@@ -160,21 +160,6 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Setup Node
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8  # v4.0.2
-        with:
-          node-version: "22"
-
-      - name: Render Mermaid diagrams to SVG
-        run: |
-          for f in docs/artifacts/diagrams/*.mmd; do
-            name="${f%.mmd}"
-            npx --yes @mermaid-js/mermaid-cli \
-              -i "$f" -o "${name}.svg" \
-              -c docs/artifacts/diagrams/mermaid-config.json \
-              -b transparent
-          done
-
       - name: Build MkDocs site (preview)
         run: mkdocs build --site-dir site
         env:
@@ -221,21 +206,6 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Setup Node
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8  # v4.0.2
-        with:
-          node-version: "22"
-
-      - name: Render Mermaid diagrams to SVG
-        run: |
-          for f in docs/artifacts/diagrams/*.mmd; do
-            name="${f%.mmd}"
-            npx --yes @mermaid-js/mermaid-cli \
-              -i "$f" -o "${name}.svg" \
-              -c docs/artifacts/diagrams/mermaid-config.json \
-              -b transparent
-          done
 
       - name: Build MkDocs site
         run: mkdocs build --site-dir site

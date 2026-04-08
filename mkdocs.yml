@@ -118,12 +118,10 @@ watch:
 extra_css:
   - stylesheets/tokens.css
   - stylesheets/header.css
-  - stylesheets/footer.css
   - stylesheets/sidebar.css
   - stylesheets/typeset.css
   - stylesheets/layout.css
-  - stylesheets/notice-bar.css
-  - stylesheets/cookie-banner.css
+  - stylesheets/banners.css
 
 extra_javascript:
   - javascripts/custom-title.js

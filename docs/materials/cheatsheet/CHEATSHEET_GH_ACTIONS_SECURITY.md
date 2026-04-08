@@ -1,7 +1,7 @@
 ---
 title: "CheatSheet: GitHub Actions Security | Курс AppSec"
 description: "GitHub Actions security: secrets, OIDC, permissions, pinning actions, injection — защита CI/CD конвейера от компрометации."
-keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply chain, AppSec, DevSecOps, пайплайн"
+keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply chain, AppSec, DevSecOps, пайплайн, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 {% raw %}

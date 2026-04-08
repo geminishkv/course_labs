@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:yandex="http://news.yandex.ru"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru"
+     version="2.0">
+  <channel>
+    <title>Application Security &amp; DevSecOps Course</title>
+    <link>https://course.geminishkv.tech</link>
+    <description>Практический курс по прикладной безопасности приложений: OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD и анализ рисков ИБ.</description>
+    <language>ru</language>
+    <turbo:analytics id="108454150" type="Yandex"/>
+
+    <item turbo="true">
+      <title>Курс AppSec — практическая безопасность приложений</title>
+      <link>https://course.geminishkv.tech/</link>
+      <turbo:content><![CDATA[
+        <header><h1>Application Security &amp; DevSecOps Course</h1><h2>Практический курс по прикладной безопасности приложений</h2></header>
+        <p>10 лабораторных работ + итоговый pet-project. Прогрессия: Git → Linux → Nmap → Docker → CIS Benchmark → SAST/SCA → DAST → CI/CD → Risk Analysis.</p>
+        <p>Автор: Elijah S Shmakov (geminishkv) — Application Security Teamlead.</p>
+      ]]></turbo:content>
+    </item>
+
+    <item turbo="true">
+      <title>Лаб. №1 — Git SCM: настройка окружения и первый коммит</title>
+      <link>https://course.geminishkv.tech/labs/basic/lab01/</link>
+      <turbo:content><![CDATA[
+        <header><h1>GitSCM — подготовка рабочего окружения</h1></header>
+        <p>Изучение систем контроля версий: commit, push, pull request, rebase, GPG-подпись коммитов, GitHub CLI.</p>
+      ]]></turbo:content>
+    </item>
+
+    <item turbo="true">
+      <title>Лаб. №7 — SAST, SCA и Secret Detection</title>
+      <link>https://course.geminishkv.tech/labs/basic/lab07/</link>
+      <turbo:content><![CDATA[
+        <header><h1>SAST, SCA и Secret Detection</h1></header>
+        <p>Аудит безопасности кода: Semgrep, Checkov, OWASP Dependency-Check, Gitleaks, TruffleHog. Поиск уязвимостей в исходном коде и зависимостях.</p>
+      ]]></turbo:content>
+    </item>
+
+    <item turbo="true">
+      <title>Лаб. №9 — DevSecOps CI/CD конвейер на GitHub Actions</title>
+      <link>https://course.geminishkv.tech/labs/basic/lab09/</link>
+      <turbo:content><![CDATA[
+        <header><h1>DevSecOps CI/CD конвейер</h1></header>
+        <p>Построение полного DevSecOps пайплайна: SAST, SCA, Container Scan, DAST, Quality Gate, артефакты, отчёты.</p>
+      ]]></turbo:content>
+    </item>
+
+    <item turbo="true">
+      <title>Fintech по-русски — лекция AppSec</title>
+      <link>https://course.geminishkv.tech/materials/lectures/fintech_ru/</link>
+      <turbo:content><![CDATA[
+        <header><h1>«Где деньги, Лебовски?» — Fintech по-русски</h1></header>
+        <p>Рынок финтеха в РФ, регулирование (ЦБ, Росфинмониторинг), AML/ПОД-ФТ, PCI DSS, ГОСТ 57580, FinDevSecOps, Security Champion.</p>
+      ]]></turbo:content>
+    </item>
+
+    <item turbo="true">
+      <title>OWASP Top 10 CI/CD Risks</title>
+      <link>https://course.geminishkv.tech/materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/</link>
+      <turbo:content><![CDATA[
+        <header><h1>OWASP Top 10 CI/CD Risks</h1></header>
+        <p>Риски безопасности CI/CD конвейеров: supply chain атаки, утечка секретов, небезопасные пайплайны, poisoned artifacts.</p>
+      ]]></turbo:content>
+    </item>
+
+  </channel>
+</rss>

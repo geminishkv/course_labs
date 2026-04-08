@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting — решение проблем в лабораторных работах AppSec"
 description: "Troubleshooting курса AppSec: решения частых ошибок Git, Docker, Python, CI/CD, SAST и DAST при выполнении лабораторных работ."
-keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/CD, SAST, DAST, решения, отладка, лабораторные работы"
+keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/CD, SAST, DAST, решения, отладка, лабораторные работы, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

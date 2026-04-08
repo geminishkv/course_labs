@@ -1,7 +1,7 @@
 ---
 title: "Введение в CI/CD и GitHub Actions | Курс AppSec"
 description: "Основы CI/CD: концепция непрерывной интеграции, структура GitHub Actions workflow, триггеры, секреты и пример DevSecOps пайплайна."
-keywords: "CI/CD, GitHub Actions, workflow, YAML, DevSecOps, пайплайн, continuous integration, continuous delivery, AppSec, курс AppSec"
+keywords: "CI/CD, GitHub Actions, workflow, YAML, DevSecOps, пайплайн, continuous integration, continuous delivery, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

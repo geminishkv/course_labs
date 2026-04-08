@@ -1,7 +1,7 @@
 ---
 title: "Лицензии Open Source — типы MIT, GPL, Apache, BSD для AppSec"
 description: "Лицензии Open Source в AppSec: сравнение MIT, GPL, Apache, BSD, SSPL, BUSL — типы, ограничения и выбор для безопасной разработки."
-keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, AppSec, DevSecOps, свободное ПО, SCA, license compliance"
+keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, AppSec, DevSecOps, свободное ПО, SCA, license compliance, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

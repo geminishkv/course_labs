@@ -4,7 +4,7 @@ hide:
 
 title: "Курс AppSec — практическая безопасность приложений и DevSecOps"
 description: "Курс AppSec: лабораторные работы по безопасности приложений — OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD и анализ рисков ИБ."
-keywords: "AppSec, курс AppSec, DevSecOps, безопасность приложений, лабораторные работы, OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD, GitHub Actions, анализ рисков"
+keywords: "AppSec, курс AppSec, DevSecOps, безопасность приложений, лабораторные работы, OWASP Top 10, SAST, DAST, SCA, Docker, CI/CD, GitHub Actions, анализ рисков, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="no-section-nums" markdown="1">
@@ -42,6 +42,10 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <img src="https://img.shields.io/badge/Trivy-1904DA?style=flat&logo=aquasecurity&logoColor=white" alt="Trivy">
 <img src="https://img.shields.io/badge/OWASP_ZAP-333333?style=flat" alt="OWASP ZAP">
 <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions">
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/Checkov-333333?style=flat" alt="Checkov">
+<img src="https://img.shields.io/badge/Gitleaks-333333?style=flat" alt="Gitleaks">
+<img src="https://img.shields.io/badge/Bandit-333333?style=flat" alt="Bandit">
 
 </div>
 

@@ -1,7 +1,7 @@
 ---
 title: "Настройка Git, GPG и GitHub CLI | Курс AppSec"
 description: "Настройка Git config, SSH-ключей, GnuPG для подписания коммитов и GitHub CLI — подготовка к лабораторным работам AppSec."
-keywords: "Git, git config, SSH, GPG, GnuPG, GitHub CLI, smimesign, подпись коммитов, AppSec, курс AppSec"
+keywords: "Git, git config, SSH, GPG, GnuPG, GitHub CLI, smimesign, подпись коммитов, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

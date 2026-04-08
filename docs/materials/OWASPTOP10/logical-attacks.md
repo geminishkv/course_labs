@@ -1,7 +1,7 @@
 ---
 title: "Logical Attacks — OWASP | Курс AppSec"
 description: "OWASP Top 10 логические атаки: обход бизнес-логики, race condition, манипуляция платёжными потоками и обход валидации данных."
-keywords: "OWASP, бизнес-логика, logical attacks, AppSec, race condition, обход валидации, business logic, TOCTOU, веб-безопасность"
+keywords: "OWASP, бизнес-логика, logical attacks, AppSec, race condition, обход валидации, business logic, TOCTOU, веб-безопасность, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

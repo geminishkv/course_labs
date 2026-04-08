@@ -1,7 +1,7 @@
 ---
 title: "Release Notes — история изменений курса AppSec"
 description: "Release Notes курса AppSec: полная история обновлений лабораторных работ, материалов по OWASP, DevSecOps и анализу рисков ИБ."
-keywords: "release notes, changelog, AppSec, лабораторные работы, обновления, DevSecOps, история изменений, версии"
+keywords: "release notes, changelog, AppSec, лабораторные работы, обновления, DevSecOps, история изменений, версии, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

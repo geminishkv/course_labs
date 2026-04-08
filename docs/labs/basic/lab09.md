@@ -1,7 +1,7 @@
 ---
 title: "Лаб. №9 — DevSecOps CI/CD: GitHub Actions | Курс AppSec"
 description: "Лабораторная работа №9 AppSec: DevSecOps-конвейер на GitHub Actions — интеграция Semgrep, Trivy и OWASP ZAP в CI/CD pipeline."
-keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, конвейер, pipeline, лабораторная работа, курс AppSec"
+keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, конвейер, pipeline, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

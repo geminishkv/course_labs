@@ -3,7 +3,7 @@ hide:
   - toc
 title: "CheatSheet: GitHub CLI | Курс AppSec"
 description: "GitHub CLI шпаргалка: команды gh для управления PR, issues, releases, репозиториями и аутентификации в DevSecOps-конвейере."
-keywords: "GitHub CLI, gh, cheatsheet, шпаргалка, pull request, issues, releases, DevOps, AppSec, DevSecOps, аутентификация"
+keywords: "GitHub CLI, gh, cheatsheet, шпаргалка, pull request, issues, releases, DevOps, AppSec, DevSecOps, аутентификация, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

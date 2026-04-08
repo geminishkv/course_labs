@@ -1,7 +1,7 @@
 ---
 title: "CheatSheet: HTTP Security Headers | Курс AppSec"
 description: "HTTP Security Headers: CSP, HSTS, X-Frame-Options, X-Content-Type-Options — настройка для nginx и Express с примерами."
-keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, nginx, Express, AppSec, веб-безопасность"
+keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, nginx, Express, AppSec, веб-безопасность, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

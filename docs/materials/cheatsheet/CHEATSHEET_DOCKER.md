@@ -3,7 +3,7 @@ hide:
   - toc
 title: "CheatSheet: Docker команды | Курс AppSec"
 description: "Docker шпаргалка: команды для образов, контейнеров, сетей, томов и Docker Compose — справочник для DevOps и AppSec курса."
-keywords: "Docker, cheatsheet, шпаргалка, контейнер, образ, Docker Compose, DevOps, AppSec, тома, сети, Dockerfile, volumes"
+keywords: "Docker, cheatsheet, шпаргалка, контейнер, образ, Docker Compose, DevOps, AppSec, тома, сети, Dockerfile, volumes, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

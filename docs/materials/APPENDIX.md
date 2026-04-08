@@ -4,7 +4,7 @@ hide:
 
 title: "Приложение — справочные материалы и команды для курса AppSec"
 description: "AppSec справочник: команды Git, Docker, Linux, Python, pip и venv — шпаргалки и утилиты для выполнения лабораторных работ курса."
-keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпаргалка, справочник, cheatsheet, лабораторные работы"
+keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпаргалка, справочник, cheatsheet, лабораторные работы, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

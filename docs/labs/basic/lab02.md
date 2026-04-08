@@ -1,7 +1,7 @@
 ---
 title: "Лаб. №2 — Linux: права доступа и управление процессами | Курс AppSec"
 description: "Лабораторная работа №2 курса AppSec: права доступа Linux (chmod, chown), управление процессами, Bash-скрипты и команды Unix."
-keywords: "Linux, Unix, Bash, права доступа, процессы, AppSec, лабораторная работа, chmod, chown, ps, kill, курс AppSec"
+keywords: "Linux, Unix, Bash, права доступа, процессы, AppSec, лабораторная работа, chmod, chown, ps, kill, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

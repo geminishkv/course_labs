@@ -1,7 +1,7 @@
 ---
 title: "Подготовка рабочего окружения — VirtualBox и Linux | Курс AppSec"
 description: "Установка VirtualBox, развёртывание Ubuntu/Fedora, настройка Git, Docker, GitHub CLI и подготовка окружения для лабораторных работ AppSec."
-keywords: "VirtualBox, виртуальная машина, Ubuntu, Fedora, Linux, Docker, Git, GitHub CLI, AppSec, DevSecOps, рабочее окружение, курс AppSec"
+keywords: "VirtualBox, виртуальная машина, Ubuntu, Fedora, Linux, Docker, Git, GitHub CLI, AppSec, DevSecOps, рабочее окружение, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

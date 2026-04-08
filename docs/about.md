@@ -4,7 +4,7 @@ hide:
 
 title: "О проекте — цели и структура курса AppSec МГТУ"
 description: "AppSec курс МГТУ: принципы, структура и цели лабораторных работ по прикладной безопасности приложений, DevSecOps и анализу рисков ИБ."
-keywords: "AppSec, курс МГТУ, DevSecOps, о проекте, структура курса, лабораторные работы, информационная безопасность, OWASP, анализ рисков"
+keywords: "AppSec, курс МГТУ, DevSecOps, о проекте, структура курса, лабораторные работы, информационная безопасность, OWASP, анализ рисков, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -3,7 +3,7 @@ hide:
   - toc
 title: "CheatSheet: Git команды | Курс AppSec"
 description: "Git шпаргалка: основные команды SCM — ветки, коммиты, rebase, stash, cherry-pick, remote и merge для лабораторных работ AppSec."
-keywords: "Git, SCM, cheatsheet, шпаргалка, коммит, ветка, rebase, stash, cherry-pick, merge, remote, AppSec, лабораторные работы"
+keywords: "Git, SCM, cheatsheet, шпаргалка, коммит, ветка, rebase, stash, cherry-pick, merge, remote, AppSec, лабораторные работы, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

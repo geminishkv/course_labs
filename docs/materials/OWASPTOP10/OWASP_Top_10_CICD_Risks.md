@@ -3,7 +3,7 @@ hide:
   - toc
 title: "OWASP Top 10 CI/CD Risks | Курс AppSec"
 description: "OWASP Top 10 CI/CD: риски безопасности конвейеров — компрометация SCM, ненадёжные зависимости и утечка секретов в pipeline."
-keywords: "OWASP, CI/CD, DevSecOps, риски, GitHub Actions, pipeline, секреты, AppSec, SCM, supply chain, зависимости, конвейер"
+keywords: "OWASP, CI/CD, DevSecOps, риски, GitHub Actions, pipeline, секреты, AppSec, SCM, supply chain, зависимости, конвейер, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

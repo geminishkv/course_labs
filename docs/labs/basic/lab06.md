@@ -1,7 +1,7 @@
 ---
 title: "Лаб. №6 — Docker CIS Benchmark и Trivy | Курс AppSec"
 description: "Лабораторная работа №6 AppSec: аудит безопасности Docker по CIS Benchmark — docker-bench-security и hardening контейнеров."
-keywords: "Docker, CIS Benchmark, аудит, безопасность, hardening, docker-bench-security, AppSec, лабораторная работа, курс AppSec, контейнер"
+keywords: "Docker, CIS Benchmark, аудит, безопасность, hardening, docker-bench-security, AppSec, лабораторная работа, курс AppSec, контейнер, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

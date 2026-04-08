@@ -1,7 +1,7 @@
 ---
 title: "Тест Вариант 2 — Fintech по-русски | Курс AppSec"
 description: "Тест (вариант 2) по лекции Fintech: Open Banking, FinDevSecOps, цифровой рубль, ГОСТ 57580 аудит и Incident Response."
-keywords: "тест, Fintech, финтех, Open Banking, FinDevSecOps, цифровой рубль, ГОСТ 57580, Incident Response, курс AppSec"
+keywords: "тест, Fintech, финтех, Open Banking, FinDevSecOps, цифровой рубль, ГОСТ 57580, Incident Response, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

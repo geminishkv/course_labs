@@ -1,7 +1,7 @@
 ---
 title: "Лаб. №5 — Docker: Dockerfile, образы и контейнеризация | Курс AppSec"
 description: "Лабораторная работа №5 AppSec: создание Docker-образов, написание Dockerfile, Docker Compose и контейнеризация приложений."
-keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, DevOps, AppSec, образ, контейнер, лабораторная работа, курс AppSec"
+keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, DevOps, AppSec, образ, контейнер, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

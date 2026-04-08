@@ -1,7 +1,7 @@
 ---
 title: "Тест №5 — Git, Linux, Nmap, Docker, DAST и риски ИБ | Курс AppSec"
 description: "Тест №5 курса AppSec: 10 вопросов для проверки знаний по Git, Linux, Nmap, Docker, DAST и рискам информационной безопасности."
-keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, риски ИБ, лабораторная работа, контрольные вопросы, курс AppSec"
+keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, риски ИБ, лабораторная работа, контрольные вопросы, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

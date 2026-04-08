@@ -1,7 +1,7 @@
 ---
 title: "Тест №1 — Git, Linux, Nmap, Docker, SAST и риски ИБ | Курс AppSec"
 description: "Тест №1 курса AppSec: 10 вопросов для проверки знаний по Git, Linux, Nmap, Docker, SAST и анализу рисков ИБ из лабораторных."
-keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec"
+keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

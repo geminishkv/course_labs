@@ -1,7 +1,7 @@
 ---
 title: "Основы Docker и контейнеризации | Курс AppSec"
 description: "Введение в Docker: контейнеры vs VM, образы, Dockerfile, базовые команды и Docker Compose — подготовка к лабораторным Lab 05-06."
-keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, образ, контейнер, volume, registry, AppSec, курс AppSec"
+keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, образ, контейнер, volume, registry, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

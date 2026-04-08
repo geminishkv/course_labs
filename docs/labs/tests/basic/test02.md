@@ -1,7 +1,7 @@
 ---
 title: "Тест №2 — Linux, Nmap, Docker, SCA, DAST и риски ИБ | Курс AppSec"
 description: "Тест №2 курса AppSec: 10 вопросов для проверки знаний по Linux, Nmap, Docker, SCA, DAST и анализу рисков информационной безопасности."
-keywords: "тест, AppSec, Linux, Nmap, Docker, SCA, DAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec"
+keywords: "тест, AppSec, Linux, Nmap, Docker, SCA, DAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

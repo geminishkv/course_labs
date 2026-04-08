@@ -4,7 +4,7 @@ hide:
 
 title: "Политика безопасности | Курс AppSec"
 description: "Security Policy проекта AppSec: ответственное раскрытие уязвимостей, правила сообщения об инцидентах и контакты команды."
-keywords: "политика безопасности, уязвимости, ответственное раскрытие, AppSec, security policy, responsible disclosure, инциденты"
+keywords: "политика безопасности, уязвимости, ответственное раскрытие, AppSec, security policy, responsible disclosure, инциденты, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

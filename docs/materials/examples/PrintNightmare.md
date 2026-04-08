@@ -3,7 +3,7 @@ hide:
   - toc
 title: "PrintNightmare — CVE-2021-34527 | Курс AppSec"
 description: "PrintNightmare (CVE-2021-34527): анализ критической RCE-уязвимости Windows Print Spooler — вектор атаки, эксплуатация и защита."
-keywords: "PrintNightmare, CVE-2021-34527, Windows, Print Spooler, уязвимость, RCE, AppSec, эксплуатация, Remote Code Execution, анализ"
+keywords: "PrintNightmare, CVE-2021-34527, Windows, Print Spooler, уязвимость, RCE, AppSec, эксплуатация, Remote Code Execution, анализ, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -1,7 +1,7 @@
 ---
 title: "Порты и протоколы для AppSec — справочник"
 description: "Справочник сетевых портов и протоколов для задач AppSec, DevSecOps и пентестинга: веб, базы данных, CI/CD, контейнеры."
-keywords: "порты, протоколы, AppSec, DevSecOps, сканирование, Nmap, сетевая безопасность, TCP, UDP, справочник"
+keywords: "порты, протоколы, AppSec, DevSecOps, сканирование, Nmap, сетевая безопасность, TCP, UDP, справочник, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

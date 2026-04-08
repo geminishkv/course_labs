@@ -36,6 +36,10 @@
   <!-- ─── Основные мета ────────────────────────────────────────────────────── -->
   <meta name="author"    content="{{ config.site_author }}">
   <meta name="copyright" content="© 2026 Elijah S Shmakov (geminishkv)">
+  <meta name="geo.region" content="RU-MOW">
+  <meta name="geo.placename" content="Москва">
+  <meta name="geo.position" content="55.7558;37.6173">
+  <meta name="ICBM" content="55.7558, 37.6173">
   <meta name="robots"    content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
   {% if page.meta.keywords %}
@@ -189,6 +193,8 @@
       "Docker Security", "CI/CD Security", "GitHub Actions"
     ],
     "sameAs": [
+      "https://geminishkv.tech",
+      "https://course.geminishkv.tech",
       "https://github.com/geminishkv",
       "https://t.me/shmakovis_appsec",
       "https://www.linkedin.com/in/geminishkvdev",
@@ -269,11 +275,25 @@
         "name": "Elijah S Shmakov"
       }
     },
-    "provider": {
-      "@type": "EducationalOrganization",
-      "@id": "{{ config.site_url }}#organization",
-      "name": "AppSec Course"
-    },
+    "provider": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "{{ config.site_url }}#organization",
+        "name": "AppSec Course"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "МГТУ им. Н.Э. Баумана",
+        "alternateName": "Bauman Moscow State Technical University",
+        "url": "https://bmstu.ru"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "МФТИ",
+        "alternateName": "Moscow Institute of Physics and Technology",
+        "url": "https://mipt.ru"
+      }
+    ],
     "image": {
       "@type": "ImageObject",
       "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg"

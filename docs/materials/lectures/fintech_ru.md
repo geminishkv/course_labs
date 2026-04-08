@@ -1,7 +1,7 @@
 ---
 title: "Где деньги, Лебовски? — Fintech по-русски | Лекция AppSec"
 description: "Лекция по Fintech в России: рынок, регуляторы, AML/ПОД-ФТ, compliance, FinDevSecOps, Security Champion и вызовы финтех-индустрии."
-keywords: "Fintech, финтех, Россия, AML, ПОД-ФТ, compliance, FinDevSecOps, Security Champion, AppSec, ЦБ РФ, PCI DSS, ГОСТ 57580, KYC"
+keywords: "Fintech, финтех, Россия, AML, ПОД-ФТ, compliance, FinDevSecOps, Security Champion, AppSec, ЦБ РФ, PCI DSS, ГОСТ 57580, KYC, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

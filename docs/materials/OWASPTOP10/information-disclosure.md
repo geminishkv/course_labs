@@ -1,7 +1,7 @@
 ---
 title: "Information Disclosure — OWASP | Курс AppSec"
 description: "OWASP Top 10 раскрытие данных: утечки конфиденциальной информации через заголовки, логи, stack traces и ошибки конфигурации."
-keywords: "OWASP, утечка данных, information disclosure, AppSec, конфиденциальность, заголовки, логи, stack trace, sensitive data exposure"
+keywords: "OWASP, утечка данных, information disclosure, AppSec, конфиденциальность, заголовки, логи, stack trace, sensitive data exposure, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

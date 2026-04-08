@@ -1,7 +1,7 @@
 ---
 title: "Лаб. №8 — DAST: OWASP ZAP и динамический анализ | Курс AppSec"
 description: "Лабораторная работа №8 AppSec: динамический анализ DAST с OWASP ZAP — тестирование веб-приложений на уязвимости в runtime."
-keywords: "DAST, OWASP ZAP, динамическое тестирование, уязвимости, AppSec, веб-безопасность, dynamic analysis, лабораторная работа, курс AppSec"
+keywords: "DAST, OWASP ZAP, динамическое тестирование, уязвимости, AppSec, веб-безопасность, dynamic analysis, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

@@ -1,7 +1,7 @@
 ---
 title: "Supply Chain Attacks — атаки на цепочку поставок | Курс AppSec"
 description: "Supply chain атаки: SolarWinds, Log4Shell, XZ Utils, Codecov, event-stream — разбор реальных инцидентов с timeline и уроками."
-keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, event-stream, AppSec, DevSecOps, кейсы ИБ"
+keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, event-stream, AppSec, DevSecOps, кейсы ИБ, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

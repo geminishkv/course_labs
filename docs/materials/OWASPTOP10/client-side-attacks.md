@@ -1,7 +1,7 @@
 ---
 title: "Client-side Attacks — OWASP | Курс AppSec"
 description: "OWASP Top 10 клиентские атаки: XSS (stored, reflected, DOM), CSRF, Clickjacking — векторы эксплуатации и защита приложений."
-keywords: "OWASP, XSS, CSRF, Clickjacking, клиентские атаки, AppSec, веб-безопасность, DOM, cross-site scripting, stored XSS, reflected XSS"
+keywords: "OWASP, XSS, CSRF, Clickjacking, клиентские атаки, AppSec, веб-безопасность, DOM, cross-site scripting, stored XSS, reflected XSS, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

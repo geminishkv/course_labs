@@ -1,7 +1,7 @@
 ---
 title: "Authentication — OWASP | Курс AppSec"
 description: "OWASP Top 10 аутентификация: слабые пароли, отсутствие MFA, перехват сессий — уязвимости и методы защиты веб-приложений."
-keywords: "OWASP, аутентификация, authentication, AppSec, MFA, безопасность, сессии, пароли, brute force, broken authentication, веб-безопасность"
+keywords: "OWASP, аутентификация, authentication, AppSec, MFA, безопасность, сессии, пароли, brute force, broken authentication, веб-безопасность, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

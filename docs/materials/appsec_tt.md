@@ -1,7 +1,7 @@
 ---
 title: "AppSec Toolchain — расшифровка SAST, DAST, SCA, SBOM, IAST"
 description: "AppSec инструменты: расшифровка аббревиатур SAST, DAST, SCA, SBOM, IAST, RASP — класс, назначение и область применения в DevSecOps."
-keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инструменты, аббревиатуры, статический анализ, динамический анализ, toolchain"
+keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инструменты, аббревиатуры, статический анализ, динамический анализ, toolchain, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

@@ -1,7 +1,7 @@
 ---
 title: "Политика конфиденциальности | Курс AppSec"
 description: "Политика конфиденциальности сайта Application Security Course — порядок обработки и защиты персональных данных пользователей."
-keywords: "политика конфиденциальности, персональные данные, cookie, AppSec Course, geminishkv"
+keywords: "политика конфиденциальности, персональные данные, cookie, AppSec Course, geminishkv, Шмаков Илья, Elijah Shmakov, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

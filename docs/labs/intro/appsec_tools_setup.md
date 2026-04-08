@@ -1,7 +1,7 @@
 ---
 title: "Установка AppSec-инструментов | Курс AppSec"
 description: "Установка Semgrep, Trivy, Gitleaks, OWASP ZAP, Checkov и Hadolint для лабораторных работ курса AppSec на Ubuntu, Fedora и macOS."
-keywords: "установка, Semgrep, Trivy, Gitleaks, OWASP ZAP, Checkov, Hadolint, Bandit, AppSec, DevSecOps, курс AppSec"
+keywords: "установка, Semgrep, Trivy, Gitleaks, OWASP ZAP, Checkov, Hadolint, Bandit, AppSec, DevSecOps, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

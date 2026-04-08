@@ -3,7 +3,7 @@ hide:
   - toc
 title: "Risk Analysis — пример отчёта | Курс AppSec"
 description: "Анализ рисков ИБ: практический пример оценки уязвимостей HIGH/MEDIUM/LOW — вероятность угроз и меры устранения в AppSec."
-keywords: "анализ рисков, risk analysis, ИБ, уязвимости, оценка угроз, информационная безопасность, AppSec, HIGH, MEDIUM, LOW, матрица рисков"
+keywords: "анализ рисков, risk analysis, ИБ, уязвимости, оценка угроз, информационная безопасность, AppSec, HIGH, MEDIUM, LOW, матрица рисков, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

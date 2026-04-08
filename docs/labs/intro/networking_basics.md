@@ -1,7 +1,7 @@
 ---
 title: "Введение в сети и TCP/IP | Курс AppSec"
 description: "Основы сетевых технологий: модель OSI и TCP/IP, IP-адреса, порты, протоколы TCP/UDP, DNS и HTTP — подготовка к сканированию с Nmap."
-keywords: "TCP/IP, OSI, IP-адрес, порты, DNS, HTTP, HTTPS, TCP, UDP, сети, Nmap, AppSec, курс AppSec"
+keywords: "TCP/IP, OSI, IP-адрес, порты, DNS, HTTP, HTTPS, TCP, UDP, сети, Nmap, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="lab-hero">

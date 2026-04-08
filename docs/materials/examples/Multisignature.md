@@ -3,7 +3,7 @@ hide:
   - toc
 title: "MultiSig — мультиподпись и безопасность | Курс AppSec"
 description: "Мультиподпись в криптографии: схемы M-of-N подписей для защиты транзакций, протоколы Bitcoin multisig и практические примеры."
-keywords: "мультиподпись, multisig, криптография, Bitcoin, транзакции, AppSec, M-of-N, цифровая подпись, безопасность, блокчейн"
+keywords: "мультиподпись, multisig, криптография, Bitcoin, транзакции, AppSec, M-of-N, цифровая подпись, безопасность, блокчейн, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

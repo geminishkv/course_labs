@@ -1,7 +1,7 @@
 ---
 title: "CheatSheet: Dockerfile Security | Курс AppSec"
 description: "Dockerfile security: USER, multi-stage, distroless, hadolint, pinning versions — лучшие практики безопасной контейнеризации."
-keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER, AppSec, контейнеры, CIS Benchmark"
+keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER, AppSec, контейнеры, CIS Benchmark, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
 <div class="hero-section hero-section--compact">

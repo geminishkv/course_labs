@@ -1,18 +1,3 @@
----
-title: "Тест №5 — Git, Linux, Nmap, Docker, DAST и риски ИБ | Курс AppSec"
-description: "Тест №5 курса AppSec: 10 вопросов для проверки знаний по Git, Linux, Nmap, Docker, DAST и рискам информационной безопасности."
-keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, риски ИБ, лабораторная работа, контрольные вопросы, курс AppSec"
----
-
-<div class="hero-section hero-section--compact">
-  <div class="hero-content">
-    <h1 class="hero-title">Тест №5</h1>
-    <p class="hero-sub">Git · Linux · Nmap · Docker · DAST · Risk Analysis</p>
-  </div>
-</div>
-
-***
-
 !!! info "Инструкция"
     Выберите **один** правильный ответ на каждый вопрос. Ответы — в файле **Ответы**.
 
@@ -111,5 +96,3 @@ result = eval(request.args.get("formula"))
 - B) Разницу между локальной веткой и `origin`
 - C) ASCII-граф истории коммитов всех веток репозитория
 - D) Список всех тегов с аннотациями
-
-***

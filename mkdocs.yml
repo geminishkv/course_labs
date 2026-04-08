@@ -175,13 +175,18 @@ nav:
           - "Лабораторная работа №8": labs/basic/lab08.md
           - "Лабораторная работа №9": labs/basic/lab09.md
           - "Лабораторная работа №10": labs/basic/lab10.md
-          - "Тесты":
-              - "Тест №1": labs/tests/basic/test01.md
-              - "Тест №2": labs/tests/basic/test02.md
-              - "Тест №3": labs/tests/basic/test03.md
-              - "Тест №4": labs/tests/basic/test04.md
-              - "Тест №5": labs/tests/basic/test05.md
       - "pet_project": labs/pet_project.md
+  - "Тесты":
+      - "Лекционные тесты":
+          - "Fintech по-русски":
+              - "Вариант 1": labs/tests/lectures/test_fintech.md
+              - "Вариант 2": labs/tests/lectures/test_fintech_v2.md
+      - "Базовое ознакомление":
+          - "Вариант №1": labs/tests/basic/test01.md
+          - "Вариант №2": labs/tests/basic/test02.md
+          - "Вариант №3": labs/tests/basic/test03.md
+          - "Вариант №4": labs/tests/basic/test04.md
+          - "Вариант №5": labs/tests/basic/test05.md
   - "Материалы":
       - "Лекции":
           - "Fintech по-русски": materials/lectures/fintech_ru.md

@@ -1,18 +1,3 @@
----
-title: "Тест №1 — Git, Linux, Nmap, Docker, SAST и риски ИБ | Курс AppSec"
-description: "Тест №1 курса AppSec: 10 вопросов для проверки знаний по Git, Linux, Nmap, Docker, SAST и анализу рисков ИБ из лабораторных."
-keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec"
----
-
-<div class="hero-section hero-section--compact">
-  <div class="hero-content">
-    <h1 class="hero-title">Тест №1</h1>
-    <p class="hero-sub">Git · Linux · Nmap · Docker · SAST · Risk Analysis</p>
-  </div>
-</div>
-
-***
-
 !!! info "Инструкция"
     Выберите **один** правильный ответ на каждый вопрос. Ответы — в файле **Ответы**.
 
@@ -105,5 +90,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SAST, анализ рис
 - B) Сделать `git push --force` с пустым коммитом поверх
 - C) Немедленно ротировать скомпрометированные секреты, затем очистить историю через `git filter-repo` или BFG, затем force-push — секрет уже мог быть считан сразу после `push`
 - D) Сделать `git revert` последнего коммита
-
-***

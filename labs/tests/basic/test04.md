@@ -1,18 +1,3 @@
----
-title: "Тест №4 — Git, Linux, Nmap, Docker, SBOM и риски ИБ | Курс AppSec"
-description: "Тест №4 курса AppSec: 10 вопросов для проверки знаний по Git, Linux, Nmap, Docker, SBOM и анализу рисков информационной безопасности."
-keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec"
----
-
-<div class="hero-section hero-section--compact">
-  <div class="hero-content">
-    <h1 class="hero-title">Тест №4</h1>
-    <p class="hero-sub">Git · Linux · Nmap · Docker · SBOM · Risk Analysis</p>
-  </div>
-</div>
-
-***
-
 !!! info "Инструкция"
     Выберите **один** правильный ответ на каждый вопрос. Ответы — в файле **Ответы**.
 
@@ -105,5 +90,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 - B) `Content-Security-Policy: frame-ancestors 'self'` + `X-Frame-Options: DENY` — CSP для современных браузеров, X-Frame-Options как fallback для устаревших
 - C) `X-Content-Type-Options: nosniff` — предотвращает все виды frame-атак
 - D) `Strict-Transport-Security: max-age=31536000` — HSTS автоматически блокирует iframe
-
-***

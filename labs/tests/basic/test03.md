@@ -1,18 +1,3 @@
----
-title: "Тест №3 — Git, Linux, Nmap, Docker, DAST и риски ИБ | Курс AppSec"
-description: "Тест №3 курса AppSec: 10 вопросов для проверки знаний по Git, Linux, Nmap, Docker, DAST и анализу рисков информационной безопасности."
-keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec"
----
-
-<div class="hero-section hero-section--compact">
-  <div class="hero-content">
-    <h1 class="hero-title">Тест №3</h1>
-    <p class="hero-sub">Git · Linux · Nmap · Docker · DAST · Risk Analysis</p>
-  </div>
-</div>
-
-***
-
 !!! info "Инструкция"
     Выберите **один** правильный ответ на каждый вопрос. Ответы — в файле **Ответы**.
 
@@ -105,5 +90,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, анализ рис
 - B) Risk Mitigation — внедряются технические меры снижения вероятности
 - C) Risk Transfer — ответственность за инфраструктурную безопасность (шифрование, бэкапы, патчинг ОС) передаётся AWS, но ответственность за данные и конфигурацию остаётся на компании
 - D) Risk Acceptance — миграция в облако означает принятие всех рисков AWS
-
-***

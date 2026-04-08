@@ -1,18 +1,3 @@
----
-title: "Тест №2 — Linux, Nmap, Docker, SCA, DAST и риски ИБ | Курс AppSec"
-description: "Тест №2 курса AppSec: 10 вопросов для проверки знаний по Linux, Nmap, Docker, SCA, DAST и анализу рисков информационной безопасности."
-keywords: "тест, AppSec, Linux, Nmap, Docker, SCA, DAST, анализ рисков, лабораторная работа, контрольные вопросы, курс AppSec"
----
-
-<div class="hero-section hero-section--compact">
-  <div class="hero-content">
-    <h1 class="hero-title">Тест №2</h1>
-    <p class="hero-sub">Linux · Nmap · Docker · SCA · DAST · Risk Analysis</p>
-  </div>
-</div>
-
-***
-
 !!! info "Инструкция"
     Выберите **один** правильный ответ на каждый вопрос. Ответы — в файле **Ответы**.
 
@@ -105,5 +90,3 @@ keywords: "тест, AppSec, Linux, Nmap, Docker, SCA, DAST, анализ рис
 - B) Установить `PermitRootLogin no`, `PasswordAuthentication no`, `AllowUsers`, ограничить `MaxAuthTries`
 - C) Сменить порт на нестандартный — это достаточная мера безопасности
 - D) Включить `X11Forwarding yes` и `AllowAgentForwarding yes` для удобства администрирования
-
-***

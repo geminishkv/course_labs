@@ -40,7 +40,9 @@ lab08
 
 ## Материал
 
-- DAST Dynamic Application Security Testing обеспечивает тестирование «чёрного ящика», когда сканер не знает исходного кода и взаимодействует с приложением как внешний клиент:
+### DAST
+
+Dynamic Application Security Testing обеспечивает тестирование «чёрного ящика», когда сканер не знает исходного кода и взаимодействует с приложением как внешний клиент:
     -  Отправляет `HTTP`‑запросы 
     -  Анализирует ответы 
     -  Пытается воспроизвести реальные атаки `XSS`, `SQLi`, уязвимости в заголовках, слабую авторизацию и т.д. 
@@ -72,13 +74,13 @@ lab08
 ```bash
 $ python3 -m venv venv
 $ source venv/bin/activate
-$ pip install -r requirements.txt && vulnerable-app/requirements.txt 
+$ pip install -r requirements.txt -r vulnerable-app/requirements.txt
 ```
 
 - [ ] 2. Запустите уязвимое приложение
 
 ```bash
-$ docker-compose up -d --build  # http://localhost:8080
+$ docker compose up -d --build  # http://localhost:8080
 ```
 
 - [ ] 3. Проверьте доступность приложения
@@ -125,7 +127,7 @@ http://localhost:8080/search?username=admin' OR '1'='1
 ```
 
 - [ ] 4.3. `/login` - войти под  `admin`  и  `user` проверив логику на открытые пароли и простые SQL‑запросы
-- [ ] 4.4. `/profile` - изменить `cookie  role`  на  `admin`  через `DevTools` → `Application` → `Cookies` и обновить  `/profile` (возможно создать `cookie`
+- [ ] 4.4. `/profile` - изменить `cookie role` на `admin` через `DevTools` → `Application` → `Cookies` и обновить `/profile` (возможно потребуется создать cookie вручную)
 - [ ] 4.5. `/admin` -  проверить, что доступ запрещён без `cookie  role=admin` и далее подделать `cookie`, что «админка» открывается путем изменения через `DevTools`. **Подсказка:** доступ завязан на значение cookie, без подписи/ токена/ серверной проверки.
 - [ ] 4.6. `/files/` - просмотрите `directory listing` и откройте один из файлов убедившись, что оно выводится
 
@@ -133,37 +135,90 @@ http://localhost:8080/search?username=admin' OR '1'='1
 http://localhost:8080/files/secret.txt
 ```
 
-- [ ] 5. Доработайте по пп 4 лабораторную работу развив их содержимое, которое может выводиться (мин 1 пример)
-- [ ] 6. Поставьте `OWASP ZAP` и стяните образ конкретной версии для него
+- [ ] 5. Добавьте минимум 1 собственный пример эксплуатации к любому из эндпоинтов п.4 (другой payload XSS, другая SQLi-строка, другой файл в directory listing и т.д.)
+
+- [ ] 6. Воспроизведите эксплуатацию из терминала через `curl` (без браузера):
 
 ```bash
-$ brew install --cask zap
-$ docker pull ghcr.io/zaproxy/zaproxy:stable
+# Reflected XSS — отправляем payload и проверяем, вернулся ли он в ответе
+$ curl -s "http://localhost:8080/echo?msg=<script>alert(1)</script>" | grep "<script>"
+
+# SQL Injection — UNION-based
+$ curl -s "http://localhost:8080/search?username=admin'+OR+'1'='1"
+
+# Подделка cookie — доступ к админке
+$ curl -s -b "role=admin" http://localhost:8080/admin
+
+# Directory traversal attempt
+$ curl -s http://localhost:8080/files/secret.txt
 ```
 
-- [ ] 7. Задайте переменные окружения для работы скриптов
+Опишите: какие запросы вернули данные, которые не должны быть доступны? Какой HTTP status code получили?
+
+- [ ] 7. Поставьте `OWASP ZAP` и стяните образ конкретной версии для него
+
+```bash
+# Docker-образ ZAP (основной способ, все платформы)
+$ docker pull ghcr.io/zaproxy/zaproxy:stable
+
+# GUI-клиент (опционально)
+# macOS:
+$ brew install --cask zap
+# Linux: скачать с https://www.zaproxy.org/download/
+```
+
+- [ ] 8. Задайте переменные окружения для работы скриптов
 
 ```bash
 $ export ZAP_IMAGE=ghcr.io/zaproxy/zaproxy:stable
 $ TARGET_URL="${TARGET_URL:-http://host.docker.internal:8080}"
 ```
 
-- [ ] 8. Запустите скрипт автоматического сканирования DAST `OWASP ZAP`
+- [ ] 9. Запустите скрипт автоматического сканирования DAST `OWASP ZAP`
 
 ```bash
 $ ./zap_scan.sh
 ```
 
-- [ ] 9. Изучите сгенерированные отчеты в `dast/reports` и опишите риски ИБ для них, без сценариев, так как ранее вы видели часть из их реализации
-- [ ] 10. Внесите исправления по данному отчету `DAST` для `vulnerable-app/app.py`
-- [ ] 11. Делайте все необходимые коммиты по шагам и отправляйте изменения в удалённый репозиторий
-- [ ] 12. Подготовьте отчет `gist`.
-- [ ] 13. Почистите кеш от `venv` и остановите уязвимое приложение
+- [ ] 10. Изучите сгенерированные отчёты в `dast/reports`. Для каждой находки ZAP опишите в отчёте:
+
+    - Alert name и Risk level (High / Medium / Low / Informational)
+    - URL и параметр, на котором сработало
+    - CWE-ID (указан в отчёте ZAP)
+    - Описание: почему это уязвимость и чем грозит
+    - Мера исправления
+
+- [ ] 11. Сравните ручные находки (п.4) с автоматическими (п.9). Заполните в отчёте:
+
+    - Какие уязвимости ZAP нашёл автоматически?
+    - Какие уязвимости ZAP **пропустил**, но вы нашли вручную? Почему?
+    - Какие находки ZAP являются false positive?
+
+- [ ] 12. Проверьте HTTP-заголовки безопасности приложения:
+
+```bash
+$ curl -sI http://localhost:8080 | grep -iE "x-frame|x-content|content-security|strict-transport|set-cookie"
+```
+
+Опишите: какие заголовки отсутствуют и какие атаки это позволяет (clickjacking, MIME sniffing, XSS).
+
+- [ ] 13. Внесите исправления в `vulnerable-app/app.py` по находкам DAST. Сделайте `commit`
+- [ ] 14. Запустите ZAP повторно после исправлений и убедитесь, что критические находки устранены:
+
+```bash
+$ ./dast/zap_scan.sh
+```
+
+Сравните отчёты до и после — сколько High/Medium находок осталось?
+
+- [ ] 15. Делайте все необходимые коммиты по шагам и отправляйте изменения в удалённый репозиторий
+- [ ] 16. Подготовьте отчёт `gist`
+- [ ] 17. Почистите кеш от `venv` и остановите уязвимое приложение
 
 ```bash
 $ deactivate
 $ rm -rf venv
-$ docker-compose -f docker-compose.yml down
+$ docker compose -f docker-compose.yml down
 $ docker system prune -f
 ```
 

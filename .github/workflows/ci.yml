@@ -245,7 +245,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac553fd0d28  # v4.0.5
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4.0.5
 
       - name: Create GitHub Deployment
         uses: chrnorm/deployment-action@55729fcebec3d284f60f5bcabbd8376437d696b1  # v2.0.7

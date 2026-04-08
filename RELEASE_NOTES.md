@@ -1,5 +1,28 @@
 # Release Notes
 
+## v2.1.0
+
+**Контент и материалы:**
+
+* Введение в сети и TCP/IP — модель OSI/TCP-IP, IP-адреса, порты, TCP vs UDP, DNS, HTTP
+* Основы Docker и контейнеризации — VM vs Container, образы, Dockerfile, базовые команды, Docker Compose
+* Введение в CI/CD и GitHub Actions — концепция CI/CD, структура workflow, триггеры, секреты, пример DevSecOps пайплайна
+* Lab 04 — добавлена секция «Материал»: ключевые понятия рисков, стратегии обработки, compliance-контекст
+* Lab 05 — установка Docker для Linux (не только brew), аудит Dockerfile по security-чеклисту, `.dockerignore`, `docker history`, `whoami`, ресурсные лимиты, Docker-сети, namespaces изнутри контейнера
+* Lab 06 — убран дублированный контент из Lab 05, добавлены уровни CIS Benchmark (Level 1/2) и 6 категорий проверок
+* Lab 07 — сравнение 6 инструментов (Semgrep/Bandit/Checkov/OWASP DC/Gitleaks/TruffleHog), установка Maven/JDK, структура анализа Semgrep/Checkov, сравнительная таблица SAST vs SCA, задание на false positives, кастомное Semgrep-правило, Secret Detection перенесён перед cleanup
+* Lab 08 — исправлена сломанная команда `pip install`, добавлена curl-эксплуатация из терминала, анализ HTTP security headers, повторное сканирование ZAP после исправлений, сравнение ручных vs автоматических находок
+* Lab 09 — исправлены HTML entities `&#123;` на `{% raw %}`, добавлены hints к блокам «доработайте необходимое» (Checkov, DC, Trivy)
+* Lab 10 — добавлена секция «Материал» (методология из 5 шагов, структура аналитической записки, инструментарий AppSec), переформулированы задания из контекста в конкретные deliverables, добавлена секция Links
+* Все лабы 04–10: добавлена секция «Смотри также» с перекрёстными ссылками
+* Созданы docs-обёртки для 5 базовых тестов (lab-hero стилизация)
+* Созданы 2 варианта теста по лекции «Fintech по-русски» — кейсовые вопросы с привязкой к 115-ФЗ, PCI DSS, ГОСТ 57580, CWE
+* 7 Mermaid-диаграмм: TCP handshake, CI/CD pipeline, DevSecOps DAG, Docker lifecycle, Docker layers, VM vs Container, Risk chain
+* Troubleshooting -Добавлены 4 секции (14 карточек): Сети и TCP/IP, Docker Compose/Dockerfile, GitHub Actions YAML, CMS Security
+* CSP: добавлены mc.yandex.ru (Метрика), cdn.jsdelivr.net (twemoji), telegram.org (виджет)
+
+---
+
 ## v2.0.0
 
 **Дизайн и UI/UX:**

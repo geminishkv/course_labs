@@ -28,4 +28,4 @@ PyYAML==6.0.2
 lunr==0.6.2
 
 # ─── Security scanning (CI only) ────────────────────────────────────────────
-bandit==1.7.10
+bandit==1.9.4

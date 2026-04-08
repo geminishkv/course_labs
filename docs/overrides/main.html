@@ -9,7 +9,7 @@
   {% set is_release = page.file.src_path == "RELEASE_NOTES.md" %}
 
   <!-- ─── Security Headers (GitHub Pages: meta only) ──────────────────────── -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://telegram.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://telegram.org https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net https://mc.yandex.ru; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com https://mc.yandex.ru; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -281,6 +281,30 @@
   }
   </script>
   {% endif %}
+
+  <!-- ─── Yandex.Metrika (domain-locked) ─────────────────────────────────── -->
+  <script type="text/javascript">
+    (function(){
+      var allowed = ['course.geminishkv.tech','geminishkv.github.io'];
+      var host = location.hostname;
+      if (allowed.indexOf(host) === -1) return;
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+        k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
+      })(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+      ym(108454150,'init',{
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:'dataLayer',
+        triggerEvent:true
+      });
+    })();
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/108454150" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
 
   {% endif %}
 

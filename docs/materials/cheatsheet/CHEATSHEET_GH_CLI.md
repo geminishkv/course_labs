@@ -108,5 +108,3 @@ gh gist list                                  # Список своих gist
 gh gist view <id> --web                       # Открыть gist в браузере
 gh gist edit <id>                             # Редактировать gist
 ```
-
-***

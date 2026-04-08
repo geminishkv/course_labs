@@ -19,7 +19,7 @@ keywords: "OWASP, утечка данных, information disclosure, AppSec, к�
 
 Выявляется инструментами DAST в [лабораторной работе №8](../../labs/basic/lab08.md) и статическим анализом в [лабораторной работе №7](../../labs/basic/lab07.md). Смотри также: [Authentication](Authentication.md), [Logical Attacks](logical-attacks.md).
 
----
+***
 
 ## Содержание документа
 

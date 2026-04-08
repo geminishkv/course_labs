@@ -55,7 +55,7 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 
     Без `permissions:` workflow получает `write` на contents, packages, pull-requests. Компрометация одного step = запись в репозиторий.
 
----
+***
 
 ## Secrets — управление секретами
 
@@ -115,7 +115,7 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
     - Сторонние actions: могут читать env и отправлять на свой сервер
     - `${{ }}` в `run:` — injection через PR title/body
 
----
+***
 
 ## Pinning Actions — защита от supply chain
 
@@ -142,7 +142,7 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 
     Или используйте [StepSecurity Harden-Runner](https://github.com/step-security/harden-runner) для автоматического пиннинга.
 
----
+***
 
 ## Script Injection
 
@@ -173,7 +173,7 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
     - `github.event.comment.body`
     - `github.head_ref`
 
----
+***
 
 ## Fork PR — ограничения
 
@@ -213,7 +213,7 @@ on:
 
     Даёт fork-PR доступ к secrets. Используйте только если явно не checkout-ите PR код.
 
----
+***
 
 ## Чеклист
 

@@ -13,7 +13,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 Атаки на цепочку поставки (Supply Chain Attacks) — компрометация не самого приложения, а его зависимостей, инструментов сборки или инфраструктуры доставки. Одна скомпрометированная библиотека может затронуть тысячи downstream-проектов.
 
----
+***
 
 ## Log4Shell (CVE-2021-44228)
 
@@ -45,7 +45,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
     - SBOM (Software Bill of Materials) — единственный способ узнать что внутри
     - SCA-сканеры (OWASP DC, Trivy) должны работать в CI постоянно, не разово
 
----
+***
 
 ## SolarWinds Orion (SUNBURST)
 
@@ -78,7 +78,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
     - Reproducible builds — возможность верифицировать что бинарь собран из конкретного source
     - Мониторинг аномального DNS-трафика
 
----
+***
 
 ## XZ Utils Backdoor (CVE-2024-3094)
 
@@ -111,7 +111,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
     - Аномалии производительности могут указывать на backdoor
     - Release tarball отличался от git source — reproducible builds поймали бы
 
----
+***
 
 ## Codecov Bash Uploader
 
@@ -138,7 +138,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
     - CI secrets доступны всем steps — минимизируйте scope
     - Аудит переменных окружения CI: что доступно каждому step
 
----
+***
 
 ## event-stream (npm)
 
@@ -168,7 +168,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
     - `npm audit` и `yarn audit` не ловят такие атаки — нужен manual review
     - Lockfile integrity (`npm ci` вместо `npm install`)
 
----
+***
 
 ## Защитные меры
 

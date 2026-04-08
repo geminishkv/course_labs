@@ -21,5 +21,3 @@ keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, �
 {% include-markdown  "../../../labs/intro/docker_basics.md" %}
 
 </div>
-
-***

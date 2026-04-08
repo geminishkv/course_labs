@@ -36,7 +36,7 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
     - `slim` — ~150 МБ, минимум ОС-пакетов
     - `distroless` — ~20 МБ, нет shell, нет package manager — минимальная поверхность атаки
 
----
+***
 
 ## Пользователь (USER)
 
@@ -67,7 +67,7 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 
     Container escape + root в контейнере = root на хосте. `USER` — обязательный для production.
 
----
+***
 
 ## Multi-stage build
 
@@ -102,7 +102,7 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
     # Итог: ~150 МБ, без build tools
     ```
 
----
+***
 
 ## Секреты
 
@@ -137,7 +137,7 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
     docker save <image> | tar -xf - && grep -r "password\|secret\|key" .
     ```
 
----
+***
 
 ## COPY vs ADD
 
@@ -171,7 +171,7 @@ COPY app.py .
 ADD https://example.com/app.tar.gz /app/
 ```
 
----
+***
 
 ## Оптимизация слоёв
 
@@ -194,7 +194,7 @@ ADD https://example.com/app.tar.gz /app/
     # 1 слой, кэш удалён в том же слое
     ```
 
----
+***
 
 ## .dockerignore
 
@@ -216,7 +216,7 @@ node_modules
 
     `COPY . .` скопирует `.git` (вся история), `.env` (секреты), `node_modules` (100+ МБ).
 
----
+***
 
 ## Hadolint — правила
 
@@ -262,7 +262,7 @@ docker run --rm -i hadolint/hadolint < Dockerfile
 
 </div>
 
----
+***
 
 ## Чеклист
 

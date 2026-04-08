@@ -21,5 +21,3 @@ keywords: "Gist, gistup, отчёт, Markdown, GitHub, лабораторная 
 {% include-markdown  "../../../labs/intro/gistup_guide.md" %}
 
 </div>
-
-***

@@ -15,7 +15,7 @@ keywords: "YAML, cheatsheet, шпаргалка, синтаксис, CI/CD, Dock
 
 YAML используется **везде** в DevSecOps-стеке: GitHub Actions workflows, Docker Compose, Kubernetes manifests, Semgrep rules, Checkov configs, Trivy, ZAP. Без понимания синтаксиса невозможно ни написать пайплайн, ни настроить инструмент безопасности.
 
----
+***
 
 ## Базовый синтаксис
 
@@ -34,7 +34,7 @@ empty_value: null                 # null: null, ~, пустое значение
 title: Простая строка без кавычек
 ```
 
----
+***
 
 ## Коллекции
 
@@ -58,7 +58,7 @@ database:
 point: {x: 1, y: 2}
 ```
 
----
+***
 
 ## Вложенность
 
@@ -84,7 +84,7 @@ users:
     active: false
 ```
 
----
+***
 
 ## Многострочные строки
 
@@ -112,7 +112,7 @@ command: |-
 !!! warning "Частая ошибка"
     `|` и `>` требуют, чтобы содержимое было с отступом. Без отступа YAML-парсер не поймёт, где заканчивается блок.
 
----
+***
 
 ## Якоря и алиасы (переиспользование)
 
@@ -135,7 +135,7 @@ staging:
   timeout: 60              # перезапишет только timeout
 ```
 
----
+***
 
 ## Типы данных и подводные камни
 
@@ -163,7 +163,7 @@ date: "2024-01-01"       # → строка
 !!! danger "Правило"
     Если значение **должно быть строкой** — всегда используйте кавычки. Особенно для: версий (`"3.10"`), значений `yes/no/on/off`, пустых строк.
 
----
+***
 
 ## YAML в GitHub Actions
 
@@ -196,7 +196,7 @@ jobs:
           ruff check .
 ```
 
----
+***
 
 ## YAML в Docker Compose
 
@@ -230,7 +230,7 @@ volumes:
   pgdata:
 ```
 
----
+***
 
 ## YAML в Semgrep Rules
 
@@ -248,7 +248,7 @@ rules:
     severity: ERROR
 ```
 
----
+***
 
 ## Валидация
 
@@ -267,7 +267,7 @@ $ yq eval '.services' docker-compose.yml
 $ yq eval '.jobs | keys' .github/workflows/ci.yml
 ```
 
----
+***
 
 ## Частые ошибки
 
@@ -311,7 +311,7 @@ $ yq eval '.jobs | keys' .github/workflows/ci.yml
 
 </div>
 
----
+***
 
 ## Links
 

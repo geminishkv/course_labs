@@ -21,5 +21,3 @@ keywords: "VirtualBox, виртуальная машина, Ubuntu, Fedora, Linu
 {% include-markdown  "../../../labs/intro/vmbox_tutorial.md" %}
 
 </div>
-
-***

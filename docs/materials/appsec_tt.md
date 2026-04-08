@@ -49,7 +49,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## Тестирование приложений (Application Testing)
 
@@ -119,7 +119,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## Анализ зависимостей и цепочки поставок (Supply Chain)
 
@@ -169,7 +169,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## Контейнеры и инфраструктура (Container & Infra Security)
 
@@ -229,7 +229,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## Облачная безопасность (Cloud Security)
 
@@ -279,7 +279,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## Управление и оркестрация (Management & Orchestration)
 
@@ -309,7 +309,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## Мониторинг и реагирование (Monitoring & Response)
 
@@ -349,7 +349,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 </div>
 
----
+***
 
 ## AI/ML безопасность
 

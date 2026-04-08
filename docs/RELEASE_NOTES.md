@@ -16,5 +16,3 @@ keywords: "release notes, changelog, AppSec, лабораторные работ
 {% include-markdown  "../RELEASE_NOTES.md" %}
 
 </div>
-
-***

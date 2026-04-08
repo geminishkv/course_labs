@@ -67,7 +67,7 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 
 </div>
 
----
+***
 
 ## Настройка nginx
 
@@ -98,7 +98,7 @@ server {
 }
 ```
 
----
+***
 
 ## Настройка Express (Node.js)
 
@@ -136,7 +136,7 @@ server {
     });
     ```
 
----
+***
 
 ## Cookie-атрибуты безопасности
 
@@ -176,7 +176,7 @@ Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3
 
 </div>
 
----
+***
 
 ## Проверка заголовков
 

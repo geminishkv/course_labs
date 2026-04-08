@@ -19,5 +19,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, SBOM, анализ рис
 {% include-markdown  "../../../../labs/tests/basic/test04.md" %}
 
 </div>
-
-***

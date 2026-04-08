@@ -21,5 +21,3 @@ keywords: "тест, Fintech, финтех, AML, ПОД-ФТ, compliance, PCI DS
 {% include-markdown  "../../../../labs/tests/lectures/ru_fintech/test_fintech.md" %}
 
 </div>
-
-***

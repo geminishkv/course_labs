@@ -22,5 +22,3 @@ keywords: "TCP/IP, OSI, IP-адрес, порты, DNS, HTTP, HTTPS, TCP, UDP, �
 {% include-markdown  "../../../labs/intro/networking_basics.md" %}
 
 </div>
-
-***

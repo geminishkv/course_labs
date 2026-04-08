@@ -21,5 +21,3 @@ keywords: "pet project, AppSec, DevSecOps, итоговая работа, без
 {% include-markdown  "../../labs/pet_project/README.md" %}
 
 </div>
-
-***

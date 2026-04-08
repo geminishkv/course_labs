@@ -19,5 +19,3 @@ keywords: "Git, SCM, лабораторная работа, AppSec, репози
 {% include-markdown  "../../../labs/basic/lab01/README.md" %}
 
 </div>
-
-***

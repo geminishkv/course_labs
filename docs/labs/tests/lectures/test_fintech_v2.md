@@ -21,5 +21,3 @@ keywords: "тест, Fintech, финтех, Open Banking, FinDevSecOps, цифр
 {% include-markdown  "../../../../labs/tests/lectures/ru_fintech/test_fintech_v2.md" %}
 
 </div>
-
-***

@@ -19,5 +19,3 @@ keywords: "риски ИБ, анализ рисков, информационн�
 {% include-markdown  "../../../labs/basic/lab10/README.md" %}
 
 </div>
-
-***

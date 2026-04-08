@@ -19,5 +19,3 @@ keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, D
 {% include-markdown  "../../../labs/basic/lab05/README.md" %}
 
 </div>
-
-***

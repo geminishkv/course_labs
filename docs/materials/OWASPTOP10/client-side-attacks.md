@@ -19,7 +19,7 @@ DOM-based XSS особенно опасен, поскольку вредонос
 
 Данные уязвимости проверяются в [лабораторной работе №8 (DAST)](../../labs/basic/lab08.md) с помощью OWASP ZAP. Смотри также: [Command Execution](command-execution.md), [Information Disclosure](information-disclosure.md).
 
----
+***
 
 ## Содержание документа
 

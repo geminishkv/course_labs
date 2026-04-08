@@ -127,5 +127,3 @@ dir/*.txt       # Только .txt файлы в dir/ (не рекурсивн�
 ```bash
 docker build --no-cache . 2>&1 | head -5     # Показывает размер build context
 ```
-
-***

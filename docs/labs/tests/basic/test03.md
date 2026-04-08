@@ -19,5 +19,3 @@ keywords: "тест, AppSec, Git, Linux, Nmap, Docker, DAST, анализ рис
 {% include-markdown  "../../../../labs/tests/basic/test03.md" %}
 
 </div>
-
-***

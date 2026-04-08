@@ -171,5 +171,3 @@ git ls-files --ignored \
   --exclude-standard -o         # Показать игнорируемые файлы
 git check-ignore -v <file>      # Узнать, почему файл игнорируется
 ```
-
-***

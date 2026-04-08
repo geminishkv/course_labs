@@ -124,5 +124,3 @@ docker system prune -a                        # Удалить всё неисп
 docker system prune -a --volumes              # Также удалить тома
 docker system df                              # Показать использование дискового пространства
 ```
-
-***

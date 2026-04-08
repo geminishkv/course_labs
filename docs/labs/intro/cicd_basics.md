@@ -21,5 +21,3 @@ keywords: "CI/CD, GitHub Actions, workflow, YAML, DevSecOps, пайплайн, c
 {% include-markdown  "../../../labs/intro/cicd_basics.md" %}
 
 </div>
-
-***

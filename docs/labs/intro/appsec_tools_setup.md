@@ -23,5 +23,3 @@ keywords: "установка, Semgrep, Trivy, Gitleaks, OWASP ZAP, Checkov, Had
 {% include-markdown  "../../../labs/intro/appsec_tools_setup.md" %}
 
 </div>
-
-***

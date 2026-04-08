@@ -42,7 +42,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Linux и Shell (Lab 02)
 
@@ -62,7 +62,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Nmap (Lab 03)
 
@@ -100,7 +100,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Docker (Lab 05, 06)
 
@@ -132,7 +132,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## SAST и SCA (Lab 07)
 
@@ -158,7 +158,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## DAST — OWASP ZAP (Lab 08)
 
@@ -178,7 +178,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## CI/CD — GitHub Actions (Lab 09)
 
@@ -204,7 +204,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## VirtualBox и VM (Подготовка окружения)
 
@@ -236,7 +236,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## GPG и подпись коммитов (Lab 01)
 
@@ -262,7 +262,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Gist и отчёты
 
@@ -288,7 +288,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Secret Detection (Lab 07)
 
@@ -314,7 +314,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Trivy и Container Scanning (Lab 06)
 
@@ -334,7 +334,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Risk Analysis (Lab 04, 10)
 
@@ -354,7 +354,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Сети и TCP/IP (Intro)
 
@@ -386,7 +386,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Docker Compose и Dockerfile (Intro, Lab 05)
 
@@ -418,7 +418,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## GitHub Actions YAML (Intro CI/CD, Lab 09)
 
@@ -444,7 +444,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## CMS Security (Lab 10)
 
@@ -470,7 +470,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 </div>
 
----
+***
 
 ## Python и venv (общее)
 

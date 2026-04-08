@@ -20,5 +20,3 @@ keywords: "Linux, Unix, Bash, права доступа, процессы, AppSe
 {% include-markdown  "../../../labs/basic/lab02/README.md" %}
 
 </div>
-
-***

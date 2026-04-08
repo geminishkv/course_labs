@@ -78,7 +78,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 </div>
 
----
+***
 
 ## Слабый копилефт (Weak Copyleft)
 
@@ -136,7 +136,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 </div>
 
----
+***
 
 ## Сильный копилефт (Strong Copyleft)
 
@@ -164,7 +164,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 </div>
 
----
+***
 
 ## Сетевой копилефт (Network Copyleft)
 
@@ -180,7 +180,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 </div>
 
----
+***
 
 ## Общественное достояние (Public Domain)
 
@@ -208,7 +208,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 </div>
 
----
+***
 
 ## Creative Commons (для документации и данных)
 
@@ -266,7 +266,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 </div>
 
----
+***
 
 ## Source-Available и проприетарные
 

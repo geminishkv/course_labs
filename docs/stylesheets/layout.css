@@ -503,12 +503,6 @@
   border-radius: 999px;
 }
 
-.lab-tag--orange {
-  color: #E88020;
-  background: rgba(232, 128, 32, 0.08);
-  border-color: rgba(232, 128, 32, 0.2);
-}
-
 .lab-card-arrow {
   color: rgba(213, 26, 26, 0.3);
   font-size: var(--text-md);
@@ -547,7 +541,6 @@
   color: var(--brand-gold-dark);
   background: rgba(249, 179, 97, 0.08);
 }
-
 
 /* ══════════════════════════════════════════
    Lab page hero

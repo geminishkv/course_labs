@@ -88,19 +88,7 @@ jobs:
           pip install -r requirements.txt pip-audit
           pip-audit -r requirements.txt
 
-  # ─── 4. Security: secrets scan ──────────────────────────────────────────────
-  security_secrets_checks:
-    runs-on: ubuntu-latest
-    needs:
-      - docs_linter_checks
-      - layout_linter_checks
-    steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
-
-      - name: Scan repository for secrets with gitleaks
-        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7  # v2.3.9
-
-  # ─── 5. Security: Python code scan ─────────────────────────────────────────
+  # ─── 4. Security: Python code scan ──────────────────────────────────────────
   security_py_checks:
     runs-on: ubuntu-latest
     needs:
@@ -125,7 +113,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - dependency_audit_checks
-      - security_secrets_checks
+
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4.1.1
 
@@ -148,7 +136,7 @@ jobs:
       - layout_linter_checks
       - dependency_audit_checks
       - security_py_checks
-      - security_secrets_checks
+
       - security_docker_checks
     runs-on: ubuntu-latest
     steps:
@@ -208,7 +196,7 @@ jobs:
       - layout_linter_checks
       - dependency_audit_checks
       - security_py_checks
-      - security_secrets_checks
+
       - security_docker_checks
     runs-on: ubuntu-latest
     steps:

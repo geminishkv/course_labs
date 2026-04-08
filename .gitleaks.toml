@@ -9,3 +9,10 @@ paths = [
   "labs/basic/lab08/dast/.*",
   "docs/materials/cheatsheet/.*",
 ]
+
+[[allowlists]]
+description = "Cheatsheet example — dummy API_KEY in Dockerfile security guide"
+commits = [
+  "9f59a21f002112fbae756064bc067988c10c47c1",
+  "9f1dd2e0806368828fba242cb137e9cd02a4c4b9",
+]

@@ -124,10 +124,9 @@ extra_css:
   - stylesheets/banners.css
 
 extra_javascript:
-  - javascripts/custom-title.js
+  - javascripts/header.js
   - javascripts/typewriter-target.js
-  - javascripts/notice-bar.js
-  - javascripts/cookie-banner.js
+  - javascripts/banners.js
   - javascripts/effects.js
 
 extra:

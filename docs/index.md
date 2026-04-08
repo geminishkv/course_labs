@@ -10,9 +10,9 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <div class="no-section-nums" markdown="1">
 
 <div class="hero-section">
-  <div class="hero-logo-wrap">
+  <a href="https://geminishkv.tech/" target="_blank" rel="noopener noreferrer" class="hero-logo-wrap">
     <img src="artifacts/assets/logo_white.svg" class="hero-logo" alt="AppSecTA">
-  </div>
+  </a>
   <div class="hero-content">
     <h1 class="hero-title">Application Security & DevSecOps Course</h1>
     <p class="hero-sub">Практический курс по прикладной безопасности приложений</p>

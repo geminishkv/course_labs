@@ -160,6 +160,42 @@ tagDBPARAMS dbParams, Object& executeResult)
 - [Apache Custom Error Pages](http://www.codestyle.org/sitemanager/apache/errors-Custom.shtml) -- Code Style
 - [Obfuscators: JAVA](http://www.cs.auckland.ac.nz/~cthombor/Students/hlai/hongying.pdf)
 
+=== "Уязвимый код"
+
+    ```javascript
+    app.use((err, req, res, next) => {
+      // Stack trace с внутренними путями и версиями
+      res.status(500).json({
+        error: err.message,
+        stack: err.stack,            // /app/src/controllers/user.js:42
+        query: req.query,            // параметры запроса
+        env: process.env.NODE_ENV,   // "development"
+      });
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    app.use((err, req, res, next) => {
+      // Логируем полную ошибку внутренне
+      console.error(err.stack);
+
+      // Клиенту — только generic message
+      res.status(500).json({
+        error: "Internal Server Error",
+        requestId: req.id,  // для корреляции с логами
+      });
+    });
+
+    // Скрыть заголовок X-Powered-By
+    app.disable("x-powered-by");
+    ```
+
+!!! warning "Правило"
+
+    Никогда не отдавайте stack traces, SQL-ошибки, внутренние пути и версии ПО клиенту. В production `NODE_ENV=production` — Express автоматически скрывает детали.
+
 ### Обратный путь в директориях (Path Traversal)
 
 Данная техника атак направлена на получение доступа к файлам, директориям и командам, находящимся вне основной директории Web-сервера. Злоумышленник может манипулировать параметрами URL с целью получить доступ к файлам или выполнить команды, располагаемые в файловой системе Web-сервера. Для подобных атак потенциально уязвимо любое устройство, имеющее Web-интерфейс.
@@ -205,6 +241,40 @@ http://example/..%u2216..%u2216some/file
 
 - [CERT Advisory CA-2001-12 Superfluous Decoding Vulnerability in IIS](http://www.cert.org/advisories/CA-2001-12.html)
 - [Novell Groupwise Arbitrary File Retrieval Vulnerability](http://www.securityfocus.com/bid/3436/info/)
+
+=== "Уязвимый код"
+
+    ```javascript
+    app.get("/api/file", (req, res) => {
+      const filename = req.query.name;
+      // Пользователь контролирует путь к файлу
+      const filepath = path.join("/app/uploads", filename);
+      res.sendFile(filepath);
+      // name = "../../../../etc/passwd" → читает системный файл
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    app.get("/api/file", (req, res) => {
+      const filename = req.query.name;
+
+      // Resolve и проверить что путь внутри разрешённой директории
+      const basedir = path.resolve("/app/uploads");
+      const filepath = path.resolve(basedir, filename);
+
+      if (!filepath.startsWith(basedir)) {
+        return res.status(403).json({ error: "Access denied" });
+      }
+
+      res.sendFile(filepath);
+    });
+    ```
+
+!!! warning "Правило"
+
+    Всегда используйте `path.resolve()` + проверку `startsWith(basedir)`. Никогда не передавайте пользовательский ввод напрямую в `fs.readFile()` / `res.sendFile()`.
 
 ### Предсказуемое расположение ресурсов (Predictable Resource Location)
 

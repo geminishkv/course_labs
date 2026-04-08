@@ -187,6 +187,7 @@ nav:
           - "MultiSiq": materials/examples/Multisignature.md
           - "PrintNightmare": materials/examples/PrintNightmare.md
           - "Risk Analysis": materials/examples/RA.md
+          - "Supply Chain Attacks": materials/examples/supply_chain_attacks.md
       - "Порты и протоколы": materials/ports.md
       - "Лицензии ПО": materials/licenses.md
       - "Классификация инструментов": materials/appsec_tt.md
@@ -205,6 +206,9 @@ nav:
           - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
           - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
           - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
+          - "HTTP Security Headers": materials/cheatsheet/CHEATSHEET_HTTP_HEADERS.md
+          - "Dockerfile Security": materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY.md
+          - "GitHub Actions Security": materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY.md
       - "Приложение": materials/APPENDIX.md
       - "Troubleshooting": materials/troubleshooting.md
   - "О проекте": about.md

@@ -193,6 +193,45 @@ http://example/directory.php?dir=%3Bcat%20/etc/passwd
 - [Marcus Xenakis directory.php Shell Command Execution Vulnerability](http://www.securityfocus.com/bid/4278)
 - [NCSA Secure Programming Guidelines](http://archive.ncsa.uiuc.edu/General/Grid/ACES/security/programming/#cgi)
 
+=== "Уязвимый код"
+
+    ```javascript
+    const { exec } = require("child_process");
+
+    app.get("/api/ping", (req, res) => {
+      const host = req.query.host;
+      // Пользовательский ввод напрямую в shell
+      exec(`ping -c 4 ${host}`, (err, stdout) => {
+        res.send(stdout);
+      });
+      // host = "8.8.8.8; cat /etc/passwd" → RCE
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    const { execFile } = require("child_process");
+
+    app.get("/api/ping", (req, res) => {
+      const host = req.query.host;
+
+      // Валидация: только IP или hostname
+      if (!/^[a-zA-Z0-9.-]+$/.test(host)) {
+        return res.status(400).json({ error: "Invalid host" });
+      }
+
+      // execFile — НЕ запускает shell, аргументы как массив
+      execFile("ping", ["-c", "4", host], (err, stdout) => {
+        res.send(stdout);
+      });
+    });
+    ```
+
+!!! warning "Правило"
+
+    Никогда не используйте `exec()` / `system()` с пользовательским вводом. Используйте `execFile()` (Node.js) или `subprocess.run([...], shell=False)` (Python) — аргументы передаются как массив, shell не запускается.
+
 ### Внедрение операторов SQL (SQL Injection)
 
 Эти атаки направлены на Web-серверы, создающие SQL-запросы к серверам СУБД на основе данных, вводимых пользователем.
@@ -257,6 +296,41 @@ http://example/article.asp?ID=2+and+1=0   (вернется ошибка или 
 - [Управление Microsoft SQL Server используя SQL инъекции](http://www.securitylab.ru/analytics/216396.php) -- Cesar Cerrudo (рус.)
 - [Внедрение SQL кода с завязанными глазами](http://www.securitylab.ru/analytics/216332.php) -- Офер Маор, Амичай Шалман (рус.)
 - [SQL инъекция и ORACLE](http://www.securitylab.ru/analytics/216253.php) (рус.)
+
+=== "Уязвимый код"
+
+    ```javascript
+    app.post("/api/login", (req, res) => {
+      const { username, password } = req.body;
+
+      // Конкатенация пользовательского ввода в SQL
+      const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+      db.query(query, (err, rows) => {
+        if (rows.length > 0) res.json({ token: generateToken(rows[0]) });
+        else res.status(401).json({ error: "Invalid credentials" });
+      });
+      // username = "' OR '1'='1' --" → обход аутентификации
+    });
+    ```
+
+=== "Защищённый код"
+
+    ```javascript
+    app.post("/api/login", (req, res) => {
+      const { username, password } = req.body;
+
+      // Параметризованный запрос — плейсхолдеры вместо конкатенации
+      const query = "SELECT * FROM users WHERE username = ? AND password = ?";
+      db.query(query, [username, password], (err, rows) => {
+        if (rows.length > 0) res.json({ token: generateToken(rows[0]) });
+        else res.status(401).json({ error: "Invalid credentials" });
+      });
+    });
+    ```
+
+!!! warning "Правило"
+
+    Всегда используйте параметризованные запросы (prepared statements). Никогда не конкатенируйте пользовательский ввод в SQL-строку. ORM (Sequelize, Prisma, SQLAlchemy) делают это по умолчанию.
 
 ### Внедрение серверных расширений (SSI Injection)
 

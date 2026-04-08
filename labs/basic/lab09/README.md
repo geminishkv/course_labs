@@ -151,6 +151,7 @@ jobs:
         run: |
 
 # доработайте необходимое
+# hint: checkov --framework dockerfile --file <путь> --output json --output-file-path <путь> --soft-fail
 
       - uses: actions/upload-artifact@v4
         with:
@@ -168,6 +169,7 @@ jobs:
         with:
 
 # доработайте необходимое
+# hint: project, path, format (JSON), out (pipeline/sca/), args (--failOnCVSS 9 --enableExperimental)
 
       - uses: actions/upload-artifact@v4
         with:
@@ -189,6 +191,7 @@ jobs:
         with:
 
 # доработайте необходимое
+# hint: image-ref, format (json), output (pipeline/trivy-report.json), severity (HIGH,CRITICAL), exit-code ("0" — audit / "1" — block)
 
       - uses: actions/upload-artifact@v4
         with:

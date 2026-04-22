@@ -21,7 +21,7 @@ cairosvg>=2.7.0
 
 # ─── Transitive deps (pinned for CVE fixes) ─────────────────────────────────
 requests>=2.33.0
-cryptography>=46.0.6
+cryptography>=46.0.7
 
 # ─── Runtime ────────────────────────────────────────────────────────────────
 PyYAML==6.0.2

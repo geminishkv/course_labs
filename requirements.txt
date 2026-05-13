@@ -20,7 +20,7 @@ pillow>=10.0.0
 cairosvg>=2.7.0
 
 # ─── Transitive deps (pinned for CVE fixes) ─────────────────────────────────
-requests>=2.33.0
+requests>=2.34.0
 cryptography>=46.0.6
 
 # ─── Runtime ────────────────────────────────────────────────────────────────

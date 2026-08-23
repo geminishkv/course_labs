@@ -12,7 +12,7 @@ mkdocs-glightbox==0.5.2
 mkdocs-pdf==0.1.2
 
 # ─── Markdown extensions ────────────────────────────────────────────────────
-pymdown-extensions==10.21.2
+pymdown-extensions==10.21.3
 Pygments==2.20.0
 
 # ─── Social cards (Material plugin dependency) ──────────────────────────────

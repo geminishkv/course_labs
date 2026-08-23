@@ -1,11 +1,11 @@
 # ─── MkDocs core ────────────────────────────────────────────────────────────
-mkdocs==1.6.0
+mkdocs==1.6.1
 mkdocs-material==9.7.7
 mkdocs-material-extensions==1.3.1
 
 # ─── MkDocs plugins ─────────────────────────────────────────────────────────
 mkdocs-macros-plugin==1.5.0
-mkdocs-include-markdown-plugin==7.2.0
+mkdocs-include-markdown-plugin==7.3.0
 mkdocs-meta-descriptions-plugin==4.1.0
 mkdocs-minify-plugin==0.8.0
 mkdocs-glightbox==0.5.2
@@ -13,7 +13,7 @@ mkdocs-pdf==0.1.2
 
 # ─── Markdown extensions ────────────────────────────────────────────────────
 pymdown-extensions==11.0.2
-Pygments==2.20.0
+Pygments==2.21.0
 
 # ─── Social cards (Material plugin dependency) ──────────────────────────────
 pillow>=10.0.0
@@ -24,8 +24,8 @@ requests>=2.34.0
 cryptography>=46.0.6
 
 # ─── Runtime ────────────────────────────────────────────────────────────────
-PyYAML==6.0.2
-lunr==0.6.2
+PyYAML==6.0.3
+lunr==0.8.0
 
 # ─── Security scanning (CI only) ────────────────────────────────────────────
-bandit==1.7.10
+bandit==1.9.4

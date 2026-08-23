@@ -26,6 +26,21 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      # Мажоры связанных пакетов — одним PR, иначе peer-deps конфликтуют
+      # (eslint 10 ↔ @eslint/js 10, stylelint 17 ↔ stylelint-config-standard 40).
+      eslint-major:
+        patterns:
+          - "eslint"
+          - "@eslint/*"
+          - "eslint-*"
+        update-types:
+          - "major"
+      stylelint-major:
+        patterns:
+          - "stylelint"
+          - "stylelint-*"
+        update-types:
+          - "major"
 
   - package-ecosystem: "pip"
     directory: "/"

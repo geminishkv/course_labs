@@ -99,7 +99,6 @@ site/
 
 # Node.js
 node_modules/
-package-lock.json
 
 # Lab-specific
 !labs/lab06/audit_reports/text/cis_audit.txt

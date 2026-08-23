@@ -57,8 +57,7 @@ jobs:
           node-version: "22"
 
       - name: Install JS/CSS linters
-        run: |
-          npm install --save-dev eslint @eslint/js stylelint stylelint-config-standard
+        run: npm ci
 
       - name: Lint JavaScript in docs
         run: |

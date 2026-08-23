@@ -224,14 +224,14 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
       <span class="tg-channel-name">AppSECT.A.</span>
       <span class="tg-channel-desc">AppSec · DevSecOps · ИБ</span>
     </div>
-    <a href="https://t.me/shmakovis_appsec" class="tg-channel-btn" target="_blank" rel="noopener">Подписаться</a>
+    <a href="https://t.me/appsecta" class="tg-channel-btn" target="_blank" rel="noopener">Подписаться</a>
   </div>
 </div>
 
 <div class="tg-embed-desktop">
 <script async
         src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="shmakovis_appsec/61"
+        data-telegram-post="appsecta/61"
         data-width="100%"
         data-userpic="false"
         data-mode="compact"

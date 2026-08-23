@@ -80,4 +80,4 @@ keywords: "AppSec, курс МГТУ, DevSecOps, о проекте, структ
 
 - [geminishkv.tech](https://geminishkv.tech/)
 - [GitHub](https://github.com/geminishkv)
-- [Telegram](https://t.me/shmakovis_appsec)
+- [Telegram](https://t.me/appsecta)

@@ -34,7 +34,7 @@ This is a practical Application Security (AppSec) and DevSecOps course created b
 - Website: https://geminishkv.tech
 - Course: https://course.geminishkv.tech
 - GitHub: https://github.com/geminishkv
-- Telegram: https://t.me/shmakovis_appsec
+- Telegram: https://t.me/appsecta
 - LinkedIn: https://www.linkedin.com/in/geminishkvdev
 
 ## Key URLs

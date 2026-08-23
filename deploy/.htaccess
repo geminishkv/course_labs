@@ -1,0 +1,32 @@
+# course.geminishkv.tech — security-заголовки и правила Apache (reg.ru hosting)
+# Раскатывается CI-ем в корень сайта вместе с собранной статикой MkDocs.
+
+# ── HTTPS: принудительный редирект ──
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Security headers ──
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  # CSP — тот же, что в meta overrides/main.html (единый источник правды при правках!)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://telegram.org https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net https://mc.yandex.ru; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com https://mc.yandex.ru; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
+# ── Кеширование статики ──
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+ErrorDocument 404 /404.html

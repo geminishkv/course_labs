@@ -127,8 +127,11 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
 
       - name: Install hadolint
+        env:
+          HADOLINT_VERSION: "2.15.1"
         run: |
-          curl -sSL https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 \
+          curl -sSL \
+            "https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64" \
             -o /usr/local/bin/hadolint
           chmod +x /usr/local/bin/hadolint
 

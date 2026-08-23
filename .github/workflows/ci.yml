@@ -9,8 +9,7 @@ on:
     branches:
       - develop
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: "${{ github.workflow }}-${{ github.ref }}"
@@ -21,6 +20,8 @@ jobs:
   # ─── 1. Docs linting ────────────────────────────────────────────────────────
   docs_linter_checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
 
@@ -45,6 +46,8 @@ jobs:
   # ─── 2. CSS / JS linting ────────────────────────────────────────────────────
   layout_linter_checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
 
@@ -54,8 +57,7 @@ jobs:
           node-version: "22"
 
       - name: Install JS/CSS linters
-        run: |
-          npm install --save-dev eslint @eslint/js stylelint stylelint-config-standard
+        run: npm ci
 
       - name: Lint JavaScript in docs
         run: |
@@ -73,6 +75,8 @@ jobs:
   # ─── 3. Python dependency audit ─────────────────────────────────────────────
   dependency_audit_checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     needs:
       - docs_linter_checks
       - layout_linter_checks
@@ -91,6 +95,8 @@ jobs:
   # ─── 4. Security: Python code scan ──────────────────────────────────────────
   security_py_checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     needs:
       - dependency_audit_checks
     steps:
@@ -111,6 +117,8 @@ jobs:
   # ─── 6. Security: Dockerfile lint ───────────────────────────────────────────
   security_docker_checks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     needs:
       - dependency_audit_checks
 
@@ -118,8 +126,11 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
 
       - name: Install hadolint
+        env:
+          HADOLINT_VERSION: "2.15.1"
         run: |
-          curl -sSL https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 \
+          curl -sSL \
+            "https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64" \
             -o /usr/local/bin/hadolint
           chmod +x /usr/local/bin/hadolint
 
@@ -131,6 +142,8 @@ jobs:
   # ─── 7a. PR: preview build ──────────────────────────────────────────────────
   docs-preview:
     if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
     needs:
       - docs_linter_checks
       - layout_linter_checks

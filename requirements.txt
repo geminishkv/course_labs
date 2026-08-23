@@ -16,7 +16,7 @@ pymdown-extensions==11.0.2
 Pygments==2.21.0
 
 # ─── Social cards (Material plugin dependency) ──────────────────────────────
-pillow>=10.0.0
+pillow>=12.3.0
 cairosvg>=2.9.0
 
 # ─── Transitive deps (pinned for CVE fixes) ─────────────────────────────────

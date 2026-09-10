@@ -99,13 +99,12 @@
   text-align: left;
 }
 
-.hero-title {
-  font-family: var(--font-display) !important;
-  font-size: clamp(1.8rem, 4vw, 3rem) !important;
-  font-weight: 700 !important;
-  margin: 0 !important;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+/* `.md-typeset .hero-title` (0,2,0) outranks Material's `.md-typeset h1` (0,1,1) */
+.md-typeset .hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0;
   background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -131,9 +130,9 @@
   align-items: center;
 }
 
-.hero-section--compact .hero-title {
-  font-size: clamp(1.3rem, 3vw, 1.8rem) !important;
-  margin: 0 !important;
+.md-typeset .hero-section--compact .hero-title {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  margin: 0;
 }
 
 .hero-section--compact .hero-sub {
@@ -155,18 +154,19 @@
 
 /* Disable section numbers on pages with .no-section-nums */
 
-.no-section-nums h2,
-.no-section-nums h3,
-.no-section-nums h4,
-.no-section-nums h5 {
-  padding-left: 0 !important;
+/* (0,2,1) beats the numbered `.md-typeset h2` rules below without !important */
+.md-typeset .no-section-nums h2,
+.md-typeset .no-section-nums h3,
+.md-typeset .no-section-nums h4,
+.md-typeset .no-section-nums h5 {
+  padding-left: 0;
 }
 
-.no-section-nums h2::before,
-.no-section-nums h3::before,
-.no-section-nums h4::before,
-.no-section-nums h5::before {
-  display: none !important;
+.md-typeset .no-section-nums h2::before,
+.md-typeset .no-section-nums h3::before,
+.md-typeset .no-section-nums h4::before,
+.md-typeset .no-section-nums h5::before {
+  display: none;
 }
 
 /* ── h2: 01, 02 ... ── */
@@ -338,7 +338,7 @@
   border-left: 3px solid var(--brand-red);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   background: var(--surface-card);
-  text-decoration: none !important;
+  text-decoration: none;
   color: inherit;
   transition: border-left-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
   line-height: 1.5;
@@ -348,8 +348,12 @@
   border-left-color: var(--brand-gold);
   background: color-mix(in srgb, var(--brand-gold) 6%, transparent);
   transform: translateX(3px);
-  text-decoration: none !important;
+  text-decoration: none;
 }
+
+.md-typeset .lab-card,
+.md-typeset .lab-card:hover,
+.md-typeset .lab-card:focus { text-decoration: none; }
 
 .lab-card-num {
   font-family: var(--font-display);
@@ -466,13 +470,12 @@
   z-index: 1;
 }
 
-.lab-hero-title {
-  font-family: var(--font-display) !important;
-  color: var(--text-inverse) !important;
-  font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
-  font-weight: 700 !important;
-  margin: 0 0 var(--space-2) !important;
-  line-height: 1.2;
+.md-typeset .lab-hero-title {
+  font-family: var(--font-display);
+  color: var(--text-inverse);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
 }
 
 .lab-hero-tags {
@@ -598,7 +601,7 @@
       width: 420px;
     }
 
-  .hero-title { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
+  .md-typeset .hero-title { font-size: clamp(1.5rem, 6vw, 2rem); }
 
   .hero-section--compact {
       min-height: 100px;
@@ -755,10 +758,10 @@
 .md-footer,
 .md-footer-meta,
 .md-footer-meta__inner {
-  --md-primary-fg-color: var(--ink-page) !important;
+  --md-primary-fg-color: var(--ink-page);
 
   font-family: var(--font-body);
-  background-color: var(--ink-page) !important;
+  background-color: var(--ink-page);
 }
 
 /* gpages Buttons.css (.social-icon): squared tiles, red on hover, icon slides in */

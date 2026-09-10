@@ -92,9 +92,10 @@
 
 /* ── Hide logo in sidebar on tablet ── */
 @media screen and (max-width: 1220px) {
-  .md-sidebar--primary .md-logo,
-  .md-sidebar--primary .md-logo img {
-    display: none !important;
+  /* (0,4,0) over Material's `.md-nav--primary .md-nav__title .md-logo` */
+  .md-sidebar--primary .md-nav--primary .md-nav__title .md-logo,
+  .md-sidebar--primary .md-nav--primary .md-nav__title .md-logo img {
+    display: none;
   }
 }
 

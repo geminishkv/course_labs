@@ -38,17 +38,17 @@
   gap: 10px;
   margin: 0;
   padding: 0.2rem 0;
-  background: transparent !important;
-  box-shadow: none !important;
-  outline: none !important;
-  border: none !important;
-  opacity: 1 !important;
-  -webkit-tap-highlight-color: transparent !important;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  opacity: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* the reset above also swallows the keyboard focus ring: restore it */
 .md-header__button.md-logo:focus-visible {
-  outline: 2px solid var(--brand-gold) !important;
+  outline: 2px solid var(--brand-gold);
   outline-offset: 2px;
 }
 
@@ -210,14 +210,13 @@
   pointer-events: none;
 }
 
-.md-search__form:focus-within {
-  outline: none !important;
-  box-shadow: none !important;
-}
 
-.md-search__input {
-  color: var(--text-inverse) !important;
-  background-color: transparent !important;
+/* (0,2,0): also covers Material's `.md-search__input:hover` background */
+.md-search__input,
+.md-search__input:hover,
+.md-search__input:focus {
+  color: var(--text-inverse);
+  background-color: transparent;
 }
 
 .md-search__input::placeholder { color: #9a9a9a; }
@@ -331,10 +330,11 @@
   align-self: center;
 }
 
-.md-source__fact::before { display: none !important; }
+/* (0,2,1) beats Material's `.md-source__fact:nth-child(1n+2)::before` separator */
+.md-source__fact:nth-child(n)::before { display: none; }
 
-.md-source__fact {
-  display: inline-flex !important;
+.md-source__facts .md-source__fact {
+  display: inline-flex;
   align-items: center;
   gap: 0.2em;
 }

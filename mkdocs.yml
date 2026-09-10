@@ -155,6 +155,11 @@ extra:
 #    provider: google
 #    property: G-XXXXXXXXXX
 
+# never publish the theme overrides or the snippet-only glossary as pages
+exclude_docs: |
+  overrides/
+  glossary.md
+
 nav:
   - "geminishkv.tech": "https://geminishkv.tech/"
   - "Главная страница": index.md

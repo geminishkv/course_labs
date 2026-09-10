@@ -18,13 +18,7 @@ Pygments==2.21.0
 pillow>=12.3.0
 cairosvg>=2.9.0
 
-# ─── Transitive deps (pinned for CVE fixes) ─────────────────────────────────
+# ─── Transitive deps (floors for CVE fixes) ─────────────────────────────────
+# requests: pulled by mkdocs-material; PyYAML: mkdocs, pymdown-extensions
 requests>=2.34.2
-cryptography>=50.0.1
-
-# ─── Runtime ────────────────────────────────────────────────────────────────
 PyYAML==6.0.3
-lunr==0.8.0
-
-# ─── Security scanning (CI only) ────────────────────────────────────────────
-bandit==1.9.4

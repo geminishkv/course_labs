@@ -1336,8 +1336,8 @@ body:has(.md-content--home) .md-top {
 }
 
 .track--live .stage-head {
-  animation: node-ignite 0.7s ease-out both;
-  animation-delay: calc(var(--i) * 0.35s + 0.05s);
+  animation: node-spin 9s linear infinite, node-breathe 4s ease-in-out infinite, node-ignite 0.7s ease-out both;
+  animation-delay: 0s, 0s, calc(var(--i) * 0.35s + 0.05s);
 }
 
 .track--live .stage-node::after {
@@ -1415,20 +1415,40 @@ body:has(.md-content--home) .md-top {
   border-color: var(--mat-dot, var(--brand-red));
 }
 
+/* Stage node: the header logo's rotating red-gold ring, but thinner, slower and
+   with a soft breathing glow instead of the sharp blur layers */
+@property --node-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .stage-head {
   position: relative;
   z-index: 1;
   width: 2.875rem;
   height: 2.875rem;
+  border: 1.5px solid transparent;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--brand-dark);
+  background:
+    linear-gradient(var(--brand-dark), var(--brand-dark)) padding-box,
+    conic-gradient(from var(--node-angle), var(--brand-red), var(--brand-gold) 40%, color-mix(in srgb, var(--brand-red) 30%, transparent) 70%, var(--brand-red)) border-box;
   color: var(--brand-gold);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--text-base);
-  box-shadow: 0 0 0 4px var(--surface-page), 0 0 0 5px var(--border-subtle);
+  box-shadow: 0 0 0 4px var(--surface-page), 0 0 14px color-mix(in srgb, var(--brand-red) 30%, transparent);
+  animation: node-spin 9s linear infinite, node-breathe 4s ease-in-out infinite;
+}
+
+@keyframes node-spin {
+  to { --node-angle: 360deg; }
+}
+
+@keyframes node-breathe {
+  50% { box-shadow: 0 0 0 4px var(--surface-page), 0 0 20px color-mix(in srgb, var(--brand-red) 50%, transparent); }
 }
 
 .stage-name {
@@ -2283,6 +2303,7 @@ body:has(.md-content--home) .md-top {
   .track--live .stage-mats,
   .track--live .stage-labs,
   .track--live .stage-head,
+  .stage-head,
   .md-social__link:hover svg,
   .contact-btn__status,
   .md-typeset .contact-btn:hover .contact-btn__avatar-inner svg,

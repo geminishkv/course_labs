@@ -205,14 +205,6 @@
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
-.md-typeset .highlight:has(> .filename) pre {
-  margin-top: 0;
-}
-
-.md-typeset .highlight:has(> .filename) pre > code {
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-}
-
 /* ── Content links ── */
 .md-typeset a {
   color: var(--brand-red);

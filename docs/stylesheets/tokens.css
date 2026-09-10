@@ -15,7 +15,6 @@
   --ink-page:             #0a0a0a;
   --ink-secondary:        #0d0d0d;
   --ink-card:             #111111;
-  --ink-elevated:         #1c1c1c;
   --ink-border:           #1a1a1a;
   --ink-border-strong:    #2a2a2a;
   --ink-text-secondary:   #888888;
@@ -32,7 +31,6 @@
   /* ── Text ── */
   --text-primary:         #000000;
   --text-secondary:       #3a3a3a;
-  --text-muted:           rgba(255, 255, 255, 0.75);
   --text-ice:             #CADCFC;
   --text-inverse:         #ffffff;
   --text-inverse-muted:   rgba(255, 255, 255, 0.6);
@@ -66,7 +64,6 @@
   --space-6:              1.5rem;
   --space-8:              2rem;
   --space-10:             2.5rem;
-  --space-12:             3rem;
 
   /* ── Radii ── */
   --radius-sm:            3px;

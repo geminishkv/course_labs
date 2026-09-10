@@ -46,6 +46,12 @@
   -webkit-tap-highlight-color: transparent !important;
 }
 
+/* the reset above also swallows the keyboard focus ring: restore it */
+.md-header__button.md-logo:focus-visible {
+  outline: 2px solid var(--brand-gold) !important;
+  outline-offset: 2px;
+}
+
 @keyframes logo-ring-rotate {
   to { transform: rotate(360deg); }
 }
@@ -224,29 +230,32 @@
 
 [data-md-toggle="search"]:checked ~ .md-header .md-search__form { background-color: var(--surface-page); }
 [data-md-toggle="search"]:checked ~ .md-header .md-search__form::after { display: none; }
-[data-md-toggle="search"]:checked ~ .md-header .md-search__input { color: var(--brand-dark) !important; }
-[data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder { color: rgba(0, 0, 0, 0.4); }
+
+/* text colours follow the same tokens as the panel background, so the open
+   search stays readable on the dark home canvas as well as on light pages */
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input { color: var(--text-primary) !important; }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder { color: var(--text-secondary); }
 
 [data-md-toggle="search"]:checked ~ .md-header .md-search__icon svg {
-  color: rgba(0, 0, 0, 0.45);
-  fill: rgba(0, 0, 0, 0.45);
+  color: var(--text-secondary);
+  fill: var(--text-secondary);
 }
 
 .md-search__output {
   background-color: var(--surface-page);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .md-search__scrollwrap { background-color: var(--surface-page); }
 .md-search-result { border-top: 1px solid var(--border-subtle); }
 
 .md-search-result__meta {
-  background-color: #f5f5f5;
-  color: rgba(0, 0, 0, 0.5);
+  background-color: var(--surface-zebra);
+  color: var(--text-secondary);
 }
 
 .md-search-result__article { background-color: var(--surface-page); }
-.md-search-result__title { color: var(--brand-dark); }
+.md-search-result__title { color: var(--text-primary); }
 .md-search-result__teaser { color: var(--text-secondary); }
 .md-search-result__link { color: var(--brand-red); }
 
@@ -302,10 +311,11 @@
   stroke-dashoffset: -32.42;
 }
 
-/* ── Focus ring ── */
+/* ── Focus ring: gold outline with a dark halo, readable on light and dark surfaces ── */
 :focus-visible {
   outline: 2px solid var(--brand-gold);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--brand-dark);
 }
 
 .md-search__form:focus-visible,

@@ -52,22 +52,6 @@
   animation: hero-spin 12s linear infinite, hero-glow 1s ease-in-out infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .brand-col__circle,
-  .brand-col__diamond-wrap,
-  .brand-col .spm-pill {
-    opacity: 1;
-    animation: none;
-  }
-
-  .md-typeset ol.track::before,
-  .hero-section,
-  .lab-hero,
-  .hero-section::after {
-    animation: none;
-  }
-}
-
 /* ══════════════════════════════════════════
    Hero content
 ══════════════════════════════════════════ */
@@ -1604,11 +1588,28 @@ body:has(.md-content--home) .md-top {
 .fade-in:nth-child(3) { transition-delay: 0.2s; }
 .fade-in:nth-child(4) { transition-delay: 0.3s; }
 
+/* Reduced motion: declared last so it wins over every animation above at the
+   same specificity */
 @media (prefers-reduced-motion: reduce) {
   .fade-in {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .brand-col__circle,
+  .brand-col__diamond-wrap,
+  .brand-col .spm-pill {
+    opacity: 1;
+    animation: none;
+  }
+
+  .md-typeset ol.track::before,
+  .stage-node::before,
+  .hero-section,
+  .lab-hero,
+  .hero-section::after {
+    animation: none;
   }
 }
 
@@ -1625,6 +1626,39 @@ body:has(.md-content--home) .md-top {
   .ata-legal,
   .ata-consent {
     display: none;
+  }
+
+  /* the dark home canvas prints on white paper: light tokens, no backgrounds */
+  body:has(.md-content--home) {
+    --surface-page: #fff;
+    --surface-card: #fff;
+    --surface-zebra: #fff;
+    --text-primary: #000;
+    --text-secondary: #3a3a3a;
+    --border-subtle: #bbb;
+    --border-subtle-light: #999;
+    --home-red: var(--brand-red-dark);
+    --home-gold: var(--brand-gold-dark);
+    --md-default-bg-color: #fff;
+    --md-default-fg-color: #000;
+  }
+
+  body:has(.md-content--home) .md-main,
+  .hero-section,
+  .tg-strip {
+    background: none !important;
+  }
+
+  .hero-title {
+    background: none;
+    -webkit-text-fill-color: var(--brand-red-dark);
+  }
+
+  .brand-col { display: none; }
+
+  .stage-node::before {
+    background: var(--brand-red-dark);
+    animation: none;
   }
 }
 

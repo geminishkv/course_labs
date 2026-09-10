@@ -9,7 +9,7 @@
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
 
-    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="appsecta — {{ config.site_name }}" data-md-component="logo">
       <span class="logo-glow" aria-hidden="true">
         <span class="logo-glow__blur logo-glow__blur--1"></span>
         <span class="logo-glow__blur logo-glow__blur--2"></span>
@@ -36,7 +36,7 @@
     {% set parts = (config.site_url or "/").split("/", 3) %}
     {% set site_root = "/" ~ (parts[3] if parts | length > 3 else "") %}
     {% if not site_root.endswith("/") %}{% set site_root = site_root ~ "/" %}{% endif %}
-    <div class="md-header__nav" aria-label="Разделы">
+    <nav class="md-header__nav" aria-label="Разделы">
       <a href="{{ site_root }}#pipeline">Лабы</a>
       <a href="{{ site_root }}labs/tests/basic/test01/">Тесты</a>
       <a href="{{ site_root }}materials/">Материалы</a>
@@ -45,7 +45,7 @@
       <a href="{{ config.repo_url }}" class="md-header__nav-secondary" target="_blank" rel="noopener">GitHub</a>
       {% endif %}
       <a href="https://t.me/appsecta" class="md-header__nav-secondary" target="_blank" rel="noopener">Telegram</a>
-    </div>
+    </nav>
 
     {% if "material/search" in config.plugins %}
       {% set search = config.plugins["material/search"] | attr("config") %}

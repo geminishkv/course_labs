@@ -23,7 +23,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="btn btn-ghost" href="#pipeline">Смотреть конвейер</a>
   </div>
   </div>
-  <div class="hero-stats" aria-label="Цифры курса">
+  <div class="hero-stats" role="group" aria-label="Цифры курса">
   <div class="hero-stat"><b>10</b><span>лабораторных</span></div>
   <div class="hero-stat"><b>7</b><span>intro-гайдов</span></div>
   <div class="hero-stat"><b>7</b><span>тестов</span></div>
@@ -90,7 +90,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 <p class="mats-legend"><span class="mat mat--intro">intro-гайд</span><span class="mat mat--cheat">шпаргалка</span><span class="mat mat--owasp">OWASP</span><span class="mat mat--case">кейс</span><span class="mat mat--ref">справочник</span></p>
 
-<ol class="track">
+<ol class="track" role="list">
   <li class="stage">
   <div class="stage-mats">
     <a class="mat mat--intro" href="labs/intro/vmbox_tutorial/">Окружение: VirtualBox, Linux</a>
@@ -101,7 +101,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GITIGNORE/">.gitignore</a>
   <a class="mat mat--ref" href="materials/ports/">Порты и протоколы</a>
   </div>
-  <div class="stage-node"><div class="stage-head" aria-hidden="true">1</div></div>
+  <div class="stage-node"><div class="stage-head">1</div></div>
   <div class="stage-name">Основы</div>
   <div class="stage-cmd">git · linux · nmap</div>
   <div class="stage-labs">
@@ -115,7 +115,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
     <a class="mat mat--case" href="materials/examples/RA/">Risk Analysis — пример отчёта</a>
   <a class="mat mat--case" href="materials/examples/exmpl/">Cases — инциденты ИБ</a>
   </div>
-  <div class="stage-node"><div class="stage-head" aria-hidden="true">2</div></div>
+  <div class="stage-node"><div class="stage-head">2</div></div>
   <div class="stage-name">Риски</div>
   <div class="stage-cmd">threat model</div>
   <div class="stage-labs">
@@ -129,7 +129,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/">Dockerfile Security</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/">.dockerignore</a>
   </div>
-  <div class="stage-node"><div class="stage-head" aria-hidden="true">3</div></div>
+  <div class="stage-node"><div class="stage-head">3</div></div>
   <div class="stage-name">Контейнеры</div>
   <div class="stage-cmd">docker · cis · trivy</div>
   <div class="stage-labs">
@@ -145,7 +145,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="mat mat--case" href="materials/examples/supply_chain_attacks/">Supply Chain Attacks</a>
   <a class="mat mat--case" href="materials/examples/PrintNightmare/">PrintNightmare</a>
   </div>
-  <div class="stage-node"><div class="stage-head" aria-hidden="true">4</div></div>
+  <div class="stage-node"><div class="stage-head">4</div></div>
   <div class="stage-name">Код и приложение</div>
   <div class="stage-cmd">sast · sca · dast</div>
   <div class="stage-labs">
@@ -160,7 +160,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/">GitHub Actions Security</a>
   <a class="mat mat--owasp" href="materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/">OWASP CI/CD Risks</a>
   </div>
-  <div class="stage-node"><div class="stage-head" aria-hidden="true">5</div></div>
+  <div class="stage-node"><div class="stage-head">5</div></div>
   <div class="stage-name">Конвейер</div>
   <div class="stage-cmd">github actions</div>
   <div class="stage-labs">
@@ -175,7 +175,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="mat mat--case" href="materials/examples/Multisignature/">MultiSig</a>
   <a class="mat mat--ref" href="materials/lectures/fintech_ru/">Лекция: Fintech</a>
   </div>
-  <div class="stage-node"><div class="stage-head" aria-hidden="true">6</div></div>
+  <div class="stage-node"><div class="stage-head">6</div></div>
   <div class="stage-name">Итог</div>
   <div class="stage-cmd">risk assessment · pet</div>
   <div class="stage-labs">

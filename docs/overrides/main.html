@@ -8,9 +8,10 @@
   {% set page_desc  = page.meta.description if page.meta.description else config.site_description %}
   {% set is_release = page.file.src_path == "RELEASE_NOTES.md" %}
 
-  <!-- ─── Security Headers (GitHub Pages: meta only) ──────────────────────── -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://telegram.org https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net https://mc.yandex.ru; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com https://mc.yandex.ru; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <!-- ─── Security policy via <meta> (GitHub Pages cannot send HTTP headers).
+       Only CSP and referrer work here; frame-ancestors, X-Frame-Options, HSTS and
+       X-Content-Type-Options are HTTP-only and are ignored in <meta>. ─── -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://telegram.org https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net https://mc.yandex.ru; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com https://mc.yandex.ru; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <!-- ─── Preconnect / Resource hints (Core Web Vitals / LCP) ─────────────── -->

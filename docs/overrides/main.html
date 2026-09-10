@@ -311,36 +311,9 @@
   </script>
   {% endif %}
 
-  <!-- ─── Yandex.Metrika (domain-locked) ─────────────────────────────────── -->
-  <script type="text/javascript">
-    (function(){
-      var allowed = ['course.geminishkv.tech','geminishkv.github.io'];
-      var host = location.hostname;
-      if (allowed.indexOf(host) === -1) return;
-      (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-        k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
-      })(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-      ym(108454150,'init',{
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true,
-        ecommerce:'dataLayer',
-        triggerEvent:true
-      });
-    })();
-  </script>
+  {#- Yandex.Metrika is loaded by javascripts/banners.js after the visitor accepts cookies -#}
 
   {% endif %}
 
 {% endblock %}
 
-{#- The Metrika no-JS pixel is a <div>: inside <head> it would close the head early
-    and push the og:* meta tags into <body>, so it lives at the end of <body>. -#}
-{% block scripts %}
-  {{ super() }}
-  <noscript><div><img src="https://mc.yandex.ru/watch/108454150" style="position:absolute;left:-9999px;" alt=""></div></noscript>
-{% endblock %}

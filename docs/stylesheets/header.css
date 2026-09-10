@@ -59,7 +59,7 @@
   position: relative;
   z-index: 1;
   border-radius: 50%;
-  background: var(--brand-dark, #1A1919);
+  background: var(--brand-dark);
 }
 
 .md-header__title .md-header__topic {
@@ -206,7 +206,7 @@
 
 .md-search-result__link:hover,
 .md-search-result__link:focus {
-  background-color: rgba(249, 179, 97, 0.08);
+  background-color: color-mix(in srgb, var(--brand-gold) 8%, transparent);
 }
 
 .md-search-result__article--document .md-search-result__title {
@@ -215,7 +215,7 @@
 
 .md-search-result mark {
   color: var(--brand-red);
-  background-color: rgba(249, 179, 97, 0.3);
+  background-color: color-mix(in srgb, var(--brand-gold) 30%, transparent);
 }
 
 /* ── Burger menu ── */
@@ -265,9 +265,9 @@
   inset: -3px;
   border-radius: 50%;
   background-image: linear-gradient(
-    var(--brand-red, #D51A1A),
-    var(--brand-gold, #F9B361),
-    var(--brand-red, #D51A1A)
+    var(--brand-red),
+    var(--brand-gold),
+    var(--brand-red)
   );
   animation: logo-ring-rotate 2.4s linear infinite;
   z-index: 0;
@@ -279,9 +279,9 @@
   inset: -3px;
   border-radius: 50%;
   background-image: linear-gradient(
-    var(--brand-red, #D51A1A),
-    var(--brand-gold, #F9B361),
-    var(--brand-red, #D51A1A)
+    var(--brand-red),
+    var(--brand-gold),
+    var(--brand-red)
   );
   animation: logo-ring-rotate 2.4s linear infinite;
   filter: blur(6px);

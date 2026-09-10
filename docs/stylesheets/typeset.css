@@ -123,71 +123,44 @@
 }
 
 /* danger / failure / bug → red */
-.md-typeset .admonition.danger,  .md-typeset details.danger,
-.md-typeset .admonition.failure, .md-typeset details.failure,
-.md-typeset .admonition.bug,     .md-typeset details.bug {
+.md-typeset :is(.admonition, details):is(.danger, .failure, .bug) {
   border-color: var(--brand-red);
 }
 
-.md-typeset .admonition.danger > .admonition-title,  .md-typeset details.danger > summary,
-.md-typeset .admonition.failure > .admonition-title, .md-typeset details.failure > summary,
-.md-typeset .admonition.bug > .admonition-title,     .md-typeset details.bug > summary {
-  background-color: rgba(213, 26, 26, 0.08);
+.md-typeset :is(.admonition, details):is(.danger, .failure, .bug) > :is(.admonition-title, summary) {
+  background-color: color-mix(in srgb, var(--brand-red) 8%, transparent);
   color: var(--brand-red);
 }
 
-.md-typeset .admonition.danger > .admonition-title::before,  .md-typeset details.danger > summary::before,
-.md-typeset .admonition.failure > .admonition-title::before, .md-typeset details.failure > summary::before,
-.md-typeset .admonition.bug > .admonition-title::before,     .md-typeset details.bug > summary::before {
+.md-typeset :is(.admonition, details):is(.danger, .failure, .bug) > :is(.admonition-title, summary)::before {
   background-color: var(--brand-red);
 }
 
 /* warning / tip / question / example → gold */
-.md-typeset .admonition.warning,  .md-typeset details.warning,
-.md-typeset .admonition.tip,      .md-typeset details.tip,
-.md-typeset .admonition.question, .md-typeset details.question,
-.md-typeset .admonition.example,  .md-typeset details.example {
+.md-typeset :is(.admonition, details):is(.warning, .tip, .question, .example) {
   border-color: var(--brand-gold);
 }
 
-.md-typeset .admonition.warning > .admonition-title,  .md-typeset details.warning > summary,
-.md-typeset .admonition.tip > .admonition-title,      .md-typeset details.tip > summary,
-.md-typeset .admonition.question > .admonition-title, .md-typeset details.question > summary,
-.md-typeset .admonition.example > .admonition-title,  .md-typeset details.example > summary {
-  background-color: rgba(249, 179, 97, 0.1);
+.md-typeset :is(.admonition, details):is(.warning, .tip, .question, .example) > :is(.admonition-title, summary) {
+  background-color: color-mix(in srgb, var(--brand-gold) 10%, transparent);
   color: var(--brand-gold-dark);
 }
 
-.md-typeset .admonition.warning > .admonition-title::before,  .md-typeset details.warning > summary::before,
-.md-typeset .admonition.tip > .admonition-title::before,      .md-typeset details.tip > summary::before,
-.md-typeset .admonition.question > .admonition-title::before, .md-typeset details.question > summary::before,
-.md-typeset .admonition.example > .admonition-title::before,  .md-typeset details.example > summary::before {
+.md-typeset :is(.admonition, details):is(.warning, .tip, .question, .example) > :is(.admonition-title, summary)::before {
   background-color: var(--brand-gold);
 }
 
 /* info / note / abstract / success / quote → dark brand */
-.md-typeset .admonition.info,     .md-typeset details.info,
-.md-typeset .admonition.note,     .md-typeset details.note,
-.md-typeset .admonition.abstract, .md-typeset details.abstract,
-.md-typeset .admonition.success,  .md-typeset details.success,
-.md-typeset .admonition.quote,    .md-typeset details.quote {
+.md-typeset :is(.admonition, details):is(.info, .note, .abstract, .success, .quote) {
   border-color: var(--brand-dark);
 }
 
-.md-typeset .admonition.info > .admonition-title,     .md-typeset details.info > summary,
-.md-typeset .admonition.note > .admonition-title,     .md-typeset details.note > summary,
-.md-typeset .admonition.abstract > .admonition-title, .md-typeset details.abstract > summary,
-.md-typeset .admonition.success > .admonition-title,  .md-typeset details.success > summary,
-.md-typeset .admonition.quote > .admonition-title,    .md-typeset details.quote > summary {
-  background-color: rgba(26, 25, 25, 0.07);
+.md-typeset :is(.admonition, details):is(.info, .note, .abstract, .success, .quote) > :is(.admonition-title, summary) {
+  background-color: color-mix(in srgb, var(--brand-dark) 7%, transparent);
   color: var(--brand-dark);
 }
 
-.md-typeset .admonition.info > .admonition-title::before,     .md-typeset details.info > summary::before,
-.md-typeset .admonition.note > .admonition-title::before,     .md-typeset details.note > summary::before,
-.md-typeset .admonition.abstract > .admonition-title::before, .md-typeset details.abstract > summary::before,
-.md-typeset .admonition.success > .admonition-title::before,  .md-typeset details.success > summary::before,
-.md-typeset .admonition.quote > .admonition-title::before,    .md-typeset details.quote > summary::before {
+.md-typeset :is(.admonition, details):is(.info, .note, .abstract, .success, .quote) > :is(.admonition-title, summary)::before {
   background-color: var(--brand-dark);
 }
 
@@ -197,7 +170,7 @@
 }
 
 .md-typeset details.spoiler > summary {
-  background-color: rgba(249, 179, 97, 0.08);
+  background-color: color-mix(in srgb, var(--brand-gold) 8%, transparent);
   color: var(--brand-gold-dark);
 }
 
@@ -212,7 +185,7 @@
 /* ── Blockquote → gold left border ── */
 .md-typeset blockquote {
   border-left: 3px solid var(--brand-gold);
-  background: rgba(249, 179, 97, 0.05);
+  background: color-mix(in srgb, var(--brand-gold) 5%, transparent);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: var(--space-2) var(--space-4);
   color: var(--text-secondary);
@@ -228,7 +201,7 @@
 .md-typeset hr {
   border: none;
   height: 2px;
-  background: linear-gradient(to right, var(--brand-red) 0%, rgba(213, 26, 26, 0.15) 60%, transparent 100%);
+  background: linear-gradient(to right, var(--brand-red) 0%, color-mix(in srgb, var(--brand-red) 15%, transparent) 60%, transparent 100%);
   margin: 1.75rem 0;
 }
 
@@ -268,7 +241,7 @@
 /* ── Inline code ── */
 .md-typeset code {
   font-family: var(--font-code);
-  background-color: rgba(213, 26, 26, 0.07);
+  background-color: color-mix(in srgb, var(--brand-red) 7%, transparent);
   color: var(--brand-red-dark);
   border-radius: var(--radius-sm);
   padding: 0.05em 0.3em;
@@ -288,13 +261,13 @@
 
 /* ── Text selection ── */
 ::selection {
-  background-color: rgba(249, 179, 97, 0.3);
+  background-color: color-mix(in srgb, var(--brand-gold) 30%, transparent);
   color: var(--brand-dark);
 }
 
 /* ── Heading anchor links ── */
 .md-typeset .headerlink {
-  color: rgba(213, 26, 26, 0.25);
+  color: color-mix(in srgb, var(--brand-red) 25%, transparent);
   transition: color var(--transition-base);
 }
 

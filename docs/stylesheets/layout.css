@@ -10,10 +10,10 @@
   gap: var(--space-10);
   position: relative;
   border: 6px solid transparent;
-  border-radius: var(--radius-md, 6px);
+  border-radius: var(--radius-md);
   background-image:
     linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-hero-stop) 60%, var(--brand-dark) 100%),
-    conic-gradient(from var(--hero-angle, 0deg), var(--brand-red, #D51A1A), var(--brand-gold, #F9B361), var(--brand-red, #D51A1A));
+    conic-gradient(from var(--hero-angle, 0deg), var(--brand-red), var(--brand-gold), var(--brand-red));
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
@@ -40,9 +40,9 @@
   inset: -8px;
   border-radius: 50%;
   background: conic-gradient(
-    var(--brand-red, #D51A1A),
-    var(--brand-gold, #F9B361),
-    var(--brand-red, #D51A1A)
+    var(--brand-red),
+    var(--brand-gold),
+    var(--brand-red)
   );
   animation: logo-ring-rotate 2.4s linear infinite;
   z-index: 0;
@@ -54,9 +54,9 @@
   inset: -8px;
   border-radius: 50%;
   background: conic-gradient(
-    var(--brand-red, #D51A1A),
-    var(--brand-gold, #F9B361),
-    var(--brand-red, #D51A1A)
+    var(--brand-red),
+    var(--brand-gold),
+    var(--brand-red)
   );
   animation: logo-ring-rotate 2.4s linear infinite;
   filter: blur(6px);
@@ -118,7 +118,7 @@
 
 .hero-sub {
   font-size: var(--text-md);
-  color: var(--text-ice, #CADCFC);
+  color: var(--text-ice);
   margin: 0;
 }
 
@@ -201,7 +201,7 @@
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--brand-dark, #1A1919), var(--brand-red, #D51A1A));
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand-red));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -225,7 +225,7 @@
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--brand-dark, #1A1919), var(--brand-red, #D51A1A));
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand-red));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -321,7 +321,7 @@
 }
 
 .md-typeset table tbody tr:hover {
-  background-color: rgba(249, 179, 97, 0.12);
+  background-color: color-mix(in srgb, var(--brand-gold) 12%, transparent);
 }
 
 /* ══════════════════════════════════════════
@@ -348,7 +348,7 @@
   flex: 0 0 362px;
   min-width: 0;
   background: var(--surface-card);
-  border: 1px solid rgba(213, 26, 26, 0.12);
+  border: 1px solid color-mix(in srgb, var(--brand-red) 12%, transparent);
   border-top: 3px solid var(--brand-red);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   padding: var(--space-5) var(--space-4) var(--space-4);
@@ -382,7 +382,7 @@
   border-radius: var(--radius-md);
   padding: var(--space-3) var(--space-3);
   margin-bottom: var(--space-3);
-  border: 1px solid rgba(213, 26, 26, 0.2);
+  border: 1px solid color-mix(in srgb, var(--brand-red) 20%, transparent);
 }
 
 .tg-channel-header {
@@ -398,7 +398,7 @@
   border-radius: 50%;
   object-fit: contain;
   flex-shrink: 0;
-  background: rgba(213, 26, 26, 0.15);
+  background: color-mix(in srgb, var(--brand-red) 15%, transparent);
   padding: 4px;
 }
 
@@ -480,7 +480,7 @@
 
 .lab-card:hover {
   border-left-color: var(--brand-gold);
-  background: rgba(249, 179, 97, 0.06);
+  background: color-mix(in srgb, var(--brand-gold) 6%, transparent);
   transform: translateX(3px);
   text-decoration: none !important;
 }
@@ -518,15 +518,15 @@
   font-family: var(--font-code);
   font-size: var(--text-2xs);
   font-weight: 600;
-  color: rgba(213, 26, 26, 0.75);
-  background: rgba(213, 26, 26, 0.07);
-  border: 1px solid rgba(213, 26, 26, 0.13);
+  color: color-mix(in srgb, var(--brand-red) 75%, transparent);
+  background: color-mix(in srgb, var(--brand-red) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-red) 13%, transparent);
   padding: 0.1rem 0.5rem;
   border-radius: 999px;
 }
 
 .lab-card-arrow {
-  color: rgba(213, 26, 26, 0.3);
+  color: color-mix(in srgb, var(--brand-red) 30%, transparent);
   font-size: var(--text-md);
   flex-shrink: 0;
   transition: color var(--transition-fast), transform var(--transition-fast);
@@ -539,7 +539,7 @@
 
 .lab-card--pet {
   border-left-color: var(--brand-gold);
-  background: rgba(249, 179, 97, 0.03);
+  background: color-mix(in srgb, var(--brand-gold) 3%, transparent);
 }
 
 .lab-card--pet .lab-card-num {
@@ -559,9 +559,9 @@
 }
 
 .lab-tag--gold {
-  border-color: rgba(249, 179, 97, 0.3);
+  border-color: color-mix(in srgb, var(--brand-gold) 30%, transparent);
   color: var(--brand-gold-dark);
-  background: rgba(249, 179, 97, 0.08);
+  background: color-mix(in srgb, var(--brand-gold) 8%, transparent);
 }
 
 /* ══════════════════════════════════════════
@@ -575,10 +575,10 @@
   padding: var(--space-8) var(--space-10);
   position: relative;
   border: 6px solid transparent;
-  border-radius: var(--radius-md, 6px);
+  border-radius: var(--radius-md);
   background-image:
     linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-hero-stop) 60%, var(--brand-dark) 100%),
-    conic-gradient(from var(--hero-angle, 0deg), var(--brand-red, #D51A1A), var(--brand-gold, #F9B361), var(--brand-red, #D51A1A));
+    conic-gradient(from var(--hero-angle, 0deg), var(--brand-red), var(--brand-gold), var(--brand-red));
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
@@ -591,7 +591,7 @@
   transform: translateX(-50%);
   width: 60%;
   height: 200%;
-  background: radial-gradient(ellipse, rgba(213, 26, 26, 0.12) 0%, transparent 65%);
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--brand-red) 12%, transparent) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -599,7 +599,7 @@
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: rgba(213, 26, 26, 0.2);
+  color: color-mix(in srgb, var(--brand-red) 20%, transparent);
   flex-shrink: 0;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -628,7 +628,7 @@
 }
 
 .lab-hero--pet .lab-hero-num {
-  color: rgba(249, 179, 97, 0.35);
+  color: color-mix(in srgb, var(--brand-gold) 35%, transparent);
 }
 
 /* ══════════════════════════════════════════
@@ -653,13 +653,13 @@
 }
 
 .risk-col-header--urgent {
-  background: rgba(213, 26, 26, 0.1);
+  background: color-mix(in srgb, var(--brand-red) 10%, transparent);
   color: var(--brand-red);
   border-left: 3px solid var(--brand-red);
 }
 
 .risk-col-header--nonurgent {
-  background: rgba(249, 179, 97, 0.1);
+  background: color-mix(in srgb, var(--brand-gold) 10%, transparent);
   color: var(--brand-gold-dark);
   border-left: 3px solid var(--brand-gold);
 }
@@ -669,7 +669,7 @@
   align-items: flex-start;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  border: 1px solid rgba(213, 26, 26, 0.08);
+  border: 1px solid color-mix(in srgb, var(--brand-red) 8%, transparent);
   border-left: 3px solid var(--brand-red);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   background: var(--surface-card);
@@ -680,7 +680,7 @@
 }
 
 .risk-item:hover {
-  background: rgba(213, 26, 26, 0.04);
+  background: color-mix(in srgb, var(--brand-red) 4%, transparent);
   border-left-color: var(--brand-gold);
 }
 
@@ -690,7 +690,7 @@
 }
 
 .risk-item--nonurgent:hover {
-  background: rgba(249, 179, 97, 0.07);
+  background: color-mix(in srgb, var(--brand-gold) 7%, transparent);
   border-left-color: var(--brand-red);
 }
 
@@ -811,12 +811,12 @@
 @keyframes bg-glow-wave {
   0%, 100% {
     opacity: 0.05;
-    filter: drop-shadow(0 0 20px rgba(213, 26, 26, 0.2));
+    filter: drop-shadow(0 0 20px color-mix(in srgb, var(--brand-red) 20%, transparent));
   }
 
   50% {
     opacity: 0.1;
-    filter: drop-shadow(0 0 60px rgba(213, 26, 26, 0.4)) drop-shadow(0 0 120px rgba(255, 255, 255, 0.1));
+    filter: drop-shadow(0 0 60px color-mix(in srgb, var(--brand-red) 40%, transparent)) drop-shadow(0 0 120px rgba(255, 255, 255, 0.1));
   }
 }
 
@@ -938,7 +938,7 @@
 
 .md-footer__link {
   color: var(--text-muted);
-  border-top: 2px solid rgba(213, 26, 26, 0.25);
+  border-top: 2px solid color-mix(in srgb, var(--brand-red) 25%, transparent);
   padding-top: var(--space-3);
   transition: color var(--transition-base), border-color var(--transition-base);
 }

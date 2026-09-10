@@ -44,7 +44,7 @@
 .md-sidebar--primary .md-nav__link:hover,
 .md-sidebar--primary .md-nav__link:focus {
   color: var(--brand-gold);
-  background-color: rgba(249, 179, 97, 0.08);
+  background-color: color-mix(in srgb, var(--brand-gold) 8%, transparent);
 }
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {
@@ -108,10 +108,10 @@
 }
 
 .md-sidebar__inner::-webkit-scrollbar-thumb {
-  background: rgba(213, 26, 26, 0.3);
+  background: color-mix(in srgb, var(--brand-red) 30%, transparent);
   border-radius: 2px;
 }
 
 .md-sidebar__inner::-webkit-scrollbar-thumb:hover {
-  background: rgba(213, 26, 26, 0.6);
+  background: color-mix(in srgb, var(--brand-red) 60%, transparent);
 }

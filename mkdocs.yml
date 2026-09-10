@@ -52,6 +52,8 @@ plugins:
       minify_html: true
       minify_css: true
       minify_js: true
+      css_files:
+        - stylesheets/home.css   # loaded by overrides/home.html only
       htmlmin_opts:
         remove_comments: true
   - glightbox:
@@ -120,7 +122,7 @@ extra_css:
   - stylesheets/header.css
   - stylesheets/sidebar.css
   - stylesheets/typeset.css
-  - stylesheets/layout.css
+  - stylesheets/components.css
   - stylesheets/banners.css
 
 extra_javascript:

@@ -2,10 +2,17 @@
   Home page template (docs/index.md sets `template: home.html`). Inherits
   main.html so the project <head> (CSP, fonts, JSON-LD) stays; the sidebars
   are hidden through `hide: [navigation, toc]` in the page meta, which keeps
-  the drawer working on narrow screens. Styles live in layout.css under
-  `.md-content--home` / `body:has(.md-content--home)`.
+  the drawer working on narrow screens. Styles live in stylesheets/home.css
+  (`.md-content--home` / `body:has(.md-content--home)`), linked below.
 -#}
 {% extends "main.html" %}
+
+{#- home.css is not in extra_css: only the home page pays for its styles.
+    mkdocs-minify-plugin (css_files) writes it as home.min.css. -#}
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'stylesheets/home.min.css' | url }}">
+  {{ super() }}
+{% endblock %}
 
 {% block tabs %}{% endblock %}
 

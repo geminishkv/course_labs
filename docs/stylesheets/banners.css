@@ -98,13 +98,15 @@
 }
 
 /* ══════════════════════════════════════════
-   Cookie consent banner (top-right card)
+   Cookie consent banner (bottom-right card, above the notice bar)
 ══════════════════════════════════════════ */
 
 .cookie-banner {
   position: fixed;
-  top: 20px;
   right: 20px;
+
+  /* sits above the notice bar; banners.js publishes the bar height as --notice-bar-h */
+  bottom: calc(var(--notice-bar-h, 0px) + 20px);
   z-index: 9000;
   width: 300px;
   background: var(--brand-dark);
@@ -121,6 +123,7 @@
     0 2px 20px rgba(0, 0, 0, 0.3),
     0 0 0 1px color-mix(in srgb, var(--brand-red) 6%, transparent);
   animation: cookie-slide-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cookie-banner[hidden] {
@@ -207,7 +210,7 @@
 @keyframes cookie-slide-in {
   from {
     opacity: 0;
-    transform: translateY(-20px) scale(0.95);
+    transform: translateY(20px) scale(0.95);
   }
 
   to {
@@ -261,9 +264,9 @@
 
 @media (max-width: 576px) {
   .cookie-banner {
-    top: 10px;
     right: 10px;
     left: 10px;
+    bottom: calc(var(--notice-bar-h, 0px) + 10px);
     width: auto;
     padding: 16px 18px;
     gap: 10px;

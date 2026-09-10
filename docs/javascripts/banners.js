@@ -43,17 +43,27 @@
 
     document.body.appendChild(bar);
 
+    // The cookie banner stacks above the bar: publish the bar height as a CSS variable.
+    function publishHeight() {
+      var h = bar.classList.contains("notice-bar--visible") ? bar.offsetHeight : 0;
+      document.documentElement.style.setProperty("--notice-bar-h", h + "px");
+    }
+    window.addEventListener("resize", publishHeight);
+
     bar.querySelector(".notice-bar__close").addEventListener("click", function () {
       bar.classList.remove("notice-bar--visible");
+      publishHeight();
+      window.removeEventListener("resize", publishHeight);
       dismiss("notice_ts", null);
     });
 
     setTimeout(function () {
       bar.classList.add("notice-bar--visible");
+      publishHeight();
     }, 600);
   }
 
-  /* ── Cookie banner (top-right) ── */
+  /* ── Cookie banner (bottom-right, above the notice bar) ── */
 
   function createCookieBanner() {
     if (!shouldShow("cookie_ts")) return;

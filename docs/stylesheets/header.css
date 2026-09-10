@@ -346,7 +346,8 @@
   .md-header__burger { display: block; }
 }
 
-@media screen and (max-width: 900px) {
+/* the burger takes over below Material's drawer breakpoint: one menu, not two */
+@media screen and (max-width: 76.1875em) {
   .md-header__nav { display: none; }
 }
 

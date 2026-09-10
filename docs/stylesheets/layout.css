@@ -338,7 +338,7 @@ body:has(.md-content--home) .md-top {
 
 .md-content--home .md-content__inner {
   max-width: none;
-  padding: 0 var(--home-gutter) var(--space-12);
+  padding: 0 var(--home-gutter) var(--space-6);
 }
 
 .md-content--home .md-content__button { display: none; }
@@ -707,13 +707,103 @@ body:has(.md-content--home) .md-top {
   position: relative;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0 var(--space-4);
+  gap: var(--space-2) var(--space-4);
 }
 
+/* vertical line for the single-column layout (enabled below 700px) */
 .md-typeset ol.track::before {
   content: "";
+  display: none;
   position: absolute;
-  left: 0;
+  inset: 0 auto 0 1.3125rem;
+  width: 0.25rem;
+  border-radius: 0.125rem;
+  background: linear-gradient(180deg, var(--brand-red) 0%, var(--brand-gold) 25%, var(--brand-red) 50%, var(--brand-gold) 75%, var(--brand-red) 100%);
+  background-size: 100% 200%;
+  animation: track-flow-v 6s linear infinite;
+}
+
+@keyframes track-flow {
+  to { background-position: -200% 0; }
+}
+
+@keyframes track-flow-v {
+  to { background-position: 0 -200%; }
+}
+
+/* every stage spans the same five rows: materials, node, name, stack, labs */
+.md-typeset .stage {
+  position: relative;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+  row-gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.stage-mats {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  gap: 0.3rem;
+  padding-bottom: 0.4rem;
+}
+
+.md-typeset .mat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.12rem 0.55rem 0.12rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-card);
+  color: var(--text-secondary);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.md-typeset .mat::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--mat-dot, var(--text-secondary));
+  flex: none;
+}
+
+.md-typeset .mat:hover,
+.md-typeset .mat:focus {
+  color: var(--text-primary);
+  border-color: var(--mat-dot, var(--brand-red));
+  text-decoration: none;
+}
+
+.mat--intro { --mat-dot: var(--brand-gold); }
+.mat--cheat { --mat-dot: var(--brand-red); }
+.mat--owasp { --mat-dot: var(--brand-red-light); }
+.mat--case { --mat-dot: var(--brand-gold-dark); }
+.mat--ref { --mat-dot: var(--ink-text-secondary); }
+
+.md-typeset .mats-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0 0 var(--space-4);
+}
+
+/* node row: the pipeline line runs through the node, one segment per stage
+   bridging the column gap to its left */
+.stage-node { position: relative; }
+
+.stage-node::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-4));
   right: 0;
   top: 1.3125rem;
   height: 0.25rem;
@@ -723,19 +813,7 @@ body:has(.md-content--home) .md-top {
   animation: track-flow 6s linear infinite;
 }
 
-@keyframes track-flow {
-  to { background-position: -200% 0; }
-}
-
-.md-typeset .stage {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-}
+.md-typeset .stage:first-child .stage-node::before { left: 0; }
 
 .stage-head {
   position: relative;
@@ -758,7 +836,6 @@ body:has(.md-content--home) .md-top {
   font-weight: 600;
   font-size: var(--text-sm);
   color: var(--text-primary);
-  margin-top: 0.3rem;
   line-height: 1.25;
   hyphens: auto;
 }
@@ -773,8 +850,8 @@ body:has(.md-content--home) .md-top {
 .stage-labs {
   display: flex;
   flex-direction: column;
+  align-content: flex-start;
   gap: var(--space-2);
-  margin-top: 0.2rem;
 }
 
 .md-typeset .lab {
@@ -826,6 +903,109 @@ body:has(.md-content--home) .md-top {
 .md-typeset .lab--gold { border-left-color: var(--brand-gold); }
 .md-typeset .lab--gold .lab-num { color: var(--brand-gold-dark); }
 .md-typeset .lab--gold:hover { border-left-color: var(--brand-red); }
+
+/* ══════════════════════════════════════════
+   Home: about cards, walkthrough steps, rules
+══════════════════════════════════════════ */
+.about-grid,
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-5) 0 var(--space-6);
+}
+
+.md-typeset .about-card,
+.md-typeset .rules-card {
+  margin: 0;
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--brand-red);
+}
+
+.md-typeset .about-card h3,
+.md-typeset .rules-card h3 {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-md);
+  color: var(--home-gold, var(--brand-gold-dark));
+}
+
+.md-typeset .about-card ul,
+.md-typeset .rules-card ul,
+.md-typeset .rules-card ol {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.md-typeset .about-card li,
+.md-typeset .rules-card li { margin: 0 0 0.35rem; }
+
+.md-typeset ul.checks {
+  list-style: none;
+  padding-left: 0;
+}
+
+.md-typeset ul.checks li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.md-typeset ul.checks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--brand-gold);
+  font-weight: 700;
+}
+
+.md-typeset ol.notes { padding-left: 1.4rem; }
+
+.md-typeset ol.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  counter-reset: none;
+}
+
+.md-typeset ol.steps li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.steps__n {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--brand-red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-2xs);
+}
+
+.md-typeset .steps__foot {
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+.entries--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 /* ══════════════════════════════════════════
    Home: section entries + Telegram strip
@@ -891,7 +1071,7 @@ body:has(.md-content--home) .md-top {
   justify-content: space-between;
   gap: var(--space-5);
   flex-wrap: wrap;
-  margin: var(--space-6) 0 var(--space-8);
+  margin: var(--space-6) 0 0;
   padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, var(--brand-dark) 0%, #2a0808 100%);
@@ -1243,36 +1423,9 @@ body:has(.md-content--home) .md-top {
 
   .hero-section--home { grid-template-columns: 1fr; }
 
-  .hero-section--home .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-  .md-typeset ol.track {
-    grid-template-columns: 1fr;
-    gap: var(--space-6) 0;
-  }
-
-  .md-typeset ol.track::before {
-    inset: 0 auto 0 21px;
-    width: 4px;
-    height: auto;
-    background: linear-gradient(180deg, var(--brand-red) 0%, var(--brand-gold) 25%, var(--brand-red) 50%, var(--brand-gold) 75%, var(--brand-red) 100%);
-    background-size: 100% 200%;
-    animation-name: track-flow-v;
-  }
-
-  @keyframes track-flow-v {
-    to { background-position: 0 -200%; }
-  }
-
-  .md-typeset .stage {
-    display: grid;
-    grid-template-columns: 46px 1fr;
-    gap: 0.3rem var(--space-4);
-  }
-
-  .stage-head { grid-row: 1 / span 3; }
-  .stage-name { margin-top: 0; }
-  .stage-labs { grid-column: 2; }
-  .entries { grid-template-columns: 1fr; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .entries--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-typeset ol.steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .lab-hero {
     flex-direction: column;
@@ -1314,6 +1467,87 @@ body:has(.md-content--home) .md-top {
 /* ══════════════════════════════════════════
    Responsive — mobile (≤480px)
 ══════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════
+   Home adaptive tiers: 1600 / 1220 (header) / 960 / 700
+══════════════════════════════════════════ */
+
+/* < 1600px: stats become a 4-up strip under the text so the title keeps two
+   lines; the pipeline folds into 2 rows × 3 stages */
+@media screen and (max-width: 99.9375em) {
+  .hero-section--home { grid-template-columns: 1fr; }
+
+  .hero-section--home .hero-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: var(--space-6);
+  }
+
+  .md-typeset ol.track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md-typeset .stage-labs { padding-bottom: var(--space-6); }
+  .md-typeset .stage:nth-child(3n + 1) .stage-node::before { left: 0; }
+}
+
+/* 700–960px: pipeline 2 × 3 */
+@media screen and (min-width: 43.75em) and (max-width: 60em) {
+  .hero-section--home .hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md-typeset ol.track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-typeset .stage:nth-child(3n + 1) .stage-node::before { left: calc(-1 * var(--space-4)); }
+  .md-typeset .stage:nth-child(2n + 1) .stage-node::before { left: 0; }
+}
+
+/* < 700px: one column with a vertical line, full-width buttons */
+@media screen and (max-width: 43.6875em) {
+  .hero-section--home .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-cta { flex-direction: column; }
+
+  .md-typeset .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tg-strip {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .md-typeset ol.steps { grid-template-columns: 1fr; }
+  .entries--four { grid-template-columns: 1fr; }
+
+  .md-typeset ol.track {
+    grid-template-columns: 1fr;
+    gap: var(--space-6) 0;
+  }
+
+  .md-typeset ol.track::before { display: block; }
+
+  .md-typeset .stage {
+    grid-template-columns: 2.875rem 1fr;
+    grid-template-rows: auto;
+    grid-row: auto;
+    gap: 0.3rem var(--space-4);
+  }
+
+  .stage-node {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+  }
+
+  .stage-node::before { display: none; }
+
+  .stage-mats {
+    align-content: flex-start;
+    padding-bottom: 0;
+  }
+
+  .stage-mats,
+  .stage-name,
+  .stage-cmd,
+  .stage-labs { grid-column: 2; }
+
+  .md-typeset .stage-labs { padding-bottom: 0; }
+}
+
 @media screen and (max-width: 480px) {
   .hero-section {
     padding: var(--space-6) var(--space-4) var(--space-5);

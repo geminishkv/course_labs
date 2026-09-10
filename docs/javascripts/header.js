@@ -3,7 +3,6 @@
 
   var OWNER = "geminishkv";
   var REPO = "course_labs";
-  var SITE_LINK = "https://geminishkv.tech/";
   var CACHE_KEY = "gh-repo-stats";
   var CACHE_TTL = 3600000;
 
@@ -13,27 +12,14 @@
     fork: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg>'
   };
 
-  /* ── Header: © AppSecTA link + logo → geminishkv.tech ── */
+  /* ── Header: glass effect once the page is scrolled (see header.css) ── */
 
-  function decorateHeader() {
-    var topic = document.querySelector(".md-header__title .md-header__topic");
-    if (topic) {
-      topic.textContent = "";
-      var link = document.createElement("a");
-      link.href = SITE_LINK;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = "© AppSecTA";
-      topic.appendChild(link);
-    }
+  var header = document.querySelector(".md-header");
 
-    var logo = document.querySelector(".md-header .md-header__button.md-logo");
-    if (logo) {
-      logo.href = SITE_LINK;
-      logo.target = "_blank";
-      logo.rel = "noopener noreferrer";
-    }
+  function updateGlass() {
+    if (header) header.classList.toggle("md-header--glass", window.scrollY > 10);
   }
+  window.addEventListener("scroll", updateGlass, { passive: true });
 
   /* ── Repo stats: release, stars, forks ── */
 
@@ -110,7 +96,7 @@
   }
 
   function init() {
-    decorateHeader();
+    updateGlass();
     var cached = readCache();
     if (cached) {
       renderStats(cached);

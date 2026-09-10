@@ -221,8 +221,11 @@
 }
 
 .md-typeset .highlight:has(> .filename) pre {
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
   margin-top: 0;
+}
+
+.md-typeset .highlight:has(> .filename) pre > code {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 /* ── Content links ── */
@@ -247,16 +250,15 @@
   padding: 0.05em 0.3em;
 }
 
-/* ── Code blocks — let Pygments monokai handle colours ── */
+/* ── Code blocks: dark surface + palette come from the --md-code-* tokens ── */
 .md-typeset pre {
   font-family: var(--font-code);
 }
 
 .md-typeset pre > code {
-  background-color: transparent;
-  color: inherit;
-  border-radius: 0;
-  padding: 0;
+  background-color: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+  border-radius: var(--radius-md);
 }
 
 /* ── Text selection ── */
@@ -283,7 +285,13 @@
 }
 
 .md-typeset pre:hover .md-clipboard {
-  color: #4b5563;
+  color: #f2eeea;
+}
+
+/* inline line numbers (pymdownx-inline): Material paints them with the light-theme
+   foreground, which vanishes on the dark code surface */
+.md-typeset .highlight [data-linenos]::before {
+  color: rgba(242, 238, 234, 0.4);
 }
 
 .md-clipboard[aria-label="Copied!"],

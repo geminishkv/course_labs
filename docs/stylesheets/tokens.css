@@ -79,4 +79,21 @@
   --md-typeset-a-color:              var(--brand-red);
   --md-text-font:                    "Roboto", system-ui, -apple-system, sans-serif;
   --md-code-font:                    "Roboto Mono", "Roboto", ui-monospace, monospace;
+
+  /* ── Code blocks: dark surface, monokai palette tuned to the brand ── */
+  --md-code-bg-color:                var(--surface-code);
+  --md-code-fg-color:                #f2eeea;
+  --md-code-hl-color:                color-mix(in srgb, var(--brand-gold) 22%, transparent);
+  --md-code-hl-keyword-color:        #ff6b6b;
+  --md-code-hl-operator-color:       #ff6b6b;
+  --md-code-hl-string-color:         var(--brand-gold);
+  --md-code-hl-number-color:         #c9a1ff;
+  --md-code-hl-constant-color:       #c9a1ff;
+  --md-code-hl-function-color:       #a6e22e;
+  --md-code-hl-special-color:        #66d9ef;
+  --md-code-hl-variable-color:       #fd971f;
+  --md-code-hl-name-color:           #f2eeea;
+  --md-code-hl-generic-color:        #f2eeea;
+  --md-code-hl-punctuation-color:    #b8b0ab;
+  --md-code-hl-comment-color:        #8a827c;
 }

@@ -1,0 +1,64 @@
+{#-
+  AppSecTA header: the gpages-style navigation bar on top of Material 9.7.7
+  partials/header.html. Material components are kept intact so its JS keeps
+  working: [data-md-component=header], the drawer toggle (#__drawer), the
+  search toggle (#__search) with partials/search.html, and the header title
+  that instant navigation swaps. Re-check against the upstream partial on
+  every Material upgrade.
+-#}
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+
+    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
+      <span class="logo-glow" aria-hidden="true">
+        <span class="logo-glow__blur logo-glow__blur--1"></span>
+        <span class="logo-glow__blur logo-glow__blur--2"></span>
+        <span class="logo-glow__inner">{% include "partials/logo.html" %}</span>
+      </span>
+      <span class="md-header__brand">appsecta</span>
+    </a>
+
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">{{ config.site_name }}</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            {% if page.meta and page.meta.title %}{{ page.meta.title }}{% else %}{{ page.title }}{% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-header__nav" aria-label="Разделы">
+      <a href="{{ base_url }}/#pipeline">Лабы</a>
+      <a href="{{ base_url }}/labs/tests/basic/test01/">Тесты</a>
+      <a href="{{ base_url }}/materials/">Материалы</a>
+      <a href="{{ base_url }}/about/">О проекте</a>
+      {% if config.repo_url %}
+      <a href="{{ config.repo_url }}" class="md-header__nav-secondary" target="_blank" rel="noopener">GitHub</a>
+      {% endif %}
+      <a href="https://t.me/appsecta" class="md-header__nav-secondary" target="_blank" rel="noopener">Telegram</a>
+    </div>
+
+    {% if "material/search" in config.plugins %}
+      {% set search = config.plugins["material/search"] | attr("config") %}
+      {% if search.enabled %}
+        <label class="md-header__button md-icon" for="__search">
+          {% set icon = config.theme.icon.search or "material/magnify" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+    {% endif %}
+
+    <label class="md-header__button md-icon md-header__burger" for="__drawer" aria-label="Меню">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path class="md-header__burger-line md-header__burger-line--top" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+        <path class="md-header__burger-line" d="M7 16 27 16"></path>
+      </svg>
+    </label>
+
+  </nav>
+</header>

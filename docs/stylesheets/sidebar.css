@@ -115,3 +115,40 @@
 .md-sidebar__inner::-webkit-scrollbar-thumb:hover {
   background: color-mix(in srgb, var(--brand-red) 60%, transparent);
 }
+
+/* ── Drawer (≤76.1875em): dark like the header, gold for the active page ── */
+@media screen and (max-width: 76.1875em) {
+  .md-sidebar--primary,
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-nav--primary .md-nav,
+  .md-nav--primary .md-nav__list {
+    background-color: var(--brand-dark);
+  }
+
+  .md-nav--primary .md-nav__title {
+    background-color: var(--brand-dark);
+    color: var(--text-inverse);
+    box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
+  }
+
+  .md-nav--primary .md-nav__title .md-nav__icon { color: var(--text-inverse); }
+  .md-nav--primary .md-nav__item { border-top-color: rgba(255, 255, 255, 0.08); }
+
+  .md-sidebar--primary .md-nav__link,
+  .md-sidebar--primary .md-nav__link:visited {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .md-sidebar--primary .md-nav__link:hover,
+  .md-sidebar--primary .md-nav__link:focus,
+  .md-sidebar--primary .md-nav__item--active > .md-nav__link,
+  .md-sidebar--primary .md-nav__link--active {
+    color: var(--brand-gold);
+    background-color: transparent;
+  }
+
+  .md-nav--primary .md-nav__source {
+    background-color: var(--surface-code);
+    color: var(--text-inverse);
+  }
+}

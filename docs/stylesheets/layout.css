@@ -961,13 +961,8 @@
 }
 
 .md-footer,
-.md-footer__inner,
-.md-footer-nav,
-.md-footer__link,
 .md-footer-meta,
-.md-footer-meta__inner,
-.md-footer__title,
-.md-footer__direction {
+.md-footer-meta__inner {
   --md-primary-fg-color: var(--brand-dark) !important;
 
   font-family: var(--font-body);
@@ -985,34 +980,4 @@
 
 .md-social__link:hover svg {
   fill: var(--brand-gold);
-}
-
-.md-footer__link {
-  color: var(--text-muted);
-  border-top: 2px solid color-mix(in srgb, var(--brand-red) 25%, transparent);
-  padding-top: var(--space-3);
-  transition: color var(--transition-base), border-color var(--transition-base);
-}
-
-.md-footer__link:hover {
-  color: var(--brand-gold);
-  border-top-color: var(--brand-gold);
-}
-
-.md-footer__title {
-  color: var(--text-inverse);
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.md-footer__direction {
-  color: var(--brand-red);
-  font-family: var(--font-code);
-  font-size: var(--text-2xs);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.85;
 }

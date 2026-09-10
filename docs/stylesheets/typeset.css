@@ -265,17 +265,6 @@
   color: var(--brand-dark);
 }
 
-/* ── Heading anchor links ── */
-.md-typeset .headerlink {
-  color: color-mix(in srgb, var(--brand-red) 25%, transparent);
-  transition: color var(--transition-base);
-}
-
-.md-typeset .headerlink:hover {
-  color: var(--brand-red);
-  text-decoration: none !important;
-}
-
 /* ── Clipboard button ── */
 .md-clipboard {
   width: auto;

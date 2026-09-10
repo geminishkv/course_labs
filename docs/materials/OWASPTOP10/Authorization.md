@@ -321,6 +321,6 @@ keywords: "OWASP, авторизация, authorization, контроль дос
 
 !!! info "Ссылки"
 
-    - [OWASP Session Fixation](https://owasp.org/www-community/attacks/Session_fixation)
+    - [OWASP Session Fixation](https://web.archive.org/web/20260905051457/https://owasp.org/www-community/attacks/Session_fixation)
     - [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
     - [CWE-384: Session Fixation](https://cwe.mitre.org/data/definitions/384.html)

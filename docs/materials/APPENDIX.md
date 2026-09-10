@@ -81,7 +81,7 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
     <ul style="font-size:0.77rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.7;">
       <li><a href="http://help.ubuntu.ru/wiki/apt">apt</a> — Debian/Ubuntu: <code>apt install &lt;pkg&gt;</code></li>
       <li><a href="https://en.wikipedia.org/wiki/DNF_(software)">dnf</a> / <a href="https://fedoraproject.org/wiki/Yum/ru">yum</a> — RHEL/Fedora/CentOS</li>
-      <li><a href="https://brew.sh">brew</a> / <a href="http://linuxbrew.sh">linuxbrew</a> — macOS / Linux</li>
+      <li><a href="https://brew.sh">brew</a> / <a href="https://docs.brew.sh/Homebrew-on-Linux">linuxbrew</a> — macOS / Linux</li>
       <li><a href="https://docs.npmjs.com">npm</a> — Node.js: <code>npm install &lt;pkg&gt;</code></li>
       <li><a href="https://pip.pypa.io/en/stable/">pip</a> — Python: <code>pip install &lt;pkg&gt;</code></li>
       <li><a href="https://docs.docker.com/engine/install/">docker</a> — контейнеры</li>

@@ -139,8 +139,8 @@ keywords: "OWASP, аутентификация, authentication, AppSec, MFA, б�
 
 !!! info "Ссылки"
 
-    - [OWASP Brute Force Attack](https://owasp.org/www-community/attacks/Brute_force_attack)
-    - [OWASP Testing for Brute Force](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/04-Testing_for_Brute_Force)
+    - [OWASP Brute Force Attack](https://web.archive.org/web/20260905051459/https://owasp.org/www-community/attacks/Brute_force_attack)
+    - [OWASP Testing for Brute Force](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/)
 
 ### Недостаточная аутентификация (Insufficient Authentication)
 

@@ -103,7 +103,7 @@ DOM-based XSS особенно опасен, поскольку вредонос
 
 !!! info "Ссылки"
 
-    - [OWASP — Content Spoofing](https://owasp.org/www-community/attacks/Content_Spoofing)
+    - [OWASP — Content Spoofing](https://web.archive.org/web/20260905051515/https://owasp.org/www-community/attacks/Content_Spoofing)
 
 ### Межсайтовое выполнение сценариев (Cross-site Scripting, XSS)
 
@@ -333,8 +333,8 @@ DOM-based XSS особенно опасен, поскольку вредонос
 
 !!! info "Ссылки"
 
-    - [OWASP — Cross-site Scripting (XSS)](https://owasp.org/www-community/attacks/xss/)
-    - [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Scripting_Prevention_Cheat_Sheet.html)
+    - [OWASP — Cross-site Scripting (XSS)](https://web.archive.org/web/20260908110420/https://owasp.org/www-community/attacks/xss/)
+    - [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
     - [OWASP DOM-based XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html)
     - [CERT Advisory CA-2000-02 — Malicious HTML Tags Embedded in Client Web Requests](http://www.cert.org/advisories/CA-2000-02.html)
     - [The Cross Site Scripting FAQ — CGISecurity.com](http://www.cgisecurity.com/articles/xss-faq.shtml)
@@ -448,7 +448,7 @@ CSRF-атака заставляет браузер аутентифициров
 
 !!! info "Ссылки"
 
-    - [OWASP — Cross-Site Request Forgery (CSRF)](https://owasp.org/www-community/attacks/csrf)
+    - [OWASP — Cross-Site Request Forgery (CSRF)](https://web.archive.org/web/20260908110420/https://owasp.org/www-community/attacks/csrf)
     - [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
 
 ### Расщепление HTTP-ответа (HTTP Response Splitting)
@@ -568,6 +568,6 @@ CSRF-атака заставляет браузер аутентифициров
 
 !!! info "Ссылки"
 
-    - [OWASP — HTTP Response Splitting](https://owasp.org/www-community/attacks/HTTP_Response_Splitting)
+    - [OWASP — HTTP Response Splitting](https://web.archive.org/web/20260905051508/https://owasp.org/www-community/attacks/HTTP_Response_Splitting)
     - [CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers](https://cwe.mitre.org/data/definitions/113.html)
     - [CRLF Injection](http://www.securityfocus.com/archive/1/271515) — by Ulf Harnhammar

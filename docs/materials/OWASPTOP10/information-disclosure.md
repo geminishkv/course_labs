@@ -56,9 +56,9 @@ keywords: "OWASP, утечка данных, information disclosure, AppSec, к�
 **Ссылки:**
 
 - [Directory Indexing Vulnerability Alerts](http://www.securityfocus.com/bid/1063)
-- [Nessus "Remote File Access" Plugin Web page](http://cgi.nessus.org/plugins/dump.php3?family=Remote%20file%20access)
+- [Nessus "Remote File Access" Plugin Web page](https://web.archive.org/web/20230620204731/http://cgi.nessus.org/plugins/dump.php3?family=Remote%20file%20access)
 - [Intrusion Prevention for Web](http://www.modsecurity.org)
-- [The Google Hacker's Guide](http://johnny.ihackstuff.com/security/premium/The_Google_Hackers_Guide_v1.0.pdf)
+- [The Google Hacker's Guide](https://web.archive.org/web/20251217034808/http://johnny.ihackstuff.com/security/premium/The_Google_Hackers_Guide_v1.0.pdf)
 
 ### Идентификация приложений (Web Server/Application Fingerprinting)
 
@@ -102,8 +102,8 @@ Content-Type: text/html; charset=iso-8859-1
 
 **Ссылки:**
 
-- [An Introduction to HTTP fingerprinting](http://net-square.com/httprint/httprint_paper.html)
-- [Hypertext Transfer Protocol -- HTTP/1.1](http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2068.html#sec-14.39)
+- [An Introduction to HTTP fingerprinting](https://web.archive.org/web/20260520180440/http://net-square.com/httprint/httprint_paper.html)
+- [Hypertext Transfer Protocol -- HTTP/1.1](https://web.archive.org/web/20041209084921/http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2068.html#sec-14.39)
 - [HMAP: A Technique and Tool for Remote Identification of HTTP Servers](http://seclab.cs.ucdavis.edu/papers/hmap-thesis.pdf)
 - [Identifying Web Servers: A first-look into Web Server Fingerprinting](http://www.blackhat.com/presentations/bh-asia-02/bh-asia-02-grossman.pdf)
 - [Mask Your Web Server for Enhanced Security](http://www.port80software.com/support/articles/maskyourwebserver)
@@ -155,9 +155,9 @@ tagDBPARAMS dbParams, Object& executeResult)
 
 **Ссылки:**
 
-- [Best practices with custom error pages in .Net](http://support.microsoft.com/default.aspx?scid=kb;en-us;834452) -- Microsoft Support
-- [Creating Custom ASP Error Pages](http://support.microsoft.com/default.aspx?scid=kb;en-us;224070) -- Microsoft Support
-- [Apache Custom Error Pages](http://www.codestyle.org/sitemanager/apache/errors-Custom.shtml) -- Code Style
+- [Best practices with custom error pages in .Net](https://web.archive.org/web/20230618125405/http://support.microsoft.com/default.aspx?scid=kb;en-us;834452) -- Microsoft Support
+- [Creating Custom ASP Error Pages](https://web.archive.org/web/20230618135253/http://support.microsoft.com/default.aspx?scid=kb;en-us;224070) -- Microsoft Support
+- [Apache Custom Error Pages](https://web.archive.org/web/20130423213246/http://www.codestyle.org/sitemanager/apache/errors-Custom.shtml) -- Code Style
 - [Obfuscators: JAVA](http://www.cs.auckland.ac.nz/~cthombor/Students/hlai/hongying.pdf)
 
 === "Уязвимый код"

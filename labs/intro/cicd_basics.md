@@ -357,7 +357,7 @@ command: >               # склеивает в одну строку
 ```
 
 !!! tip "Валидация YAML"
-    Используйте [yamllint](https://github.com/adrienverber/yamllint) для проверки синтаксиса.
+    Используйте [yamllint](https://github.com/adrienverge/yamllint) для проверки синтаксиса.
 
 > Подробнее: [YAML CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_YAML/) и [GitHub Actions Security CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/).
 

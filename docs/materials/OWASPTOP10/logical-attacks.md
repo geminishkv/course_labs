@@ -302,5 +302,5 @@ Race condition возникает, когда несколько паралле�
 
 !!! info "Ссылки"
 
-    - [OWASP Race Condition](https://owasp.org/www-community/vulnerabilities/Race_condition)
+    - [OWASP Race Condition](https://cwe.mitre.org/data/definitions/362.html)
     - [PortSwigger — Race Conditions](https://portswigger.net/web-security/race-conditions)

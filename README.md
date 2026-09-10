@@ -25,7 +25,7 @@
 * 7 intro-руководств + 10 лабораторных работ + итоговый pet-project + 7 тестов (5 базовых + 2 лекционных)
 * Каждая лабораторная — отдельный репозиторий с исходным кодом и отчётом в формате `gistup`
 * Все работы выполняются в ветке `develop` → `pull request` → [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) от [geminishkv](https://github.com/geminishkv)
-* Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `Secret Detection` → `CI/CD` → `Risk Analysis`
+* Прогрессия: `Git` → `Linux` → `Nmap` → `Risk Analysis` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Итоговый Risk Analysis` → `Pet-project`
 
 **Замечания:**
 
@@ -143,8 +143,18 @@ flowchart TD
 $ uv sync --frozen            # .venv из uv.lock (pyproject.toml — единственный источник версий)
 $ uv run mkdocs serve --livereload
 # or
-$ uv run mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
-# инструменты CI локально: uv run --only-group lint yamllint . / --only-group sast bandit -r labs
+$ uv run mkdocs serve -a 0.0.0.0:8000   # открыть с телефона по IP ноутбука
+```
+
+* Проверки как в CI (каждая команда запускается локально теми же версиями, что в `uv.lock` / `package-lock.json`)
+
+```bash
+$ uv run mkdocs build --strict                          # сборка с предупреждениями как ошибками
+$ uv run --only-group lint yamllint --no-warnings .github/workflows mkdocs.yml
+$ .github/scripts/pip-audit.sh                          # pip-audit по экспорту лока
+$ uv run --only-group sast bandit -r labs -ll           # + исключения см. ci.yml
+$ npm ci && npx stylelint "docs/stylesheets/*.css" && npx eslint docs/javascripts/
+$ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 ```
 
 * Перегенерация Mermaid-диаграмм (при изменении `.mmd` файлов)
@@ -179,11 +189,46 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 
 ***
 
+### Архитектура сайта
+
+**Контент.** Исходники лаб, intro и тестов живут в `labs/`, страницы сайта в `docs/` подключают их через
+`include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
+дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
+
+**Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, шрифты, JSON-LD, Метрика; no-JS пиксель
+Метрики в конце `<body>`, иначе он закрывает head и og-теги уезжают в body). `overrides/home.html` —
+главная без сайдбаров (`hide: [navigation, toc]`), подключает `home.css`. `partials/header.html` — шапка
+в стиле gpages поверх Material 9.7.x: логотип с кольцом, пилюли разделов с активным состоянием, штатный
+поиск и бургер; ссылки от корня сайта, потому что instant navigation не подменяет шапку.
+
+**Навигация.** Одно меню: пилюли шапки переключают разделы, левый сайдбар (`navigation.tabs`) показывает
+только текущий раздел, панель табов Material не рендерится; в шторке на телефоне всё дерево. Страницы без
+раздела («О проекте», релизы, политики) идут во всю ширину.
+
+**CSS.** Порядок каскада задан `extra_css`: `tokens.css` (палитра gpages, `--ink-*`, токены Material) →
+`typeset.css` (типографика, код, списки, сетка 88rem) → `header.css` → `sidebar.css` → `components.css`
+(hero, нумерованные заголовки, таблицы, карточки лаб, футер) → `banners.css`. `home.css` подключается
+только главной (`css_files` плагина minify → `home.min.css`) и может переопределять токены на `body`.
+Адаптив главной ярусами 1600 / 1220 / 960 / 700 px; всё в rem, чтобы масштабироваться с корневым шрифтом
+Material. `!important` только в print. Значения `@property` не нулевые (`360deg`): минификатор превращает
+`0deg` в `0` и молча отбрасывает регистрацию.
+
+**JS.** Четыре модуля без зависимостей: `header.js` (стекло шапки при скролле), `typewriter-target.js`
+(hero, уважает `prefers-reduced-motion`), `banners.js` (уведомление и cookie-карточка, классы
+`ata-legal` / `ata-consent`, чтобы антибаннеры не резали), `effects.js` (fade-in и живой конвейер).
+Статистику репозитория в шторке рисует сам Material. Всё подписано на `document$` для instant navigation.
+
+**Сборка и зависимости.** `pyproject.toml` + `uv.lock` (хэши), группы инструментов CI (`lint`, `audit`,
+`sast`). `hooks.py` считает цифры hero из дерева `docs/` и дописывает sitemap. CI ставит всё через
+`uv sync --frozen`, сканеры из лока, hadolint с проверкой sha256. Dependabot: actions / npm / uv, cooldown 7 дней.
+
+***
+
 ### Структура
 
 ```
 ├── docs/                              # MkDocs source (обёртки + материалы)
-│   ├── index.md                       # Главная (hero + lab cards + tg widget)
+│   ├── index.md                       # Главная: hero, бейджи, о курсе, конвейер лаб с материалами, требования, материалы
 │   ├── about.md                       # О проекте
 │   ├── privacy.md                     # Политика конфиденциальности
 │   ├── Security.md                    # Политика безопасности
@@ -209,9 +254,9 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 │   │   ├── licenses.md               # 41 лицензия
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (~45 карточек)
-│   ├── stylesheets/                   # CSS (tokens, layout, header, sidebar, ...)
-│   ├── javascripts/                   # JS (header, typewriter, banners, effects)
-│   ├── overrides/                     # main.html (SEO, JSON-LD, Метрика), 404.html
+│   ├── stylesheets/                   # tokens → typeset → header → sidebar → components → banners; home.css только на главной
+│   ├── javascripts/                   # header (стекло), typewriter-target, banners (уведомление + cookie), effects (fade-in, конвейер)
+│   ├── overrides/                     # main.html (head: CSP, JSON-LD, Метрика), home.html (главная), 404.html, partials/header.html
 │   └── artifacts/
 │       ├── assets/                    # Logo (SVG), favicon (ICO), images
 │       └── diagrams/                  # 7 Mermaid SVG + .mmd исходники
@@ -222,10 +267,12 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 │   └── tests/
 │       ├── basic/                     # 5 базовых тестов (исходники)
 │       └── lectures/ru_fintech/       # 2 варианта теста Fintech (исходники)
-├── .github/workflows/
-│   ├── ci.yml                         # Lint → Audit → Mermaid SVG → Build → Deploy
-│   └── release-from-notes.yml
-├── hooks.py                           # Sitemap enrichment (priority + changefreq)
+├── .github/
+│   ├── workflows/ci.yml               # Lint → pip-audit → bandit / hadolint → Build → Deploy (всё из uv.lock)
+│   ├── workflows/release-from-notes.yml
+│   ├── scripts/pip-audit.sh           # аудит экспорта лока, одинаково в CI и локально
+│   └── dependabot.yml                 # actions / npm / uv, cooldown 7 дней
+├── hooks.py                           # цифры hero при сборке + sitemap (priority, changefreq)
 ├── mkdocs.yml
 ├── pyproject.toml                     # зависимости сайта и группы инструментов CI
 ├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen

@@ -83,7 +83,41 @@
 
 /* keyframes logo-ring-rotate are defined in header.css */
 
+/* Hero frame: the conic border rotates and the glow pulses. Both are CSS
+   animations, so nothing runs in JS per frame (this used to be a 60 fps
+   requestAnimationFrame loop touching inline styles on every page). */
+@property --hero-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes hero-spin {
+  to { --hero-angle: 360deg; }
+}
+
+@keyframes hero-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px color-mix(in srgb, var(--brand-red) 35%, transparent),
+      0 0 30px color-mix(in srgb, var(--brand-red) 10%, transparent);
+  }
+
+  50% {
+    box-shadow:
+      0 0 16px color-mix(in srgb, var(--brand-gold) 40%, transparent),
+      0 0 40px color-mix(in srgb, var(--brand-gold) 12%, transparent);
+  }
+}
+
+.hero-section,
+.lab-hero {
+  animation: hero-spin 12s linear infinite, hero-glow 1s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-section,
+  .lab-hero,
   .hero-logo-wrap::before,
   .hero-logo-wrap::after,
   .hero-section::after {

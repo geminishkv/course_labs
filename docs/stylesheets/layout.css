@@ -336,7 +336,11 @@
 .tg-widget {
   position: sticky;
   top: 4.5rem;
-  flex: 0 0 320px;
+  /* 362 = 320 (min-width iframe Telegram) + 2 × 20px padding + 2px border.
+     min-width: 0 — иначе nowrap-текст карточки канала раздувает колонку до ~405px
+     и отнимает ширину у основной колонки. */
+  flex: 0 0 362px;
+  min-width: 0;
   background: var(--surface-card);
   border: 1px solid rgba(213, 26, 26, 0.12);
   border-top: 3px solid var(--brand-red);
@@ -352,6 +356,16 @@
   color: var(--brand-red) !important;
   margin: 0 0 var(--space-3) !important;
   border-bottom: none !important;
+}
+
+/* Telegram задаёт iframe высоту по контенту поста (длинный пост = 3000+ px),
+   поэтому область ограничена и прокручивается внутри: sticky-колонка остаётся компактной. */
+.tg-embed-desktop {
+  max-height: min(560px, calc(100vh - 14rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  border-radius: var(--radius-md);
 }
 
 /* ══════════════════════════════════════════

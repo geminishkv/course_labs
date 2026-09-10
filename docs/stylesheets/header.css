@@ -182,15 +182,14 @@
 }
 
 /* ── Search: dark pill in the bar, white panel once opened ── */
-.md-search { flex: none; }
 
 .md-search__form {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 25px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  outline: none !important;
-  box-shadow: none !important;
+  box-shadow: none; /* Material keeps a transparent shadow as a transition base */
+  outline: none;
 }
 
 /* keyboard hint: Material focuses the field on "/" */
@@ -227,12 +226,29 @@
   fill: var(--text-inverse);
 }
 
-[data-md-toggle="search"]:checked ~ .md-header .md-search__form { background-color: var(--surface-page); }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background-color: var(--surface-page);
+  box-shadow: none;
+  outline: none;
+}
+
+/* Open search must fit between the pill navigation and the right edge:
+   Material widens the field to 34.4rem and the pills do not shrink, so from
+   1220 to ~1900px the field and its reset button used to leave the viewport.
+   The search block may shrink in the flex row and the field follows it. */
+@media screen and (min-width: 60em) {
+  .md-search {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .md-search__inner { max-width: 100%; }
+}
 [data-md-toggle="search"]:checked ~ .md-header .md-search__form::after { display: none; }
 
 /* text colours follow the same tokens as the panel background, so the open
    search stays readable on the dark home canvas as well as on light pages */
-[data-md-toggle="search"]:checked ~ .md-header .md-search__input { color: var(--text-primary) !important; }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input { color: var(--text-primary); }
 [data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder { color: var(--text-secondary); }
 
 [data-md-toggle="search"]:checked ~ .md-header .md-search__icon svg {

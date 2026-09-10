@@ -1,5 +1,7 @@
 ---
+template: home.html
 hide:
+  - navigation
   - toc
 
 title: "Курс AppSec — практическая безопасность приложений и DevSecOps"
@@ -9,11 +11,10 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 <div class="no-section-nums" markdown="1">
 
-<div class="hero-section">
-  <a href="https://geminishkv.tech/" target="_blank" rel="noopener noreferrer" class="hero-logo-wrap">
-  <img src="artifacts/assets/logo_white.svg" class="hero-logo" alt="AppSecTA">
-  </a>
+<div class="hero-row">
+<div class="hero-section hero-section--home">
   <div class="hero-content">
+  <p class="hero-eyebrow">МГТУ · МФТИ · AppSecTA</p>
   <h1 class="hero-title">Application Security & DevSecOps Course</h1>
   <p class="hero-sub">Практический курс по прикладной безопасности приложений: от первого коммита до конвейера безопасности</p>
   <p class="hero-typewriter" id="typewriter-target"></p>
@@ -21,16 +22,32 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="btn btn-primary" href="labs/intro/vmbox_tutorial/">Начать с Intro</a>
   <a class="btn btn-ghost" href="#pipeline">Смотреть конвейер</a>
   </div>
+  </div>
   <div class="hero-stats" aria-label="Цифры курса">
   <div class="hero-stat"><b>10</b><span>лабораторных</span></div>
   <div class="hero-stat"><b>7</b><span>intro-гайдов</span></div>
   <div class="hero-stat"><b>7</b><span>тестов</span></div>
   <div class="hero-stat"><b>27</b><span>материалов</span></div>
   </div>
+</div>
+<div class="brand-col" aria-hidden="true">
+  <div class="brand-col__shapes">
+  <div class="brand-col__circle brand-col__circle--gradient logo-glow logo-glow--brand">
+  <span class="logo-glow__blur logo-glow__blur--1"></span>
+  <span class="logo-glow__blur logo-glow__blur--2"></span>
+  <div class="logo-glow__inner"><img src="artifacts/assets/logo_black.svg" alt="" class="brand-col__logo-img"></div>
   </div>
+  <div class="brand-col__diamond-wrap"><div class="brand-col__diamond"><span class="brand-col__num">0</span></div></div>
+  <div class="brand-col__circle brand-col__circle--outline"><span class="brand-col__num brand-col__num--dark">1</span></div>
+  </div>
+  <div class="spm-pill"><span class="spm-pill__text">Sic Parvis Magna</span></div>
+</div>
 </div>
 
-## Конвейер курса { #pipeline }
+<div class="sec-head">
+  <h2 id="pipeline">Конвейер курса</h2>
+  <span class="sec-note">лабы идут по порядку · 01 → 10 → pet</span>
+</div>
 
 <p class="lead">Каждый этап — узел конвейера безопасности. Лабы идут по порядку: открывай узел, делай работу, двигайся дальше по линии.</p>
 
@@ -90,7 +107,10 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   </li>
 </ol>
 
-## Куда дальше
+<div class="sec-head">
+  <h2 id="next">Куда дальше</h2>
+  <span class="sec-note">три входа вместо 52 карточек</span>
+</div>
 
 <div class="entries">
   <a class="entry" href="labs/intro/vmbox_tutorial/">

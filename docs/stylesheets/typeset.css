@@ -1,22 +1,11 @@
+/* Page grid: wider than Material's 61rem, but capped and centred so the
+   sidebars stay next to the content on ultra-wide screens */
 .md-grid {
-  max-width: 100%;
+  max-width: 88rem;
 }
 
 .md-main__inner {
   margin-left: 0;
-  max-width: 100%;
-}
-
-@media screen and (min-width: 1680px) {
-  .md-sidebar--primary {
-    width: 9rem;
-    max-width: 9rem;
-  }
-
-  .md-main__inner {
-    margin-left: 10rem;
-    max-width: 100%;
-  }
 }
 
 .md-content {

@@ -1,0 +1,20 @@
+{#-
+  Home page template (docs/index.md sets `template: home.html`). Inherits
+  main.html so the project <head> (CSP, fonts, JSON-LD) stays; the sidebars
+  are hidden through `hide: [navigation, toc]` in the page meta, which keeps
+  the drawer working on narrow screens. Styles live in layout.css under
+  `.md-content--home` / `body:has(.md-content--home)`.
+-#}
+{% extends "main.html" %}
+
+{% block tabs %}{% endblock %}
+
+{% block container %}
+  <div class="md-content md-content--home" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+      {% block content %}
+        {% include "partials/content.html" %}
+      {% endblock %}
+    </article>
+  </div>
+{% endblock %}

@@ -18,69 +18,6 @@
   background-clip: padding-box, border-box;
 }
 
-/* ══════════════════════════════════════════
-   Hero logo — conic-gradient ring
-══════════════════════════════════════════ */
-.hero-logo-wrap {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  transition: transform 0.3s ease;
-}
-
-.hero-logo-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--brand-red),
-    var(--brand-gold),
-    var(--brand-red)
-  );
-  animation: logo-ring-rotate 2.4s linear infinite;
-  z-index: 0;
-}
-
-.hero-logo-wrap::after {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--brand-red),
-    var(--brand-gold),
-    var(--brand-red)
-  );
-  animation: logo-ring-rotate 2.4s linear infinite;
-  filter: blur(6px);
-  opacity: 0.5;
-  z-index: 0;
-}
-
-.hero-logo {
-  width: 120px;
-  height: 120px;
-  flex-shrink: 0;
-  object-fit: contain;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.hero-logo-wrap:hover {
-  transform: scale(1.06);
-}
-
 /* keyframes logo-ring-rotate are defined in header.css */
 
 /* Hero frame: the conic border rotates and the glow pulses. Both are CSS
@@ -116,11 +53,16 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brand-col__circle,
+  .brand-col__diamond-wrap,
+  .brand-col .spm-pill {
+    opacity: 1;
+    animation: none;
+  }
+
   .md-typeset ol.track::before,
   .hero-section,
   .lab-hero,
-  .hero-logo-wrap::before,
-  .hero-logo-wrap::after,
   .hero-section::after {
     animation: none;
   }
@@ -358,6 +300,314 @@
 .md-typeset table tbody tr:hover {
   background-color: color-mix(in srgb, var(--brand-gold) 12%, transparent);
 }
+
+/* ══════════════════════════════════════════
+   Home canvas — template home.html: no sidebars, dark page, 1440px container.
+   Tokens are re-pointed on <body>, so the shared components re-skin themselves.
+══════════════════════════════════════════ */
+body:has(.md-content--home) {
+  --surface-page: #141313;
+  --surface-card: #1e1c1c;
+  --surface-zebra: #1a1818;
+  --text-primary: #f3efeb;
+  --text-secondary: #cdc5c0;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-subtle-light: rgba(255, 255, 255, 0.16);
+  --home-red: #f07a7a;
+  --home-gold: #f2b45f;
+  --md-default-bg-color: #141313;
+  --md-default-fg-color: #f3efeb;
+  --md-default-fg-color--light: rgba(243, 239, 235, 0.72);
+  --md-default-fg-color--lighter: rgba(243, 239, 235, 0.4);
+}
+
+body:has(.md-content--home) .md-main { background-color: var(--surface-page); }
+body:has(.md-content--home) .md-header__title { visibility: hidden; }
+
+/* Header edges line up with the home container (same width and gutters) */
+body:has(.md-content--home) .md-header__inner {
+  max-width: 1440px;
+  padding-inline: clamp(16px, 4vw, 48px);
+}
+
+body:has(.md-content--home) .md-top {
+  background-color: var(--surface-card);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 1px var(--border-subtle), 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.md-content--home .md-content__inner {
+  max-width: 1440px;
+  padding: 0 clamp(16px, 4vw, 48px) var(--space-12);
+}
+
+.md-content--home .md-content__button { display: none; }
+
+.md-content--home .md-typeset h2 {
+  color: var(--home-red);
+  border-bottom: none;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.md-content--home .lab-num,
+.md-content--home .entry-link {
+  color: var(--home-red);
+}
+
+.md-content--home .md-typeset .lab--gold .lab-num { color: var(--home-gold); }
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin: var(--space-10) 0 var(--space-2);
+}
+
+.sec-note {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+}
+
+.hero-section--home {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-8) clamp(24px, 4vw, 48px);
+}
+
+.md-typeset .hero-eyebrow {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+  margin: 0 0 0.6rem;
+}
+
+.hero-section--home .hero-stats {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 0;
+}
+
+/* ══════════════════════════════════════════
+   Home: hero row + brand column (ported from gpages BrandColumn, Figma node 6158:
+   circle 1 × unit, diamond 1.316 × unit, circle 1 × unit, pill 0.697 × 3.55 unit)
+══════════════════════════════════════════ */
+.hero-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-8);
+  align-items: stretch;
+  margin: var(--space-2) 0 var(--space-10);
+}
+
+.hero-row .hero-section--home { margin: 0; }
+
+.brand-col {
+  --bc-unit: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--bc-unit) * 0.184);
+  flex-shrink: 0;
+}
+
+.brand-col__shapes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--bc-unit) * 0.089);
+}
+
+.brand-col__circle {
+  width: var(--bc-unit);
+  height: var(--bc-unit);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-col__circle--gradient { background: var(--brand-dark); }
+
+.logo-glow--brand {
+  width: var(--bc-unit);
+  height: var(--bc-unit);
+}
+
+.logo-glow--brand::before,
+.logo-glow--brand .logo-glow__blur {
+  inset: calc(var(--bc-unit) * -0.04);
+}
+
+.logo-glow--brand .logo-glow__inner {
+  width: calc(var(--bc-unit) * 0.88);
+  height: calc(var(--bc-unit) * 0.88);
+}
+
+.brand-col__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brand-col__circle--outline {
+  background: #fcfcfc;
+  border: max(1px, calc(var(--bc-unit) * 0.018)) solid var(--brand-red-light);
+}
+
+.brand-col__diamond-wrap {
+  width: calc(var(--bc-unit) * 1.316);
+  height: calc(var(--bc-unit) * 1.316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-col__diamond {
+  width: calc(var(--bc-unit) * 0.93);
+  height: calc(var(--bc-unit) * 0.93);
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-red) 55%, var(--brand-gold) 100%);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-col__num {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: calc(var(--bc-unit) * 0.42);
+  line-height: 1;
+  color: #fcfcfc;
+  transform: rotate(-45deg);
+  display: block;
+}
+
+.brand-col__num--dark {
+  color: var(--brand-dark);
+  transform: none;
+}
+
+.spm-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--bc-unit) * 0.697);
+  height: calc(var(--bc-unit) * 3.55);
+  padding: 12px 0;
+  border-radius: 999px;
+  background: #fcfcfc;
+  overflow: hidden;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.spm-pill__text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: calc(var(--bc-unit) * 0.34);
+  line-height: 1.1em;
+  white-space: nowrap;
+  background: linear-gradient(to bottom, var(--brand-dark) 0%, var(--brand-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* cascade reveal: logo materialises, diamond rotates in, ring pulses, pill slides up */
+.brand-col__circle,
+.brand-col__diamond-wrap,
+.brand-col .spm-pill {
+  opacity: 0;
+}
+
+.brand-col__circle--gradient { animation: bc-materialize 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.brand-col__diamond-wrap { animation: bc-diamond-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+.brand-col__circle--outline { animation: bc-pulse-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; }
+.brand-col .spm-pill { animation: bc-slide-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards; }
+
+@keyframes bc-materialize {
+0% {
+    opacity: 0;
+    transform: scale(0.3);
+    filter: blur(12px);
+  }
+
+100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes bc-diamond-in {
+0% {
+    opacity: 0;
+    transform: rotate(180deg) scale(0.5);
+  }
+
+100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes bc-pulse-in {
+0% {
+    opacity: 0;
+    transform: scale(0.6);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand-red-light) 50%, transparent);
+  }
+
+50% {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px transparent;
+  }
+
+100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes bc-slide-up {
+0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand-col__circle--gradient { transition: transform 0.4s, box-shadow 0.4s; }
+
+.brand-col__circle--gradient:hover {
+  transform: rotate(10deg);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--brand-red) 20%, transparent);
+}
+
+.brand-col__diamond-wrap { transition: transform 0.3s; }
+.brand-col__diamond-wrap:hover { transform: scale(1.08); }
+.brand-col .spm-pill__text { transition: letter-spacing 0.4s; }
+.brand-col .spm-pill:hover .spm-pill__text { letter-spacing: 0.05em; }
 
 /* ══════════════════════════════════════════
    Home: hero actions + stats
@@ -962,9 +1212,6 @@
     overflow: hidden; /* the ::after watermark sits at right: -20% and must not spill onto the page */
   }
 
-  .hero-logo-wrap {
-    display: none;
-  }
 
   .hero-section::after {
     content: "";
@@ -990,7 +1237,13 @@
     margin: var(--space-2) 0 var(--space-5);
   }
 
-  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-row { grid-template-columns: 1fr; }
+
+  .brand-col { display: none; }
+
+  .hero-section--home { grid-template-columns: 1fr; }
+
+  .hero-section--home .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .md-typeset ol.track {
     grid-template-columns: 1fr;

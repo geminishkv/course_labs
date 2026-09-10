@@ -55,13 +55,38 @@
 /* ══════════════════════════════════════════
    Hero content
 ══════════════════════════════════════════ */
+
+/* Watermark: the white chevron logo behind the hero on every width; the
+   section clips it, the content sits above it */
+.hero-section { overflow: hidden; }
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  transform: translateY(-50%);
+  width: min(38%, 520px);
+  aspect-ratio: 1;
+  background: url("../artifacts/assets/logo_white.svg") center / contain no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+  animation: bg-glow-wave 4s ease-in-out infinite;
+}
+
+.hero-content,
+.hero-side,
+.hero-stats {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
   text-align: left;
-  position: relative;
-  z-index: 1;
 }
 
 .hero-title {
@@ -1372,18 +1397,18 @@ body:has(.md-content--home) .md-top {
 @keyframes node-ignite {
   0% {
     transform: scale(0.9);
-    box-shadow: 0 0 0 4px var(--surface-page), 0 0 0 5px var(--border-subtle);
+    box-shadow: 0 0 0 4px var(--surface-page), 0 0 14px color-mix(in srgb, var(--brand-red) 30%, transparent);
   }
 
   40% {
     transform: scale(1.12);
     color: #fff;
-    box-shadow: 0 0 0 4px var(--surface-page), 0 0 0 5px var(--brand-gold), 0 0 26px var(--brand-red);
+    box-shadow: 0 0 0 4px var(--surface-page), 0 0 28px var(--brand-red);
   }
 
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 4px var(--surface-page), 0 0 0 5px var(--border-subtle);
+    box-shadow: 0 0 0 4px var(--surface-page), 0 0 14px color-mix(in srgb, var(--brand-red) 30%, transparent);
   }
 }
 
@@ -1405,7 +1430,7 @@ body:has(.md-content--home) .md-top {
 
 .md-typeset .stage:hover .stage-head {
   color: #fff;
-  box-shadow: 0 0 0 4px var(--surface-page), 0 0 0 5px var(--brand-gold), 0 0 22px color-mix(in srgb, var(--brand-red) 55%, transparent);
+  box-shadow: 0 0 0 4px var(--surface-page), 0 0 24px color-mix(in srgb, var(--brand-red) 60%, transparent);
 }
 
 .md-typeset .stage:hover .stage-name { color: var(--brand-gold); }
@@ -2064,26 +2089,13 @@ body:has(.md-content--home) .md-top {
     padding: var(--space-8) var(--space-5) var(--space-6);
     gap: var(--space-5);
     margin: var(--space-2) 0 var(--space-8);
-    overflow: hidden; /* the ::after watermark sits at right: -20% and must not spill onto the page */
   }
-
 
   .hero-section::after {
-    content: "";
-    position: absolute;
-    top: 50%;
     right: -20%;
-    transform: translateY(-50%);
     width: 420px;
-    height: 420px;
-    background: url("../artifacts/assets/logo_white.svg") center / contain no-repeat;
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: 0;
-    animation: bg-glow-wave 4s ease-in-out infinite;
   }
 
-  .hero-content { z-index: 1; }
   .hero-title { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
 
   .hero-section--compact {
@@ -2232,7 +2244,6 @@ body:has(.md-content--home) .md-top {
 
   .hero-section::after {
     width: 200px;
-    height: 200px;
     right: -15%;
     opacity: 0.06;
   }

@@ -353,7 +353,8 @@ body:has(.md-content--home) .md-top {
 /* section divider: a red rule fading to the right, like the gpages sections */
 .md-content--home .sec-head {
   position: relative;
-  padding-top: var(--space-7);
+  margin-top: var(--space-14, 4rem);
+  padding-top: var(--space-8);
 }
 
 .md-content--home .sec-head::before {

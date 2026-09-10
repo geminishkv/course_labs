@@ -925,6 +925,22 @@
   }
 }
 
+/* Print: reveal everything the scroll-triggered fade-in has not shown yet and
+   drop the fixed overlays, otherwise printed pages have blank blocks and banners
+   stamped over the text. */
+@media print {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .notice-bar,
+  .cookie-banner {
+    display: none;
+  }
+}
+
 /* ══════════════════════════════════════════
    Footer
 ══════════════════════════════════════════ */

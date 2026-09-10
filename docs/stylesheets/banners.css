@@ -177,7 +177,7 @@
   font-size: 0.65rem;
   font-weight: 600;
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cookie-banner__btn--accept {

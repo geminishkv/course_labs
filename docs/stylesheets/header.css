@@ -4,9 +4,7 @@
 
 /* ── Header ── */
 .md-header,
-.md-header__inner,
-.md-header-nav,
-.md-header-nav__inner {
+.md-header__inner {
   background-color: var(--brand-dark);
 }
 
@@ -62,13 +60,6 @@
   z-index: 1;
   border-radius: 50%;
   background: var(--brand-dark, #1A1919);
-}
-
-.md-header-nav__link,
-.md-header-nav__list .md-nav__item {
-  margin: 0 0.85rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
 }
 
 .md-header__title .md-header__topic {

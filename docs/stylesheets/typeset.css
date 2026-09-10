@@ -55,22 +55,19 @@
   font-family: var(--font-body);
 }
 
-#typewriter-target {
-  min-height: 1.8em;
-}
-
 .md-typeset {
   color: var(--text-primary);
   font-family: var(--md-text-font, var(--font-body));
 }
 
-/* Lists — arrow bullets */
-.md-typeset ul {
+/* Lists — arrow bullets. Plain lists only: task lists, nav and other classed
+   lists keep their own markers. */
+.md-typeset ul:not([class]) {
   padding-left: 1.75em;
   list-style: none;
 }
 
-.md-typeset ul > li::before {
+.md-typeset ul:not([class]) > li::before {
   content: "→";
   color: var(--brand-red);
   font-weight: 700;

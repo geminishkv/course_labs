@@ -26,12 +26,12 @@
   font-weight: 700;
 }
 
-/* Разделитель между корневыми группами */
+/* Gap between root-level groups */
 .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
   margin-top: 0.2rem;
 }
 
-/* Вложенные списки — компактные, без лишних отступов */
+/* Nested lists: compact, no extra spacing */
 .md-sidebar--primary .md-nav__item .md-nav {
   margin: 0;
   padding: 0;
@@ -51,21 +51,6 @@
   background-color: transparent;
   line-height: 1.5;
   margin-bottom: 0.4rem;
-}
-
-.md-sidebar--primary .md-sidebar__inner .md-header-nav {
-  display: flex;
-  align-items: center;
-  padding-top: var(--space-1);
-  padding-bottom: var(--space-1);
-}
-
-.md-sidebar--primary .md-sidebar__title {
-  color: var(--text-inverse);
-  padding: var(--space-3) var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
 }
 
 .md-sidebar--primary .md-nav__title {

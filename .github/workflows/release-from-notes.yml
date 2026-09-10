@@ -46,6 +46,9 @@ jobs:
           cd site
           zip -r "../site-${GITHUB_REF_NAME}.zip" .
 
+      - name: SBOM of the locked runtime set (CycloneDX)
+        run: .github/scripts/sbom.sh "sbom-${GITHUB_REF_NAME}.cdx.json"
+
       - name: Extract release notes for tag
         id: notes
         shell: bash
@@ -82,7 +85,9 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
           body: ${{ steps.notes.outputs.body }}
-          files: site-${{ github.ref_name }}.zip
+          files: |
+            site-${{ github.ref_name }}.zip
+            sbom-${{ github.ref_name }}.cdx.json
           draft: false
           prerelease: false
         env:

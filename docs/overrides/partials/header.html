@@ -31,11 +31,16 @@
       </div>
     </div>
 
+    {#- Instant navigation never swaps the header, so page-relative links would
+        go stale after the first navigation: build them from the site root. -#}
+    {% set parts = (config.site_url or "/").split("/", 3) %}
+    {% set site_root = "/" ~ (parts[3] if parts | length > 3 else "") %}
+    {% if not site_root.endswith("/") %}{% set site_root = site_root ~ "/" %}{% endif %}
     <div class="md-header__nav" aria-label="Разделы">
-      <a href="{{ base_url }}/#pipeline">Лабы</a>
-      <a href="{{ base_url }}/labs/tests/basic/test01/">Тесты</a>
-      <a href="{{ base_url }}/materials/">Материалы</a>
-      <a href="{{ base_url }}/about/">О проекте</a>
+      <a href="{{ site_root }}#pipeline">Лабы</a>
+      <a href="{{ site_root }}labs/tests/basic/test01/">Тесты</a>
+      <a href="{{ site_root }}materials/">Материалы</a>
+      <a href="{{ site_root }}about/">О проекте</a>
       {% if config.repo_url %}
       <a href="{{ config.repo_url }}" class="md-header__nav-secondary" target="_blank" rel="noopener">GitHub</a>
       {% endif %}

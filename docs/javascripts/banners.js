@@ -78,7 +78,7 @@
       '<p class="cookie-banner__title">Файлы cookie</p>' +
       '<p class="cookie-banner__text">' +
         "Мы используем файлы cookie и сервисы аналитики для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с обработкой данных в соответствии с " +
-        '<a href="privacy/">Политикой конфиденциальности</a>.' +
+        '<a href="/privacy/">Политикой конфиденциальности</a>.' +
       "</p>" +
       '<div class="cookie-banner__actions">' +
         '<button class="cookie-banner__btn cookie-banner__btn--accept">Принять</button>' +

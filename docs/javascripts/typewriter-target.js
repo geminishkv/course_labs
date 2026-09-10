@@ -1,45 +1,69 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const phrases = [
+(function () {
+  "use strict";
+
+  var PHRASES = [
     "Sic Parvis Magna",
     "Auxilio Divino",
-    "Stay tuned ;)",
+    "Stay tuned ;)"
   ];
-  const el = document.getElementById("typewriter-target");
-  if (!el) return;
+  var TYPE_SPEED = 100;
+  var DELETE_SPEED = 60;
+  var PAUSE_END = 1500;
+  var PAUSE_START = 300;
 
-  const typeSpeed   = 100;
-  const deleteSpeed = 60;
-  const pauseEnd    = 1500;
-  const pauseStart  = 300;
+  var runId = 0;
+  var timer = null;
 
-  let phraseIndex = 0;
-  let charIndex   = 0;
-  let deleting    = false;
+  function start() {
+    runId++; // invalidates the loop that belonged to the previous page
+    clearTimeout(timer);
 
-  function tick() {
-    const current = phrases[phraseIndex];
+    var el = document.getElementById("typewriter-target");
+    if (!el) return;
 
-    if (!deleting) {
-      el.textContent = current.slice(0, charIndex + 1);
-      charIndex++;
-      if (charIndex === current.length) {
-        deleting = true;
-        setTimeout(tick, pauseEnd);
-        return;
+    var id = runId;
+    var phraseIndex = 0;
+    var charIndex = 0;
+    var deleting = false;
+
+    function tick() {
+      if (id !== runId) return; // a newer page took over
+      var current = PHRASES[phraseIndex];
+      var delay;
+
+      if (!deleting) {
+        charIndex++;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          delay = PAUSE_END;
+        } else {
+          delay = TYPE_SPEED;
+        }
+      } else {
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % PHRASES.length;
+          delay = PAUSE_START;
+        } else {
+          delay = DELETE_SPEED;
+        }
       }
-      setTimeout(tick, typeSpeed);
-    } else {
-      el.textContent = current.slice(0, charIndex - 1);
-      charIndex--;
-      if (charIndex === 0) {
-        deleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(tick, pauseStart);
-        return;
-      }
-      setTimeout(tick, deleteSpeed);
+      timer = setTimeout(tick, delay);
     }
+
+    tick();
   }
 
-  tick();
-});
+  // Material instant navigation re-creates the hero without a page load:
+  // document$ emits on every navigation, DOMContentLoaded only once.
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(start);
+  } else if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();

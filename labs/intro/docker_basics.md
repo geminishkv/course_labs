@@ -87,6 +87,18 @@ $ docker --version
 $ docker run hello-world
 ```
 
+### Windows
+
+```powershell
+PS> wsl --install                                   # WSL2 + Ubuntu, нужна перезагрузка
+PS> winget install --id Docker.DockerDesktop -e
+PS> docker --version; docker run hello-world        # после запуска Docker Desktop
+```
+
+- В настройках Docker Desktop должен быть выбран движок WSL2 (`Settings → General → Use the WSL 2 based engine`), а в `Resources → WSL integration` включена ваша Ubuntu — тогда `docker` одинаково работает из PowerShell и из Ubuntu.
+- Нужна включённая аппаратная виртуализация (см. [Подготовка рабочего окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/#windows)).
+- Без Docker Desktop (лицензия для компаний): Docker Engine ставится внутри Ubuntu в WSL2 по инструкции для Ubuntu выше, `systemctl` в WSL2 включается через `[boot] systemd=true` в `/etc/wsl.conf`.
+
 ***
 
 ## Базовые команды

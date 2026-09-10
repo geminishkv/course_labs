@@ -33,6 +33,8 @@ GitHub Gist — сервис для хранения фрагментов код
 
 ### Через GitHub CLI
 
+На Windows команды те же — в PowerShell или Git Bash после `winget install --id GitHub.cli -e`.
+
 ```bash
 # Создание из файла
 $ gh gist create lab01_report.md --desc "Lab 01: Git SCM" --public

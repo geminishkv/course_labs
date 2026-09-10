@@ -23,11 +23,22 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <a class="btn btn-ghost" href="#pipeline">Смотреть конвейер</a>
   </div>
   </div>
+  <div class="hero-side">
   <div class="hero-stats" role="group" aria-label="Цифры курса">
   <div class="hero-stat"><b>{{ stats.labs }}</b><span>лабораторных</span></div>
   <div class="hero-stat"><b>{{ stats.intro }}</b><span>intro-гайдов</span></div>
   <div class="hero-stat"><b>{{ stats.tests }}</b><span>тестов</span></div>
   <div class="hero-stat"><b>{{ stats.materials }}</b><span>материалов</span></div>
+  </div>
+  <div class="hero-contacts">
+  <span class="hero-contacts__label">Контакты</span>
+  <div class="hero-contacts__row">
+  <a href="https://t.me/geminishkv" target="_blank" rel="noopener" class="contact-btn contact-btn--telegram"><span class="contact-btn__avatar-inner"><span class="contact-btn__status"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></span><span class="contact-btn__label">Telegram</span></a>
+  <a href="mailto:shmakovis@inbox.ru" class="contact-btn"><span class="contact-btn__avatar-inner"><span class="contact-btn__status"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg></span><span class="contact-btn__label">Email</span></a>
+  <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noopener" class="social-icon social-icon--linkedin" aria-label="LinkedIn"><svg class="social-icon__svg" viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg></a>
+  <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noopener" class="social-icon social-icon--instagram" aria-label="Instagram"><svg class="social-icon__svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path></svg></a>
+  </div>
+  </div>
   </div>
 </div>
 <div class="brand-col" aria-hidden="true">
@@ -44,14 +55,41 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 </div>
 </div>
 
+<div class="badges" aria-label="Статус проекта и стек">
+  <img src="https://img.shields.io/badge/Course-AppSec-D51A1A?style=flat" alt="Course">
+  <img src="https://img.shields.io/badge/Language-Русский-D51A1A?style=flat" alt="Language: Russian">
+  <img src="https://img.shields.io/badge/Difficulty-Intermediate-D51A1A?style=flat" alt="Difficulty">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=flat" alt="Status">
+  <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-D51A1A?style=flat" alt="License: Apache 2.0"></a>
+  <a href="https://github.com/geminishkv/course_labs/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop&label=CI&logo=githubactions&logoColor=white" alt="CI"></a>
+  <a href="https://github.com/geminishkv/course_labs/releases"><img src="https://img.shields.io/github/v/release/geminishkv/course_labs?label=Release" alt="Release"></a>
+  <img src="https://img.shields.io/github/last-commit/geminishkv/course_labs?label=Last+commit" alt="Last commit">
+  <img src="https://img.shields.io/github/contributors/geminishkv/course_labs?label=Contributors" alt="Contributors">
+  <img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" alt="Git">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker"></a>
+  <img src="https://img.shields.io/badge/Nmap-214478?style=flat" alt="Nmap">
+  <img src="https://img.shields.io/badge/Semgrep-1B2333?style=flat" alt="Semgrep">
+  <img src="https://img.shields.io/badge/Trivy-1904DA?style=flat&logo=aquasecurity&logoColor=white" alt="Trivy">
+  <img src="https://img.shields.io/badge/OWASP_ZAP-333333?style=flat" alt="OWASP ZAP">
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Checkov-333333?style=flat" alt="Checkov">
+  <img src="https://img.shields.io/badge/Gitleaks-333333?style=flat" alt="Gitleaks">
+  <img src="https://img.shields.io/badge/Bandit-333333?style=flat" alt="Bandit">
+</div>
+
 <div class="sec-head">
   <h2 id="about">О курсе</h2>
   <span class="sec-note">appsec · devsecops · risk analysis</span>
 </div>
 
-<p class="lead">Цель курса — сформировать практические навыки в области AppSec и DevSecOps: от базовой работы с инструментами разработки до построения полноценного конвейера безопасности. Курс охватывает полный цикл безопасной разработки: от первого коммита до автоматизированного сканирования в CI/CD. Каждая лабораторная — самостоятельный мини-проект с реальными инструментами, которые используются в индустрии.</p>
-
 <div class="about-grid">
+  <section class="about-card">
+  <h3>Цель курса</h3>
+  <p>Сформировать практические навыки в области AppSec и DevSecOps: от базовой работы с инструментами разработки до построения полноценного конвейера безопасности.</p>
+  <p>Курс охватывает полный цикл безопасной разработки: от первого коммита до автоматизированного сканирования в CI/CD. Каждая лабораторная — самостоятельный мини-проект с реальными инструментами, которые используются в индустрии.</p>
+  </section>
   <section class="about-card">
   <h3>Что изучаем</h3>
   <ul>
@@ -87,8 +125,6 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 </ol>
 
 <p class="steps__foot">Лицензию при переиспользовании материалов подбирай по <a href="materials/licenses/">справочнику лицензий</a> · <a href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411" target="_blank" rel="noopener">пример gistup-отчёта</a> — шаблон для всех работ</p>
-
-<p class="mats-legend"><span class="mat mat--intro">intro-гайд</span><span class="mat mat--cheat">шпаргалка</span><span class="mat mat--owasp">OWASP</span><span class="mat mat--case">кейс</span><span class="mat mat--ref">справочник</span></p>
 
 <ol class="track" role="list">
   <li class="stage">

@@ -347,7 +347,23 @@ body:has(.md-content--home) .md-top {
   justify-content: space-between;
   gap: var(--space-4);
   flex-wrap: wrap;
-  margin: var(--space-10) 0 var(--space-2);
+  margin: var(--space-8) 0 var(--space-2);
+}
+
+/* section divider: a red rule fading to the right, like the gpages sections */
+.md-content--home .sec-head {
+  position: relative;
+  padding-top: var(--space-7);
+}
+
+.md-content--home .sec-head::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--brand-red) 0%, color-mix(in srgb, var(--brand-red) 15%, transparent) 60%, transparent 100%);
 }
 
 .sec-note {
@@ -376,6 +392,189 @@ body:has(.md-content--home) .md-top {
 .hero-section--home .hero-stats {
   grid-template-columns: 1fr 1fr;
   margin-top: 0;
+}
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+/* Contacts (gpages Hero: label + contact buttons + social tiles) */
+.hero-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero-contacts__label {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-text-secondary);
+}
+
+.hero-contacts__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-typeset .contact-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ink-border);
+  background: var(--ink-page);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.md-typeset .contact-btn:hover,
+.md-typeset .contact-btn:focus-visible {
+  color: #fff;
+  text-decoration: none;
+  border-color: var(--brand-red);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--brand-red) 15%, transparent);
+}
+
+.md-typeset .contact-btn:active { transform: scale(0.97); }
+
+.contact-btn__avatar-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ink-border-strong);
+  flex: none;
+}
+
+.contact-btn__avatar-inner svg {
+  width: 14px;
+  height: 14px;
+}
+
+.contact-btn__avatar-inner svg path {
+  fill: var(--ink-text-secondary);
+  transition: fill 0.3s;
+}
+
+.md-typeset .contact-btn:hover .contact-btn__avatar-inner svg path { fill: #fff; }
+
+.md-typeset .contact-btn:hover .contact-btn__avatar-inner svg {
+  animation: contact-slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.contact-btn__status {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  outline: 2px solid var(--ink-page);
+  animation: contact-pulse 2s ease-in-out infinite;
+}
+
+.contact-btn--telegram .contact-btn__avatar-inner { background: rgba(42, 171, 238, 0.15); }
+.md-typeset .contact-btn--telegram:hover .contact-btn__avatar-inner svg path { fill: #2aabee; }
+
+.md-typeset .contact-btn--telegram:hover,
+.md-typeset .contact-btn--telegram:focus-visible {
+  border-color: #2aabee;
+  box-shadow: 0 0 20px rgba(42, 171, 238, 0.15);
+}
+
+.contact-btn--telegram .contact-btn__status {
+  background: #2aabee;
+  animation-name: contact-pulse-tg;
+}
+
+@keyframes contact-slide-in {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes contact-pulse {
+  0%,
+  100% { background: var(--brand-red); }
+  50% { background: var(--brand-gold); }
+}
+
+@keyframes contact-pulse-tg {
+  0%,
+  100% { background: #2aabee; }
+  50% { background: #5bc8f5; }
+}
+
+.md-typeset .social-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ink-border);
+  background: var(--ink-card);
+  text-decoration: none;
+  transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+
+.social-icon__svg {
+  width: 16px;
+  height: 16px;
+}
+
+.social-icon__svg path {
+  fill: var(--ink-text-secondary);
+  transition: fill 0.3s;
+}
+
+.md-typeset .social-icon:hover .social-icon__svg path,
+.md-typeset .social-icon:focus-visible .social-icon__svg path { fill: #fff; }
+
+.md-typeset .social-icon:hover .social-icon__svg { animation: social-slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.md-typeset .social-icon:active { transform: scale(0.92); }
+
+.md-typeset .social-icon--linkedin:hover,
+.md-typeset .social-icon--linkedin:focus-visible {
+  background: #0072b1;
+  border-color: #0072b1;
+  box-shadow: 0 0 16px rgba(0, 114, 177, 0.25);
+}
+
+.md-typeset .social-icon--instagram:hover,
+.md-typeset .social-icon--instagram:focus-visible {
+  background: #d62976;
+  border-color: #d62976;
+  box-shadow: 0 0 16px rgba(214, 41, 118, 0.25);
 }
 
 /* ══════════════════════════════════════════
@@ -1034,8 +1233,9 @@ body:has(.md-content--home) .md-top {
   to { background-position: 0 -200%; }
 }
 
-/* every stage spans the same five rows: materials, node, name, stack, labs */
-.md-typeset .stage {
+/* every stage spans the same five rows: materials, node, name, stack, labs.
+   `ol.track > .stage` outranks Material's `[dir=ltr] .md-typeset ol li` margin */
+.md-typeset ol.track > .stage {
   position: relative;
   display: grid;
   grid-template-rows: subgrid;
@@ -1091,13 +1291,6 @@ body:has(.md-content--home) .md-top {
 .mat--owasp { --mat-dot: var(--brand-red-light); }
 .mat--case { --mat-dot: var(--brand-gold-dark); }
 .mat--ref { --mat-dot: var(--ink-text-secondary); }
-
-.md-typeset .mats-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0 0 var(--space-4);
-}
 
 /* node row: the pipeline line runs through the node, one segment per stage
    bridging the column gap to its left */
@@ -1315,6 +1508,24 @@ body:has(.md-content--home) .md-top {
 /* ══════════════════════════════════════════
    Home: about cards, walkthrough steps, rules
 ══════════════════════════════════════════ */
+
+/* Badge strip between the hero and About: shields.io status + stack, centred, wraps */
+.md-typeset .badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 0.4rem;
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.md-typeset .badges img {
+  height: 20px;
+  display: block;
+  border-radius: 3px;
+}
+
+.md-typeset .badges a { display: inline-flex; }
+
 .about-grid,
 .rules-grid {
   display: grid;
@@ -1322,6 +1533,16 @@ body:has(.md-content--home) .md-top {
   gap: var(--space-4);
   margin: var(--space-5) 0 var(--space-6);
 }
+
+.about-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.md-typeset .about-card p {
+  margin: 0 0 0.6rem;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.md-typeset .about-card p:last-child { margin-bottom: 0; }
 
 .md-typeset .about-card,
 .md-typeset .rules-card {
@@ -1347,8 +1568,10 @@ body:has(.md-content--home) .md-top {
   font-size: var(--text-sm);
 }
 
-.md-typeset .about-card li,
-.md-typeset .rules-card li { margin: 0 0 0.35rem; }
+/* (0,2,2) ties Material's `[dir=ltr] .md-typeset ol li` and wins by order */
+.md-typeset .about-card ul li,
+.md-typeset .rules-card ul li,
+.md-typeset .rules-card ol li { margin: 0 0 0.35rem; }
 
 .md-typeset ul.checks {
   list-style: none;
@@ -1951,7 +2174,7 @@ body:has(.md-content--home) .md-top {
 
   .md-typeset ol.track::before { display: block; }
 
-  .md-typeset .stage {
+  .md-typeset ol.track > .stage {
     grid-template-columns: 2.875rem 1fr;
     grid-template-rows: auto;
     grid-row: auto;
@@ -2059,7 +2282,10 @@ body:has(.md-content--home) .md-top {
   .track--live .stage-mats,
   .track--live .stage-labs,
   .track--live .stage-head,
-  .md-social__link:hover svg {
+  .md-social__link:hover svg,
+  .contact-btn__status,
+  .md-typeset .contact-btn:hover .contact-btn__avatar-inner svg,
+  .md-typeset .social-icon:hover .social-icon__svg {
     animation: none;
   }
 

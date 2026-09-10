@@ -8,15 +8,15 @@ import re
 
 
 # ─── Priority / changefreq rules ───────────────────────────────────────────────
-# Evaluated top-to-bottom; first match wins.
+# Evaluated top-to-bottom; first match wins, so specific paths go before their prefix.
 _RULES = [
     # Homepage
     (r"^/$",                          "1.0", "weekly"),
+    # Tests and pet project (under /labs/, so they must precede the generic rule)
+    (r"^/labs/tests/",                "0.5", "monthly"),
+    (r"^/labs/pet_project",           "0.7", "monthly"),
     # Lab pages
     (r"^/labs/",                      "0.8", "weekly"),
-    (r"^/labs/pet_project",           "0.7", "monthly"),
-    # Tests
-    (r"^/labs/tests/",                "0.5", "monthly"),
     # OWASP materials
     (r"^/materials/OWASPTOP10/",      "0.7", "monthly"),
     # Examples

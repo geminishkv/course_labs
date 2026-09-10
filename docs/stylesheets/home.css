@@ -1491,3 +1491,13 @@ body:has(.md-content--home) .md-top {
       animation: none;
     }
 }
+
+/* Touch: contact buttons and social tiles reach 44px */
+@media (pointer: coarse), (max-width: 43.6875em) {
+  .md-typeset .contact-btn { min-height: 44px; }
+
+  .md-typeset .social-icon {
+    width: 44px;
+    height: 44px;
+  }
+}

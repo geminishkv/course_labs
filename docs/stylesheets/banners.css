@@ -300,3 +300,15 @@
     animation: none;
   }
 }
+
+/* Touch: every control of the two banners is at least 44px tall (WCAG 2.5.5) */
+@media (pointer: coarse), (max-width: 43.6875em) {
+  .ata-legal__close,
+  .ata-consent__btn {
+    min-height: 44px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .ata-consent__actions { gap: 12px; }
+}

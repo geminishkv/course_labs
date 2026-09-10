@@ -21,6 +21,12 @@
     var el = document.getElementById("typewriter-target");
     if (!el) return;
 
+    // WCAG 2.2.2: no self-running loop for people who asked for less motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = PHRASES[0];
+      return;
+    }
+
     var id = runId;
     var phraseIndex = 0;
     var charIndex = 0;

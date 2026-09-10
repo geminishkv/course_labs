@@ -2,14 +2,14 @@
    Notice bar (fixed bottom) — legal disclaimer
 ══════════════════════════════════════════ */
 
-.notice-bar {
+.ata-legal {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 9000;
-  background: var(--brand-dark);
-  border-top: 1px solid color-mix(in srgb, var(--brand-gold) 15%, transparent);
+  background: var(--ink-secondary);
+  border-top: 1px solid var(--ink-border);
   padding: 12px clamp(24px, 5vw, 120px);
   padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
   transform: translateY(100%);
@@ -19,7 +19,7 @@
   visibility: hidden;
 }
 
-.notice-bar--visible {
+.ata-legal--visible {
   transform: translateY(0);
   pointer-events: auto;
   visibility: visible;
@@ -27,7 +27,7 @@
               visibility 0s linear 0s;
 }
 
-.notice-bar__inner {
+.ata-legal__inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -35,12 +35,12 @@
   gap: 24px;
 }
 
-.notice-bar__body {
+.ata-legal__body {
   flex: 1;
   min-width: 0;
 }
 
-.notice-bar__title {
+.ata-legal__title {
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -49,27 +49,27 @@
   margin: 0 0 6px;
 }
 
-.notice-bar__text {
+.ata-legal__text {
   font-size: 0.62rem;
   line-height: 1.5;
   color: #cccccc;
   margin: 0;
 }
 
-.notice-bar__text p {
+.ata-legal__text p {
   margin: 0 0 3px;
 }
 
-.notice-bar__text p:last-child {
+.ata-legal__text p:last-child {
   margin-bottom: 0;
 }
 
-.notice-bar__close {
+.ata-legal__close {
   flex-shrink: 0;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--ink-border-strong);
   border-radius: var(--radius-md);
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--ink-text-secondary);
   font-size: 0.6rem;
   font-family: var(--font-body);
   font-weight: 700;
@@ -82,17 +82,17 @@
   white-space: nowrap;
 }
 
-.notice-bar__close:hover {
+.ata-legal__close:hover {
   border-color: color-mix(in srgb, var(--brand-red) 40%, transparent);
-  color: rgba(255, 255, 255, 0.8);
+  color: #cccccc;
   box-shadow: 0 4px 10px color-mix(in srgb, var(--brand-red) 15%, transparent);
 }
 
-.notice-bar__disclaimer {
+.ata-legal__disclaimer {
   font-size: 0.5rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--ink-text-tertiary);
   line-height: 1.3;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--ink-border);
   padding-top: 5px;
   margin-top: 5px;
 }
@@ -101,16 +101,16 @@
    Cookie consent banner (bottom-right card, above the notice bar)
 ══════════════════════════════════════════ */
 
-.cookie-banner {
+.ata-consent {
   position: fixed;
   right: 20px;
 
-  /* sits above the notice bar; banners.js publishes the bar height as --notice-bar-h */
-  bottom: calc(var(--notice-bar-h, 0px) + 20px);
+  /* sits above the notice bar; banners.js publishes the bar height as --ata-legal-h */
+  bottom: calc(var(--ata-legal-h, 0px) + 20px);
   z-index: 9000;
   width: 300px;
-  background: var(--brand-dark);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--ink-card);
+  border: 1px solid var(--ink-border);
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
@@ -122,56 +122,56 @@
   box-shadow:
     0 2px 20px rgba(0, 0, 0, 0.3),
     0 0 0 1px color-mix(in srgb, var(--brand-red) 6%, transparent);
-  animation: cookie-slide-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: ata-consent-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cookie-banner[hidden] {
+.ata-consent[hidden] {
   display: none;
 }
 
-.cookie-banner__icon {
+.ata-consent__icon {
   width: 40px;
   height: 40px;
   color: var(--brand-red);
 }
 
-.cookie-banner__icon svg {
+.ata-consent__icon svg {
   width: 100%;
   height: 100%;
 }
 
-.cookie-banner__title {
+.ata-consent__title {
   font-size: 0.9rem;
   font-weight: 700;
   color: #fff;
   margin: 0;
 }
 
-.cookie-banner__text {
+.ata-consent__text {
   text-align: center;
   font-size: 0.65rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--ink-text-secondary);
   line-height: 1.5;
   margin: 0;
 }
 
-.cookie-banner__text a {
+.ata-consent__text a {
   color: var(--brand-red);
   text-decoration: none;
 }
 
-.cookie-banner__text a:hover {
+.ata-consent__text a:hover {
   text-decoration: underline;
 }
 
-.cookie-banner__actions {
+.ata-consent__actions {
   display: flex;
   gap: 16px;
 }
 
-.cookie-banner__btn {
+.ata-consent__btn {
   width: 80px;
   height: 30px;
   border: none;
@@ -183,31 +183,31 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cookie-banner__btn--accept {
+.ata-consent__btn--accept {
   background: var(--brand-red);
   color: #fff;
   box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--brand-red) 30%, transparent),
               0 2px 4px -1px color-mix(in srgb, var(--brand-red) 20%, transparent);
 }
 
-.cookie-banner__btn--accept:hover {
+.ata-consent__btn--accept:hover {
   background: var(--brand-red-light);
   box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--brand-red) 30%, transparent),
               0 4px 6px -2px color-mix(in srgb, var(--brand-red) 20%, transparent);
 }
 
-.cookie-banner__btn--decline {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.5);
+.ata-consent__btn--decline {
+  background: var(--ink-border-strong);
+  color: var(--ink-text-secondary);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
 
-.cookie-banner__btn--decline:hover {
-  background: rgba(255, 255, 255, 0.15);
+.ata-consent__btn--decline:hover {
+  background: var(--ink-text-muted);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes cookie-slide-in {
+@keyframes ata-consent-in {
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.95);
@@ -224,14 +224,14 @@
 ══════════════════════════════════════════ */
 
 @media (max-width: 640px) {
-  .notice-bar {
+  .ata-legal {
     padding: 0;
     max-height: 25vh;
     display: flex;
     flex-direction: column;
   }
 
-  .notice-bar__inner {
+  .ata-legal__inner {
     flex-direction: column;
     gap: 0;
     display: flex;
@@ -240,7 +240,7 @@
     overflow: hidden;
   }
 
-  .notice-bar__body {
+  .ata-legal__body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: 12px 16px 8px;
@@ -248,7 +248,7 @@
     min-height: 0;
   }
 
-  .notice-bar__close {
+  .ata-legal__close {
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 0;
@@ -263,39 +263,39 @@
 }
 
 @media (max-width: 576px) {
-  .cookie-banner {
+  .ata-consent {
     right: 10px;
     left: 10px;
-    bottom: calc(var(--notice-bar-h, 0px) + 10px);
+    bottom: calc(var(--ata-legal-h, 0px) + 10px);
     width: auto;
     padding: 16px 18px;
     gap: 10px;
   }
 
-  .cookie-banner__icon {
+  .ata-consent__icon {
     width: 28px;
     height: 28px;
   }
 
-  .cookie-banner__title {
+  .ata-consent__title {
     font-size: 0.8rem;
   }
 
-  .cookie-banner__text {
+  .ata-consent__text {
     font-size: 0.6rem;
   }
 
-  .cookie-banner__actions {
+  .ata-consent__actions {
     width: 100%;
   }
 
-  .cookie-banner__btn {
+  .ata-consent__btn {
     flex: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cookie-banner {
+  .ata-consent {
     animation: none;
   }
 }

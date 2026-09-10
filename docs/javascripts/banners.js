@@ -22,43 +22,43 @@
     if (!shouldShow("notice_ts")) return;
 
     var bar = document.createElement("div");
-    bar.className = "notice-bar";
+    bar.className = "ata-legal";
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", "Уведомление");
 
     bar.innerHTML =
-      '<div class="notice-bar__inner">' +
-        '<div class="notice-bar__body">' +
-          '<p class="notice-bar__title">Уведомление</p>' +
-          '<div class="notice-bar__text">' +
+      '<div class="ata-legal__inner">' +
+        '<div class="ata-legal__body">' +
+          '<p class="ata-legal__title">Уведомление</p>' +
+          '<div class="ata-legal__text">' +
             "<p>Вся информация в материалах данного курса, включая любые текстовые и графические произведения, рассматривается исключительно в ознакомительных целях.</p>" +
             "<p>Любое использование представленной информации на практике без получения предварительного согласования подпадает под действие действующего законодательства РФ.</p>" +
             "<p>Автор не несет ответственности за любой возможный вред, причиненный предоставляемыми материалами.</p>" +
             "<p>Все материалы носят ознакомительный характер в целях обучения прикладной безопасности приложений.</p>" +
           "</div>" +
-          '<div class="notice-bar__disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская (решение Тверского районного суда г. Москвы от 21.03.2022). LinkedIn заблокирован на территории РФ за нарушение ФЗ-152 «О персональных данных».</div>' +
+          '<div class="ata-legal__disclaimer">Instagram* — продукт компании Meta Platforms Inc., деятельность которой запрещена на территории РФ как экстремистская (решение Тверского районного суда г. Москвы от 21.03.2022). LinkedIn заблокирован на территории РФ за нарушение ФЗ-152 «О персональных данных».</div>' +
         "</div>" +
-        '<button class="notice-bar__close">Понятно</button>' +
+        '<button class="ata-legal__close">Понятно</button>' +
       "</div>";
 
     document.body.appendChild(bar);
 
     // The cookie banner stacks above the bar: publish the bar height as a CSS variable.
     function publishHeight() {
-      var h = bar.classList.contains("notice-bar--visible") ? bar.offsetHeight : 0;
-      document.documentElement.style.setProperty("--notice-bar-h", h + "px");
+      var h = bar.classList.contains("ata-legal--visible") ? bar.offsetHeight : 0;
+      document.documentElement.style.setProperty("--ata-legal-h", h + "px");
     }
     window.addEventListener("resize", publishHeight);
 
-    bar.querySelector(".notice-bar__close").addEventListener("click", function () {
-      bar.classList.remove("notice-bar--visible");
+    bar.querySelector(".ata-legal__close").addEventListener("click", function () {
+      bar.classList.remove("ata-legal--visible");
       publishHeight();
       window.removeEventListener("resize", publishHeight);
       dismiss("notice_ts", null);
     });
 
     setTimeout(function () {
-      bar.classList.add("notice-bar--visible");
+      bar.classList.add("ata-legal--visible");
       publishHeight();
     }, 600);
   }
@@ -69,13 +69,13 @@
     if (!shouldShow("cookie_ts")) return;
 
     var banner = document.createElement("div");
-    banner.className = "cookie-banner";
-    banner.id = "cookie-banner";
+    banner.className = "ata-consent";
+    banner.id = "ata-consent";
     banner.setAttribute("role", "dialog");
     banner.setAttribute("aria-label", "Файлы cookie");
 
     banner.innerHTML =
-      '<div class="cookie-banner__icon">' +
+      '<div class="ata-consent__icon">' +
         '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
           '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>' +
           '<circle cx="8" cy="10" r="1.5" fill="currentColor"/>' +
@@ -85,21 +85,21 @@
           '<circle cx="16" cy="13" r="0.8" fill="currentColor"/>' +
         "</svg>" +
       "</div>" +
-      '<p class="cookie-banner__title">Файлы cookie</p>' +
-      '<p class="cookie-banner__text">' +
+      '<p class="ata-consent__title">Файлы cookie</p>' +
+      '<p class="ata-consent__text">' +
         "Мы используем файлы cookie и сервисы аналитики для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с обработкой данных в соответствии с " +
         '<a href="/privacy/">Политикой конфиденциальности</a>.' +
       "</p>" +
-      '<div class="cookie-banner__actions">' +
-        '<button class="cookie-banner__btn cookie-banner__btn--accept">Принять</button>' +
-        '<button class="cookie-banner__btn cookie-banner__btn--decline">Отклонить</button>' +
+      '<div class="ata-consent__actions">' +
+        '<button class="ata-consent__btn ata-consent__btn--accept">Принять</button>' +
+        '<button class="ata-consent__btn ata-consent__btn--decline">Отклонить</button>' +
       "</div>";
 
     document.body.appendChild(banner);
 
     function onDismiss() { dismiss("cookie_ts", banner); }
-    banner.querySelector(".cookie-banner__btn--accept").addEventListener("click", onDismiss);
-    banner.querySelector(".cookie-banner__btn--decline").addEventListener("click", onDismiss);
+    banner.querySelector(".ata-consent__btn--accept").addEventListener("click", onDismiss);
+    banner.querySelector(".ata-consent__btn--decline").addEventListener("click", onDismiss);
   }
 
   /* ── Init ── */

@@ -10,6 +10,17 @@
   --brand-gold:           #F9B361;
   --brand-gold-dark:      #c48a20;
   --brand-dark:           #1A1919;
+
+  /* gpages dark surfaces (geminishkv.tech App.css) — header, footer, home canvas, banners */
+  --ink-page:             #0a0a0a;
+  --ink-secondary:        #0d0d0d;
+  --ink-card:             #111111;
+  --ink-elevated:         #1c1c1c;
+  --ink-border:           #1a1a1a;
+  --ink-border-strong:    #2a2a2a;
+  --ink-text-secondary:   #888888;
+  --ink-text-tertiary:    #555555;
+  --ink-text-muted:       #333333;
   --brand-hero-stop:      #2d0a0a;
 
   /* ── Surfaces ── */

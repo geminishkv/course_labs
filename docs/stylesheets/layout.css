@@ -302,32 +302,32 @@
 }
 
 /* ══════════════════════════════════════════
-   Home canvas — template home.html: no sidebars, dark page, 1440px container.
+   Home canvas — template home.html: no sidebars, dark page, content on the 88rem grid.
    Tokens are re-pointed on <body>, so the shared components re-skin themselves.
 ══════════════════════════════════════════ */
 body:has(.md-content--home) {
-  --surface-page: #141313;
-  --surface-card: #1e1c1c;
-  --surface-zebra: #1a1818;
-  --text-primary: #f3efeb;
-  --text-secondary: #cdc5c0;
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-subtle-light: rgba(255, 255, 255, 0.16);
-  --home-red: #f07a7a;
-  --home-gold: #f2b45f;
-  --md-default-bg-color: #141313;
-  --md-default-fg-color: #f3efeb;
-  --md-default-fg-color--light: rgba(243, 239, 235, 0.72);
-  --md-default-fg-color--lighter: rgba(243, 239, 235, 0.4);
+  --home-gutter: clamp(1rem, 4vw, 3rem);
+  --surface-page: var(--ink-page);
+  --surface-card: var(--ink-card);
+  --surface-zebra: var(--ink-secondary);
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-subtle: var(--ink-border);
+  --border-subtle-light: var(--ink-border-strong);
+  --home-red: var(--brand-red);
+  --home-gold: var(--brand-gold);
+  --md-default-bg-color: var(--ink-page);
+  --md-default-fg-color: #ffffff;
+  --md-default-fg-color--light: #cccccc;
+  --md-default-fg-color--lighter: var(--ink-text-secondary);
 }
 
 body:has(.md-content--home) .md-main { background-color: var(--surface-page); }
 body:has(.md-content--home) .md-header__title { visibility: hidden; }
 
-/* Header edges line up with the home container (same width and gutters) */
+/* Header and content share the 88rem grid; same gutters so the edges line up */
 body:has(.md-content--home) .md-header__inner {
-  max-width: 1440px;
-  padding-inline: clamp(16px, 4vw, 48px);
+  padding-inline: var(--home-gutter);
 }
 
 body:has(.md-content--home) .md-top {
@@ -1388,8 +1388,8 @@ body:has(.md-content--home) .md-top {
     transition: none;
   }
 
-  .notice-bar,
-  .cookie-banner {
+  .ata-legal,
+  .ata-consent {
     display: none;
   }
 }
@@ -1405,24 +1405,21 @@ body:has(.md-content--home) .md-top {
   font-style: italic;
 }
 
+/* Footer: gpages Footer.css — ink background, red-to-transparent top rule */
 .md-footer::before {
   content: "";
   display: block;
   height: 2px;
-  background: linear-gradient(to right, var(--brand-red), var(--brand-gold), transparent);
+  background: linear-gradient(to right, var(--brand-red) 0%, color-mix(in srgb, var(--brand-red) 15%, transparent) 60%, transparent 100%);
 }
 
 .md-footer,
 .md-footer-meta,
 .md-footer-meta__inner {
-  --md-primary-fg-color: var(--brand-dark) !important;
+  --md-primary-fg-color: var(--ink-page) !important;
 
   font-family: var(--font-body);
-  background-color: var(--brand-dark) !important;
-}
-
-.md-footer {
-  border-top: 1px solid var(--border-gold);
+  background-color: var(--ink-page) !important;
 }
 
 .md-social__link svg {

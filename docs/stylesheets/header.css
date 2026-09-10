@@ -6,7 +6,7 @@
 
 /* ── Bar ── */
 .md-header {
-  background-color: var(--brand-dark);
+  background-color: var(--ink-page);
   color: var(--text-inverse);
   font-family: var(--font-body);
   box-shadow: none;
@@ -15,7 +15,7 @@
 
 /* header.js adds this once the page is scrolled */
 .md-header--glass {
-  background-color: color-mix(in srgb, var(--brand-dark) 82%, transparent);
+  background-color: color-mix(in srgb, var(--ink-page) 82%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 32px rgba(0, 0, 0, 0.5);

@@ -122,11 +122,11 @@
   .md-sidebar--primary .md-sidebar__scrollwrap,
   .md-nav--primary .md-nav,
   .md-nav--primary .md-nav__list {
-    background-color: var(--brand-dark);
+    background-color: var(--ink-page);
   }
 
   .md-nav--primary .md-nav__title {
-    background-color: var(--brand-dark);
+    background-color: var(--ink-page);
     color: var(--text-inverse);
     box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
   }

@@ -24,10 +24,10 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   </div>
   </div>
   <div class="hero-stats" role="group" aria-label="Цифры курса">
-  <div class="hero-stat"><b>10</b><span>лабораторных</span></div>
-  <div class="hero-stat"><b>7</b><span>intro-гайдов</span></div>
-  <div class="hero-stat"><b>7</b><span>тестов</span></div>
-  <div class="hero-stat"><b>27</b><span>материалов</span></div>
+  <div class="hero-stat"><b>{{ stats.labs }}</b><span>лабораторных</span></div>
+  <div class="hero-stat"><b>{{ stats.intro }}</b><span>intro-гайдов</span></div>
+  <div class="hero-stat"><b>{{ stats.tests }}</b><span>тестов</span></div>
+  <div class="hero-stat"><b>{{ stats.materials }}</b><span>материалов</span></div>
   </div>
 </div>
 <div class="brand-col" aria-hidden="true">
@@ -216,16 +216,17 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 <div class="sec-head">
   <h2 id="materials">Материалы</h2>
-  <span class="sec-note">8 разделов · 27 документов · 7 тестов</span>
+  <span class="sec-note">9 разделов · {{ stats.materials }} документов · {{ stats.tests }} тестов</span>
 </div>
 
-<div class="entries entries--four">
+<div class="entries">
   <a class="entry" href="labs/intro/vmbox_tutorial/"><span class="entry-count">7 гайдов</span><span class="entry-title">Intro</span><span class="entry-text">Окружение, Git и GPG, отчёты в Gist, сети, Docker, CI/CD, AppSec-инструменты.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="labs/tests/basic/test01/"><span class="entry-count">5 + 2 варианта</span><span class="entry-title">Тесты</span><span class="entry-text">Пять базовых вариантов по лабам и два лекционных теста по Fintech.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/OWASPTOP10/Authentication/"><span class="entry-count">7 разборов</span><span class="entry-title">OWASP Top 10</span><span class="entry-text">Authentication, Authorization, Client-side, Command Execution, Logical, Information Disclosure, CI/CD Risks.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/examples/exmpl/"><span class="entry-count">5 кейсов</span><span class="entry-title">Примеры</span><span class="entry-text">Инциденты ИБ, Supply Chain Attacks, PrintNightmare, MultiSig, пример Risk Analysis.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/cheatsheet/CHEATSHEET_GIT/"><span class="entry-count">9 шпаргалок</span><span class="entry-title">CheatSheets</span><span class="entry-text">Git, Docker, YAML, HTTP Headers, Dockerfile Security, GitHub Actions Security, gh, .gitignore, .dockerignore.</span><span class="entry-link">Открыть →</span></a>
-  <a class="entry" href="materials/appsec_tt/"><span class="entry-count">4 справочника</span><span class="entry-title">Справочники</span><span class="entry-text">AppSec Toolchain, порты и протоколы, лицензии ПО, приложение с командами и утилитами.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/appsec_tt/"><span class="entry-count">3 справочника</span><span class="entry-title">Справочники</span><span class="entry-text">AppSec Toolchain, порты и протоколы, приложение с командами и утилитами.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/licenses/"><span class="entry-count">справочник</span><span class="entry-title">Лицензии ПО</span><span class="entry-text">Какую лицензию выбрать для репозитория и как переиспользовать чужие материалы без нарушений.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/troubleshooting/"><span class="entry-count">45 карточек</span><span class="entry-title">Troubleshooting</span><span class="entry-text">Частые проблемы по 13 темам: окружение, Git, Docker, сканеры, CI/CD.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/lectures/fintech_ru/"><span class="entry-count">1 лекция</span><span class="entry-title">Fintech по-русски</span><span class="entry-text">Лекция о безопасности финтеха и два кейсовых теста к ней.</span><span class="entry-link">Открыть →</span></a>
 </div>

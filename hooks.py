@@ -1,10 +1,39 @@
 """
-MkDocs hooks — post-build sitemap enrichment.
-Adds <changefreq> and <priority> per URL pattern.
+MkDocs hooks.
+
+- on_page_markdown: fills the `{{ stats.* }}` placeholders on the home page
+  with figures counted from the docs tree (labs, intro guides, tests,
+  materials), so the hero never goes stale by hand.
+- on_post_build: sitemap enrichment — <changefreq> and <priority> per URL
+  pattern.
 """
 
+import glob
 import os
 import re
+
+# ─── Home page figures ─────────────────────────────────────────────────────────
+_STATS_TOKEN = re.compile(r"\{\{\s*stats\.(\w+)\s*\}\}")
+
+
+def _count_docs(docs_dir: str) -> dict[str, int]:
+    def count(pattern: str, exclude: tuple[str, ...] = ()) -> int:
+        paths = glob.glob(os.path.join(docs_dir, pattern), recursive=True)
+        return len([p for p in paths if os.path.basename(p) not in exclude])
+
+    return {
+        "labs": count("labs/basic/lab*.md"),
+        "intro": count("labs/intro/*.md"),
+        "tests": count("labs/tests/**/*.md"),
+        "materials": count("materials/**/*.md", exclude=("index.md",)),
+    }
+
+
+def on_page_markdown(markdown, page, config, files):
+    if page.file.src_uri != "index.md":
+        return markdown
+    stats = _count_docs(config["docs_dir"])
+    return _STATS_TOKEN.sub(lambda m: str(stats.get(m.group(1), m.group(0))), markdown)
 
 
 # ─── Priority / changefreq rules ───────────────────────────────────────────────

@@ -188,6 +188,7 @@ nav:
           - "Вариант №4": labs/tests/basic/test04.md
           - "Вариант №5": labs/tests/basic/test05.md
   - "Материалы":
+      - materials/index.md
       - "Лекции":
           - "Fintech по-русски": materials/lectures/fintech_ru.md
       - "Примеры":

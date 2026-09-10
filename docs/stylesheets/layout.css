@@ -116,6 +116,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .md-typeset ol.track::before,
   .hero-section,
   .lab-hero,
   .hero-logo-wrap::before,
@@ -359,132 +360,322 @@
 }
 
 /* ══════════════════════════════════════════
-   Layout: tg-layout + widget
+   Home: hero actions + stats
 ══════════════════════════════════════════ */
-.tg-layout {
+.hero-cta {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-10);
-}
-
-.tg-layout-main {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.tg-widget {
-  position: sticky;
-  top: 4.5rem;
-
-  /* 362 = 320 (Telegram iframe min-width) + 2 × 20px padding + 2px border.
-     min-width: 0 — otherwise the nowrap text of the channel card inflates
-     the column to ~405px and steals width from the main column. */
-  flex: 0 0 362px;
-  min-width: 0;
-  background: var(--surface-card);
-  border: 1px solid color-mix(in srgb, var(--brand-red) 12%, transparent);
-  border-top: 3px solid var(--brand-red);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  padding: var(--space-5) var(--space-4) var(--space-4);
-}
-
-.tg-widget h3 {
-  font-size: var(--text-sm) !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  color: var(--brand-red) !important;
-  margin: 0 0 var(--space-3) !important;
-  border-bottom: none !important;
-}
-
-/* Telegram sizes the iframe to the post content (a long post = 3000+ px),
-   so the area is capped and scrolls inside: the sticky column stays compact. */
-.tg-embed-desktop {
-  max-height: min(560px, calc(100vh - 14rem));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  border-radius: var(--radius-md);
-}
-
-/* ══════════════════════════════════════════
-   Telegram channel card
-══════════════════════════════════════════ */
-.tg-channel-card {
-  background: linear-gradient(135deg, var(--brand-dark) 0%, #2a0808 100%);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-3);
-  margin-bottom: var(--space-3);
-  border: 1px solid color-mix(in srgb, var(--brand-red) 20%, transparent);
-}
-
-.tg-channel-header {
-  display: flex;
-  flex-wrap: wrap; /* the button wraps to its own row, name and description are never truncated */
-  align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
-.tg-channel-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: contain;
-  flex-shrink: 0;
-  background: color-mix(in srgb, var(--brand-red) 15%, transparent);
-  padding: 4px;
-}
-
-.tg-channel-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.tg-channel-name {
+.md-typeset .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-md);
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 700;
-  color: var(--text-inverse);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
-.tg-channel-desc {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.45);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.md-typeset .btn:hover,
+.md-typeset .btn:focus {
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
-.tg-channel-btn {
-  flex: 1 0 100%;
-  display: inline-block;
-  text-align: center;
-  padding: 0.35rem 0.7rem;
+.md-typeset .btn-primary {
   background: var(--brand-red);
-  color: var(--text-inverse) !important;
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-decoration: none !important;
-  border-radius: var(--radius-sm);
-  transition: background var(--transition-fast), color var(--transition-fast);
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
+  color: var(--text-inverse);
 }
 
-.tg-channel-btn:hover {
-  background: var(--brand-gold) !important;
-  color: var(--brand-dark) !important;
-  text-decoration: none !important;
+.md-typeset .btn-primary:hover,
+.md-typeset .btn-primary:focus {
+  background: var(--brand-gold);
+  color: var(--brand-dark);
+}
+
+.md-typeset .btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: var(--text-inverse);
+}
+
+.md-typeset .btn-ghost:hover,
+.md-typeset .btn-ghost:focus {
+  border-color: var(--brand-gold);
+  color: var(--brand-gold);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.hero-stat {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.hero-stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--brand-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-stat span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: var(--text-xs);
+  color: var(--text-inverse-muted);
+}
+
+/* ══════════════════════════════════════════
+   Home: course pipeline (labs on the stages)
+══════════════════════════════════════════ */
+.md-typeset .lead {
+  max-width: 64ch;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+.md-typeset ol.track {
+  list-style: none;
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0 var(--space-4);
+}
+
+.md-typeset ol.track::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 21px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--brand-red) 0%, var(--brand-gold) 25%, var(--brand-red) 50%, var(--brand-gold) 75%, var(--brand-red) 100%);
+  background-size: 200% 100%;
+  animation: track-flow 6s linear infinite;
+}
+
+@keyframes track-flow {
+  to { background-position: -200% 0; }
+}
+
+.md-typeset .stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.stage-head {
+  position: relative;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--brand-dark);
+  color: var(--brand-gold);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-base);
+  box-shadow: 0 0 0 4px var(--surface-page), 0 0 0 5px var(--border-subtle);
+}
+
+.stage-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  margin-top: 0.3rem;
+  line-height: 1.25;
+  hyphens: auto;
+}
+
+.stage-cmd {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.stage-labs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: 0.2rem;
+}
+
+.md-typeset .lab {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2rem 0.5rem;
+  align-items: start;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--brand-red);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: transform var(--transition-fast), border-left-color var(--transition-fast), background var(--transition-fast);
+}
+
+.md-typeset .lab:hover,
+.md-typeset .lab:focus {
+  color: var(--text-primary);
+  text-decoration: none;
+  transform: translateX(3px);
+  border-left-color: var(--brand-gold);
+  background: color-mix(in srgb, var(--brand-gold) 6%, transparent);
+}
+
+.lab-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  color: var(--brand-red);
+  font-variant-numeric: tabular-nums;
+}
+
+.lab-name {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.35;
+  hyphens: auto;
+}
+
+.lab-tags {
+  grid-column: 2;
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+}
+
+.md-typeset .lab--gold { border-left-color: var(--brand-gold); }
+.md-typeset .lab--gold .lab-num { color: var(--brand-gold-dark); }
+.md-typeset .lab--gold:hover { border-left-color: var(--brand-red); }
+
+/* ══════════════════════════════════════════
+   Home: section entries + Telegram strip
+══════════════════════════════════════════ */
+.entries {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-5) 0 var(--space-8);
+}
+
+.md-typeset .entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--brand-red);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: transform var(--transition-fast), border-top-color var(--transition-fast);
+}
+
+.md-typeset .entry:hover,
+.md-typeset .entry:focus {
+  color: var(--text-primary);
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-top-color: var(--brand-gold);
+}
+
+.entry-count {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.entry-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-md);
+}
+
+.entry-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.entry-link {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--brand-red);
+}
+
+.tg-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin: var(--space-6) 0 var(--space-8);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--brand-dark) 0%, #2a0808 100%);
+  border: 1px solid color-mix(in srgb, var(--brand-red) 25%, transparent);
+  color: var(--text-inverse);
+}
+
+.tg-strip__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.tg-strip__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex: none;
+  padding: 4px;
+  object-fit: contain;
+  background: color-mix(in srgb, var(--brand-red) 15%, transparent);
+}
+
+.tg-strip__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-base);
+}
+
+.tg-strip__desc {
+  margin-top: 0.2rem;
+  font-size: var(--text-sm);
+  color: var(--text-inverse-muted);
 }
 
 /* ══════════════════════════════════════════
@@ -799,24 +990,36 @@
     margin: var(--space-2) 0 var(--space-5);
   }
 
-  .tg-layout {
-    flex-direction: column;
+  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .md-typeset ol.track {
+    grid-template-columns: 1fr;
+    gap: var(--space-6) 0;
   }
 
-  .tg-widget {
-    position: static;
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 100%;
+  .md-typeset ol.track::before {
+    inset: 0 auto 0 21px;
+    width: 4px;
+    height: auto;
+    background: linear-gradient(180deg, var(--brand-red) 0%, var(--brand-gold) 25%, var(--brand-red) 50%, var(--brand-gold) 75%, var(--brand-red) 100%);
+    background-size: 100% 200%;
+    animation-name: track-flow-v;
   }
 
-  .tg-embed-desktop {
-    display: none;
+  @keyframes track-flow-v {
+    to { background-position: 0 -200%; }
   }
 
-  .tg-widget h3 {
-    display: none !important;
+  .md-typeset .stage {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 0.3rem var(--space-4);
   }
+
+  .stage-head { grid-row: 1 / span 3; }
+  .stage-name { margin-top: 0; }
+  .stage-labs { grid-column: 2; }
+  .entries { grid-template-columns: 1fr; }
 
   .lab-hero {
     flex-direction: column;
@@ -894,10 +1097,6 @@
     font-size: var(--text-sm);
   }
 
-  .tg-channel-btn {
-    font-size: var(--text-2xs);
-    padding: var(--space-1) var(--space-2);
-  }
 }
 
 /* ══════════════════════════════════════════

@@ -36,11 +36,16 @@
     {% set parts = (config.site_url or "/").split("/", 3) %}
     {% set site_root = "/" ~ (parts[3] if parts | length > 3 else "") %}
     {% if not site_root.endswith("/") %}{% set site_root = site_root ~ "/" %}{% endif %}
+    {%- set url = page.url if page else "" -%}
+    {%- set in_tests = url.startswith("labs/tests/") -%}
+    {%- set in_labs = url.startswith("labs/") and not in_tests -%}
+    {%- set in_materials = url.startswith("materials/") -%}
+    {%- set in_about = url in ("about/", "RELEASE_NOTES/", "Security/", "privacy/") -%}
     <nav class="md-header__nav" aria-label="Разделы">
-      <a href="{{ site_root }}#pipeline">Лабы</a>
-      <a href="{{ site_root }}labs/tests/basic/test01/">Тесты</a>
-      <a href="{{ site_root }}materials/">Материалы</a>
-      <a href="{{ site_root }}about/">О проекте</a>
+      <a href="{{ site_root }}labs/basic/lab01/"{% if in_labs %} class="is-active" aria-current="true"{% endif %}>Лабы</a>
+      <a href="{{ site_root }}labs/tests/basic/test01/"{% if in_tests %} class="is-active" aria-current="true"{% endif %}>Тесты</a>
+      <a href="{{ site_root }}materials/"{% if in_materials %} class="is-active" aria-current="true"{% endif %}>Материалы</a>
+      <a href="{{ site_root }}about/"{% if in_about %} class="is-active" aria-current="true"{% endif %}>О проекте</a>
       {% if config.repo_url %}
       <a href="{{ config.repo_url }}" class="md-header__nav-secondary" target="_blank" rel="noopener">GitHub</a>
       {% endif %}

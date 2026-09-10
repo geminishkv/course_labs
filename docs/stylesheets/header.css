@@ -162,6 +162,12 @@
   text-decoration: none;
 }
 
+/* current section (set in partials/header.html from page.url) */
+.md-header__nav a.is-active {
+  color: var(--text-inverse);
+  background: color-mix(in srgb, #fff 10%, transparent);
+}
+
 .md-header__nav a:hover::before,
 .md-header__nav a:focus-visible::before {
   background: linear-gradient(to bottom, var(--brand-red), #a01414);

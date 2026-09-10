@@ -26,6 +26,7 @@ theme:
   font: false
   features:
     - navigation.indexes
+    - navigation.tabs        # sidebar shows the active section only; the tab bar is hidden in main.html
     - search.highlight
     - navigation.top
     - search.share

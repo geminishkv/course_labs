@@ -1,6 +1,6 @@
 [project]
 name = "course-labs"
-version = "2.1.0"
+version = "2.2.0"
 description = "AppSec & DevSecOps course site (MkDocs Material)"
 readme = "README.md"
 requires-python = ">=3.12"

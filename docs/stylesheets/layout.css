@@ -768,6 +768,7 @@
     padding: var(--space-8) var(--space-5) var(--space-6);
     gap: var(--space-5);
     margin: var(--space-2) 0 var(--space-8);
+    overflow: hidden; /* the ::after watermark sits at right: -20% and must not spill onto the page */
   }
 
   .hero-logo-wrap {

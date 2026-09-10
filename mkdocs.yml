@@ -5,7 +5,7 @@ site_description: >
   Практический курс по прикладной безопасности приложений: лабораторные работы и аннотационные материалы
   для прокачки навыков в ИБ (информационной безопасности), а также чеклисты и методички по AppSec, DevSecOps
   и OWASP Top 10.
-site_author: "Илья Шмаков"
+site_author: "Elijah S Shmakov"
 repo_url: https://github.com/geminishkv/course_labs
 repo_name: geminishkv/course_labs
 edit_uri: edit/develop/docs/

@@ -71,27 +71,6 @@
   transform: translateY(-50%);
 }
 
-/* ── Navigation tabs ── */
-.md-tabs {
-  background-color: var(--brand-dark);
-  border-bottom: 1px solid var(--border-gold);
-}
-
-.md-tabs__link {
-  color: var(--md-primary-bg-color--light);
-  transition: color var(--transition-base);
-}
-
-.md-tabs__link:hover,
-.md-tabs__link:focus {
-  color: var(--brand-gold);
-}
-
-.md-tabs__link--active {
-  color: var(--brand-gold);
-  border-bottom: 2px solid var(--brand-gold);
-}
-
 /* ── Repo source block ── */
 .md-source {
   background-color: var(--brand-dark);

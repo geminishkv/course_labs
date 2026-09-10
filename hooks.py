@@ -1,6 +1,6 @@
 """
 MkDocs hooks — post-build sitemap enrichment.
-Adds <priority> and corrects <changefreq> per URL pattern.
+Adds <changefreq> and <priority> per URL pattern.
 """
 
 import os
@@ -69,18 +69,12 @@ def on_post_build(config, **kwargs):
 
         priority, changefreq = _get_rule(path)
 
-        # Replace <changefreq> if present, add <priority>
-        block = re.sub(r"<changefreq>[^<]*</changefreq>",
-                       f"<changefreq>{changefreq}</changefreq>", block)
-        # Insert <priority> after <lastmod> or <changefreq>
-        if "<priority>" not in block:
-            block = re.sub(
-                r"(</lastmod>|</changefreq>)",
-                r"\1\n         <priority>" + priority + r"</priority>",
-                block,
-                count=1,
-            )
-        return block
+        # MkDocs emits only <loc> and <lastmod>; drop whatever is there and
+        # re-add both tags in the order the sitemap schema requires.
+        block = re.sub(r"\s*<(changefreq|priority)>[^<]*</\1>", "", block)
+        tail = f"\n         <changefreq>{changefreq}</changefreq>\n         <priority>{priority}</priority>"
+        anchor = "</lastmod>" if "</lastmod>" in block else "</loc>"
+        return block.replace(anchor, anchor + tail, 1)
 
     content = re.sub(r"<url>.*?</url>", replace_url_block, content, flags=re.DOTALL)
 

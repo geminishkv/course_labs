@@ -83,9 +83,9 @@
       "url": "{{ config.site_url }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ config.site_url }}artifacts/assets/logo.png",
-        "width": 64,
-        "height": 64
+        "url": "{{ config.site_url }}artifacts/assets/logo-512.png",
+        "width": 512,
+        "height": 512
       }
     }{% if page.is_homepage %},
     "potentialAction": {
@@ -99,8 +99,18 @@
   }
   </script>
 
-  <!-- 2. BreadcrumbList -->
+  <!-- 2. BreadcrumbList: a section crumb is emitted only when it has a URL,
+       Google requires "item" for every crumb but the last -->
   {% if not page.is_homepage %}
+  {% set parent_url = None %}
+  {% if page.parent %}
+    {% if page.parent.is_page %}
+      {% set parent_url = page.parent.canonical_url %}
+    {% elif page.parent.children and page.parent.children[0].is_page
+          and page.parent.children[0].is_index and page.parent.children[0] != page %}
+      {% set parent_url = page.parent.children[0].canonical_url %}
+    {% endif %}
+  {% endif %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -111,10 +121,11 @@
         "position": 1,
         "name": "{{ config.site_name }}",
         "item": "{{ config.site_url }}"
-      }{% if page.parent %},{
+      }{% if parent_url %},{
         "@type": "ListItem",
         "position": 2,
-        "name": "{{ page.parent.title | e }}"
+        "name": "{{ page.parent.title | e }}",
+        "item": "{{ parent_url }}"
       },{
         "@type": "ListItem",
         "position": 3,
@@ -218,9 +229,9 @@
     "url": "{{ config.site_url }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ config.site_url }}artifacts/assets/logo.png",
-      "width": 64,
-      "height": 64
+      "url": "{{ config.site_url }}artifacts/assets/logo-512.png",
+      "width": 512,
+      "height": 512
     },
     "founder": {
       "@type": "Person",

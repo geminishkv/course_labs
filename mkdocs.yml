@@ -47,7 +47,6 @@ plugins:
         color: "#ffffff"
         font_family: Roboto
   - meta-descriptions
-  - macros
   - mkdocs-pdf
   - minify:
       minify_html: true

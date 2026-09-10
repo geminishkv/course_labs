@@ -109,7 +109,6 @@ $ curl -i http://localhost:8080
 
 - [ ] 3. Напишите файл `.github/workflows/devsecops.yml`. Пайплайн должен содержать пять jobs: `sast`, `sca`, `build-and-scan`, `dast`, `report`
 
-{% raw %}
 ```yaml
 name: DevSecOps Pipeline
 
@@ -262,7 +261,6 @@ jobs:
           name: unified-report
           path: pipeline/unified-report.html
 ```
-{% endraw %}
 
 - [ ] 4. Напишите файл `pipeline/sast/semgrep-rules.yml` — правила для обнаружения уязвимостей в Python. Минимум три правила: SQL-инъекция, жёстко заданный секрет, небезопасный `eval`
 - [ ] 5. Напишите файл `pipeline/sast/checkov-config.yaml` — конфигурация Checkov для проверки Dockerfile и docker-compose
@@ -361,7 +359,7 @@ fail_action: true
 - ZAP в режиме baseline scan не выполняет активных атак — для полного Active Scan используйте `zaproxy/action-full-scan`
 > Baseline scan безопасен для production-like стендов; active scan может сломать данные или перегрузить приложение, используйте только на изолированных тестовых окружениях
 - Не храните `secrets` (токены, ключи NVD API для Dependency-Check) в `.yml` файлах напрямую
-> Используйте `Settings → Secrets and variables → Actions` в репозитории и обращайтесь к ним через `{% raw %}${{ secrets.NVD_API_KEY }}{% endraw %}`
+> Используйте `Settings → Secrets and variables → Actions` в репозитории и обращайтесь к ним через `${{ secrets.NVD_API_KEY }}`
 
 ***
 

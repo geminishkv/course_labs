@@ -4,7 +4,6 @@ description: "GitHub Actions security: secrets, OIDC, permissions, pinning actio
 keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply chain, AppSec, DevSecOps, пайплайн, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
-{% raw %}
 
 <div class="hero-section hero-section--compact">
   <div class="hero-content">
@@ -227,4 +226,3 @@ on:
 - [ ] Branch protection: require review, status checks
 - [ ] `CODEOWNERS` для `.github/workflows/`
 
-{% endraw %}

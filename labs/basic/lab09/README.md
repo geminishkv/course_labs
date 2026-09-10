@@ -370,12 +370,13 @@ fail_action: true
 - [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — ручной DAST, автоматизируемый здесь
 - [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) — безопасность пайплайнов
 - [OWASP CI/CD Top 10](https://course.geminishkv.tech/materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/) — риски CI/CD
+- [CheatSheet: YAML](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_YAML/) — синтаксис workflow без сюрпризов
 
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ## Links
 

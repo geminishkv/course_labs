@@ -115,11 +115,21 @@ if __name__ == "__main__":
 - [ ] 18. Сделайте `merge` для `pull-request` `patch2 -> master`
 - [ ] 19. Подготовьте отчет `gist`. Продемонстрируйте историю коммитов на локальном и удаленном репозитории
 
+## Смотри также
+
+- [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/labs/intro/git_setup/) — подготовка окружения перед лабой: config, SSH, подпись коммитов, gh
+- [Оформление отчётов Gistup](https://course.geminishkv.tech/labs/intro/gistup_guide/) — формат отчёта, который сдаётся по каждой лабе
+- [Лаб. №2 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — следующий шаг: права доступа, SUID, ACL, процессы
+- [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
+- [CheatSheet: GitHub CLI](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_CLI/) — работа с репозиторием и PR из терминала
+- [CheatSheet: .gitignore](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GITIGNORE/) — что не должно попадать в репозиторий
+- [Лицензии ПО](https://course.geminishkv.tech/materials/licenses/) — выбор LICENSE и NOTICE для репозитория
+
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ## Links
 

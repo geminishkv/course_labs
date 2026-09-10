@@ -157,12 +157,14 @@ lab10
 - [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование
 - [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — атаки на цепочку поставок
+- [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
+- [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов для раздела «средства»
 
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ***
 

@@ -30,7 +30,7 @@ lab02
 
 ***
 
-## Материалы
+## Материал
 
 Давайте начнем с описания как это работает, но следует подойти к этому вопросу изначально с **терминов** и **основных элементов**, таких как: 
 
@@ -236,12 +236,14 @@ $ getfacl nmapres.txt
 - [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
 - [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
 - [Подготовка окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/) — если не настроена VM
+- [Лаб. №1 — GitSCM](https://course.geminishkv.tech/labs/basic/lab01/) — репозиторий и отчёт, в которые складывается результат
+- [Приложение — команды и утилиты](https://course.geminishkv.tech/materials/APPENDIX/) — справочник команд Linux, Git и Docker
 
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ## Links
 

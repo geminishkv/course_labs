@@ -140,12 +140,11 @@ flowchart TD
 * Подготовка окружения
 
 ```bash
-$ python3 -m venv .venv
-$ source .venv/bin/activate
-$ pip install -r requirements.txt
-$ python -m mkdocs serve --livereload
+$ uv sync --frozen            # .venv из uv.lock (pyproject.toml — единственный источник версий)
+$ uv run mkdocs serve --livereload
 # or
-$ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
+$ uv run mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
+# инструменты CI локально: uv run --only-group lint yamllint . / --only-group sast bandit -r labs
 ```
 
 * Перегенерация Mermaid-диаграмм (при изменении `.mmd` файлов)
@@ -228,6 +227,7 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 │   └── release-from-notes.yml
 ├── hooks.py                           # Sitemap enrichment (priority + changefreq)
 ├── mkdocs.yml
-├── requirements.txt
+├── pyproject.toml                     # зависимости сайта и группы инструментов CI
+├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen
 └── RELEASE_NOTES.md
 ```

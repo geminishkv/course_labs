@@ -119,6 +119,7 @@ watch:
   - docs
 
 extra_css:
+  - stylesheets/fonts.css      # self-hosted Unbounded / Roboto / Roboto Mono (OFL)
   - stylesheets/tokens.css
   - stylesheets/header.css
   - stylesheets/sidebar.css

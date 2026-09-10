@@ -54,3 +54,9 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    # MkDocs 2.0 is incompatible with Material 9.x (requires mkdocs<2) and the plugins:
+    # never propose the major, such a PR can only have a red CI.
+    ignore:
+      - dependency-name: "mkdocs"
+        update-types:
+          - "version-update:semver-major"

@@ -361,13 +361,6 @@
   }
 }
 
-@media screen and (min-width: 3000px) {
-  .md-container {
-    max-width: 3000px;
-    margin: 0 auto;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .logo-glow::before,
   .logo-glow__blur {

@@ -337,8 +337,8 @@ body:has(.md-content--home) .md-top {
 }
 
 .md-content--home .md-content__inner {
-  max-width: 1440px;
-  padding: 0 clamp(16px, 4vw, 48px) var(--space-12);
+  max-width: none;
+  padding: 0 var(--home-gutter) var(--space-12);
 }
 
 .md-content--home .md-content__button { display: none; }
@@ -374,10 +374,10 @@ body:has(.md-content--home) .md-top {
 
 .hero-section--home {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: minmax(0, 1fr) 16.25rem;
   gap: var(--space-8);
   align-items: center;
-  padding: var(--space-8) clamp(24px, 4vw, 48px);
+  padding: var(--space-8) clamp(1.5rem, 4vw, 3rem);
 }
 
 .md-typeset .hero-eyebrow {
@@ -409,7 +409,7 @@ body:has(.md-content--home) .md-top {
 .hero-row .hero-section--home { margin: 0; }
 
 .brand-col {
-  --bc-unit: 70px;
+  --bc-unit: 4.375rem;
 
   display: flex;
   flex-direction: column;
@@ -715,9 +715,9 @@ body:has(.md-content--home) .md-top {
   position: absolute;
   left: 0;
   right: 0;
-  top: 21px;
-  height: 4px;
-  border-radius: 2px;
+  top: 1.3125rem;
+  height: 0.25rem;
+  border-radius: 0.125rem;
   background: linear-gradient(90deg, var(--brand-red) 0%, var(--brand-gold) 25%, var(--brand-red) 50%, var(--brand-gold) 75%, var(--brand-red) 100%);
   background-size: 200% 100%;
   animation: track-flow 6s linear infinite;
@@ -740,8 +740,8 @@ body:has(.md-content--home) .md-top {
 .stage-head {
   position: relative;
   z-index: 1;
-  width: 46px;
-  height: 46px;
+  width: 2.875rem;
+  height: 2.875rem;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -907,11 +907,11 @@ body:has(.md-content--home) .md-top {
 }
 
 .tg-strip__logo {
-  width: 44px;
-  height: 44px;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
   flex: none;
-  padding: 4px;
+  padding: 0.25rem;
   object-fit: contain;
   background: color-mix(in srgb, var(--brand-red) 15%, transparent);
 }

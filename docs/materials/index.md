@@ -51,3 +51,4 @@ keywords: "материалы AppSec, OWASP Top 10, шпаргалки DevSecOps
 <a class="lab-card" href="APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="lectures/fintech_ru/"><div class="lab-card-body"><div class="lab-card-title">Лекция: Fintech по-русски</div><div class="lab-card-tags"><span class="lab-tag">FinTech</span><span class="lab-tag">ИБ</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="troubleshooting/"><div class="lab-card-body"><div class="lab-card-title">Troubleshooting — частые проблемы</div><div class="lab-card-tags"><span class="lab-tag">FAQ</span><span class="lab-tag">Ошибки</span><span class="lab-tag">Решения</span></div></div><div class="lab-card-arrow">→</div></a>
+</div>

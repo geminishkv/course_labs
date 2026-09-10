@@ -333,8 +333,14 @@
       });
     })();
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/108454150" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
 
   {% endif %}
 
+{% endblock %}
+
+{#- The Metrika no-JS pixel is a <div>: inside <head> it would close the head early
+    and push the og:* meta tags into <body>, so it lives at the end of <body>. -#}
+{% block scripts %}
+  {{ super() }}
+  <noscript><div><img src="https://mc.yandex.ru/watch/108454150" style="position:absolute;left:-9999px;" alt=""></div></noscript>
 {% endblock %}

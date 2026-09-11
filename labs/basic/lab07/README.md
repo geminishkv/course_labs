@@ -321,12 +321,14 @@ $ docker system prune -f
 - [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация SAST/SCA в пайплайне
 - [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка Semgrep, Checkov, Gitleaks
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов
+- [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — зачем SCA: атаки через зависимости
+- [OWASP Top 10 — Command Execution](https://course.geminishkv.tech/materials/OWASPTOP10/command-execution/) — класс уязвимостей, который ловит SAST
 
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ## Links
 

@@ -1,22 +1,51 @@
 """
-MkDocs hooks — post-build sitemap enrichment.
-Adds <priority> and corrects <changefreq> per URL pattern.
+MkDocs hooks.
+
+- on_page_markdown: fills the `{{ stats.* }}` placeholders on the home page
+  with figures counted from the docs tree (labs, intro guides, tests,
+  materials), so the hero never goes stale by hand.
+- on_post_build: sitemap enrichment — <changefreq> and <priority> per URL
+  pattern.
 """
 
+import glob
 import os
 import re
 
+# ─── Home page figures ─────────────────────────────────────────────────────────
+_STATS_TOKEN = re.compile(r"\{\{\s*stats\.(\w+)\s*\}\}")
+
+
+def _count_docs(docs_dir: str) -> dict[str, int]:
+    def count(pattern: str, exclude: tuple[str, ...] = ()) -> int:
+        paths = glob.glob(os.path.join(docs_dir, pattern), recursive=True)
+        return len([p for p in paths if os.path.basename(p) not in exclude])
+
+    return {
+        "labs": count("labs/basic/lab*.md"),
+        "intro": count("labs/intro/*.md"),
+        "tests": count("labs/tests/**/*.md"),
+        "materials": count("materials/**/*.md", exclude=("index.md",)),
+    }
+
+
+def on_page_markdown(markdown, page, config, files):
+    if page.file.src_uri != "index.md":
+        return markdown
+    stats = _count_docs(config["docs_dir"])
+    return _STATS_TOKEN.sub(lambda m: str(stats.get(m.group(1), m.group(0))), markdown)
+
 
 # ─── Priority / changefreq rules ───────────────────────────────────────────────
-# Evaluated top-to-bottom; first match wins.
+# Evaluated top-to-bottom; first match wins, so specific paths go before their prefix.
 _RULES = [
     # Homepage
     (r"^/$",                          "1.0", "weekly"),
+    # Tests and pet project (under /labs/, so they must precede the generic rule)
+    (r"^/labs/tests/",                "0.5", "monthly"),
+    (r"^/labs/pet_project",           "0.7", "monthly"),
     # Lab pages
     (r"^/labs/",                      "0.8", "weekly"),
-    (r"^/labs/pet_project",           "0.7", "monthly"),
-    # Tests
-    (r"^/labs/tests/",                "0.5", "monthly"),
     # OWASP materials
     (r"^/materials/OWASPTOP10/",      "0.7", "monthly"),
     # Examples
@@ -69,18 +98,12 @@ def on_post_build(config, **kwargs):
 
         priority, changefreq = _get_rule(path)
 
-        # Replace <changefreq> if present, add <priority>
-        block = re.sub(r"<changefreq>[^<]*</changefreq>",
-                       f"<changefreq>{changefreq}</changefreq>", block)
-        # Insert <priority> after <lastmod> or <changefreq>
-        if "<priority>" not in block:
-            block = re.sub(
-                r"(</lastmod>|</changefreq>)",
-                r"\1\n         <priority>" + priority + r"</priority>",
-                block,
-                count=1,
-            )
-        return block
+        # MkDocs emits only <loc> and <lastmod>; drop whatever is there and
+        # re-add both tags in the order the sitemap schema requires.
+        block = re.sub(r"\s*<(changefreq|priority)>[^<]*</\1>", "", block)
+        tail = f"\n         <changefreq>{changefreq}</changefreq>\n         <priority>{priority}</priority>"
+        anchor = "</lastmod>" if "</lastmod>" in block else "</loc>"
+        return block.replace(anchor, anchor + tail, 1)
 
     content = re.sub(r"<url>.*?</url>", replace_url_block, content, flags=re.DOTALL)
 

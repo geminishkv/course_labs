@@ -1,10 +1,14 @@
 version: 2
 
 updates:
+  # cooldown: never propose a release younger than a week, so a freshly
+  # published malicious version cannot reach a PR before the ecosystem notices
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     groups:
       github-actions:
@@ -18,6 +22,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     groups:
       npm-packages:
@@ -42,10 +48,13 @@ updates:
         update-types:
           - "major"
 
-  - package-ecosystem: "pip"
+  # Python: pyproject.toml + uv.lock (Dependabot updates both)
+  - package-ecosystem: "uv"
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     groups:
       python-packages:
@@ -54,3 +63,9 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    # MkDocs 2.0 is incompatible with Material 9.x (requires mkdocs<2) and the plugins:
+    # never propose the major, such a PR can only have a red CI.
+    ignore:
+      - dependency-name: "mkdocs"
+        update-types:
+          - "version-update:semver-major"

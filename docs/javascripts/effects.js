@@ -36,49 +36,40 @@
     elements.forEach(function (el) { observer.observe(el); });
   }
 
-  if (typeof document$ !== "undefined") {
-    document$.subscribe(initFadeIn);
-  } else if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initFadeIn);
-  } else {
-    initFadeIn();
-  }
+  /* ── Live pipeline (home): one pulse along the track when it scrolls into view ── */
 
-  /* ── Hero border rotation + glow pulsation ── */
-
-  var angle = 0;
-  var start = performance.now();
-
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
-  function tick(now) {
-    angle = (angle + 0.5) % 360;
-
-    var t = ((now - start) % 1000) / 1000;
-    var mix = 0.5 - 0.5 * Math.cos(t * 2 * Math.PI);
-
-    var r1 = lerp(213, 249, mix);
-    var g1 = lerp(26, 179, mix);
-    var b1 = lerp(26, 97, mix);
-    var spread1 = lerp(12, 16, mix);
-    var spread2 = lerp(30, 40, mix);
-    var alpha1 = lerp(0.35, 0.4, mix);
-    var alpha2 = lerp(0.1, 0.12, mix);
-
-    var c = Math.round(r1) + "," + Math.round(g1) + "," + Math.round(b1);
-    var shadow =
-      "0 0 " + spread1 + "px rgba(" + c + "," + alpha1.toFixed(2) + "), " +
-      "0 0 " + spread2 + "px rgba(" + c + "," + alpha2.toFixed(2) + ")";
-
-    var heroes = document.querySelectorAll(".hero-section, .lab-hero");
-    for (var i = 0; i < heroes.length; i++) {
-      heroes[i].style.setProperty("--hero-angle", angle + "deg");
-      heroes[i].style.boxShadow = shadow;
+  function initTrack() {
+    var track = document.querySelector("ol.track");
+    if (!track || track.classList.contains("track--live")) return;
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (still || !("IntersectionObserver" in window)) {
+      track.classList.add("track--live");
+      return;
     }
-    requestAnimationFrame(tick);
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("track--live");
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(track);
   }
 
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    requestAnimationFrame(tick);
+  function init() {
+    initFadeIn();
+    initTrack();
+  }
+
+  // The hero border rotation and glow pulse are CSS animations (layout.css,
+  // hero-spin / hero-glow); nothing here runs per frame.
+
+  if (typeof document$ !== "undefined") {
+    document$.subscribe(init);
+  } else if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
 })();

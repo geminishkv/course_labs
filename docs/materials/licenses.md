@@ -311,13 +311,13 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
   </div>
 
   <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/shield/1.0.0/" style="color:var(--brand-gold-dark); text-decoration:none;">Polyform Shield 1.0</a></div>
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/shield/1.0.0" style="color:var(--brand-gold-dark); text-decoration:none;">Polyform Shield 1.0</a></div>
     <span class="lab-tag lab-tag--gold">Source-available · запрет конкуренции</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Source-available, запрещает конкурирующее использование. Набирает популярность среди SaaS-вендоров.</p>
   </div>
 
   <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
-    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" style="color:var(--brand-gold-dark); text-decoration:none;">Polyform Noncommercial 1.0</a></div>
+    <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://polyformproject.org/licenses/noncommercial/1.0.0" style="color:var(--brand-gold-dark); text-decoration:none;">Polyform Noncommercial 1.0</a></div>
     <span class="lab-tag lab-tag--gold">Source-available · только некоммерческое</span>
     <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Source-available, запрещает коммерческое использование. Альтернатива CC BY-NC для кода.</p>
   </div>

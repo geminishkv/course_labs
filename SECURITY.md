@@ -50,7 +50,7 @@ The `develop` branch is protected with the following rules:
 - **Required reviews:** At least 1 approval from @geminishkv
 - **Required status checks:** All CI jobs must pass before merge
 - **No force-push:** History rewriting is prohibited
-- **CODEOWNERS:** Changes to `.github/workflows/`, `mkdocs.yml`, `hooks.py`, `requirements.txt` require owner approval
+- **CODEOWNERS:** Changes to `.github/workflows/`, `mkdocs.yml`, `hooks.py`, `pyproject.toml`, `uv.lock` require owner approval
 
 ## CI/CD Security
 

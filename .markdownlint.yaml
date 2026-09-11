@@ -40,6 +40,7 @@ MD033:
     - kbd
     - li
     - nav
+    - ol
     - p
     - script
     - section
@@ -55,6 +56,8 @@ MD033:
     - thead
     - tr
     - ul
+    - svg
+    - path
 
 MD034: false
 MD036: false

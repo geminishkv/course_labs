@@ -14,6 +14,22 @@
 
 ***
 
+## Windows
+
+Рекомендуемый путь — Ubuntu в WSL2 (`wsl --install -d Ubuntu`): все инструкции ниже для Ubuntu применимы без изменений, а Semgrep и Docker Bench официально работают на Windows только так. Нативно через `winget` ставятся:
+
+```powershell
+PS> winget install --id AquaSecurity.Trivy -e     # Trivy
+PS> winget install --id Gitleaks.Gitleaks -e      # Gitleaks
+PS> winget install --id hadolint.hadolint -e      # Hadolint
+PS> winget install --id ZAP.ZAP -e                # OWASP ZAP (GUI; для сканов из терминала удобнее Docker)
+PS> pip install checkov bandit pip-audit pre-commit   # Python 3.12+ с python.org
+```
+
+Docker Bench for Security проверяет хост Docker и запускается только в Linux (WSL2 или ВМ).
+
+***
+
 ## SAST — статический анализ (Lab 07)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">

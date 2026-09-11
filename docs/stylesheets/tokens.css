@@ -10,6 +10,16 @@
   --brand-gold:           #F9B361;
   --brand-gold-dark:      #c48a20;
   --brand-dark:           #1A1919;
+
+  /* gpages dark surfaces (geminishkv.tech App.css) — header, footer, home canvas, banners */
+  --ink-page:             #0a0a0a;
+  --ink-secondary:        #0d0d0d;
+  --ink-card:             #111111;
+  --ink-border:           #1a1a1a;
+  --ink-border-strong:    #2a2a2a;
+  --ink-text-secondary:   #888888;
+  --ink-text-tertiary:    #555555;
+  --ink-text-muted:       #333333;
   --brand-hero-stop:      #2d0a0a;
 
   /* ── Surfaces ── */
@@ -21,16 +31,15 @@
   /* ── Text ── */
   --text-primary:         #000000;
   --text-secondary:       #3a3a3a;
-  --text-muted:           rgba(255, 255, 255, 0.75);
   --text-ice:             #CADCFC;
   --text-inverse:         #ffffff;
   --text-inverse-muted:   rgba(255, 255, 255, 0.6);
 
   /* ── Borders ── */
-  --border-red:           rgba(213, 26, 26, 0.18);
-  --border-red-light:     rgba(213, 26, 26, 0.1);
-  --border-gold:          rgba(249, 179, 97, 0.15);
-  --border-gold-strong:   rgba(249, 179, 97, 0.2);
+  --border-red:           color-mix(in srgb, var(--brand-red) 18%, transparent);
+  --border-red-light:     color-mix(in srgb, var(--brand-red) 10%, transparent);
+  --border-gold:          color-mix(in srgb, var(--brand-gold) 15%, transparent);
+  --border-gold-strong:   color-mix(in srgb, var(--brand-gold) 20%, transparent);
   --border-subtle:        rgba(0, 0, 0, 0.06);
   --border-subtle-light:  rgba(0, 0, 0, 0.1);
 
@@ -55,7 +64,6 @@
   --space-6:              1.5rem;
   --space-8:              2rem;
   --space-10:             2.5rem;
-  --space-12:             3rem;
 
   /* ── Radii ── */
   --radius-sm:            3px;
@@ -73,10 +81,27 @@
   --md-primary-bg-color:             var(--text-inverse);
   --md-primary-bg-color--light:      rgba(255, 255, 255, 0.7);
   --md-accent-fg-color:              var(--brand-gold);
-  --md-accent-fg-color--transparent: rgba(249, 179, 97, 0.1);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--brand-gold) 10%, transparent);
   --md-accent-bg-color:              var(--brand-dark);
-  --md-accent-bg-color--light:       rgba(26, 25, 25, 0.1);
+  --md-accent-bg-color--light:       color-mix(in srgb, var(--brand-dark) 10%, transparent);
   --md-typeset-a-color:              var(--brand-red);
   --md-text-font:                    "Roboto", system-ui, -apple-system, sans-serif;
   --md-code-font:                    "Roboto Mono", "Roboto", ui-monospace, monospace;
+
+  /* ── Code blocks: dark surface, monokai palette tuned to the brand ── */
+  --md-code-bg-color:                var(--surface-code);
+  --md-code-fg-color:                #f2eeea;
+  --md-code-hl-color:                color-mix(in srgb, var(--brand-gold) 22%, transparent);
+  --md-code-hl-keyword-color:        #ff6b6b;
+  --md-code-hl-operator-color:       #ff6b6b;
+  --md-code-hl-string-color:         var(--brand-gold);
+  --md-code-hl-number-color:         #c9a1ff;
+  --md-code-hl-constant-color:       #c9a1ff;
+  --md-code-hl-function-color:       #a6e22e;
+  --md-code-hl-special-color:        #66d9ef;
+  --md-code-hl-variable-color:       #fd971f;
+  --md-code-hl-name-color:           #f2eeea;
+  --md-code-hl-generic-color:        #f2eeea;
+  --md-code-hl-punctuation-color:    #b8b0ab;
+  --md-code-hl-comment-color:        #8a827c;
 }

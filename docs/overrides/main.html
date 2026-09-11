@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{#- navigation.tabs is on for the sidebar scoping only; the header pills are the tab bar -#}
+{% block tabs %}{% endblock %}
+
 {% block extrahead %}
   {{ super() }}
 
@@ -8,22 +11,16 @@
   {% set page_desc  = page.meta.description if page.meta.description else config.site_description %}
   {% set is_release = page.file.src_path == "RELEASE_NOTES.md" %}
 
-  <!-- ─── Security Headers (GitHub Pages: meta only) ──────────────────────── -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://telegram.org https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net https://mc.yandex.ru; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com https://mc.yandex.ru; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <!-- ─── Security policy via <meta> (GitHub Pages cannot send HTTP headers).
+       Only CSP and referrer work here; frame-ancestors, X-Frame-Options, HSTS and
+       X-Content-Type-Options are HTTP-only and are ignored in <meta>. ─── -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://telegram.org https://mc.yandex.ru; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://img.shields.io https://socialify.git.ci https://github.com https://*.githubusercontent.com https://cdn.jsdelivr.net https://mc.yandex.ru; frame-src 'self' https://t.me; connect-src 'self' https://api.github.com https://mc.yandex.ru; base-uri 'self'; form-action 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <!-- ─── Preconnect / Resource hints (Core Web Vitals / LCP) ─────────────── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://github.com">
 
   <!-- ─── Google Fonts (moved from CSS @import for performance) ───────────── -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500;700&display=swap">
-
-  <!-- ─── Hreflang (сигнал: сайт только на русском) ───────────────────────── -->
-  <link rel="alternate" hreflang="ru"      href="{{ page.canonical_url }}">
-  <link rel="alternate" hreflang="x-default" href="{{ page.canonical_url }}">
 
   <!-- ─── Верификация поисковиков ──────────────────────────────────────────── -->
   {% if config.extra.yandex_verification %}
@@ -54,10 +51,7 @@
   <meta property="article:publisher" content="https://course.geminishkv.tech">
   {% endif %}
 
-  <!-- ─── Twitter / X Card ─────────────────────────────────────────────────── -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="{{ page_title | striptags }}">
-  <meta name="twitter:description" content="{{ page_desc }}">
+  <!-- ─── Twitter / X Card (card, title, description, image come from the social plugin) ─── -->
   {% if config.extra.twitter_handle %}
   <meta name="twitter:site"    content="{{ config.extra.twitter_handle }}">
   <meta name="twitter:creator" content="{{ config.extra.twitter_handle }}">
@@ -86,9 +80,9 @@
       "url": "{{ config.site_url }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ config.site_url }}artifacts/assets/logo.png",
-        "width": 64,
-        "height": 64
+        "url": "{{ config.site_url }}artifacts/assets/logo-512.png",
+        "width": 512,
+        "height": 512
       }
     }{% if page.is_homepage %},
     "potentialAction": {
@@ -102,8 +96,18 @@
   }
   </script>
 
-  <!-- 2. BreadcrumbList -->
+  <!-- 2. BreadcrumbList: a section crumb is emitted only when it has a URL,
+       Google requires "item" for every crumb but the last -->
   {% if not page.is_homepage %}
+  {% set parent_url = None %}
+  {% if page.parent %}
+    {% if page.parent.is_page %}
+      {% set parent_url = page.parent.canonical_url %}
+    {% elif page.parent.children and page.parent.children[0].is_page
+          and page.parent.children[0].is_index and page.parent.children[0] != page %}
+      {% set parent_url = page.parent.children[0].canonical_url %}
+    {% endif %}
+  {% endif %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -114,10 +118,11 @@
         "position": 1,
         "name": "{{ config.site_name }}",
         "item": "{{ config.site_url }}"
-      }{% if page.parent %},{
+      }{% if parent_url %},{
         "@type": "ListItem",
         "position": 2,
-        "name": "{{ page.parent.title | e }}"
+        "name": "{{ page.parent.title | e }}",
+        "item": "{{ parent_url }}"
       },{
         "@type": "ListItem",
         "position": 3,
@@ -144,7 +149,7 @@
     "description": "{{ page_desc | e }}",
     "url": "{{ page.canonical_url }}",
     "inLanguage": "ru",
-    "dateModified": "2026-04-01",
+    "dateModified": "{{ build_date_utc.strftime('%Y-%m-%d') }}",
     "author": {
       "@type": "Person",
       "@id": "https://geminishkv.tech/#person",
@@ -158,7 +163,9 @@
     },
     "image": {
       "@type": "ImageObject",
-      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg"
+      "url": "{{ config.site_url }}assets/images/social/index.png",
+      "width": 1200,
+      "height": 630
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -181,9 +188,9 @@
     "email": "shmakovis@inbox.ru",
     "image": {
       "@type": "ImageObject",
-      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg",
-      "width": 400,
-      "height": 400
+      "url": "{{ config.site_url }}assets/images/social/index.png",
+      "width": 1200,
+      "height": 630
     },
     "jobTitle": "Application Security Engineer",
     "description": "AppSec / DevSecOps инженер. Разработчик практического курса по прикладной безопасности приложений, Security Champion, OWASP-практик.",
@@ -219,9 +226,9 @@
     "url": "{{ config.site_url }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg",
-      "width": 400,
-      "height": 400
+      "url": "{{ config.site_url }}artifacts/assets/logo-512.png",
+      "width": 512,
+      "height": 512
     },
     "founder": {
       "@type": "Person",
@@ -296,36 +303,17 @@
     ],
     "image": {
       "@type": "ImageObject",
-      "url": "{{ config.site_url }}artifacts/assets/logotypemd.jpg"
+      "url": "{{ config.site_url }}assets/images/social/index.png",
+      "width": 1200,
+      "height": 630
     }
   }
   </script>
   {% endif %}
 
-  <!-- ─── Yandex.Metrika (domain-locked) ─────────────────────────────────── -->
-  <script type="text/javascript">
-    (function(){
-      var allowed = ['course.geminishkv.tech','geminishkv.github.io'];
-      var host = location.hostname;
-      if (allowed.indexOf(host) === -1) return;
-      (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-        k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
-      })(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-      ym(108454150,'init',{
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true,
-        ecommerce:'dataLayer',
-        triggerEvent:true
-      });
-    })();
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/108454150" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  {#- Yandex.Metrika is loaded by javascripts/banners.js after the visitor accepts cookies -#}
 
   {% endif %}
 
 {% endblock %}
+

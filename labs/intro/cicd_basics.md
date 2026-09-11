@@ -114,7 +114,6 @@ GitHub Actions — встроенная CI/CD платформа GitHub. Workflo
 
 Файл: `.github/workflows/ci.yml`
 
-{% raw %}
 ```yaml
 name: CI                                    # название workflow
 
@@ -143,11 +142,9 @@ jobs:
       - name: Run tests                      # шаг 4: запустить тесты
         run: pytest tests/
 ```
-{% endraw %}
 
 ### Разбор структуры
 
-{% raw %}
 ```yaml
 name: CI                    # Имя — видно во вкладке Actions на GitHub
 on:                         # Когда запускать
@@ -160,13 +157,11 @@ jobs:                       # Список задач
       - uses: action@v4     #   готовое action
       - run: команда        #   shell-команда
 ```
-{% endraw %}
 
 ***
 
 ## Триггеры (Events)
 
-{% raw %}
 ```yaml
 on:
   # При push
@@ -194,7 +189,6 @@ on:
         required: true
         default: "staging"
 ```
-{% endraw %}
 
 ***
 
@@ -202,7 +196,6 @@ on:
 
 ### Переменные окружения
 
-{% raw %}
 ```yaml
 env:                                       # глобальные для workflow
   PYTHON_VERSION: "3.12"
@@ -217,13 +210,11 @@ jobs:
         env:                               # для конкретного шага
           MY_VAR: value
 ```
-{% endraw %}
 
 ### Секреты
 
 Секреты хранятся в настройках репозитория (`Settings → Secrets and variables → Actions`).
 
-{% raw %}
 ```yaml
 steps:
   - name: Deploy
@@ -231,7 +222,6 @@ steps:
     env:
       API_TOKEN: ${{ secrets.API_TOKEN }}  # никогда не логируется
 ```
-{% endraw %}
 
 !!! warning "Безопасность секретов"
     - Секреты **не передаются** в workflow из форков (защита от кражи)
@@ -244,7 +234,6 @@ steps:
 
 Запуск одного job на нескольких конфигурациях:
 
-{% raw %}
 ```yaml
 jobs:
   test:
@@ -260,7 +249,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: pytest tests/
 ```
-{% endraw %}
 
 Создаёт 6 параллельных jobs: 3 версии Python x 2 ОС.
 
@@ -270,7 +258,6 @@ jobs:
 
 Сохранение результатов job для скачивания или передачи между jobs:
 
-{% raw %}
 ```yaml
 steps:
   - name: Run SAST
@@ -283,7 +270,6 @@ steps:
       path: report.json
       retention-days: 30
 ```
-{% endraw %}
 
 ***
 
@@ -291,7 +277,6 @@ steps:
 
 Типичная структура для Lab 09:
 
-{% raw %}
 ```yaml
 name: DevSecOps Pipeline
 
@@ -334,7 +319,6 @@ jobs:
     steps:
       - run: echo "Deploying..."
 ```
-{% endraw %}
 
 <img class="off-glb" src="/artifacts/diagrams/devsecops-dag.svg" alt="Devsecops Dag" style="max-width:360px; width:100%;">
 
@@ -373,7 +357,7 @@ command: >               # склеивает в одну строку
 ```
 
 !!! tip "Валидация YAML"
-    Используйте [yamllint](https://github.com/adrienverber/yamllint) для проверки синтаксиса.
+    Используйте [yamllint](https://github.com/adrienverge/yamllint) для проверки синтаксиса.
 
 > Подробнее: [YAML CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_YAML/) и [GitHub Actions Security CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/).
 

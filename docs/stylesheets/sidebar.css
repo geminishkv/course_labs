@@ -1,4 +1,7 @@
-/* ── Primary sidebar (navigation) ── */
+/* ── Primary sidebar (navigation) ──
+   navigation.tabs is on, so on desktop the sidebar is lifted: only the active
+   section is rendered, its title becomes a small caps label on top. Links are
+   quiet grey, the current page is red with a 2px marker. ── */
 .md-sidebar--primary .md-nav,
 .md-sidebar--primary .md-sidebar__inner {
   font-size: var(--text-sm);
@@ -10,41 +13,68 @@
 }
 
 .md-sidebar--primary .md-nav__link,
-.md-sidebar--primary .md-nav__link:visited,
-.md-sidebar--primary .md-nav__item--active > .md-nav__link,
-.md-sidebar--primary .md-nav__link--active {
+.md-sidebar--primary .md-nav__link:visited {
   font-size: var(--text-sm);
-  line-height: 1.25;
-  color: var(--brand-red);
+  line-height: 1.3;
+  color: var(--text-secondary);
   margin: 0;
-  padding: 0.2rem 0.6rem;
+  padding: 0.22rem 0.6rem;
+  border-left: 2px solid transparent;
   white-space: normal;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.md-sidebar--primary .md-nav__item--active > .md-nav__link,
-.md-sidebar--primary .md-nav__link--active {
+/* group toggles (Intro / Базовое ознакомление / OWASP …) read as headings */
+.md-sidebar--primary .md-nav__item--nested > .md-nav__link[for] {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:focus-visible {
+  color: var(--brand-red);
+  background-color: transparent;
+}
+
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link {
+  color: var(--brand-red);
+  font-weight: 600;
+  border-left-color: var(--brand-red);
+}
+
+/* lifted section title (Material keeps it sticky; the link is inert) */
+.md-sidebar--primary .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
   font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-text-secondary);
+  border-left: 0;
+  padding: 0.4rem 0.6rem 0.5rem;
 }
 
-/* Разделитель между корневыми группами */
+.md-sidebar--primary .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link .md-nav__icon { display: none; }
+
+/* the site name on top of the lifted nav duplicates the header on desktop */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary .md-nav--lifted > .md-nav__title { display: none; }
+}
+
+/* Gap between root-level groups */
 .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
   margin-top: 0.2rem;
 }
 
-/* Вложенные списки — компактные, без лишних отступов */
+/* Nested lists: compact, no extra spacing */
 .md-sidebar--primary .md-nav__item .md-nav {
   margin: 0;
   padding: 0;
 }
 
 .md-sidebar--primary .md-nav__item .md-nav .md-nav__link {
-  padding: 0.15rem 0.6rem;
-}
-
-.md-sidebar--primary .md-nav__link:hover,
-.md-sidebar--primary .md-nav__link:focus {
-  color: var(--brand-gold);
-  background-color: rgba(249, 179, 97, 0.08);
+  padding: 0.18rem 0.6rem;
 }
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {
@@ -53,28 +83,13 @@
   margin-bottom: 0.4rem;
 }
 
-.md-sidebar--primary .md-sidebar__inner .md-header-nav {
-  display: flex;
-  align-items: center;
-  padding-top: var(--space-1);
-  padding-bottom: var(--space-1);
-}
-
-.md-sidebar--primary .md-sidebar__title {
-  color: var(--text-inverse);
-  padding: var(--space-3) var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
 .md-sidebar--primary .md-nav__title {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding-left: var(--space-4);
   gap: 0;
-  color: var(--brand-red);
+  color: var(--text-primary);
   position: static;
 }
 
@@ -107,9 +122,10 @@
 
 /* ── Hide logo in sidebar on tablet ── */
 @media screen and (max-width: 1220px) {
-  .md-sidebar--primary .md-logo,
-  .md-sidebar--primary .md-logo img {
-    display: none !important;
+  /* (0,4,0) over Material's `.md-nav--primary .md-nav__title .md-logo` */
+  .md-sidebar--primary .md-nav--primary .md-nav__title .md-logo,
+  .md-sidebar--primary .md-nav--primary .md-nav__title .md-logo img {
+    display: none;
   }
 }
 
@@ -123,10 +139,47 @@
 }
 
 .md-sidebar__inner::-webkit-scrollbar-thumb {
-  background: rgba(213, 26, 26, 0.3);
+  background: color-mix(in srgb, var(--brand-red) 30%, transparent);
   border-radius: 2px;
 }
 
 .md-sidebar__inner::-webkit-scrollbar-thumb:hover {
-  background: rgba(213, 26, 26, 0.6);
+  background: color-mix(in srgb, var(--brand-red) 60%, transparent);
+}
+
+/* ── Drawer (≤76.1875em): dark like the header, gold for the active page ── */
+@media screen and (max-width: 76.1875em) {
+  .md-sidebar--primary,
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-nav--primary .md-nav,
+  .md-nav--primary .md-nav__list {
+    background-color: var(--ink-page);
+  }
+
+  .md-nav--primary .md-nav__title {
+    background-color: var(--ink-page);
+    color: var(--text-inverse);
+    box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.4);
+  }
+
+  .md-nav--primary .md-nav__title .md-nav__icon { color: var(--text-inverse); }
+  .md-nav--primary .md-nav__item { border-top-color: rgba(255, 255, 255, 0.08); }
+
+  .md-sidebar--primary .md-nav__link,
+  .md-sidebar--primary .md-nav__link:visited {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .md-sidebar--primary .md-nav__link:hover,
+  .md-sidebar--primary .md-nav__link:focus,
+  .md-sidebar--primary .md-nav__item--active > .md-nav__link,
+  .md-sidebar--primary .md-nav__link--active {
+    color: var(--brand-gold);
+    background-color: transparent;
+  }
+
+  .md-nav--primary .md-nav__source {
+    background-color: var(--surface-code);
+    color: var(--text-inverse);
+  }
 }

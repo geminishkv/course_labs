@@ -26,11 +26,19 @@ Pet Project — это финальная самостоятельная раб�
 !!! info "Контакт с преподавателем"
     Для выбора темы и уточнения деталей обратитесь к преподавателю лично или через установленный канал связи курса.
 
+## Смотри также
+
+- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — конвейер, который переносится в проект
+- [Лаб. №10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — аналитическая записка по проекту
+- [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — выбор инструментов под стек проекта
+- [Лицензии ПО](https://course.geminishkv.tech/materials/licenses/) — LICENSE и NOTICE для проекта
+- [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/) — частые проблемы по всем этапам
+
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ## Links
 

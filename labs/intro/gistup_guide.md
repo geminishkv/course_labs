@@ -33,6 +33,8 @@ GitHub Gist — сервис для хранения фрагментов код
 
 ### Через GitHub CLI
 
+На Windows команды те же — в PowerShell или Git Bash после `winget install --id GitHub.cli -e`.
+
 ```bash
 # Создание из файла
 $ gh gist create lab01_report.md --desc "Lab 01: Git SCM" --public
@@ -158,7 +160,7 @@ PORT    STATE SERVICE VERSION
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ***
 

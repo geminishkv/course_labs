@@ -4,5 +4,6 @@
 .github/CODEOWNERS @geminishkv
 mkdocs.yml @geminishkv
 hooks.py @geminishkv
-requirements.txt @geminishkv
+pyproject.toml @geminishkv
+uv.lock @geminishkv
 SECURITY.md @geminishkv

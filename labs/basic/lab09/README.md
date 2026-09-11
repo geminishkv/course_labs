@@ -109,7 +109,6 @@ $ curl -i http://localhost:8080
 
 - [ ] 3. Напишите файл `.github/workflows/devsecops.yml`. Пайплайн должен содержать пять jobs: `sast`, `sca`, `build-and-scan`, `dast`, `report`
 
-{% raw %}
 ```yaml
 name: DevSecOps Pipeline
 
@@ -262,7 +261,6 @@ jobs:
           name: unified-report
           path: pipeline/unified-report.html
 ```
-{% endraw %}
 
 - [ ] 4. Напишите файл `pipeline/sast/semgrep-rules.yml` — правила для обнаружения уязвимостей в Python. Минимум три правила: SQL-инъекция, жёстко заданный секрет, небезопасный `eval`
 - [ ] 5. Напишите файл `pipeline/sast/checkov-config.yaml` — конфигурация Checkov для проверки Dockerfile и docker-compose
@@ -361,7 +359,7 @@ fail_action: true
 - ZAP в режиме baseline scan не выполняет активных атак — для полного Active Scan используйте `zaproxy/action-full-scan`
 > Baseline scan безопасен для production-like стендов; active scan может сломать данные или перегрузить приложение, используйте только на изолированных тестовых окружениях
 - Не храните `secrets` (токены, ключи NVD API для Dependency-Check) в `.yml` файлах напрямую
-> Используйте `Settings → Secrets and variables → Actions` в репозитории и обращайтесь к ним через `{% raw %}${{ secrets.NVD_API_KEY }}{% endraw %}`
+> Используйте `Settings → Secrets and variables → Actions` в репозитории и обращайтесь к ним через `${{ secrets.NVD_API_KEY }}`
 
 ***
 
@@ -372,12 +370,13 @@ fail_action: true
 - [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — ручной DAST, автоматизируемый здесь
 - [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) — безопасность пайплайнов
 - [OWASP CI/CD Top 10](https://course.geminishkv.tech/materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/) — риски CI/CD
+- [CheatSheet: YAML](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_YAML/) — синтаксис workflow без сюрпризов
 
 ***
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ## Links
 
@@ -396,5 +395,5 @@ fail_action: true
 <a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://owasp.org/www-project-devsecops-guideline/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">DevSecOps — OWASP</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="https://csrc.nist.gov/publications/detail/white-paper/2021/11/09/devsecops-a-security-model-for-software-development/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Shift-Left Security — NIST</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://csrc.nist.gov/projects/devsecops" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Shift-Left Security — NIST</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>

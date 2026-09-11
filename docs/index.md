@@ -1,5 +1,7 @@
 ---
+template: home.html
 hide:
+  - navigation
   - toc
 
 title: "Курс AppSec — практическая безопасность приложений и DevSecOps"
@@ -9,239 +11,271 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 
 <div class="no-section-nums" markdown="1">
 
-<div class="hero-section">
-  <a href="https://geminishkv.tech/" target="_blank" rel="noopener noreferrer" class="hero-logo-wrap">
-    <img src="artifacts/assets/logo_white.svg" class="hero-logo" alt="AppSecTA">
-  </a>
+<div class="hero-row">
+<div class="hero-section hero-section--home">
   <div class="hero-content">
-    <h1 class="hero-title">Application Security & DevSecOps Course</h1>
-    <p class="hero-sub">Практический курс по прикладной безопасности приложений</p>
-    <p class="hero-typewriter" id="typewriter-target"></p>
+  <p class="hero-eyebrow">МГТУ · МФТИ · AppSecTA</p>
+  <h1 class="hero-title">Application Security & DevSecOps Course</h1>
+  <p class="hero-sub">Практический курс по прикладной безопасности приложений: от первого коммита до конвейера безопасности</p>
+  <p class="hero-typewriter" id="typewriter-target"></p>
+  <div class="hero-cta">
+  <a class="btn btn-primary" href="labs/intro/vmbox_tutorial/">Начать с Intro</a>
+  <a class="btn btn-ghost" href="#pipeline">Смотреть конвейер</a>
+  </div>
+  </div>
+  <div class="hero-side">
+  <div class="hero-stats" role="group" aria-label="Цифры курса">
+  <div class="hero-stat"><b>{{ stats.labs }}</b><span>лабораторных</span></div>
+  <div class="hero-stat"><b>{{ stats.intro }}</b><span>intro-гайдов</span></div>
+  <div class="hero-stat"><b>{{ stats.tests }}</b><span>тестов</span></div>
+  <div class="hero-stat"><b>{{ stats.materials }}</b><span>материалов</span></div>
+  </div>
+  <div class="hero-contacts">
+  <span class="hero-contacts__label">Контакты</span>
+  <div class="hero-contacts__row">
+  <a href="https://t.me/geminishkv" target="_blank" rel="noopener" class="contact-btn contact-btn--telegram"><span class="contact-btn__avatar-inner"><span class="contact-btn__status"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg></span><span class="contact-btn__label">Telegram</span></a>
+  <a href="mailto:shmakovis@inbox.ru" class="contact-btn"><span class="contact-btn__avatar-inner"><span class="contact-btn__status"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg></span><span class="contact-btn__label">Email</span></a>
+  <a href="https://www.linkedin.com/in/geminishkvdev/" target="_blank" rel="noopener" class="social-icon social-icon--linkedin" aria-label="LinkedIn"><svg class="social-icon__svg" viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg></a>
+  <a href="https://www.instagram.com/geminishkv" target="_blank" rel="noopener" class="social-icon social-icon--instagram" aria-label="Instagram"><svg class="social-icon__svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path></svg></a>
+  </div>
+  </div>
   </div>
 </div>
-
-<div class="tg-layout" markdown="1">
-<div class="tg-layout-main" markdown="1">
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/Course-AppSec-D51A1A?style=flat" alt="Course">
-<img src="https://img.shields.io/badge/Language-Русский-D51A1A?style=flat" alt="Language: Russian">
-<img src="https://img.shields.io/badge/Difficulty-Intermediate-D51A1A?style=flat" alt="Difficulty">
-<img src="https://img.shields.io/badge/Status-Active-success?style=flat" alt="Status">
-<a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-D51A1A?style=flat" alt="License: Apache 2.0"></a>
-<a href="https://github.com/geminishkv/course_labs/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop&label=CI&logo=githubactions&logoColor=white" alt="CI"></a>
-<a href="https://github.com/geminishkv/course_labs/releases"><img src="https://img.shields.io/github/v/release/geminishkv/course_labs?label=Release" alt="Release"></a>
-<img src="https://img.shields.io/github/last-commit/geminishkv/course_labs?label=Last+commit" alt="Last commit">
-<img src="https://img.shields.io/github/contributors/geminishkv/course_labs?label=Contributors" alt="Contributors">
-<img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" alt="Git">
-<img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
-<a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker"></a>
-<img src="https://img.shields.io/badge/Nmap-214478?style=flat" alt="Nmap">
-<img src="https://img.shields.io/badge/Semgrep-1B2333?style=flat" alt="Semgrep">
-<img src="https://img.shields.io/badge/Trivy-1904DA?style=flat&logo=aquasecurity&logoColor=white" alt="Trivy">
-<img src="https://img.shields.io/badge/OWASP_ZAP-333333?style=flat" alt="OWASP ZAP">
-<img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions">
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
-<img src="https://img.shields.io/badge/Checkov-333333?style=flat" alt="Checkov">
-<img src="https://img.shields.io/badge/Gitleaks-333333?style=flat" alt="Gitleaks">
-<img src="https://img.shields.io/badge/Bandit-333333?style=flat" alt="Bandit">
-
-</div>
-
-***
-
-## О курсе
-
-Цель курса — сформировать практические навыки в области AppSec и DevSecOps: от базовой работы с инструментами разработки до построения полноценного конвейера безопасности.
-
-Курс охватывает полный цикл безопасной разработки: от первого коммита до автоматизированного сканирования в CI/CD. Каждая лабораторная — самостоятельный мини-проект с реальными инструментами, которые используются в индустрии.
-
-### Что изучаем
-
-- **Инфраструктура:** `git`, `CI/CD`, `Docker`, `Packages`, `YAML`
-- **Языки:** `Python`, `Shell` (`Java` и `Go` — в контексте SCA и анализа зависимостей)
-- **Безопасность:** SAST, SCA, Container Security, DAST, Secret Detection
-- **Анализ рисков:** оценка, приоритизация, стратегии снижения рисков ИБ
-
-### Как устроен курс
-
-- 10 лабораторных работ + итоговый pet-project
-- Каждый мини-проект размещается на `GitHub` с отчётом в формате `gistup`
-- Для каждой лабораторной — отдельный репозиторий (или `fork`), исходный код + отчёт
-- Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Risk Analysis`
-
-***
-
-## Этапы
-
-1. Ознакомление с учебными материалами по [лекциям](materials/cheatsheet/CHEATSHEET_GIT.md) и [примерами](materials/examples/exmpl.md)
-2. Каждый репозиторий должен содержать: `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
-3. Выполнить лабораторные работы по порядку — от Lab 01 до Lab 10
-4. Итоговая работа — `pet_project` (тема согласовывается с преподавателем, применяется весь стек AppSec/DevSecOps)
-
-!!! warning "Лицензии"
-    Тип лицензии должен быть подобран корректно при переиспользовании материалов — ознакомьтесь с [типами лицензий](materials/licenses.md).
-
-!!! info "Пример отчёта"
-    [Пример gistup-отчёта](https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411) — шаблон для оформления всех лабораторных работ.
-
-***
-
-## Intro
-
-<div class="lab-grid">
-<a class="lab-card" href="labs/intro/vmbox_tutorial/"><div class="lab-card-body"><div class="lab-card-title">Подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">VirtualBox</span><span class="lab-tag">Ubuntu</span><span class="lab-tag">Fedora</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/intro/git_setup/"><div class="lab-card-body"><div class="lab-card-title">Настройка Git, GPG и GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">SSH</span><span class="lab-tag">GPG</span><span class="lab-tag">gh</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/intro/gistup_guide/"><div class="lab-card-body"><div class="lab-card-title">Оформление отчётов Gistup</div><div class="lab-card-tags"><span class="lab-tag">Gist</span><span class="lab-tag">Markdown</span><span class="lab-tag">Отчёт</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/intro/networking_basics/"><div class="lab-card-body"><div class="lab-card-title">Введение в сети и TCP/IP</div><div class="lab-card-tags"><span class="lab-tag">TCP/IP</span><span class="lab-tag">DNS</span><span class="lab-tag">HTTP</span><span class="lab-tag">Порты</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/intro/docker_basics/"><div class="lab-card-body"><div class="lab-card-title">Основы Docker и контейнеризации</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">Containers</span><span class="lab-tag">Dockerfile</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/intro/cicd_basics/"><div class="lab-card-body"><div class="lab-card-title">Введение в CI/CD и GitHub Actions</div><div class="lab-card-tags"><span class="lab-tag">CI/CD</span><span class="lab-tag">GitHub Actions</span><span class="lab-tag">YAML</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/intro/appsec_tools_setup/"><div class="lab-card-body"><div class="lab-card-title">Установка AppSec-инструментов</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span><span class="lab-tag">Gitleaks</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-***
-
-## Базовые Лабораторные работы
-
-<div class="lab-grid">
-<a class="lab-card" href="labs/basic/lab01/"><div class="lab-card-num">01</div><div class="lab-card-body"><div class="lab-card-title">GitSCM — подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab02/"><div class="lab-card-num">02</div><div class="lab-card-body"><div class="lab-card-title">*nix — права доступа, SUID, ACL, процессы</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Bash</span><span class="lab-tag">POSIX ACL</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab03/"><div class="lab-card-num">03</div><div class="lab-card-body"><div class="lab-card-title">Nmap — сканирование сети, NSE и защита результатов</div><div class="lab-card-tags"><span class="lab-tag">Nmap</span><span class="lab-tag">NSE</span><span class="lab-tag">ACL</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab04/"><div class="lab-card-num">04</div><div class="lab-card-body"><div class="lab-card-title">Анализ и определение мер снижения рисков ИБ</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab05/"><div class="lab-card-num">05</div><div class="lab-card-body"><div class="lab-card-title">Docker — контейнеризация приложений</div><div class="lab-card-tags"><span class="lab-tag">Docker</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab06/"><div class="lab-card-num">06</div><div class="lab-card-body"><div class="lab-card-title">Docker CIS Benchmark и Trivy</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">CIS</span><span class="lab-tag">Trivy</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab07/"><div class="lab-card-num">07</div><div class="lab-card-body"><div class="lab-card-title">SAST, SCA и Secret Detection</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Checkov</span><span class="lab-tag">OWASP DC</span><span class="lab-tag">Gitleaks</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab08/"><div class="lab-card-num">08</div><div class="lab-card-body"><div class="lab-card-title">DAST — динамическое тестирование уязвимого приложения</div><div class="lab-card-tags"><span class="lab-tag">OWASP ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab09/"><div class="lab-card-num">09</div><div class="lab-card-body"><div class="lab-card-title">DevSecOps CI/CD конвейер на GitHub Actions</div><div class="lab-card-tags"><span class="lab-tag">GH Actions</span><span class="lab-tag">Semgrep</span><span class="lab-tag">Trivy</span><span class="lab-tag">ZAP</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/basic/lab10/"><div class="lab-card-num">10</div><div class="lab-card-body"><div class="lab-card-title">Оценка анализа рисков ИБ — практика</div><div class="lab-card-tags"><span class="lab-tag">Risk Analysis</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card lab-card--pet" href="labs/pet_project/"><div class="lab-card-num">pet</div><div class="lab-card-body"><div class="lab-card-title">Pet-project — итоговая работа, полный AppSec/DevSecOps стек</div><div class="lab-card-tags"><span class="lab-tag">Full stack</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-***
-
-## Тесты
-
-### Базовое ознакомление
-
-<div class="lab-grid">
-<a class="lab-card" href="labs/tests/basic/test01/"><div class="lab-card-num">V1</div><div class="lab-card-body"><div class="lab-card-title">Вариант №1</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">SAST</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test02/"><div class="lab-card-num">V2</div><div class="lab-card-body"><div class="lab-card-title">Вариант №2</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Nmap</span><span class="lab-tag">SCA</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test03/"><div class="lab-card-num">V3</div><div class="lab-card-body"><div class="lab-card-title">Вариант №3</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Nmap</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test04/"><div class="lab-card-num">V4</div><div class="lab-card-body"><div class="lab-card-title">Вариант №4</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">SBOM</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/basic/test05/"><div class="lab-card-num">V5</div><div class="lab-card-body"><div class="lab-card-title">Вариант №5</div><div class="lab-card-tags"><span class="lab-tag">Linux</span><span class="lab-tag">Docker</span><span class="lab-tag">DAST</span><span class="lab-tag">Risk</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-### Лекционные тесты
-
-<div class="lab-grid">
-<a class="lab-card" href="labs/tests/lectures/test_fintech/"><div class="lab-card-num">TF1</div><div class="lab-card-body"><div class="lab-card-title">Fintech по-русски — Вариант 1</div><div class="lab-card-tags"><span class="lab-tag">Fintech</span><span class="lab-tag">AML</span><span class="lab-tag">Compliance</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="labs/tests/lectures/test_fintech_v2/"><div class="lab-card-num">TF2</div><div class="lab-card-body"><div class="lab-card-title">Fintech по-русски — Вариант 2</div><div class="lab-card-tags"><span class="lab-tag">FinDevSecOps</span><span class="lab-tag">IR</span><span class="lab-tag">ГОСТ 57580</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-***
-
-## Формализованные требования
-
-- [x] Единый стиль кода, функции в пространстве имён
-- [x] `README.md` оформлен в соответствии с содержанием проекта
-- [x] `.gitignore` и `.dockerignore` настроены под проект
-- [x] Лицензия (`LICENSE`) и `NOTICE` подобраны корректно
-- [x] Скрипты автоматизации сборки, тестов и пакетирования
-- [x] Непрерывная сборка через `GitHub Actions`
-- [x] Документация проекта через `doxygen`
-- [x] Публикация пакета на `GitHub Releases` при слиянии в `develop`
-- [x] Рефакторинг и поддержка лабораторных в процессе работы
-- [x] Все команды — строго из терминала, без `WebUI` (кроме токенов и специфичных настроек)
-
-***
-
-## Замечания
-
-1. Лабораторные обязательны для всех — вне зависимости от уровня подготовки
-2. Скопируй этапы реализации и отмечай выполненные у себя
-3. Каждая работа разбивается на атомарные коммиты для трекинга изменений
-4. Отчёт сдаётся индивидуально с защитой: каждая команда — с описанием, флагами и выводом из терминала
-5. Часть инструментов требует установки дополнительных `open-source` пакетов
-6. В отчётах — вывод из консоли, не скриншоты; описание каждого флага и команды
-
-***
-
-## Полезные материалы
-
-### OWASP Top 10
-
-<div class="lab-grid">
-<a class="lab-card" href="materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/"><div class="lab-card-body"><div class="lab-card-title">CI/CD Risks</div><div class="lab-card-tags"><span class="lab-tag">Pipeline</span><span class="lab-tag">Supply Chain</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/OWASPTOP10/Authentication/"><div class="lab-card-body"><div class="lab-card-title">Authentication</div><div class="lab-card-tags"><span class="lab-tag">Brute Force</span><span class="lab-tag">OTP</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/OWASPTOP10/Authorization/"><div class="lab-card-body"><div class="lab-card-title">Authorization</div><div class="lab-card-tags"><span class="lab-tag">IDOR</span><span class="lab-tag">RBAC</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/OWASPTOP10/client-side-attacks/"><div class="lab-card-body"><div class="lab-card-title">Client-side Attacks</div><div class="lab-card-tags"><span class="lab-tag">XSS</span><span class="lab-tag">CSRF</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/OWASPTOP10/command-execution/"><div class="lab-card-body"><div class="lab-card-title">Command Execution</div><div class="lab-card-tags"><span class="lab-tag">SQLi</span><span class="lab-tag">RCE</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/OWASPTOP10/logical-attacks/"><div class="lab-card-body"><div class="lab-card-title">Logical Attacks</div><div class="lab-card-tags"><span class="lab-tag">Business Logic</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/OWASPTOP10/information-disclosure/"><div class="lab-card-body"><div class="lab-card-title">Information Disclosure</div><div class="lab-card-tags"><span class="lab-tag">Утечки</span><span class="lab-tag">Debug</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-### Примеры и кейсы
-
-<div class="lab-grid">
-<a class="lab-card" href="materials/examples/exmpl/"><div class="lab-card-body"><div class="lab-card-title">Cases — разбор инцидентов ИБ</div><div class="lab-card-tags"><span class="lab-tag">Кейсы</span><span class="lab-tag">Анализ</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/examples/supply_chain_attacks/"><div class="lab-card-body"><div class="lab-card-title">Supply Chain Attacks</div><div class="lab-card-tags"><span class="lab-tag">SolarWinds</span><span class="lab-tag">Log4Shell</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/examples/PrintNightmare/"><div class="lab-card-body"><div class="lab-card-title">PrintNightmare</div><div class="lab-card-tags"><span class="lab-tag">CVE-2021-34527</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/examples/Multisignature/"><div class="lab-card-body"><div class="lab-card-title">MultiSig — мультиподпись</div><div class="lab-card-tags"><span class="lab-tag">Crypto</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/examples/RA/"><div class="lab-card-body"><div class="lab-card-title">Risk Analysis — пример отчёта</div><div class="lab-card-tags"><span class="lab-tag">RA</span><span class="lab-tag">Template</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-### Справочники и шпаргалки
-
-<div class="lab-grid">
-<a class="lab-card" href="materials/appsec_tt/"><div class="lab-card-body"><div class="lab-card-title">AppSec Toolchain — классификация инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">DAST</span><span class="lab-tag">SCA</span><span class="lab-tag">SBOM</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/ports/"><div class="lab-card-body"><div class="lab-card-title">Порты и протоколы</div><div class="lab-card-tags"><span class="lab-tag">TCP</span><span class="lab-tag">UDP</span><span class="lab-tag">Сервисы</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GIT/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Git</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_DOCKER/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Docker</div><div class="lab-card-tags"><span class="lab-tag">Docker</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_YAML/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: YAML</div><div class="lab-card-tags"><span class="lab-tag">YAML</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: HTTP Security Headers</div><div class="lab-card-tags"><span class="lab-tag">CSP</span><span class="lab-tag">HSTS</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Dockerfile Security</div><div class="lab-card-tags"><span class="lab-tag">Hardening</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: GitHub Actions Security</div><div class="lab-card-tags"><span class="lab-tag">CI/CD</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GH_CLI/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">gh</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_GITIGNORE/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: .gitignore</div><div class="lab-card-tags"><span class="lab-tag">Шаблоны</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: .dockerignore</div><div class="lab-card-tags"><span class="lab-tag">Шаблоны</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/APPENDIX/"><div class="lab-card-body"><div class="lab-card-title">Приложение — команды и утилиты</div><div class="lab-card-tags"><span class="lab-tag">Git</span><span class="lab-tag">Docker</span><span class="lab-tag">Nmap</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/lectures/fintech_ru/"><div class="lab-card-body"><div class="lab-card-title">Лекция: Fintech по-русски</div><div class="lab-card-tags"><span class="lab-tag">FinTech</span><span class="lab-tag">ИБ</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="materials/troubleshooting/"><div class="lab-card-body"><div class="lab-card-title">Troubleshooting — частые проблемы</div><div class="lab-card-tags"><span class="lab-tag">FAQ</span><span class="lab-tag">Ошибки</span><span class="lab-tag">Решения</span></div></div><div class="lab-card-arrow">→</div></a>
-</div>
-
-</div>
-
-<div class="tg-widget" markdown="1">
-
-### Канал AppSecTA
-
-<div class="tg-channel-card">
-  <div class="tg-channel-header">
-    <img src="artifacts/assets/logo_white.svg" class="tg-channel-logo" alt="AppSecTA">
-    <div class="tg-channel-info">
-      <span class="tg-channel-name">AppSECT.A.</span>
-      <span class="tg-channel-desc">AppSec · DevSecOps · ИБ</span>
-    </div>
-    <a href="https://t.me/appsecta" class="tg-channel-btn" target="_blank" rel="noopener">Подписаться</a>
+<div class="brand-col" aria-hidden="true">
+  <div class="brand-col__shapes">
+  <div class="brand-col__circle brand-col__circle--gradient logo-glow logo-glow--brand">
+  <span class="logo-glow__blur logo-glow__blur--1"></span>
+  <span class="logo-glow__blur logo-glow__blur--2"></span>
+  <div class="logo-glow__inner"><img src="artifacts/assets/logo_black.svg" alt="" class="brand-col__logo-img"></div>
   </div>
-</div>
-
-<div class="tg-embed-desktop">
-<script async
-        src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="appsecta/61"
-        data-width="100%"
-        data-userpic="false"
-        data-mode="compact"
-        data-color="D51A1A"
-        data-dark="0"></script>
-</div>
-
+  <div class="brand-col__diamond-wrap"><div class="brand-col__diamond"><span class="brand-col__num">0</span></div></div>
+  <div class="brand-col__circle brand-col__circle--outline"><span class="brand-col__num brand-col__num--dark">1</span></div>
+  </div>
+  <div class="spm-pill"><span class="spm-pill__text">Sic Parvis Magna</span></div>
 </div>
 </div>
 
+<div class="badges" aria-label="Статус проекта и стек">
+  <img src="https://img.shields.io/badge/Course-AppSec-D51A1A?style=flat" alt="Course">
+  <img src="https://img.shields.io/badge/Language-Русский-D51A1A?style=flat" alt="Language: Russian">
+  <img src="https://img.shields.io/badge/Difficulty-Intermediate-D51A1A?style=flat" alt="Difficulty">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=flat" alt="Status">
+  <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-D51A1A?style=flat" alt="License: Apache 2.0"></a>
+  <a href="https://github.com/geminishkv/course_labs/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/geminishkv/course_labs/ci.yml?branch=develop&label=CI&logo=githubactions&logoColor=white" alt="CI"></a>
+  <a href="https://github.com/geminishkv/course_labs/releases"><img src="https://img.shields.io/github/v/release/geminishkv/course_labs?label=Release" alt="Release"></a>
+  <img src="https://img.shields.io/github/last-commit/geminishkv/course_labs?label=Last+commit" alt="Last commit">
+  <img src="https://img.shields.io/github/contributors/geminishkv/course_labs?label=Contributors" alt="Contributors">
+  <img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" alt="Git">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker"></a>
+  <img src="https://img.shields.io/badge/Nmap-214478?style=flat" alt="Nmap">
+  <img src="https://img.shields.io/badge/Semgrep-1B2333?style=flat" alt="Semgrep">
+  <img src="https://img.shields.io/badge/Trivy-1904DA?style=flat&logo=aquasecurity&logoColor=white" alt="Trivy">
+  <img src="https://img.shields.io/badge/OWASP_ZAP-333333?style=flat" alt="OWASP ZAP">
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Checkov-333333?style=flat" alt="Checkov">
+  <img src="https://img.shields.io/badge/Gitleaks-333333?style=flat" alt="Gitleaks">
+  <img src="https://img.shields.io/badge/Bandit-333333?style=flat" alt="Bandit">
 </div>
 
-***
+<div class="sec-head">
+  <h2 id="about">О курсе</h2>
+  <span class="sec-note">appsec · devsecops · risk analysis</span>
+</div>
+
+<div class="about-grid">
+  <section class="about-card">
+  <h3>Цель курса</h3>
+  <p>Сформировать практические навыки в области AppSec и DevSecOps: от базовой работы с инструментами разработки до построения полноценного конвейера безопасности.</p>
+  <p>Курс охватывает полный цикл безопасной разработки: от первого коммита до автоматизированного сканирования в CI/CD. Каждая лабораторная — самостоятельный мини-проект с реальными инструментами, которые используются в индустрии.</p>
+  </section>
+  <section class="about-card">
+  <h3>Что изучаем</h3>
+  <ul>
+  <li><b>Инфраструктура:</b> <code>git</code>, <code>CI/CD</code>, <code>Docker</code>, <code>Packages</code>, <code>YAML</code></li>
+  <li><b>Языки:</b> <code>Python</code>, <code>Shell</code> (<code>Java</code> и <code>Go</code> — в контексте SCA и анализа зависимостей)</li>
+  <li><b>Безопасность:</b> SAST, SCA, Container Security, DAST, Secret Detection</li>
+  <li><b>Анализ рисков:</b> оценка, приоритизация, стратегии снижения рисков ИБ</li>
+  </ul>
+  </section>
+  <section class="about-card">
+  <h3>Как устроен курс</h3>
+  <ul>
+  <li>10 лабораторных работ + итоговый pet-project</li>
+  <li>Каждый мини-проект размещается на <code>GitHub</code> с отчётом в формате <code>gistup</code></li>
+  <li>Для каждой лабораторной — отдельный репозиторий (или <code>fork</code>), исходный код + отчёт</li>
+  <li>Прогрессия: <code>Git</code> → <code>Linux</code> → <code>Nmap</code> → <code>Risk Analysis</code> → <code>Docker</code> → <code>CIS Benchmark</code> → <code>SAST/SCA</code> → <code>DAST</code> → <code>CI/CD</code> → <code>Итоговый Risk Analysis</code> → <code>Pet-project</code></li>
+  </ul>
+  </section>
+</div>
+
+<div class="sec-head">
+  <h2 id="pipeline">Конвейер курса</h2>
+  <span class="sec-note">лабы идут по порядку · 01 → 10 → pet</span>
+</div>
+
+<p class="lead">Каждый этап — узел конвейера безопасности. Над узлом — сопроводительные материалы к этапу, под узлом — лабы. Открывай узел, делай работу, двигайся дальше по линии.</p>
+
+<ol class="steps">
+  <li><span class="steps__n">1</span><span>Изучи <a href="materials/">материалы</a> и <a href="materials/examples/exmpl/">примеры</a></span></li>
+  <li><span class="steps__n">2</span><span>Заведи репозиторий с обвязкой: <code>.gitignore</code>, <code>CODE_OF_CONDUCT</code>, <code>CONTRIBUTING</code>, <code>LICENSE</code>, <code>NOTICE</code>, <code>SECURITY</code></span></li>
+  <li><span class="steps__n">3</span><span>Пройди лабораторные по порядку — от Lab 01 до Lab 10</span></li>
+  <li><span class="steps__n">4</span><span>Итог — <a href="labs/pet_project/">pet-project</a>: тема согласуется с преподавателем, применяется весь стек AppSec/DevSecOps</span></li>
+</ol>
+
+<p class="steps__foot">Лицензию при переиспользовании материалов подбирай по <a href="materials/licenses/">справочнику лицензий</a> · <a href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411" target="_blank" rel="noopener">пример gistup-отчёта</a> — шаблон для всех работ</p>
+
+<ol class="track" role="list">
+  <li class="stage">
+  <div class="stage-mats">
+    <a class="mat mat--intro" href="labs/intro/vmbox_tutorial/">Окружение: VirtualBox, Linux</a>
+  <a class="mat mat--intro" href="labs/intro/git_setup/">Git, GPG, gh</a>
+  <a class="mat mat--intro" href="labs/intro/gistup_guide/">Отчёты gistup</a>
+  <a class="mat mat--intro" href="labs/intro/networking_basics/">Сети и TCP/IP</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GIT/">Git</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GITIGNORE/">.gitignore</a>
+  <a class="mat mat--ref" href="materials/ports/">Порты и протоколы</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">1</div></div>
+  <div class="stage-name">Основы</div>
+  <div class="stage-cmd">git · linux · nmap</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/basic/lab01/"><span class="lab-num">01</span><span class="lab-name">GitSCM — рабочее окружение</span><span class="lab-tags">Git</span></a>
+  <a class="lab" href="labs/basic/lab02/"><span class="lab-num">02</span><span class="lab-name">*nix — права, SUID, ACL, процессы</span><span class="lab-tags">Linux · Bash · ACL</span></a>
+  <a class="lab" href="labs/basic/lab03/"><span class="lab-num">03</span><span class="lab-name">Nmap — сканирование сети и NSE</span><span class="lab-tags">Nmap · NSE</span></a>
+  </div>
+  </li>
+  <li class="stage">
+  <div class="stage-mats">
+    <a class="mat mat--case" href="materials/examples/RA/">Risk Analysis — пример отчёта</a>
+  <a class="mat mat--case" href="materials/examples/exmpl/">Cases — инциденты ИБ</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">2</div></div>
+  <div class="stage-name">Риски</div>
+  <div class="stage-cmd">threat model</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/basic/lab04/"><span class="lab-num">04</span><span class="lab-name">Анализ и меры снижения рисков ИБ</span><span class="lab-tags">Risk Analysis</span></a>
+  </div>
+  </li>
+  <li class="stage">
+  <div class="stage-mats">
+    <a class="mat mat--intro" href="labs/intro/docker_basics/">Основы Docker</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKER/">Docker</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/">Dockerfile Security</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/">.dockerignore</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">3</div></div>
+  <div class="stage-name">Контейнеры</div>
+  <div class="stage-cmd">docker · cis · trivy</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/basic/lab05/"><span class="lab-num">05</span><span class="lab-name">Docker — контейнеризация приложений</span><span class="lab-tags">Docker</span></a>
+  <a class="lab" href="labs/basic/lab06/"><span class="lab-num">06</span><span class="lab-name">Docker CIS Benchmark и Trivy</span><span class="lab-tags">CIS · Trivy</span></a>
+  </div>
+  </li>
+  <li class="stage">
+  <div class="stage-mats">
+    <a class="mat mat--intro" href="labs/intro/appsec_tools_setup/">AppSec-инструменты</a>
+  <a class="mat mat--owasp" href="materials/OWASPTOP10/Authentication/">OWASP Top 10</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/">HTTP Security Headers</a>
+  <a class="mat mat--case" href="materials/examples/supply_chain_attacks/">Supply Chain Attacks</a>
+  <a class="mat mat--case" href="materials/examples/PrintNightmare/">PrintNightmare</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">4</div></div>
+  <div class="stage-name">Код и приложение</div>
+  <div class="stage-cmd">sast · sca · dast</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/basic/lab07/"><span class="lab-num">07</span><span class="lab-name">SAST, SCA и Secret Detection</span><span class="lab-tags">Semgrep · Checkov · Gitleaks</span></a>
+  <a class="lab" href="labs/basic/lab08/"><span class="lab-num">08</span><span class="lab-name">DAST уязвимого приложения</span><span class="lab-tags">OWASP ZAP</span></a>
+  </div>
+  </li>
+  <li class="stage">
+  <div class="stage-mats">
+    <a class="mat mat--intro" href="labs/intro/cicd_basics/">CI/CD и GitHub Actions</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_YAML/">YAML</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/">GitHub Actions Security</a>
+  <a class="mat mat--owasp" href="materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/">OWASP CI/CD Risks</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">5</div></div>
+  <div class="stage-name">Конвейер</div>
+  <div class="stage-cmd">github actions</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/basic/lab09/"><span class="lab-num">09</span><span class="lab-name">DevSecOps CI/CD на GitHub Actions</span><span class="lab-tags">Semgrep · Trivy · ZAP</span></a>
+  </div>
+  </li>
+  <li class="stage">
+  <div class="stage-mats">
+    <a class="mat mat--ref" href="materials/appsec_tt/">AppSec Toolchain</a>
+  <a class="mat mat--ref" href="materials/licenses/">Лицензии ПО</a>
+  <a class="mat mat--ref" href="materials/troubleshooting/">Troubleshooting</a>
+  <a class="mat mat--case" href="materials/examples/Multisignature/">MultiSig</a>
+  <a class="mat mat--ref" href="materials/lectures/fintech_ru/">Лекция: Fintech</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">6</div></div>
+  <div class="stage-name">Итог</div>
+  <div class="stage-cmd">risk assessment · pet</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/basic/lab10/"><span class="lab-num">10</span><span class="lab-name">Оценка анализа рисков ИБ — практика</span><span class="lab-tags">Risk Analysis</span></a>
+  <a class="lab lab--gold" href="labs/pet_project/"><span class="lab-num">pet</span><span class="lab-name">Pet-project — полный AppSec/DevSecOps стек</span><span class="lab-tags">Full stack</span></a>
+  </div>
+  </li>
+</ol>
+
+<div class="rules-grid">
+  <section class="rules-card">
+  <h3>Формализованные требования</h3>
+  <ul class="checks">
+  <li>Единый стиль кода, функции в пространстве имён</li>
+  <li><code>README.md</code> оформлен в соответствии с содержанием проекта</li>
+  <li><code>.gitignore</code> и <code>.dockerignore</code> настроены под проект</li>
+  <li>Лицензия (<code>LICENSE</code>) и <code>NOTICE</code> подобраны корректно</li>
+  <li>Скрипты автоматизации сборки, тестов и пакетирования</li>
+  <li>Непрерывная сборка через <code>GitHub Actions</code></li>
+  <li>Документация проекта через <code>doxygen</code></li>
+  <li>Публикация пакета на <code>GitHub Releases</code> при слиянии в <code>develop</code></li>
+  <li>Рефакторинг и поддержка лабораторных в процессе работы</li>
+  <li>Все команды — строго из терминала, без <code>WebUI</code> (кроме токенов и специфичных настроек)</li>
+  </ul>
+  </section>
+  <section class="rules-card">
+  <h3>Замечания</h3>
+  <ol class="notes">
+  <li>Лабораторные обязательны для всех — вне зависимости от уровня подготовки</li>
+  <li>Скопируй этапы реализации и отмечай выполненные у себя</li>
+  <li>Каждая работа разбивается на атомарные коммиты для трекинга изменений</li>
+  <li>Отчёт сдаётся индивидуально с защитой: каждая команда — с описанием, флагами и выводом из терминала</li>
+  <li>Часть инструментов требует установки дополнительных <code>open-source</code> пакетов</li>
+  <li>В отчётах — вывод из консоли, не скриншоты; описание каждого флага и команды</li>
+  </ol>
+  </section>
+</div>
+
+<div class="sec-head">
+  <h2 id="materials">Материалы</h2>
+  <span class="sec-note">9 разделов · {{ stats.materials }} документов · {{ stats.tests }} тестов</span>
+</div>
+
+<div class="entries">
+  <a class="entry" href="labs/intro/vmbox_tutorial/"><span class="entry-count">7 гайдов</span><span class="entry-title">Intro</span><span class="entry-text">Окружение, Git и GPG, отчёты в Gist, сети, Docker, CI/CD, AppSec-инструменты.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="labs/tests/basic/test01/"><span class="entry-count">5 + 2 варианта</span><span class="entry-title">Тесты</span><span class="entry-text">Пять базовых вариантов по лабам и два лекционных теста по Fintech.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/OWASPTOP10/Authentication/"><span class="entry-count">7 разборов</span><span class="entry-title">OWASP Top 10</span><span class="entry-text">Authentication, Authorization, Client-side, Command Execution, Logical, Information Disclosure, CI/CD Risks.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/examples/exmpl/"><span class="entry-count">5 кейсов</span><span class="entry-title">Примеры</span><span class="entry-text">Инциденты ИБ, Supply Chain Attacks, PrintNightmare, MultiSig, пример Risk Analysis.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/cheatsheet/CHEATSHEET_GIT/"><span class="entry-count">9 шпаргалок</span><span class="entry-title">CheatSheets</span><span class="entry-text">Git, Docker, YAML, HTTP Headers, Dockerfile Security, GitHub Actions Security, gh, .gitignore, .dockerignore.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/appsec_tt/"><span class="entry-count">3 справочника</span><span class="entry-title">Справочники</span><span class="entry-text">AppSec Toolchain, порты и протоколы, приложение с командами и утилитами.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/licenses/"><span class="entry-count">справочник</span><span class="entry-title">Лицензии ПО</span><span class="entry-text">Какую лицензию выбрать для репозитория и как переиспользовать чужие материалы без нарушений.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/troubleshooting/"><span class="entry-count">45 карточек</span><span class="entry-title">Troubleshooting</span><span class="entry-text">Частые проблемы по 13 темам: окружение, Git, Docker, сканеры, CI/CD.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/lectures/fintech_ru/"><span class="entry-count">1 лекция</span><span class="entry-title">Fintech по-русски</span><span class="entry-text">Лекция о безопасности финтеха и два кейсовых теста к ней.</span><span class="entry-link">Открыть →</span></a>
+</div>
+
+<div class="tg-strip">
+  <div class="tg-strip__left">
+  <img src="artifacts/assets/logo_white.svg" class="tg-strip__logo" alt="AppSecTA">
+  <div>
+  <div class="tg-strip__name">Канал AppSECT.A.</div>
+  <div class="tg-strip__desc">AppSec · DevSecOps · ИБ — практика без воды и купюр.</div>
+  </div>
+  </div>
+  <a class="btn btn-primary" href="https://t.me/appsecta" target="_blank" rel="noopener">Подписаться</a>
+</div>
+
+</div>

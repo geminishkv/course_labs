@@ -499,6 +499,17 @@ $ arp -a
 $ ip link show
 ```
 
+```powershell
+# Windows (PowerShell) — те же проверки
+PS> Test-NetConnection example.com -Port 443   # доступность хоста и порта
+PS> tracert example.com                        # трассировка маршрута
+PS> Get-NetRoute                               # таблица маршрутизации (или route print)
+PS> arp -a                                     # ARP-таблица
+PS> ipconfig /all                              # интерфейсы, DNS, шлюз
+PS> Resolve-DnsName example.com -Type A        # DNS-запрос (аналог dig / nslookup)
+PS> netstat -ano                               # открытые порты и PID процессов
+```
+
 ***
 
 ## Links

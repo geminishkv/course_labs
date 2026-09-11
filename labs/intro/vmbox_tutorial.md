@@ -29,6 +29,36 @@
 
 ***
 
+## Windows: что учесть
+
+- [ ] Включите аппаратную виртуализацию в UEFI/BIOS (Intel VT-x / AMD-V). Проверка: `Диспетчер задач → Производительность → ЦП → Виртуализация: включено`
+- [ ] Установка через `winget` (PowerShell от имени пользователя):
+
+```powershell
+PS> winget install --id Oracle.VirtualBox -e
+```
+
+- [ ] VirtualBox 7.x работает вместе с Hyper-V и WSL2, но заметно медленнее. Если ВМ тормозит — либо отключите Hyper-V (`bcdedit /set hypervisorlaunchtype off`, перезагрузка), либо используйте вариант ниже
+- [ ] Антивирус может блокировать установку драйвера VirtualBox: добавьте исключение для `C:\Program Files\Oracle\VirtualBox`
+
+### Альтернатива: WSL2 вместо виртуальной машины
+
+Для большинства лабораторных достаточно Ubuntu в WSL2 — все команды курса для Linux применимы без изменений:
+
+```powershell
+PS> wsl --install -d Ubuntu          # включает WSL2 и ставит Ubuntu, нужна перезагрузка
+PS> wsl --status
+```
+
+Ограничения, из-за которых для Лаб. №3 (Nmap) всё же удобнее полноценная ВМ:
+
+- сеть WSL2 по умолчанию за NAT: сканировать локальную сеть с хоста не выйдет, нужен режим `networkingMode=mirrored` в `%UserProfile%\.wslconfig` (Windows 11 22H2+);
+- SYN-сканирование требует `sudo` внутри WSL, а Guest Additions и снапшоты недоступны.
+
+Docker в WSL2 работает штатно (см. [Основы Docker](https://course.geminishkv.tech/labs/intro/docker_basics/)).
+
+***
+
 ## Выбор и скачивание образа ОС
 
 Рекомендуемые дистрибутивы (любой на выбор):
@@ -204,7 +234,7 @@ $ gh --version
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ***
 

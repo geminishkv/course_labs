@@ -1,107 +1,350 @@
 /* ══════════════════════════════════════════
-   Header + Tabs + Search + Burger + Logo Glow
+   Header — gpages-style bar on top of docs/overrides/partials/header.html
+   (Material 9.7.7): bar · logo ring · title · pill nav · search · burger ·
+   search results · source facts (drawer)
 ══════════════════════════════════════════ */
 
-/* ── Header ── */
-.md-header,
-.md-header__inner,
-.md-header-nav,
-.md-header-nav__inner {
-  background-color: var(--brand-dark);
+/* ── Bar ── */
+.md-header {
+  background-color: var(--ink-page);
+  color: var(--text-inverse);
+  font-family: var(--font-body);
+  box-shadow: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* header.js adds this once the page is scrolled */
+.md-header--glass {
+  background-color: color-mix(in srgb, var(--ink-page) 82%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 32px rgba(0, 0, 0, 0.5);
 }
 
 .md-header__inner {
   display: flex;
   align-items: center;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  gap: clamp(10px, 1.5vw, 20px);
+  padding: 8px 0.8rem;
 }
 
-.md-header .md-header__title,
-.md-header .md-header__title a {
-  color: var(--text-inverse);
-}
-
-.md-header {
-  font-family: var(--font-body);
-}
-
-.md-header .md-header__title {
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-  position: relative;
-}
-
-.md-header .md-logo {
-  margin-left: 0;
-  margin-right: 1.5rem;
-  order: 2;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
+/* ── Logo ring + wordmark ── */
 .md-header__button.md-logo,
 .md-header__button.md-logo:hover,
 .md-header__button.md-logo:focus,
 .md-header__button.md-logo:active {
-  background: transparent !important;
-  box-shadow: none !important;
-  outline: none !important;
-  border: none !important;
-  opacity: 1 !important;
-  -webkit-tap-highlight-color: transparent !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0.2rem 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  opacity: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.md-header .md-logo img {
+/* the reset above also swallows the keyboard focus ring: restore it */
+.md-header__button.md-logo:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
+@keyframes logo-ring-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.logo-glow {
+  position: relative;
+  width: 32px;
   height: 32px;
-  width: auto;
-  max-width: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.logo-glow::before,
+.logo-glow__blur {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background-image: linear-gradient(var(--brand-red), var(--brand-gold), var(--brand-red));
+  animation: logo-ring-rotate 2.4s linear infinite;
+}
+
+.logo-glow__blur--1 { filter: blur(4px); }
+
+.logo-glow__blur--2 {
+  filter: blur(10px);
+  opacity: 0.6;
+}
+
+.logo-glow__inner {
   position: relative;
   z-index: 1;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: var(--brand-dark, #1A1919);
+  overflow: hidden;
+  background: var(--brand-dark);
+  display: grid;
+  place-items: center;
 }
 
-.md-header-nav__link,
-.md-header-nav__list .md-nav__item {
-  margin: 0 0.85rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
+.md-header .md-logo .logo-glow__inner img,
+.md-header .md-logo .logo-glow__inner svg {
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
-.md-header__title .md-header__topic {
-  font-size: 0.85rem;
-  font-weight: 400;
-  line-height: 1;
+.md-header__brand {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--text-inverse);
+}
+
+/* ── Title (site name → page title, swapped by Material on scroll) ── */
+.md-header__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ── Pill navigation ── */
+.md-header__nav {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 0 6px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.md-header__nav a {
+  position: relative;
+  z-index: 0;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-inverse);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 9px 13px;
+  margin: 4px;
+  border-radius: 25px;
+  transition: color 0.2s;
+}
+
+.md-header__nav a::before {
+  content: "";
   position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  z-index: -1;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.md-header__nav a:hover,
+.md-header__nav a:focus-visible {
+  color: var(--text-inverse);
+  text-decoration: none;
+}
+
+/* current section (set in partials/header.html from page.url) */
+.md-header__nav a.is-active {
+  color: var(--text-inverse);
+  background: color-mix(in srgb, #fff 10%, transparent);
+}
+
+.md-header__nav a:hover::before,
+.md-header__nav a:focus-visible::before {
+  background: linear-gradient(to bottom, var(--brand-red), #a01414);
+  box-shadow: 0 3px 16px color-mix(in srgb, var(--brand-red) 40%, transparent);
+  transform: scale(1.15);
+}
+
+.md-header__nav .md-header__nav-secondary {
+  color: #9a9a9a;
+  font-size: 0.52rem;
+}
+
+.md-header__nav .md-header__nav-secondary:hover { color: #ddd; }
+
+.md-header__nav .md-header__nav-secondary:hover::before {
+  background: linear-gradient(to bottom, #3a3a3a, #222);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Search: dark pill in the bar, white panel once opened ── */
+
+.md-search__form {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: none; /* Material keeps a transparent shadow as a transition base */
+  outline: none;
+}
+
+/* keyboard hint: Material focuses the field on "/" */
+.md-search__form::after {
+  content: "/";
+  position: absolute;
+  right: 0.55rem;
   top: 50%;
   transform: translateY(-50%);
+  font-family: var(--font-code);
+  font-size: 0.5rem;
+  font-weight: 500;
+  padding: 1px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 4px;
+  color: #ddd;
+  pointer-events: none;
 }
 
-/* ── Navigation tabs ── */
-.md-tabs {
-  background-color: var(--brand-dark);
-  border-bottom: 1px solid var(--border-gold);
+
+/* (0,2,0): also covers Material's `.md-search__input:hover` background */
+.md-search__input,
+.md-search__input:hover,
+.md-search__input:focus {
+  color: var(--text-inverse);
+  background-color: transparent;
 }
 
-.md-tabs__link {
-  color: var(--md-primary-bg-color--light);
-  transition: color var(--transition-base);
+.md-search__input::placeholder { color: #9a9a9a; }
+
+.md-search__icon svg,
+.md-header .md-search__icon svg {
+  color: var(--text-inverse);
+  fill: var(--text-inverse);
 }
 
-.md-tabs__link:hover,
-.md-tabs__link:focus {
-  color: var(--brand-gold);
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background-color: var(--surface-page);
+  box-shadow: none;
+  outline: none;
 }
 
-.md-tabs__link--active {
-  color: var(--brand-gold);
-  border-bottom: 2px solid var(--brand-gold);
+/* Open search must fit between the pill navigation and the right edge:
+   Material widens the field to 34.4rem and the pills do not shrink, so from
+   1220 to ~1900px the field and its reset button used to leave the viewport.
+   The search block may shrink in the flex row and the field follows it. */
+@media screen and (min-width: 60em) {
+  .md-search {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .md-search__inner { max-width: 100%; }
+}
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form::after { display: none; }
+
+/* text colours follow the same tokens as the panel background, so the open
+   search stays readable on the dark home canvas as well as on light pages */
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input { color: var(--text-primary); }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder { color: var(--text-secondary); }
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__icon svg {
+  color: var(--text-secondary);
+  fill: var(--text-secondary);
 }
 
-/* ── Repo source block ── */
+.md-search__output {
+  background-color: var(--surface-page);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.md-search__scrollwrap { background-color: var(--surface-page); }
+.md-search-result { border-top: 1px solid var(--border-subtle); }
+
+.md-search-result__meta {
+  background-color: var(--surface-zebra);
+  color: var(--text-secondary);
+}
+
+.md-search-result__article { background-color: var(--surface-page); }
+.md-search-result__title { color: var(--text-primary); }
+.md-search-result__teaser { color: var(--text-secondary); }
+.md-search-result__link { color: var(--brand-red); }
+
+.md-search-result__link:hover,
+.md-search-result__link:focus {
+  background-color: color-mix(in srgb, var(--brand-gold) 8%, transparent);
+}
+
+.md-search-result__article--document .md-search-result__title { color: var(--brand-red); }
+
+.md-search-result mark {
+  color: var(--brand-red);
+  background-color: color-mix(in srgb, var(--brand-gold) 30%, transparent);
+}
+
+/* ── Header icon buttons (mobile search toggle) ── */
+.md-header__button.md-icon { color: rgba(255, 255, 255, 0.8); }
+.md-header__button.md-icon:hover { color: var(--brand-gold); }
+
+/* ── Burger: SVG that morphs into an X while the drawer is open ── */
+.md-header__burger {
+  display: none;
+  margin: 0;
+  padding: 0.2rem;
+}
+
+.md-header__burger svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  display: block;
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.md-header__burger-line {
+  fill: none;
+  stroke: #bdbdbd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  transition:
+    stroke-dasharray 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 900ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.3s;
+}
+
+.md-header__burger-line--top { stroke-dasharray: 12 63; }
+.md-header__burger:hover .md-header__burger-line { stroke: var(--brand-red); }
+[data-md-toggle="drawer"]:checked ~ .md-header .md-header__burger svg { transform: rotate(-45deg); }
+[data-md-toggle="drawer"]:checked ~ .md-header .md-header__burger-line { stroke: var(--brand-red); }
+
+[data-md-toggle="drawer"]:checked ~ .md-header .md-header__burger-line--top {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* ── Focus ring: gold outline with a dark halo, readable on light and dark surfaces ── */
+:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--brand-dark);
+}
+
+.md-search__form:focus-visible,
+.md-search__input:focus-visible {
+  outline: none;
+}
+
+/* ── Source facts (drawer): release, stars, forks from header.js ── */
 .md-source {
   background-color: var(--brand-dark);
   display: flex;
@@ -109,12 +352,11 @@
   align-self: center;
 }
 
-.md-source__fact::before {
-  display: none !important;
-}
+/* (0,2,1) beats Material's `.md-source__fact:nth-child(1n+2)::before` separator */
+.md-source__fact:nth-child(n)::before { display: none; }
 
-.md-source__fact {
-  display: inline-flex !important;
+.md-source__facts .md-source__fact {
+  display: inline-flex;
   align-items: center;
   gap: 0.2em;
 }
@@ -131,193 +373,36 @@
   gap: 0.6em;
 }
 
-/* ── Header icons ── */
-.md-header__button.md-icon {
-  color: rgba(255, 255, 255, 0.8);
+/* ── Responsive ── */
+@media screen and (max-width: 76.1875em) {
+  .md-header__burger { display: block; }
 }
 
-.md-header__button.md-icon:hover {
-  color: var(--brand-gold);
+/* the burger takes over below Material's drawer breakpoint: one menu, not two */
+@media screen and (max-width: 76.1875em) {
+  .md-header__nav { display: none; }
 }
 
-/* ── Focus ring ── */
-:focus-visible {
-  outline: 2px solid var(--brand-gold);
-  outline-offset: 2px;
-}
-
-.md-search__form:focus-visible,
-.md-search__input:focus-visible {
-  outline: none;
-}
-
-/* ── Search ── */
-.md-search__form {
-  background-color: var(--surface-page);
-  border-radius: var(--radius-sm);
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.md-search__form:focus-within {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.md-search__input {
-  color: var(--brand-dark) !important;
-  background-color: transparent !important;
-}
-
-.md-search__input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.md-search__icon svg,
-.md-header .md-search__icon svg {
-  color: rgba(0, 0, 0, 0.45);
-  fill: rgba(0, 0, 0, 0.45);
-}
-
-.md-search__output {
-  background-color: var(--surface-page);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.md-search__scrollwrap {
-  background-color: var(--surface-page);
-}
-
-.md-search-result {
-  border-top: 1px solid var(--border-subtle);
-}
-
-.md-search-result__meta {
-  background-color: #f5f5f5;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.md-search-result__article {
-  background-color: var(--surface-page);
-}
-
-.md-search-result__title {
-  color: var(--brand-dark);
-}
-
-.md-search-result__teaser {
-  color: var(--text-secondary);
-}
-
-.md-search-result__link {
-  color: var(--brand-red);
-}
-
-.md-search-result__link:hover,
-.md-search-result__link:focus {
-  background-color: rgba(249, 179, 97, 0.08);
-}
-
-.md-search-result__article--document .md-search-result__title {
-  color: var(--brand-red);
-}
-
-.md-search-result mark {
-  color: var(--brand-red);
-  background-color: rgba(249, 179, 97, 0.3);
-}
-
-/* ── Burger menu ── */
-.md-header__button.md-icon[for="__drawer"] {
-  width: 2.2rem;
-  height: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background 0.3s ease,
-    transform 0.2s ease;
-}
-
-.md-header__button.md-icon[for="__drawer"] svg {
-  width: 1.2rem;
-  height: 1.2rem;
-  color: var(--text-inverse);
-  fill: currentColor;
-}
-
-.md-header__button.md-icon[for="__drawer"]:hover {
-  transform: translateY(-3px);
-}
-
-.md-header__button.md-icon[for="__drawer"]:active {
-  transform: translateY(0);
-}
-
-@media screen and (min-width: 3000px) {
-  .md-container {
-    max-width: 3000px;
-    margin: 0 auto;
-  }
-}
-
-@media screen and (min-width: 1220px) {
-  .md-header__button.md-icon[for="__drawer"] {
-    display: none;
-  }
-}
-
-/* ── Logo glow ring (header) ── */
-.md-header .md-logo::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background-image: linear-gradient(
-    var(--brand-red, #D51A1A),
-    var(--brand-gold, #F9B361),
-    var(--brand-red, #D51A1A)
-  );
-  animation: logo-ring-rotate 2.4s linear infinite;
-  z-index: 0;
-}
-
-.md-header .md-logo::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background-image: linear-gradient(
-    var(--brand-red, #D51A1A),
-    var(--brand-gold, #F9B361),
-    var(--brand-red, #D51A1A)
-  );
-  animation: logo-ring-rotate 2.4s linear infinite;
-  filter: blur(6px);
-  opacity: 0.5;
-  z-index: 0;
-}
-
-@keyframes logo-ring-rotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .md-header .md-logo::before,
-  .md-header .md-logo::after {
-    animation: none;
-  }
-}
-
-/* ── Responsive (≤480px) ── */
 @media screen and (max-width: 480px) {
-  .md-source__repository {
-    font-size: 0.6rem;
-  }
+  .md-header__brand { display: none; }
+
+  .md-source__repository { font-size: 0.6rem; }
 
   .md-source__fact svg {
     width: 11px;
     height: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-glow::before,
+  .logo-glow__blur {
+    animation: none;
+  }
+
+  .md-header__burger svg,
+  .md-header__burger-line,
+  .md-header__nav a::before {
+    transition: none;
   }
 }

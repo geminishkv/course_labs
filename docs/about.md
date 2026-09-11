@@ -1,5 +1,6 @@
 ---
 hide:
+  - navigation
   - toc
 
 title: "О проекте — цели и структура курса AppSec МГТУ"

@@ -58,6 +58,19 @@ $ sudo dnf install -y git gh
 $ brew install git gh
 ```
 
+### Windows
+
+```powershell
+PS> winget install --id Git.Git -e         # Git for Windows: git, Git Bash, OpenSSH
+PS> winget install --id GitHub.cli -e      # gh
+PS> git --version; gh --version
+```
+
+- Переводы строк: `git config --global core.autocrlf true` на Windows, `input` внутри WSL2 — иначе каждый файл будет «изменён» из-за CRLF.
+- SSH-агент — служба Windows: `Get-Service ssh-agent | Set-Service -StartupType Automatic; Start-Service ssh-agent; ssh-add $HOME\.ssh\id_ed25519`.
+- GnuPG: `winget install --id GnuPG.Gpg4win -e`, затем `git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`; ключи создаются так же, как в разделе ниже.
+- Работать удобнее из Git Bash или Windows Terminal; в WSL2 применимы инструкции для Ubuntu целиком.
+
 Авторизация:
 
 ```bash
@@ -155,7 +168,7 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
 
 ## Troubleshooting
 
-Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/troubleshooting/).
+Если столкнулись с проблемами — смотрите [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/).
 
 ***
 

@@ -5,7 +5,7 @@ site_description: >
   Практический курс по прикладной безопасности приложений: лабораторные работы и аннотационные материалы
   для прокачки навыков в ИБ (информационной безопасности), а также чеклисты и методички по AppSec, DevSecOps
   и OWASP Top 10.
-site_author: "Илья Шмаков"
+site_author: "Elijah S Shmakov"
 repo_url: https://github.com/geminishkv/course_labs
 repo_name: geminishkv/course_labs
 edit_uri: edit/develop/docs/
@@ -26,8 +26,8 @@ theme:
   font: false
   features:
     - navigation.indexes
+    - navigation.tabs        # sidebar shows the active section only; the tab bar is hidden in main.html
     - search.highlight
-    - navigation.tabs.sticky
     - navigation.top
     - search.share
     - search.suggest
@@ -48,12 +48,13 @@ plugins:
         color: "#ffffff"
         font_family: Roboto
   - meta-descriptions
-  - macros
   - mkdocs-pdf
   - minify:
       minify_html: true
       minify_css: true
       minify_js: true
+      css_files:
+        - stylesheets/home.css   # loaded by overrides/home.html only
       htmlmin_opts:
         remove_comments: true
   - glightbox:
@@ -118,11 +119,12 @@ watch:
   - docs
 
 extra_css:
+  - stylesheets/fonts.css      # self-hosted Unbounded / Roboto / Roboto Mono (OFL)
   - stylesheets/tokens.css
   - stylesheets/header.css
   - stylesheets/sidebar.css
   - stylesheets/typeset.css
-  - stylesheets/layout.css
+  - stylesheets/components.css
   - stylesheets/banners.css
 
 extra_javascript:
@@ -154,6 +156,11 @@ extra:
 #  analytics:
 #    provider: google
 #    property: G-XXXXXXXXXX
+
+# never publish the theme overrides or the snippet-only glossary as pages
+exclude_docs: |
+  overrides/
+  glossary.md
 
 nav:
   - "geminishkv.tech": "https://geminishkv.tech/"
@@ -190,6 +197,7 @@ nav:
           - "Вариант №4": labs/tests/basic/test04.md
           - "Вариант №5": labs/tests/basic/test05.md
   - "Материалы":
+      - materials/index.md
       - "Лекции":
           - "Fintech по-русски": materials/lectures/fintech_ru.md
       - "Примеры":

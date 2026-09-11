@@ -25,7 +25,7 @@
 * 7 intro-руководств + 10 лабораторных работ + итоговый pet-project + 7 тестов (5 базовых + 2 лекционных)
 * Каждая лабораторная — отдельный репозиторий с исходным кодом и отчётом в формате `gistup`
 * Все работы выполняются в ветке `develop` → `pull request` → [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) от [geminishkv](https://github.com/geminishkv)
-* Прогрессия: `Git` → `Linux` → `Nmap` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `Secret Detection` → `CI/CD` → `Risk Analysis`
+* Прогрессия: `Git` → `Linux` → `Nmap` → `Risk Analysis` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Итоговый Risk Analysis` → `Pet-project`
 
 **Замечания:**
 
@@ -38,7 +38,7 @@
 ### Этапы
 
 1. Выполнить подготовительные инструкции:
-    * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux
+    * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux, что учесть на Windows
     * [Настройка Git, GPG и GitHub CLI](labs/intro/git_setup.md) — git config, SSH, GnuPG, gh
     * [Оформление отчётов Gistup](labs/intro/gistup_guide.md) — формат, структура, правила
     * [Введение в сети и TCP/IP](labs/intro/networking_basics.md) — OSI, порты, DNS, HTTP
@@ -140,12 +140,22 @@ flowchart TD
 * Подготовка окружения
 
 ```bash
-$ python3 -m venv .venv
-$ source .venv/bin/activate
-$ pip install -r requirements.txt
-$ python -m mkdocs serve --livereload
+$ uv sync --frozen            # .venv из uv.lock (pyproject.toml — единственный источник версий)
+$ uv run mkdocs serve --livereload
 # or
-$ mkdocs serve -a 127.0.0.1:8001 # прямое обозначение адреса
+$ uv run mkdocs serve -a 0.0.0.0:8000   # открыть с телефона по IP ноутбука
+```
+
+* Проверки как в CI (каждая команда запускается локально теми же версиями, что в `uv.lock` / `package-lock.json`)
+
+```bash
+$ uv run mkdocs build --strict                          # сборка с предупреждениями как ошибками
+$ uv run --only-group lint yamllint --no-warnings .github/workflows mkdocs.yml
+$ .github/scripts/pip-audit.sh                          # pip-audit по экспорту лока
+$ .github/scripts/sbom.sh                               # CycloneDX SBOM рантайм-набора (как на шаге релиза)
+$ uv run --only-group sast bandit -r labs -ll           # + исключения см. ci.yml
+$ npm ci && npx stylelint "docs/stylesheets/*.css" && npx eslint docs/javascripts/
+$ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 ```
 
 * Перегенерация Mermaid-диаграмм (при изменении `.mmd` файлов)
@@ -168,11 +178,12 @@ $ lsof -i :8000
 $ kill <PID>
 ```
 
-* Release
+* Release — версия в `pyproject.toml` и `package.json`, запись в `RELEASE_NOTES.md`, подписанный тег;
+  `release-from-notes.yml` по тегу собирает релиз из записи и прикладывает SBOM
 
 ```bash
-$ git tag -a v1.0.0 -m "v1.0.0"
-$ git push origin v1.0.0
+$ git tag -s v2.2.0 -m "v2.2.0"
+$ git push origin v2.2.0
 
 $ git tag -d v0.1.0                    # удалить локальный тег
 $ git push --delete origin v1.2.3   # удалить тот же тег на GitHub
@@ -180,11 +191,51 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 
 ***
 
+### Архитектура сайта
+
+**Контент.** Исходники лаб, intro и тестов живут в `labs/`, страницы сайта в `docs/` подключают их через
+`include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
+дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
+
+**Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
+её после согласия подключает `banners.js`). `overrides/home.html` —
+главная без сайдбаров (`hide: [navigation, toc]`), подключает `home.css`. `partials/header.html` — шапка
+в стиле gpages поверх Material 9.7.x: логотип с кольцом, пилюли разделов с активным состоянием, штатный
+поиск и бургер; ссылки от корня сайта, потому что instant navigation не подменяет шапку.
+
+**Навигация.** Одно меню: пилюли шапки переключают разделы, левый сайдбар (`navigation.tabs`) показывает
+только текущий раздел, панель табов Material не рендерится; в шторке на телефоне всё дерево. Страницы без
+раздела («О проекте», релизы, политики) идут во всю ширину.
+
+**CSS.** Порядок каскада задан `extra_css`: `fonts.css` (Roboto, Roboto Mono, Unbounded из `artifacts/fonts/`,
+woff2 по unicode-range, OFL; внешних шрифтов нет, `font-src 'self'`) → `tokens.css` (палитра gpages, `--ink-*`, токены Material) →
+`typeset.css` (типографика, код, списки, сетка 88rem) → `header.css` → `sidebar.css` → `components.css`
+(hero, нумерованные заголовки, таблицы, карточки лаб, футер) → `banners.css`. `home.css` подключается
+только главной (`css_files` плагина minify → `home.min.css`) и может переопределять токены на `body`.
+Адаптив главной ярусами 1600 / 1220 / 960 / 700 px; всё в rem, чтобы масштабироваться с корневым шрифтом
+Material. `!important` только в print. Значения `@property` не нулевые (`360deg`): минификатор превращает
+`0deg` в `0` и молча отбрасывает регистрацию.
+
+**JS.** Четыре модуля без зависимостей: `header.js` (стекло шапки при скролле), `typewriter-target.js`
+(hero, уважает `prefers-reduced-motion`), `banners.js` (уведомление и карточка согласия, классы
+`ata-legal` / `ata-consent`, чтобы антибаннеры не резали; Метрика грузится только после «Принять», выбор
+хранится 180 дней в `ata_consent`, сменить его можно со страницы политики), `effects.js` (fade-in и живой
+конвейер). Интерактивные элементы на тач-экранах не меньше 44 px.
+Статистику репозитория в шторке рисует сам Material. Всё подписано на `document$` для instant navigation.
+
+**Сборка и зависимости.** `pyproject.toml` + `uv.lock` (хэши), группы инструментов CI (`lint`, `audit`,
+`sast`, `sbom`). `hooks.py` считает цифры hero из дерева `docs/` и дописывает sitemap. CI ставит всё через
+`uv sync --frozen`, сканеры из лока, hadolint с проверкой sha256. Dependabot: actions / npm / uv, cooldown 7 дней.
+Релиз (`release-from-notes.yml`, тег `v*.*.*`) берёт текст из `RELEASE_NOTES.md` и прикладывает CycloneDX SBOM
+рантайм-набора из лока (`.github/scripts/sbom.sh`).
+
+***
+
 ### Структура
 
 ```
 ├── docs/                              # MkDocs source (обёртки + материалы)
-│   ├── index.md                       # Главная (hero + lab cards + tg widget)
+│   ├── index.md                       # Главная: hero, бейджи, о курсе, конвейер лаб с материалами, требования, материалы
 │   ├── about.md                       # О проекте
 │   ├── privacy.md                     # Политика конфиденциальности
 │   ├── Security.md                    # Политика безопасности
@@ -210,24 +261,29 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 │   │   ├── licenses.md               # 41 лицензия
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (~45 карточек)
-│   ├── stylesheets/                   # CSS (tokens, layout, header, sidebar, ...)
-│   ├── javascripts/                   # JS (header, typewriter, banners, effects)
-│   ├── overrides/                     # main.html (SEO, JSON-LD, Метрика), 404.html
+│   ├── stylesheets/                   # fonts → tokens → typeset → header → sidebar → components → banners; home.css только на главной
+│   ├── javascripts/                   # header (стекло), typewriter-target, banners (уведомление + согласие на Метрику), effects (fade-in, конвейер)
+│   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD), home.html (главная), 404.html, partials/header.html
 │   └── artifacts/
 │       ├── assets/                    # Logo (SVG), favicon (ICO), images
-│       └── diagrams/                  # 7 Mermaid SVG + .mmd исходники
+│       ├── diagrams/                  # 7 Mermaid SVG + .mmd исходники
+│       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/
-│   ├── intro/                         # 7 intro-руководств (исходники)
+│   ├── intro/                         # 7 intro-руководств (исходники; Linux, macOS и Windows)
 │   ├── basic/lab01-10/               # 10 лабораторных (код + README + docker-compose)
 │   ├── pet_project/                   # Итоговый проект
 │   └── tests/
 │       ├── basic/                     # 5 базовых тестов (исходники)
 │       └── lectures/ru_fintech/       # 2 варианта теста Fintech (исходники)
-├── .github/workflows/
-│   ├── ci.yml                         # Lint → Audit → Mermaid SVG → Build → Deploy
-│   └── release-from-notes.yml
-├── hooks.py                           # Sitemap enrichment (priority + changefreq)
+├── .github/
+│   ├── workflows/ci.yml               # Lint → pip-audit → bandit / hadolint → Build → Deploy (всё из uv.lock)
+│   ├── workflows/release-from-notes.yml # релиз из RELEASE_NOTES.md по тегу v*.*.* + CycloneDX SBOM
+│   ├── scripts/pip-audit.sh           # аудит экспорта лока, одинаково в CI и локально
+│   ├── scripts/sbom.sh                # SBOM рантайм-набора из лока (шаг релиза)
+│   └── dependabot.yml                 # actions / npm / uv, cooldown 7 дней
+├── hooks.py                           # цифры hero при сборке + sitemap (priority, changefreq)
 ├── mkdocs.yml
-├── requirements.txt
+├── pyproject.toml                     # зависимости сайта и группы инструментов CI
+├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen
 └── RELEASE_NOTES.md
 ```

@@ -152,6 +152,7 @@ $ uv run mkdocs serve -a 0.0.0.0:8000   # открыть с телефона п�
 $ uv run mkdocs build --strict                          # сборка с предупреждениями как ошибками
 $ uv run --only-group lint yamllint --no-warnings .github/workflows mkdocs.yml
 $ .github/scripts/pip-audit.sh                          # pip-audit по экспорту лока
+$ .github/scripts/sbom.sh                               # CycloneDX SBOM рантайм-набора (как на шаге релиза)
 $ uv run --only-group sast bandit -r labs -ll           # + исключения см. ci.yml
 $ npm ci && npx stylelint "docs/stylesheets/*.css" && npx eslint docs/javascripts/
 $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
@@ -177,11 +178,12 @@ $ lsof -i :8000
 $ kill <PID>
 ```
 
-* Release
+* Release — версия в `pyproject.toml` и `package.json`, запись в `RELEASE_NOTES.md`, подписанный тег;
+  `release-from-notes.yml` по тегу собирает релиз из записи и прикладывает SBOM
 
 ```bash
-$ git tag -a v1.0.0 -m "v1.0.0"
-$ git push origin v1.0.0
+$ git tag -s v2.2.0 -m "v2.2.0"
+$ git push origin v2.2.0
 
 $ git tag -d v0.1.0                    # удалить локальный тег
 $ git push --delete origin v1.2.3   # удалить тот же тег на GitHub
@@ -195,8 +197,8 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 `include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
 дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
 
-**Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, шрифты, JSON-LD, Метрика; no-JS пиксель
-Метрики в конце `<body>`, иначе он закрывает head и og-теги уезжают в body). `overrides/home.html` —
+**Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
+её после согласия подключает `banners.js`). `overrides/home.html` —
 главная без сайдбаров (`hide: [navigation, toc]`), подключает `home.css`. `partials/header.html` — шапка
 в стиле gpages поверх Material 9.7.x: логотип с кольцом, пилюли разделов с активным состоянием, штатный
 поиск и бургер; ссылки от корня сайта, потому что instant navigation не подменяет шапку.
@@ -205,7 +207,8 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 только текущий раздел, панель табов Material не рендерится; в шторке на телефоне всё дерево. Страницы без
 раздела («О проекте», релизы, политики) идут во всю ширину.
 
-**CSS.** Порядок каскада задан `extra_css`: `tokens.css` (палитра gpages, `--ink-*`, токены Material) →
+**CSS.** Порядок каскада задан `extra_css`: `fonts.css` (Roboto, Roboto Mono, Unbounded из `artifacts/fonts/`,
+woff2 по unicode-range, OFL; внешних шрифтов нет, `font-src 'self'`) → `tokens.css` (палитра gpages, `--ink-*`, токены Material) →
 `typeset.css` (типографика, код, списки, сетка 88rem) → `header.css` → `sidebar.css` → `components.css`
 (hero, нумерованные заголовки, таблицы, карточки лаб, футер) → `banners.css`. `home.css` подключается
 только главной (`css_files` плагина minify → `home.min.css`) и может переопределять токены на `body`.
@@ -214,13 +217,17 @@ Material. `!important` только в print. Значения `@property` не 
 `0deg` в `0` и молча отбрасывает регистрацию.
 
 **JS.** Четыре модуля без зависимостей: `header.js` (стекло шапки при скролле), `typewriter-target.js`
-(hero, уважает `prefers-reduced-motion`), `banners.js` (уведомление и cookie-карточка, классы
-`ata-legal` / `ata-consent`, чтобы антибаннеры не резали), `effects.js` (fade-in и живой конвейер).
+(hero, уважает `prefers-reduced-motion`), `banners.js` (уведомление и карточка согласия, классы
+`ata-legal` / `ata-consent`, чтобы антибаннеры не резали; Метрика грузится только после «Принять», выбор
+хранится 180 дней в `ata_consent`, сменить его можно со страницы политики), `effects.js` (fade-in и живой
+конвейер). Интерактивные элементы на тач-экранах не меньше 44 px.
 Статистику репозитория в шторке рисует сам Material. Всё подписано на `document$` для instant navigation.
 
 **Сборка и зависимости.** `pyproject.toml` + `uv.lock` (хэши), группы инструментов CI (`lint`, `audit`,
-`sast`). `hooks.py` считает цифры hero из дерева `docs/` и дописывает sitemap. CI ставит всё через
+`sast`, `sbom`). `hooks.py` считает цифры hero из дерева `docs/` и дописывает sitemap. CI ставит всё через
 `uv sync --frozen`, сканеры из лока, hadolint с проверкой sha256. Dependabot: actions / npm / uv, cooldown 7 дней.
+Релиз (`release-from-notes.yml`, тег `v*.*.*`) берёт текст из `RELEASE_NOTES.md` и прикладывает CycloneDX SBOM
+рантайм-набора из лока (`.github/scripts/sbom.sh`).
 
 ***
 
@@ -254,14 +261,15 @@ Material. `!important` только в print. Значения `@property` не 
 │   │   ├── licenses.md               # 41 лицензия
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (~45 карточек)
-│   ├── stylesheets/                   # tokens → typeset → header → sidebar → components → banners; home.css только на главной
-│   ├── javascripts/                   # header (стекло), typewriter-target, banners (уведомление + cookie), effects (fade-in, конвейер)
-│   ├── overrides/                     # main.html (head: CSP, JSON-LD, Метрика), home.html (главная), 404.html, partials/header.html
+│   ├── stylesheets/                   # fonts → tokens → typeset → header → sidebar → components → banners; home.css только на главной
+│   ├── javascripts/                   # header (стекло), typewriter-target, banners (уведомление + согласие на Метрику), effects (fade-in, конвейер)
+│   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD), home.html (главная), 404.html, partials/header.html
 │   └── artifacts/
 │       ├── assets/                    # Logo (SVG), favicon (ICO), images
-│       └── diagrams/                  # 7 Mermaid SVG + .mmd исходники
+│       ├── diagrams/                  # 7 Mermaid SVG + .mmd исходники
+│       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/
-│   ├── intro/                         # 7 intro-руководств (исходники)
+│   ├── intro/                         # 7 intro-руководств (исходники; Linux, macOS и Windows)
 │   ├── basic/lab01-10/               # 10 лабораторных (код + README + docker-compose)
 │   ├── pet_project/                   # Итоговый проект
 │   └── tests/
@@ -269,8 +277,9 @@ Material. `!important` только в print. Значения `@property` не 
 │       └── lectures/ru_fintech/       # 2 варианта теста Fintech (исходники)
 ├── .github/
 │   ├── workflows/ci.yml               # Lint → pip-audit → bandit / hadolint → Build → Deploy (всё из uv.lock)
-│   ├── workflows/release-from-notes.yml
+│   ├── workflows/release-from-notes.yml # релиз из RELEASE_NOTES.md по тегу v*.*.* + CycloneDX SBOM
 │   ├── scripts/pip-audit.sh           # аудит экспорта лока, одинаково в CI и локально
+│   ├── scripts/sbom.sh                # SBOM рантайм-набора из лока (шаг релиза)
 │   └── dependabot.yml                 # actions / npm / uv, cooldown 7 дней
 ├── hooks.py                           # цифры hero при сборке + sitemap (priority, changefreq)
 ├── mkdocs.yml

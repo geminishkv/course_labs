@@ -38,7 +38,7 @@
 ### Этапы
 
 1. Выполнить подготовительные инструкции:
-    * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux
+    * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux, что учесть на Windows
     * [Настройка Git, GPG и GitHub CLI](labs/intro/git_setup.md) — git config, SSH, GnuPG, gh
     * [Оформление отчётов Gistup](labs/intro/gistup_guide.md) — формат, структура, правила
     * [Введение в сети и TCP/IP](labs/intro/networking_basics.md) — OSI, порты, DNS, HTTP

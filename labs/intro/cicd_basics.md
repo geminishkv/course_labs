@@ -41,59 +41,59 @@ GitHub Actions — встроенная CI/CD платформа GitHub. Workflo
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Workflow</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">.yml</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Автоматизированный процесс, описанный в YAML-файле</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Workflow</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">.yml</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Автоматизированный процесс, описанный в YAML-файле</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Event</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">trigger</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">push</span><span class="lab-tag">pull_request</span><span class="lab-tag">schedule</span><span class="lab-tag">workflow_dispatch</span></div>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Event</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">trigger</span>
+  </div>
+  <div class="lab-card-tags"><span class="lab-tag">push</span><span class="lab-tag">pull_request</span><span class="lab-tag">schedule</span><span class="lab-tag">workflow_dispatch</span></div>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Job</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">задача</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Набор шагов, выполняемых на одном runner</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Job</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">задача</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Набор шагов, выполняемых на одном runner</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Step</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">шаг</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Отдельное действие внутри job</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Step</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">шаг</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Отдельное действие внутри job</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Action</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Marketplace</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Переиспользуемый блок (из Marketplace или свой)</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Action</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Marketplace</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Переиспользуемый блок (из Marketplace или свой)</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Runner</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">VM</span>
-    </div>
-    <div class="lab-card-tags"><span class="lab-tag">ubuntu-latest</span><span class="lab-tag">macos-latest</span></div>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Runner</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">VM</span>
+  </div>
+  <div class="lab-card-tags"><span class="lab-tag">ubuntu-latest</span><span class="lab-tag">macos-latest</span></div>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Artifact</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">output</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Файл-результат job (отчёты, бинарники)</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Artifact</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">output</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Файл-результат job (отчёты, бинарники)</p>
   </div>
 
 </div>

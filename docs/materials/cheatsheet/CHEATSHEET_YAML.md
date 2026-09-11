@@ -274,39 +274,39 @@ $ yq eval '.jobs | keys' .github/workflows/ci.yml
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">3.10 → 3.1</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Потеря trailing zero</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>python-version: 3.10</code> → число 3.1. Решение: <code>"3.10"</code></p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">3.10 → 3.1</div>
+  <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Потеря trailing zero</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>python-version: 3.10</code> → число 3.1. Решение: <code>"3.10"</code></p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">yes → true</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Неявное приведение</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>deploy: yes</code> → boolean. Также <code>no</code>, <code>on</code>, <code>off</code>. Решение: <code>"yes"</code></p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">yes → true</div>
+  <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Неявное приведение</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>deploy: yes</code> → boolean. Также <code>no</code>, <code>on</code>, <code>off</code>. Решение: <code>"yes"</code></p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Табы вместо пробелов</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Ошибка парсинга</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Только пробелы, 2 на уровень. <code>indent_style = space</code></p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Табы вместо пробелов</div>
+  <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Ошибка парсинга</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Только пробелы, 2 на уровень. <code>indent_style = space</code></p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Пробел после :</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Обязателен</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>key:value</code> — ошибка. <code>key: value</code> — правильно</p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Пробел после :</div>
+  <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Обязателен</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>key:value</code> — ошибка. <code>key: value</code> — правильно</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Дублирующиеся ключи</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Тихая перезапись</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Два <code>name:</code> — YAML берёт последний без ошибки. Используйте <code>yamllint</code></p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Дублирующиеся ключи</div>
+  <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Тихая перезапись</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Два <code>name:</code> — YAML берёт последний без ошибки. Используйте <code>yamllint</code></p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Кириллица без кавычек</div>
-    <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Потенциальная проблема</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>title: Привет</code> → безопаснее <code>title: "Привет"</code></p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">Кириллица без кавычек</div>
+  <span class="lab-tag" style="border-color:rgba(249,179,97,0.3); color:#c48a20; background:rgba(249,179,97,0.08);">Потенциальная проблема</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>title: Привет</code> → безопаснее <code>title: "Привет"</code></p>
   </div>
 
 </div>

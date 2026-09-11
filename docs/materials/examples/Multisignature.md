@@ -27,28 +27,28 @@ keywords: "мультиподпись, multisig, криптография, Bitco
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">3/5</span>
-      <span class="lab-card-title" style="font-weight:700;">3 из 5</span>
-    </div>
-    <p style="font-size:0.78rem; margin:0; color:#444; line-height:1.45;">Кошелёк с низким уровнем доверия: тратить средства могут трое из пяти владельцев ключей, при этом перевод на адрес может инициировать любой.</p>
-    <span class="lab-tag">Снижает риск растраты, взлома и утраты средств</span>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">3/5</span>
+    <span class="lab-card-title" style="font-weight:700;">3 из 5</span>
+  </div>
+  <p style="font-size:0.78rem; margin:0; color:#444; line-height:1.45;">Кошелёк с низким уровнем доверия: тратить средства могут трое из пяти владельцев ключей, при этом перевод на адрес может инициировать любой.</p>
+  <span class="lab-tag">Снижает риск растраты, взлома и утраты средств</span>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">2/3</span>
-      <span class="lab-card-title" style="font-weight:700;">2 из 3 (горячий)</span>
-    </div>
-    <p style="font-size:0.78rem; margin:0; color:#444; line-height:1.45;">Биржа хранит один приватный ключ, второй — резервный, третий хранит команда кибербезопасности и использует его для подписи после проверки.</p>
-    <span class="lab-tag">Разделение контроля, снижение риска компрометации</span>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">2/3</span>
+    <span class="lab-card-title" style="font-weight:700;">2 из 3 (горячий)</span>
+  </div>
+  <p style="font-size:0.78rem; margin:0; color:#444; line-height:1.45;">Биржа хранит один приватный ключ, второй — резервный, третий хранит команда кибербезопасности и использует его для подписи после проверки.</p>
+  <span class="lab-tag">Разделение контроля, снижение риска компрометации</span>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">2/3</span>
-      <span class="lab-card-title" style="font-weight:700;">2 из 3 (эскроу)</span>
-    </div>
-    <p style="font-size:0.78rem; margin:0; color:#444; line-height:1.45;">Перевод с одного адреса на другой, где третья сторона выступает арбитром и подписывает транзакцию при успешном выполнении условий.</p>
-    <span class="lab-tag">Арбитраж и защита сторон сделки</span>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">2/3</span>
+    <span class="lab-card-title" style="font-weight:700;">2 из 3 (эскроу)</span>
+  </div>
+  <p style="font-size:0.78rem; margin:0; color:#444; line-height:1.45;">Перевод с одного адреса на другой, где третья сторона выступает арбитром и подписывает транзакцию при успешном выполнении условий.</p>
+  <span class="lab-tag">Арбитраж и защита сторон сделки</span>
   </div>
 </div>
 

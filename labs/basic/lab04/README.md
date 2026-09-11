@@ -36,51 +36,51 @@ lab04
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Актив</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Asset</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Всё, что имеет ценность: данные, системы, репутация, бизнес-процессы</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Актив</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Asset</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Всё, что имеет ценность: данные, системы, репутация, бизнес-процессы</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Угроза</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Threat</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Потенциальное событие, способное нанести ущерб активу</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Угроза</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Threat</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Потенциальное событие, способное нанести ущерб активу</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Уязвимость</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Vulnerability</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Слабость актива или процесса, которая может быть эксплуатирована угрозой</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Уязвимость</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Vulnerability</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Слабость актива или процесса, которая может быть эксплуатирована угрозой</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Риск</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Risk = Probability × Impact</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Вероятность реализации угрозы, умноженная на величину ущерба</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Риск</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Risk = Probability × Impact</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Вероятность реализации угрозы, умноженная на величину ущерба</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Мера снижения</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Mitigation</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Техническое или организационное решение, снижающее вероятность или ущерб</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Мера снижения</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Mitigation</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Техническое или организационное решение, снижающее вероятность или ущерб</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Остаточный риск</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Residual Risk</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Риск, остающийся после применения мер снижения</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Остаточный риск</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Residual Risk</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Риск, остающийся после применения мер снижения</p>
   </div>
 
 </div>
@@ -90,27 +90,27 @@ lab04
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">Избежание</div>
-    <div class="lab-card-tags"><span class="lab-tag">Avoidance</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Отказ от деятельности, порождающей риск</p>
+  <div class="lab-card-title" style="font-weight:700;">Избежание</div>
+  <div class="lab-card-tags"><span class="lab-tag">Avoidance</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Отказ от деятельности, порождающей риск</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">Снижение</div>
-    <div class="lab-card-tags"><span class="lab-tag">Mitigation</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Внедрение контролей для уменьшения вероятности или ущерба</p>
+  <div class="lab-card-title" style="font-weight:700;">Снижение</div>
+  <div class="lab-card-tags"><span class="lab-tag">Mitigation</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Внедрение контролей для уменьшения вероятности или ущерба</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">Передача</div>
-    <div class="lab-card-tags"><span class="lab-tag">Transfer</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Перенос последствий на третью сторону (страхование, аутсорс)</p>
+  <div class="lab-card-title" style="font-weight:700;">Передача</div>
+  <div class="lab-card-tags"><span class="lab-tag">Transfer</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Перенос последствий на третью сторону (страхование, аутсорс)</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">Принятие</div>
-    <div class="lab-card-tags"><span class="lab-tag">Acceptance</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Осознанное решение принять риск (с обоснованием и мониторингом)</p>
+  <div class="lab-card-title" style="font-weight:700;">Принятие</div>
+  <div class="lab-card-tags"><span class="lab-tag">Acceptance</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Осознанное решение принять риск (с обоснованием и мониторингом)</p>
   </div>
 
 </div>

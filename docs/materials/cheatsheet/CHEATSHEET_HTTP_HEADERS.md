@@ -16,53 +16,53 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">HSTS</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Strict-Transport-Security</span>
-    </div>
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CRITICAL</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Принуждает браузер использовать только HTTPS. Без этого заголовка возможна атака SSL stripping.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">HSTS</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Strict-Transport-Security</span>
+  </div>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CRITICAL</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Принуждает браузер использовать только HTTPS. Без этого заголовка возможна атака SSL stripping.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">CSP</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Content-Security-Policy</span>
-    </div>
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CRITICAL</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Контролирует откуда загружаются ресурсы (скрипты, стили, изображения). Основная защита от XSS.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">CSP</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Content-Security-Policy</span>
+  </div>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CRITICAL</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Контролирует откуда загружаются ресурсы (скрипты, стили, изображения). Основная защита от XSS.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">X-Frame</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">X-Frame-Options + frame-ancestors</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Защита от clickjacking. <code>DENY</code> или <code>SAMEORIGIN</code>. CSP <code>frame-ancestors</code> — современная замена.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">X-Frame</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">X-Frame-Options + frame-ancestors</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Защита от clickjacking. <code>DENY</code> или <code>SAMEORIGIN</code>. CSP <code>frame-ancestors</code> — современная замена.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">X-Content</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">X-Content-Type-Options</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>nosniff</code> — запрещает MIME-sniffing. Без него браузер может интерпретировать файл как скрипт.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">X-Content</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">X-Content-Type-Options</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>nosniff</code> — запрещает MIME-sniffing. Без него браузер может интерпретировать файл как скрипт.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Referrer</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Referrer-Policy</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Контролирует утечку URL при переходах. <code>strict-origin-when-cross-origin</code> — оптимальный баланс.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Referrer</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Referrer-Policy</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Контролирует утечку URL при переходах. <code>strict-origin-when-cross-origin</code> — оптимальный баланс.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Permissions</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Permissions-Policy</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Ограничивает доступ к API браузера: камера, микрофон, геолокация, payment. Замена Feature-Policy.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Permissions</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Permissions-Policy</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Ограничивает доступ к API браузера: камера, микрофон, геолокация, payment. Замена Feature-Policy.</p>
   </div>
 
 </div>
@@ -147,31 +147,31 @@ Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Secure</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Только по HTTPS. Без него cookie утекает при HTTP downgrade.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Secure</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Только по HTTPS. Без него cookie утекает при HTTP downgrade.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">HttpOnly</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Недоступна из JavaScript. Без него XSS крадёт cookie через <code>document.cookie</code>.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">HttpOnly</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Недоступна из JavaScript. Без него XSS крадёт cookie через <code>document.cookie</code>.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">SameSite</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>Strict</code> — не отправляется при cross-site запросах. Защита от CSRF.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">SameSite</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>Strict</code> — не отправляется при cross-site запросах. Защита от CSRF.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Path</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>/</code> — ограничивает scope cookie конкретным путём.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Path</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;"><code>/</code> — ограничивает scope cookie конкретным путём.</p>
   </div>
 
 </div>

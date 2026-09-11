@@ -19,9 +19,9 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CVSS 10.0</span>
-    <span class="lab-card-title" style="font-weight:700;">Декабрь 2021</span>
-    <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: Apache Log4j 2.x (Java)</p>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CVSS 10.0</span>
+  <span class="lab-card-title" style="font-weight:700;">Декабрь 2021</span>
+  <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: Apache Log4j 2.x (Java)</p>
   </div>
 </div>
 
@@ -51,9 +51,9 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">APT / Nation-state</span>
-    <span class="lab-card-title" style="font-weight:700;">Декабрь 2020</span>
-    <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: SolarWinds Orion (мониторинг IT)</p>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">APT / Nation-state</span>
+  <span class="lab-card-title" style="font-weight:700;">Декабрь 2020</span>
+  <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: SolarWinds Orion (мониторинг IT)</p>
   </div>
 </div>
 
@@ -84,9 +84,9 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CVSS 10.0</span>
-    <span class="lab-card-title" style="font-weight:700;">Март 2024</span>
-    <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: xz/liblzma (Linux compression)</p>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CVSS 10.0</span>
+  <span class="lab-card-title" style="font-weight:700;">Март 2024</span>
+  <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: xz/liblzma (Linux compression)</p>
   </div>
 </div>
 
@@ -117,9 +117,9 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <span class="lab-tag">CI/CD Attack</span>
-    <span class="lab-card-title" style="font-weight:700;">Январь — Апрель 2021</span>
-    <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: Codecov Bash Uploader script</p>
+  <span class="lab-tag">CI/CD Attack</span>
+  <span class="lab-card-title" style="font-weight:700;">Январь — Апрель 2021</span>
+  <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: Codecov Bash Uploader script</p>
   </div>
 </div>
 
@@ -144,9 +144,9 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <span class="lab-tag">Dependency Hijack</span>
-    <span class="lab-card-title" style="font-weight:700;">Ноябрь 2018</span>
-    <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: event-stream npm package (2M+ weekly downloads)</p>
+  <span class="lab-tag">Dependency Hijack</span>
+  <span class="lab-card-title" style="font-weight:700;">Ноябрь 2018</span>
+  <p style="font-size:0.75rem; margin:0; color:#555;">Компонент: event-stream npm package (2M+ weekly downloads)</p>
   </div>
 </div>
 
@@ -175,23 +175,23 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">SCA в CI</div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">OWASP Dependency-Check, Trivy, npm audit, pip-audit — на каждый PR.</p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">SCA в CI</div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">OWASP Dependency-Check, Trivy, npm audit, pip-audit — на каждый PR.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">SBOM</div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Генерировать CycloneDX/SPDX при каждом релизе. Знать что внутри.</p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">SBOM</div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Генерировать CycloneDX/SPDX при каждом релизе. Знать что внутри.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Pinning</div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Lockfiles, SHA pinning для Actions, digest для Docker images.</p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Pinning</div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Lockfiles, SHA pinning для Actions, digest для Docker images.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Least Privilege</div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Минимальные permissions в CI, OIDC вместо secrets, scope-limited tokens.</p>
+  <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">Least Privilege</div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Минимальные permissions в CI, OIDC вместо secrets, scope-limited tokens.</p>
   </div>
 
 </div>

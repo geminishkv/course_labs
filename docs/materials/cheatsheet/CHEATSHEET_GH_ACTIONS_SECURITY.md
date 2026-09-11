@@ -61,28 +61,28 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">secrets</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Repository / Organization</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Хранятся зашифрованно. Маскируются в логах. Не доступны в fork PR.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">secrets</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Repository / Organization</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Хранятся зашифрованно. Маскируются в логах. Не доступны в fork PR.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">vars</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Variables (не секретные)</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Для конфигурации: имена ресурсов, URLs, флаги. Видны в логах.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">vars</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Variables (не секретные)</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Для конфигурации: имена ресурсов, URLs, флаги. Видны в логах.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">OIDC</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">OpenID Connect</span>
-    </div>
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">RECOMMENDED</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Безсекретная аутентификация в AWS/GCP/Azure. Токен выпускается на время job.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">OIDC</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">OpenID Connect</span>
+  </div>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">RECOMMENDED</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Безсекретная аутентификация в AWS/GCP/Azure. Токен выпускается на время job.</p>
   </div>
 
 </div>
@@ -191,19 +191,19 @@ on:
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">pull_request</span>
-    </div>
-    <span class="lab-tag lab-tag--gold">read-only</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Нет secrets для forks. Код из PR. Безопасно.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">pull_request</span>
+  </div>
+  <span class="lab-tag lab-tag--gold">read-only</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Нет secrets для forks. Код из PR. Безопасно.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">pull_request_target</span>
-    </div>
-    <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">DANGER</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Secrets доступны. read+write. Код из base branch. Fork-PR получает доступ к секретам.</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">pull_request_target</span>
+  </div>
+  <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">DANGER</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Secrets доступны. read+write. Код из base branch. Fork-PR получает доступ к секретам.</p>
   </div>
 
 </div>

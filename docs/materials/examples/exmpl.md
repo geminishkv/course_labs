@@ -96,50 +96,50 @@ keywords: "аналитические кейсы, ИБ, GDPR, риски, AppSec
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">01</span>
-      <span class="lab-card-title" style="font-weight:700;">Организационные</span>
-    </div>
-    <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
-      <li>Недостаточная поддержка со стороны руководства</li>
-      <li>Нарушение баланса интересов участников</li>
-      <li>Недооценка сложности проекта</li>
-    </ul>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">01</span>
+    <span class="lab-card-title" style="font-weight:700;">Организационные</span>
+  </div>
+  <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
+    <li>Недостаточная поддержка со стороны руководства</li>
+    <li>Нарушение баланса интересов участников</li>
+    <li>Недооценка сложности проекта</li>
+  </ul>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">02</span>
-      <span class="lab-card-title" style="font-weight:700;">Человеческого фактора</span>
-    </div>
-    <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
-      <li>Нежелание персонала осваивать новые технологии</li>
-      <li>Сложность освоения новых технологий</li>
-      <li>Сопротивление руководителей среднего звена</li>
-    </ul>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">02</span>
+    <span class="lab-card-title" style="font-weight:700;">Человеческого фактора</span>
+  </div>
+  <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
+    <li>Нежелание персонала осваивать новые технологии</li>
+    <li>Сложность освоения новых технологий</li>
+    <li>Сопротивление руководителей среднего звена</li>
+  </ul>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">03</span>
-      <span class="lab-card-title" style="font-weight:700;">Технические</span>
-    </div>
-    <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
-      <li>Жизненные циклы решений и платформ</li>
-      <li>Неочевидные решения и отсутствие аналогов</li>
-      <li>Ориентация на тупиковые технологии</li>
-      <li>Неполнота и неточность исходной информации</li>
-    </ul>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">03</span>
+    <span class="lab-card-title" style="font-weight:700;">Технические</span>
+  </div>
+  <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
+    <li>Жизненные циклы решений и платформ</li>
+    <li>Неочевидные решения и отсутствие аналогов</li>
+    <li>Ориентация на тупиковые технологии</li>
+    <li>Неполнота и неточность исходной информации</li>
+  </ul>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-    <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
-      <span class="lab-card-num">04</span>
-      <span class="lab-card-title" style="font-weight:700;">Внешние</span>
-    </div>
-    <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
-      <li>Недостаточное функционирование поставщиков и партнёров</li>
-      <li>Несвоевременное финансирование</li>
-      <li>Рыночная ситуация</li>
-      <li>Изменения регулирования</li>
-    </ul>
+  <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
+    <span class="lab-card-num">04</span>
+    <span class="lab-card-title" style="font-weight:700;">Внешние</span>
+  </div>
+  <ul style="font-size:0.78rem; margin:0; padding-left:1.1rem; color:#444; line-height:1.6;">
+    <li>Недостаточное функционирование поставщиков и партнёров</li>
+    <li>Несвоевременное финансирование</li>
+    <li>Рыночная ситуация</li>
+    <li>Изменения регулирования</li>
+  </ul>
   </div>
 </div>
 

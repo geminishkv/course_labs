@@ -21,66 +21,66 @@
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">7. Application</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Application</span>
-    </div>
-    <span class="lab-tag">HTTP</span><span class="lab-tag">HTTPS</span><span class="lab-tag">DNS</span><span class="lab-tag">SSH</span><span class="lab-tag">FTP</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Интерфейс для приложений пользователя</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">7. Application</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Application</span>
+  </div>
+  <span class="lab-tag">HTTP</span><span class="lab-tag">HTTPS</span><span class="lab-tag">DNS</span><span class="lab-tag">SSH</span><span class="lab-tag">FTP</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Интерфейс для приложений пользователя</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">6. Presentation</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Application</span>
-    </div>
-    <span class="lab-tag">TLS/SSL</span><span class="lab-tag">MIME</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Кодирование, шифрование, сжатие данных</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">6. Presentation</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Application</span>
+  </div>
+  <span class="lab-tag">TLS/SSL</span><span class="lab-tag">MIME</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Кодирование, шифрование, сжатие данных</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">5. Session</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Application</span>
-    </div>
-    <span class="lab-tag">RPC</span><span class="lab-tag">NetBIOS</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Управление сессиями между узлами</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">5. Session</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Application</span>
+  </div>
+  <span class="lab-tag">RPC</span><span class="lab-tag">NetBIOS</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Управление сессиями между узлами</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">4. Transport</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Transport</span>
-    </div>
-    <span class="lab-tag">TCP</span><span class="lab-tag">UDP</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Доставка данных между процессами</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">4. Transport</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Transport</span>
+  </div>
+  <span class="lab-tag">TCP</span><span class="lab-tag">UDP</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Доставка данных между процессами</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3. Network</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Internet</span>
-    </div>
-    <span class="lab-tag">IP</span><span class="lab-tag">ICMP</span><span class="lab-tag">ARP</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Маршрутизация между сетями</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3. Network</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Internet</span>
+  </div>
+  <span class="lab-tag">IP</span><span class="lab-tag">ICMP</span><span class="lab-tag">ARP</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Маршрутизация между сетями</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">2. Data Link</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Network Access</span>
-    </div>
-    <span class="lab-tag">Ethernet</span><span class="lab-tag">Wi-Fi</span><span class="lab-tag">MAC</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Передача в локальной сети</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">2. Data Link</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Network Access</span>
+  </div>
+  <span class="lab-tag">Ethernet</span><span class="lab-tag">Wi-Fi</span><span class="lab-tag">MAC</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Передача в локальной сети</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">1. Physical</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Network Access</span>
-    </div>
-    <span class="lab-tag">Кабели</span><span class="lab-tag">Радио</span>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Физический сигнал — провода, оптика, радиоволны</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">1. Physical</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Network Access</span>
+  </div>
+  <span class="lab-tag">Кабели</span><span class="lab-tag">Радио</span>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Физический сигнал — провода, оптика, радиоволны</p>
   </div>
 
 </div>
@@ -111,18 +111,18 @@ $ hostname -I           # только IP, без лишнего
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">10.0.0.0/8</div>
-    <div class="lab-card-tags"><span class="lab-tag">255.0.0.0</span><span class="lab-tag">Крупные сети</span></div>
+  <div class="lab-card-title" style="font-weight:700;">10.0.0.0/8</div>
+  <div class="lab-card-tags"><span class="lab-tag">255.0.0.0</span><span class="lab-tag">Крупные сети</span></div>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">172.16.0.0/12</div>
-    <div class="lab-card-tags"><span class="lab-tag">255.240.0.0</span><span class="lab-tag">Средние сети</span></div>
+  <div class="lab-card-title" style="font-weight:700;">172.16.0.0/12</div>
+  <div class="lab-card-tags"><span class="lab-tag">255.240.0.0</span><span class="lab-tag">Средние сети</span></div>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">192.168.0.0/16</div>
-    <div class="lab-card-tags"><span class="lab-tag">255.255.0.0</span><span class="lab-tag">Домашние / лаб. сети</span></div>
+  <div class="lab-card-title" style="font-weight:700;">192.168.0.0/16</div>
+  <div class="lab-card-tags"><span class="lab-tag">255.255.0.0</span><span class="lab-tag">Домашние / лаб. сети</span></div>
   </div>
 
 </div>
@@ -162,21 +162,21 @@ $ ip route show
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">0 — 1023</div>
-    <div class="lab-card-tags"><span class="lab-tag">Well-known</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Стандартные сервисы, требуют root</p>
+  <div class="lab-card-title" style="font-weight:700;">0 — 1023</div>
+  <div class="lab-card-tags"><span class="lab-tag">Well-known</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Стандартные сервисы, требуют root</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">1024 — 49151</div>
-    <div class="lab-card-tags"><span class="lab-tag">Registered</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Зарегистрированные приложения</p>
+  <div class="lab-card-title" style="font-weight:700;">1024 — 49151</div>
+  <div class="lab-card-tags"><span class="lab-tag">Registered</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Зарегистрированные приложения</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">49152 — 65535</div>
-    <div class="lab-card-tags"><span class="lab-tag">Dynamic</span></div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Временные (ephemeral) порты</p>
+  <div class="lab-card-title" style="font-weight:700;">49152 — 65535</div>
+  <div class="lab-card-tags"><span class="lab-tag">Dynamic</span></div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Временные (ephemeral) порты</p>
   </div>
 
 </div>
@@ -186,67 +186,67 @@ $ ip route show
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">22</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · SSH</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Удалённый доступ к серверу</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">22</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · SSH</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Удалённый доступ к серверу</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">80</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTP</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Веб без шифрования</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">80</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTP</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Веб без шифрования</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">443</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTPS</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Веб с TLS-шифрованием</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">443</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTPS</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Веб с TLS-шифрованием</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">53</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/UDP · DNS</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Резолвинг доменных имён</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">53</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/UDP · DNS</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Резолвинг доменных имён</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3306</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · MySQL</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">База данных — частая цель атак</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3306</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · MySQL</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">База данных — частая цель атак</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">5432</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · PostgreSQL</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">База данных PostgreSQL</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">5432</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · PostgreSQL</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">База данных PostgreSQL</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">8080</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTP Proxy</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Альтернативный веб / прокси</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">8080</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTP Proxy</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Альтернативный веб / прокси</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">8443</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTPS Alt</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Альтернативный HTTPS</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">8443</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP · HTTPS Alt</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Альтернативный HTTPS</p>
   </div>
 
 </div>
@@ -307,51 +307,51 @@ $ dig example.com TXT    # текстовые записи (SPF, DKIM)
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">A</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">IPv4-адрес</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">example.com → 93.184.216.34</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">A</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">IPv4-адрес</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">example.com → 93.184.216.34</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">AAAA</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">IPv6-адрес</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">example.com → 2606:2800:...</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">AAAA</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">IPv6-адрес</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">example.com → 2606:2800:...</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">CNAME</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Псевдоним</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">www.example.com → example.com</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">CNAME</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Псевдоним</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">www.example.com → example.com</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">MX</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Почтовый сервер</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">mail.example.com</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">MX</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Почтовый сервер</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">mail.example.com</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">NS</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">DNS-сервер</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">ns1.example.com</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">NS</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">DNS-сервер</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">ns1.example.com</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">TXT</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Текстовая запись</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">SPF, DKIM, верификация домена</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">TXT</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Текстовая запись</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">SPF, DKIM, верификация домена</p>
   </div>
 
 </div>
@@ -375,43 +375,43 @@ Authorization: Bearer <token>  ← аутентификация
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">GET</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Safe · Idempotent</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Получить данные</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">GET</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Safe · Idempotent</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Получить данные</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">POST</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Создать ресурс</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">POST</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Создать ресурс</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">PUT</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe · Idempotent</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Заменить ресурс целиком</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">PUT</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe · Idempotent</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Заменить ресурс целиком</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">DELETE</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe · Idempotent</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Удалить ресурс</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">DELETE</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe · Idempotent</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Удалить ресурс</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">PATCH</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Частично обновить ресурс</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">PATCH</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Unsafe</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Частично обновить ресурс</p>
   </div>
 
 </div>
@@ -421,43 +421,43 @@ Authorization: Bearer <token>  ← аутентификация
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">1xx</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Информационные</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">100 Continue</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">1xx</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Информационные</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">100 Continue</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">2xx</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Успех</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">200 OK · 201 Created</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">2xx</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Успех</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">200 OK · 201 Created</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3xx</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Перенаправление</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">301 Moved · 302 Found</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3xx</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Перенаправление</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">301 Moved · 302 Found</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">4xx</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Ошибка клиента</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">400 Bad Request · 401 Unauthorized · 403 Forbidden · 404 Not Found</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">4xx</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Ошибка клиента</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">400 Bad Request · 401 Unauthorized · 403 Forbidden · 404 Not Found</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
-      <span class="lab-card-num" style="font-size:0.9rem; width:auto;">5xx</span>
-      <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Ошибка сервера</span>
-    </div>
-    <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">500 Internal Server Error · 502 Bad Gateway</p>
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">5xx</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Ошибка сервера</span>
+  </div>
+  <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">500 Internal Server Error · 502 Bad Gateway</p>
   </div>
 
 </div>

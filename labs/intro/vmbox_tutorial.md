@@ -215,16 +215,16 @@ $ gh --version
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">8 GB RAM</div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: 2-3 GB</span><span class="lab-tag">2 CPU</span><span class="lab-tag">20 GB диск</span></div>
+  <div class="lab-card-title" style="font-weight:700;">8 GB RAM</div>
+  <div class="lab-card-tags"><span class="lab-tag">VM: 2-3 GB</span><span class="lab-tag">2 CPU</span><span class="lab-tag">20 GB диск</span></div>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">16 GB RAM</div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: 4-6 GB</span><span class="lab-tag">2-4 CPU</span><span class="lab-tag">25 GB диск</span></div>
+  <div class="lab-card-title" style="font-weight:700;">16 GB RAM</div>
+  <div class="lab-card-tags"><span class="lab-tag">VM: 4-6 GB</span><span class="lab-tag">2-4 CPU</span><span class="lab-tag">25 GB диск</span></div>
   </div>
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
-    <div class="lab-card-title" style="font-weight:700;">32+ GB RAM</div>
-    <div class="lab-card-tags"><span class="lab-tag">VM: 8 GB</span><span class="lab-tag">4 CPU</span><span class="lab-tag">40 GB диск</span></div>
+  <div class="lab-card-title" style="font-weight:700;">32+ GB RAM</div>
+  <div class="lab-card-tags"><span class="lab-tag">VM: 8 GB</span><span class="lab-tag">4 CPU</span><span class="lab-tag">40 GB диск</span></div>
   </div>
 </div>
 

@@ -293,7 +293,6 @@ Material. `!important` только в print. Значения `@property` не 
 ├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen
 ├── package.json / package-lock.json   # линтеры docs: stylelint, eslint, markdownlint-cli2
 ├── eslint.config.js, stylelint.config.cjs, .markdownlint.yaml, .yamllint   # конфиги линтеров
-├── specs/                             # дизайн-спеки (главная с конвейером, 2026-09-10)
 ├── CODE_OF_CONDUCT.md, CONTRIBUTING.md, LICENSE.md, NOTICE.md, SECURITY.md
 └── RELEASE_NOTES.md
 ```

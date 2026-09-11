@@ -154,7 +154,7 @@ $ uv run --only-group lint yamllint --no-warnings .github/workflows mkdocs.yml
 $ .github/scripts/pip-audit.sh                          # pip-audit по экспорту лока
 $ .github/scripts/sbom.sh                               # CycloneDX SBOM рантайм-набора (как на шаге релиза)
 $ uv run --only-group sast bandit -r labs -ll           # + исключения см. ci.yml
-$ npm ci && npx stylelint "docs/stylesheets/*.css" && npx eslint docs/javascripts/
+$ npm ci && npx stylelint "docs/stylesheets/**/*.css" && npx eslint docs/javascripts/
 $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 ```
 
@@ -196,6 +196,7 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 **Контент.** Исходники лаб, intro и тестов живут в `labs/`, страницы сайта в `docs/` подключают их через
 `include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
 дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
+`docs/materials/index.md` собирает материалы в карточки разделов, лабы ссылаются на них из See-also.
 
 **Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
 её после согласия подключает `banners.js`). `overrides/home.html` —
@@ -240,10 +241,12 @@ Material. `!important` только в print. Значения `@property` не 
 │   ├── privacy.md                     # Политика конфиденциальности
 │   ├── Security.md                    # Политика безопасности
 │   ├── RELEASE_NOTES.md               # Релизы
-│   ├── glossary.md                    # 39 аббревиатур AppSec
+│   ├── glossary.md                    # 40 аббревиатур AppSec (тултипы через snippets)
 │   ├── robots.txt                     # Robots + AI-bot blocking
 │   ├── llms.txt                       # Описание для AI-поисковиков
 │   ├── turbo-feed.xml                 # Яндекс.Турбо RSS
+│   ├── CNAME                          # course.geminishkv.tech
+│   ├── _headers                       # HTTP-заголовки безопасности для хостинга с поддержкой _headers
 │   ├── labs/
 │   │   ├── intro/                     # 7 docs-обёрток intro
 │   │   ├── basic/lab01-10.md          # 10 docs-обёрток лабораторных
@@ -252,6 +255,7 @@ Material. `!important` только в print. Значения `@property` не 
 │   │       ├── basic/                 # 5 вариантов базовых тестов
 │   │       └── lectures/              # 2 варианта теста Fintech
 │   ├── materials/
+│   │   ├── index.md                   # Индекс материалов: карточки разделов
 │   │   ├── lectures/fintech_ru.md     # Лекция Fintech по-русски
 │   │   ├── examples/                  # 5 кейсов ИБ
 │   │   ├── OWASPTOP10/               # 7 OWASP материалов
@@ -267,6 +271,7 @@ Material. `!important` только в print. Значения `@property` не 
 │   └── artifacts/
 │       ├── assets/                    # Logo (SVG), favicon (ICO), images
 │       ├── diagrams/                  # 7 Mermaid SVG + .mmd исходники
+│       ├── exmpls/                    # Иллюстрации к кейсам
 │       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/
 │   ├── intro/                         # 7 intro-руководств (исходники; Linux, macOS и Windows)
@@ -280,10 +285,15 @@ Material. `!important` только в print. Значения `@property` не 
 │   ├── workflows/release-from-notes.yml # релиз из RELEASE_NOTES.md по тегу v*.*.* + CycloneDX SBOM
 │   ├── scripts/pip-audit.sh           # аудит экспорта лока, одинаково в CI и локально
 │   ├── scripts/sbom.sh                # SBOM рантайм-набора из лока (шаг релиза)
-│   └── dependabot.yml                 # actions / npm / uv, cooldown 7 дней
+│   ├── dependabot.yml                 # actions / npm / uv, cooldown 7 дней
+│   └── CODEOWNERS                     # ревью workflow и конфигов CI
 ├── hooks.py                           # цифры hero при сборке + sitemap (priority, changefreq)
 ├── mkdocs.yml
 ├── pyproject.toml                     # зависимости сайта и группы инструментов CI
 ├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen
+├── package.json / package-lock.json   # линтеры docs: stylelint, eslint, markdownlint-cli2
+├── eslint.config.js, stylelint.config.cjs, .markdownlint.yaml, .yamllint   # конфиги линтеров
+├── specs/                             # дизайн-спеки (главная с конвейером, 2026-09-10)
+├── CODE_OF_CONDUCT.md, CONTRIBUTING.md, LICENSE.md, NOTICE.md, SECURITY.md
 └── RELEASE_NOTES.md
 ```

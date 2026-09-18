@@ -132,10 +132,10 @@ $ uv run mkdocs serve -a 0.0.0.0:8000   # открыть с телефона п�
 
 ```bash
 $ uv run mkdocs build --strict                          # сборка с предупреждениями как ошибками
-$ uv run --only-group lint yamllint --no-warnings .github/workflows mkdocs.yml
+$ uv run --frozen --only-group lint yamllint --no-warnings .github/workflows mkdocs.yml
 $ .github/scripts/pip-audit.sh                          # pip-audit по экспорту лока
 $ .github/scripts/sbom.sh                               # CycloneDX SBOM рантайм-набора (как на шаге релиза)
-$ uv run --only-group sast bandit -r labs -ll           # + исключения см. ci.yml
+$ uv run --frozen --only-group sast bandit -r labs -ll  # + исключения см. ci.yml
 $ npm ci && npx stylelint "docs/stylesheets/**/*.css" && npx eslint docs/javascripts/
 $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 ```
@@ -146,7 +146,7 @@ $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 $ npx --yes @mermaid-js/mermaid-cli@11.17.0 -i schema.mmd -o /tmp/schema.svg
 ```
 
-* Mermaid на сайте свой: CSP разрешает скрипты только с `'self'`, поэтому Material не может взять его с unpkg. Файл `docs/artifacts/vendor/mermaid/11.17.2/mermaid.min.js` (npm `mermaid@11.17.2`, MIT, sha256 `581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8`) подключается из `overrides/main.html` только на страницах со схемами. Обновление: положить `dist/mermaid.min.js` новой версии в каталог с её номером, сверить sha256 с опубликованным пакетом и поменять путь в `main.html`.
+* Mermaid на сайте свой: CSP (`script-src`: `'self'`, Telegram, Метрика) не пускает unpkg, поэтому Material не может взять его оттуда. Файл `docs/artifacts/vendor/mermaid/11.17.2/mermaid.min.js` (npm `mermaid@11.17.2`, MIT, sha256 `581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8`) подключается из `overrides/main.html` только на страницах со схемами. Обновление: положить `dist/mermaid.min.js` новой версии в каталог с её номером, сверить sha256 с опубликованным пакетом и поменять путь в `main.html`.
 
 * Очистка локального репозитория
 
@@ -161,11 +161,11 @@ $ kill <PID>
   `release-from-notes.yml` по тегу собирает релиз из записи и прикладывает SBOM
 
 ```bash
-$ git tag -s v2.2.0 -m "v2.2.0"
-$ git push origin v2.2.0
+$ git tag -s vX.Y.Z -m "vX.Y.Z"
+$ git push origin vX.Y.Z
 
-$ git tag -d v0.1.0                    # удалить локальный тег
-$ git push --delete origin v1.2.3   # удалить тот же тег на GitHub
+$ git tag -d vX.Y.Z                    # удалить локальный тег
+$ git push --delete origin vX.Y.Z      # удалить тот же тег на GitHub
 ```
 
 ***
@@ -190,7 +190,8 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 
 **CSS.** Порядок каскада задан `extra_css`: `fonts.css` (Roboto, Roboto Mono, Unbounded из `artifacts/fonts/`,
 woff2 по unicode-range, OFL; внешних шрифтов нет, `font-src 'self'`) → `tokens.css` (палитра gpages, `--ink-*`, токены Material) →
-`typeset.css` (типографика, код, списки, сетка 88rem) → `header.css` → `sidebar.css` → `components.css`
+`header.css` → `sidebar.css` → `typeset.css` (типографика, код, списки, сетка 88rem; грузится после `header.css`,
+поэтому шапка снимает кап `.md-grid` селектором из обоих классов) → `components.css`
 (hero, нумерованные заголовки, таблицы, карточки лаб, футер) → `banners.css`. `home.css` подключается
 только главной (`css_files` плагина minify → `home.min.css`) и может переопределять токены на `body`.
 Адаптив главной ярусами 1600 / 1220 / 960 / 700 px; всё в rem, чтобы масштабироваться с корневым шрифтом
@@ -243,26 +244,26 @@ landmark-навигаций, которые Material оставляет безы
 │   │   ├── cheatsheet/               # 9 шпаргалок
 │   │   ├── ports.md                   # Справочник портов
 │   │   ├── appsec_tt.md              # 29 классов инструментов
-│   │   ├── licenses.md               # 41 лицензия
+│   │   ├── licenses.md               # 32 карточки лицензий
 │   │   ├── APPENDIX.md               # Команды и утилиты
-│   │   └── troubleshooting.md        # FAQ (~45 карточек)
-│   ├── stylesheets/                   # fonts → tokens → typeset → header → sidebar → components → banners; home.css только на главной
+│   │   └── troubleshooting.md        # FAQ (56 карточек)
+│   ├── stylesheets/                   # fonts → tokens → header → sidebar → typeset → components → banners; home.css только на главной
 │   ├── javascripts/                   # header (стекло), typewriter-target, banners (согласие на Метрику), effects (fade-in, конвейер, landmarks)
 │   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD; Mermaid на страницах со схемами), home.html, 404.html, partials/header.html, partials/copyright.html
 │   └── artifacts/
-│       ├── assets/                    # Logo (SVG), favicon (ICO), images
+│       ├── assets/                    # логотипы (SVG, PNG 512), favicon (ICO, PNG 16/32, apple-touch-icon)
 │       ├── vendor/mermaid/11.17.2/    # Mermaid для схем (MIT), грузится только на страницах со схемами
-│       ├── exmpls/                    # Иллюстрации к кейсам
+│       ├── exmpls/                    # иллюстрация к кейсу анализа рисков
 │       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/
 │   ├── intro/                         # 7 intro-руководств (исходники; Linux, macOS и Windows)
-│   ├── basic/lab01-10/               # 10 лабораторных (код + README + docker-compose)
+│   ├── basic/lab01-10/               # 10 лабораторных (README + код; у части — docker-compose)
 │   ├── pet_project/                   # Итоговый проект
 │   └── tests/
 │       ├── basic/                     # 5 базовых тестов (исходники)
 │       └── lectures/ru_fintech/       # 2 варианта теста Fintech (исходники)
 ├── .github/
-│   ├── workflows/ci.yml               # Lint → pip-audit → bandit / hadolint → Build → Deploy (всё из uv.lock)
+│   ├── workflows/ci.yml               # yamllint + markdownlint, eslint + stylelint → pip-audit → bandit / hadolint → build (на PR — артефакт site-preview) → deploy
 │   ├── workflows/release-from-notes.yml # релиз из RELEASE_NOTES.md по тегу v*.*.* + CycloneDX SBOM
 │   ├── scripts/pip-audit.sh           # аудит экспорта лока, одинаково в CI и локально
 │   ├── scripts/sbom.sh                # SBOM рантайм-набора из лока (шаг релиза)
@@ -274,6 +275,8 @@ landmark-навигаций, которые Material оставляет безы
 ├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen
 ├── package.json / package-lock.json   # линтеры docs: stylelint, eslint, markdownlint-cli2
 ├── eslint.config.js, stylelint.config.cjs, .markdownlint.yaml, .yamllint   # конфиги линтеров
+├── .gitattributes                     # jar / war / ear / class — binary в diff и merge
+├── .gitleaksignore                    # fingerprint учебного токена лабы 07 для pre-commit с gitleaks
 ├── CODE_OF_CONDUCT.md, CONTRIBUTING.md, LICENSE.md, NOTICE.md, SECURITY.md
 └── RELEASE_NOTES.md
 ```

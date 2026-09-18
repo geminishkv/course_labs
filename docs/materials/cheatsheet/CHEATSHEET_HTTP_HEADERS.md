@@ -148,7 +148,7 @@ server {
 
 Атрибуты cookie решают три вопроса: увидит ли её скрипт на странице (`HttpOnly`), уйдёт ли она по незашифрованному соединению (`Secure`) и приложится ли к запросу с чужого сайта (`SameSite`).
 
-```
+```text title="HTTP-заголовок"
 Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3600
 ```
 

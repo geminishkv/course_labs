@@ -78,6 +78,35 @@ markdown_extensions:
   - fenced_code
   - admonition
   - pymdownx.highlight:
+      # every highlighted block gets a label with its language; an explicit title="…" wins
+      auto_title: true
+      auto_title_map:
+        "Bash": "bash"
+        "Bash Session": "console"
+        "Python": "python"
+        "YAML": "yaml"
+        "JSON": "json"
+        "Docker": "dockerfile"
+        "JavaScript": "javascript"
+        "HTML": "html"
+        "XML": "xml"
+        "PowerShell": "powershell"
+        "Text only": "text"
+        "Text Only": "text"
+        "SQL": "sql"
+        "PHP": "php"
+        "HTTP": "http"
+        "INI": "ini"
+        "TOML": "toml"
+        "Diff": "diff"
+        "C": "c"
+        "C#": "csharp"
+        "Perl": "perl"
+        "VBScript": "vbscript"
+        "Java Server Page": "jsp"
+        "Markdown": "markdown"
+        "Nginx configuration file": "nginx"
+        "Nginx Configuration File": "nginx"
       anchor_linenums: true
       linenums: true
       linenums_style: pymdownx-inline

@@ -393,7 +393,7 @@ echo "DAST reports saved to $DAST_DIR/reports"
 
 - [ ] 8. Напишите файл `pipeline/dast/zap-baseline.conf` — конфигурация порогов ZAP. Укажите правила, которые должны вызывать FAIL (высокий риск), WARN (средний) и IGNORE (информационный)
 
-```conf
+```bash title="pipeline/dast/zap-baseline.conf"
 # ZAP Baseline configuration: поля разделяются ТАБУЛЯЦИЕЙ, с пробелами ZAP правило не прочитает
 # Rule format: RULE_ID<TAB>ACTION<TAB>(описание)
 # Actions: FAIL, WARN, IGNORE, PASS

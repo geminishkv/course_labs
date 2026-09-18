@@ -192,12 +192,14 @@
 }
 
 /* ── Code block title / filename label ── */
-.md-typeset .highlight > .filename,
-.md-typeset .highlight [data-md-language]:not(:empty)::before {
+.md-typeset .highlight span.filename {
   font-family: var(--font-code);
   font-size: var(--text-xs);
   font-weight: 600;
-  color: var(--text-inverse-muted);
+
+  /* the label names the language or the file of the block: gold keeps it readable
+     on the dark code surface in both colour schemes */
+  color: var(--brand-gold);
   background: var(--surface-code);
   border-bottom: 1px solid var(--border-gold-strong);
   padding: 0.35rem var(--space-3);

@@ -212,7 +212,7 @@ ADD https://example.com/app.tar.gz /app/
 
 Первая линия защиты от утечки: то, что исключено из контекста сборки, в образ попасть не может. Полный шаблон и отличия от `.gitignore` — в [шпаргалке .dockerignore](CHEATSHEET_DOCKERIGNORE.md).
 
-```
+```bash title=".dockerignore"
 .git
 .github
 .venv

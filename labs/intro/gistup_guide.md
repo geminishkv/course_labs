@@ -175,7 +175,7 @@ $ gh gist list
 $ nmap -sV -p 22,80,443 192.168.1.1
 ```
 
-```
+```text title="вывод терминала"
 Starting Nmap 7.94 ( https://nmap.org )
 PORT    STATE SERVICE VERSION
 22/tcp  open  ssh     OpenSSH 8.9p1

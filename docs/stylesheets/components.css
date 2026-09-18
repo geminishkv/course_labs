@@ -709,7 +709,7 @@
 }
 
 /* Print: reveal everything the scroll-triggered fade-in has not shown yet and
-   drop the fixed overlays, otherwise printed pages have blank blocks and banners
+   drop the consent card, otherwise printed pages have blank blocks and the card
    stamped over the text. */
 
 @media print {
@@ -719,7 +719,6 @@
       transition: none;
     }
 
-  .ata-legal,
   .ata-consent {
       display: none;
     }
@@ -738,12 +737,26 @@
    Footer
 ══════════════════════════════════════════ */
 
-.md-footer-meta .md-footer-meta__inner > :first-child::after {
-  content: " · © 2026 AppSecTA by geminishkv · Sic Parvis Magna";
+/* One line: generator credit, copyright, motto and the link to the legal
+   notice (overrides/partials/copyright.html). */
+.md-copyright__line {
   color: var(--text-inverse-muted);
   font-weight: 400;
-  font-size: var(--text-2xs);
+}
+
+.md-copyright__line em {
   font-style: italic;
+}
+
+.md-copyright__line a {
+  color: var(--text-inverse-muted);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--brand-red) 60%, transparent);
+  text-underline-offset: 2px;
+}
+
+.md-copyright__line a:hover {
+  color: #ffffff;
 }
 
 /* Footer: gpages Footer.css — ink background, red-to-transparent top rule */

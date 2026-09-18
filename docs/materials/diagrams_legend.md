@@ -196,6 +196,7 @@ flowchart TB
 - [Разбор находок сканеров](findings_triage.md) — путь одной находки
 - [CheatSheet: Linux](cheatsheet/CHEATSHEET_LINUX.md) — состояния процесса
 - [CheatSheet: Nmap](cheatsheet/CHEATSHEET_NMAP.md) — от вопроса к команде
+- [Troubleshooting](troubleshooting.md) — с чего начать, когда что-то не работает
 - [CheatSheet: Git](cheatsheet/CHEATSHEET_GIT.md) — где живут изменения в Git
 - [CheatSheet: GitHub CLI](cheatsheet/CHEATSHEET_GH_CLI.md) — цикл сдачи работы через pull request
 - [OWASP — CI/CD Risks](OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски по этапам конвейера

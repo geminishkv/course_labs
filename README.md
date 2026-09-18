@@ -399,7 +399,7 @@ flowchart TB
 │   │   ├── findings_triage.md        # Разбор находок сканеров: три исхода, отчёты шести сканеров, файл триажа
 │   │   ├── diagrams_legend.md        # Как читать схемы курса: символы ГОСТ 19.701-90, развилки, цвета
 │   │   ├── APPENDIX.md               # Команды и утилиты
-│   │   └── troubleshooting.md        # FAQ (56 карточек)
+│   │   └── troubleshooting.md        # FAQ: схема диагностики и 80 карточек по 18 темам
 │   ├── stylesheets/                   # fonts → tokens → header → sidebar → typeset → components → banners; home.css только на главной
 │   ├── javascripts/                   # mermaid-loader (свой Mermaid по требованию), header (стекло), typewriter-target, banners (согласие на Метрику), effects (fade-in, конвейер, landmarks)
 │   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD), home.html, 404.html, partials/header.html, partials/copyright.html

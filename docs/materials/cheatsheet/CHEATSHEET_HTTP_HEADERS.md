@@ -7,7 +7,7 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 <div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">HTTP Security Headers</h1>
-    <p class="hero-sub">Чеклист заголовков безопасности для веб-приложений</p>
+    <p class="hero-sub">Чек-лист заголовков безопасности для веб-приложений</p>
   </div>
 </div>
 

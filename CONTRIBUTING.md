@@ -15,6 +15,13 @@ Thank you for your interest in contributing to our project! Your contributions�
 - When adding new features, update or add documentation accordingly.
 - Before submitting the pull request, ensure all tests pass successfully.
 
+## Course Content Rules
+
+- **Vulnerable lab assets stay vulnerable.** Files such as `labs/basic/lab07/vulnerable-app/`, `labs/basic/lab07/sca/pom.xml` and `labs/basic/lab08/vulnerable-app/` are the targets students scan and fix. Solutions belong in your own lab repository and gist report, never in a pull request to this template: a merged fix leaves the next cohort nothing to find. Before changing such a file, run the lab's scanners and confirm the reference findings are still reported.
+- **Text is Russian with the letter ё** (отчёт, ещё, её, защищённый).
+- **Names stay uniform** across the menu, page titles and text: `Лаб. 01`–`Лаб. 10` for labs, `Тест №1` for tests, `pet-project` (`Pet-project` at the start of a sentence), `gistup`, `AppSecTA`, `OWASP Top 10`; borrowed words as `кэш`, `таймаут`, `чек-лист`.
+- **Diagrams are Mermaid blocks in Markdown**, not exported images: `flowchart TB` with step curves, GOST 19.701 shapes, `accTitle`/`accDescr`, no emoji.
+
 ## Reporting Issues
 
 - Use the issue template if available.

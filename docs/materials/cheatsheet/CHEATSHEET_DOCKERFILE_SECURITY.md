@@ -264,7 +264,7 @@ docker run --rm -i hadolint/hadolint < Dockerfile
 
 ***
 
-## Чеклист
+## Чек-лист
 
 - [ ] Базовый образ: slim/alpine/distroless, пинить версию + digest
 - [ ] `USER` — не root

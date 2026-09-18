@@ -9,9 +9,9 @@
 
 ***
 
-Введение в непрерывную интеграцию и доставку перед лабораторной Lab 09. Здесь — концепция CI/CD, структура GitHub Actions и минимальный workflow.
+Введение в непрерывную интеграцию и доставку перед лабораторной Лаб. 09. Здесь — концепция CI/CD, структура GitHub Actions и минимальный workflow.
 
-> Если вы уже настраивали пайплайны — переходите сразу к Lab 09.
+> Если вы уже настраивали пайплайны — переходите сразу к Лаб. 09.
 
 ***
 
@@ -185,7 +185,7 @@ jobs:
         run: pytest tests/
 ```
 
-> В учебных примерах actions указаны по тегу для читаемости. Тег можно переписать, поэтому в рабочих пайплайнах их закрепляют по SHA коммита с комментарием версии — см. [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) и Lab 09.
+> В учебных примерах actions указаны по тегу для читаемости. Тег можно переписать, поэтому в рабочих пайплайнах их закрепляют по SHA коммита с комментарием версии — см. [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) и Лаб. 09.
 
 ### Разбор структуры
 
@@ -319,7 +319,7 @@ steps:
 
 ## Пример: DevSecOps пайплайн
 
-Типичная структура для Lab 09:
+Типичная структура для Лаб. 09:
 
 ```yaml
 name: DevSecOps Pipeline

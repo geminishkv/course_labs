@@ -8,7 +8,7 @@
 
 ***
 
-Централизованная установка всех инструментов, используемых в лабораторных работах курса. Выполните один раз перед началом Lab 06–09.
+Централизованная установка всех инструментов, используемых в лабораторных работах курса. Выполните один раз перед началом Лаб. 06–09.
 
 > Все инструменты open-source и бесплатны для использования.
 
@@ -30,7 +30,7 @@ Docker Bench for Security проверяет хост Docker и запускае
 
 ***
 
-## SAST — статический анализ (Lab 07)
+## SAST — статический анализ (Лаб. 07)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -39,7 +39,7 @@ Docker Bench for Security проверяет хост Docker и запускае
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Semgrep</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">SAST · AST-анализ</span>
   </div>
-  <span class="lab-tag">Lab 07 · Lab 09</span>
+  <span class="lab-tag">Лаб. 07 · Лаб. 09</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Статический анализатор кода по AST-паттернам. Ищет инъекции, XSS, hardcoded secrets.</p>
   </div>
 
@@ -48,7 +48,7 @@ Docker Bench for Security проверяет хост Docker и запускае
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Checkov</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">IaC Security</span>
   </div>
-  <span class="lab-tag">Lab 07</span>
+  <span class="lab-tag">Лаб. 07</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Сканер Infrastructure as Code: Dockerfile, docker-compose, Terraform, Kubernetes YAML.</p>
   </div>
 
@@ -57,7 +57,7 @@ Docker Bench for Security проверяет хост Docker и запускае
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Bandit</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Python SAST</span>
   </div>
-  <span class="lab-tag">Lab 07</span>
+  <span class="lab-tag">Лаб. 07</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Python-специфичный SAST: eval, pickle, subprocess, hardcoded passwords.</p>
   </div>
 
@@ -85,7 +85,7 @@ $ bandit -r . -f json
 
 ***
 
-## SCA — анализ зависимостей (Lab 07)
+## SCA — анализ зависимостей (Лаб. 07)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -94,7 +94,7 @@ $ bandit -r . -f json
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">OWASP DC</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Dependency-Check</span>
   </div>
-  <span class="lab-tag">Lab 07</span>
+  <span class="lab-tag">Лаб. 07</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Поиск CVE в зависимостях через NVD. Поддерживает Java, Python, Node.js, .NET.</p>
   </div>
 
@@ -103,7 +103,7 @@ $ bandit -r . -f json
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">pip-audit</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Python SCA</span>
   </div>
-  <span class="lab-tag">Lab 07</span>
+  <span class="lab-tag">Лаб. 07</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Проверка Python-пакетов по базе OSV/PyPI Advisory.</p>
   </div>
 
@@ -141,7 +141,7 @@ $ pip-audit
 
 ***
 
-## Container Security (Lab 06)
+## Container Security (Лаб. 06)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -150,7 +150,7 @@ $ pip-audit
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Trivy</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Container + FS scanner</span>
   </div>
-  <span class="lab-tag">Lab 06 · Lab 09</span>
+  <span class="lab-tag">Лаб. 06 · Лаб. 09</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Универсальный сканер: Docker-образы, файловая система, IaC. Ищет CVE в ОС-пакетах и языковых зависимостях.</p>
   </div>
 
@@ -159,7 +159,7 @@ $ pip-audit
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Docker Bench</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">CIS Benchmark</span>
   </div>
-  <span class="lab-tag">Lab 06</span>
+  <span class="lab-tag">Лаб. 06</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Автоматическая проверка Docker-окружения по CIS Benchmark: хост, демон, образы, контейнеры.</p>
   </div>
 
@@ -168,7 +168,7 @@ $ pip-audit
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Hadolint</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Dockerfile linter</span>
   </div>
-  <span class="lab-tag">Lab 06</span>
+  <span class="lab-tag">Лаб. 06</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Линтер Dockerfile: pin versions, use WORKDIR, quote variables. Правила DL и SC.</p>
   </div>
 
@@ -222,7 +222,7 @@ $ hadolint Dockerfile
 
 ***
 
-## DAST — динамическое тестирование (Lab 08)
+## DAST — динамическое тестирование (Лаб. 08)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -231,7 +231,7 @@ $ hadolint Dockerfile
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">OWASP ZAP</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Dynamic AST</span>
   </div>
-  <span class="lab-tag">Lab 08 · Lab 09</span>
+  <span class="lab-tag">Лаб. 08 · Лаб. 09</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Тестирование запущенного приложения «чёрным ящиком»: SQL Injection, XSS, IDOR, broken auth.</p>
   </div>
 
@@ -256,7 +256,7 @@ $ docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t http://target
 
 ***
 
-## Secret Detection (Lab 07)
+## Secret Detection (Лаб. 07)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -265,7 +265,7 @@ $ docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t http://target
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Gitleaks</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Secret scanner</span>
   </div>
-  <span class="lab-tag">Lab 07 · Lab 09</span>
+  <span class="lab-tag">Лаб. 07 · Лаб. 09</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Сканирует git-историю по regex-паттернам: AWS keys, API tokens, passwords, private keys.</p>
   </div>
 
@@ -274,7 +274,7 @@ $ docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t http://target
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">pre-commit</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Git hooks</span>
   </div>
-  <span class="lab-tag">Lab 07</span>
+  <span class="lab-tag">Лаб. 07</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Фреймворк для git pre-commit hooks: автоматическая проверка перед коммитом.</p>
   </div>
 

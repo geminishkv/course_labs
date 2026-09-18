@@ -11,7 +11,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
   </div>
 </div>
 
-## Git и GitHub (Lab 01, 09)
+## Git и GitHub (Лаб. 01, 09)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -44,7 +44,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Linux и Shell (Lab 02)
+## Linux и Shell (Лаб. 02)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -64,7 +64,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Nmap (Lab 03)
+## Nmap (Лаб. 03)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -102,7 +102,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Docker (Lab 05, 06)
+## Docker (Лаб. 05, 06)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -120,7 +120,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">docker-bench-security не работает на macOS</div>
-  <span class="lab-tag">Lab 06 · CIS</span>
+  <span class="lab-tag">Лаб. 06 · CIS</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Docker Desktop на macOS не поддерживает docker-bench-security напрямую (нет нативного Docker Engine). Используйте Trivy для сканирования образов: <code>trivy image &lt;name&gt;</code></p>
   </div>
 
@@ -134,7 +134,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## SAST и SCA (Lab 07)
+## SAST и SCA (Лаб. 07)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -152,7 +152,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Maven: mvn command not found</div>
-  <span class="lab-tag">Lab 07 · SCA</span>
+  <span class="lab-tag">Лаб. 07 · SCA</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Maven не установлен. Ubuntu: <code>sudo apt install maven</code>. macOS: <code>brew install maven</code>. Проверка: <code>mvn --version</code></p>
   </div>
 
@@ -160,7 +160,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## DAST — OWASP ZAP (Lab 08)
+## DAST — OWASP ZAP (Лаб. 08)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -180,7 +180,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## CI/CD — GitHub Actions (Lab 09)
+## CI/CD — GitHub Actions (Лаб. 09)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -238,7 +238,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## GPG и подпись коммитов (Lab 01)
+## GPG и подпись коммитов (Лаб. 01)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -290,7 +290,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Secret Detection (Lab 07)
+## Secret Detection (Лаб. 07)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -316,7 +316,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Trivy и Container Scanning (Lab 06)
+## Trivy и Container Scanning (Лаб. 06)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -336,7 +336,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Risk Analysis (Lab 04, 10)
+## Risk Analysis (Лаб. 04, 10)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -388,7 +388,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## Docker Compose и Dockerfile (Intro, Lab 05)
+## Docker Compose и Dockerfile (Intro, Лаб. 05)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -420,7 +420,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## GitHub Actions YAML (Intro CI/CD, Lab 09)
+## GitHub Actions YAML (Intro CI/CD, Лаб. 09)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
@@ -446,25 +446,25 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ***
 
-## CMS Security (Lab 10)
+## CMS Security (Лаб. 10)
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Где искать CVE для CMS</div>
-  <span class="lab-tag">Lab 10 · WordPress · Битрикс</span>
+  <span class="lab-tag">Лаб. 10 · WordPress · Битрикс</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">NVD: <code>nvd.nist.gov</code> поиск по CPE. WordPress: <code>wpscan.com/wordpresses</code>. Битрикс: <code>bdu.fstec.ru</code>. Также: <code>cve.mitre.org</code>, <code>exploit-db.com</code>.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Как описать Proof-of-Concept</div>
-  <span class="lab-tag">Lab 10 · CWE · PoC</span>
+  <span class="lab-tag">Лаб. 10 · CWE · PoC</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Структура: CWE-ID → описание уязвимости → условия эксплуатации → шаги воспроизведения → ожидаемый результат → мера устранения. Не нужен работающий exploit — достаточно вектора.</p>
   </div>
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Как оформить матрицу рисков</div>
-  <span class="lab-tag">Lab 10 · Risk Matrix</span>
+  <span class="lab-tag">Лаб. 10 · Risk Matrix</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Таблица: Риск | Актив | Вероятность (1-5) | Влияние (1-5) | Оценка | Стратегия | Мера | Остаточный риск. Сортируйте по убыванию оценки (Вероятность × Влияние).</p>
   </div>
 

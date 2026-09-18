@@ -1486,12 +1486,12 @@ body:has(.md-content--home) .md-top {
     }
 }
 
-/* Touch: contact buttons and social tiles reach 44px */
 /* phones: the status and stack badges repeat the README and cost a screen of taps */
 @media screen and (max-width: 900px) {
   .md-typeset .badges { display: none; }
 }
 
+/* Touch: contact buttons and social tiles reach 44px */
 @media (pointer: coarse), (max-width: 43.6875em) {
   .md-typeset .contact-btn { min-height: 44px; }
 

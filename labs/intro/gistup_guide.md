@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Руководство по оформлению отчётов Gistup</a><br></h1>
+<h1><a id="intro">Руководство по оформлению отчётов gistup</a><br></h1>
 <img src="https://img.shields.io/badge/Course-AppSec-D51A1A?style=flat" alt="Course: AppSec">
 <img src="https://img.shields.io/badge/GitHub_Gist-181717?style=flat&logo=github&logoColor=white" alt="GitHub Gist">
 <img src="https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white" alt="Markdown">

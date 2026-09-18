@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №5</a><br></h1>
+<h1><a id="intro">Лаб. 05 · Docker: образы и контейнеры</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -57,7 +57,7 @@ lab05
 
 ### Namespaces
 
-Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создает набор пространств имен для данного контейнера, что создает изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
+Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создаёт набор пространств имен для данного контейнера, что создаёт изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">pid</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция процессов — контейнер видит только свои процессы</span></div>
@@ -145,7 +145,7 @@ $ docker load -i hello.tar
 $ docker load -i image.tar
 ```
 
-- [ ] 3. Откройте `Dockerfile` и проведите аудит безопасности по чеклисту:
+- [ ] 3. Откройте `Dockerfile` и проведите аудит безопасности по чек-листу:
 
     - [ ] Какой базовый образ используется? Он официальный? Есть ли пиннинг версии (тег, не `latest`)?
     - [ ] Используется ли multi-stage build? Зачем?
@@ -345,14 +345,14 @@ $ docker compose down
 
 - [ ] 19. Доработайте `docker-compose.yml` и скрипт из предыдущих шагов, чтобы воспроизвести шаги п.15–п.17 с демонстрацией. Сделайте `commit`.
 - [ ] 20. Залейте изменения в свой удалённый репозиторий, проверьте историю `commit`.
-- [ ] 21. Подготовьте отчет `gist`.
+- [ ] 21. Подготовьте отчёт `gist`.
  
 ***
 
 ## Смотри также
 
 - [Основы Docker](https://course.geminishkv.tech/labs/intro/docker_basics/) — введение в контейнеризацию перед этой лабой
-- [Лаб. №6 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит безопасности Docker
+- [Лаб. 06 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит безопасности Docker
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — шпаргалка по командам
 - [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов
 - [CheatSheet: .dockerignore](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/) — исключения при сборке

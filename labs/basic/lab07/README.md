@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №7</a><br></h1>
+<h1><a id="intro">Лаб. 07 · SAST, SCA и поиск секретов</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -151,7 +151,7 @@ $ mvn --version
 $ java --version
 ```
 
-- [ ] 6. Подготовка зависимостей Java и Maven‑скан для проведения SCA. Отчеты будут в директории SCA. Будет ошибка, которую надо поправить, чтобы уязвимости определялись или добавить дополнительные уязвимости для их вывода в отчете
+- [ ] 6. Подготовка зависимостей Java и Maven‑скан для проведения SCA. Отчёты будут в директории SCA. Будет ошибка, которую надо поправить, чтобы уязвимости определялись или добавить дополнительные уязвимости для их вывода в отчёте
 
 > Без ключа NVD API первое обновление базы идёт часами. Ключ бесплатный: [nvd.nist.gov/developers/request-an-api-key](https://nvd.nist.gov/developers/request-an-api-key). Передайте его через переменную окружения, не сохраняя в файлах и истории shell: `read -rs NVD_API_KEY && export NVD_API_KEY`.
 
@@ -169,14 +169,14 @@ $ cd ..                                       # возврат в корень l
     - Как сопоставляет CPE с базой NVD для поиска CVE
     - Разница сканирования `pom.xml` (Java, манифест зависимостей) vs `requirements.txt` (Python, pip)
     - Для каждой найденной CVE: пакет, версия, CVSS score, описание, рекомендуемая версия для обновления
-- [ ] 8. Соберите единый отчет из всех сканирований в виде `html`, `csv`, `json`
+- [ ] 8. Соберите единый отчёт из всех сканирований в виде `html`, `csv`, `json`
 
 ```bash
 $ bash sca/generate_unified_report.sh
 ```
 
-- [ ] 9. Проанализируйте все уязвимости и объясните для SAST Checkov сработки статуса `Unknown`. Классифицируйте их и укажите какие не должны быть в отчетах. Внесите исправления и запустите повторное сканирование и убедитесь, что они устранены. Приложите исправленный файл и отчет без уязвимостей.
-- [ ] 10. Опишите выведенные уязвимости для SAST Semgrep и принцип их работы. Поправьте скрипт `app.py`. Запустите повторное сканирование и убедитесь, что они устранены. Приложите исправленный файл `app.py` и отчет без уязвимостей.
+- [ ] 9. Проанализируйте все уязвимости и объясните для SAST Checkov сработки статуса `Unknown`. Классифицируйте их и укажите какие не должны быть в отчётах. Внесите исправления и запустите повторное сканирование и убедитесь, что они устранены. Приложите исправленный файл и отчёт без уязвимостей.
+- [ ] 10. Опишите выведенные уязвимости для SAST Semgrep и принцип их работы. Поправьте скрипт `app.py`. Запустите повторное сканирование и убедитесь, что они устранены. Приложите исправленный файл `app.py` и отчёт без уязвимостей.
 - [ ] 11. Выявите минимум 1 false positive в результатах любого сканера. Обоснуйте, почему это FP, и настройте исключение:
 
 ```bash
@@ -317,7 +317,7 @@ $ rm test_secret.py
 ***
 
 - [ ] 22. Подготовьте отчёт `gist`
-- [ ] 23. Почистите кеш от `venv` и остановите уязвимое приложение
+- [ ] 23. Почистите кэш от `venv` и остановите уязвимое приложение
 
 ```bash
 $ deactivate
@@ -330,9 +330,9 @@ $ docker system prune -f
 
 ## Смотри также
 
-- [Лаб. №6 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит конфигурации Docker
-- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование (следующий этап)
-- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация SAST/SCA в пайплайне
+- [Лаб. 06 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит конфигурации Docker
+- [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование (следующий этап)
+- [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация SAST/SCA в пайплайне
 - [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка Semgrep, Checkov, Gitleaks
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — зачем SCA: атаки через зависимости

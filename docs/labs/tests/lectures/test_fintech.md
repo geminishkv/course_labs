@@ -1,5 +1,5 @@
 ---
-title: "Тест Вариант 1 — Fintech по-русски | Курс AppSec"
+title: "Тест по лекции Fintech, вариант 1 | Курс AppSec"
 description: "Тест (вариант 1) по лекции Fintech: регулирование, AML/ПОД-ФТ, стандарты безопасности, Secret Detection и Security Champion."
 keywords: "тест, Fintech, финтех, AML, ПОД-ФТ, compliance, PCI DSS, ГОСТ 57580, Security Champion, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---

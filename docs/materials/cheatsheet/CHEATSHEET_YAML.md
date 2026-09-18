@@ -1,5 +1,5 @@
 ---
-title: "CheatSheet: YAML синтаксис | Курс AppSec"
+title: "CheatSheet: синтаксис YAML | Курс AppSec"
 description: "YAML шпаргалка: синтаксис, типы данных, якоря, многострочные строки и валидация для CI/CD, Docker Compose и GitHub Actions."
 keywords: "YAML, cheatsheet, шпаргалка, синтаксис, CI/CD, Docker Compose, GitHub Actions, Kubernetes, DevSecOps, AppSec, якоря, валидация, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---

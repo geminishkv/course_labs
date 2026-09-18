@@ -38,7 +38,7 @@ keywords: "AppSec, курс МГТУ, DevSecOps, о проекте, структ
 
 - Подготовка рабочего окружения (VirtualBox, Ubuntu/Fedora)
 - Настройка Git, GPG и GitHub CLI
-- Оформление отчётов Gistup
+- Оформление отчётов gistup
 - Введение в сети и TCP/IP
 - Основы Docker и контейнеризации
 - Введение в CI/CD и GitHub Actions

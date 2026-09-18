@@ -167,49 +167,49 @@ nav:
   - "Главная страница": index.md
   - "Лабораторные работы":
       - "Подготовка рабочего окружения": labs/intro/vmbox_tutorial.md
-      - "Настройка GitSCM": labs/intro/git_setup.md
-      - "Оформление отчётов Gistup": labs/intro/gistup_guide.md
+      - "Настройка Git, GPG и GitHub CLI": labs/intro/git_setup.md
+      - "Оформление отчётов gistup": labs/intro/gistup_guide.md
       - "Введение в сети и TCP/IP": labs/intro/networking_basics.md
       - "Основы Docker": labs/intro/docker_basics.md
       - "Введение в CI/CD": labs/intro/cicd_basics.md
       - "Установка AppSec-инструментов": labs/intro/appsec_tools_setup.md
       - "Базовое ознакомление":
-          - "Лабораторная работа №1": labs/basic/lab01.md
-          - "Лабораторная работа №2": labs/basic/lab02.md
-          - "Лабораторная работа №3": labs/basic/lab03.md
-          - "Лабораторная работа №4": labs/basic/lab04.md
-          - "Лабораторная работа №5": labs/basic/lab05.md
-          - "Лабораторная работа №6": labs/basic/lab06.md
-          - "Лабораторная работа №7": labs/basic/lab07.md
-          - "Лабораторная работа №8": labs/basic/lab08.md
-          - "Лабораторная работа №9": labs/basic/lab09.md
-          - "Лабораторная работа №10": labs/basic/lab10.md
-      - "pet_project": labs/pet_project.md
+          - "Лаб. 01 · Git: окружение и первый коммит": labs/basic/lab01.md
+          - "Лаб. 02 · Linux: права доступа и процессы": labs/basic/lab02.md
+          - "Лаб. 03 · Nmap: сканирование сети и NSE": labs/basic/lab03.md
+          - "Лаб. 04 · Анализ и снижение рисков ИБ": labs/basic/lab04.md
+          - "Лаб. 05 · Docker: образы и контейнеры": labs/basic/lab05.md
+          - "Лаб. 06 · Docker CIS Benchmark и Trivy": labs/basic/lab06.md
+          - "Лаб. 07 · SAST, SCA и поиск секретов": labs/basic/lab07.md
+          - "Лаб. 08 · DAST: OWASP ZAP": labs/basic/lab08.md
+          - "Лаб. 09 · DevSecOps CI/CD на GitHub Actions": labs/basic/lab09.md
+          - "Лаб. 10 · Итоговая оценка рисков ИБ": labs/basic/lab10.md
+      - "Pet-project": labs/pet_project.md
   - "Тесты":
       - "Лекционные тесты":
           - "Fintech по-русски":
               - "Вариант 1": labs/tests/lectures/test_fintech.md
               - "Вариант 2": labs/tests/lectures/test_fintech_v2.md
       - "Базовое ознакомление":
-          - "Вариант №1": labs/tests/basic/test01.md
-          - "Вариант №2": labs/tests/basic/test02.md
-          - "Вариант №3": labs/tests/basic/test03.md
-          - "Вариант №4": labs/tests/basic/test04.md
-          - "Вариант №5": labs/tests/basic/test05.md
+          - "Тест №1": labs/tests/basic/test01.md
+          - "Тест №2": labs/tests/basic/test02.md
+          - "Тест №3": labs/tests/basic/test03.md
+          - "Тест №4": labs/tests/basic/test04.md
+          - "Тест №5": labs/tests/basic/test05.md
   - "Материалы":
       - materials/index.md
       - "Лекции":
           - "Fintech по-русски": materials/lectures/fintech_ru.md
       - "Примеры":
           - "Cases": materials/examples/exmpl.md
-          - "MultiSiq": materials/examples/Multisignature.md
+          - "MultiSig": materials/examples/Multisignature.md
           - "PrintNightmare": materials/examples/PrintNightmare.md
           - "Risk Analysis": materials/examples/RA.md
           - "Supply Chain Attacks": materials/examples/supply_chain_attacks.md
       - "Порты и протоколы": materials/ports.md
       - "Лицензии ПО": materials/licenses.md
       - "Классификация инструментов": materials/appsec_tt.md
-      - "OWASP TOP 10":
+      - "OWASP Top 10":
           - "CI/CD Risks": materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md
           - "Authorization": materials/OWASPTOP10/Authorization.md
           - "Authentication": materials/OWASPTOP10/Authentication.md

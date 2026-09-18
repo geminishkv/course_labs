@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №3</a><br></h1>
+<h1><a id="intro">Лаб. 03 · Nmap: сканирование сети и NSE</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -13,7 +13,7 @@
 Салют :wave:,<br>
 Данная лабораторная работа посвящена изучению `nmap` и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканера портов, чтобы освоить базовые методы сканирования.
 
-Nmap — первый этап разведки в AppSec: определение attack surface (какие сервисы доступны извне), выявление устаревших версий ПО с известными CVE и обнаружение мисконфигураций (открытые порты, незащищённые сервисы). Результаты nmap — входные данные для анализа рисков (Lab 04) и последующего DAST-тестирования (Lab 08).
+Nmap — первый этап разведки в AppSec: определение attack surface (какие сервисы доступны извне), выявление устаревших версий ПО с известными CVE и обнаружение мисконфигураций (открытые порты, незащищённые сервисы). Результаты nmap — входные данные для анализа рисков (Лаб. 04) и последующего DAST-тестирования (Лаб. 08).
 
 Для сдачи данной работы также будет требоваться ответить на дополнительные вопросы по описанным темам.
 
@@ -96,7 +96,7 @@ $ nmap -iL targets.txt # множественные цели сканирова�
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">23</span><span style="font-size:0.75rem; color:#555;">Telnet</span><div class="lab-card-tags"><span class="lab-tag">TCP</span><span class="lab-tag" style="border-color:rgba(213,26,26,0.3); color:#D51A1A; background:rgba(213,26,26,0.07);">небезопасный</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Всё в открытом тексте — пароли, команды. Открытый порт 23 — критическая находка. Должен быть закрыт.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">25</span><span style="font-size:0.75rem; color:#555;">SMTP (Mail Transfer)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отправка почты. Open relay на порту 25 — спам-рассылки от вашего имени. Проверяйте аутентификацию.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">53</span><span style="font-size:0.75rem; color:#555;">DNS (Domain Name System)</span><div class="lab-card-tags"><span class="lab-tag">TCP/UDP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Разрешение имён. DNS zone transfer (AXFR) раскрывает всю инфраструктуру. DNS amplification — DDoS вектор.</span></div>
-<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">80</span><span style="font-size:0.75rem; color:#555;">HTTP</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Веб без шифрования. Основная поверхность атаки: XSS, SQLi, SSRF. Вход в DAST-тестирование (Lab 08).</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">80</span><span style="font-size:0.75rem; color:#555;">HTTP</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Веб без шифрования. Основная поверхность атаки: XSS, SQLi, SSRF. Вход в DAST-тестирование (Лаб. 08).</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">443</span><span style="font-size:0.75rem; color:#555;">HTTPS</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Веб с TLS. Проверяйте: версию TLS (≥1.2), срок сертификата, слабые шифры. `nmap --script ssl-enum-ciphers`.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">3306</span><span style="font-size:0.75rem; color:#555;">MySQL Database</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">СУБД доступна извне — критическая мисконфигурация. Должна быть только на 127.0.0.1 или в приватной сети.</span></div>
 </div>
@@ -186,7 +186,7 @@ $ nmap -sn <IP>/24
 $ cp nmapres_new.txt nmapres.txt
 ```
 
-- [ ] 9. Защитите результаты сканирования — файл `nmapres.txt` содержит информацию об уязвимостях и не должен быть доступен другим пользователям. Используйте навыки из Lab 02:
+- [ ] 9. Защитите результаты сканирования — файл `nmapres.txt` содержит информацию об уязвимостях и не должен быть доступен другим пользователям. Используйте навыки из Лаб. 02:
 
 ```bash
 # Установите права: только владелец может читать и писать
@@ -226,15 +226,15 @@ $ git commit -S -m "chore: ignore nmap scan results"
 > Из истории уже опубликованного репозитория файлы так не исчезнут: если результаты успели уйти в `push`, их придётся вычищать из истории (`git filter-repo`) и считать раскрытыми.
 
 - [ ] 11. Оформить `README.md` по аналогии с этим и добавить shields-бейджи
-- [ ] 12. Составить `gist` отчет и отправить ссылку личным сообщением
+- [ ] 12. Составить `gist` отчёт и отправить ссылку личным сообщением
 
 ***
 
 ## Смотри также
 
-- [Лаб. №2 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — права доступа и ACL, используемые для защиты результатов
-- [Лаб. №4 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — анализ рисков по результатам nmap
-- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование найденных сервисов
+- [Лаб. 02 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — права доступа и ACL, используемые для защиты результатов
+- [Лаб. 04 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — анализ рисков по результатам nmap
+- [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование найденных сервисов
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — контейнеры для изоляции тестовых стендов
 - [Введение в сети и TCP/IP](https://course.geminishkv.tech/labs/intro/networking_basics/) — модель OSI, порты, DNS перед сканированием
 - [Порты и протоколы](https://course.geminishkv.tech/materials/ports/) — справочник портов для чтения результатов nmap

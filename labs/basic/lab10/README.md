@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №10</a><br></h1>
+<h1><a id="intro">Лаб. 10 · Итоговая оценка рисков ИБ</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -152,10 +152,10 @@ lab10
 
 ## Смотри также
 
-- [Лаб. №4 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — первая лаба по анализу рисков ИБ
-- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ и зависимости
-- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование
-- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
+- [Лаб. 04 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — первая лаба по анализу рисков ИБ
+- [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ и зависимости
+- [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование
+- [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — атаки на цепочку поставок
 - [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов для раздела «средства»
@@ -176,7 +176,7 @@ lab10
 <a class="lab-card" href="https://csrc.nist.gov/pubs/sp/800/30/r1/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">NIST SP 800-30 — Risk Assessment</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gdpr-info.eu/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GDPR — General Data Protection Regulation</div><div class="lab-card-tags"><span class="lab-tag">gdpr-info.eu</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://cwe.mitre.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">CWE — Common Weakness Enumeration</div><div class="lab-card-tags"><span class="lab-tag">cwe.mitre.org</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчетов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчётов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>

@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Pet Project</a><br></h1>
+<h1><a id="intro">Pet-project</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -12,7 +12,7 @@
 ***
 
 Салют :wave:,<br>
-Pet Project — это финальная самостоятельная работа курса. Вы выбираете индивидуальный проект совместно с преподавателем
+Pet-project — это финальная самостоятельная работа курса. Вы выбираете индивидуальный проект совместно с преподавателем
 и применяете весь стек изученных инструментов и практик AppSec/DevSecOps к реальному или учебному приложению.
 
 ***
@@ -28,8 +28,8 @@ Pet Project — это финальная самостоятельная раб�
 
 ## Смотри также
 
-- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — конвейер, который переносится в проект
-- [Лаб. №10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — аналитическая записка по проекту
+- [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — конвейер, который переносится в проект
+- [Лаб. 10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — аналитическая записка по проекту
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — выбор инструментов под стек проекта
 - [Лицензии ПО](https://course.geminishkv.tech/materials/licenses/) — LICENSE и NOTICE для проекта
 - [Troubleshooting](https://course.geminishkv.tech/materials/troubleshooting/) — частые проблемы по всем этапам

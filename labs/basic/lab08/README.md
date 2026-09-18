@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №8</a><br></h1>
+<h1><a id="intro">Лаб. 08 · DAST: OWASP ZAP</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -216,7 +216,7 @@ $ ./dast/zap_scan.sh
 
 - [ ] 15. Делайте все необходимые коммиты по шагам и отправляйте изменения в удалённый репозиторий
 - [ ] 16. Подготовьте отчёт `gist`
-- [ ] 17. Почистите кеш от `venv` и остановите уязвимое приложение
+- [ ] 17. Почистите кэш от `venv` и остановите уязвимое приложение
 
 ```bash
 $ deactivate
@@ -242,12 +242,12 @@ $ docker system prune -f
 
 ## Смотри также
 
-- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ (предыдущий этап)
-- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
+- [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ (предыдущий этап)
+- [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
 - [OWASP Top 10 — Client-side Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/client-side-attacks/) — XSS и атаки на клиента
 - [CheatSheet: HTTP Security Headers](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/) — заголовки безопасности
 - [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка OWASP ZAP
-- [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — разведка сервисов перед DAST
+- [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — разведка сервисов перед DAST
 - [OWASP — Authentication](https://course.geminishkv.tech/materials/OWASPTOP10/Authentication/) — что проверяет ZAP в первую очередь
 - [OWASP — Authorization](https://course.geminishkv.tech/materials/OWASPTOP10/Authorization/) — контроль доступа и IDOR
 - [Классификация AppSec-инструментов](https://course.geminishkv.tech/materials/appsec_tt/) — место DAST в AppSec toolchain

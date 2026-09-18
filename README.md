@@ -40,7 +40,7 @@
 1. Выполнить подготовительные инструкции:
     * [Подготовка рабочего окружения](labs/intro/vmbox_tutorial.md) — VirtualBox, установка Linux, что учесть на Windows
     * [Настройка Git, GPG и GitHub CLI](labs/intro/git_setup.md) — git config, SSH, GnuPG, gh
-    * [Оформление отчётов Gistup](labs/intro/gistup_guide.md) — формат, структура, правила
+    * [Оформление отчётов gistup](labs/intro/gistup_guide.md) — формат, структура, правила
     * [Введение в сети и TCP/IP](labs/intro/networking_basics.md) — OSI, порты, DNS, HTTP
     * [Основы Docker](labs/intro/docker_basics.md) — VM vs Container, Dockerfile, Compose
     * [Введение в CI/CD](labs/intro/cicd_basics.md) — GitHub Actions, workflow, секреты
@@ -48,16 +48,16 @@
 2. Каждый репозиторий должен содержать `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
 3. Выполнить лабораторные работы по порядку:
 
--  [ ] lab01 — [GitSCM — подготовка рабочего окружения](labs/basic/lab01/README.md)
--  [ ] lab02 — [*nix — права доступа, SUID, ACL, процессы](labs/basic/lab02/README.md)
--  [ ] lab03 — [Nmap — сканирование сети, NSE и защита результатов](labs/basic/lab03/README.md)
--  [ ] lab04 — [Анализ и определение мер снижения рисков ИБ](labs/basic/lab04/README.md)
--  [ ] lab05 — [Docker — контейнеризация приложений](labs/basic/lab05/README.md)
+-  [ ] lab01 — [Git: окружение и первый коммит](labs/basic/lab01/README.md)
+-  [ ] lab02 — [Linux: права доступа и процессы](labs/basic/lab02/README.md)
+-  [ ] lab03 — [Nmap: сканирование сети и NSE](labs/basic/lab03/README.md)
+-  [ ] lab04 — [Анализ и снижение рисков ИБ](labs/basic/lab04/README.md)
+-  [ ] lab05 — [Docker: образы и контейнеры](labs/basic/lab05/README.md)
 -  [ ] lab06 — [Docker CIS Benchmark и Trivy](labs/basic/lab06/README.md)
--  [ ] lab07 — [SAST, SCA и Secret Detection](labs/basic/lab07/README.md)
--  [ ] lab08 — [DAST — OWASP ZAP и ручное тестирование](labs/basic/lab08/README.md)
--  [ ] lab09 — [DevSecOps CI/CD конвейер на GitHub Actions](labs/basic/lab09/README.md)
--  [ ] lab10 — [Оценка анализа рисков ИБ — практика](labs/basic/lab10/README.md)
+-  [ ] lab07 — [SAST, SCA и поиск секретов](labs/basic/lab07/README.md)
+-  [ ] lab08 — [DAST: OWASP ZAP](labs/basic/lab08/README.md)
+-  [ ] lab09 — [DevSecOps CI/CD на GitHub Actions](labs/basic/lab09/README.md)
+-  [ ] lab10 — [Итоговая оценка рисков ИБ](labs/basic/lab10/README.md)
 
 4. Реализовать итоговую работу:
 
@@ -146,6 +146,8 @@ $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 $ npx --yes @mermaid-js/mermaid-cli@11.17.0 -i schema.mmd -o /tmp/schema.svg
 ```
 
+* Mermaid на сайте свой: CSP разрешает скрипты только с `'self'`, поэтому Material не может взять его с unpkg. Файл `docs/artifacts/vendor/mermaid/11.17.2/mermaid.min.js` (npm `mermaid@11.17.2`, MIT, sha256 `581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8`) подключается из `overrides/main.html` только на страницах со схемами. Обновление: положить `dist/mermaid.min.js` новой версии в каталог с её номером, сверить sha256 с опубликованным пакетом и поменять путь в `main.html`.
+
 * Очистка локального репозитория
 
 ```bash
@@ -176,7 +178,8 @@ $ git push --delete origin v1.2.3   # удалить тот же тег на Git
 `docs/materials/index.md` собирает материалы в карточки разделов, лабы ссылаются на них из See-also.
 
 **Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
-её после согласия подключает `banners.js`). `overrides/home.html` —
+её после согласия подключает `banners.js`) и свой Mermaid на страницах со схемами. `partials/copyright.html` —
+строка футера со ссылкой на уведомление об ответственности в политике конфиденциальности. `overrides/home.html` —
 главная без сайдбаров (`hide: [navigation, toc]`), подключает `home.css`. `partials/header.html` — шапка
 в стиле gpages поверх Material 9.7.x: логотип с кольцом, пилюли разделов с активным состоянием, штатный
 поиск и бургер; ссылки от корня сайта, потому что instant navigation не подменяет шапку.
@@ -195,10 +198,11 @@ Material. `!important` только в print. Значения `@property` не 
 `0deg` в `0` и молча отбрасывает регистрацию.
 
 **JS.** Четыре модуля без зависимостей: `header.js` (стекло шапки при скролле), `typewriter-target.js`
-(hero, уважает `prefers-reduced-motion`), `banners.js` (уведомление и карточка согласия, классы
-`ata-legal` / `ata-consent`, чтобы антибаннеры не резали; Метрика грузится только после «Принять», выбор
-хранится 180 дней в `ata_consent`, сменить его можно со страницы политики), `effects.js` (fade-in и живой
-конвейер). Интерактивные элементы на тач-экранах не меньше 44 px.
+(hero, уважает `prefers-reduced-motion`), `banners.js` (карточка согласия, класс `ata-consent`, чтобы
+антибаннеры не резали; Метрика грузится только после «Принять», выбор хранится 180 дней в `ata_consent`,
+сменить его можно со страницы политики; текст уведомления об ответственности — раздел `privacy.md#notice`,
+а не плашка поверх страницы), `effects.js` (появление hero и карточек лаб, живой конвейер, имена
+landmark-навигаций, которые Material оставляет безымянными). Интерактивные элементы на тач-экранах не меньше 44 px.
 Статистику репозитория в шторке рисует сам Material. Всё подписано на `document$` для instant navigation.
 
 **Сборка и зависимости.** `pyproject.toml` + `uv.lock` (хэши), группы инструментов CI (`lint`, `audit`,
@@ -243,11 +247,11 @@ Material. `!important` только в print. Значения `@property` не 
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (~45 карточек)
 │   ├── stylesheets/                   # fonts → tokens → typeset → header → sidebar → components → banners; home.css только на главной
-│   ├── javascripts/                   # header (стекло), typewriter-target, banners (уведомление + согласие на Метрику), effects (fade-in, конвейер)
-│   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD), home.html (главная), 404.html, partials/header.html
+│   ├── javascripts/                   # header (стекло), typewriter-target, banners (согласие на Метрику), effects (fade-in, конвейер, landmarks)
+│   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD; Mermaid на страницах со схемами), home.html, 404.html, partials/header.html, partials/copyright.html
 │   └── artifacts/
 │       ├── assets/                    # Logo (SVG), favicon (ICO), images
-│       ├── diagrams/                  # 7 Mermaid SVG + .mmd исходники
+│       ├── vendor/mermaid/11.17.2/    # Mermaid для схем (MIT), грузится только на страницах со схемами
 │       ├── exmpls/                    # Иллюстрации к кейсам
 │       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/

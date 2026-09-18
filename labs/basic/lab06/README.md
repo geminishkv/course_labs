@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №6</a><br></h1>
+<h1><a id="intro">Лаб. 06 · Docker CIS Benchmark и Trivy</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -44,7 +44,7 @@ lab06
 
 - Привилегированные контейнеры
 - Захардкоженные данные учёток
-- Отключенные профили безопасности (AppArmor, Seccomp)
+- Отключённые профили безопасности (AppArmor, Seccomp)
 - Прямое монтирование файловой системы
 - Устаревшие образы и явный запуск сервисов от привилегированного пользователя
 - Дополнительные сервисы, лишние утилиты
@@ -54,7 +54,7 @@ lab06
 
 ### Контекст безопасности
 
-> Основные принципы безопасности Docker описаны в [Лаб. №5](https://course.geminishkv.tech/labs/basic/lab05/) — здесь фокус на аудите и проверке их выполнения через CIS Benchmark.
+> Основные принципы безопасности Docker описаны в [Лаб. 05](https://course.geminishkv.tech/labs/basic/lab05/) — здесь фокус на аудите и проверке их выполнения через CIS Benchmark.
 
 ### Уровни CIS Docker Benchmark
 
@@ -124,7 +124,7 @@ $ deactivate # или $ deactivate 2>/dev/null || true
 > - Следует разобрать `.yaml` описав, что в них считается не безопасным и почему
 > - Опишите сценарии реализации рисков CR, DL
 > - Предложите исправленные `.yaml`
-- [ ] 8. Сделайте анализ уязвимостей из сгенерированных файлов .odt, .xlsx и опишите их в отчете. Файлы конвертируются в эти директории
+- [ ] 8. Сделайте анализ уязвимостей из сгенерированных файлов .odt, .xlsx и опишите их в отчёте. Файлы конвертируются в эти директории
 
 ```text
 audit_reports
@@ -134,8 +134,8 @@ audit_reports
 └── odt/           (OpenDocument Text files)
 ```
 
-- [ ] 9. Подготовьте отчет `gist`.
-- [ ] 10. Почистите кеш от `venv`, остановите уязвимое приложение и почистите контейнеры
+- [ ] 9. Подготовьте отчёт `gist`.
+- [ ] 10. Почистите кэш от `venv`, остановите уязвимое приложение и почистите контейнеры
 
 ```bash
 $ rm -rf venv
@@ -179,11 +179,11 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 
 ## Смотри также
 
-- [Лаб. №5 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — основы Docker и контекст безопасности
-- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ кода и зависимостей
+- [Лаб. 05 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — основы Docker и контекст безопасности
+- [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ кода и зависимостей
 - [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов
 - [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка Trivy, Hadolint, Docker Bench
-- [Лаб. №9 — DevSecOps CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — интеграция Trivy в пайплайн
+- [Лаб. 09 — DevSecOps CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — интеграция Trivy в пайплайн
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — справочник по командам Docker
 
 ***

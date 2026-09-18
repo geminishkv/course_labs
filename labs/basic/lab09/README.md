@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD013 MD033 -->
 <div align="center">
-<h1><a id="intro">Лабораторная работа №9</a><br></h1>
+<h1><a id="intro">Лаб. 09 · DevSecOps CI/CD на GitHub Actions</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -408,8 +408,8 @@ fail_action: true
 ## Смотри также
 
 - [Введение в CI/CD](https://course.geminishkv.tech/labs/intro/cicd_basics/) — основы GitHub Actions перед этой лабой
-- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — инструменты, интегрируемые в пайплайн
-- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — ручной DAST, автоматизируемый здесь
+- [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — инструменты, интегрируемые в пайплайн
+- [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — ручной DAST, автоматизируемый здесь
 - [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) — безопасность пайплайнов
 - [OWASP CI/CD Top 10](https://course.geminishkv.tech/materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/) — риски CI/CD
 - [CheatSheet: YAML](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_YAML/) — синтаксис workflow без сюрпризов

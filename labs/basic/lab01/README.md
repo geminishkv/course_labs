@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №1</a><br></h1>
+<h1><a id="intro">Лаб. 01 · Git: окружение и первый коммит</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -64,7 +64,7 @@ Git — распределённая система контроля верси�
 - [ ] 10. Ознакомиться с материалами `gh` сервиса и использовать их для авторизации, `commit`, `pull request` и тд.
 - [ ] 11. Выполнить инструкцию учебного материала
 - [ ] 12. Оформить `README.md` по аналогии с этим и добавить shields-бейджи
-- [ ] 13. Составить `gist` отчет и отправить ссылку личным сообщением
+- [ ] 13. Составить `gist` отчёт и отправить ссылку личным сообщением
 
 ***
 
@@ -114,13 +114,13 @@ if __name__ == "__main__":
 - [ ] 16. Локально получите изменения (`git fetch origin`), сделайте **rebase** ветки `patch2` на `origin/master` и разрешите **конфликт**
 - [ ] 17. Завершите rebase (`git add` и `git rebase --continue`) и опубликуйте ветку `patch2` командой `git push --force-with-lease`: rebase переписал историю, обычный `push` будет отклонён. Убедитесь, что конфликт в `pull-request` пропал
 - [ ] 18. Сделайте `merge` для `pull-request` `patch2 -> master`
-- [ ] 19. Подготовьте отчет `gist`. Продемонстрируйте историю коммитов на локальном и удаленном репозитории
+- [ ] 19. Подготовьте отчёт `gist`. Продемонстрируйте историю коммитов на локальном и удаленном репозитории
 
 ## Смотри также
 
 - [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/labs/intro/git_setup/) — подготовка окружения перед лабой: config, SSH, подпись коммитов, gh
-- [Оформление отчётов Gistup](https://course.geminishkv.tech/labs/intro/gistup_guide/) — формат отчёта, который сдаётся по каждой лабе
-- [Лаб. №2 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — следующий шаг: права доступа, SUID, ACL, процессы
+- [Оформление отчётов gistup](https://course.geminishkv.tech/labs/intro/gistup_guide/) — формат отчёта, который сдаётся по каждой лабе
+- [Лаб. 02 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — следующий шаг: права доступа, SUID, ACL, процессы
 - [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
 - [CheatSheet: GitHub CLI](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_CLI/) — работа с репозиторием и PR из терминала
 - [CheatSheet: .gitignore](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GITIGNORE/) — что не должно попадать в репозиторий

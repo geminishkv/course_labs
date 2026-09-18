@@ -1,5 +1,5 @@
 ---
-title: "Руководство по оформлению отчётов Gistup | Курс AppSec"
+title: "Руководство по оформлению отчётов gistup | Курс AppSec"
 description: "Gistup: формат, структура и правила оформления отчётов по лабораторным работам AppSec через GitHub Gist в Markdown."
 keywords: "Gist, gistup, отчёт, Markdown, GitHub, лабораторная работа, AppSec, оформление, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
@@ -7,7 +7,7 @@ keywords: "Gist, gistup, отчёт, Markdown, GitHub, лабораторная 
 <div class="lab-hero">
   <div class="lab-hero-num">INTRO</div>
   <div class="lab-hero-content">
-    <h1 class="lab-hero-title">Руководство по оформлению отчётов Gistup</h1>
+    <h1 class="lab-hero-title">Руководство по оформлению отчётов gistup</h1>
     <div class="lab-hero-tags">
       <span class="lab-tag">Gist</span>
       <span class="lab-tag">Markdown</span>

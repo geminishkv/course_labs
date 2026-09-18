@@ -104,7 +104,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <ul>
   <li>10 лабораторных работ + итоговый pet-project</li>
   <li>Каждый мини-проект размещается на <code>GitHub</code> с отчётом в формате <code>gistup</code></li>
-  <li>Для каждой лабораторной — отдельный репозиторий (или <code>fork</code>), исходный код + отчёт</li>
+  <li>Для каждой лабораторной: отдельный репозиторий (или <code>fork</code>), исходный код + отчёт</li>
   <li>Прогрессия: <code>Git</code> → <code>Linux</code> → <code>Nmap</code> → <code>Risk Analysis</code> → <code>Docker</code> → <code>CIS Benchmark</code> → <code>SAST/SCA</code> → <code>DAST</code> → <code>CI/CD</code> → <code>Итоговый Risk Analysis</code> → <code>Pet-project</code></li>
   </ul>
   </section>
@@ -115,16 +115,16 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <span class="sec-note">лабы идут по порядку · 01 → 10 → pet</span>
 </div>
 
-<p class="lead">Каждый этап — узел конвейера безопасности. Над узлом — сопроводительные материалы к этапу, под узлом — лабы. Открывай узел, делай работу, двигайся дальше по линии.</p>
+<p class="lead">Каждый этап это узел конвейера безопасности: над узлом материалы к этапу, под узлом лабы. Открывай узел, делай работу, двигайся дальше по линии.</p>
 
 <ol class="steps">
   <li><span class="steps__n">1</span><span>Изучи <a href="materials/">материалы</a> и <a href="materials/examples/exmpl/">примеры</a></span></li>
   <li><span class="steps__n">2</span><span>Заведи репозиторий с обвязкой: <code>.gitignore</code>, <code>CODE_OF_CONDUCT</code>, <code>CONTRIBUTING</code>, <code>LICENSE</code>, <code>NOTICE</code>, <code>SECURITY</code></span></li>
-  <li><span class="steps__n">3</span><span>Пройди лабораторные по порядку — от Lab 01 до Lab 10</span></li>
-  <li><span class="steps__n">4</span><span>Итог — <a href="labs/pet_project/">pet-project</a>: тема согласуется с преподавателем, применяется весь стек AppSec/DevSecOps</span></li>
+  <li><span class="steps__n">3</span><span>Пройди лабораторные по порядку: от Лаб. 01 до Лаб. 10</span></li>
+  <li><span class="steps__n">4</span><span>Итог: <a href="labs/pet_project/">pet-project</a>: тема согласуется с преподавателем, применяется весь стек AppSec/DevSecOps</span></li>
 </ol>
 
-<p class="steps__foot">Лицензию при переиспользовании материалов подбирай по <a href="materials/licenses/">справочнику лицензий</a> · <a href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411" target="_blank" rel="noopener">пример gistup-отчёта</a> — шаблон для всех работ</p>
+<p class="steps__foot">Лицензию при переиспользовании материалов подбирай по <a href="materials/licenses/">справочнику лицензий</a> · <a href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411" target="_blank" rel="noopener">пример gistup-отчёта</a>: шаблон для всех работ</p>
 
 <ol class="track" role="list">
   <li class="stage">
@@ -141,21 +141,21 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="stage-name">Основы</div>
   <div class="stage-cmd">git · linux · nmap</div>
   <div class="stage-labs">
-  <a class="lab" href="labs/basic/lab01/"><span class="lab-num">01</span><span class="lab-name">GitSCM — рабочее окружение</span><span class="lab-tags">Git</span></a>
-  <a class="lab" href="labs/basic/lab02/"><span class="lab-num">02</span><span class="lab-name">*nix — права, SUID, ACL, процессы</span><span class="lab-tags">Linux · Bash · ACL</span></a>
-  <a class="lab" href="labs/basic/lab03/"><span class="lab-num">03</span><span class="lab-name">Nmap — сканирование сети и NSE</span><span class="lab-tags">Nmap · NSE</span></a>
+  <a class="lab" href="labs/basic/lab01/"><span class="lab-num">01</span><span class="lab-name">Git: окружение и первый коммит</span><span class="lab-tags">Git</span></a>
+  <a class="lab" href="labs/basic/lab02/"><span class="lab-num">02</span><span class="lab-name">Linux: права доступа и процессы</span><span class="lab-tags">Linux · Bash · ACL</span></a>
+  <a class="lab" href="labs/basic/lab03/"><span class="lab-num">03</span><span class="lab-name">Nmap: сканирование сети и NSE</span><span class="lab-tags">Nmap · NSE</span></a>
   </div>
   </li>
   <li class="stage">
   <div class="stage-mats">
-    <a class="mat mat--case" href="materials/examples/RA/">Risk Analysis — пример отчёта</a>
-  <a class="mat mat--case" href="materials/examples/exmpl/">Cases — инциденты ИБ</a>
+    <a class="mat mat--case" href="materials/examples/RA/">Risk Analysis: пример отчёта</a>
+  <a class="mat mat--case" href="materials/examples/exmpl/">Cases: инциденты ИБ</a>
   </div>
   <div class="stage-node"><div class="stage-head">2</div></div>
   <div class="stage-name">Риски</div>
   <div class="stage-cmd">threat model</div>
   <div class="stage-labs">
-  <a class="lab" href="labs/basic/lab04/"><span class="lab-num">04</span><span class="lab-name">Анализ и меры снижения рисков ИБ</span><span class="lab-tags">Risk Analysis</span></a>
+  <a class="lab" href="labs/basic/lab04/"><span class="lab-num">04</span><span class="lab-name">Анализ и снижение рисков ИБ</span><span class="lab-tags">Risk Analysis</span></a>
   </div>
   </li>
   <li class="stage">
@@ -169,7 +169,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="stage-name">Контейнеры</div>
   <div class="stage-cmd">docker · cis · trivy</div>
   <div class="stage-labs">
-  <a class="lab" href="labs/basic/lab05/"><span class="lab-num">05</span><span class="lab-name">Docker — контейнеризация приложений</span><span class="lab-tags">Docker</span></a>
+  <a class="lab" href="labs/basic/lab05/"><span class="lab-num">05</span><span class="lab-name">Docker: образы и контейнеры</span><span class="lab-tags">Docker</span></a>
   <a class="lab" href="labs/basic/lab06/"><span class="lab-num">06</span><span class="lab-name">Docker CIS Benchmark и Trivy</span><span class="lab-tags">CIS · Trivy</span></a>
   </div>
   </li>
@@ -185,8 +185,8 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="stage-name">Код и приложение</div>
   <div class="stage-cmd">sast · sca · dast</div>
   <div class="stage-labs">
-  <a class="lab" href="labs/basic/lab07/"><span class="lab-num">07</span><span class="lab-name">SAST, SCA и Secret Detection</span><span class="lab-tags">Semgrep · Checkov · Gitleaks</span></a>
-  <a class="lab" href="labs/basic/lab08/"><span class="lab-num">08</span><span class="lab-name">DAST уязвимого приложения</span><span class="lab-tags">OWASP ZAP</span></a>
+  <a class="lab" href="labs/basic/lab07/"><span class="lab-num">07</span><span class="lab-name">SAST, SCA и поиск секретов</span><span class="lab-tags">Semgrep · Checkov · Gitleaks</span></a>
+  <a class="lab" href="labs/basic/lab08/"><span class="lab-num">08</span><span class="lab-name">DAST: OWASP ZAP</span><span class="lab-tags">OWASP ZAP</span></a>
   </div>
   </li>
   <li class="stage">
@@ -215,8 +215,8 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="stage-name">Итог</div>
   <div class="stage-cmd">risk assessment · pet</div>
   <div class="stage-labs">
-  <a class="lab" href="labs/basic/lab10/"><span class="lab-num">10</span><span class="lab-name">Оценка анализа рисков ИБ — практика</span><span class="lab-tags">Risk Analysis</span></a>
-  <a class="lab lab--gold" href="labs/pet_project/"><span class="lab-num">pet</span><span class="lab-name">Pet-project — полный AppSec/DevSecOps стек</span><span class="lab-tags">Full stack</span></a>
+  <a class="lab" href="labs/basic/lab10/"><span class="lab-num">10</span><span class="lab-name">Итоговая оценка рисков ИБ</span><span class="lab-tags">Risk Analysis</span></a>
+  <a class="lab lab--gold" href="labs/pet_project/"><span class="lab-num">pet</span><span class="lab-name">Pet-project: полный стек AppSec/DevSecOps</span><span class="lab-tags">Full stack</span></a>
   </div>
   </li>
 </ol>
@@ -234,18 +234,18 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <li>Документация проекта через <code>doxygen</code></li>
   <li>Публикация пакета на <code>GitHub Releases</code> при слиянии в <code>develop</code></li>
   <li>Рефакторинг и поддержка лабораторных в процессе работы</li>
-  <li>Все команды — строго из терминала, без <code>WebUI</code> (кроме токенов и специфичных настроек)</li>
+  <li>Все команды строго из терминала, без <code>WebUI</code> (кроме токенов и специфичных настроек)</li>
   </ul>
   </section>
   <section class="rules-card">
   <h3>Замечания</h3>
   <ol class="notes">
-  <li>Лабораторные обязательны для всех — вне зависимости от уровня подготовки</li>
+  <li>Лабораторные обязательны для всех, вне зависимости от уровня подготовки</li>
   <li>Скопируй этапы реализации и отмечай выполненные у себя</li>
   <li>Каждая работа разбивается на атомарные коммиты для трекинга изменений</li>
-  <li>Отчёт сдаётся индивидуально с защитой: каждая команда — с описанием, флагами и выводом из терминала</li>
+  <li>Отчёт сдаётся индивидуально с защитой: каждая команда с описанием, флагами и выводом из терминала</li>
   <li>Часть инструментов требует установки дополнительных <code>open-source</code> пакетов</li>
-  <li>В отчётах — вывод из консоли, не скриншоты; описание каждого флага и команды</li>
+  <li>В отчётах вывод из консоли, не скриншоты; описание каждого флага и команды</li>
   </ol>
   </section>
 </div>
@@ -271,8 +271,8 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="tg-strip__left">
   <img src="artifacts/assets/logo_white.svg" class="tg-strip__logo" alt="AppSecTA">
   <div>
-  <div class="tg-strip__name">Канал AppSECT.A.</div>
-  <div class="tg-strip__desc">AppSec · DevSecOps · ИБ — практика без воды и купюр.</div>
+  <div class="tg-strip__name">Канал AppSecTA</div>
+  <div class="tg-strip__desc">AppSec · DevSecOps · ИБ: практика без воды и купюр.</div>
   </div>
   </div>
   <a class="btn btn-primary" href="https://t.me/appsecta" target="_blank" rel="noopener">Подписаться</a>

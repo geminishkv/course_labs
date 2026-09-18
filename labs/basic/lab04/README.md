@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №4</a><br></h1>
+<h1><a id="intro">Лаб. 04 · Анализ и снижение рисков ИБ</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -187,13 +187,13 @@ flowchart TB
 ## Предоставление материалов
 
 > - Ожидается результат в виде аналитической записки на `gist`, которая будет раскрывать уровень, степень критичности рисков, меры, которые могут снизить этот риск, приоритет, подход.
-> - Необходимо иметь в наличии проведенный анализ рисков, их описание, меры снижения рисков, техническое решение. Данные материалы должны быть, как минимум, описаны технически, включая пояснения для менеджмента. Основным критерием является логическая цепочка в виде: проблема – решение – ценность – приоритет.
+> - Необходимо иметь в наличии проведённый анализ рисков, их описание, меры снижения рисков, техническое решение. Данные материалы должны быть, как минимум, описаны технически, включая пояснения для менеджмента. Основным критерием является логическая цепочка в виде: проблема – решение – ценность – приоритет.
 
 ***
 
 ## Задание
 
-- [ ] 1. Провести анализ на возможность взлома, утечки, доступности информации и ее категории значимости для компании
+- [ ] 1. Провести анализ на возможность взлома, утечки, доступности информации и её категории значимости для компании
 - [ ] 2. Необходимо подойти к анализу в соответствии с Compliance: данные размещены на инфраструктуре в Евросоюзе, но они включают ПДн, в том числе граждан России, Евросоюза, а также в отношении информации ограниченного доступа, инсайдерской информации и иное
     - [ ] Описать риски, которые возникают из кейса, меры снижения рисков, описать уровень эффективности мер
     - [ ] Предложить техническое решение для снижения рисков ИБ
@@ -207,12 +207,12 @@ flowchart TB
 
 ## Смотри также
 
-- [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — результаты сканирования как входные данные для анализа рисков
-- [Лаб. №10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — расширенный кейс с бизнес-контекстом
+- [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — результаты сканирования как входные данные для анализа рисков
+- [Лаб. 10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — расширенный кейс с бизнес-контекстом
 - [Примеры кейсов](https://course.geminishkv.tech/materials/examples/exmpl/) — реальные инциденты ИБ
 - [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
 - [OWASP — Logical Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/logical-attacks/) — атаки на бизнес-логику и оценка рисков
-- [Лаб. №5 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — следующий этап: контейнеризация приложений
+- [Лаб. 05 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — следующий этап: контейнеризация приложений
 
 ***
 
@@ -223,7 +223,7 @@ flowchart TB
 ## Links
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчетов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчётов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://web.archive.org/web/20260905043049/https://owasp.org/www-community/OWASP_Risk_Rating_Methodology" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Risk Rating Methodology</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://csrc.nist.gov/pubs/sp/800/30/r1/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">NIST SP 800-30 — Risk Assessment</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gdpr-info.eu/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GDPR — General Data Protection Regulation</div><div class="lab-card-tags"><span class="lab-tag">gdpr-info.eu</span></div></div><div class="lab-card-arrow">→</div></a>

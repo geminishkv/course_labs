@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №2</a><br></h1>
+<h1><a id="intro">Лаб. 02 · Linux: права доступа и процессы</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -70,7 +70,7 @@ $ chown [-R] user[:group] file # доступна только для root
 $ chgrp [-R] group ... file # изменение группы файла для пользователя только там, где он является ее членом
 ```
 
-У каждого файла или каталога имеются определенные права доступа, такие как:
+У каждого файла или каталога имеются определённые права доступа, такие как:
 
 > - r — право на чтение из файла / просмотр содержимого директории
 > - w — право на запись в файл / создание, удаление файлов в директории
@@ -229,16 +229,16 @@ $ getfacl nmapres.txt
 - [ ] 15. Найдите все SUID-файлы в системе: `find / -perm -4000 2>/dev/null`. Опишите 3 найденных файла — зачем им SUID и какой риск они несут
 - [ ] 16. Выведите процессы которые у вас запущены в терминале и вне его.
 - [ ] 17. Оформить `README.md` по аналогии с этим и добавить shields-бейджи
-- [ ] 18. Составить `gist` отчет и отправить ссылку личным сообщением
+- [ ] 18. Составить `gist` отчёт и отправить ссылку личным сообщением
 
 ***
 
 ## Смотри также
 
 - [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
-- [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
+- [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
 - [Подготовка окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/) — если не настроена VM
-- [Лаб. №1 — GitSCM](https://course.geminishkv.tech/labs/basic/lab01/) — репозиторий и отчёт, в которые складывается результат
+- [Лаб. 01 — Git](https://course.geminishkv.tech/labs/basic/lab01/) — репозиторий и отчёт, в которые складывается результат
 - [Приложение — команды и утилиты](https://course.geminishkv.tech/materials/APPENDIX/) — справочник команд Linux, Git и Docker
 
 ***

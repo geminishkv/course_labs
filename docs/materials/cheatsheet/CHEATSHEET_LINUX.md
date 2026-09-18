@@ -2,7 +2,7 @@
 hide:
   - toc
 title: "CheatSheet: Linux — права доступа и процессы | Курс AppSec"
-description: "Шпаргалка по Linux с пояснениями: как читать ls -l, что значат r, w, x для файла и каталога, chmod, chown, umask, SUID, SGID и sticky bit, ACL, пользователи и группы, состояния процессов, сигналы и поиск по правам."
+description: "Шпаргалка по Linux: как читать ls -l, права r, w, x, chmod, chown, umask, SUID, SGID, sticky bit, ACL, пользователи, процессы и сигналы."
 keywords: "Linux, права доступа, chmod, chown, umask, SUID, SGID, sticky bit, ACL, setfacl, процессы, сигналы, kill, ps, cheatsheet, шпаргалка, AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 

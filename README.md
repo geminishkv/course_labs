@@ -250,13 +250,16 @@ flowchart TB
 ```
 
 **Контент.** Исходники лаб, intro и тестов живут в `labs/`, страницы сайта в `docs/` подключают их через
-`include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
+`include-markdown`. Шапку README с заголовком и бейджами обёртка пропускает параметром `start="</div>"`: на странице остаётся один `h1` из hero,
+а бейджи со стороннего сервиса не загружаются. `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
 дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
 `docs/materials/index.md` собирает материалы в карточки по типу: руководства, шпаргалки, справочники, OWASP Top 10, кейсы,
 лекции, troubleshooting; лабы ссылаются на них из See-also. Вводные руководства — страницы `docs/materials/guides/`
 (обёртки над исходниками `labs/intro/`); раньше они жили по адресу `/labs/intro/…`, со старых адресов стоят редиректы.
 
-**Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
+**Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD: `WebPage` и `BreadcrumbList` на каждой странице,
+`LearningResource` на страницах лабораторных, `Course`, `Person` и организация на главной; блок `htmltitle` отдаёт заголовок из front matter
+без повторного названия сайта, поэтому `title` пишется не длиннее 65 символов, а `description` не длиннее 160; Метрики в шаблоне нет,
 её после согласия подключает `banners.js`). `partials/copyright.html` —
 строка футера со ссылкой на уведомление об ответственности в политике конфиденциальности. `overrides/home.html` —
 главная без сайдбаров (`hide: [navigation, toc]`), подключает `home.css`. `partials/header.html` — шапка

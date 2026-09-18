@@ -1,6 +1,6 @@
 ---
-title: "Разбор находок сканеров — триаж SAST, SCA, DAST и секретов | Курс AppSec"
-description: "Как разбирать отчёты сканеров безопасности: проверка находки, три исхода, порядок приоритетов, чтение отчётов Semgrep, Checkov, Dependency-Check, Trivy, OWASP ZAP и Gitleaks, правильные исключения и контроль того, что сканер действительно сканировал."
+title: "Разбор находок сканеров: триаж SAST, SCA, DAST | Курс AppSec"
+description: "Как разбирать отчёты сканеров: проверка находки, три исхода, приоритеты, отчёты Semgrep, Checkov, Trivy, ZAP и Gitleaks, правильные исключения."
 keywords: "триаж находок, false positive, SAST, SCA, DAST, Semgrep, Checkov, Trivy, OWASP ZAP, Dependency-Check, Gitleaks, исключения, baseline, quality gate, AppSec, DevSecOps, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 

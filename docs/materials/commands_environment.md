@@ -2,7 +2,7 @@
 hide:
   - toc
 
-title: "Окружение: Unix-утилиты, пакетные менеджеры, Python venv и pip — справочник курса AppSec"
+title: "Команды окружения: Unix, пакеты, Python venv | Курс AppSec"
 description: "Справочник по рабочему окружению курса AppSec: базовые утилиты Unix, пакетные менеджеры, установка ПО, виртуальные окружения Python и pip."
 keywords: "Linux, Unix, apt, brew, пакетный менеджер, Python, venv, pip, окружение, справочник, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---

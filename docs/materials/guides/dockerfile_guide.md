@@ -1,6 +1,6 @@
 ---
 title: "Dockerfile: как устроен и как его писать | Курс AppSec"
-description: "Руководство по Dockerfile: контекст сборки и .dockerignore, инструкции и их слои, порядок строк и кэш, exec- и shell-форма CMD, ARG и ENV, путь от наивного Dockerfile к правильному и проверка результата."
+description: "Руководство по Dockerfile: контекст сборки и .dockerignore, инструкции и слои, порядок строк и кэш, формы CMD, ARG и ENV, проверка результата."
 keywords: "Dockerfile, docker build, слои, кэш сборки, CMD, ENTRYPOINT, ARG, ENV, USER, HEALTHCHECK, .dockerignore, hadolint, контейнеры, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
@@ -18,6 +18,6 @@ keywords: "Dockerfile, docker build, слои, кэш сборки, CMD, ENTRYPO
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/dockerfile_guide.md" %}
+{% include-markdown "../../../labs/intro/dockerfile_guide.md" start="</div>" %}
 
 </div>

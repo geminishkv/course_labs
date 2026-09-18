@@ -2,7 +2,7 @@
 hide:
   - toc
 title: "OWASP Top 10 CI/CD Risks | Курс AppSec"
-description: "OWASP Top 10 CI/CD Security Risks по-русски: все десять рисков CICD-SEC-1…10 — суть, как атакуют, как защищаться и где это встречается в лабораторных; разбор Poisoned Pipeline Execution и закрепления actions по хешу."
+description: "OWASP Top 10 CI/CD Security Risks по-русски: десять рисков CICD-SEC-1…10, как атакуют и как защищаться, разбор Poisoned Pipeline Execution."
 keywords: "OWASP, CI/CD, DevSecOps, риски, GitHub Actions, pipeline, секреты, AppSec, SCM, supply chain, зависимости, конвейер, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 

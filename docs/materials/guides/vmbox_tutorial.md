@@ -18,6 +18,6 @@ keywords: "VirtualBox, виртуальная машина, Ubuntu, Fedora, Linu
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/vmbox_tutorial.md" %}
+{% include-markdown "../../../labs/intro/vmbox_tutorial.md" start="</div>" %}
 
 </div>

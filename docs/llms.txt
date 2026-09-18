@@ -9,9 +9,11 @@ This is a practical Application Security (AppSec) and DevSecOps course created b
 ## Structure
 - 8 introductory guides (VirtualBox setup, Git/GPG, Gistup reports, Networking/TCP-IP, Docker basics, Dockerfile guide, CI/CD intro, AppSec tools installation)
 - 10 lab works (Git, Linux, Nmap, Risk Analysis, Docker, CIS Benchmark, SAST/SCA/Secret Detection, DAST, DevSecOps CI/CD, Final Risk Analysis)
+- Advanced Docker track, optional, 2 labs: container runtime hardening with network segmentation, and image supply chain (digest pinning, hashed dependencies, BuildKit secrets, SBOM, cosign signing, admission gate, CI build). Both labs include deliberately planted false positives to triage
 - 1 pet-project (full AppSec/DevSecOps stack)
 - 7 tests (5 basic variants + 2 Fintech lecture variants)
-- Reference materials: OWASP Top 10, CheatSheets, examples, lectures
+- Reference materials: OWASP Top 10, 11 cheat sheets, case studies, lectures, troubleshooting FAQ, and reference articles (ports and protocols, tool classes, licenses, CVSS and risk register, scanner findings triage, command references by topic)
+- Every lab and guide has a workflow diagram in GOST 19.701-90 (ISO 5807) notation
 
 ## Topics Covered
 - Git, GitHub, GPG signing, SSH keys
@@ -20,6 +22,9 @@ This is a practical Application Security (AppSec) and DevSecOps course created b
 - Risk analysis methodology (ISO 27005, NIST SP 800-30, OWASP Risk Rating)
 - Docker containerization, Dockerfile security, Docker Compose
 - CIS Docker Benchmark, Docker Bench Security, Trivy
+- Container runtime hardening: capabilities, no-new-privileges, seccomp profiles, read-only root filesystem, runtime secrets, compose network segmentation
+- Image supply chain: digest pinning, pip --require-hashes, BuildKit build secrets, SBOM (CycloneDX), cosign signatures, provenance attestations, rootless BuildKit
+- Findings triage: false positives, accepted risk, exceptions with a mandatory reason
 - SAST: Semgrep, Checkov, Bandit
 - SCA: OWASP Dependency-Check
 - Secret Detection: Gitleaks, TruffleHog, pre-commit hooks
@@ -39,6 +44,14 @@ This is a practical Application Security (AppSec) and DevSecOps course created b
 
 ## Key URLs
 - Homepage: https://course.geminishkv.tech/
+- Materials index: https://course.geminishkv.tech/materials/
+- Getting started guides: https://course.geminishkv.tech/materials/#guides
+- Lab 05 (Docker): https://course.geminishkv.tech/labs/basic/lab05/
+- Advanced Docker track: https://course.geminishkv.tech/labs/advanced/
+- Docker 01 (runtime hardening): https://course.geminishkv.tech/labs/advanced/docker01/
+- Docker 02 (image supply chain): https://course.geminishkv.tech/labs/advanced/docker02/
+- Scanner findings triage: https://course.geminishkv.tech/materials/findings_triage/
+- Troubleshooting FAQ: https://course.geminishkv.tech/materials/troubleshooting/
 - Lab 07 (SAST/SCA): https://course.geminishkv.tech/labs/basic/lab07/
 - Lab 09 (CI/CD): https://course.geminishkv.tech/labs/basic/lab09/
 - Fintech lecture: https://course.geminishkv.tech/materials/lectures/fintech_ru/

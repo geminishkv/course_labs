@@ -2,7 +2,7 @@
 hide:
   - toc
 
-title: "Git: указатели, конфигурация и основные команды — справочник курса AppSec"
+title: "Команды Git: указатели, конфигурация, основы | Курс AppSec"
 description: "Справочник по Git для лабораторных курса AppSec: HEAD, ORIG_HEAD, ветки и теги как указатели, уровни конфигурации local, global и system, основные команды."
 keywords: "Git, HEAD, ORIG_HEAD, detached HEAD, git config, команды Git, справочник, AppSec, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---

@@ -1,6 +1,6 @@
 ---
-title: "Docker 02 — Поставка образа: сборка, SBOM, подпись cosign | Курс AppSec"
-description: "Углублённая лабораторная AppSec по цепочке поставки образа Docker: закрепление по digest, зависимости с хешами, секреты BuildKit, SBOM, подпись cosign, гейт допуска и сборка в CI."
+title: "Docker 02: сборка, SBOM и подпись образа cosign | Курс AppSec"
+description: "Углублённая лабораторная по поставке образа Docker: digest, хеши зависимостей, секреты BuildKit, SBOM, подпись cosign, гейт допуска, сборка в CI."
 keywords: "Docker supply chain, digest, BuildKit secrets, SBOM, CycloneDX, cosign, Sigstore, provenance, гейт допуска, rootless BuildKit, GitHub Actions, ложные срабатывания, AppSec, DevSecOps, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
@@ -18,6 +18,6 @@ keywords: "Docker supply chain, digest, BuildKit secrets, SBOM, CycloneDX, cosig
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/advanced/docker02/README.md" %}
+{% include-markdown "../../../labs/advanced/docker02/README.md" start="</div>" %}
 
 </div>

@@ -1,5 +1,5 @@
 ---
-title: "Pet-project — итоговый проект с DevSecOps-конвейером | Курс AppSec"
+title: "Pet-project: итоговый проект с конвейером DevSecOps | Курс AppSec"
 description: "Pet-project курса AppSec: итоговая самостоятельная работа с DevSecOps-практиками — CI/CD, SAST, DAST, SCA и анализ безопасности."
 keywords: "pet project, AppSec, DevSecOps, итоговая работа, безопасность приложений, CI/CD, SAST, DAST, SCA, курс AppSec, самостоятельная работа, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
@@ -18,6 +18,6 @@ keywords: "pet project, AppSec, DevSecOps, итоговая работа, без
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../labs/pet_project/README.md" %}
+{% include-markdown "../../labs/pet_project/README.md" start="</div>" %}
 
 </div>

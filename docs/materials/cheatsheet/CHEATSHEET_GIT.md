@@ -2,7 +2,7 @@
 hide:
   - toc
 title: "CheatSheet: команды Git | Курс AppSec"
-description: "Git шпаргалка с пояснениями: где живут изменения, ежедневный цикл, отмена и reset, ветки, merge и rebase, конфликты, cherry-pick, подпись коммитов, reflog и что делать, если в коммит попал секрет."
+description: "Шпаргалка по Git с пояснениями: ежедневный цикл, отмена и reset, ветки, merge и rebase, конфликты, подпись коммитов, reflog, секрет в коммите."
 keywords: "Git, SCM, cheatsheet, шпаргалка, коммит, ветка, rebase, stash, cherry-pick, merge, remote, reflog, reset, подпись коммитов, AppSec, лабораторные работы, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 

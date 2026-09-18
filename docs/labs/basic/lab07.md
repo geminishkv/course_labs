@@ -18,6 +18,6 @@ keywords: "SAST, SCA, Semgrep, Checkov, OWASP Dependency Check, AppSec, стат
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/basic/lab07/README.md" %}
+{% include-markdown "../../../labs/basic/lab07/README.md" start="</div>" %}
 
 </div>

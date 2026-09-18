@@ -18,6 +18,6 @@ keywords: "Docker, контейнеризация, Dockerfile, Docker Compose, �
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/docker_basics.md" %}
+{% include-markdown "../../../labs/intro/docker_basics.md" start="</div>" %}
 
 </div>

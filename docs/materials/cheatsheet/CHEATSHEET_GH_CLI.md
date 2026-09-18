@@ -2,7 +2,7 @@
 hide:
   - toc
 title: "CheatSheet: GitHub CLI | Курс AppSec"
-description: "GitHub CLI шпаргалка с пояснениями: цикл сдачи работы через pull request, аутентификация и права токена, запуски Actions и разбор упавших шагов, секреты репозитория, релизы, gist и gh api."
+description: "Шпаргалка по GitHub CLI: сдача работы через pull request, аутентификация и права токена, запуски Actions, секреты репозитория, релизы, gist, gh api."
 keywords: "GitHub CLI, gh, cheatsheet, шпаргалка, pull request, issues, releases, DevOps, AppSec, DevSecOps, аутентификация, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 

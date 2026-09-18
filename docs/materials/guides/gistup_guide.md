@@ -18,6 +18,6 @@ keywords: "Gist, gistup, отчёт, Markdown, GitHub, лабораторная 
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/gistup_guide.md" %}
+{% include-markdown "../../../labs/intro/gistup_guide.md" start="</div>" %}
 
 </div>

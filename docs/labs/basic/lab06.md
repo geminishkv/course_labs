@@ -17,6 +17,6 @@ keywords: "Docker, CIS Benchmark, аудит, безопасность, hardenin
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/basic/lab06/README.md" %}
+{% include-markdown "../../../labs/basic/lab06/README.md" start="</div>" %}
 
 </div>

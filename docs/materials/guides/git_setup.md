@@ -19,6 +19,6 @@ keywords: "Git, git config, SSH, GPG, GnuPG, GitHub CLI, smimesign, подпис
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/git_setup.md" %}
+{% include-markdown "../../../labs/intro/git_setup.md" start="</div>" %}
 
 </div>

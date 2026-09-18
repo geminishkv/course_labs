@@ -1,6 +1,6 @@
 ---
-title: "Docker 01 — Рантайм: hardening контейнера и сегментация сети | Курс AppSec"
-description: "Углублённая лабораторная AppSec по Docker: capabilities, no-new-privileges, seccomp, read-only rootfs, секреты в рантайме, сегментация сетей compose и разбор ложных срабатываний."
+title: "Docker 01: hardening рантайма и сегментация сети | Курс AppSec"
+description: "Углублённая лабораторная по Docker: capabilities, seccomp, read-only rootfs, секреты, сегментация сетей compose и разбор ложных срабатываний."
 keywords: "Docker hardening, capabilities, seccomp, no-new-privileges, read-only rootfs, docker.sock, Docker secrets, сегментация сети, docker compose, ложные срабатывания, AppSec, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
 
@@ -18,6 +18,6 @@ keywords: "Docker hardening, capabilities, seccomp, no-new-privileges, read-only
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/advanced/docker01/README.md" %}
+{% include-markdown "../../../labs/advanced/docker01/README.md" start="</div>" %}
 
 </div>

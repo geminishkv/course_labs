@@ -2,7 +2,7 @@
 hide:
   - toc
 
-title: "Сканеры AppSec и конвейер: Nmap, SAST, SCA, DAST, секреты, GitHub Actions — справочник курса"
+title: "Команды сканеров: Nmap, SAST, SCA, DAST, CI | Курс AppSec"
 description: "Справочник команд сканеров курса AppSec: Nmap, Semgrep и Bandit, анализ зависимостей, OWASP ZAP, поиск секретов и сборка их в конвейер GitHub Actions."
 keywords: "Nmap, SAST, SCA, DAST, Semgrep, Bandit, Trivy, OWASP ZAP, Gitleaks, TruffleHog, GitHub Actions, CI/CD, справочник, AppSec, DevSecOps, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---

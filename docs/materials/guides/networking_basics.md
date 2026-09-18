@@ -19,6 +19,6 @@ keywords: "TCP/IP, OSI, IP-адрес, порты, DNS, HTTP, HTTPS, TCP, UDP, �
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/networking_basics.md" %}
+{% include-markdown "../../../labs/intro/networking_basics.md" start="</div>" %}
 
 </div>

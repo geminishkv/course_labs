@@ -18,6 +18,6 @@ keywords: "CI/CD, GitHub Actions, workflow, YAML, DevSecOps, пайплайн, c
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/intro/cicd_basics.md" %}
+{% include-markdown "../../../labs/intro/cicd_basics.md" start="</div>" %}
 
 </div>

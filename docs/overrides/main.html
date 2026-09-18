@@ -4,6 +4,10 @@
 {% block tabs %}{% endblock %}
 
 {% block extrahead %}
+  {# favicon set shared with gpages (the theme adds the .ico link itself) #}
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'artifacts/assets/favicon-32.png' | url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ 'artifacts/assets/favicon-16.png' | url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'artifacts/assets/apple-touch-icon.png' | url }}">
   {{ super() }}
 
   {% if page %}

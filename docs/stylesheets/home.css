@@ -48,12 +48,6 @@ body:has(.md-content--home) .md-main { background-color: var(--surface-page); }
 
 body:has(.md-content--home) .md-header__title { visibility: hidden; }
 
-/* Header and content share the 88rem grid; same gutters so the edges line up */
-
-body:has(.md-content--home) .md-header__inner {
-  padding-inline: var(--home-gutter);
-}
-
 body:has(.md-content--home) .md-top {
   background-color: var(--surface-card);
   color: var(--text-primary);

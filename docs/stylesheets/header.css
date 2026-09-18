@@ -4,6 +4,13 @@
    search results · source facts (drawer)
 ══════════════════════════════════════════ */
 
+/* Header content spans the viewport on every page (the 88rem .md-grid cap
+   stays for the page body); gutter matches --home-gutter so the home hero
+   still lines up with the logo below 88rem */
+:root {
+  --header-gutter: clamp(1rem, 4vw, 3rem);
+}
+
 /* ── Bar ── */
 .md-header {
   background-color: var(--ink-page);
@@ -25,7 +32,13 @@
   display: flex;
   align-items: center;
   gap: clamp(10px, 1.5vw, 20px);
-  padding: 8px 0.8rem;
+  padding: 8px var(--header-gutter);
+}
+
+/* .md-grid caps width at 88rem (typeset.css loads later, same specificity),
+   so the override needs both classes */
+.md-header__inner.md-grid {
+  max-width: none;
 }
 
 /* ── Logo ring + wordmark ── */

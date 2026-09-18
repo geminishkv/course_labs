@@ -9,9 +9,9 @@
 
 ***
 
-Введение в непрерывную интеграцию и доставку перед лабораторной Lab 09. Здесь — концепция CI/CD, структура GitHub Actions и минимальный workflow.
+Введение в непрерывную интеграцию и доставку перед лабораторной Лаб. 09. Здесь — концепция CI/CD, структура GitHub Actions и минимальный workflow.
 
-> Если вы уже настраивали пайплайны — переходите сразу к Lab 09.
+> Если вы уже настраивали пайплайны — переходите сразу к Лаб. 09.
 
 ***
 
@@ -21,7 +21,65 @@
 
 **CD (Continuous Delivery / Deployment)** — автоматическая доставка проверенного кода в staging или production.
 
-<img class="off-glb" src="/artifacts/diagrams/cicd-pipeline.svg" alt="Cicd Pipeline" style="max-width:680px; width:100%;">
+Схема показывает путь изменения от `git push` до релиза и место, где конвейер его останавливает.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Конвейер CI/CD от push до релиза
+    accDescr: Push или pull request запускает CI со сборкой и проверками; при провале код возвращается на исправление, при успехе pull request проходит ревью и сливается, после чего CD выкатывает релиз.
+
+    push_code([Push или pull request])
+    push_join((" "))
+
+    subgraph ci_stage ["CI: непрерывная интеграция"]
+        direction TB
+        build_app[Собрать проект]
+        run_checks["Прогнать тесты и<br/>проверки безопасности"]
+        checks_passed{"Проверки<br/>пройдены?"}
+        build_app --> run_checks
+        run_checks --> checks_passed
+    end
+
+    checks_fork((" "))
+    fix_code[Исправить код]
+    merge_pr["Пройти ревью и<br/>слить pull request"]
+
+    subgraph cd_stage ["CD: непрерывная доставка"]
+        direction TB
+        deploy_release[["Выкатить релиз:<br/>staging или production"]]
+    end
+
+    release_done([Релиз доставлен])
+
+    push_code --- push_join
+    push_join --> ci_stage
+    checks_passed --- checks_fork
+    checks_fork -->|Да| merge_pr
+    checks_fork -->|Нет| fix_code
+    fix_code --> push_join
+    merge_pr --> cd_stage
+    cd_stage --> release_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class push_join,checks_fork junction
+    class build_app,run_checks,fix_code,merge_pr,deploy_release stage
+    class checks_passed gate
+    class release_done done
+```
+
+**Как читать схему:**
+
+- Любой push или pull request запускает блок CI: сборку, затем тесты и проверки безопасности.
+- Ромб «Проверки пройдены?» — единственная развилка. При «Нет» изменение дальше не идёт: код исправляют, и цикл начинается заново с нового push.
+- При «Да» pull request проходит ревью и сливается — только после этого начинается CD.
+- CD выкатывает релиз в staging или production. Вручную подтверждается последний шаг или нет — в этом разница между Continuous Delivery и Continuous Deployment.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ### Зачем это нужно
 
@@ -38,7 +96,7 @@ GitHub Actions — встроенная CI/CD платформа GitHub. Workflo
 
 ### Ключевые термины
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -108,6 +166,42 @@ GitHub Actions — встроенная CI/CD платформа GitHub. Workflo
     └── release.yml         ← публикация релизов
 ```
 
+### Что происходит после git push
+
+Схема показывает, кто что делает между вашим `git push` и зелёной или красной отметкой в pull request.
+
+```mermaid
+sequenceDiagram
+    accTitle: Что происходит после git push
+    accDescr: GitHub находит workflow с подходящим триггером и выдаёт job свободному runner вместе с временным токеном и секретами; runner забирает код, выполняет шаги, отправляет логи с замаскированными секретами и артефакты, а итоговый статус появляется в pull request.
+
+    participant dev as Разработчик
+    participant hub as GitHub
+    participant runner as Runner<br/>чистая ВМ
+
+    dev->>hub: git push
+    hub->>hub: Найти workflow,<br/>у которых подходит on
+    hub->>runner: Job, временный токен,<br/>секреты
+    runner->>hub: checkout: забрать код
+    loop Шаги job по порядку
+        runner->>runner: Выполнить step
+        runner-->>hub: Лог шага,<br/>секреты замаскированы
+    end
+    runner-->>hub: Артефакты: отчёты сканеров
+    runner-->>hub: Статус job
+    Note over runner: ВМ уничтожается<br/>после job
+    hub-->>dev: Статус проверки<br/>в pull request
+```
+
+**Как читать схему:**
+
+- GitHub сам решает, какие workflow запускать: сравнивает событие с блоком `on` каждого файла в `.github/workflows/`.
+- Runner — чистая виртуальная машина на один job. Она получает временный токен и секреты, а после job уничтожается: между запусками ничего не сохраняется, кроме кэша и артефактов.
+- Секреты в логах маскируются, но только в том виде, в каком сохранены; поэтому их не печатают и не преобразуют.
+- Отчёты сканеров переживают runner только как артефакты — без шага загрузки артефактов они пропадут вместе с машиной.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Минимальный workflow
@@ -129,10 +223,10 @@ jobs:
 
     steps:
       - name: Checkout code                 # шаг 1: клонировать репо
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python                 # шаг 2: настроить Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -142,6 +236,8 @@ jobs:
       - name: Run tests                      # шаг 4: запустить тесты
         run: pytest tests/
 ```
+
+> В учебных примерах actions указаны по тегу для читаемости. Тег можно переписать, поэтому в рабочих пайплайнах их закрепляют по SHA коммита с комментарием версии — см. [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) и Лаб. 09.
 
 ### Разбор структуры
 
@@ -206,7 +302,7 @@ jobs:
       NODE_ENV: production
     steps:
       - name: Use variable
-        run: echo "Python ${{ env.PYTHON_VERSION }}"
+        run: echo "Python $PYTHON_VERSION"      # переменная окружения, а не подстановка ${{ }} в run
         env:                               # для конкретного шага
           MY_VAR: value
 ```
@@ -220,13 +316,13 @@ steps:
   - name: Deploy
     run: ./deploy.sh
     env:
-      API_TOKEN: ${{ secrets.API_TOKEN }}  # никогда не логируется
+      API_TOKEN: ${{ secrets.API_TOKEN }}  # маскируется в логах
 ```
 
 !!! warning "Безопасность секретов"
-    - Секреты **не передаются** в workflow из форков (защита от кражи)
-    - Секреты **маскируются** в логах (но не полагайтесь только на это)
-    - Не используйте секреты в `if:` условиях — они могут утечь через имя шага
+    - Секреты **не передаются** в `pull_request` из форков (защита от кражи). Исключение — `pull_request_target` и `workflow_run`: они работают в контексте основного репозитория с секретами, и запускать в них код из форка опасно
+    - Секреты **маскируются** в логах, но производное значение (base64, часть строки) уже не маскируется
+    - Контекст `secrets` недоступен в `if:`: передайте секрет в `env` job и проверяйте переменную окружения
 
 ***
 
@@ -243,8 +339,8 @@ jobs:
         python-version: ["3.10", "3.11", "3.12"]
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - run: pytest tests/
@@ -264,7 +360,7 @@ steps:
     run: semgrep scan --json > report.json
 
   - name: Upload report
-    uses: actions/upload-artifact@v4
+    uses: actions/upload-artifact@v7
     with:
       name: sast-report
       path: report.json
@@ -275,7 +371,7 @@ steps:
 
 ## Пример: DevSecOps пайплайн
 
-Типичная структура для Lab 09:
+Типичная структура для Лаб. 09:
 
 ```yaml
 name: DevSecOps Pipeline
@@ -286,28 +382,31 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read                             # токен только на чтение
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: pip install ruff && ruff check .
 
   sast:
     runs-on: ubuntu-latest
     needs: lint                              # запускается после lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: pip install semgrep && semgrep scan --config auto
 
   container-scan:
     runs-on: ubuntu-latest
     needs: lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: docker build -t myapp .
       - name: Trivy scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25  # v0.36.0; никогда не @master
         with:
           image-ref: myapp
           severity: HIGH,CRITICAL
@@ -320,7 +419,58 @@ jobs:
       - run: echo "Deploying..."
 ```
 
-<img class="off-glb" src="/artifacts/diagrams/devsecops-dag.svg" alt="Devsecops Dag" style="max-width:360px; width:100%;">
+Схема показывает порядок выполнения jobs из примера выше. Его задают `needs` и `if`, а не порядок записи в файле.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Порядок jobs в DevSecOps-пайплайне
+    accDescr: Job lint запускается первым, после него параллельно идут sast и container-scan, а deploy стартует только когда обе проверки прошли и сборка идёт из ветки main; иначе job deploy пропускается.
+
+    trigger_push([Push или pull request])
+    run_lint[[lint: ruff]]
+
+    subgraph parallel_checks ["Параллельно после lint"]
+        run_sast[[sast: Semgrep]]
+        scan_container[[container-scan: Trivy]]
+    end
+
+    checks_join((" "))
+    is_main{"Ветка<br/>main?"}
+    main_fork((" "))
+    deploy_app[[deploy]]
+    deploy_done([Выкатка завершена])
+    deploy_skipped([Job deploy пропущен])
+
+    trigger_push --> run_lint
+    run_lint --> parallel_checks
+    run_sast --- checks_join
+    scan_container --- checks_join
+    checks_join --> is_main
+    is_main --- main_fork
+    main_fork -->|Да| deploy_app
+    main_fork -->|Нет| deploy_skipped
+    deploy_app --> deploy_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class checks_join,main_fork junction
+    class run_lint,run_sast,scan_container,deploy_app stage
+    class is_main gate
+    class deploy_done done
+```
+
+**Как читать схему:**
+
+- `lint` идёт первым: у `sast` и `container-scan` указано `needs: lint`.
+- `sast` и `container-scan` друг от друга не зависят, поэтому выполняются параллельно.
+- `deploy` ждёт обе проверки (`needs: [sast, container-scan]`): если упала хотя бы одна, до ромба дело не дойдёт.
+- Ромб — условие `if: github.ref == 'refs/heads/main'`. В остальных ветках job `deploy` помечается пропущенным, а пайплайн остаётся зелёным.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ***
 
@@ -365,7 +515,7 @@ command: >               # склеивает в одну строку
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.github.com/en/actions" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Actions Documentation</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Workflow Syntax Reference</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://github.com/marketplace?type=actions" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Actions Marketplace</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>

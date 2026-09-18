@@ -8,9 +8,9 @@
 
 ***
 
-Краткое введение в сетевые технологии перед лабораторной с Nmap (Lab 03). Здесь — только то, что нужно для понимания сканирования и сетевой безопасности.
+Краткое введение в сетевые технологии перед лабораторной с Nmap (Лаб. 03). Здесь — только то, что нужно для понимания сканирования и сетевой безопасности.
 
-> Если вы уже знакомы с моделью OSI, TCP/IP и основными протоколами — переходите сразу к Lab 03.
+> Если вы уже знакомы с моделью OSI, TCP/IP и основными протоколами — переходите сразу к Лаб. 03.
 
 ***
 
@@ -18,7 +18,7 @@
 
 Две модели описывают, как данные передаются по сети:
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -61,7 +61,7 @@
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3. Network</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Internet</span>
   </div>
-  <span class="lab-tag">IP</span><span class="lab-tag">ICMP</span><span class="lab-tag">ARP</span>
+  <span class="lab-tag">IP</span><span class="lab-tag">ICMP</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Маршрутизация между сетями</p>
   </div>
 
@@ -70,7 +70,7 @@
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">2. Data Link</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Network Access</span>
   </div>
-  <span class="lab-tag">Ethernet</span><span class="lab-tag">Wi-Fi</span><span class="lab-tag">MAC</span>
+  <span class="lab-tag">Ethernet</span><span class="lab-tag">Wi-Fi</span><span class="lab-tag">MAC</span><span class="lab-tag">ARP</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Передача в локальной сети</p>
   </div>
 
@@ -86,6 +86,70 @@
 </div>
 
 Для AppSec критически важны уровни **3-7** — именно там работают инструменты сканирования и атаки.
+
+### Инкапсуляция: как данные идут вниз по стеку
+
+Схема показывает, что каждый уровень TCP/IP добавляет к данным приложения, прежде чем они уйдут в сеть.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Инкапсуляция данных по уровням TCP/IP
+    accDescr: Данные приложения спускаются по четырём уровням стека TCP/IP, и каждый уровень добавляет свой заголовок: транспортный — порты, сетевой — IP-адреса, канальный — MAC-адреса; на стороне получателя заголовки снимаются в обратном порядке.
+
+    app_sends(["Приложение отправляет<br/>HTTP-запрос"])
+
+    subgraph app_layer ["Прикладной уровень"]
+        direction TB
+        http_data[/"Данные: HTTP-запрос"/]
+    end
+
+    subgraph transport_layer ["Транспортный уровень"]
+        direction TB
+        add_ports["Добавить TCP-заголовок:<br/>порты, номер seq"]
+        tcp_segment[/"TCP-сегмент"/]
+        add_ports --> tcp_segment
+    end
+
+    subgraph network_layer ["Сетевой уровень"]
+        direction TB
+        add_ip["Добавить IP-заголовок:<br/>адреса, TTL"]
+        ip_packet[/"IP-пакет"/]
+        add_ip --> ip_packet
+    end
+
+    subgraph link_layer ["Канальный уровень"]
+        direction TB
+        add_mac["Добавить заголовок кадра:<br/>MAC-адреса"]
+        eth_frame[/"Кадр Ethernet"/]
+        add_mac --> eth_frame
+    end
+
+    on_wire(["Биты уходят<br/>в среду передачи"])
+
+    app_sends --> app_layer
+    app_layer --> transport_layer
+    transport_layer --> network_layer
+    network_layer --> link_layer
+    link_layer --> on_wire
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class add_ports,add_ip,add_mac stage
+    class on_wire done
+```
+
+**Как читать схему:**
+
+- Рамки — уровни стека сверху вниз. Каждый уровень не заглядывает внутрь того, что получил сверху: он добавляет свой заголовок и передаёт результат ниже.
+- Имена порций данных различаются: сегмент (TCP), пакет (IP), кадр (Ethernet). В выводе сетевых утилит это помогает понять, о каком уровне речь.
+- На стороне получателя всё идёт в обратном порядке: заголовки снимаются по одному снизу вверх.
+- Связь с Лаб. 03: Nmap работает именно с этими заголовками — порты берутся из TCP-заголовка, адреса из IP-заголовка, а MAC-адрес виден только в своей локальной сети.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ***
 
@@ -108,7 +172,7 @@ $ hostname -I           # только IP, без лишнего
 
 Не маршрутизируются в интернете:
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div class="lab-card-title" style="font-weight:700;">10.0.0.0/8</div>
@@ -159,7 +223,7 @@ $ ip route show
 
 ### Диапазоны портов
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div class="lab-card-title" style="font-weight:700;">0 — 1023</div>
@@ -183,7 +247,7 @@ $ ip route show
 
 ### Ключевые порты для AppSec
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -270,7 +334,41 @@ $ ss -tlnp | grep :22
 
 Надёжная доставка с установлением соединения.
 
-<img class="off-glb" src="/artifacts/diagrams/tcp-handshake.svg" alt="Tcp Handshake" style="max-width:400px; width:100%;">
+Схема показывает, какими сегментами обмениваются клиент и сервер, чтобы открыть и закрыть TCP-соединение.
+
+```mermaid
+sequenceDiagram
+    accTitle: Установка и закрытие TCP-соединения
+    accDescr: Трёхэтапное рукопожатие SYN, SYN-ACK, ACK открывает соединение; закрытие занимает четыре сегмента, потому что каждая сторона отдельно отправляет FIN и получает ACK.
+
+    participant client as Клиент
+    participant server as Сервер
+
+    Note over client,server: Установка соединения:<br/>трёхэтапное рукопожатие
+    client->>server: SYN, seq=x
+    server->>client: SYN-ACK, seq=y, ack=x+1
+    client->>server: ACK, ack=y+1
+
+    Note over client,server: Соединение установлено
+    client->>server: Данные
+    server->>client: ACK и ответные данные
+
+    Note over client,server: Закрытие: FIN и ACK<br/>с каждой стороны
+    client->>server: FIN
+    server->>client: ACK
+    server->>client: FIN
+    client->>server: ACK
+    Note over client: TIME_WAIT, затем соединение закрыто
+```
+
+**Как читать схему:**
+
+- Время идёт сверху вниз, стрелка — один TCP-сегмент.
+- Первые три сегмента — рукопожатие: стороны обмениваются начальными номерами последовательности (`seq`) и подтверждают их (`ack = seq + 1`). Данные передаются только после третьего сегмента.
+- Закрытие занимает четыре сегмента: каждая сторона отдельно отправляет FIN и получает ACK. TIME_WAIT — пауза на стороне, которая закрыла соединение первой.
+- Связь с Лаб. 03: SYN-сканирование Nmap обрывает рукопожатие после второго сегмента. Пришёл SYN-ACK — порт открыт, пришёл RST — закрыт.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 TCP гарантирует: порядок пакетов, доставку, контроль ошибок. Используется: HTTP, SSH, FTP, SMTP.
 
@@ -304,7 +402,7 @@ $ dig example.com TXT    # текстовые записи (SPF, DKIM)
 
 ### Типы DNS-записей
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -356,6 +454,42 @@ $ dig example.com TXT    # текстовые записи (SPF, DKIM)
 
 </div>
 
+### Как имя превращается в адрес
+
+Схема показывает, кого и в каком порядке опрашивает резолвер, чтобы найти адрес сайта курса.
+
+```mermaid
+sequenceDiagram
+    accTitle: Разрешение доменного имени
+    accDescr: Клиент спрашивает адрес у рекурсивного резолвера; если ответа нет в кэше, резолвер по очереди опрашивает корневой сервер, сервер зоны верхнего уровня и авторитетный сервер домена, возвращает адрес клиенту и запоминает его на время TTL.
+
+    participant client as Клиент
+    participant resolver as Рекурсивный<br/>резолвер
+    participant root as Корневой<br/>сервер
+    participant tld as Сервер<br/>зоны .tech
+    participant auth as Авторитетный<br/>сервер домена
+
+    client->>resolver: A course.geminishkv.tech?
+    Note over resolver: Ответа нет в кэше
+    resolver->>root: Кто отвечает за .tech?
+    root-->>resolver: Серверы зоны .tech
+    resolver->>tld: Кто отвечает<br/>за geminishkv.tech?
+    tld-->>resolver: Авторитетные серверы домена
+    resolver->>auth: A course.geminishkv.tech?
+    auth-->>resolver: Адрес и TTL
+    resolver-->>client: Адрес
+    Note over resolver: Ответ хранится в кэше,<br/>пока не истечёт TTL
+```
+
+**Как читать схему:**
+
+- Клиент задаёт один вопрос и получает один ответ. Всю цепочку запросов проходит рекурсивный резолвер — обычно это сервер провайдера или публичный DNS.
+- Каждый следующий сервер знает только, кто отвечает за зону ниже: корневой — про `.tech`, сервер зоны — про домен, авторитетный сервер — уже сам адрес.
+- Ответ кэшируется на время TTL. Поэтому после смены DNS-записи старый адрес ещё какое-то время отдаётся из кэшей.
+- Посмотреть цепочку целиком: `dig +trace course.geminishkv.tech`.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## HTTP/HTTPS
@@ -372,7 +506,7 @@ Authorization: Bearer <token>  ← аутентификация
 
 ### Основные методы
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -418,7 +552,7 @@ Authorization: Bearer <token>  ← аутентификация
 
 ### Коды ответов
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -514,7 +648,7 @@ PS> netstat -ano                               # открытые порты и 
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Cloudflare — Network Layer</div><div class="lab-card-tags"><span class="lab-tag">cloudflare.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://www.iana.org/assignments/service-names-port-numbers/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">IANA — Port Numbers Registry</div><div class="lab-card-tags"><span class="lab-tag">iana.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank"><div class="lab-card-body"><div class="lab-card-title">MDN — HTTP Overview</div><div class="lab-card-tags"><span class="lab-tag">developer.mozilla.org</span></div></div><div class="lab-card-arrow">→</div></a>

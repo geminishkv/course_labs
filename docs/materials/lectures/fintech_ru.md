@@ -15,7 +15,7 @@ keywords: "Fintech, финтех, Россия, AML, ПОД-ФТ, compliance, Fi
 
 **Financial Technology** — технологии, которые трансформируют предоставление финансовых услуг, как фундаментальное изменение подхода к тому, как создаются, доставляются и потребляются финансовые продукты.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Цифровизация</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Полный отказ от бумажных процессов</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Автоматизация</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Алгоритмы вместо ручных операций</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Доступность</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Финансовые услуги 24/7 из любой точки</span></div>
@@ -28,7 +28,7 @@ keywords: "Fintech, финтех, Россия, AML, ПОД-ФТ, compliance, Fi
 
 ## Традиционный банкинг vs Fintech
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Скорость</span><div class="lab-card-tags"><span class="lab-tag">Банкинг: дни–недели</span><span class="lab-tag">Fintech: секунды–минуты</span></div></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Каналы</span><div class="lab-card-tags"><span class="lab-tag">Банкинг: офисы, банкоматы</span><span class="lab-tag">Fintech: мобильные приложения, API</span></div></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Скоринг</span><div class="lab-card-tags"><span class="lab-tag">Банкинг: ручной анализ КИ</span><span class="lab-tag">Fintech: AI/ML, альтернативные данные</span></div></div>
@@ -59,7 +59,7 @@ keywords: "Fintech, финтех, Россия, AML, ПОД-ФТ, compliance, Fi
 
 ### Ключевые игроки
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">ЮMoney</span><span style="font-size:0.72rem; color:#555;">Лидер по выручке (14.13 млрд руб, I полугодие 2025)</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Сбер</span><span style="font-size:0.72rem; color:#555;">Экосистема: SberPay, Сбер ID, AI-сервисы</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Т-Банк</span><span style="font-size:0.72rem; color:#555;">Цифровой банк без отделений, инвестиции, страхование</span></div>
@@ -85,7 +85,7 @@ keywords: "Fintech, финтех, Россия, AML, ПОД-ФТ, compliance, Fi
 
 ### Кто регулирует Fintech в России
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">ЦБ РФ</span><span style="font-size:0.72rem; color:#555;">Лицензирование банков, НКФО, МФО, страховых. Надзор за платёжными системами. Требования к ИБ</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Росфинмониторинг</span><span style="font-size:0.72rem; color:#555;">Финансовая разведка. Контроль 115-ФЗ (ПОД-ФТ). Отчёты о подозрительных операциях</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">ФСТЭК России</span><span style="font-size:0.72rem; color:#555;">Требования к ИБ для финансовых и критически важных организаций</span></div>

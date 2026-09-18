@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №8</a><br></h1>
+<h1><a id="intro">Лаб. 08 · DAST: OWASP ZAP</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -43,9 +43,10 @@ lab08
 ### DAST
 
 Dynamic Application Security Testing обеспечивает тестирование «чёрного ящика», когда сканер не знает исходного кода и взаимодействует с приложением как внешний клиент:
-    -  Отправляет `HTTP`‑запросы 
-    -  Анализирует ответы 
-    -  Пытается воспроизвести реальные атаки `XSS`, `SQLi`, уязвимости в заголовках, слабую авторизацию и т.д. 
+
+- отправляет `HTTP`‑запросы;
+- анализирует ответы;
+- пытается воспроизвести реальные атаки: `XSS`, `SQLi`, уязвимости в заголовках, слабую авторизацию и т. д.
 
 > В отличие от `SAST`/ `SCA`, здесь обязательно нужно живое, запущенное приложение (стенд), к которому есть сетевой доступ и разрешить доступ сканеру
 > Инструмент ведёт себя как автоматизированный атакующий: обходит страницы, подставляет полезные нагрузки payloads и фиксирует подозрительные ответы
@@ -63,7 +64,74 @@ Dynamic Application Security Testing обеспечивает тестирова
 
 ### Ремарка
 
-Мы используем `owasp/zap2docker-stable` и CLI‑скрипт `zap_scan.sh` для сканирования по URL `http://localhost:8080/` уязвимого приложения Flask. Скрипт запускает `baseline‑скан`, сохраняет отчёты и передаёт JSON на генерацию `ODT/XLSX`.
+Мы используем образ `ghcr.io/zaproxy/zaproxy:stable` (прежний `owasp/zap2docker-stable` снят с поддержки) и CLI‑скрипт `dast/zap_scan.sh` для сканирования по URL `http://localhost:8080/` уязвимого приложения Flask. Скрипт запускает `baseline‑скан`, сохраняет отчёты и передаёт JSON на генерацию `ODT/XLSX`.
+
+### Схема работы
+
+Схема показывает цикл лабораторной: ручное исследование, автоматическое сканирование, исправление и повторная проверка.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Цикл динамического тестирования в лабораторной 08
+    accDescr: Стенд сначала исследуется вручную, затем сканируется OWASP ZAP; ручные и автоматические находки сравниваются, проверяются заголовки безопасности, приложение исправляется, и сканирование повторяется, пока не исчезнут критичные находки.
+
+    stand_up(["Стенд запущен<br/>и отвечает"])
+
+    subgraph manual_stage ["Вручную: понять поведение"]
+        direction TB
+        explore_endpoints["Пройти эндпоинты<br/>из задания"]
+        record_behaviour[/"Что отвечает приложение<br/>и почему"/]
+        explore_endpoints --> record_behaviour
+    end
+
+    subgraph auto_stage ["Автоматически: OWASP ZAP"]
+        direction TB
+        scan_join((" "))
+        run_zap[["Скрипт сканирования<br/>zap-baseline"]]
+        zap_reports[/"Отчёты в dast/reports"/]
+        scan_join --> run_zap
+        run_zap --> zap_reports
+    end
+
+    compare_findings["Сравнить ручные<br/>и автоматические находки"]
+    check_headers["Проверить заголовки<br/>безопасности"]
+    fix_app["Исправить app.py,<br/>сделать коммит"]
+    critical_left{"Критичные находки<br/>остались?"}
+    critical_fork((" "))
+    dast_report[/"Отчёт gist"/]
+    dast_done([Лабораторная сдана])
+
+    stand_up --> manual_stage
+    manual_stage --> scan_join
+    zap_reports --> compare_findings
+    compare_findings --> check_headers
+    check_headers --> critical_left
+    critical_left --- critical_fork
+    critical_fork -->|Да| fix_app
+    critical_fork -->|Нет| dast_report
+    fix_app --> scan_join
+    dast_report --> dast_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class scan_join,critical_fork junction
+    class explore_endpoints,run_zap,compare_findings,check_headers,fix_app stage
+    class critical_left gate
+    class dast_done done
+```
+
+**Как читать схему:**
+
+- Ручной этап идёт первым намеренно: сначала вы понимаете, как приложение отвечает и почему, и только потом читаете отчёт сканера — иначе отчёт остаётся списком непонятных названий.
+- Сравнение ручных и автоматических находок — ядро работы: сканер видит не всё, что находит человек, и наоборот.
+- Ромб замыкает цикл: после правок в `app.py` сканирование запускается заново. Исправление считается сделанным, когда его подтвердил повторный прогон, а не когда изменён код.
+- Заголовки безопасности, которые проверяются перед ромбом, разобраны в шпаргалке HTTP Security Headers.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ***
 
@@ -143,13 +211,13 @@ http://localhost:8080/files/secret.txt
 # Reflected XSS — отправляем payload и проверяем, вернулся ли он в ответе
 $ curl -s "http://localhost:8080/echo?msg=<script>alert(1)</script>" | grep "<script>"
 
-# SQL Injection — UNION-based
+# SQL Injection — boolean-based: условие всегда истинно, возвращаются все строки
 $ curl -s "http://localhost:8080/search?username=admin'+OR+'1'='1"
 
 # Подделка cookie — доступ к админке
 $ curl -s -b "role=admin" http://localhost:8080/admin
 
-# Directory traversal attempt
+# Чтение файла, найденного через directory listing
 $ curl -s http://localhost:8080/files/secret.txt
 ```
 
@@ -171,13 +239,15 @@ $ brew install --cask zap
 
 ```bash
 $ export ZAP_IMAGE=ghcr.io/zaproxy/zaproxy:stable
-$ TARGET_URL="${TARGET_URL:-http://host.docker.internal:8080}"
+# скрипт запускает ZAP в сети хоста (--network host), поэтому на Linux цель — localhost
+$ export TARGET_URL=http://localhost:8080
+# macOS с Docker Desktop: export TARGET_URL=http://host.docker.internal:8080
 ```
 
-- [ ] 9. Запустите скрипт автоматического сканирования DAST `OWASP ZAP`
+- [ ] 9. Запустите из корня `lab08` скрипт автоматического сканирования DAST `OWASP ZAP`
 
 ```bash
-$ ./zap_scan.sh
+$ ./dast/zap_scan.sh
 ```
 
 - [ ] 10. Изучите сгенерированные отчёты в `dast/reports`. Для каждой находки ZAP опишите в отчёте:
@@ -213,7 +283,7 @@ $ ./dast/zap_scan.sh
 
 - [ ] 15. Делайте все необходимые коммиты по шагам и отправляйте изменения в удалённый репозиторий
 - [ ] 16. Подготовьте отчёт `gist`
-- [ ] 17. Почистите кеш от `venv` и остановите уязвимое приложение
+- [ ] 17. Почистите кэш от `venv` и остановите уязвимое приложение
 
 ```bash
 $ deactivate
@@ -226,7 +296,7 @@ $ docker system prune -f
 
 ## Рекомендации
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">XSS на /echo</span><div class="lab-card-tags"><span class="lab-tag">Reflected XSS</span><span class="lab-tag">CWE-79</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отражение входных данных без экранирования. Мера: Jinja2 autoescape.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">SQLi на /search</span><div class="lab-card-tags"><span class="lab-tag">SQL Injection</span><span class="lab-tag">CWE-89</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Конкатенация ввода в SQL. Мера: параметризованные запросы.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Небезопасные cookies</span><div class="lab-card-tags"><span class="lab-tag">HttpOnly</span><span class="lab-tag">Secure</span><span class="lab-tag">SameSite</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">session, user, role без защитных флагов. Мера: HttpOnly, Secure, SameSite.</span></div>
@@ -239,12 +309,16 @@ $ docker system prune -f
 
 ## Смотри также
 
-- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ (предыдущий этап)
-- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
+- [Разбор находок сканеров](https://course.geminishkv.tech/materials/findings_triage/) — как проверять находку, оформлять исключения и что считать закрытым
+- [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ (предыдущий этап)
+- [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
 - [OWASP Top 10 — Client-side Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/client-side-attacks/) — XSS и атаки на клиента
 - [CheatSheet: HTTP Security Headers](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/) — заголовки безопасности
-- [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка OWASP ZAP
-- [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — разведка сервисов перед DAST
+- [Установка AppSec-инструментов](https://course.geminishkv.tech/materials/guides/appsec_tools_setup/) — установка OWASP ZAP
+- [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — разведка сервисов перед DAST
+- [OWASP — Authentication](https://course.geminishkv.tech/materials/OWASPTOP10/Authentication/) — что проверяет ZAP в первую очередь
+- [OWASP — Authorization](https://course.geminishkv.tech/materials/OWASPTOP10/Authorization/) — контроль доступа и IDOR
+- [Классификация AppSec-инструментов](https://course.geminishkv.tech/materials/appsec_tt/) — место DAST в AppSec toolchain
 
 ***
 
@@ -254,7 +328,7 @@ $ docker system prune -f
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://flask.palletsprojects.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Flask Documentation</div><div class="lab-card-tags"><span class="lab-tag">flask.palletsprojects.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://github.com/eea/odfpy" target="_blank"><div class="lab-card-body"><div class="lab-card-title">odfpy – OpenDocument API for Python</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>

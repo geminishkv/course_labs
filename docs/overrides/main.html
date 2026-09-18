@@ -3,7 +3,23 @@
 {#- navigation.tabs is on for the sidebar scoping only; the header pills are the tab bar -#}
 {% block tabs %}{% endblock %}
 
+{# Front-matter titles already end with the course name. The theme default appends
+   site_name once more, which pushed every title past the width a search result shows. #}
+{% block htmltitle %}
+  {% if page and page.meta and page.meta.title %}
+    <title>{{ page.meta.title }}</title>
+  {% elif page and page.title and not page.is_homepage %}
+    <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+  {% else %}
+    <title>{{ config.site_name }}</title>
+  {% endif %}
+{% endblock %}
+
 {% block extrahead %}
+  {# favicon set shared with gpages (the theme adds the .ico link itself) #}
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'artifacts/assets/favicon-32.png' | url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ 'artifacts/assets/favicon-16.png' | url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'artifacts/assets/apple-touch-icon.png' | url }}">
   {{ super() }}
 
   {% if page %}
@@ -135,6 +151,28 @@
         "item": "{{ page.canonical_url }}"
       }{% endif %}
     ]
+  }
+  </script>
+  {% endif %}
+
+  <!-- 2b. LearningResource — страницы лабораторных: связывает работу с курсом и автором -->
+  {% set src = page.file.src_path %}
+  {% set is_advanced_lab = src.startswith("labs/advanced/docker") %}
+  {% set is_lab = src.startswith("labs/basic/") or is_advanced_lab or src == "labs/pet_project.md" %}
+  {% if is_lab %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": {{ page_title | striptags | tojson }},
+    "description": {{ page_desc | striptags | tojson }},
+    "url": {{ page.canonical_url | tojson }},
+    "inLanguage": "ru",
+    "learningResourceType": "Лабораторная работа",
+    "educationalLevel": {{ ("Углублённый" if is_advanced_lab else "Базовый") | tojson }},
+    "isAccessibleForFree": true,
+    "isPartOf": { "@id": "{{ config.site_url }}#course" },
+    "author": { "@id": "https://geminishkv.tech/#person" }
   }
   </script>
   {% endif %}
@@ -317,3 +355,8 @@
 
 {% endblock %}
 
+{#-
+  Mermaid is served from the site itself (the CSP above blocks unpkg): see
+  javascripts/mermaid-loader.js, which registers window.mermaid and loads the
+  vendored bundle on the first rendered diagram.
+-#}

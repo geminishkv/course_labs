@@ -322,9 +322,12 @@
    Lab cards grid
 ══════════════════════════════════════════ */
 
+/* Tracks in rem, not px: the root font grows on wide screens and a px track would
+   not; min(…, 100%) keeps one column inside a 320px phone */
+
 .lab-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(14.5rem, 100%), 1fr));
   gap: var(--space-3);
   margin: var(--space-5) 0 var(--space-8);
 }
@@ -370,12 +373,55 @@
   min-width: 0;
 }
 
+/* Card text never leaves the card: flex children may shrink below their longest
+   word and long words break. Inline width:auto marks .lab-card-num used as a
+   header instead of a two-digit number, so it may shrink and wrap as well. */
+
+.lab-card {
+  overflow-wrap: break-word;
+}
+
+.lab-card :where(div, span, p, li, a) {
+  min-width: 0;
+}
+
+.lab-card-num[style*="width:auto"] {
+  flex-shrink: 1;
+  text-align: left;
+  hyphens: auto;
+}
+
 .lab-card-title {
+  hyphens: auto;
   font-size: var(--text-base);
   font-weight: 500;
   color: var(--brand-dark);
   line-height: 1.35;
   margin-bottom: var(--space-1);
+}
+
+/* Reference cards with an expanded description: a short fact list (service,
+   risk, check, protection) instead of a one-line string of terms */
+
+.md-typeset .lab-card-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-3);
+  width: 100%;
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: #555;
+}
+
+.md-typeset .lab-card-facts dt {
+  margin: 0;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+.md-typeset .lab-card-facts dd {
+  margin: 0;
 }
 
 .lab-card-tags {
@@ -574,13 +620,10 @@
   display: none;
 }
 
+/* The README's opening block (title + shields badges) is for GitHub; the lab
+   hero above already names the lab, so the site skips it. */
 .lab-readme div[align="center"]:first-child {
-  margin: 0 0 var(--space-6);
-  padding: var(--space-4) var(--space-4) var(--space-3);
-  background: #f8f9fa;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  line-height: 2;
+  display: none;
 }
 
 /* ══════════════════════════════════════════
@@ -673,7 +716,7 @@
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in--visible {
@@ -681,11 +724,11 @@
   transform: translateY(0);
 }
 
-.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(2) { transition-delay: 0.06s; }
 
-.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(3) { transition-delay: 0.12s; }
 
-.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.fade-in:nth-child(4) { transition-delay: 0.18s; }
 
 /* Reduced motion: declared last so it wins over every animation above at the
    same specificity */
@@ -709,7 +752,7 @@
 }
 
 /* Print: reveal everything the scroll-triggered fade-in has not shown yet and
-   drop the fixed overlays, otherwise printed pages have blank blocks and banners
+   drop the consent card, otherwise printed pages have blank blocks and the card
    stamped over the text. */
 
 @media print {
@@ -719,7 +762,6 @@
       transition: none;
     }
 
-  .ata-legal,
   .ata-consent {
       display: none;
     }
@@ -738,12 +780,26 @@
    Footer
 ══════════════════════════════════════════ */
 
-.md-footer-meta .md-footer-meta__inner > :first-child::after {
-  content: " · © 2026 AppSecTA by geminishkv · Sic Parvis Magna";
+/* One line: generator credit, copyright, motto and the link to the legal
+   notice (overrides/partials/copyright.html). */
+.md-copyright__line {
   color: var(--text-inverse-muted);
   font-weight: 400;
-  font-size: var(--text-2xs);
+}
+
+.md-copyright__line em {
   font-style: italic;
+}
+
+.md-copyright__line a {
+  color: var(--text-inverse-muted);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--brand-red) 60%, transparent);
+  text-underline-offset: 2px;
+}
+
+.md-copyright__line a:hover {
+  color: #ffffff;
 }
 
 /* Footer: gpages Footer.css — ink background, red-to-transparent top rule */
@@ -777,7 +833,7 @@
   background: var(--ink-card);
   border: 1px solid var(--ink-border);
   border-radius: var(--radius-md);
-  transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .md-social__link svg {
@@ -785,7 +841,7 @@
   height: 16px;
   max-height: none;
   fill: var(--ink-text-secondary);
-  transition: fill 0.3s;
+  transition: fill 0.2s;
 }
 
 .md-social__link:hover,
@@ -798,10 +854,25 @@
 .md-social__link:hover svg,
 .md-social__link:focus-visible svg {
   fill: #fff;
-  animation: social-slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: social-slide-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .md-social__link:active { transform: scale(0.92); }
+
+/* touch: footer tiles are full-size targets (WCAG 2.5.5) */
+@media (pointer: coarse), (max-width: 43.6875em) {
+  /* seven 44px tiles are wider than a 320px phone: let the row wrap */
+  .md-social {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .md-social__link {
+    width: 44px;
+    height: 44px;
+  }
+}
 
 @keyframes social-slide-in {
   0% {

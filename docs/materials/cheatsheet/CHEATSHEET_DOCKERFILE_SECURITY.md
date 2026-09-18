@@ -13,6 +13,8 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 
 ## Базовый образ
 
+Всё, что есть в базовом образе, становится вашей поверхностью атаки: каждый лишний пакет — возможная строка в отчёте Trivy. Правил два: образ минимальный (slim, alpine, distroless) и закреплённый — тегом версии, а лучше дайджестом, потому что тег можно переставить на другой образ.
+
 === "Плохо"
 
     ```dockerfile
@@ -39,6 +41,8 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 ***
 
 ## Пользователь (USER)
+
+По умолчанию процесс в контейнере работает от root. Контейнер — не виртуальная машина: при уязвимости ядра или небезопасных флагах запуска root внутри контейнера превращается в root на хосте. Отдельный пользователь без прав — самая дешёвая мера из всех.
 
 === "Плохо"
 
@@ -70,6 +74,8 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 ***
 
 ## Multi-stage build
+
+Компилятор, заголовочные файлы и dev-зависимости нужны, чтобы собрать приложение, но не чтобы оно работало. Многоэтапная сборка оставляет их на промежуточном этапе, а в итоговый образ копируется только результат: образ меньше, инструментов для атакующего внутри тоже меньше.
 
 === "Один этап (плохо)"
 
@@ -106,6 +112,8 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 
 ## Секреты
 
+Слой образа нельзя «перезаписать»: секрет, попавший в любой слой, достаётся через `docker history` или распаковкой образа, даже если следующая инструкция его удалила. Поэтому ни `COPY`, ни `ARG`, ни `ENV` для секретов не годятся — на время сборки их передают только через `--mount=type=secret`.
+
 === "Плохо"
 
     ```dockerfile
@@ -141,7 +149,9 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 
 ## COPY vs ADD
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+`ADD` умеет больше, чем кажется: сам распаковывает архивы и скачивает файлы по URL, не сверяя контрольную сумму. Поэтому по умолчанию — `COPY`, а `ADD` только там, где нужна именно распаковка локального архива.
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -175,6 +185,8 @@ ADD https://example.com/app.tar.gz /app/
 
 ## Оптимизация слоёв
 
+Меньше слоёв и меньше файлов в них — меньше образ, быстрее доставка и короче отчёт сканера. Временные файлы удаляются в той же инструкции `RUN`, где появились: удаление следующей инструкцией размер образа не уменьшает, файл остаётся в предыдущем слое.
+
 === "Плохо"
 
     ```dockerfile
@@ -198,7 +210,9 @@ ADD https://example.com/app.tar.gz /app/
 
 ## .dockerignore
 
-```
+Первая линия защиты от утечки: то, что исключено из контекста сборки, в образ попасть не может. Полный шаблон и отличия от `.gitignore` — в [шпаргалке .dockerignore](CHEATSHEET_DOCKERIGNORE.md).
+
+```bash title=".dockerignore"
 .git
 .github
 .venv
@@ -220,6 +234,8 @@ node_modules
 
 ## Hadolint — правила
 
+Hadolint проверяет Dockerfile по списку правил и встраивается в конвейер. Ниже — правила, которые срабатывают чаще всего; CI этого репозитория падает на находках уровня error.
+
 ```bash
 # Запуск
 hadolint Dockerfile
@@ -228,7 +244,7 @@ hadolint Dockerfile
 docker run --rm -i hadolint/hadolint < Dockerfile
 ```
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-card-num" style="font-size:0.9rem; width:auto;">DL3006</span>
@@ -264,7 +280,9 @@ docker run --rm -i hadolint/hadolint < Dockerfile
 
 ***
 
-## Чеклист
+## Чек-лист
+
+Перед pull request с Dockerfile пройдите список — каждый пункт отвечает одному из разделов выше. Основа, без которой чек-лист не имеет смысла, — в руководстве [Dockerfile: как устроен и как его писать](../guides/dockerfile_guide.md).
 
 - [ ] Базовый образ: slim/alpine/distroless, пинить версию + digest
 - [ ] `USER` — не root

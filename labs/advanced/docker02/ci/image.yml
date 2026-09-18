@@ -1,0 +1,88 @@
+---
+# Шаблон конвейера образа для лабораторной docker02.
+# Скопируйте файл в .github/workflows/image.yml своего репозитория и поправьте LAB_DIR.
+# Вся логика живёт в ci/build.sh и gate.sh: те же команды запускаются на вашей машине.
+name: image
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+# права выдаются каждому job отдельно и по минимуму
+permissions: {}
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  LAB_DIR: labs/advanced/docker02
+
+jobs:
+
+  # один сканер — один job: падение линтера не прячет результат гейта
+  dockerfile_lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install hadolint
+        env:
+          HADOLINT_VERSION: "2.15.1"
+          # sha256 файла hadolint-linux-x86_64 из релиза
+          HADOLINT_SHA256: "c7187db94eeeeca956519a6af171adc31453941a1e777961f6e680f697c8c507"
+        run: |
+          curl -fsSL \
+            "https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-linux-x86_64" \
+            -o /usr/local/bin/hadolint
+          echo "${HADOLINT_SHA256}  /usr/local/bin/hadolint" | sha256sum -c -
+          chmod +x /usr/local/bin/hadolint
+
+      - name: Lint Dockerfile
+        run: hadolint "${LAB_DIR}/source/app/Dockerfile"
+
+  image_gate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install Trivy
+        env:
+          TRIVY_VERSION: "0.74.0"
+          # sha256 файла trivy_0.74.0_Linux-64bit.tar.gz из релиза
+          TRIVY_SHA256: "2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a"
+        run: |
+          curl -fsSL \
+            "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz" \
+            -o /tmp/trivy.tar.gz
+          echo "${TRIVY_SHA256}  /tmp/trivy.tar.gz" | sha256sum -c -
+          sudo tar -xzf /tmp/trivy.tar.gz -C /usr/local/bin trivy
+
+      - name: Build, SBOM and gate
+        env:
+          IMAGE: docker02/app:ci
+          # секрет сборки, а не ключ подписи: в pull request из форка его не будет, и сборка упадёт
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+        run: |
+          cd "${LAB_DIR}"
+          ./ci/build.sh
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: sbom
+          path: ${{ env.LAB_DIR }}/sbom.cdx.json
+          # «файла нет» и «всё чисто» не должны выглядеть одинаково
+          if-no-files-found: error

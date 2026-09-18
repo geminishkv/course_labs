@@ -7,13 +7,15 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 <div class="hero-section hero-section--compact">
   <div class="hero-content">
     <h1 class="hero-title">HTTP Security Headers</h1>
-    <p class="hero-sub">Чеклист заголовков безопасности для веб-приложений</p>
+    <p class="hero-sub">Чек-лист заголовков безопасности для веб-приложений</p>
   </div>
 </div>
 
 ## Обязательные заголовки
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+Заголовки ответа — инструкции браузеру: что разрешено загружать, можно ли встраивать страницу в чужой сайт, по какому протоколу ходить. Их отсутствие — типичные находки пассивного сканирования OWASP ZAP в [Лаб. 08](../../labs/basic/lab08.md): исправляются они конфигурацией, без правки кода.
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -71,6 +73,8 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 
 ## Настройка nginx
 
+Заголовки удобнее задавать на веб-сервере или reverse proxy — тогда они одинаковы для всего приложения. Особенность nginx: `add_header` внутри `location` отменяет заголовки, унаследованные из `server`. Либо держите все заголовки на одном уровне, либо повторяйте их; флаг `always` добавляет заголовок и к ответам с ошибками.
+
 ```nginx
 server {
     listen 443 ssl http2;
@@ -101,6 +105,8 @@ server {
 ***
 
 ## Настройка Express (Node.js)
+
+В приложении заголовки выставляет middleware. Для Express стандартное решение — `helmet`: безопасные значения по умолчанию и точечная настройка политики содержимого.
 
 === "С helmet (рекомендуется)"
 
@@ -140,11 +146,13 @@ server {
 
 ## Cookie-атрибуты безопасности
 
-```
+Атрибуты cookie решают три вопроса: увидит ли её скрипт на странице (`HttpOnly`), уйдёт ли она по незашифрованному соединению (`Secure`) и приложится ли к запросу с чужого сайта (`SameSite`).
+
+```text title="HTTP-заголовок"
 Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3600
 ```
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -179,6 +187,8 @@ Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3
 ***
 
 ## Проверка заголовков
+
+Проверять нужно ответ реального сервера, а не конфигурационный файл: заголовок может потеряться на прокси или быть перезаписан приложением.
 
 ```bash
 # curl — быстрая проверка

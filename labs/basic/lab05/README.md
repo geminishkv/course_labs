@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №5</a><br></h1>
+<h1><a id="intro">Лаб. 05 · Docker: образы и контейнеры</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -45,7 +45,7 @@ lab05
 
 Сборка приложения включает создание контейнерного образа, в котором упаковано приложение с конфигурациями, чтобы приложение функционировало. `Docker` основан на использовании общих функций ядра `ОС Linux` (`cgroups`, `namespace`) для изоляции и управления ресурсами.
 
-> **Образ** — это статический, неизменяемый шаблон, на базе которого создаются контейнера с ОС, приложением, зависимостями, библиотекакм и конфигурационными файлами. Нужен для создания воспроизводимой, неизменяемой среды выполнения приложений в контейнерах.
+> **Образ** — это статический, неизменяемый шаблон, на базе которого создаются контейнеры с ОС, приложением, зависимостями, библиотеками и конфигурационными файлами. Нужен для создания воспроизводимой, неизменяемой среды выполнения приложений в контейнерах.
 
 Для сборки образов используется `Dockerfile`, где прописаны версии зависимостей и инструкции, минимизирующие разрешения и атаки. Это инструкции, где описывается, как собрать образ. Впоследствии собирается контейнер.
 
@@ -57,9 +57,9 @@ lab05
 
 ### Namespaces
 
-Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создает набор пространств имен для данного контейнера, что создает изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
+Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создаёт набор пространств имен для данного контейнера, что создаёт изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">pid</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция процессов — контейнер видит только свои процессы</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">net</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Управление сетевыми интерфейсами — собственный сетевой стек</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">ipc</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция IPC (InterProcess Communication) ресурсов</span></div>
@@ -73,9 +73,9 @@ lab05
 
 ```bash
 $ docker container run -d \
-        -e NGINX_HOST xxx.xxx \
+        -e NGINX_HOST=example.local \
         -p 8080:80 \
-        -v "$PWD/html" usr/share/nginx/html \
+        -v "$PWD/html":/usr/share/nginx/html:ro \
         --memory=50m \
         --cpus="2.5" \
         nginx
@@ -92,7 +92,7 @@ $ docker container run -d \
 
 ### Контекст безопасности
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Не запускать от root</span><div class="lab-card-tags"><span class="lab-tag">USER</span><span class="lab-tag">Dockerfile</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Явно прописывать учётную запись с минимальными правами. Root внутри контейнера = root на хосте при побеге.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Без --privileged</span><div class="lab-card-tags"><span class="lab-tag">capabilities</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отключает все средства изоляции, даёт доступ к ФС и устройствам хоста. Явно прописывать только нужные capabilities.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Профили безопасности</span><div class="lab-card-tags"><span class="lab-tag">AppArmor</span><span class="lab-tag">seccomp</span><span class="lab-tag">SELinux</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Не отключать профили Linux security. Ограничивают syscalls, сеть, обращения к ФС хоста.</span></div>
@@ -105,7 +105,79 @@ $ docker container run -d \
 
 ### Дополнительно
 
-В случае, если возникает проблема с вызовом `docker buildx` для macos `silicon`, следует использовать вот [это](https://gist.github.com/Aeonitis/cbd9f8b61eaec5a8a024c0a42f415ca3) описание из gistup для фикса `samelink`.
+В случае, если возникает проблема с вызовом `docker buildx` для macos `silicon`, следует использовать вот [это](https://gist.github.com/Aeonitis/cbd9f8b61eaec5a8a024c0a42f415ca3) описание: плагин `buildx` подключается через symlink в `~/.docker/cli-plugins`.
+
+### Схема работы
+
+Схема показывает путь лабораторной от Dockerfile до стенда в Docker Compose и место, где работа возвращается назад.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход лабораторной 05 от Dockerfile до Compose
+    accDescr: Dockerfile проверяется по чек-листу и дополняется файлом .dockerignore, образ собирается и разбирается по слоям, контейнер проверяется на запуск от root с возвратом к Dockerfile при необходимости, затем изучаются изоляция, лимиты и сеть, и стенд поднимается через Docker Compose.
+
+    docker_ready(["Docker и BuildKit<br/>установлены"])
+
+    subgraph image_stage ["Образ"]
+        direction TB
+        image_join((" "))
+        audit_dockerfile["Проверить Dockerfile<br/>по чек-листу"]
+        add_ignore["Создать .dockerignore"]
+        build_image[["docker build"]]
+        inspect_layers["Разобрать слои и размер:<br/>single- и multi-stage"]
+        image_join --> audit_dockerfile
+        audit_dockerfile --> add_ignore
+        add_ignore --> build_image
+        build_image --> inspect_layers
+    end
+
+    runs_as_root{"Контейнер работает<br/>от root?"}
+    root_fork((" "))
+    add_user["Добавить USER<br/>в Dockerfile"]
+
+    subgraph runtime_stage ["Контейнер"]
+        direction TB
+        check_isolation["Изучить изоляцию:<br/>namespaces изнутри"]
+        check_limits["Проверить лимиты:<br/>память через cgroups"]
+        check_network["Создать сеть, проверить<br/>связь контейнеров"]
+        check_isolation --> check_limits
+        check_limits --> check_network
+    end
+
+    run_compose[["docker compose up:<br/>стенд из двух сервисов"]]
+    docker_report[/"Коммиты по шагам<br/>и отчёт gist"/]
+    docker_done([Лабораторная сдана])
+
+    docker_ready --> image_join
+    inspect_layers --> runs_as_root
+    runs_as_root --- root_fork
+    root_fork -->|Нет| runtime_stage
+    root_fork -->|Да| add_user
+    add_user --> image_join
+    runtime_stage --> run_compose
+    run_compose --> docker_report
+    docker_report --> docker_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class image_join,root_fork junction
+    class audit_dockerfile,add_ignore,build_image,inspect_layers,add_user,check_isolation,check_limits,check_network,run_compose stage
+    class runs_as_root gate
+    class docker_done done
+```
+
+**Как читать схему:**
+
+- Первая рамка — образ: Dockerfile сначала читают по чек-листу, и только потом собирают. Разбор слоёв показывает, что именно попало внутрь.
+- Ромб проверяет один факт — от чьего имени работает процесс в контейнере. При ответе «Да» правится Dockerfile, и образ собирается заново: исправлять запущенный контейнер бессмысленно.
+- Вторая рамка — контейнер в работе: изоляция (namespaces), лимиты (cgroups) и сеть. Это те же механизмы, что описаны в материале выше, но увиденные изнутри.
+- Как писать Dockerfile — в руководстве «Dockerfile: как устроен и как его писать».
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ***
 
@@ -114,18 +186,19 @@ $ docker container run -d \
 - [ ] 1. Поставьте `Docker` и `buildkit`
 
 ```bash
-# Ubuntu / Debian
-$ sudo apt update && sudo apt install -y docker.io docker-compose
+# Ubuntu 22.04 / 24.04: движок, плагины buildx и compose v2 (команда `docker compose`)
+$ sudo apt update && sudo apt install -y docker.io docker-buildx docker-compose-v2
 $ sudo systemctl enable --now docker
+# группа docker равна правам root на хосте: добавляйте в неё только себя на учебной VM
 $ sudo usermod -aG docker $USER && newgrp docker
 
-# Fedora
-$ sudo dnf install -y docker docker-compose
-$ sudo systemctl enable --now docker
-$ sudo usermod -aG docker $USER
+# Debian, Fedora и другие: Docker Engine по официальной инструкции
+# https://docs.docker.com/engine/install/
 
-# macOS
-$ brew install docker buildkit
+# macOS: одного CLI мало, нужен движок (Docker Desktop или Colima)
+$ brew install --cask docker
+# или
+$ brew install docker docker-buildx docker-compose colima && colima start
 
 # Проверка
 $ docker --version
@@ -144,7 +217,7 @@ $ docker load -i hello.tar
 $ docker load -i image.tar
 ```
 
-- [ ] 3. Откройте `Dockerfile` и проведите аудит безопасности по чеклисту:
+- [ ] 3. Откройте `Dockerfile` и проведите аудит безопасности по чек-листу:
 
     - [ ] Какой базовый образ используется? Он официальный? Есть ли пиннинг версии (тег, не `latest`)?
     - [ ] Используется ли multi-stage build? Зачем?
@@ -152,7 +225,7 @@ $ docker load -i image.tar
     - [ ] Используется `COPY . .` или копируются только нужные файлы?
     - [ ] Есть ли `.dockerignore`? Что он исключает?
     - [ ] Есть ли секреты или пароли в `ENV`, `ARG` или `COPY`?
-    - [ ] Пиннингованы ли версии зависимостей в `requirements.txt`?
+    - [ ] Закреплены ли версии зависимостей в `requirements.txt`?
 
     Зафиксируйте результат аудита в отчёте. Сделайте `commit`.
 
@@ -169,13 +242,14 @@ venv
 *.md
 ```
 
-Соберите образ **до** и **после** добавления `.dockerignore`, сравните размеры:
+Соберите образ **до** создания `.dockerignore` и **после**, сравните размер контекста сборки и размер образа:
 
 ```bash
+$ docker buildx build --progress=plain -t hello-appsec-world . 2>&1 | grep "transferring context"
 $ docker images | grep hello-appsec-world
 ```
 
-Опишите в отчёте: какие файлы попадали в образ без `.dockerignore` и почему это опасно.
+Текущий `Dockerfile` копирует только нужные файлы, поэтому образ почти не изменится, а контекст уменьшится: `image.tar` и `.git` перестанут уходить демону при каждой сборке. Опишите в отчёте, что попало бы в образ при `COPY . .` без `.dockerignore` и почему это опасно.
 
 - [ ] 5. Замените в `Dockerfile` скрипт на свой `python`-файл из прошлых лабораторных работ. Вложите свой файл в директорию `source/`. Проанализируйте и доработайте `Dockerfile` под ваш скрипт. Сделайте `commit`.
 
@@ -193,8 +267,9 @@ RUN pip install --upgrade pip && pip wheel --wheel-dir=/wheels -r requirements.t
 # Этап 2: запускаемый образ
 FROM python:3.11-slim
 WORKDIR /hello
-# Копируем файл с зависимостями
-COPY --from=builder /wheels /wheels # Копируем собранные wheel-пакеты
+# Копируем собранные wheel-пакеты (комментарий только на отдельной строке:
+# после инструкции Docker прочитает его как аргументы)
+COPY --from=builder /wheels /wheels
 COPY requirements.txt . 
 # Устанавливаем зависимости из wheel-пакетов
 RUN pip install --no-index --find-links=/wheels -r requirements.txt
@@ -213,6 +288,7 @@ CMD ["python", "hello.py"]
 $ docker buildx build -t hello-appsec-world .
 $ docker run hello-appsec-world
 $ docker save -o hello_your_project.tar hello-appsec-world
+$ sha256sum hello_your_project.tar image.tar
 
 $ docker load -i hello_your_project.tar
 $ docker run hello-appsec-world
@@ -228,7 +304,7 @@ flask==2.2.3
 requests==2.28.1
 ```
 
-- [ ] 8. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните `image` в виде .`tar` архива. Сделайте `commit`.
+- [ ] 8. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните образ в `.tar` архив. Сделайте `commit`.
 - [ ] 9. Проанализируйте слои и размер образа. Сравните single-stage и multi-stage build:
 
 ```bash
@@ -253,15 +329,15 @@ $ docker run --rm hello-appsec-world id
 - [ ] 11. Выведите на терминале и проанализируйте следующие команды консоли
 
 ```bash
-$ docker login
+$ docker login    # войдите по access token Docker Hub, не по паролю: он сохранится в ~/.docker/config.json
 $ docker tag hello-appsec-world yourusername/hello-appsec-world
 $ docker push yourusername/hello-appsec-world
 $ docker inspect yourusername/hello-appsec-world
 $ docker container create --name first hello-appsec-world # выпишите id контейнера
 
-$ docker image pull geminishkv/hello-appsec-world
+$ docker image pull geminishkvdev/hello-appsec-world
 $ docker inspect geminishkvdev/hello-appsec-world
-$ docker container create --name second hello-appsec-world
+$ docker container create --name second geminishkvdev/hello-appsec-world
 
 ```
 
@@ -341,14 +417,14 @@ $ docker compose down
 
 - [ ] 19. Доработайте `docker-compose.yml` и скрипт из предыдущих шагов, чтобы воспроизвести шаги п.15–п.17 с демонстрацией. Сделайте `commit`.
 - [ ] 20. Залейте изменения в свой удалённый репозиторий, проверьте историю `commit`.
-- [ ] 21. Подготовьте отчет `gist`.
+- [ ] 21. Подготовьте отчёт `gist`.
  
 ***
 
 ## Смотри также
 
-- [Основы Docker](https://course.geminishkv.tech/labs/intro/docker_basics/) — введение в контейнеризацию перед этой лабой
-- [Лаб. №6 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит безопасности Docker
+- [Основы Docker](https://course.geminishkv.tech/materials/guides/docker_basics/) — введение в контейнеризацию перед этой лабой
+- [Лаб. 06 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит безопасности Docker
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — шпаргалка по командам
 - [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов
 - [CheatSheet: .dockerignore](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/) — исключения при сборке
@@ -361,7 +437,7 @@ $ docker compose down
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/engine/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Engine overview</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/reference/dockerfile/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Dockerfile reference</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>

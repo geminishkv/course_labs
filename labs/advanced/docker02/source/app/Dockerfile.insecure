@@ -1,0 +1,12 @@
+# Небрежная сборка лабораторной docker02: так делать нельзя.
+# Файл не правится: исправленная сборка пишется в новый файл Dockerfile.
+FROM python:slim
+
+ARG API_TOKEN
+ENV API_TOKEN=${API_TOKEN}
+
+WORKDIR /app
+COPY . .
+RUN pip install idna
+
+CMD ["python", "app.py", "пример.рф"]

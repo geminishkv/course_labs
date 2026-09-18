@@ -14,6 +14,8 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 
 ## Permissions — принцип минимальных привилегий
 
+Токен `GITHUB_TOKEN` выдаётся каждому запуску автоматически. Его права по умолчанию зависят от настроек репозитория и могут включать запись; блок `permissions` сужает их до нужных. Блок на уровне job заменяет блок уровня workflow целиком, а не дополняет его: объявив свой, повторите в нём `contents: read`.
+
 === "Плохо"
 
     ```yaml
@@ -58,7 +60,9 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 
 ## Secrets — управление секретами
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+Секрет маскируется в логах только в том виде, в каком сохранён: закодированный в base64 или разбитый на части, он выводится открыто. В запуски по pull request из форков секреты не передаются вовсе — это защита, а не ошибка.
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -118,6 +122,8 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 
 ## Pinning Actions — защита от supply chain
 
+Сторонний action исполняется с правами вашего job. Тег (`@v4`) владелец может переставить на другой коммит, хеш коммита — нет. Разбор риска — в [OWASP CI/CD Risks](../OWASPTOP10/OWASP_Top_10_CICD_Risks.md), CICD-SEC-8; как получить хеш — раздел API [шпаргалки GitHub CLI](CHEATSHEET_GH_CLI.md).
+
 === "Плохо"
 
     ```yaml
@@ -144,6 +150,8 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 ***
 
 ## Script Injection
+
+Выражение `${{ }}` подставляется в скрипт как текст ещё до запуска, поэтому всё, что приходит из `github.event.*`, — недоверенный ввод: заголовки, имена веток, сообщения коммитов. В `run:` такие значения передаются только через `env`.
 
 === "Уязвимо"
 
@@ -176,6 +184,8 @@ keywords: "GitHub Actions, CI/CD security, secrets, OIDC, permissions, supply ch
 
 ## Fork PR — ограничения
 
+Workflow на `pull_request` из форка получает токен только на чтение и не видит секретов. Триггер `pull_request_target` снимает это ограничение — он работает в контексте основной ветки, поэтому исполнять в нём код из pull request нельзя.
+
 ```yaml
 # Не запускать workflow на PR из форков с write-доступом
 on:
@@ -188,7 +198,7 @@ on:
     types: [opened]
 ```
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -214,7 +224,9 @@ on:
 
 ***
 
-## Чеклист
+## Чек-лист
+
+Список для ревью любого workflow — своего и чужого. Каждый пункт закрывает один из рисков [OWASP CI/CD](../OWASPTOP10/OWASP_Top_10_CICD_Risks.md).
 
 - [ ] `permissions:` задан глобально и per-job
 - [ ] Secrets через env, не через `${{ }}` в `run:`

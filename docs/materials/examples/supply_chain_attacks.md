@@ -17,7 +17,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 ## Log4Shell (CVE-2021-44228)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CVSS 10.0</span>
   <span class="lab-card-title" style="font-weight:700;">Декабрь 2021</span>
@@ -49,7 +49,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 ## SolarWinds Orion (SUNBURST)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">APT / Nation-state</span>
   <span class="lab-card-title" style="font-weight:700;">Декабрь 2020</span>
@@ -82,7 +82,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 ## XZ Utils Backdoor (CVE-2024-3094)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-tag" style="background:rgba(213,26,26,0.12); color:var(--brand-red); border-color:rgba(213,26,26,0.25);">CVSS 10.0</span>
   <span class="lab-card-title" style="font-weight:700;">Март 2024</span>
@@ -115,7 +115,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 ## Codecov Bash Uploader
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-tag">CI/CD Attack</span>
   <span class="lab-card-title" style="font-weight:700;">Январь — Апрель 2021</span>
@@ -142,7 +142,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 ## event-stream (npm)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-tag">Dependency Hijack</span>
   <span class="lab-card-title" style="font-weight:700;">Ноябрь 2018</span>
@@ -172,7 +172,7 @@ keywords: "supply chain, атаки, SolarWinds, Log4Shell, XZ Utils, Codecov, e
 
 ## Защитные меры
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red);">SCA в CI</div>

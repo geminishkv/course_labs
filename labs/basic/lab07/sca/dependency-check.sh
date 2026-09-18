@@ -20,9 +20,14 @@ fi
 
 if [ "${1:-}" = "--update" ]; then
   echo "[*] Updating NVD database in ${DATA_DIR}..."
-  "${DC_CMD}" \
-    --updateonly \
-    --data "${DATA_DIR}"
+  # The NVD API key comes from the environment and never lands in a file:
+  #   read -rs NVD_API_KEY && export NVD_API_KEY
+  if [ -n "${NVD_API_KEY:-}" ]; then
+    "${DC_CMD}" --updateonly --data "${DATA_DIR}" --nvdApiKey "${NVD_API_KEY}"
+  else
+    echo "[!] NVD_API_KEY is not set: the first download is heavily rate-limited and can take hours"
+    "${DC_CMD}" --updateonly --data "${DATA_DIR}"
+  fi
   echo "[+] NVD data updated"
   exit 0
 fi

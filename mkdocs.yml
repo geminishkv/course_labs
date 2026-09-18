@@ -78,6 +78,35 @@ markdown_extensions:
   - fenced_code
   - admonition
   - pymdownx.highlight:
+      # every highlighted block gets a label with its language; an explicit title="…" wins
+      auto_title: true
+      auto_title_map:
+        "Bash": "bash"
+        "Bash Session": "console"
+        "Python": "python"
+        "YAML": "yaml"
+        "JSON": "json"
+        "Docker": "dockerfile"
+        "JavaScript": "javascript"
+        "HTML": "html"
+        "XML": "xml"
+        "PowerShell": "powershell"
+        "Text only": "text"
+        "Text Only": "text"
+        "SQL": "sql"
+        "PHP": "php"
+        "HTTP": "http"
+        "INI": "ini"
+        "TOML": "toml"
+        "Diff": "diff"
+        "C": "c"
+        "C#": "csharp"
+        "Perl": "perl"
+        "VBScript": "vbscript"
+        "Java Server Page": "jsp"
+        "Markdown": "markdown"
+        "Nginx configuration file": "nginx"
+        "Nginx Configuration File": "nginx"
       anchor_linenums: true
       linenums: true
       linenums_style: pymdownx-inline
@@ -128,6 +157,7 @@ extra_css:
   - stylesheets/banners.css
 
 extra_javascript:
+  - javascripts/mermaid-loader.js   # window.mermaid for Material: vendored bundle, loaded on demand
   - javascripts/header.js
   - javascripts/typewriter-target.js
   - javascripts/banners.js
@@ -166,50 +196,75 @@ nav:
   - "geminishkv.tech": "https://geminishkv.tech/"
   - "Главная страница": index.md
   - "Лабораторные работы":
-      - "Подготовка рабочего окружения": labs/intro/vmbox_tutorial.md
-      - "Настройка GitSCM": labs/intro/git_setup.md
-      - "Оформление отчётов Gistup": labs/intro/gistup_guide.md
-      - "Введение в сети и TCP/IP": labs/intro/networking_basics.md
-      - "Основы Docker": labs/intro/docker_basics.md
-      - "Введение в CI/CD": labs/intro/cicd_basics.md
-      - "Установка AppSec-инструментов": labs/intro/appsec_tools_setup.md
+      - "С чего начать": /materials/#guides
       - "Базовое ознакомление":
-          - "Лабораторная работа №1": labs/basic/lab01.md
-          - "Лабораторная работа №2": labs/basic/lab02.md
-          - "Лабораторная работа №3": labs/basic/lab03.md
-          - "Лабораторная работа №4": labs/basic/lab04.md
-          - "Лабораторная работа №5": labs/basic/lab05.md
-          - "Лабораторная работа №6": labs/basic/lab06.md
-          - "Лабораторная работа №7": labs/basic/lab07.md
-          - "Лабораторная работа №8": labs/basic/lab08.md
-          - "Лабораторная работа №9": labs/basic/lab09.md
-          - "Лабораторная работа №10": labs/basic/lab10.md
-      - "pet_project": labs/pet_project.md
+          - "Лаб. 01 · Git: окружение и первый коммит": labs/basic/lab01.md
+          - "Лаб. 02 · Linux: права доступа и процессы": labs/basic/lab02.md
+          - "Лаб. 03 · Nmap: сканирование сети и NSE": labs/basic/lab03.md
+          - "Лаб. 04 · Анализ и снижение рисков ИБ": labs/basic/lab04.md
+          - "Лаб. 05 · Docker: образы и контейнеры": labs/basic/lab05.md
+          - "Лаб. 06 · Docker CIS Benchmark и Trivy": labs/basic/lab06.md
+          - "Лаб. 07 · SAST, SCA и поиск секретов": labs/basic/lab07.md
+          - "Лаб. 08 · DAST: OWASP ZAP": labs/basic/lab08.md
+          - "Лаб. 09 · DevSecOps CI/CD на GitHub Actions": labs/basic/lab09.md
+          - "Лаб. 10 · Итоговая оценка рисков ИБ": labs/basic/lab10.md
+      - "Углублённый трек: Docker":
+          - "О треке": labs/advanced/index.md
+          - "Docker 01 · Рантайм: hardening и сегментация": labs/advanced/docker01.md
+          - "Docker 02 · Поставка: сборка, SBOM, подпись": labs/advanced/docker02.md
+      - "Pet-project": labs/pet_project.md
   - "Тесты":
       - "Лекционные тесты":
           - "Fintech по-русски":
               - "Вариант 1": labs/tests/lectures/test_fintech.md
               - "Вариант 2": labs/tests/lectures/test_fintech_v2.md
       - "Базовое ознакомление":
-          - "Вариант №1": labs/tests/basic/test01.md
-          - "Вариант №2": labs/tests/basic/test02.md
-          - "Вариант №3": labs/tests/basic/test03.md
-          - "Вариант №4": labs/tests/basic/test04.md
-          - "Вариант №5": labs/tests/basic/test05.md
+          - "Тест №1": labs/tests/basic/test01.md
+          - "Тест №2": labs/tests/basic/test02.md
+          - "Тест №3": labs/tests/basic/test03.md
+          - "Тест №4": labs/tests/basic/test04.md
+          - "Тест №5": labs/tests/basic/test05.md
   - "Материалы":
       - materials/index.md
-      - "Лекции":
-          - "Fintech по-русски": materials/lectures/fintech_ru.md
-      - "Примеры":
-          - "Cases": materials/examples/exmpl.md
-          - "MultiSiq": materials/examples/Multisignature.md
-          - "PrintNightmare": materials/examples/PrintNightmare.md
-          - "Risk Analysis": materials/examples/RA.md
-          - "Supply Chain Attacks": materials/examples/supply_chain_attacks.md
-      - "Порты и протоколы": materials/ports.md
-      - "Лицензии ПО": materials/licenses.md
-      - "Классификация инструментов": materials/appsec_tt.md
-      - "OWASP TOP 10":
+      - "Руководства":
+          - "Подготовка рабочего окружения": materials/guides/vmbox_tutorial.md
+          - "Настройка Git, GPG и GitHub CLI": materials/guides/git_setup.md
+          - "Оформление отчётов gistup": materials/guides/gistup_guide.md
+          - "Введение в сети и TCP/IP": materials/guides/networking_basics.md
+          - "Основы Docker": materials/guides/docker_basics.md
+          - "Dockerfile: как устроен и как писать": materials/guides/dockerfile_guide.md
+          - "Введение в CI/CD": materials/guides/cicd_basics.md
+          - "Установка AppSec-инструментов": materials/guides/appsec_tools_setup.md
+      - "Шпаргалки":
+          - "Git":
+              - "GitSCM": materials/cheatsheet/CHEATSHEET_GIT.md
+              - "GitHub CLI": materials/cheatsheet/CHEATSHEET_GH_CLI.md
+              - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
+          - "Docker":
+              - "Docker": materials/cheatsheet/CHEATSHEET_DOCKER.md
+              - "Dockerfile Security": materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY.md
+              - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
+          - "CI/CD":
+              - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
+              - "GitHub Actions Security": materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY.md
+          - "Web":
+              - "HTTP Security Headers": materials/cheatsheet/CHEATSHEET_HTTP_HEADERS.md
+          - "Linux и сети":
+              - "Linux: права и процессы": materials/cheatsheet/CHEATSHEET_LINUX.md
+              - "Nmap": materials/cheatsheet/CHEATSHEET_NMAP.md
+      - "Справочники":
+          - "Порты и протоколы": materials/ports.md
+          - "Классификация инструментов": materials/appsec_tt.md
+          - "Лицензии ПО": materials/licenses.md
+          - "CVSS и реестр рисков": materials/risk_scoring.md
+          - "Разбор находок сканеров": materials/findings_triage.md
+          - "Как читать схемы курса": materials/diagrams_legend.md
+          - "Команды: Git": materials/commands_git.md
+          - "Команды: окружение": materials/commands_environment.md
+          - "Команды: Docker": materials/commands_docker.md
+          - "Команды: сканеры и конвейер": materials/commands_scanners.md
+          - "Приложение": materials/APPENDIX.md
+      - "Угрозы: OWASP Top 10":
           - "CI/CD Risks": materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md
           - "Authorization": materials/OWASPTOP10/Authorization.md
           - "Authentication": materials/OWASPTOP10/Authentication.md
@@ -217,17 +272,14 @@ nav:
           - "Command Execution": materials/OWASPTOP10/command-execution.md
           - "Logical Attacks": materials/OWASPTOP10/logical-attacks.md
           - "Information Disclosure": materials/OWASPTOP10/information-disclosure.md
-      - "CheatSheet":
-          - "GitHub CLI": materials/cheatsheet/CHEATSHEET_GH_CLI.md
-          - "GitSCM": materials/cheatsheet/CHEATSHEET_GIT.md
-          - "Docker": materials/cheatsheet/CHEATSHEET_DOCKER.md
-          - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
-          - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
-          - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
-          - "HTTP Security Headers": materials/cheatsheet/CHEATSHEET_HTTP_HEADERS.md
-          - "Dockerfile Security": materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY.md
-          - "GitHub Actions Security": materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY.md
-      - "Приложение": materials/APPENDIX.md
+      - "Кейсы":
+          - "Cases": materials/examples/exmpl.md
+          - "MultiSig": materials/examples/Multisignature.md
+          - "PrintNightmare": materials/examples/PrintNightmare.md
+          - "Risk Analysis": materials/examples/RA.md
+          - "Supply Chain Attacks": materials/examples/supply_chain_attacks.md
+      - "Лекции":
+          - "Fintech по-русски": materials/lectures/fintech_ru.md
       - "Troubleshooting": materials/troubleshooting.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md

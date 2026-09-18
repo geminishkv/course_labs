@@ -1,5 +1,5 @@
 ---
-title: "Лаб. №3 — Nmap: сканирование портов и сервисов | Курс AppSec"
+title: "Лаб. 03 — Nmap: сканирование сети и NSE | Курс AppSec"
 description: "Лабораторная работа №3 AppSec: сканирование портов и сервисов с Nmap — обнаружение уязвимостей в сетевой инфраструктуре."
 keywords: "Nmap, сканирование сети, уязвимости, AppSec, pentest, порты, сервисы, network scan, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
@@ -7,7 +7,7 @@ keywords: "Nmap, сканирование сети, уязвимости, AppSec
 <div class="lab-hero">
   <div class="lab-hero-num">03</div>
   <div class="lab-hero-content">
-    <h1 class="lab-hero-title">Nmap — сканирование сети и анализ уязвимостей</h1>
+    <h1 class="lab-hero-title">Nmap: сканирование сети и NSE</h1>
     <div class="lab-hero-tags">
       <span class="lab-tag">Nmap</span>
       <span class="lab-tag">Linux</span>
@@ -17,6 +17,6 @@ keywords: "Nmap, сканирование сети, уязвимости, AppSec
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/basic/lab03/README.md" %}
+{% include-markdown "../../../labs/basic/lab03/README.md" start="</div>" %}
 
 </div>

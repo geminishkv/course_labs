@@ -1,5 +1,5 @@
 ---
-title: "Лаб. №9 — DevSecOps CI/CD: GitHub Actions | Курс AppSec"
+title: "Лаб. 09 — DevSecOps CI/CD на GitHub Actions | Курс AppSec"
 description: "Лабораторная работа №9 AppSec: DevSecOps-конвейер на GitHub Actions — интеграция Semgrep, Trivy и OWASP ZAP в CI/CD pipeline."
 keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, конвейер, pipeline, лабораторная работа, курс AppSec, Шмаков Илья, Elijah Shmakov, geminishkv, AppSecTA"
 ---
@@ -7,7 +7,7 @@ keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, 
 <div class="lab-hero">
   <div class="lab-hero-num">09</div>
   <div class="lab-hero-content">
-    <h1 class="lab-hero-title">DevSecOps CI/CD конвейер на GitHub Actions</h1>
+    <h1 class="lab-hero-title">DevSecOps CI/CD на GitHub Actions</h1>
     <div class="lab-hero-tags">
       <span class="lab-tag">GH Actions</span>
       <span class="lab-tag">Semgrep</span>
@@ -19,16 +19,6 @@ keywords: "DevSecOps, CI/CD, GitHub Actions, Semgrep, Trivy, OWASP ZAP, AppSec, 
 
 <div class="lab-readme" markdown="1">
 
-{% include-markdown  "../../../labs/basic/lab09/README.md" %}
+{% include-markdown "../../../labs/basic/lab09/README.md" start="</div>" %}
 
 </div>
-
-***
-
-## Смотри также
-
-- [OWASP Top 10 — CI/CD Risks](../../materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски, которые закрывает этот пайплайн
-- [Лаб. №7 — SAST и SCA](lab07.md) — Semgrep и Checkov до интеграции в CI
-- [Лаб. №8 — DAST](lab08.md) — OWASP ZAP до интеграции в CI
-- [GitHub CLI Cheatsheet](../../materials/cheatsheet/CHEATSHEET_GH_CLI.md) — управление Actions из терминала
-- [Классификация AppSec-инструментов](../../materials/appsec_tt.md) — полная карта инструментов DevSecOps

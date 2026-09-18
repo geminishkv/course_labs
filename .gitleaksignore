@@ -1,0 +1,3 @@
+# Учебная фикстура: токен, которым студент в лабе 07 создаёт test_secret.py,
+# чтобы убедиться, что pre-commit с gitleaks блокирует коммит. Не секрет.
+labs/basic/lab07/README.md:generic-api-key:304

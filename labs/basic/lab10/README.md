@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №10</a><br></h1>
+<h1><a id="intro">Лаб. 10 · Итоговая оценка рисков ИБ</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -21,7 +21,7 @@
 
 Ваша задача — на практике отработать классификацию рисков ИБ на базе примеров задач бизнеса, использовать знания по обнаружению уязвимостей, выставлению требований к разработке ПО, какие анализаторы использовать и иное.
 
-Отработка знаний позволит научиться приоритезировать задачи ИБ в продуктовом `RoadMap` и выделять бюджет на активности ИБ.
+Отработка знаний позволит научиться приоритизировать задачи ИБ в продуктовом `RoadMap` и выделять бюджет на активности ИБ.
 
 Для сдачи данной работы также будет требоваться ответить на дополнительные вопросы по описанным темам. После выполнения задания вы получите корректировку ответов и пояснения для развития компетенций в области.
 
@@ -31,7 +31,7 @@
 
 ### Методология оценки рисков
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">1. Инвентаризация</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Определить активы: ПДн, коммерческие данные, инфраструктура, репутация. Классифицировать по критичности.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">2. Идентификация угроз</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Описать сценарии: утечка ПДн, взлом ЛК, подмена данных, DDoS, инъекции, social engineering.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">3. Оценка рисков</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Вероятность × Влияние. Качественная (Высокий/Средний/Низкий) или количественная (CVSS, денежная оценка).</span></div>
@@ -49,7 +49,7 @@
 
 ### Инструментарий AppSec для проекта
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">SAST</div><div class="lab-card-tags"><span class="lab-tag">Semgrep</span><span class="lab-tag">Checkov</span></div></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">SCA</div><div class="lab-card-tags"><span class="lab-tag">OWASP DC</span><span class="lab-tag">Trivy</span></div></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><div class="lab-card-title" style="font-weight:700;">DAST</div><div class="lab-card-tags"><span class="lab-tag">OWASP ZAP</span></div></div>
@@ -71,7 +71,7 @@
 
 ### Ремарка 
 
-> Помните о акценте на быструю поставку ценности, а также только необходимого функционала – приоритет задач бизнеса, так как важно проработать изменение логики функциональных/ не функциональных требований ИБ. 
+> Помните об акценте на быструю поставку ценности и только необходимого функционала: приоритет у задач бизнеса, поэтому важно проработать изменение логики функциональных и нефункциональных требований ИБ.
 
 Зафиксируйте риски информационной безопасности, связанные с данной активностью, и классифицируйте их по следующим категориям:
 > - регуляторные требования
@@ -87,6 +87,73 @@ lab10
 └── README.md
 ```
 
+### Схема работы
+
+Схема показывает, как из исходных данных получается аналитическая записка.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: От исходных данных к аналитической записке
+    accDescr: Описание сервиса и обрабатываемых персональных данных, известные уязвимости выбранной CMS и перечень инструментов AppSec дают список рисков; каждый риск оценивается и получает стратегию, результат сводится в матрицу рисков и аналитическую записку.
+
+    note_start(["Выбран сервис<br/>для анализа"])
+
+    subgraph inputs_stage ["Исходные данные"]
+        direction TB
+        service_data[/"Авторизация и ПДн:<br/>что собирается и зачем"/]
+        cms_cves[/"CVE выбранной CMS<br/>за последний год"/]
+        tool_list[/"Инструменты AppSec<br/>по этапам разработки"/]
+        service_data --> cms_cves
+        cms_cves --> tool_list
+    end
+
+    identify_risks["Выявить риски:<br/>вектор, актив, последствия"]
+    risk_join((" "))
+    rate_risk["Оценить вероятность<br/>и влияние"]
+    is_acceptable{"Уровень риска<br/>приемлем?"}
+    accept_fork((" "))
+    accept_risk["Принять риск:<br/>обоснование"]
+    treat_risk["Выбрать стратегию:<br/>снизить, передать,<br/>избежать"]
+    residual[/"Остаточный риск"/]
+    risk_matrix[/"Матрица рисков:<br/>риск, мера, эффективность"/]
+    write_note["Собрать записку:<br/>разделы 7.1–7.8"]
+    note_done(["Записка и отчёт<br/>gist сданы"])
+
+    note_start --> inputs_stage
+    inputs_stage --> identify_risks
+    identify_risks --- risk_join
+    risk_join --> rate_risk
+    rate_risk --> is_acceptable
+    is_acceptable --- accept_fork
+    accept_fork -->|Да| accept_risk
+    accept_fork -->|Нет| treat_risk
+    treat_risk --> residual
+    residual --> risk_join
+    accept_risk --> risk_matrix
+    risk_matrix --> write_note
+    write_note --> note_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class risk_join,accept_fork junction
+    class identify_risks,rate_risk,accept_risk,treat_risk,write_note stage
+    class is_acceptable gate
+    class note_done done
+```
+
+**Как читать схему:**
+
+- Рамка сверху — три источника рисков: что и зачем собирает сервис, какие уязвимости известны у выбранной платформы, какими инструментами проект будет проверяться.
+- Цикл в середине тот же, что в Лаб. 04: риск оценивается, и если он неприемлем, выбирается стратегия, а остаточный риск оценивается снова.
+- Принятие риска — тоже решение: у него есть обоснование, и оно попадает в раздел 7.6 записки.
+- Матрица рисков — центральный документ: остальные разделы записки либо готовят её, либо из неё следуют.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание
@@ -100,7 +167,7 @@ lab10
 ### Основное
 
 1. Нам нужно оценить риски, которые повлияют на бизнес и предложить лучшие решения для них
-2. Приложение позволяет осуществлять бронирование мест с данными о клиенте за индивидуальное вознаграждение (для увеличение роста клиентов) 
+2. Приложение позволяет осуществлять бронирование мест с данными о клиенте за индивидуальное вознаграждение (для увеличения числа клиентов) 
 3. Страница бронирования включает:
 
 > - информацию о заведении, 
@@ -112,17 +179,17 @@ lab10
 > - возможность оставлять комментарии, 
 > - возможность отмечать избранное, 
 > - сохранять в закладки, 
-> - просматривать аккаунты пользователей, а также личные данные пользователей, как пример фото, а там есть метаданные (`EXIF`), которые содержат информацию о устройстве, локации, профиле и иное.
+> - просматривать аккаунты пользователей, а также личные данные пользователей, как пример фото, а там есть метаданные (`EXIF`), которые содержат информацию об устройстве, локации, профиле и иное.
 
-4. Гипотеза бизнеса также ориентирована на использовании нотификаций, то есть отправки уведомлений на персональные аккаунты пользователей в мессенджеры, типа Telegram, включая веб, личные устройства, почту
-5. Бизнесу проще и комфортнее выбрать **готовое решение** и сделать его на CMS для тестирования клиентского спроса и только частной визуализации web-дизайна (по этому учитывайте, что могут быть известные уязвимости этих CMS)
-6. **Предлагается** рассмотреть 1С Битрикс, либо Wordpress, Opencart — следует найти информацию об уязвимостях на состояние 2025 года и оценить, какие риски они несут в текущей версии ПО, которое планируется использовать. Также приведите рекомендации об их устранении.
+4. Гипотеза бизнеса также ориентирована на использование нотификаций, то есть отправку уведомлений на персональные аккаунты пользователей в мессенджеры, типа Telegram, включая веб, личные устройства, почту
+5. Бизнесу проще и комфортнее выбрать **готовое решение** и сделать его на CMS для тестирования клиентского спроса и только частной визуализации web-дизайна (поэтому учитывайте, что у этих CMS могут быть известные уязвимости)
+6. **Предлагается** рассмотреть 1С Битрикс, либо Wordpress, Opencart — следует найти информацию об уязвимостях, актуальную на момент выполнения работы, и оценить, какие риски они несут в текущей версии ПО, которое планируется использовать. Также приведите рекомендации об их устранении.
 
 ### Учтите
 
-- Бизнес будет использовать публичные данные о заведениях и нам необходимо их верифицировать. С каждым заведением имеется агентский договор, где мы является оператором данных по ПДн и выставляем требования по обработке и хранению данных клиентов. Важно учитывать сбор данных (именно его формат) из открытых источников, где будут храниться, обрабатываться и передаваться при внешних интеграциях, также учтите размещение, хранение на выбранной платформе
+- Бизнес будет использовать публичные данные о заведениях и нам необходимо их верифицировать. С каждым заведением имеется агентский договор, где мы являемся оператором ПДн и выставляем требования по обработке и хранению данных клиентов. Важно учитывать сбор данных (именно его формат) из открытых источников, где будут храниться, обрабатываться и передаваться при внешних интеграциях, также учтите размещение, хранение на выбранной платформе
 - Будет иметься личный кабинет пользователя, который содержит ПДн, номера, иные данные (можете ограничить себе скоуп необходимой информации), например: номер телефона, почта, ФИО и иные идентификационные данные
-- Бронирование осуществляется по средствам внешней интеграции путем передачи данных по API в заведения
+- Бронирование осуществляется посредством внешней интеграции: данные передаются в заведения по API
 - **Пример по разбору рисков:** ОТП-код имеет риск его перебора (брут-форсинга), подмены, абуза времени жизни кода, которая вываливается в риск киберпреступления, путем взлома личного кабинета и кражи данных. Для минимизации риска: ограничение времени жизни кода, количества запросов в момент времени, контроль длины кода (не меньше 6 символов) и т.д.
 - Помните, что важен принцип упрощения задачи для разработчиков, не рассматривайте ситуации с углубленной технической точки зрения, будет достаточно описания вектора реализации риска ИБ
 - **Возможность изменения:** на любом этапе можно предложить альтернативное решение со стороны ИБ, которое может снизить описанные риски до целевого уровня. 
@@ -135,8 +202,8 @@ lab10
 - [ ] 2. Составьте перечень инструментов **AppSec** для данного проекта: какие SAST, SCA, DAST, Secret Detection инструменты будете использовать и на каком этапе SDLC. Язык программирования не важен — фокус на процессе
 - [ ] 3. Для каждого выявленного риска определите стратегию обработки: **снижение**, **передача**, **принятие** или **избежание**. Для принятых рисков — обоснуйте решение (стоимость реализации vs ущерб) и опишите необходимые компенсирующие контроли
 - [ ] 4. Опишите риски ИБ, связанные с обработкой ПДн клиентов (телефон, ФИО, мессенджер) и авторизацией через ОТП-код. Для каждого риска укажите: вектор атаки, влияние и меру снижения
-- [ ] 5. Определите минимально необходимый объём ПДн по принципу KYC (Know Your Customer). Опишите требования к хранению (шифрование БД, выделенный инстанс), передаче (безопасный канал, API) и отображению (маскирование на UI) данных
-- [ ] 6. Проведите анализ уязвимостей выбранной CMS (1С Битрикс / WordPress / Opencart) на 2025 год. Найдите минимум 3 известные CVE, оцените их критичность и предложите меры устранения. Учтите риски затягивания уязвимых зависимостей при обновлении CMS
+- [ ] 5. Определите минимально необходимый объём ПДн по принципу минимизации данных (ч. 5 ст. 5 152-ФЗ): собирайте только то, что нужно для бронирования и отзывов. Полная идентификация клиента по процедуре KYC (Know Your Customer) здесь не требуется, это практика финансовых организаций. Опишите требования к хранению (шифрование БД, выделенный инстанс), передаче (безопасный канал, API) и отображению (маскирование на UI) данных
+- [ ] 6. Проведите анализ уязвимостей выбранной CMS (1С Битрикс / WordPress / Opencart) за последний год. Найдите минимум 3 известные CVE, оцените их критичность и предложите меры устранения. Учтите риски затягивания уязвимых зависимостей при обновлении CMS
 - [ ] 7. Подготовьте аналитическую записку со следующими разделами:
     - [ ] 7.1 — Типовые ошибки разработчиков при реализации проекта
     - [ ] 7.2 — Анализ угроз: взлом, утечка, доступность — с классификацией активов по значимости
@@ -152,12 +219,13 @@ lab10
 
 ## Смотри также
 
-- [Лаб. №4 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — первая лаба по анализу рисков ИБ
-- [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ и зависимости
-- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование
-- [Лаб. №9 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
+- [Лаб. 04 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — первая лаба по анализу рисков ИБ
+- [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ и зависимости
+- [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование
+- [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — атаки на цепочку поставок
 - [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
+- [CVSS и реестр рисков](https://course.geminishkv.tech/materials/risk_scoring/) — шкалы, уровень риска и пример записи реестра для матрицы из раздела 7.4
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов для раздела «средства»
 
 ***
@@ -170,13 +238,13 @@ lab10
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://web.archive.org/web/20260905043049/https://owasp.org/www-community/OWASP_Risk_Rating_Methodology" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Risk Rating Methodology</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://owasp.org/www-project-top-ten/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Top 10</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://csrc.nist.gov/pubs/sp/800/30/r1/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">NIST SP 800-30 — Risk Assessment</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gdpr-info.eu/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GDPR — General Data Protection Regulation</div><div class="lab-card-tags"><span class="lab-tag">gdpr-info.eu</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://cwe.mitre.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">CWE — Common Weakness Enumeration</div><div class="lab-card-tags"><span class="lab-tag">cwe.mitre.org</span></div></div><div class="lab-card-arrow">→</div></a>
-<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчетов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчётов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>

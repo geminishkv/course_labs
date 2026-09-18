@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №3</a><br></h1>
+<h1><a id="intro">Лаб. 03 · Nmap: сканирование сети и NSE</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -11,9 +11,9 @@
 ***
 
 Салют :wave:,<br>
-Данная лабораторная работа посвящена изучению `nmap` и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканера портов, что бы освоить базовые методы сканирования.
+Данная лабораторная работа посвящена изучению `nmap` и как с ним работать. Эта лабораторная работа послужит подпоркой для старта в выявлении и определении уязвимостей на уровне сканера портов, чтобы освоить базовые методы сканирования.
 
-Nmap — первый этап разведки в AppSec: определение attack surface (какие сервисы доступны извне), выявление устаревших версий ПО с известными CVE и обнаружение мисконфигураций (открытые порты, незащищённые сервисы). Результаты nmap — входные данные для анализа рисков (Lab 04) и последующего DAST-тестирования (Lab 08).
+Nmap — первый этап разведки в AppSec: определение attack surface (какие сервисы доступны извне), выявление устаревших версий ПО с известными CVE и обнаружение мисконфигураций (открытые порты, незащищённые сервисы). Результаты nmap — входные данные для анализа рисков (Лаб. 04) и последующего DAST-тестирования (Лаб. 08).
 
 Для сдачи данной работы также будет требоваться ответить на дополнительные вопросы по описанным темам.
 
@@ -33,7 +33,7 @@ lab03
 
 ## Материал
 
-**Nmap Network Mapper** `open-source` утилита для исследования и анализа сетей, в которой основная цель выявление активных устройств, открытых портов, сервисов, версий ПО, ОС и других характеристик, которые способствуют определению вектора атаки и влияния, а также перехвата управления инфраструктурой или отслеживания. Фактически она рассматривается как виртуальная сетевая карта
+**Nmap (Network Mapper)** — `open-source` утилита для исследования и анализа сетей. Её основная цель — выявить активные устройства, открытые порты, сервисы, версии ПО, ОС и другие характеристики, по которым определяется вектор атаки и её возможное влияние.
 
 ### Методы
 
@@ -65,19 +65,19 @@ lab03
 $ nmap -iL targets.txt # множественные цели сканирований
      -sL # List Scan
      -sn # Ping Scan (обнаружение хостов без сканирования портов)
-     -Pn # all hosts online
+     -Pn # считать все хосты доступными, пропустить обнаружение
      -PS/PA/PU/PY[portlist] # TCP SYN/ACK, UDP or SCTP
      -PE/PP/PM # ICMP echo, timestamp, netmask request
      -PO[protocol list] # IP Protocol Ping
-     -n/-R # Не для DNS resolution
+     -n/-R # -n не разрешать имена через DNS, -R разрешать всегда
      --dns-servers <serv1[,serv2],...> # custom DNS
-     --system-dns # Используйте OS
+     --system-dns # использовать системный резолвер
      --traceroute
 ```
 
 ### Типы сканирований
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP Connect</span><div class="lab-card-tags"><span class="lab-tag">-sT</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Полное TCP-соединение (3-way handshake). Надёжный, но заметный — логируется на стороне сервера. Работает без root.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP SYN (stealth)</span><div class="lab-card-tags"><span class="lab-tag">-sS</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отправляет SYN, получает SYN/ACK, но не завершает handshake (RST). Быстрый, менее заметный. Требует root.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP NULL</span><div class="lab-card-tags"><span class="lab-tag">-sN</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Пакет без флагов. Открытый порт не отвечает, закрытый — RST. Обходит простые файрволы, не работает на Windows.</span></div>
@@ -90,13 +90,13 @@ $ nmap -iL targets.txt # множественные цели сканирова�
 
 ### Основные порты
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">20/21</span><span style="font-size:0.75rem; color:#555;">FTP (File Transfer Protocol)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Передача файлов. Данные и пароли в открытом виде — уязвим к перехвату. Заменяется на SFTP/SCP.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">22</span><span style="font-size:0.75rem; color:#555;">SSH (Secure Shell)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Защищённый удалённый доступ. Шифрованный канал. Основная цель brute-force атак — проверяйте версию и конфиг.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">23</span><span style="font-size:0.75rem; color:#555;">Telnet</span><div class="lab-card-tags"><span class="lab-tag">TCP</span><span class="lab-tag" style="border-color:rgba(213,26,26,0.3); color:#D51A1A; background:rgba(213,26,26,0.07);">небезопасный</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Всё в открытом тексте — пароли, команды. Открытый порт 23 — критическая находка. Должен быть закрыт.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">25</span><span style="font-size:0.75rem; color:#555;">SMTP (Mail Transfer)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отправка почты. Open relay на порту 25 — спам-рассылки от вашего имени. Проверяйте аутентификацию.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">53</span><span style="font-size:0.75rem; color:#555;">DNS (Domain Name System)</span><div class="lab-card-tags"><span class="lab-tag">TCP/UDP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Разрешение имён. DNS zone transfer (AXFR) раскрывает всю инфраструктуру. DNS amplification — DDoS вектор.</span></div>
-<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">80</span><span style="font-size:0.75rem; color:#555;">HTTP</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Веб без шифрования. Основная поверхность атаки: XSS, SQLi, SSRF. Вход в DAST-тестирование (Lab 08).</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">80</span><span style="font-size:0.75rem; color:#555;">HTTP</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Веб без шифрования. Основная поверхность атаки: XSS, SQLi, SSRF. Вход в DAST-тестирование (Лаб. 08).</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">443</span><span style="font-size:0.75rem; color:#555;">HTTPS</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Веб с TLS. Проверяйте: версию TLS (≥1.2), срок сертификата, слабые шифры. `nmap --script ssl-enum-ciphers`.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">3306</span><span style="font-size:0.75rem; color:#555;">MySQL Database</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">СУБД доступна извне — критическая мисконфигурация. Должна быть только на 127.0.0.1 или в приватной сети.</span></div>
 </div>
@@ -120,6 +120,76 @@ PORT     STATE SERVICE     REASON         VERSION
 3306/tcp open  mysql       syn-ack ttl 62 MySQL (unauthorized)
 ```
 
+### Схема работы
+
+Схема показывает порядок сканирования в лабораторной и то, что происходит с результатами.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход сканирования в лабораторной 03
+    accDescr: Сканирование начинается с проверки, что цель — собственный стенд, затем идут поиск активных хостов, сканирование портов, определение сервисов и запуск скриптов NSE; результаты сохраняются, закрываются правами доступа и исключаются из репозитория.
+
+    scan_start(["Нужно изучить<br/>сеть стенда"])
+    is_own_target{"Цель — ваш стенд или<br/>есть разрешение?"}
+    target_fork((" "))
+    stop_scan(["Сканирование<br/>не начинается"])
+
+    subgraph discover_stage ["Что есть в сети"]
+        direction TB
+        find_hosts["Найти активные хосты<br/>в своей подсети"]
+        scan_ports["Сканировать порты:<br/>какие открыты"]
+        find_hosts --> scan_ports
+    end
+
+    subgraph identify_stage ["Что за сервисы"]
+        direction TB
+        detect_versions["Определить сервисы,<br/>версии и ОС"]
+        run_nse["Запустить скрипты NSE"]
+        detect_versions --> run_nse
+    end
+
+    subgraph protect_stage ["Защита результатов"]
+        direction TB
+        save_results[/"nmapres.txt,<br/>XML и HTML-отчёт"/]
+        restrict_access["Закрыть файл правами:<br/>только владелец"]
+        ignore_results["Добавить результаты<br/>в .gitignore"]
+        save_results --> restrict_access
+        restrict_access --> ignore_results
+    end
+
+    scan_report[/"Отчёт gist:<br/>команды, флаги, выводы"/]
+    scan_done([Лабораторная сдана])
+
+    scan_start --> is_own_target
+    is_own_target --- target_fork
+    target_fork -->|Да| discover_stage
+    target_fork -->|Нет| stop_scan
+    discover_stage --> identify_stage
+    identify_stage --> protect_stage
+    protect_stage --> scan_report
+    scan_report --> scan_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class target_fork junction
+    class find_hosts,scan_ports,detect_versions,run_nse,restrict_access,ignore_results stage
+    class is_own_target gate
+    class scan_done done
+```
+
+**Как читать схему:**
+
+- Первый ромб — не формальность: сканируются только свой стенд и то, на что есть разрешение. При ответе «Нет» работа не начинается.
+- Две средние рамки отвечают на разные вопросы: сначала «что есть в сети и какие порты открыты», затем «что за сервисы за ними стоят». Определение версий без списка открытых портов — потеря времени.
+- Третья рамка — часть лабораторной, а не приложение к ней: файл с результатами описывает слабые места стенда, поэтому его закрывают правами (навык из Лаб. 02) и не кладут в репозиторий.
+- Что означает каждый найденный порт и как его проверить — в справочнике «Порты и протоколы».
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание
@@ -127,12 +197,14 @@ PORT     STATE SERVICE     REASON         VERSION
 - [ ] 1. Опишите используемые методы по их назначению, как они функционируют и какие результаты могут дать для оценки. Используйте сноску из материалов выше по флагам команд.
 - [ ] 2. Выведите на терминале и проанализируйте следующие команды консоли
 
+> Сканируйте только свою виртуальную машину, свою сеть и `scanme.nmap.org`: его владельцы разрешают учебные сканы. Сканирование чужих сетей без разрешения нарушает закон. Подсеть `192.168.1.0/24` здесь и в `exmp_targets.txt` замените на подсеть вашей VM из шага 6. Сканы `-O`, `-sA` и `-A` требуют `sudo`.
+
 ```bash
 $ nmap localhost
 $ nmap -sC localhost
 
 $ nmap -p- localhost
-$ nmap -O localhost
+$ sudo nmap -O localhost
 
 $ nmap -p 80 localhost
 $ nmap -p 443 localhost
@@ -147,8 +219,8 @@ $ nmap --packet-trace scanme.nmap.org
 $ nmap --iflist
 
 $ nmap -iL exmp_targets.txt
-$ nmap -A -iL exmp_targets.txt
-$ nmap -sA scanme.nmap.org
+$ sudo nmap -A -iL exmp_targets.txt
+$ sudo nmap -sA scanme.nmap.org
 $ nmap -Pn scanme.nmap.org
 ```
 
@@ -171,20 +243,20 @@ $ xsltproc ~/project/reports/nmapres_new.xml -o ~/project/reports/nmapres_new.ht
 > Откройте HTML-отчёт в браузере и опишите найденные уязвимости: порт, сервис, CVE (если есть), уровень критичности.
 
 - [ ] 5. Используйте команду `tree` и выведите все вложенные файлы по директориям.
-- [ ] 6. Найдите IP сетевой карты `Ethernet`, которая соответствует вашей виртуальной машине используя `ifconfig` (или `ip addr`) и выполните команду
+- [ ] 6. Найдите IP сетевой карты `Ethernet` вашей виртуальной машины через `ip addr` (или `ifconfig`) и найдите активные хосты в её подсети
 
 ```bash
-$ nmap -sn inet_addr
+$ nmap -sn <IP>/24
 ```
 
-- [ ] 7. Определите ОС, данные ssh, telnet с помощью `nmap` и выведите о них информацию.
+- [ ] 7. Определите ОС и версии сервисов ssh и telnet с помощью `nmap` и выведите о них информацию (например, `sudo nmap -O -sV -p 22,23 localhost`).
 - [ ] 8. Результаты из `nmapres_new.txt` перенесите в `nmapres.txt` и оставьте оба файла в локальном репозитории
 
 ```bash
 $ cp nmapres_new.txt nmapres.txt
 ```
 
-- [ ] 9. Защитите результаты сканирования — файл `nmapres.txt` содержит информацию об уязвимостях и не должен быть доступен другим пользователям. Используйте навыки из Lab 02:
+- [ ] 9. Защитите результаты сканирования — файл `nmapres.txt` содержит информацию об уязвимостях и не должен быть доступен другим пользователям. Используйте навыки из Лаб. 02:
 
 ```bash
 # Установите права: только владелец может читать и писать
@@ -192,18 +264,22 @@ $ chmod 600 nmapres.txt
 $ ls -la nmapres.txt
 
 # Проверьте от другого пользователя (smallman из Lab 02)
-$ su - smallman
-$ cat /path/to/nmapres.txt    # ожидается: Permission denied
-$ exit
+$ sudo -u smallman cat "$PWD/nmapres.txt"    # ожидается: Permission denied
 
-# Добавьте ACL: только группа readgroup может читать (не писать)
+# Добавьте ACL: группа readgroup может читать (не писать)
 $ setfacl -m g:readgroup:r nmapres.txt
 $ getfacl nmapres.txt
 
-# Убедитесь: пользователь вне readgroup не может прочитать файл
-$ su - smallman
-$ cat /path/to/nmapres.txt    # если smallman в readgroup — OK, иначе — denied
-$ exit
+# Чтобы дойти до файла, группе нужно право x на каждый каталог пути.
+# namei покажет, где его не хватает; выдайте его: setfacl -m g:readgroup:x <каталог>
+$ namei -l "$PWD/nmapres.txt"
+
+# smallman состоит в readgroup: теперь чтение проходит
+$ sudo -u smallman cat "$PWD/nmapres.txt"
+
+# пользователь вне группы по-прежнему получает отказ
+$ sudo useradd -m outsider
+$ sudo -u outsider cat "$PWD/nmapres.txt"    # ожидается: Permission denied
 ```
 
 > Опишите в отчёте: почему результаты nmap-сканирования — это конфиденциальная информация. Что может сделать злоумышленник, получив ваш `nmapres.txt`?
@@ -212,22 +288,26 @@ $ exit
 
 ```bash
 $ echo "nmapres*.txt" >> .gitignore
+$ git rm --cached --ignore-unmatch nmapres*.txt   # если файлы уже попали в индекс
 $ git add .gitignore
 $ git commit -S -m "chore: ignore nmap scan results"
 ```
 
-- [ ] 11. Оформить `README.md` по аналогии и использовать `shield`, etc.
-- [ ] 12. Составить `gist` отчет и отправить ссылку личным сообщением
+> Из истории уже опубликованного репозитория файлы так не исчезнут: если результаты успели уйти в `push`, их придётся вычищать из истории (`git filter-repo`) и считать раскрытыми.
+
+- [ ] 11. Оформить `README.md` по аналогии с этим и добавить shields-бейджи
+- [ ] 12. Составить `gist` отчёт и отправить ссылку личным сообщением
 
 ***
 
 ## Смотри также
 
-- [Лаб. №2 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — права доступа и ACL, используемые для защиты результатов
-- [Лаб. №4 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — анализ рисков по результатам nmap
-- [Лаб. №8 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование найденных сервисов
+- [Лаб. 02 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — права доступа и ACL, используемые для защиты результатов
+- [Лаб. 04 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — анализ рисков по результатам nmap
+- [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование найденных сервисов
+- [CheatSheet: Nmap](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_NMAP/) — порядок сканирования, состояния портов, типы, вывод и чтение результата
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — контейнеры для изоляции тестовых стендов
-- [Введение в сети и TCP/IP](https://course.geminishkv.tech/labs/intro/networking_basics/) — модель OSI, порты, DNS перед сканированием
+- [Введение в сети и TCP/IP](https://course.geminishkv.tech/materials/guides/networking_basics/) — модель OSI, порты, DNS перед сканированием
 - [Порты и протоколы](https://course.geminishkv.tech/materials/ports/) — справочник портов для чтения результатов nmap
 
 ***
@@ -238,7 +318,7 @@ $ git commit -S -m "chore: ignore nmap scan results"
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://nmap.org/book/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Official Documentation</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://nmap.org/book/man.html" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Reference Guide</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://nmap.org/nsedoc/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Script (NSE) Reference</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>

@@ -15,6 +15,6 @@ hide:
 
 <div class="no-section-nums" markdown="1">
 
-{% include-markdown  "../RELEASE_NOTES.md" %}
+{% include-markdown "../RELEASE_NOTES.md" start="# Release Notes" %}
 
 </div>

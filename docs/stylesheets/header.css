@@ -4,6 +4,13 @@
    search results · source facts (drawer)
 ══════════════════════════════════════════ */
 
+/* Header content spans the viewport on every page (the 88rem .md-grid cap
+   stays for the page body); gutter matches --home-gutter so the home hero
+   still lines up with the logo below 88rem */
+:root {
+  --header-gutter: clamp(1rem, 4vw, 3rem);
+}
+
 /* ── Bar ── */
 .md-header {
   background-color: var(--ink-page);
@@ -25,7 +32,13 @@
   display: flex;
   align-items: center;
   gap: clamp(10px, 1.5vw, 20px);
-  padding: 8px 0.8rem;
+  padding: 8px var(--header-gutter);
+}
+
+/* .md-grid caps width at 88rem (typeset.css loads later, same specificity),
+   so the override needs both classes */
+.md-header__inner.md-grid {
+  max-width: none;
 }
 
 /* ── Logo ring + wordmark ── */
@@ -177,7 +190,7 @@
 
 .md-header__nav .md-header__nav-secondary {
   color: #9a9a9a;
-  font-size: 0.52rem;
+  font-size: 0.55rem;
 }
 
 .md-header__nav .md-header__nav-secondary:hover { color: #ddd; }
@@ -196,6 +209,52 @@
   -webkit-backdrop-filter: blur(10px);
   box-shadow: none; /* Material keeps a transparent shadow as a transition base */
   outline: none;
+}
+
+/* Brand ring: a 1px border whose gradient travels around the pill. The logo
+   ring rotates a circle; a pill cannot be rotated, so the angle of a conic
+   gradient is animated instead and a mask keeps only the border. The initial
+   value is 360deg, not 0deg: a minifier turns 0deg into 0 and the browser then
+   drops the registration. Without @property support the border stays static. */
+
+@property --search-ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 360deg;
+}
+
+@keyframes search-ring-travel {
+  to { --search-ring-angle: 720deg; }
+}
+
+@media screen and (min-width: 60em) {
+  .md-search__form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--search-ring-angle),
+      var(--brand-red),
+      var(--brand-gold),
+      var(--brand-red) 50%,
+      var(--brand-gold) 75%,
+      var(--brand-red)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0.85;
+    pointer-events: none;
+    animation: search-ring-travel 6s linear infinite;
+  }
+
+  /* the opened search is a white panel with its own shape: no ring there */
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form::before {
+    display: none;
+  }
 }
 
 /* keyboard hint: Material focuses the field on "/" */
@@ -307,7 +366,7 @@
   width: 1.7rem;
   height: 1.7rem;
   display: block;
-  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .md-header__burger-line {
@@ -317,9 +376,9 @@
   stroke-linejoin: round;
   stroke-width: 3;
   transition:
-    stroke-dasharray 900ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 900ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke 0.3s;
+    stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.2s;
 }
 
 .md-header__burger-line--top { stroke-dasharray: 12 63; }
@@ -394,9 +453,16 @@
   }
 }
 
+/* touch: search and menu buttons are 44px targets (WCAG 2.5.5) */
+@media (pointer: coarse), (max-width: 43.6875em) {
+  .md-header__button.md-icon { padding: 0.5rem; }
+  .md-header__button.md-header__burger { padding: 0.25rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .logo-glow::before,
-  .logo-glow__blur {
+  .logo-glow__blur,
+  .md-search__form::before {
     animation: none;
   }
 

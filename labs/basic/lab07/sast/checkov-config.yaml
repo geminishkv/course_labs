@@ -1,43 +1,25 @@
+# Checkov: проверка Dockerfile уязвимого приложения.
+# Запуск из корня lab07: checkov --config-file sast/checkov-config.yaml
+# docker-compose Checkov не разбирает: его проверяйте вручную по чек-листу лабы 06.
+
 framework:
-  - docker
-  - helm
-
-quiet: false
-soft-fail: false
-download_external_modules: false
-run_all_checks: false
-
-enforce:
-  docker:
-    - CKV_DOCKER_2     # Контейнер не должен запускаться под root
-    - CKV_DOCKER_3     # Минимизировать лишние пакеты и слои
-    - CKV_DOCKER_5     # Избегать latest без необходимости
-    - CKV_DOCKER_7     # Не использовать ADD вместо COPY
-    - CKV_DOCKER_8     # Явно задавать non-root пользователя
-    - CKV_DOCKER_9     # Минимизировать размер/attack surface образа
-    - CKV_DOCKER_10    # Наличие HEALTHCHECK
-    - CKV_DOCKER_12    # Не хранить секреты в ENV
-    - CKV_DOCKER_13    # Запрет привилегированного режима
-    - CKV_DOCKER_14    # Ограничить capabilities
-    - CKV_DOCKER_16    # Предпочитать read-only root filesystem
-
-# policy:
-#  docker:
-#    require_non_root_user: true
-#    require_healthcheck: true
-#    require_explicit_user: true
-#    forbid_secrets_in_env: true
-#    forbid_default_credentials: true
-#    drop_all_capabilities_by_default: true
-#    forbid_privileged: true
-#    forbid_host_network: true
-#    prefer_read_only_rootfs: true
-
-directory:
-  - .
+  - dockerfile
 
 file:
   - vulnerable-app/Dockerfile
-  - docker-compose.yml
 
-# skip_check:
+output: cli
+quiet: false
+download-external-modules: false
+
+# Все проверки выполняются и попадают в отчёт, но код выхода ненулевой только
+# при провале обязательных (названия из `checkov --list --framework dockerfile`)
+soft-fail: true
+hard-fail-on:
+  - CKV_DOCKER_1     # порт 22 не открыт через EXPOSE
+  - CKV_DOCKER_2     # есть инструкция HEALTHCHECK
+  - CKV_DOCKER_3     # в образе создан пользователь
+  - CKV_DOCKER_4     # COPY вместо ADD
+  - CKV_DOCKER_7     # базовый образ с тегом, не latest
+  - CKV_DOCKER_8     # последний USER не root
+  - CKV2_DOCKER_16   # pip не отключает проверку сертификатов через PIP_TRUSTED_HOST

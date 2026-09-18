@@ -1,5 +1,5 @@
 <div align="center">
-<h1><a id="intro">Лабораторная работа №4</a><br></h1>
+<h1><a id="intro">Лаб. 04 · Анализ и снижение рисков ИБ</a><br></h1>
 <a href="https://docs.github.com/en"><img src="https://img.shields.io/static/v1?logo=github&logoColor=fff&label=&message=Docs&color=36393f&style=flat" alt="GitHub Docs"></a>
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a>
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
@@ -12,7 +12,7 @@
 Салют :wave:,<br>
 Данная лабораторная работа посвящена практическому анализу и определению мер снижения рисков ИБ. То есть вам, при развитии компетенций в ИБ, будет требоваться доносить требования ИБ, необходимость их выполнения, критичность и важность до коллег. 
 
-Аналогичным образом, с помощью данного практического задания будет понятно на сколько плотно вы взаимодействовали с ИБ, что знаете из основ по обеспечению защиты информации, а также с какими подобными кейсами вы сталкивались в своей практике.
+Аналогичным образом, с помощью данного практического задания будет понятно, насколько плотно вы взаимодействовали с ИБ, что знаете из основ по обеспечению защиты информации, а также с какими подобными кейсами вы сталкивались в своей практике.
 
 Вы получите навыки оценки задачи в роли специалиста ИБ, посмотрите на кейсы со стороны ИБ и сможете дать свою оценку, как бы вы подошли к этим вопросам в данной ситуации. 
 
@@ -33,7 +33,7 @@ lab04
 
 ### Ключевые понятия
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -87,7 +87,7 @@ lab04
 
 ### Стратегии обработки рисков
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div class="lab-card-title" style="font-weight:700;">Избежание</div>
@@ -117,7 +117,61 @@ lab04
 
 ### Логическая цепочка анализа
 
-<img class="off-glb" src="/artifacts/diagrams/risk-chain.svg" alt="Risk Chain" style="max-width:720px; width:100%;">
+Схема показывает порядок рассуждений, по которому в лабораторной разбирается каждый риск.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Цепочка анализа риска ИБ
+    accDescr: Актив, угроза и уязвимость задают сценарий риска; его уровень оценивается по вероятности и влиянию, после чего риск принимается или обрабатывается, а остаточный риск оценивается заново.
+
+    start_analysis([Начало анализа])
+    define_asset[/"Актив: что ценно<br/>для бизнеса"/]
+    define_threat[/"Угроза: кто или что<br/>может навредить"/]
+    define_vulnerability[/"Уязвимость: слабое<br/>место актива"/]
+    risk_scenario["Описать сценарий<br/>реализации риска"]
+    rate_risk["Оценить уровень:<br/>вероятность и влияние"]
+    rate_join((" "))
+    risk_acceptable{"Уровень риска<br/>приемлем?"}
+    acceptable_fork((" "))
+    accept_risk["Принять риск:<br/>обоснование и мониторинг"]
+    treat_risk["Обработать риск: снизить,<br/>передать или избежать"]
+    residual_risk[/Остаточный риск/]
+    end_analysis([Решение зафиксировано в записке])
+
+    start_analysis --> define_asset
+    define_asset --> define_threat
+    define_threat --> define_vulnerability
+    define_vulnerability --> risk_scenario
+    risk_scenario --> rate_risk
+    rate_risk --- rate_join
+    rate_join --> risk_acceptable
+    risk_acceptable --- acceptable_fork
+    acceptable_fork -->|Да| accept_risk
+    acceptable_fork -->|Нет| treat_risk
+    treat_risk --> residual_risk
+    residual_risk --> rate_join
+    accept_risk --> end_analysis
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class rate_join,acceptable_fork junction
+    class risk_scenario,rate_risk,treat_risk,accept_risk stage
+    class risk_acceptable gate
+    class end_analysis done
+```
+
+**Как читать схему:**
+
+- Три параллелограмма — входные данные: актив, угроза и уязвимость. Если нет хотя бы одного из трёх, риска нет.
+- Уровень риска складывается из вероятности и влияния; ромб сравнивает его с порогом, который организация готова принять.
+- При «Нет» риск обрабатывают: снижают, передают или избегают. Остаточный риск возвращается на оценку — цикл идёт, пока уровень не станет приемлемым.
+- При «Да» риск принимают. Это тоже решение: с обоснованием, мониторингом и записью в аналитической записке.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 > Основной критерий отчёта: **проблема → решение → ценность → приоритет**. Описание должно быть понятно и техническому специалисту, и менеджменту.
 
@@ -134,42 +188,44 @@ lab04
 
 ## Вводные
 
-Компания зарегистрирована в Евросоюзе и должна соответствовать законодательству ЕС. Работая в данной компании занимаетесь обеспечением ИБ. 
+Компания зарегистрирована в Евросоюзе и должна соответствовать законодательству ЕС. Вы работаете в этой компании и отвечаете за обеспечение ИБ.
 
-Вы обнаруживаете админскую консоль веб-сайта своей компании, которая доступна неограниченному кругу лиц в сети Интернет, так как публикация торчит во внешний сегмент сети
-> - С помощью её интерфейса доступны на просмотр записи с запросами о приобретении продукции компании, которые содержат персональные данные, а также коммерческие предложения (что, в каком объёме, за сколько, специальный условия и т.д.). 
-> - Аналогично доступны логи, в которых видны ip-адреса администраторов, которые попадали в нее. 
+Вы обнаруживаете админскую консоль веб-сайта своей компании, доступную неограниченному кругу лиц в сети Интернет: она опубликована во внешнем сегменте сети.
+> - С помощью её интерфейса доступны на просмотр записи с запросами о приобретении продукции компании, которые содержат персональные данные, а также коммерческие предложения (что, в каком объёме, за сколько, специальные условия и т. д.).
+> - Также доступны логи, в которых видны IP-адреса администраторов, заходивших в консоль.
 
 ***
 
 ## Предоставление материалов
 
 > - Ожидается результат в виде аналитической записки на `gist`, которая будет раскрывать уровень, степень критичности рисков, меры, которые могут снизить этот риск, приоритет, подход.
-> - Необходимо иметь в наличии проведенный анализ рисков, их описание, меры снижения рисков, техническое решение. Данные материалы должны быть, как минимум, описаны технически, включая пояснения для менеджмента. Основным критерием является логическая цепочка в виде: проблема – решение – ценность – приоритет.
+> - Необходимо иметь в наличии проведённый анализ рисков, их описание, меры снижения рисков, техническое решение. Данные материалы должны быть, как минимум, описаны технически, включая пояснения для менеджмента. Основным критерием является логическая цепочка в виде: проблема – решение – ценность – приоритет.
 
 ***
 
 ## Задание
 
-- [ ] 1. Провести анализ на возможность взлома, утечки, доступности информации и ее категории значимости для компании
+- [ ] 1. Провести анализ на возможность взлома, утечки, доступности информации и её категории значимости для компании
 - [ ] 2. Необходимо подойти к анализу в соответствии с Compliance: данные размещены на инфраструктуре в Евросоюзе, но они включают ПДн, в том числе граждан России, Евросоюза, а также в отношении информации ограниченного доступа, инсайдерской информации и иное
     - [ ] Описать риски, которые возникают из кейса, меры снижения рисков, описать уровень эффективности мер
     - [ ] Предложить техническое решение для снижения рисков ИБ
     - [ ] Привести свое заключение рисков к мерам и их эффективности.
     - [ ] Требуется проанализировать и дать пояснения на следующий перечень вопросов:
-        - [ ] Как вы опишите данную ситуацию в части обнаруженных вами недостатков архитектуры приложения, присущих ей рисков (в том числе какие риски вы видите для компании)?
-        - [ ] Какие меры по митигации рисков вы предложите в минимально необходимой и достаточной форме? 
-    - [ ] Подготовьте отчет `gist`.
+        - [ ] Как вы опишете данную ситуацию в части обнаруженных вами недостатков архитектуры приложения, присущих ей рисков (в том числе какие риски вы видите для компании)?
+        - [ ] Какие меры по митигации рисков вы предложите в минимально необходимой и достаточной форме?
+- [ ] 3. Подготовьте отчёт `gist`.
 
 ***
 
 ## Смотри также
 
-- [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — результаты сканирования как входные данные для анализа рисков
-- [Лаб. №10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — расширенный кейс с бизнес-контекстом
+- [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — результаты сканирования как входные данные для анализа рисков
+- [Лаб. 10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — расширенный кейс с бизнес-контекстом
 - [Примеры кейсов](https://course.geminishkv.tech/materials/examples/exmpl/) — реальные инциденты ИБ
 - [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
-- [Лаб. №5 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — следующий этап: контейнеризация приложений
+- [CVSS и реестр рисков](https://course.geminishkv.tech/materials/risk_scoring/) — как читать оценку уязвимости, шкалы вероятности и влияния, поля реестра
+- [OWASP — Logical Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/logical-attacks/) — атаки на бизнес-логику и оценка рисков
+- [Лаб. 05 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — следующий этап: контейнеризация приложений
 
 ***
 
@@ -179,8 +235,8 @@ lab04
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчетов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
+<a class="lab-card" href="https://course.geminishkv.tech/materials/examples/RA/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример аналитических отчётов</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://web.archive.org/web/20260905043049/https://owasp.org/www-community/OWASP_Risk_Rating_Methodology" target="_blank"><div class="lab-card-body"><div class="lab-card-title">OWASP Risk Rating Methodology</div><div class="lab-card-tags"><span class="lab-tag">owasp.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://csrc.nist.gov/pubs/sp/800/30/r1/final" target="_blank"><div class="lab-card-body"><div class="lab-card-title">NIST SP 800-30 — Risk Assessment</div><div class="lab-card-tags"><span class="lab-tag">csrc.nist.gov</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gdpr-info.eu/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GDPR — General Data Protection Regulation</div><div class="lab-card-tags"><span class="lab-tag">gdpr-info.eu</span></div></div><div class="lab-card-arrow">→</div></a>

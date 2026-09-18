@@ -48,12 +48,6 @@ body:has(.md-content--home) .md-main { background-color: var(--surface-page); }
 
 body:has(.md-content--home) .md-header__title { visibility: hidden; }
 
-/* Header and content share the 88rem grid; same gutters so the edges line up */
-
-body:has(.md-content--home) .md-header__inner {
-  padding-inline: var(--home-gutter);
-}
-
 body:has(.md-content--home) .md-top {
   background-color: var(--surface-card);
   color: var(--text-primary);
@@ -132,7 +126,7 @@ body:has(.md-content--home) .md-top {
 }
 
 .hero-section--home .hero-stats {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 0;
 }
 
@@ -556,6 +550,27 @@ body:has(.md-content--home) .md-top {
   margin-top: var(--space-4);
 }
 
+/* Four buttons need about 47rem: every button size is in rem, so the figure holds at
+   any root font size. In a narrower column a wrapping row left one orphan button on
+   the second line; the row becomes an even two-by-two block instead. The query looks
+   at the column, not the viewport, because the column narrows when the hero turns
+   into two columns. Below 700px the phone layout keeps its single column.
+
+   The container stays unnamed on purpose: the CSS minifier drops the space in
+   "@container name (…)", the browser then reads "name(" as a function and
+   discards the whole rule. */
+
+.hero-section--home .hero-content { container-type: inline-size; }
+
+@media screen and (min-width: 43.75em) {
+  @container (max-width: 47.5rem) {
+    .hero-cta {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+    }
+  }
+}
+
 /* Buttons: gpages Buttons.css (.content-btn) — uppercase, tracking widens on
    hover, two corner brackets slide along the top and bottom edges */
 
@@ -604,6 +619,28 @@ body:has(.md-content--home) .md-top {
 .md-typeset .btn:focus-visible {
   text-decoration: none;
   letter-spacing: 0.14em;
+}
+
+/* The tracking animation changes the text width. In a wrapping row that fits
+   edge to edge this pushed the last button to a second line, the hovered button
+   slid from under the cursor, hover ended and the row jumped back: a loop.
+   The label therefore always takes the width of its hover state: a hidden copy
+   of the text, set at the hover tracking, shares the grid cell with the visible
+   text, so nothing around the button ever moves. */
+
+.md-typeset .btn__label {
+  display: inline-grid;
+  justify-items: center;
+}
+
+.md-typeset .btn__label::after {
+  content: attr(data-label);
+  grid-area: 1 / 1;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  letter-spacing: 0.14em;
+  pointer-events: none;
 }
 
 .md-typeset .btn:hover::before,
@@ -667,6 +704,7 @@ body:has(.md-content--home) .md-top {
   line-height: 1;
   color: var(--brand-gold);
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 .hero-stat span {
@@ -674,6 +712,7 @@ body:has(.md-content--home) .md-top {
   margin-top: 0.3rem;
   font-size: var(--text-xs);
   color: var(--text-inverse-muted);
+  overflow-wrap: anywhere;
 }
 
 /* ══════════════════════════════════════════
@@ -694,6 +733,13 @@ body:has(.md-content--home) .md-top {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--space-2) var(--space-4);
+}
+
+/* the Docker track has two stages: two wide columns from tablet width up,
+   the phone layout below 700px stays a single column like the main line */
+
+@media screen and (min-width: 43.75em) {
+  .md-typeset ol.track.track--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* vertical line for the single-column layout (enabled below 700px) */
@@ -1053,9 +1099,11 @@ body:has(.md-content--home) .md-top {
 .md-typeset .badges a { display: inline-flex; }
 
 .about-grid,
+/* three rule cards; they stack as soon as a column gets narrower than 20rem */
+
 .rules-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-4);
   margin: var(--space-5) 0 var(--space-6);
 }
@@ -1262,6 +1310,8 @@ body:has(.md-content--home) .md-top {
   color: var(--text-inverse);
 }
 
+/* second strip: the author's main site right under the channel */
+
 .tg-strip__left {
   display: flex;
   align-items: center;
@@ -1328,8 +1378,9 @@ body:has(.md-content--home) .md-top {
 @media screen and (max-width: 99.9375em) {
   .hero-section--home { grid-template-columns: 1fr; }
 
+  /* six figures: one row while the hero is a single wide column */
   .hero-section--home .hero-stats {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       margin-top: var(--space-6);
     }
 
@@ -1343,7 +1394,7 @@ body:has(.md-content--home) .md-top {
 /* 700–960px: pipeline 2 × 3 */
 
 @media screen and (min-width: 43.75em) and (max-width: 60em) {
-  .hero-section--home .hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .hero-section--home .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
   .md-typeset ol.track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
@@ -1492,9 +1543,19 @@ body:has(.md-content--home) .md-top {
     }
 }
 
+/* phones: the status and stack badges repeat the README and cost a screen of taps */
+@media screen and (max-width: 900px) {
+  .md-typeset .badges { display: none; }
+}
+
 /* Touch: contact buttons and social tiles reach 44px */
 @media (pointer: coarse), (max-width: 43.6875em) {
   .md-typeset .contact-btn { min-height: 44px; }
+
+  .md-typeset .mat {
+    min-height: 44px;
+    padding-inline: 0.7rem 0.8rem;
+  }
 
   .md-typeset .social-icon {
     width: 44px;

@@ -95,6 +95,7 @@
 /* ── Admonitions — brand colours ── */
 .md-typeset .admonition,
 .md-typeset details {
+  font-size: 0.75rem;
   border-left-width: 4px;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
@@ -191,12 +192,14 @@
 }
 
 /* ── Code block title / filename label ── */
-.md-typeset .highlight > .filename,
-.md-typeset .highlight [data-md-language]:not(:empty)::before {
+.md-typeset .highlight span.filename {
   font-family: var(--font-code);
   font-size: var(--text-xs);
   font-weight: 600;
-  color: var(--text-inverse-muted);
+
+  /* the label names the language or the file of the block: gold keeps it readable
+     on the dark code surface in both colour schemes */
+  color: var(--brand-gold);
   background: var(--surface-code);
   border-bottom: 1px solid var(--border-gold-strong);
   padding: 0.35rem var(--space-3);
@@ -275,4 +278,32 @@
 .md-clipboard[aria-label="Copied!"] + .md-tooltip {
   color: var(--brand-red);
   background: rgba(243, 244, 246, 0.96);
+}
+
+/* ── Mermaid diagrams ──
+   Material derives diagram colours from --md-code-fg-color, which is light here
+   because code blocks are dark; on the white page that leaves near-invisible text
+   and lines. Material declares these on `:root > *` and resolves the derived
+   sequence/state variables there, so the override uses the same selector. */
+:root > * {
+  --md-mermaid-font-family:  var(--font-body);
+  --md-mermaid-edge-color:   #374151;
+  --md-mermaid-label-fg-color: #1f2937;
+  --md-mermaid-label-bg-color: #ffffff;
+  --md-mermaid-node-bg-color:  #f3f4f6;
+  --md-mermaid-node-fg-color:  #6b7280;
+
+  /* sequence diagrams: a note must read as a note, not as an empty frame on a
+     white page; lifelines stay quieter than messages */
+  --md-mermaid-sequence-note-bg-color: #fef9c3;
+  --md-mermaid-sequence-note-border-color: #ca8a04;
+  --md-mermaid-sequence-note-fg-color: #713f12;
+  --md-mermaid-sequence-actor-line-color: #9ca3af;
+}
+
+/* wide diagrams keep a readable size on phones and scroll inside their block
+   (the minimum width is set by javascripts/mermaid-loader.js) */
+
+.md-typeset div.mermaid {
+  overflow-x: auto;
 }

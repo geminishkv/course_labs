@@ -19,10 +19,10 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <p class="hero-sub">Практический курс по прикладной безопасности приложений: от первого коммита до конвейера безопасности</p>
   <p class="hero-typewriter" id="typewriter-target"></p>
   <div class="hero-cta">
-  <a class="btn btn-primary" href="materials/#guides">Начать с подготовки</a>
-  <a class="btn btn-ghost" href="#pipeline">Конвейер курса</a>
-  <a class="btn btn-ghost" href="#rules">Правила курса</a>
-  <a class="btn btn-ghost" href="materials/">Материалы</a>
+  <a class="btn btn-primary" href="materials/#guides"><span class="btn__label" data-label="Начать с подготовки">Начать с подготовки</span></a>
+  <a class="btn btn-ghost" href="#pipeline"><span class="btn__label" data-label="Конвейер курса">Конвейер курса</span></a>
+  <a class="btn btn-ghost" href="#rules"><span class="btn__label" data-label="Правила курса">Правила курса</span></a>
+  <a class="btn btn-ghost" href="materials/"><span class="btn__label" data-label="Материалы">Материалы</span></a>
   </div>
   </div>
   <div class="hero-side">
@@ -334,7 +334,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="tg-strip__desc">AppSec · DevSecOps · ИБ: практика без воды и купюр.</div>
   </div>
   </div>
-  <a class="btn btn-primary" href="https://t.me/appsecta" target="_blank" rel="noopener">Подписаться</a>
+  <a class="btn btn-primary" href="https://t.me/appsecta" target="_blank" rel="noopener"><span class="btn__label" data-label="Подписаться">Подписаться</span></a>
 </div>
 
 </div>

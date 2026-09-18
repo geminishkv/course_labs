@@ -76,6 +76,28 @@
   padding: 0.18rem 0.6rem;
 }
 
+/* A section that owns an index page (navigation.indexes) wraps its title in a
+   container holding a link and a toggle. Without these rules the container missed
+   the group heading look, and the link inside added a second indent and border. */
+
+.md-sidebar--primary .md-nav__item--nested > .md-nav__container {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.md-sidebar--primary .md-nav__item .md-nav__container > .md-nav__link {
+  padding: 0;
+  border-left: 0;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.md-sidebar--primary .md-nav__item .md-nav__container > .md-nav__link:hover,
+.md-sidebar--primary .md-nav__item .md-nav__container > .md-nav__link:focus-visible,
+.md-sidebar--primary .md-nav__item .md-nav__container > .md-nav__link--active {
+  color: var(--brand-red);
+}
+
 .md-sidebar--primary .md-nav--primary .md-nav__title {
   background-color: transparent;
   line-height: 1.5;

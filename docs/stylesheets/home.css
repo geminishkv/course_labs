@@ -550,6 +550,27 @@ body:has(.md-content--home) .md-top {
   margin-top: var(--space-4);
 }
 
+/* Four buttons need about 47rem: every button size is in rem, so the figure holds at
+   any root font size. In a narrower column a wrapping row left one orphan button on
+   the second line; the row becomes an even two-by-two block instead. The query looks
+   at the column, not the viewport, because the column narrows when the hero turns
+   into two columns. Below 700px the phone layout keeps its single column.
+
+   The container stays unnamed on purpose: the CSS minifier drops the space in
+   "@container name (…)", the browser then reads "name(" as a function and
+   discards the whole rule. */
+
+.hero-section--home .hero-content { container-type: inline-size; }
+
+@media screen and (min-width: 43.75em) {
+  @container (max-width: 47.5rem) {
+    .hero-cta {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+    }
+  }
+}
+
 /* Buttons: gpages Buttons.css (.content-btn) — uppercase, tracking widens on
    hover, two corner brackets slide along the top and bottom edges */
 
@@ -598,6 +619,28 @@ body:has(.md-content--home) .md-top {
 .md-typeset .btn:focus-visible {
   text-decoration: none;
   letter-spacing: 0.14em;
+}
+
+/* The tracking animation changes the text width. In a wrapping row that fits
+   edge to edge this pushed the last button to a second line, the hovered button
+   slid from under the cursor, hover ended and the row jumped back: a loop.
+   The label therefore always takes the width of its hover state: a hidden copy
+   of the text, set at the hover tracking, shares the grid cell with the visible
+   text, so nothing around the button ever moves. */
+
+.md-typeset .btn__label {
+  display: inline-grid;
+  justify-items: center;
+}
+
+.md-typeset .btn__label::after {
+  content: attr(data-label);
+  grid-area: 1 / 1;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  letter-spacing: 0.14em;
+  pointer-events: none;
 }
 
 .md-typeset .btn:hover::before,

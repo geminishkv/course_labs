@@ -177,3 +177,6 @@ flowchart TB
 - [Основы Docker](guides/docker_basics.md) — виртуальные машины и контейнеры, слои образа, жизненный цикл контейнера
 - [Лаб. 04 · Анализ и снижение рисков ИБ](../labs/basic/lab04.md) — цепочка анализа риска
 - [MultiSig](examples/Multisignature.md) — транзакции Bitcoin в модели UTXO
+- [Порты и протоколы](ports.md) — разбор открытого порта
+- [CheatSheet: Git](cheatsheet/CHEATSHEET_GIT.md) — где живут изменения в Git
+- [CheatSheet: GitHub CLI](cheatsheet/CHEATSHEET_GH_CLI.md) — цикл сдачи работы через pull request

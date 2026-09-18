@@ -397,7 +397,6 @@ flowchart TB
 │   ├── glossary.md                    # 40 аббревиатур AppSec (тултипы через snippets)
 │   ├── robots.txt                     # Robots + AI-bot blocking
 │   ├── llms.txt                       # Описание для AI-поисковиков
-│   ├── turbo-feed.xml                 # Яндекс.Турбо RSS
 │   ├── CNAME                          # course.geminishkv.tech
 │   ├── _headers                       # HTTP-заголовки безопасности для хостинга с поддержкой _headers
 │   ├── labs/

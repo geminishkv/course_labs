@@ -400,6 +400,30 @@
   margin-bottom: var(--space-1);
 }
 
+/* Reference cards with an expanded description: a short fact list (service,
+   risk, check, protection) instead of a one-line string of terms */
+
+.md-typeset .lab-card-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-1) var(--space-3);
+  width: 100%;
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: #555;
+}
+
+.md-typeset .lab-card-facts dt {
+  margin: 0;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+.md-typeset .lab-card-facts dd {
+  margin: 0;
+}
+
 .lab-card-tags {
   display: flex;
   flex-wrap: wrap;

@@ -99,7 +99,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <ul>
   <li><b>Инфраструктура:</b> <code>Git</code>, <code>CI/CD</code>, <code>Docker</code>, <code>Docker Compose</code>, <code>GitHub Actions</code>, <code>YAML</code></li>
   <li><b>Языки:</b> <code>Python</code>, <code>Shell</code> (<code>Java</code> и <code>Go</code> — в контексте SCA и анализа зависимостей)</li>
-  <li><b>Инструменты AppSec:</b> <code>Semgrep</code>, <code>Checkov</code>, <code>Bandit</code>, <code>OWASP Dependency-Check</code>, <code>Trivy</code>, <code>Docker Bench</code>, <code>Hadolint</code>, <code>OWASP ZAP</code>, <code>Gitleaks</code>, <code>TruffleHog</code></li>
+  <li><b>Инструменты AppSec:</b> <code>Semgrep</code>, <code>Checkov</code>, <code>Bandit</code>, <code>OWASP Dependency-Check</code>, <code>Trivy</code>, <code>Docker Bench</code>, <code>Hadolint</code>, <code>OWASP ZAP</code>, <code>Gitleaks</code>, <code>TruffleHog</code>, <code>cosign</code></li>
   <li><b>Стандарты:</b> OWASP Top 10, CIS Docker Benchmark, CVSS, ISO 27005, NIST SP 800-30, PCI DSS, ГОСТ 57580</li>
   <li><b>Анализ рисков:</b> оценка, приоритизация, стратегии снижения рисков ИБ</li>
   </ul>
@@ -108,6 +108,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <h3>Как устроен курс</h3>
   <ul>
   <li>{{ stats.intro_label }}, {{ stats.labs_label }}, итоговый pet-project и {{ stats.tests_label }}</li>
+  <li>Сверх основной линии — <a href="#advanced">углублённый трек по Docker</a>: {{ stats.advanced_label }} про запуск и поставку образа</li>
   <li>Каждая лабораторная — отдельный репозиторий (или <code>fork</code>) на <code>GitHub</code>: исходный код и отчёт в формате <code>gistup</code></li>
   <li>Работа ведётся в ветке <code>develop</code> и принимается через <code>pull request</code> после approve преподавателя</li>
   <li>Прогрессия: <code>Git</code> → <code>Linux</code> → <code>Nmap</code> → <code>Risk Analysis</code> → <code>Docker</code> → <code>CIS Benchmark</code> → <code>SAST/SCA</code> → <code>DAST</code> → <code>CI/CD</code> → <code>Итоговый Risk Analysis</code> → <code>Pet-project</code></li>
@@ -126,7 +127,8 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <li><span class="steps__n">1</span><span>Пройди <a href="materials/#guides">руководства</a>: окружение, Git и GPG, отчёты gistup</span></li>
   <li><span class="steps__n">2</span><span>Заведи репозиторий с обвязкой: <code>.gitignore</code>, <code>CODE_OF_CONDUCT</code>, <code>CONTRIBUTING</code>, <code>LICENSE</code>, <code>NOTICE</code>, <code>SECURITY</code></span></li>
   <li><span class="steps__n">3</span><span>Пройди лабораторные по порядку, от Лаб. 01 до Лаб. 10: каждая сдаётся по <a href="#rules">правилам курса</a></span></li>
-  <li><span class="steps__n">4</span><span>Итог: <a href="labs/pet_project/">pet-project</a>: тема согласуется с преподавателем, применяется весь стек AppSec/DevSecOps</span></li>
+  <li><span class="steps__n">4</span><span>По желанию пройди <a href="#advanced">углублённый трек по Docker</a>: он опирается на Лаб. 05, 06 и 09</span></li>
+  <li><span class="steps__n">5</span><span>Итог: <a href="labs/pet_project/">pet-project</a>: тема согласуется с преподавателем, применяется весь стек AppSec/DevSecOps</span></li>
 </ol>
 
 <p class="steps__foot">Лицензию при переиспользовании материалов подбирай по <a href="materials/licenses/">справочнику лицензий</a> · <a href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411" target="_blank" rel="noopener">пример gistup-отчёта</a>: шаблон для всех работ</p>
@@ -227,6 +229,44 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <div class="stage-labs">
   <a class="lab" href="labs/basic/lab10/"><span class="lab-num">10</span><span class="lab-name">Итоговая оценка рисков ИБ</span><span class="lab-tags">Risk Analysis</span></a>
   <a class="lab lab--gold" href="labs/pet_project/"><span class="lab-num">pet</span><span class="lab-name">Pet-project: полный стек AppSec/DevSecOps</span><span class="lab-tags">Full stack</span></a>
+  </div>
+  </li>
+</ol>
+
+<div class="sec-head">
+  <h2 id="advanced">Углублённый трек: Docker</h2>
+  <span class="sec-note">{{ stats.advanced_label }} · после лаб 05, 06 и 09</span>
+</div>
+
+<p class="lead">Основная линия учит собрать образ и найти в нём проблемы. Трек отвечает на два следующих вопроса: как образ безопасно запустить и почему ему можно доверять. В каждой работе есть проверяющий скрипт с намеренно заложенными ложными срабатываниями: отличить их от настоящих находок — часть задания. <a href="labs/advanced/">О треке</a></p>
+
+<ol class="track track--duo" role="list">
+  <li class="stage">
+  <div class="stage-mats">
+  <a class="mat mat--intro" href="materials/guides/docker_basics/">Основы Docker</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKER/">Docker</a>
+  <a class="mat mat--ref" href="materials/ports/">Порты и протоколы</a>
+  <a class="mat mat--ref" href="materials/findings_triage/">Разбор находок</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">D1</div></div>
+  <div class="stage-name">Запуск</div>
+  <div class="stage-cmd">cap_drop · seccomp · networks</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/advanced/docker01/"><span class="lab-num">D1</span><span class="lab-name">Рантайм: hardening и сегментация</span><span class="lab-tags">Hardening · Compose</span></a>
+  </div>
+  </li>
+  <li class="stage">
+  <div class="stage-mats">
+  <a class="mat mat--intro" href="materials/guides/dockerfile_guide/">Dockerfile: как писать</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/">Dockerfile Security</a>
+  <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/">GitHub Actions Security</a>
+  <a class="mat mat--case" href="materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/">OWASP CI/CD Risks</a>
+  </div>
+  <div class="stage-node"><div class="stage-head">D2</div></div>
+  <div class="stage-name">Поставка</div>
+  <div class="stage-cmd">digest · sbom · cosign</div>
+  <div class="stage-labs">
+  <a class="lab" href="labs/advanced/docker02/"><span class="lab-num">D2</span><span class="lab-name">Поставка: сборка, SBOM, подпись</span><span class="lab-tags">Supply chain · CI/CD</span></a>
   </div>
   </li>
 </ol>

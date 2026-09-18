@@ -36,22 +36,23 @@
   /* ── Live pipeline (home): one pulse along the track when it scrolls into view ── */
 
   function initTrack() {
-    var track = document.querySelector("ol.track");
-    if (!track || track.classList.contains("track--live")) return;
+    /* the home page holds two pipelines: the course line and the Docker track */
+    var tracks = document.querySelectorAll("ol.track:not(.track--live)");
+    if (!tracks.length) return;
     var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (still || !("IntersectionObserver" in window)) {
-      track.classList.add("track--live");
+      tracks.forEach(function (track) { track.classList.add("track--live"); });
       return;
     }
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("track--live");
-          observer.disconnect();
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15 });
-    observer.observe(track);
+    tracks.forEach(function (track) { observer.observe(track); });
   }
 
   /* ── Landmarks: Material leaves nested table-of-contents navs and the code

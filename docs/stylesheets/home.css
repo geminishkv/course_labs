@@ -692,6 +692,13 @@ body:has(.md-content--home) .md-top {
   gap: var(--space-2) var(--space-4);
 }
 
+/* the Docker track has two stages: two wide columns from tablet width up,
+   the phone layout below 700px stays a single column like the main line */
+
+@media screen and (min-width: 43.75em) {
+  .md-typeset ol.track.track--duo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* vertical line for the single-column layout (enabled below 700px) */
 
 .md-typeset ol.track::before {

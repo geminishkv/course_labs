@@ -190,6 +190,8 @@ flowchart TB
 - [Лаб. 08 · DAST: OWASP ZAP](../labs/basic/lab08.md) — цикл динамического тестирования
 - [Лаб. 09 · DevSecOps CI/CD на GitHub Actions](../labs/basic/lab09.md) — граф jobs конвейера
 - [Лаб. 10 · Итоговая оценка рисков ИБ](../labs/basic/lab10.md) — от исходных данных к аналитической записке
+- [Docker 01 · Рантайм: hardening и сегментация](../labs/advanced/docker01.md) — целевая схема сетей стенда и цикл «находка, исправление или исключение, повторный прогон»
+- [Docker 02 · Поставка: сборка, SBOM, подпись](../labs/advanced/docker02.md) — путь образа от сборки до гейта допуска
 - [MultiSig](examples/Multisignature.md) — транзакции Bitcoin в модели UTXO
 - [Порты и протоколы](ports.md) — разбор открытого порта
 - [CVSS и реестр рисков](risk_scoring.md) — от находки сканера к записи в реестре

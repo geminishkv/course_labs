@@ -179,6 +179,10 @@ nav:
           - "Лаб. 08 · DAST: OWASP ZAP": labs/basic/lab08.md
           - "Лаб. 09 · DevSecOps CI/CD на GitHub Actions": labs/basic/lab09.md
           - "Лаб. 10 · Итоговая оценка рисков ИБ": labs/basic/lab10.md
+      - "Углублённый трек: Docker":
+          - "О треке": labs/advanced/index.md
+          - "Docker 01 · Рантайм: hardening и сегментация": labs/advanced/docker01.md
+          - "Docker 02 · Поставка: сборка, SBOM, подпись": labs/advanced/docker02.md
       - "Pet-project": labs/pet_project.md
   - "Тесты":
       - "Лекционные тесты":

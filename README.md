@@ -23,6 +23,7 @@
 **Как устроен курс:**
 
 * 8 intro-руководств + 10 лабораторных работ + итоговый pet-project + 7 тестов (5 базовых + 2 лекционных)
+* Сверх основной линии — углублённый трек по Docker: 2 работы про безопасный запуск контейнера и цепочку поставки образа, с намеренно заложенными ложными срабатываниями
 * Каждая лабораторная — отдельный репозиторий с исходным кодом и отчётом в формате `gistup`
 * Все работы выполняются в ветке `develop` → `pull request` → [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) от [geminishkv](https://github.com/geminishkv)
 * Прогрессия: `Git` → `Linux` → `Nmap` → `Risk Analysis` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Итоговый Risk Analysis` → `Pet-project`
@@ -60,6 +61,11 @@
 -  [ ] lab09 — [DevSecOps CI/CD на GitHub Actions](labs/basic/lab09/README.md)
 -  [ ] lab10 — [Итоговая оценка рисков ИБ](labs/basic/lab10/README.md)
 
+   По желанию, после lab05, lab06 и lab09 — углублённый трек по Docker:
+
+-  [ ] docker01 — [Рантайм: hardening и сегментация](labs/advanced/docker01/README.md)
+-  [ ] docker02 — [Поставка: сборка, SBOM, подпись](labs/advanced/docker02/README.md)
+
 4. Реализовать итоговую работу:
 
 -  [ ] pet_project — [Индивидуальный проект: полный стек AppSec/DevSecOps](labs/pet_project/README.md)
@@ -72,7 +78,7 @@
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
     accTitle: Маршрут прохождения курса
-    accDescr: Курс начинается с восьми intro-гайдов и репозитория с обвязкой, затем идёт цикл по десяти лабораторным: работа атомарными коммитами в develop, отчёт gistup, pull request и approve преподавателя с доработкой при отказе; после лабораторных — pet-project и завершение курса.
+    accDescr: Курс начинается с восьми intro-гайдов и репозитория с обвязкой, затем идёт цикл по десяти лабораторным: работа атомарными коммитами в develop, отчёт gistup, pull request и approve преподавателя с доработкой при отказе; после лабораторных — по желанию углублённый трек по Docker из двух работ, затем pet-project и завершение курса.
 
     course_start([Старт курса])
     prep_guides[[Пройти 8 intro-гайдов]]
@@ -93,6 +99,7 @@ flowchart TB
         labs_fork((" "))
     end
 
+    docker_track[["По желанию: углублённый<br/>трек Docker, 2 работы"]]
     pet_project[["Pet-project:<br/>весь стек AppSec/DevSecOps"]]
     course_end([Курс завершён])
 
@@ -111,7 +118,8 @@ flowchart TB
     lab_rework --> pr_join
     labs_left --- labs_fork
     labs_fork -->|Да| next_join
-    labs_fork -->|Нет| pet_project
+    labs_fork -->|Нет| docker_track
+    docker_track --> pet_project
     pet_project --> course_end
 
     classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
@@ -120,7 +128,7 @@ flowchart TB
     classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
 
     class next_join,pr_join,review_fork,labs_fork junction
-    class prep_guides,repo_scaffold,lab_work,lab_pr,lab_rework stage
+    class prep_guides,repo_scaffold,lab_work,lab_pr,lab_rework,docker_track stage
     class review_gate,labs_left gate
     class pet_project,course_end done
 ```
@@ -283,8 +291,8 @@ landmark-навигаций, которые Material оставляет безы
 Статистику репозитория в шторке рисует сам Material. Всё подписано на `document$` для instant navigation.
 
 **Сборка и зависимости.** `pyproject.toml` + `uv.lock` (хэши), группы инструментов CI (`lint`, `audit`,
-`sast`, `sbom`). `hooks.py` считает цифры главной из дерева `docs/` и `labs/` (лабы, руководства, тесты, материалы по типам, схемы, карточки troubleshooting)
-и ставит слово в нужную форму («32 материала», «41 схема»); неизвестный токен `{{ stats.* }}` даёт warning,
+`sast`, `sbom`). `hooks.py` считает цифры главной из дерева `docs/` и `labs/` (лабы, работы углублённого трека, руководства, тесты, материалы по типам, схемы, карточки troubleshooting)
+и ставит слово в нужную форму («32 материала», «44 схемы»); неизвестный токен `{{ stats.* }}` даёт warning,
 и `build --strict` падает, так что сырой токен на сайт не попадает (`mkdocs serve` кэширует хук — после правки `hooks.py` сервер перезапускают); дописывает sitemap и кладёт редиректы для переехавших страниц
 (свой код вместо `mkdocs-redirects`: с версии 1.2.3 плагин принадлежит другому проекту и тянет за собой `properdocs`). CI ставит всё через
 `uv sync --frozen`, сканеры из лока, hadolint с проверкой sha256. Dependabot: actions / npm / uv, cooldown 7 дней.
@@ -385,6 +393,7 @@ flowchart TB
 │   ├── _headers                       # HTTP-заголовки безопасности для хостинга с поддержкой _headers
 │   ├── labs/
 │   │   ├── basic/lab01-10.md          # 10 docs-обёрток лабораторных
+│   │   ├── advanced/                  # углублённый трек Docker: страница трека + 2 обёртки
 │   │   ├── pet_project.md             # Итоговый проект
 │   │   └── tests/
 │   │       ├── basic/                 # 5 вариантов базовых тестов
@@ -415,6 +424,7 @@ flowchart TB
 ├── labs/
 │   ├── intro/                         # 8 intro-руководств (исходники; Linux, macOS и Windows)
 │   ├── basic/lab01-10/               # 10 лабораторных (README + код; у части — docker-compose)
+│   ├── advanced/docker01-02/         # углублённый трек: стенд, проверяющий скрипт с исключениями, шаблон отчёта
 │   ├── pet_project/                   # Итоговый проект
 │   └── tests/
 │       ├── basic/                     # 5 базовых тестов (исходники)

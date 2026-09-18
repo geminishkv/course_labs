@@ -32,6 +32,7 @@ def _plural(n: int, one: str, few: str, many: str) -> str:
 # word forms for the figures shown on the home page: (one, few, many)
 _WORDS = {
     "labs": ("лабораторная", "лабораторные", "лабораторных"),
+    "advanced": ("работа", "работы", "работ"),
     "intro": ("руководство", "руководства", "руководств"),
     "tests": ("тест", "теста", "тестов"),
     "materials": ("материал", "материала", "материалов"),
@@ -65,6 +66,8 @@ def _count_docs(docs_dir: str) -> dict[str, int | str]:
 
     stats: dict[str, int | str] = {
         "labs": count("labs/basic/lab*.md"),
+        # the optional Docker track; its landing page is not a lab
+        "advanced": count("labs/advanced/docker*.md"),
         "intro": count("materials/guides/*.md"),
         "tests": count("labs/tests/**/*.md"),
         "tests_basic": count("labs/tests/basic/*.md"),

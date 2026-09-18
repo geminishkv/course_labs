@@ -20,6 +20,67 @@ GitHub Gist — сервис для хранения фрагментов код
 
 > Для отчётов используем **Secret Gist** — отправляете ссылку преподавателю. Секретный гист открывается у любого, у кого есть ссылка: не публикуйте в отчёте токены, пароли и результаты сканирования чужих сетей.
 
+## Цикл отчёта
+
+Схема показывает путь отчёта от выполненной лабораторной до ссылки у преподавателя и две проверки, которые нельзя пропускать.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Цикл отчёта по лабораторной
+    accDescr: Команды и вывод терминала собираются в отчёт по структуре, отчёт проверяется на секреты и на корректный рендер Markdown, и только потом ссылка на секретный gist уходит преподавателю; любая проверка при неудаче возвращает отчёт на правку.
+
+    lab_finished(["Лабораторная<br/>выполнена"])
+    terminal_output[/"Команды и вывод<br/>терминала текстом"/]
+    write_report["Написать отчёт: цель,<br/>ход, результаты, выводы"]
+    secrets_join((" "))
+    has_secrets{"В отчёте есть токены,<br/>пароли или ключи?"}
+    secrets_fork((" "))
+    redact_report["Заменить<br/>на заглушки"]
+    create_gist[["gh gist create<br/>labNN_report.md"]]
+    render_join((" "))
+    renders_ok{"Markdown на GitHub<br/>выглядит верно?"}
+    render_fork((" "))
+    edit_gist[["gh gist edit"]]
+    send_link[/"Ссылка на gist<br/>преподавателю"/]
+    report_sent([Отчёт сдан])
+
+    lab_finished --> terminal_output
+    terminal_output --> write_report
+    write_report --- secrets_join
+    secrets_join --> has_secrets
+    has_secrets --- secrets_fork
+    secrets_fork -->|Нет| create_gist
+    secrets_fork -->|Да| redact_report
+    redact_report --> secrets_join
+    create_gist --- render_join
+    render_join --> renders_ok
+    renders_ok --- render_fork
+    render_fork -->|Да| send_link
+    render_fork -->|Нет| edit_gist
+    edit_gist --> render_join
+    send_link --> report_sent
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class secrets_join,secrets_fork,render_join,render_fork junction
+    class write_report,redact_report,create_gist,edit_gist stage
+    class has_secrets,renders_ok gate
+    class report_sent done
+```
+
+**Как читать схему:**
+
+- Вход — команды и вывод терминала текстом: скриншоты вместо текста не принимаются.
+- Первая проверка — на секреты. Секретный gist открывается у любого, у кого есть ссылка, поэтому токены, пароли и ключи заменяются заглушками до публикации, а не после.
+- Вторая проверка — на рендер: незакрытый блок кода превращает весь остаток отчёта в один серый блок. Правки вносятся в тот же gist, ссылка при этом не меняется.
+- Конец цикла — ссылка у преподавателя; по отчёту он задаёт вопросы, поэтому каждая команда должна быть вам понятна.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Создание Gist

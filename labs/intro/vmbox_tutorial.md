@@ -14,6 +14,88 @@
 
 ***
 
+***
+
+## Путь к готовому окружению
+
+Схема показывает весь путь руководства: что делается на хосте, что в VirtualBox, что уже внутри Linux и чем путь заканчивается.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Путь к готовому окружению
+    accDescr: На Windows сначала включается аппаратная виртуализация, затем ставится VirtualBox, создаётся и настраивается виртуальная машина, устанавливается Linux, внутри него ставятся инструменты курса; проверка версий в конце либо подтверждает готовность, либо отправляет в раздел Troubleshooting и обратно на проверку.
+
+    need_linux(["Нужен Linux<br/>для лабораторных"])
+    is_windows{"Хост —<br/>Windows?"}
+    windows_fork((" "))
+    enable_virt["Включить VT-x / AMD-V<br/>в UEFI"]
+    host_join((" "))
+
+    subgraph vm_stage ["Виртуальная машина"]
+        direction TB
+        install_vbox["Установить VirtualBox<br/>и Extension Pack"]
+        iso_image[/"ISO-образ<br/>дистрибутива"/]
+        create_vm["Создать и настроить ВМ:<br/>память, CPU, сеть NAT"]
+        install_os["Установить ОС<br/>и извлечь ISO"]
+        install_vbox --> iso_image
+        iso_image --> create_vm
+        create_vm --> install_os
+    end
+
+    subgraph linux_stage ["Внутри Linux"]
+        direction TB
+        update_system["Обновить систему,<br/>поставить инструменты"]
+        docker_group["Добавить себя<br/>в группу docker"]
+        install_gh["Установить<br/>GitHub CLI"]
+        guest_additions["Guest Additions:<br/>буфер обмена, экран"]
+        update_system --> docker_group
+        docker_group --> install_gh
+        install_gh --> guest_additions
+    end
+
+    check_join((" "))
+    run_checks[["Команды проверки<br/>из раздела 8"]]
+    all_versions{"Все команды<br/>вернули версии?"}
+    versions_fork((" "))
+    fix_problem["Найти причину<br/>в Troubleshooting"]
+    env_ready([Окружение готово])
+
+    need_linux --> is_windows
+    is_windows --- windows_fork
+    windows_fork -->|Да| enable_virt
+    windows_fork -->|Нет| host_join
+    enable_virt --- host_join
+    host_join --> vm_stage
+    vm_stage --> linux_stage
+    linux_stage --- check_join
+    check_join --> run_checks
+    run_checks --> all_versions
+    all_versions --- versions_fork
+    versions_fork -->|Да| env_ready
+    versions_fork -->|Нет| fix_problem
+    fix_problem --> check_join
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class windows_fork,host_join,check_join,versions_fork junction
+    class enable_virt,install_vbox,create_vm,install_os,update_system,docker_group,install_gh,guest_additions,run_checks,fix_problem stage
+    class is_windows,all_versions gate
+    class env_ready done
+```
+
+**Как читать схему:**
+
+- Две рамки — два места работы: сначала настраивается сама виртуальная машина, потом система внутри неё. Номера разделов ниже идут в том же порядке.
+- Развилка в начале касается только Windows: без включённой аппаратной виртуализации ВМ либо не запустится, либо будет работать в разы медленнее.
+- Конец пути — не «установил», а «проверил»: раздел 8 с командами проверки. Если хоть одна команда не вернула версию, причина ищется в Troubleshooting, и проверка повторяется.
+- WSL2 — отдельный короткий путь для Windows, на схеме его нет; ограничения WSL2 для Лаб. 03 описаны в разделе «Windows: что учесть».
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ## Скачивание и установка VirtualBox
 
 - [ ] 1.1. Перейдите на [virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)

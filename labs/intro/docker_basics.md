@@ -170,6 +170,41 @@ CMD ["python", "app.py"]
 
 Хранилище образов. По умолчанию — Docker Hub. Альтернативы: GitHub Container Registry (ghcr.io), Amazon ECR, Google Artifact Registry.
 
+### Что происходит при docker run
+
+Схема показывает, кто на самом деле запускает контейнер и откуда берётся образ.
+
+```mermaid
+sequenceDiagram
+    accTitle: Что происходит при docker run
+    accDescr: Клиент docker только передаёт запрос демону; демон при отсутствии образа скачивает его слои из реестра, создаёт для контейнера пространства имён и контрольные группы, добавляет записываемый слой и запускает процесс.
+
+    participant cli as docker CLI
+    participant daemon as Демон<br/>dockerd
+    participant registry as Реестр<br/>образов
+
+    cli->>daemon: docker run nginx:1.27
+    alt образа нет локально
+        daemon->>registry: Запросить образ
+        registry-->>daemon: Слои образа
+    else образ уже скачан
+        Note over daemon: Слои берутся<br/>из локального хранилища
+    end
+    daemon->>daemon: Создать namespaces<br/>и cgroups
+    daemon->>daemon: Добавить записываемый слой
+    daemon->>daemon: Запустить процесс<br/>из CMD или ENTRYPOINT
+    daemon-->>cli: Идентификатор контейнера
+```
+
+**Как читать схему:**
+
+- Команда `docker` — только клиент: она передаёт запрос демону `dockerd`, всю работу делает он. Поэтому доступ к демону равен правам root на хосте.
+- Если образа нет локально, демон скачивает его слои из реестра. Отсюда требование к тегам и дайджестам: вы запускаете то, что отдал реестр.
+- Изоляция создаётся в момент запуска: namespaces ограничивают, что процесс видит, cgroups — сколько ресурсов получает.
+- Последним запускается процесс из `CMD` или `ENTRYPOINT` образа; контейнер живёт, пока жив этот процесс.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Установка Docker

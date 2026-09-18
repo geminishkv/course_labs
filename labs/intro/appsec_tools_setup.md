@@ -12,6 +12,68 @@
 
 > Все инструменты open-source и бесплатны для использования.
 
+## Какой инструмент в какой лабораторной
+
+Схема показывает, в какой лабораторной понадобится каждый инструмент и как лабораторные связаны между собой.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Инструменты курса по лабораторным
+    accDescr: Инструменты курса понадобятся в четырёх лабораторных: сканеры контейнеров в шестой, анализ кода, зависимостей и секретов в седьмой, динамическое тестирование в восьмой; девятая собирает их в один конвейер, десятая превращает находки в оценку рисков.
+
+    tools_ready(["Инструменты<br/>установлены"])
+
+    subgraph lab06_stage ["Лаб. 06: контейнеры"]
+        direction TB
+        scan_images["Проверить образы<br/>и конфигурацию:<br/>Trivy, Docker Bench,<br/>Hadolint"]
+    end
+
+    subgraph lab07_stage ["Лаб. 07: код и зависимости"]
+        direction TB
+        scan_source["Проверить код и IaC:<br/>Semgrep, Checkov,<br/>Bandit"]
+        scan_deps["Проверить зависимости:<br/>Dependency-Check"]
+        scan_secrets["Найти секреты:<br/>Gitleaks, TruffleHog"]
+        scan_source --> scan_deps
+        scan_deps --> scan_secrets
+    end
+
+    subgraph lab08_stage ["Лаб. 08: работающее приложение"]
+        direction TB
+        scan_running["Сканировать стенд:<br/>OWASP ZAP"]
+    end
+
+    build_pipeline[["Лаб. 09: те же сканеры<br/>в одном конвейере"]]
+    all_reports[/"Отчёты сканеров"/]
+    assess_risks["Лаб. 10: оценить риски<br/>по находкам"]
+    course_tools_done(["Находки превращены<br/>в решения"])
+
+    tools_ready --> lab06_stage
+    lab06_stage --> lab07_stage
+    lab07_stage --> lab08_stage
+    lab08_stage --> build_pipeline
+    build_pipeline --> all_reports
+    all_reports --> assess_risks
+    assess_risks --> course_tools_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class scan_images,scan_source,scan_deps,scan_secrets,scan_running,build_pipeline,assess_risks stage
+    class course_tools_done done
+```
+
+**Как читать схему:**
+
+- Три рамки — три взгляда на одно приложение: образ и его конфигурация, исходный код с зависимостями, работающий стенд. Ни один из них не заменяет другие.
+- Лаб. 09 новых инструментов не вводит: она собирает уже знакомые сканеры в один конвейер, поэтому установить и проверить их лучше заранее.
+- Отчёты сканеров — не конец работы: в Лаб. 10 находки превращаются в оценку рисков и план мер.
+- Ставить всё сразу не обязательно: достаточно раздела той лабораторной, к которой вы приступаете.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Windows

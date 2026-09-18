@@ -172,9 +172,13 @@ flowchart TB
 
 ## Где схемы в курсе
 
-- [Введение в CI/CD](guides/cicd_basics.md) — конвейер от push до релиза и порядок jobs в DevSecOps-пайплайне
-- [Введение в сети и TCP/IP](guides/networking_basics.md) — установка и закрытие TCP-соединения
-- [Основы Docker](guides/docker_basics.md) — виртуальные машины и контейнеры, слои образа, жизненный цикл контейнера
+- [Подготовка рабочего окружения](guides/vmbox_tutorial.md) — путь к готовому окружению
+- [Настройка Git, GPG и GitHub CLI](guides/git_setup.md) — порядок настройки, откуда берётся отметка Verified
+- [Оформление отчётов gistup](guides/gistup_guide.md) — цикл отчёта по лабораторной
+- [Установка AppSec-инструментов](guides/appsec_tools_setup.md) — какой инструмент в какой лабораторной
+- [Введение в CI/CD](guides/cicd_basics.md) — конвейер от push до релиза, что происходит после git push, порядок jobs в DevSecOps-пайплайне
+- [Введение в сети и TCP/IP](guides/networking_basics.md) — инкапсуляция по уровням TCP/IP, установка и закрытие TCP-соединения, разрешение доменного имени
+- [Основы Docker](guides/docker_basics.md) — виртуальные машины и контейнеры, слои образа, что происходит при docker run, жизненный цикл контейнера
 - [Dockerfile: как устроен и как его писать](guides/dockerfile_guide.md) — путь от Dockerfile до контейнера, остановка контейнера в двух формах CMD
 - [Лаб. 04 · Анализ и снижение рисков ИБ](../labs/basic/lab04.md) — цепочка анализа риска
 - [MultiSig](examples/Multisignature.md) — транзакции Bitcoin в модели UTXO

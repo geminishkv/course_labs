@@ -211,6 +211,350 @@ flowchart TB
 
 </div>
 
+## Как происходит атака: схема на каждый риск
+
+Каждая схема читается сверху вниз: с чего начинает нарушитель, какое место конвейера он использует и к чему это приводит. Ромб — место, где атаку останавливает защита: ветка «Да» показывает, что происходит при работающей защите, ветка «Нет» — итог при её отсутствии. Меры защиты по каждому риску разобраны в карточках выше. Обозначения фигур — в справочнике [Схемы курса](../diagrams_legend.md).
+
+### CICD-SEC-1 · Insufficient Flow Control Mechanisms
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-1 Insufficient Flow Control Mechanisms
+    accDescr: Нарушитель: учётная запись разработчика. Затем: код отправляется сразу в защищённую ветку. Если защита на месте (ветка защищена: ревью и запрет прямого push), изменение ждёт второго человека. Если защиты нет, конвейер собирает и выкатывает код; итог: чужой код в продуктиве.
+
+    start_actor(["Нарушитель: учётная<br/>запись разработчика"])
+    step_one["Код отправляется сразу<br/>в защищённую ветку"]
+    control_gate{"Ветка защищена: ревью<br/>и запрет прямого push?"}
+    control_fork((" "))
+    attack_stopped(["Изменение ждёт второго<br/>человека"])
+    impact_step["Конвейер собирает и<br/>выкатывает код"]
+    attack_result(["Итог: чужой код в<br/>продуктиве"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-2 · Inadequate Identity and Access Management
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-2 Inadequate Identity and Access Management
+    accDescr: Нарушитель: забытая или избыточная учётная запись. Затем: вход под ней без второго фактора. Если защита на месте (права минимальны, записи пересматриваются), доступа хватает только на чтение. Если защиты нет, доступ на запись в репозитории и конвейер; итог: контроль над кодом и сборкой.
+
+    start_actor(["Нарушитель: забытая<br/>или избыточная учётная<br/>запись"])
+    step_one["Вход под ней без<br/>второго фактора"]
+    control_gate{"Права минимальны,<br/>записи<br/>пересматриваются?"}
+    control_fork((" "))
+    attack_stopped(["Доступа хватает только<br/>на чтение"])
+    impact_step["Доступ на запись в<br/>репозитории и конвейер"]
+    attack_result(["Итог: контроль над<br/>кодом и сборкой"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-3 · Dependency Chain Abuse
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-3 Dependency Chain Abuse
+    accDescr: Нарушитель публикует пакет с похожим именем. Затем: сборка запрашивает зависимость по имени. Если защита на месте (версии закреплены, источник задан явно), берётся проверенный пакет. Если защиты нет, установлен пакет нарушителя; итог: его код выполняется в сборке.
+
+    start_actor(["Нарушитель публикует<br/>пакет с похожим именем"])
+    step_one["Сборка запрашивает<br/>зависимость по имени"]
+    control_gate{"Версии закреплены,<br/>источник задан явно?"}
+    control_fork((" "))
+    attack_stopped(["Берётся проверенный<br/>пакет"])
+    impact_step["Установлен пакет<br/>нарушителя"]
+    attack_result(["Итог: его код<br/>выполняется в сборке"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-4 · Poisoned Pipeline Execution
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-4 Poisoned Pipeline Execution
+    accDescr: Нарушитель: pull request с изменённым workflow. Затем: конвейер запускается на коде из pull request. Если защита на месте (чужой код идёт без секретов и прав записи), вредный шаг ничего не получает. Если защиты нет, команды нарушителя идут с секретами конвейера; итог: кража секретов, подмена артефактов.
+
+    start_actor(["Нарушитель: pull<br/>request с изменённым<br/>workflow"])
+    step_one["Конвейер запускается<br/>на коде из pull<br/>request"]
+    control_gate{"Чужой код идёт без<br/>секретов и прав<br/>записи?"}
+    control_fork((" "))
+    attack_stopped(["Вредный шаг ничего не<br/>получает"])
+    impact_step["Команды нарушителя<br/>идут с секретами<br/>конвейера"]
+    attack_result(["Итог: кража секретов,<br/>подмена артефактов"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-5 · Insufficient Pipeline-Based Access Controls
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-5 Insufficient Pipeline-Based Access Controls
+    accDescr: Нарушитель: код в одном из job. Затем: job обращается к секретам и средам соседей. Если защита на месте (у каждого job свои права и свои секреты), доступ ограничен своим job. Если защиты нет, один job видит всё окружение; итог: движение от сборки к продуктиву.
+
+    start_actor(["Нарушитель: код в<br/>одном из job"])
+    step_one["Job обращается к<br/>секретам и средам<br/>соседей"]
+    control_gate{"У каждого job свои<br/>права и свои секреты?"}
+    control_fork((" "))
+    attack_stopped(["Доступ ограничен своим<br/>job"])
+    impact_step["Один job видит всё<br/>окружение"]
+    attack_result(["Итог: движение от<br/>сборки к продуктиву"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-6 · Insufficient Credential Hygiene
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-6 Insufficient Credential Hygiene
+    accDescr: Нарушитель: чтение кода, истории и логов. Затем: поиск токенов и паролей. Если защита на месте (секреты в хранилище, маскируются, ротируются), в коде и логах секретов нет. Если защиты нет, найден действующий токен; итог: доступ к облаку и реестрам.
+
+    start_actor(["Нарушитель: чтение<br/>кода, истории и логов"])
+    step_one["Поиск токенов и<br/>паролей"]
+    control_gate{"Секреты в хранилище,<br/>маскируются,<br/>ротируются?"}
+    control_fork((" "))
+    attack_stopped(["В коде и логах<br/>секретов нет"])
+    impact_step["Найден действующий<br/>токен"]
+    attack_result(["Итог: доступ к облаку<br/>и реестрам"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-7 · Insecure System Configuration
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-7 Insecure System Configuration
+    accDescr: Нарушитель: поиск служебных систем конвейера. Затем: обращение к раннеру или серверу сборки. Если защита на месте (системы обновлены и настроены по базовой линии), входа нет. Если защиты нет, известная уязвимость или настройка по умолчанию; итог: контроль над сервером сборки.
+
+    start_actor(["Нарушитель: поиск<br/>служебных систем<br/>конвейера"])
+    step_one["Обращение к раннеру<br/>или серверу сборки"]
+    control_gate{"Системы обновлены и<br/>настроены по базовой<br/>линии?"}
+    control_fork((" "))
+    attack_stopped(["Входа нет"])
+    impact_step["Известная уязвимость<br/>или настройка по<br/>умолчанию"]
+    attack_result(["Итог: контроль над<br/>сервером сборки"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-8 · Ungoverned Usage of 3rd Party Services
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-8 Ungoverned Usage of 3rd Party Services
+    accDescr: Нарушитель: взломанное стороннее приложение. Затем: приложение действует с выданными ему правами. Если защита на месте (права приложений минимальны, пересматриваются), ущерб ограничен выданным доступом. Если защиты нет, у приложения запись во все репозитории; итог: изменение кода через чужой сервис.
+
+    start_actor(["Нарушитель: взломанное<br/>стороннее приложение"])
+    step_one["Приложение действует с<br/>выданными ему правами"]
+    control_gate{"Права приложений<br/>минимальны,<br/>пересматриваются?"}
+    control_fork((" "))
+    attack_stopped(["Ущерб ограничен<br/>выданным доступом"])
+    impact_step["У приложения запись во<br/>все репозитории"]
+    attack_result(["Итог: изменение кода<br/>через чужой сервис"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-9 · Improper Artifact Integrity Validation
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-9 Improper Artifact Integrity Validation
+    accDescr: Нарушитель: подмена артефакта в реестре. Затем: развёртывание берёт артефакт по тегу. Если защита на месте (подпись и digest проверяются), подменённый артефакт отклонён. Если защиты нет, развёрнут артефакт нарушителя; итог: чужой код в продуктиве.
+
+    start_actor(["Нарушитель: подмена<br/>артефакта в реестре"])
+    step_one["Развёртывание берёт<br/>артефакт по тегу"]
+    control_gate{"Подпись и digest<br/>проверяются?"}
+    control_fork((" "))
+    attack_stopped(["Подменённый артефакт<br/>отклонён"])
+    impact_step["Развёрнут артефакт<br/>нарушителя"]
+    attack_result(["Итог: чужой код в<br/>продуктиве"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
+### CICD-SEC-10 · Insufficient Logging and Visibility
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: CICD-SEC-10 Insufficient Logging and Visibility
+    accDescr: Нарушитель: действия в конвейере. Затем: изменение настроек, секретов и workflow. Если защита на месте (события пишутся, есть оповещения), вторжение замечено и остановлено. Если защиты нет, следов не остаётся; итог: атака живёт месяцами.
+
+    start_actor(["Нарушитель: действия в<br/>конвейере"])
+    step_one["Изменение настроек,<br/>секретов и workflow"]
+    control_gate{"События пишутся, есть<br/>оповещения?"}
+    control_fork((" "))
+    attack_stopped(["Вторжение замечено и<br/>остановлено"])
+    impact_step["Следов не остаётся"]
+    attack_result(["Итог: атака живёт<br/>месяцами"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
 ## Разбор: Poisoned Pipeline Execution в GitHub Actions
 
 Самый частый вариант — внедрение команд через данные события. Заголовок pull request, имя ветки, текст комментария пишет посторонний человек, а выражение `${{ }}` подставляется в скрипт до его запуска — как текст, а не как значение переменной.

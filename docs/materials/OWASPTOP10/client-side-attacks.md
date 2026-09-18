@@ -21,6 +21,10 @@ DOM-based XSS особенно опасен, поскольку вредонос
 
 ***
 
+## Как читать схемы на странице
+
+У каждого класса атак есть схема хода атаки. Она читается сверху вниз: с чего начинает нарушитель, какое место приложения он использует и к чему это приводит. Ромб — место, где атаку останавливает защита: ветка «Да» показывает, что происходит при работающей защите, ветка «Нет» — итог при её отсутствии. Схемы описывают ход атаки без полезных нагрузок: примеры и меры защиты разобраны в тексте разделов. Обозначения фигур — в справочнике [Схемы курса](../diagrams_legend.md).
+
 ## Содержание документа
 
 Этот раздел описывает атаки на пользователей Web-сервера. Во время посещения сайта, между пользователем и сервером устанавливаются доверительные отношения, как в технологическом, так и в психологическом аспектах. Пользователь ожидает, что сайт предоставит ему легитимное содержимое. Кроме того, пользователь не ожидает атак со стороны сайта. Эксплуатируя это доверие, злоумышленник может использовать различные методы для проведения атак на клиентов сервера.
@@ -28,6 +32,40 @@ DOM-based XSS особенно опасен, поскольку вредонос
 ### Подмена содержимого (Content Spoofing)
 
 Используя эту технику, злоумышленник заставляет пользователя поверить, что страницы сгенерированы Web-сервером, а не переданы из внешнего источника.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: подмена содержимого
+    accDescr: Нарушитель: ссылка с параметром содержимого. Затем: жертва открывает ссылку на доверенном домене. Если защита на месте (содержимое берётся только из своего списка), чужое содержимое не показано. Если защиты нет, поддельная форма под адресом настоящего сайта; итог: жертва вводит данные нарушителю.
+
+    start_actor(["Нарушитель: ссылка с<br/>параметром содержимого"])
+    step_one["Жертва открывает<br/>ссылку на доверенном<br/>домене"]
+    control_gate{"Содержимое берётся<br/>только из своего<br/>списка?"}
+    control_fork((" "))
+    attack_stopped(["Чужое содержимое не<br/>показано"])
+    impact_step["Поддельная форма под<br/>адресом настоящего<br/>сайта"]
+    attack_result(["Итог: жертва вводит<br/>данные нарушителю"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 Некоторые Web-страницы создаются с использованием динамических источников HTML-кода. К примеру, расположение фрейма (`<frame src="http://foo.example/file.html">`) может передаваться в параметре URL (`http://foo.example/page?frame_src=http://foo.example/file.html`). Атакующий может заменить значение параметра `frame_src` на `frame_src=http://attacker.example/spoof.html`. Когда будет отображаться результирующая страница, в строке адреса браузера пользователя будет отображаться адрес сервера (`foo.example`), но также на странице будет присутствовать внешнее содержимое, загруженное с сервера атакующего (`attacker.example`), замаскированное под легальный контент.
 
@@ -108,6 +146,42 @@ DOM-based XSS особенно опасен, поскольку вредонос
 ### Межсайтовое выполнение сценариев (Cross-site Scripting, XSS)
 
 Наличие уязвимости Cross-site Scripting позволяет атакующему передать серверу исполняемый код, который будет перенаправлен браузеру пользователя. Этот код обычно создается на языках HTML/JavaScript, но могут быть использованы VBScript, ActiveX, Java, Flash или другие поддерживаемые браузером технологии.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: межсайтовое выполнение сценариев
+    accDescr: Нарушитель: текст со сценарием. Затем: текст попадает на страницу: в ссылке или в хранилище; жертва открывает страницу. Если защита на месте (вывод кодируется, CSP ограничивает сценарии), сценарий показан как текст. Если защиты нет, сценарий выполняется в браузере жертвы; итог: кража сессии, действия от имени жертвы.
+
+    start_actor(["Нарушитель: текст со<br/>сценарием"])
+    step_one["Текст попадает на<br/>страницу: в ссылке или<br/>в хранилище"]
+    step_two["Жертва открывает<br/>страницу"]
+    control_gate{"Вывод кодируется, CSP<br/>ограничивает сценарии?"}
+    control_fork((" "))
+    attack_stopped(["Сценарий показан как<br/>текст"])
+    impact_step["Сценарий выполняется в<br/>браузере жертвы"]
+    attack_result(["Итог: кража сессии,<br/>действия от имени<br/>жертвы"])
+
+    start_actor --> step_one
+    step_one --> step_two
+    step_two --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,step_two,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 Переданный код исполняется в контексте безопасности (или зоне безопасности) уязвимого сервера. Используя эти привилегии, код получает возможность читать, модифицировать или передавать важные данные, доступные с помощью браузера. У атакованного пользователя может быть скомпрометирован аккаунт (кража cookie), его браузер может быть перенаправлен на другой сервер или осуществлена подмена содержимого сервера. В результате тщательно спланированной атаки злоумышленник может использовать браузер жертвы для просмотра страниц сайта от имени атакуемого пользователя.
 
@@ -345,6 +419,42 @@ DOM-based XSS особенно опасен, поскольку вредонос
 
 CSRF-атака заставляет браузер аутентифицированного пользователя отправить поддельный HTTP-запрос, включая сессионный cookie и любую другую автоматически включаемую информацию аутентификации, уязвимому веб-приложению. Это позволяет злоумышленнику генерировать запросы от имени жертвы через её браузер.
 
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: подделка межсайтовых запросов
+    accDescr: Нарушитель: страница со скрытым запросом. Затем: жертва с активной сессией открывает страницу; браузер сам прикладывает cookie к запросу. Если защита на месте (есть токен CSRF и cookie с SameSite), запрос отклонён. Если защиты нет, приложение выполняет операцию; итог: действие жертвы без её ведома.
+
+    start_actor(["Нарушитель: страница<br/>со скрытым запросом"])
+    step_one["Жертва с активной<br/>сессией открывает<br/>страницу"]
+    step_two["Браузер сам<br/>прикладывает cookie к<br/>запросу"]
+    control_gate{"Есть токен CSRF и<br/>cookie с SameSite?"}
+    control_fork((" "))
+    attack_stopped(["Запрос отклонён"])
+    impact_step["Приложение выполняет<br/>операцию"]
+    attack_result(["Итог: действие жертвы<br/>без её ведома"])
+
+    start_actor --> step_one
+    step_one --> step_two
+    step_two --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,step_two,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
+
 !!! warning "Внимание"
 
     CSRF эксплуатирует доверие сайта к браузеру пользователя. В отличие от XSS, который эксплуатирует доверие пользователя к сайту, CSRF работает в обратном направлении — используется тот факт, что браузер автоматически прикрепляет cookie к каждому запросу на домен.
@@ -454,6 +564,40 @@ CSRF-атака заставляет браузер аутентифициров
 ### Расщепление HTTP-ответа (HTTP Response Splitting)
 
 При использовании данной уязвимости злоумышленник посылает серверу специальным образом сформированный запрос, ответ на который интерпретируется целью атаки как два разных ответа. Второй ответ полностью контролируется злоумышленником, что даёт ему возможность подделать ответ сервера.
+
+Как происходит атака и где её останавливает защита:
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход атаки: расщепление HTTP-ответа
+    accDescr: Нарушитель: параметр с переводом строки. Затем: значение попадает в заголовок ответа. Если защита на месте (переводы строк удаляются из заголовков), ответ остаётся одним ответом. Если защиты нет, ответ разделён: вторая часть задана нарушителем; итог: отравление кэша, подмена страницы.
+
+    start_actor(["Нарушитель: параметр с<br/>переводом строки"])
+    step_one["Значение попадает в<br/>заголовок ответа"]
+    control_gate{"Переводы строк<br/>удаляются из<br/>заголовков?"}
+    control_fork((" "))
+    attack_stopped(["Ответ остаётся одним<br/>ответом"])
+    impact_step["Ответ разделён: вторая<br/>часть задана<br/>нарушителем"]
+    attack_result(["Итог: отравление кэша,<br/>подмена страницы"])
+
+    start_actor --> step_one
+    step_one --> control_gate
+    control_gate --- control_fork
+    control_fork -->|Да| attack_stopped
+    control_fork -->|Нет| impact_step
+    impact_step --> attack_result
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class control_fork junction
+    class step_one,impact_step stage
+    class control_gate gate
+    class start_actor,attack_stopped,attack_result done
+```
 
 В реализации атак с расщеплением HTTP-ответа участвуют как минимум три стороны:
 

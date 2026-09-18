@@ -201,6 +201,12 @@ flowchart TB
 - [Troubleshooting](troubleshooting.md) — с чего начать, когда что-то не работает
 - [CheatSheet: Git](cheatsheet/CHEATSHEET_GIT.md) — где живут изменения в Git
 - [CheatSheet: GitHub CLI](cheatsheet/CHEATSHEET_GH_CLI.md) — цикл сдачи работы через pull request
-- [OWASP — CI/CD Risks](OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски по этапам конвейера
+- [OWASP — CI/CD Risks](OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски по этапам конвейера и ход атаки по каждому из десяти рисков
+- [OWASP — Authentication](OWASPTOP10/Authentication.md) — ход атаки для трёх классов: подбор, недостаточная аутентификация, восстановление пароля
+- [OWASP — Authorization](OWASPTOP10/Authorization.md) — ход атаки для четырёх классов: предсказуемая сессия, недостаточная авторизация, таймаут, фиксация
+- [OWASP — Client-side Attacks](OWASPTOP10/client-side-attacks.md) — ход атаки для подмены содержимого, XSS, CSRF и расщепления HTTP-ответа
+- [OWASP — Command Execution](OWASPTOP10/command-execution.md) — ход атаки для семи классов внедрения и работы с памятью
+- [OWASP — Information Disclosure](OWASPTOP10/information-disclosure.md) — ход атаки для пяти классов раскрытия информации
+- [OWASP — Logical Attacks](OWASPTOP10/logical-attacks.md) — ход атаки для пяти классов логических атак
 - [Классификация инструментов](appsec_tt.md) — какой класс инструментов на каком этапе конвейера
 - [Лицензии ПО](licenses.md) — выбор лицензии для репозитория

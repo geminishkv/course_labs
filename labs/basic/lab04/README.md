@@ -223,6 +223,7 @@ flowchart TB
 - [Лаб. 10 — Итоговый Risk Analysis](https://course.geminishkv.tech/labs/basic/lab10/) — расширенный кейс с бизнес-контекстом
 - [Примеры кейсов](https://course.geminishkv.tech/materials/examples/exmpl/) — реальные инциденты ИБ
 - [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
+- [CVSS и реестр рисков](https://course.geminishkv.tech/materials/risk_scoring/) — как читать оценку уязвимости, шкалы вероятности и влияния, поля реестра
 - [OWASP — Logical Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/logical-attacks/) — атаки на бизнес-логику и оценка рисков
 - [Лаб. 05 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — следующий этап: контейнеризация приложений
 

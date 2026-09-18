@@ -307,6 +307,7 @@ $ getfacl nmapres.txt
 ## Смотри также
 
 - [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
+- [CheatSheet: Linux — права и процессы](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_LINUX/) — как читать `ls -l`, специальные биты, ACL, состояния процессов и сигналы
 - [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
 - [Подготовка окружения](https://course.geminishkv.tech/materials/guides/vmbox_tutorial/) — если не настроена VM
 - [Лаб. 01 — Git](https://course.geminishkv.tech/labs/basic/lab01/) — репозиторий и отчёт, в которые складывается результат

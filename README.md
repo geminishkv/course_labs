@@ -391,10 +391,12 @@ flowchart TB
 │   │   ├── lectures/fintech_ru.md     # Лекция Fintech по-русски
 │   │   ├── examples/                  # 5 кейсов ИБ
 │   │   ├── OWASPTOP10/               # 7 OWASP материалов
-│   │   ├── cheatsheet/               # 9 шпаргалок
+│   │   ├── cheatsheet/               # 11 шпаргалок: Git, Docker, CI/CD, Web, Linux, Nmap
 │   │   ├── ports.md                   # Справочник портов: сервис, риск, проверка, защита + схема разбора открытого порта
 │   │   ├── appsec_tt.md              # 29 классов инструментов
 │   │   ├── licenses.md               # 32 карточки лицензий
+│   │   ├── risk_scoring.md           # CVSS и реестр рисков: вектор, контекст, шкалы, поля реестра
+│   │   ├── findings_triage.md        # Разбор находок сканеров: три исхода, отчёты шести сканеров, файл триажа
 │   │   ├── diagrams_legend.md        # Как читать схемы курса: символы ГОСТ 19.701-90, развилки, цвета
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (56 карточек)

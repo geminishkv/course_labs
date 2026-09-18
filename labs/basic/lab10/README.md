@@ -225,6 +225,7 @@ flowchart TB
 - [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — DevSecOps пайплайн
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — атаки на цепочку поставок
 - [Risk Analysis — пример](https://course.geminishkv.tech/materials/examples/RA/) — пример аналитического отчёта
+- [CVSS и реестр рисков](https://course.geminishkv.tech/materials/risk_scoring/) — шкалы, уровень риска и пример записи реестра для матрицы из раздела 7.4
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов для раздела «средства»
 
 ***

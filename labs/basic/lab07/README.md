@@ -414,6 +414,7 @@ $ docker system prune -f
 
 ## Смотри также
 
+- [Разбор находок сканеров](https://course.geminishkv.tech/materials/findings_triage/) — как проверять находку, оформлять исключения и что считать закрытым
 - [Лаб. 06 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит конфигурации Docker
 - [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование (следующий этап)
 - [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация SAST/SCA в пайплайне

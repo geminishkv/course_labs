@@ -309,6 +309,7 @@ $ docker system prune -f
 
 ## Смотри также
 
+- [Разбор находок сканеров](https://course.geminishkv.tech/materials/findings_triage/) — как проверять находку, оформлять исключения и что считать закрытым
 - [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ (предыдущий этап)
 - [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
 - [OWASP Top 10 — Client-side Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/client-side-attacks/) — XSS и атаки на клиента

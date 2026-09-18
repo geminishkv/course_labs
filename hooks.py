@@ -61,6 +61,9 @@ _RULES = [
     (r"^/materials/APPENDIX/",        "0.6", "monthly"),
     (r"^/materials/troubleshooting/", "0.6", "monthly"),
     (r"^/materials/ports/",           "0.6", "monthly"),
+    (r"^/materials/risk_scoring/",    "0.7", "monthly"),
+    (r"^/materials/findings_triage/", "0.7", "monthly"),
+    (r"^/materials/diagrams_legend/", "0.6", "monthly"),
     # About / meta
     (r"^/about/",                     "0.5", "monthly"),
     (r"^/RELEASE_NOTES/",             "0.6", "monthly"),

@@ -248,6 +248,7 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 
 ## Смотри также
 
+- [Разбор находок сканеров](https://course.geminishkv.tech/materials/findings_triage/) — как проверять находку, оформлять исключения и что считать закрытым
 - [Лаб. 05 — Docker](https://course.geminishkv.tech/labs/basic/lab05/) — основы Docker и контекст безопасности
 - [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ кода и зависимостей
 - [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов

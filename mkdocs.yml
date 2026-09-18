@@ -216,10 +216,15 @@ nav:
               - "GitHub Actions Security": materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY.md
           - "Web":
               - "HTTP Security Headers": materials/cheatsheet/CHEATSHEET_HTTP_HEADERS.md
+          - "Linux и сети":
+              - "Linux: права и процессы": materials/cheatsheet/CHEATSHEET_LINUX.md
+              - "Nmap": materials/cheatsheet/CHEATSHEET_NMAP.md
       - "Справочники":
           - "Порты и протоколы": materials/ports.md
           - "Классификация инструментов": materials/appsec_tt.md
           - "Лицензии ПО": materials/licenses.md
+          - "CVSS и реестр рисков": materials/risk_scoring.md
+          - "Разбор находок сканеров": materials/findings_triage.md
           - "Как читать схемы курса": materials/diagrams_legend.md
           - "Приложение": materials/APPENDIX.md
       - "Угрозы: OWASP Top 10":

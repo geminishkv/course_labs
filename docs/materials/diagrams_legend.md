@@ -192,6 +192,10 @@ flowchart TB
 - [Лаб. 10 · Итоговая оценка рисков ИБ](../labs/basic/lab10.md) — от исходных данных к аналитической записке
 - [MultiSig](examples/Multisignature.md) — транзакции Bitcoin в модели UTXO
 - [Порты и протоколы](ports.md) — разбор открытого порта
+- [CVSS и реестр рисков](risk_scoring.md) — от находки сканера к записи в реестре
+- [Разбор находок сканеров](findings_triage.md) — путь одной находки
+- [CheatSheet: Linux](cheatsheet/CHEATSHEET_LINUX.md) — состояния процесса
+- [CheatSheet: Nmap](cheatsheet/CHEATSHEET_NMAP.md) — от вопроса к команде
 - [CheatSheet: Git](cheatsheet/CHEATSHEET_GIT.md) — где живут изменения в Git
 - [CheatSheet: GitHub CLI](cheatsheet/CHEATSHEET_GH_CLI.md) — цикл сдачи работы через pull request
 - [OWASP — CI/CD Risks](OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски по этапам конвейера

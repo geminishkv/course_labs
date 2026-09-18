@@ -5,9 +5,9 @@
 
 **1.** Какой синтаксис `.gitignore` исключает директорию `logs/`, но сохраняет файл `logs/app.log`?
 
-- A) `logs/` и затем `logs/app.log!`
+- A) `logs/` и затем `!logs/app.log`
 - B) `!logs/` и затем `logs/`
-- C) `logs/` и затем `!logs/app.log`
+- C) `logs/*` и затем `!logs/app.log`
 - D) Это невозможно реализовать в `.gitignore`
 
 ***
@@ -54,9 +54,9 @@ result = eval(request.args.get("formula"))
 
 ***
 
-**6.** OWASP Dependency-Check сканирует Java-проект и находит `CVE-2021-44228` (Log4Shell, CVSS 10.0) в транзитивной зависимости `log4j-core:2.14.1`. Прямая зависимость проекта — `spring-boot-starter-web:2.6.1`, которая тянет Log4j. Какой подход устранения наиболее корректен?
+**6.** OWASP Dependency-Check сканирует Java-проект и находит `CVE-2021-44228` (Log4Shell, CVSS 10.0) в транзитивной зависимости `log4j-core:2.14.1`. Прямая зависимость проекта — `spring-boot-starter-log4j2:2.6.1`, которая тянет Log4j (стандартный `spring-boot-starter-web` использует Logback и `log4j-core` не содержит). Какой подход устранения наиболее корректен?
 
-- A) Удалить `spring-boot-starter-web` — это единственный способ убрать транзитивную зависимость
+- A) Удалить `spring-boot-starter-log4j2` — это единственный способ убрать транзитивную зависимость
 - B) Добавить explicit dependency `log4j-core:2.17.1` в `pom.xml` с `<exclusion>` старой версии из Spring — Maven разрешит конфликт в пользу явной версии
 - C) Добавить `CVE-2021-44228` в suppression file — это false positive для Spring Boot
 - D) Обновить JDK до последней версии — Log4Shell не работает на новых JVM

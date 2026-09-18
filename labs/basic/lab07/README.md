@@ -13,7 +13,7 @@
 ***
 
 Салют :wave:,<br>
-Данная лабораторная работа посвящена изучению аудита безопасности исходного кода приложения на статический анализ, включая проверки зависимостей. Мы рассмотрим как работать с `Semgrep`, `Checkov`, `Dependency Check` и правилами для них. Аналогично познакомимся с `maven`. Мы разберем как проверить конфигурации безопасности и выявить их не корректность, как произвести чекап.
+Данная лабораторная работа посвящена статическому анализу безопасности исходного кода и проверке зависимостей. Мы рассмотрим, как работать с `Semgrep`, `Checkov`, `Dependency-Check` и правилами для них, познакомимся с `maven` и разберём, как находить небезопасные конфигурации.
 
 Для сдачи данной работы также будет требоваться ответить на дополнительные вопросы по описанным темам.
 
@@ -23,7 +23,7 @@
 
 ```bash
 lab07
-├── cheat_check_yuorself.sh
+├── cheat_check_yourself.sh
 ├── docker-compose.yml
 ├── sast
 │   ├── checkov-config.yaml
@@ -86,14 +86,14 @@ Software Composition Analysis — анализ сторонних библиот
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Checkov</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">IaC</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">IaC-сканер: Dockerfile, docker-compose, Terraform, K8s YAML. Проверяет конфигурации на мисконфигурации.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">OWASP DC</span><div class="lab-card-tags"><span class="lab-tag">SCA</span><span class="lab-tag">CVE</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Анализ зависимостей: Maven (pom.xml), JAR, Python. Сопоставляет версии с NVD, GitHub Advisories.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Gitleaks</span><div class="lab-card-tags"><span class="lab-tag">Secret Detection</span><span class="lab-tag">regex</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Сканирует git-историю на секреты: AWS keys, tokens, passwords. Regex-паттерны, pre-commit hook.</span></div>
-<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TruffleHog</span><div class="lab-card-tags"><span class="lab-tag">Secret Detection</span><span class="lab-tag">entropy</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Поиск по энтропии строк + regex. Находит секреты, которые regex пропускает. Верификация найденного.</span></div>
+<div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TruffleHog</span><div class="lab-card-tags"><span class="lab-tag">Secret Detection</span><span class="lab-tag">entropy</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Детекторы под форматы ключей конкретных сервисов и проверка найденного ключа запросом к API. Слабые пароли без узнаваемого формата не находит.</span></div>
 </div>
 
 ***
 
 ## Задание
 
-- [ ] 1. Разверните и подготовьте окружение для уязвимого приложения
+- [ ] 1. Разверните и подготовьте окружение для уязвимого приложения. Semgrep, Checkov, Dependency-Check и Gitleaks ставятся по гайду [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/)
 
 ```bash
 $ python3 -m venv venv
@@ -107,7 +107,7 @@ $ pip install -r vulnerable-app/requirements.txt
 $ docker compose -f docker-compose.yml up -d --build # http://localhost:8080
 ```
 
-- [ ] 3. Запустите SAST Semgrep и проанализируйте результаты. Для каждой сработки опишите в отчёте:
+- [ ] 3. Запустите SAST Semgrep из корня `lab07` и проанализируйте результаты. Пути в `semgrep-rules.yml` заданы от корня лабы: если указать целью `vulnerable-app/`, Semgrep не отсканирует ни одного файла. Для каждой сработки опишите в отчёте:
 
     - Rule ID и severity (ERROR / WARNING / INFO)
     - Файл и строка, где сработало правило
@@ -119,19 +119,20 @@ $ docker compose -f docker-compose.yml up -d --build # http://localhost:8080
 $ semgrep --config sast/semgrep-rules.yml \
   --json \
   --output sast/semgrep-report.json \
-  vulnerable-app/
+  .
 ```
 
-- [ ] 4. Запустите SAST Checkov по Dockerfile и compose. Для каждой сработки опишите: Check ID (CKV_DOCKER_*), что проверяет, PASSED/FAILED/UNKNOWN, и как исправить
+- [ ] 4. Запустите SAST Checkov по Dockerfile. Для каждой сработки опишите: Check ID (CKV_DOCKER_*), что проверяет, PASSED/FAILED/UNKNOWN, и как исправить. `docker-compose.yml` Checkov не разбирает: проверьте его вручную по чек-листу из лабы 06
 
 ```bash
 $ checkov \
   --framework dockerfile \
-  --file vulnerable-app/Dockerfile docker-compose.yml \
+  --file vulnerable-app/Dockerfile \
   --output json \
-  --output-file-path sast/checkov-report.json \
-  --soft-fail
+  --soft-fail > sast/checkov-report.json
 ```
+
+> Вывод перенаправляется в файл: `--output-file-path` принимает каталог и создал бы папку `checkov-report.json/`, которую не прочитает `generate_unified_report.sh`. Те же проверки с обязательным набором запускаются через `checkov --config-file sast/checkov-config.yaml`.
 
 - [ ] 5. Установите Maven и JDK для SCA-сканирования (если не установлены):
 
@@ -151,6 +152,8 @@ $ java --version
 ```
 
 - [ ] 6. Подготовка зависимостей Java и Maven‑скан для проведения SCA. Отчеты будут в директории SCA. Будет ошибка, которую надо поправить, чтобы уязвимости определялись или добавить дополнительные уязвимости для их вывода в отчете
+
+> Без ключа NVD API первое обновление базы идёт часами. Ключ бесплатный: [nvd.nist.gov/developers/request-an-api-key](https://nvd.nist.gov/developers/request-an-api-key). Передайте его через переменную окружения, не сохраняя в файлах и истории shell: `read -rs NVD_API_KEY && export NVD_API_KEY`.
 
 ```bash
 $ bash sca/dependency-check.sh --update       # обновление базы NVD API
@@ -218,7 +221,7 @@ $ semgrep --config sast/custom-rules.yml vulnerable-app/
 - [ ] 15. Проверьте себя по найденным сработкам анализаторов
 
 ```bash
-$ bash cheat_check_yuorself.sh
+$ bash cheat_check_yourself.sh
 ```
 
 - [ ] 16. Делайте все коммиты на соответствующих шагах, далее заливайте изменения в удалённый репозиторий
@@ -232,7 +235,7 @@ $ bash cheat_check_yuorself.sh
 ### Инструменты Secret Detection
 
 - **Gitleaks** — сканирует git-историю по regex-паттернам: AWS keys, GitHub tokens, passwords, private keys
-- **TruffleHog** — поиск по entropy (высокая энтропия строки = вероятный секрет) + regex-паттерны
+- **TruffleHog** v3 — сотни детекторов под форматы ключей конкретных сервисов и проверка найденного ключа запросом к API сервиса (verification); поиск по энтропии был в старой версии 2
 - **detect-secrets** — генерирует baseline: отслеживает новые секреты между коммитами, позволяет вести whitelist для false positives
 - **Pre-commit hook** — блокирует коммит при обнаружении секрета до попадания в историю
 
@@ -246,8 +249,12 @@ $ bash cheat_check_yuorself.sh
 # установка (macOS)
 $ brew install gitleaks
 
-# установка (Linux)
-$ curl -sSfL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_linux_x64 -o /usr/local/bin/gitleaks && chmod +x /usr/local/bin/gitleaks
+# установка (Linux): архив релиза и проверка контрольной суммы
+$ GITLEAKS_VERSION=8.30.1
+$ curl -sSfLO "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+$ curl -sSfLO "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+$ sha256sum --check --ignore-missing "gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+$ tar -xzf "gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" gitleaks && sudo install -m 0755 gitleaks /usr/local/bin/gitleaks
 
 # сканирование текущего репозитория (вся git-история)
 $ gitleaks detect -v
@@ -256,17 +263,23 @@ $ gitleaks detect -v
 $ gitleaks detect --source . --report-path gitleaks-report.json --report-format json
 ```
 
-- [ ] 18. Изучите `vulnerable-app/app.py` и `vulnerable-app/config.yaml` — найдите в них захардкоженные секреты вручную. Сопоставьте с тем, что нашёл `gitleaks`
+- [ ] 18. Изучите `vulnerable-app/app.py` и `vulnerable-app/config.yaml` — найдите в них захардкоженные секреты вручную. Сопоставьте с тем, что нашёл `gitleaks`. Сканер может не найти ни одного: слабые пароли вроде `SuperSecret123` не проходят порог энтропии его правил. Объясните, почему это опасно
 
 - [ ] 19. Установите `trufflehog` и запустите сканирование. Сравните результаты с `gitleaks` — какой инструмент нашёл больше? Почему?
 
 ```bash
-# установка
-$ pip install trufflehog
+# установка: TruffleHog v3 (Go). Пакет trufflehog из pip — старая версия 2 с другим CLI
+$ brew install trufflehog                                              # macOS
+$ docker run --rm -v "$PWD:/pwd" trufflesecurity/trufflehog:latest git file:///pwd --no-verification   # Linux, через Docker
 
-# сканирование git-репозитория
+# сканирование git-репозитория: без проверки ключей, чтобы увидеть все совпадения
+$ trufflehog git file://. --no-verification
+
+# только живые ключи, подтверждённые запросом к API сервиса
 $ trufflehog git file://. --only-verified
 ```
+
+> Учебные секреты лабы не проходят проверку у реальных сервисов, поэтому с `--only-verified` вывод будет пустым.
 
 - [ ] 20. Настройте pre-commit hook для блокировки коммитов с секретами
 
@@ -278,7 +291,7 @@ $ pip install pre-commit
 $ cat > .pre-commit-config.yaml << 'EOF'
 repos:
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.18.0
+    rev: v8.30.1
     hooks:
       - id: gitleaks
 EOF
@@ -286,8 +299,9 @@ EOF
 # установка хуков
 $ pre-commit install
 
-# проверка: попробуйте закоммитить файл с секретом
-$ echo 'API_KEY = "AKIAIOSFODNN7EXAMPLE"' > test_secret.py
+# проверка: попробуйте закоммитить файл с секретом. Пример ключа AWS из документации
+# (AKIAIOSFODNN7EXAMPLE) gitleaks намеренно пропускает, поэтому берём токен со случайным значением
+$ echo 'API_TOKEN = "f3a9c8e1b7d24a6f9e0c5b1d8a7e2f4c"' > test_secret.py
 $ git add test_secret.py
 $ git commit -m "test: should be blocked"
 # ожидается: gitleaks заблокирует коммит
@@ -296,7 +310,7 @@ $ rm test_secret.py
 
 - [ ] 21. Опишите в отчёте:
     - Какие секреты были найдены каждым инструментом
-    - Разница в подходах: regex (gitleaks) vs entropy (trufflehog)
+    - Разница в подходах: regex с порогом энтропии (gitleaks) против детекторов с проверкой ключа через API сервиса (trufflehog)
     - Как pre-commit hook предотвращает попадание секретов в историю
     - Что делать, если секрет уже попал в публичный репозиторий (порядок действий)
 
@@ -323,6 +337,7 @@ $ docker system prune -f
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — зачем SCA: атаки через зависимости
 - [OWASP Top 10 — Command Execution](https://course.geminishkv.tech/materials/OWASPTOP10/command-execution/) — класс уязвимостей, который ловит SAST
+- [OWASP — Information Disclosure](https://course.geminishkv.tech/materials/OWASPTOP10/information-disclosure/) — утечки, которые выявляет статический анализ
 
 ***
 

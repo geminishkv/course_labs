@@ -20,12 +20,12 @@
 - [ ] 1.2. Скачайте установщик для вашей ОС:
     - **Windows:** `VirtualBox-x.x.x-Win.exe`
     - **macOS (Intel):** `VirtualBox-x.x.x-macOS-amd64.dmg`
-    - **macOS (Apple Silicon):** `VirtualBox-x.x.x-macOS-arm64.dmg` (требуется VirtualBox 7.1+)
+    - **macOS (Apple Silicon):** `VirtualBox-x.x.x-macOS-arm64.dmg` (требуется VirtualBox 7.1+; гостевая ОС тоже нужна в сборке arm64, x86-образы не запустятся)
     - **Linux:** пакет `.deb` или `.rpm` для вашего дистрибутива
 - [ ] 1.3. Установите VirtualBox, следуя инструкциям установщика
 - [ ] 1.4. Скачайте **Extension Pack** с той же страницы и установите его через `VirtualBox → Настройки → Плагины`
 
-> Extension Pack добавляет поддержку USB 3.0, RDP и PXE boot — полезно для лабораторных с сетевым сканированием.
+> Extension Pack добавляет USB 2.0/3.0, шифрование дисков и доступ по RDP. Для лабораторных курса он не обязателен. Лицензия PUEL разрешает личное и учебное использование, в компании нужна платная лицензия Oracle.
 
 ***
 
@@ -97,7 +97,7 @@ Docker в WSL2 работает штатно (см. [Основы Docker](https:
     - Включить `EFI` (для Ubuntu 24.04)
 - [ ] 4.2. **Система → Процессор:**
     - Включить `PAE/NX`
-    - Включить `VT-x/AMD-V` (вложенная виртуализация — нужна для Docker)
+    - Вложенная виртуализация (`Nested VT-x/AMD-V`) для Docker внутри VM не нужна: контейнеры используют ядро гостевой ОС. Включайте её, только если внутри VM будете запускать другие гипервизоры
 - [ ] 4.3. **Дисплей:**
     - Видеопамять: `128 MB`
     - Графический контроллер: `VMSVGA`
@@ -137,9 +137,9 @@ $ sudo dnf update -y
 
 ```bash
 # Ubuntu / Debian
-$ sudo apt install -y git curl wget tree vim nano htop net-tools \
-    python3 python3-pip python3-venv \
-    docker.io docker-compose nmap
+$ sudo apt install -y git curl wget tree vim nano htop net-tools acl plocate \
+    python3 python3-pip python3-venv pipx \
+    docker.io docker-buildx docker-compose-v2 nmap
 
 # Fedora
 $ sudo dnf install -y git curl wget tree vim nano htop net-tools \
@@ -172,7 +172,9 @@ $ sudo dnf install gh -y
 ```bash
 $ sudo apt install zsh -y   # или sudo dnf install zsh
 $ chsh -s $(which zsh)
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ curl -fsSLo install-ohmyzsh.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+$ less install-ohmyzsh.sh    # скрипт с ветки master: прочитайте его перед запуском
+$ sh install-ohmyzsh.sh
 ```
 
 ***

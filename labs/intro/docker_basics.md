@@ -60,7 +60,7 @@ CMD ["python", "app.py"]
 
 ### Registry (реестр)
 
-Хранилище образов. По умолчанию — Docker Hub. Альтернативы: GitHub Container Registry (ghcr.io), Amazon ECR, Google GCR.
+Хранилище образов. По умолчанию — Docker Hub. Альтернативы: GitHub Container Registry (ghcr.io), Amazon ECR, Google Artifact Registry.
 
 ***
 
@@ -69,7 +69,7 @@ CMD ["python", "app.py"]
 ```bash
 # Ubuntu / Debian
 $ sudo apt update
-$ sudo apt install -y docker.io docker-compose
+$ sudo apt install -y docker.io docker-buildx docker-compose-v2    # compose v2: команда `docker compose`
 $ sudo systemctl enable --now docker
 $ sudo usermod -aG docker $USER
 $ newgrp docker
@@ -195,7 +195,7 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: secret     # только для учебного стенда: в проектах пароль приходит из secrets
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -231,7 +231,7 @@ $ docker compose ps
 
 - **Не запускайте от root** — используйте `USER` в Dockerfile
 - **Минимальные образы** — `alpine` или `*-slim` вместо полных
-- **Не храните секреты в образе** — используйте переменные окружения или secrets
+- **Не храните секреты в образе** — передавайте их при запуске через Docker secrets или менеджер секретов; переменные окружения видны в `docker inspect`
 - **Сканируйте образы** — Trivy, Docker Scout
 - **.dockerignore** — не копируйте `.git`, `.env`, `node_modules` в образ
 

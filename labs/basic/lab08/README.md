@@ -43,9 +43,10 @@ lab08
 ### DAST
 
 Dynamic Application Security Testing обеспечивает тестирование «чёрного ящика», когда сканер не знает исходного кода и взаимодействует с приложением как внешний клиент:
-    -  Отправляет `HTTP`‑запросы 
-    -  Анализирует ответы 
-    -  Пытается воспроизвести реальные атаки `XSS`, `SQLi`, уязвимости в заголовках, слабую авторизацию и т.д. 
+
+- отправляет `HTTP`‑запросы;
+- анализирует ответы;
+- пытается воспроизвести реальные атаки: `XSS`, `SQLi`, уязвимости в заголовках, слабую авторизацию и т. д.
 
 > В отличие от `SAST`/ `SCA`, здесь обязательно нужно живое, запущенное приложение (стенд), к которому есть сетевой доступ и разрешить доступ сканеру
 > Инструмент ведёт себя как автоматизированный атакующий: обходит страницы, подставляет полезные нагрузки payloads и фиксирует подозрительные ответы
@@ -63,7 +64,7 @@ Dynamic Application Security Testing обеспечивает тестирова
 
 ### Ремарка
 
-Мы используем `owasp/zap2docker-stable` и CLI‑скрипт `zap_scan.sh` для сканирования по URL `http://localhost:8080/` уязвимого приложения Flask. Скрипт запускает `baseline‑скан`, сохраняет отчёты и передаёт JSON на генерацию `ODT/XLSX`.
+Мы используем образ `ghcr.io/zaproxy/zaproxy:stable` (прежний `owasp/zap2docker-stable` снят с поддержки) и CLI‑скрипт `dast/zap_scan.sh` для сканирования по URL `http://localhost:8080/` уязвимого приложения Flask. Скрипт запускает `baseline‑скан`, сохраняет отчёты и передаёт JSON на генерацию `ODT/XLSX`.
 
 ***
 
@@ -143,13 +144,13 @@ http://localhost:8080/files/secret.txt
 # Reflected XSS — отправляем payload и проверяем, вернулся ли он в ответе
 $ curl -s "http://localhost:8080/echo?msg=<script>alert(1)</script>" | grep "<script>"
 
-# SQL Injection — UNION-based
+# SQL Injection — boolean-based: условие всегда истинно, возвращаются все строки
 $ curl -s "http://localhost:8080/search?username=admin'+OR+'1'='1"
 
 # Подделка cookie — доступ к админке
 $ curl -s -b "role=admin" http://localhost:8080/admin
 
-# Directory traversal attempt
+# Чтение файла, найденного через directory listing
 $ curl -s http://localhost:8080/files/secret.txt
 ```
 
@@ -171,13 +172,15 @@ $ brew install --cask zap
 
 ```bash
 $ export ZAP_IMAGE=ghcr.io/zaproxy/zaproxy:stable
-$ TARGET_URL="${TARGET_URL:-http://host.docker.internal:8080}"
+# скрипт запускает ZAP в сети хоста (--network host), поэтому на Linux цель — localhost
+$ export TARGET_URL=http://localhost:8080
+# macOS с Docker Desktop: export TARGET_URL=http://host.docker.internal:8080
 ```
 
-- [ ] 9. Запустите скрипт автоматического сканирования DAST `OWASP ZAP`
+- [ ] 9. Запустите из корня `lab08` скрипт автоматического сканирования DAST `OWASP ZAP`
 
 ```bash
-$ ./zap_scan.sh
+$ ./dast/zap_scan.sh
 ```
 
 - [ ] 10. Изучите сгенерированные отчёты в `dast/reports`. Для каждой находки ZAP опишите в отчёте:
@@ -245,6 +248,9 @@ $ docker system prune -f
 - [CheatSheet: HTTP Security Headers](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/) — заголовки безопасности
 - [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка OWASP ZAP
 - [Лаб. №3 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — разведка сервисов перед DAST
+- [OWASP — Authentication](https://course.geminishkv.tech/materials/OWASPTOP10/Authentication/) — что проверяет ZAP в первую очередь
+- [OWASP — Authorization](https://course.geminishkv.tech/materials/OWASPTOP10/Authorization/) — контроль доступа и IDOR
+- [Классификация AppSec-инструментов](https://course.geminishkv.tech/materials/appsec_tt/) — место DAST в AppSec toolchain
 
 ***
 

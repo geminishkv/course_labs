@@ -12,7 +12,7 @@
 
 ***
 
-## Переменные окружения Git
+## Конфигурация Git
 
 Git config работает на трёх уровнях:
 
@@ -26,18 +26,19 @@ $ git config --global user.email "email@example.com"
 $ git config --global core.editor "vim"                    # или nano
 $ git config --global alias.co checkout                    # git co вместо git checkout
 $ git config --global help.autocorrect prompt              # автозамена при опечатке
-$ git config --global core.autocrlf true                   # Windows: true, Linux/macOS: input
+$ git config --global core.autocrlf input                  # Linux/macOS; на Windows — true
 $ git config --global credential.helper cache              # кэш учётных данных (15 мин)
-$ git config --global commit.gpgsign true                  # автоподпись коммитов
 ```
+
+> Автоподпись коммитов (`commit.gpgsign true`) включается в разделе GnuPG, после создания ключа: без ключа каждый коммит будет падать с ошибкой подписи.
 
 Полезные команды:
 
 ```bash
-$ git config list                                          # показать все настройки
+$ git config --list --show-origin                          # все настройки и файл, откуда они взяты
 $ git config user.name                                     # показать конкретную
-$ git config edit --global                                 # открыть конфиг в редакторе
-$ git config unset --global user.email                     # удалить настройку
+$ git config --global --edit                               # открыть конфиг в редакторе
+$ git config --global --unset user.email                   # удалить настройку
 ```
 
 ***
@@ -151,7 +152,9 @@ $ zsh --version
 $ chsh -s $(which zsh)
 
 # Oh My Zsh (опционально)
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+$ curl -fsSLo install-ohmyzsh.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+$ less install-ohmyzsh.sh    # скрипт с ветки master: прочитайте его перед запуском
+$ sh install-ohmyzsh.sh
 ```
 
 ***
@@ -161,8 +164,8 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
 Нужен для работы с Gist и API.
 
 - [ ] Перейдите на [github.com/settings/tokens/new](https://github.com/settings/tokens/new)
-- [ ] Выберите scope: `gist`
-- [ ] Сгенерируйте и **сохраните токен** — он показывается только один раз
+- [ ] Выберите scope: `gist` и срок действия (`Expiration`): бессрочный токен не отзовётся сам, если утечёт
+- [ ] Сгенерируйте и **сохраните токен в менеджере паролей** — он показывается только один раз. Не кладите его в файлы репозитория и в историю shell
 
 ***
 

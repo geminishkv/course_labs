@@ -73,9 +73,9 @@ lab05
 
 ```bash
 $ docker container run -d \
-        -e NGINX_HOST xxx.xxx \
+        -e NGINX_HOST=example.local \
         -p 8080:80 \
-        -v "$PWD/html" usr/share/nginx/html \
+        -v "$PWD/html":/usr/share/nginx/html:ro \
         --memory=50m \
         --cpus="2.5" \
         nginx
@@ -105,7 +105,7 @@ $ docker container run -d \
 
 ### Дополнительно
 
-В случае, если возникает проблема с вызовом `docker buildx` для macos `silicon`, следует использовать вот [это](https://gist.github.com/Aeonitis/cbd9f8b61eaec5a8a024c0a42f415ca3) описание из gistup для фикса `samelink`.
+В случае, если возникает проблема с вызовом `docker buildx` для macos `silicon`, следует использовать вот [это](https://gist.github.com/Aeonitis/cbd9f8b61eaec5a8a024c0a42f415ca3) описание: плагин `buildx` подключается через symlink в `~/.docker/cli-plugins`.
 
 ***
 
@@ -114,18 +114,19 @@ $ docker container run -d \
 - [ ] 1. Поставьте `Docker` и `buildkit`
 
 ```bash
-# Ubuntu / Debian
-$ sudo apt update && sudo apt install -y docker.io docker-compose
+# Ubuntu 22.04 / 24.04: движок, плагины buildx и compose v2 (команда `docker compose`)
+$ sudo apt update && sudo apt install -y docker.io docker-buildx docker-compose-v2
 $ sudo systemctl enable --now docker
+# группа docker равна правам root на хосте: добавляйте в неё только себя на учебной VM
 $ sudo usermod -aG docker $USER && newgrp docker
 
-# Fedora
-$ sudo dnf install -y docker docker-compose
-$ sudo systemctl enable --now docker
-$ sudo usermod -aG docker $USER
+# Debian, Fedora и другие: Docker Engine по официальной инструкции
+# https://docs.docker.com/engine/install/
 
-# macOS
-$ brew install docker buildkit
+# macOS: одного CLI мало, нужен движок (Docker Desktop или Colima)
+$ brew install --cask docker
+# или
+$ brew install docker docker-buildx docker-compose colima && colima start
 
 # Проверка
 $ docker --version
@@ -169,13 +170,14 @@ venv
 *.md
 ```
 
-Соберите образ **до** и **после** добавления `.dockerignore`, сравните размеры:
+Соберите образ **до** создания `.dockerignore` и **после**, сравните размер контекста сборки и размер образа:
 
 ```bash
+$ docker buildx build --progress=plain -t hello-appsec-world . 2>&1 | grep "transferring context"
 $ docker images | grep hello-appsec-world
 ```
 
-Опишите в отчёте: какие файлы попадали в образ без `.dockerignore` и почему это опасно.
+Текущий `Dockerfile` копирует только нужные файлы, поэтому образ почти не изменится, а контекст уменьшится: `image.tar` и `.git` перестанут уходить демону при каждой сборке. Опишите в отчёте, что попало бы в образ при `COPY . .` без `.dockerignore` и почему это опасно.
 
 - [ ] 5. Замените в `Dockerfile` скрипт на свой `python`-файл из прошлых лабораторных работ. Вложите свой файл в директорию `source/`. Проанализируйте и доработайте `Dockerfile` под ваш скрипт. Сделайте `commit`.
 
@@ -193,8 +195,9 @@ RUN pip install --upgrade pip && pip wheel --wheel-dir=/wheels -r requirements.t
 # Этап 2: запускаемый образ
 FROM python:3.11-slim
 WORKDIR /hello
-# Копируем файл с зависимостями
-COPY --from=builder /wheels /wheels # Копируем собранные wheel-пакеты
+# Копируем собранные wheel-пакеты (комментарий только на отдельной строке:
+# после инструкции Docker прочитает его как аргументы)
+COPY --from=builder /wheels /wheels
 COPY requirements.txt . 
 # Устанавливаем зависимости из wheel-пакетов
 RUN pip install --no-index --find-links=/wheels -r requirements.txt
@@ -213,6 +216,7 @@ CMD ["python", "hello.py"]
 $ docker buildx build -t hello-appsec-world .
 $ docker run hello-appsec-world
 $ docker save -o hello_your_project.tar hello-appsec-world
+$ sha256sum hello_your_project.tar image.tar
 
 $ docker load -i hello_your_project.tar
 $ docker run hello-appsec-world
@@ -228,7 +232,7 @@ flask==2.2.3
 requests==2.28.1
 ```
 
-- [ ] 8. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните `image` в виде .`tar` архива. Сделайте `commit`.
+- [ ] 8. Сделайте `commit`. Повторите сборку приложения по вашему `Dockerfile` для доработанного скрипта `python`. Сохраните образ в `.tar` архив. Сделайте `commit`.
 - [ ] 9. Проанализируйте слои и размер образа. Сравните single-stage и multi-stage build:
 
 ```bash
@@ -253,15 +257,15 @@ $ docker run --rm hello-appsec-world id
 - [ ] 11. Выведите на терминале и проанализируйте следующие команды консоли
 
 ```bash
-$ docker login
+$ docker login    # войдите по access token Docker Hub, не по паролю: он сохранится в ~/.docker/config.json
 $ docker tag hello-appsec-world yourusername/hello-appsec-world
 $ docker push yourusername/hello-appsec-world
 $ docker inspect yourusername/hello-appsec-world
 $ docker container create --name first hello-appsec-world # выпишите id контейнера
 
-$ docker image pull geminishkv/hello-appsec-world
+$ docker image pull geminishkvdev/hello-appsec-world
 $ docker inspect geminishkvdev/hello-appsec-world
-$ docker container create --name second hello-appsec-world
+$ docker container create --name second geminishkvdev/hello-appsec-world
 
 ```
 

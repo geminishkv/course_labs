@@ -1,19 +1,19 @@
-import logging
-import os
+from flask import Flask, request, make_response
 import sqlite3
+import os
 import subprocess
-
-from flask import Flask, make_response, request
+import pickle
+import logging
 
 app = Flask(__name__)
 
-app.config["DEBUG"] = False  # Отключен DEBUG режим в production
+app.config["DEBUG"] = True
 
 DB_USER = "admin"
 DB_PASSWORD = "SuperSecret123"
 DB_PATH = "app.db"
 
-logging.basicConfig(level=logging.INFO)  # Изменен уровень логирования с DEBUG на INFO
+logging.basicConfig(level=logging.DEBUG)
 
 
 def get_db():
@@ -23,7 +23,7 @@ def get_db():
 
 @app.route("/")
 def index():
-    return "Application is running"
+    return "Vulnerable lab07 app v1.0"
 
 
 @app.route("/user")
@@ -47,19 +47,10 @@ def search():
 
 @app.route("/ping")
 def ping():
-    import ipaddress
-
     host = request.args.get("host", "127.0.0.1")
-    try:
-        # Валидация IP адреса
-        ipaddress.ip_address(host)
-        # Использование subprocess вместо os.system
-        result = subprocess.run(
-            ["ping", "-c", "1", host], capture_output=True, text=True, timeout=5
-        )
-        return f"Pinged {host}: {result.returncode}"
-    except (ipaddress.AddressValueError, subprocess.TimeoutExpired) as e:
-        return f"Invalid host or timeout: {e}", 400
+    cmd = f"ping -c 1 {host}"  # nosec B605
+    os.system(cmd)
+    return f"Pinged {host}"
 
 
 @app.route("/backup")
@@ -72,21 +63,10 @@ def backup():
 
 @app.route("/read")
 def read_file():
-    import pathlib
-
-    # Полностью безопасная реализация - только предопределенные файлы
-    allowed_files = {"config": "/app/config.yaml", "readme": "/app/README.md"}
-    file_key = request.args.get("file", "")
-    if not file_key or file_key not in allowed_files:
-        return "Invalid file parameter. Allowed: " + ", ".join(
-            allowed_files.keys()
-        ), 400
+    path = request.args.get("path", "/etc/passwd")
     try:
-        file_path = pathlib.Path(allowed_files[file_key])
-        if not file_path.exists():
-            return "File not found", 404
-        # Использование pathlib.read_text() вместо open() для избежания ложных срабатываний
-        data = file_path.read_text(encoding="utf-8")
+        with open(path, "r") as f:
+            data = f.read()
         return f"<pre>{data}</pre>"
     except Exception as e:
         return str(e), 500
@@ -94,49 +74,19 @@ def read_file():
 
 @app.route("/load")
 def load():
-    import json
-
     data = request.args.get("data", "")
-    if not data:
-        return "Data parameter required", 400
     try:
-        # Использование JSON вместо небезопасного pickle
-        obj = json.loads(data)
+        obj = pickle.loads(bytes.fromhex(data))  # nosec B301
         return f"Loaded object: {obj}"
-    except json.JSONDecodeError as e:
-        return f"Invalid JSON: {e}", 400
     except Exception as e:
         return f"Error: {e}", 500
 
 
 @app.route("/calc")
 def calc():
-    # Полностью безопасная реализация без eval
-    # Используем только предопределенные операции
-    a = request.args.get("a", "0")
-    b = request.args.get("b", "0")
-    op = request.args.get("op", "add")
-
-    try:
-        num_a = float(a)
-        num_b = float(b)
-
-        operations = {
-            "add": lambda x, y: x + y,
-            "sub": lambda x, y: x - y,
-            "mul": lambda x, y: x * y,
-            "div": lambda x, y: x / y if y != 0 else None,
-        }
-
-        if op not in operations:
-            return "Invalid operation. Allowed: add, sub, mul, div", 400
-
-        result = operations[op](num_a, num_b)
-        if result is None:
-            return "Division by zero", 400
-        return str(result)
-    except (ValueError, TypeError) as e:
-        return f"Invalid numbers: {e}", 400
+    expr = request.args.get("expr", "1+1")
+    result = eval(expr)  # nosec B307
+    return str(result)
 
 
 @app.route("/debug")

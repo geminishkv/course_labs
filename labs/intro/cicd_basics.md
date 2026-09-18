@@ -129,10 +129,10 @@ jobs:
 
     steps:
       - name: Checkout code                 # шаг 1: клонировать репо
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python                 # шаг 2: настроить Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -142,6 +142,8 @@ jobs:
       - name: Run tests                      # шаг 4: запустить тесты
         run: pytest tests/
 ```
+
+> В учебных примерах actions указаны по тегу для читаемости. Тег можно переписать, поэтому в рабочих пайплайнах их закрепляют по SHA коммита с комментарием версии — см. [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) и Lab 09.
 
 ### Разбор структуры
 
@@ -206,7 +208,7 @@ jobs:
       NODE_ENV: production
     steps:
       - name: Use variable
-        run: echo "Python ${{ env.PYTHON_VERSION }}"
+        run: echo "Python $PYTHON_VERSION"      # переменная окружения, а не подстановка ${{ }} в run
         env:                               # для конкретного шага
           MY_VAR: value
 ```
@@ -220,13 +222,13 @@ steps:
   - name: Deploy
     run: ./deploy.sh
     env:
-      API_TOKEN: ${{ secrets.API_TOKEN }}  # никогда не логируется
+      API_TOKEN: ${{ secrets.API_TOKEN }}  # маскируется в логах
 ```
 
 !!! warning "Безопасность секретов"
-    - Секреты **не передаются** в workflow из форков (защита от кражи)
-    - Секреты **маскируются** в логах (но не полагайтесь только на это)
-    - Не используйте секреты в `if:` условиях — они могут утечь через имя шага
+    - Секреты **не передаются** в `pull_request` из форков (защита от кражи). Исключение — `pull_request_target` и `workflow_run`: они работают в контексте основного репозитория с секретами, и запускать в них код из форка опасно
+    - Секреты **маскируются** в логах, но производное значение (base64, часть строки) уже не маскируется
+    - Контекст `secrets` недоступен в `if:`: передайте секрет в `env` job и проверяйте переменную окружения
 
 ***
 
@@ -243,8 +245,8 @@ jobs:
         python-version: ["3.10", "3.11", "3.12"]
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - run: pytest tests/
@@ -264,7 +266,7 @@ steps:
     run: semgrep scan --json > report.json
 
   - name: Upload report
-    uses: actions/upload-artifact@v4
+    uses: actions/upload-artifact@v7
     with:
       name: sast-report
       path: report.json
@@ -286,28 +288,31 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read                             # токен только на чтение
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: pip install ruff && ruff check .
 
   sast:
     runs-on: ubuntu-latest
     needs: lint                              # запускается после lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: pip install semgrep && semgrep scan --config auto
 
   container-scan:
     runs-on: ubuntu-latest
     needs: lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: docker build -t myapp .
       - name: Trivy scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25  # v0.36.0; никогда не @master
         with:
           image-ref: myapp
           severity: HIGH,CRITICAL

@@ -180,7 +180,7 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
     <li><code>pip-audit</code> — проверяет Python-пакеты по базе OSV/PyPI Advisory</li>
     <li><code>trivy fs --scanners vuln .</code> — Trivy: универсальный сканер (Python, Node, Go, Java, Ruby)</li>
     <li><code>trivy image &lt;name&gt;:&lt;tag&gt;</code> — сканирование Docker-образа (ОС-пакеты + языковые зависимости)</li>
-    <li><code>dependency-check.sh -s . -o ./reports</code> — OWASP DC: маппинг CPE → NVD, HTML-отчёт</li>
+    <li><code>dependency-check -s . -o ./reports --nvdApiKey "$NVD_API_KEY"</code> — OWASP DC: маппинг CPE → NVD, HTML-отчёт</li>
     <li><code>npm audit</code> / <code>npm audit fix</code> — встроенный аудит Node.js</li>
     <li>В отчёте искать: <strong>CRITICAL/HIGH</strong> с публичным эксплойтом → приоритет на обновление</li>
   </ul>
@@ -225,7 +225,7 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
   <p style="font-size:0.72rem; color:#888; margin:0 0 0.4rem;">Секреты в git-истории — одна из топ причин утечек. Даже удалённый коммит остаётся в reflog</p>
     <li><code>gitleaks detect -v</code> — сканирует всю git-историю по regex-паттернам (AWS keys, tokens, passwords)</li>
     <li><code>gitleaks detect --source . --report-path report.json</code> — машиночитаемый отчёт для CI</li>
-    <li><code>trufflehog git file://.</code> — поиск по entropy (высокая энтропия = вероятный секрет)</li>
+    <li><code>trufflehog git file://.</code> — детекторы форматов ключей конкретных сервисов и проверка найденного ключа через API сервиса</li>
     <li><code>detect-secrets scan &gt; .secrets.baseline</code> — baseline: отслеживает новые секреты между коммитами</li>
     <li>Pre-commit hook: <code>gitleaks protect --staged</code> — блокирует коммит если найден секрет</li>
   </ul>

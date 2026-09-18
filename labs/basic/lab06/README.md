@@ -12,7 +12,7 @@
 ***
 
 Салют :wave:,<br>
-Данная лабораторная работа посвящена изучению аудита безопасности `Docker` при использовании `Docker Bench Security`. Мы рассмотрим как с ним работать. Мы разберем как проверить конфигурации безопасности и выявить их не корректность, как произвести чекап с `CIS Docker Benchmark v1.6.0`.
+Данная лабораторная работа посвящена изучению аудита безопасности `Docker` при использовании `Docker Bench Security`. Мы рассмотрим, как с ним работать: как проверить конфигурации безопасности, выявить их некорректность и провести проверку по `CIS Docker Benchmark v1.6.0`.
 
 Для сдачи данной работы также будет требоваться ответить на дополнительные вопросы по описанным темам.
 
@@ -78,26 +78,34 @@ lab06
 
 ## Задание
 
-- [ ] 1. Необходимо установить `Docker Engine` для Linux
+- [ ] 1. Установите `Docker Engine` с плагином compose, `Trivy` и образ `docker-bench-security`. Trivy нужен уже на шаге 4: без него `audit.sh` пропускает сканирование образов и каталог `json/` останется пустым
 
 ```bash
 $ sudo apt-get update
-$ sudo apt-get install -y docker.io
-$ sudo usermod -aG docker "$USER"
-
+$ sudo apt-get install -y docker.io docker-compose-v2
+$ sudo usermod -aG docker "$USER" && newgrp docker
 $ sudo systemctl start docker
 $ docker pull docker/docker-bench-security
+
+# Trivy из официального репозитория Aqua: пакет проверяется по подписи
+$ sudo apt-get install -y wget gnupg
+$ wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+$ echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee /etc/apt/sources.list.d/trivy.list
+$ sudo apt-get update && sudo apt-get install -y trivy
 ```
 
 - [ ] 2. Проверьте работу Docker и сделайте скрипт `audit.sh` исполняемым
 - [ ] 3. Разверните уязвимое приложение как отдельные стенды
 
 ```bash
-$ docker compose up -d # основной web, app, postgres
-$ docker-compose -f vulnerable-app.yml up -d # поверх для vulnerable-web, debug-shell
-    -f # file
-    up # создает и поднимает файлы из compose
-    -d # фоновый режим
+# основной стенд: web, app, postgres
+$ docker compose up -d
+
+# второй стенд отдельным проектом (-p): в обоих файлах есть сервис vulnerable-web,
+# и в одном проекте второй запуск пересоздал бы контейнер первого
+$ docker compose -p lab06-vuln -f vulnerable-app.yml up -d
+
+# -p имя проекта, -f файл compose, up создаёт и запускает сервисы, -d фоновый режим
 ```
 
 - [ ] 4. Запустите скрипт из `venv` и проанализируйте то, что вывело на терминале и что вывело при конвертировании
@@ -118,11 +126,12 @@ $ deactivate # или $ deactivate 2>/dev/null || true
 > - Предложите исправленные `.yaml`
 - [ ] 8. Сделайте анализ уязвимостей из сгенерированных файлов .odt, .xlsx и опишите их в отчете. Файлы конвертируются в эти директории
 
-```bash
-"├── json/          (Trivy JSON outputs)"
-"├── text/          (CIS audit text outputs)"
-"├── xlsx/          (Excel spreadsheets)"
-"└── odt/           (OpenDocument Text files)"
+```text
+audit_reports
+├── json/          (Trivy JSON outputs)
+├── text/          (CIS audit text outputs)
+├── xlsx/          (Excel spreadsheets)
+└── odt/           (OpenDocument Text files)
 ```
 
 - [ ] 9. Подготовьте отчет `gist`.
@@ -130,7 +139,8 @@ $ deactivate # или $ deactivate 2>/dev/null || true
 
 ```bash
 $ rm -rf venv
-$ docker-compose -f vulnerable-app.yml down
+$ docker compose -p lab06-vuln -f vulnerable-app.yml down
+$ docker compose down
 $ docker system prune -f
 ```
  
@@ -140,15 +150,9 @@ $ docker system prune -f
 
 Помимо аудита конфигурации (CIS Benchmark), важно сканировать сами образы на известные CVE в OS-пакетах и языковых зависимостях.
 
-- [ ] 11. Установите Trivy и просканируйте образы из `docker-compose.yml`
+- [ ] 11. Просканируйте образы из `docker-compose.yml` через Trivy (установлен на шаге 1; на macOS: `brew install trivy`)
 
 ```bash
-# установка (macOS)
-$ brew install aquasecurity/trivy/trivy
-
-# установка (Linux)
-$ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
-
 # сканирование образа из compose
 $ trivy image --severity HIGH,CRITICAL <image_name>:<tag>
 
@@ -179,6 +183,8 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 - [Лаб. №7 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — статический анализ кода и зависимостей
 - [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов
 - [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка Trivy, Hadolint, Docker Bench
+- [Лаб. №9 — DevSecOps CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — интеграция Trivy в пайплайн
+- [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — справочник по командам Docker
 
 ***
 

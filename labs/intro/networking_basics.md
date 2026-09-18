@@ -61,7 +61,7 @@
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">3. Network</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Internet</span>
   </div>
-  <span class="lab-tag">IP</span><span class="lab-tag">ICMP</span><span class="lab-tag">ARP</span>
+  <span class="lab-tag">IP</span><span class="lab-tag">ICMP</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Маршрутизация между сетями</p>
   </div>
 
@@ -70,7 +70,7 @@
     <span class="lab-card-num" style="font-size:0.9rem; width:auto;">2. Data Link</span>
     <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">TCP/IP: Network Access</span>
   </div>
-  <span class="lab-tag">Ethernet</span><span class="lab-tag">Wi-Fi</span><span class="lab-tag">MAC</span>
+  <span class="lab-tag">Ethernet</span><span class="lab-tag">Wi-Fi</span><span class="lab-tag">MAC</span><span class="lab-tag">ARP</span>
   <p style="font-size:0.75rem; margin:0.2rem 0 0; color:#555; line-height:1.5;">Передача в локальной сети</p>
   </div>
 

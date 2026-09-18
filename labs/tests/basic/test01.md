@@ -57,7 +57,7 @@
 
 ***
 
-**7.** В GitHub Actions workflow секрет передаётся в шаг через `env: TOKEN: $&#123;&#123; secrets.API_TOKEN &#125;&#125;`. Разработчик добавил шаг `run: echo $TOKEN` для отладки. Какой риск это создаёт?
+**7.** В GitHub Actions workflow секрет передаётся в шаг через `env: TOKEN: ${{ secrets.API_TOKEN }}`. Разработчик добавил шаг `run: echo $TOKEN` для отладки. Какой риск это создаёт?
 
 - A) Никакого — GitHub автоматически маскирует значения секретов в логах
 - B) Секрет будет виден только администраторам репозитория, что допустимо
@@ -66,11 +66,11 @@
 
 ***
 
-**8.** Trivy сканирует production-образ и находит `CVE-2024-21626` (runc container escape, CVSS 8.6) в базовом образе `ubuntu:22.04`. Образ используется в Kubernetes-кластере с `securityContext.runAsNonRoot: true`. Какой приоритет действий?
+**8.** Сканирование узлов Kubernetes-кластера (`trivy k8s`) находит `CVE-2024-21626` (runc container escape, CVSS 8.6): на worker-нодах стоит runc 1.1.11. Поды запускаются с `securityContext.runAsNonRoot: true`. Какой приоритет действий?
 
 - A) CVSS 8.6 высокий, но `runAsNonRoot` полностью нейтрализует уязвимость — можно отложить
-- B) Немедленно обновить базовый образ до пропатченной версии — container escape обходит userspace-ограничения, `runAsNonRoot` не защищает от уязвимости в runc
-- C) Заменить Ubuntu на Alpine — Alpine не подвержен CVE в runc
+- B) Немедленно обновить runc (вместе с containerd) на узлах до 1.1.12+ — уязвимость в среде исполнения хоста, а не в образе; container escape обходит userspace-ограничения, `runAsNonRoot` от неё не защищает
+- C) Заменить базовый образ приложений с Ubuntu на Alpine — Alpine не подвержен CVE в runc
 - D) Добавить `CVE-2024-21626` в `.trivyignore` — это false positive для контейнеров с non-root
 
 ***

@@ -87,6 +87,6 @@
 **10.** Пентестер обнаружил, что банковское приложение не отправляет заголовки `X-Frame-Options` и `Content-Security-Policy: frame-ancestors`. Он создал страницу с прозрачным `<iframe>` поверх кнопки «Перевести 10 000 ₽». Какой набор заголовков полностью закрывает этот вектор атаки?
 
 - A) `X-Frame-Options: SAMEORIGIN` — достаточно одного заголовка
-- B) `Content-Security-Policy: frame-ancestors 'self'` + `X-Frame-Options: DENY` — CSP для современных браузеров, X-Frame-Options как fallback для устаревших
+- B) `Content-Security-Policy: frame-ancestors 'none'` + `X-Frame-Options: DENY` — CSP для современных браузеров, X-Frame-Options как fallback для устаревших
 - C) `X-Content-Type-Options: nosniff` — предотвращает все виды frame-атак
 - D) `Strict-Transport-Security: max-age=31536000` — HSTS автоматически блокирует iframe

@@ -23,7 +23,7 @@ PS> winget install --id AquaSecurity.Trivy -e     # Trivy
 PS> winget install --id Gitleaks.Gitleaks -e      # Gitleaks
 PS> winget install --id hadolint.hadolint -e      # Hadolint
 PS> winget install --id ZAP.ZAP -e                # OWASP ZAP (GUI; для сканов из терминала удобнее Docker)
-PS> pip install checkov bandit pip-audit pre-commit   # Python 3.12+ с python.org
+PS> pip install checkov bandit pip-audit pre-commit   # Python 3.12+ с python.org (или pipx install ...)
 ```
 
 Docker Bench for Security проверяет хост Docker и запускается только в Linux (WSL2 или ВМ).
@@ -66,17 +66,13 @@ Docker Bench for Security проверяет хост Docker и запускае
 ### Установка
 
 ```bash
-# Semgrep
-$ pip install semgrep
-$ semgrep --version
-
-# Checkov
-$ pip install checkov
-$ checkov --version
-
-# Bandit
-$ pip install bandit
-$ bandit --version
+# Python-инструменты ставятся через pipx: на Ubuntu 23.04+ и macOS глобальный
+# `pip install` запрещён (ошибка externally-managed-environment)
+$ sudo apt install -y pipx && pipx ensurepath     # macOS: brew install pipx
+$ pipx install semgrep
+$ pipx install checkov
+$ pipx install bandit
+$ semgrep --version && checkov --version && bandit --version
 ```
 
 ### Проверка
@@ -117,27 +113,29 @@ $ bandit -r . -f json
 
 ```bash
 # OWASP Dependency-Check (требует Java 11+)
-$ sudo apt install -y default-jdk maven    # Ubuntu
-$ sudo dnf install -y java-11-openjdk maven  # Fedora
+$ sudo apt install -y default-jdk maven            # Ubuntu
+$ sudo dnf install -y java-latest-openjdk maven    # Fedora
 
 # Скачать DC
 $ DC_VERSION="11.1.1"
-$ wget "https://github.com/jeremylong/DependencyCheck/releases/download/v${DC_VERSION}/dependency-check-${DC_VERSION}-release.zip"
+$ wget "https://github.com/dependency-check/DependencyCheck/releases/download/v${DC_VERSION}/dependency-check-${DC_VERSION}-release.zip"
 $ unzip "dependency-check-${DC_VERSION}-release.zip"
 $ sudo mv dependency-check /opt/dependency-check
-$ echo 'export PATH=$PATH:/opt/dependency-check/bin' >> ~/.bashrc
-$ source ~/.bashrc
-$ dependency-check.sh --version
+# скрипты лаб вызывают команду `dependency-check`: делаем ссылку под этим именем
+$ sudo ln -s /opt/dependency-check/bin/dependency-check.sh /usr/local/bin/dependency-check
+$ dependency-check --version
 
 # pip-audit
-$ pip install pip-audit
+$ pipx install pip-audit
 $ pip-audit --version
 ```
 
 ### Проверка
 
 ```bash
-$ dependency-check.sh -s . -o ./reports --format HTML
+# без ключа NVD API первое обновление базы идёт часами; ключ бесплатный:
+# https://nvd.nist.gov/developers/request-an-api-key  (read -rs NVD_API_KEY && export NVD_API_KEY)
+$ dependency-check -s . -o ./reports --format HTML --nvdApiKey "$NVD_API_KEY"
 $ pip-audit
 ```
 
@@ -189,8 +187,16 @@ $ wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --de
 $ echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee /etc/apt/sources.list.d/trivy.list
 $ sudo apt update && sudo apt install trivy -y
 
-# Fedora
-$ sudo rpm -ivh https://github.com/aquasecurity/trivy/releases/latest/download/trivy_*_Linux-64bit.rpm
+# Fedora: официальный RPM-репозиторий Aqua с проверкой подписи
+$ cat << 'EOF' | sudo tee /etc/yum.repos.d/trivy.repo
+[trivy]
+name=Trivy repository
+baseurl=https://aquasecurity.github.io/trivy-repo/rpm/releases/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://aquasecurity.github.io/trivy-repo/rpm/public.key
+EOF
+$ sudo dnf install -y trivy
 
 # Docker Bench Security
 $ git clone https://github.com/docker/docker-bench-security.git
@@ -200,9 +206,10 @@ $ cd docker-bench-security && sudo sh docker-bench-security.sh
 # macOS
 $ brew install hadolint
 
-# Linux (бинарник)
-$ wget -O hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
-$ chmod +x hadolint && sudo mv hadolint /usr/local/bin/
+# Linux (бинарник закреплённой версии; с v2.13 имя файла в нижнем регистре)
+$ HADOLINT_VERSION=2.15.1
+$ wget -O hadolint "https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-linux-x86_64"
+$ sudo install -m 0755 hadolint /usr/local/bin/hadolint
 ```
 
 ### Проверка
@@ -245,7 +252,7 @@ $ docker run -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://target:
 $ docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t http://target:8080 -r report.html
 ```
 
-> В Docker-to-Docker используйте `host.docker.internal` вместо `localhost` для доступа к приложению на хосте.
+> Из контейнера ZAP приложение на хосте доступно как `host.docker.internal`, а не `localhost`. На Linux это имя появляется только с флагом `--add-host=host.docker.internal:host-gateway` в `docker run`.
 
 ***
 
@@ -280,14 +287,15 @@ $ docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t http://target
 # macOS
 $ brew install gitleaks
 
-# Linux (бинарник)
-$ GITLEAKS_VERSION=$(curl -s https://api.github.com/repos/gitleaks/gitleaks/releases/latest | grep tag_name | cut -d '"' -f 4 | sed 's/v//')
-$ wget "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
-$ tar -xzf "gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
-$ sudo mv gitleaks /usr/local/bin/
+# Linux: архив закреплённой версии и проверка контрольной суммы
+$ GITLEAKS_VERSION=8.30.1
+$ curl -sSfLO "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+$ curl -sSfLO "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+$ sha256sum --check --ignore-missing "gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+$ tar -xzf "gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" gitleaks && sudo install -m 0755 gitleaks /usr/local/bin/gitleaks
 
 # pre-commit
-$ pip install pre-commit
+$ pipx install pre-commit
 $ pre-commit --version
 ```
 
@@ -298,7 +306,7 @@ $ pre-commit --version
 $ cat > .pre-commit-config.yaml << 'EOF'
 repos:
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.21.2
+    rev: v8.30.1
     hooks:
       - id: gitleaks
 EOF

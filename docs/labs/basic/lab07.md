@@ -21,13 +21,3 @@ keywords: "SAST, SCA, Semgrep, Checkov, OWASP Dependency Check, AppSec, стат
 {% include-markdown  "../../../labs/basic/lab07/README.md" %}
 
 </div>
-
-***
-
-## Смотри также
-
-- [Классификация AppSec-инструментов](../../materials/appsec_tt.md) — SAST, SCA, DAST и другие классы
-- [Лаб. №8 — DAST](lab08.md) — следующий шаг: динамическое тестирование
-- [Лаб. №9 — DevSecOps CI/CD](lab09.md) — интеграция Semgrep и Checkov в пайплайн
-- [OWASP — Command Execution](../../materials/OWASPTOP10/command-execution.md) — что именно ищет SAST
-- [OWASP — Information Disclosure](../../materials/OWASPTOP10/information-disclosure.md) — утечки, которые выявляет статический анализ

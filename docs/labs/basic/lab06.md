@@ -20,12 +20,3 @@ keywords: "Docker, CIS Benchmark, аудит, безопасность, hardenin
 {% include-markdown  "../../../labs/basic/lab06/README.md" %}
 
 </div>
-
-***
-
-## Смотри также
-
-- [Лаб. №5 — Docker: контейнеризация](lab05.md) — базы Docker перед аудитом
-- [Лаб. №7 — SAST и SCA](lab07.md) — следующий шаг: статический анализ образов
-- [Лаб. №9 — DevSecOps CI/CD](lab09.md) — интеграция Trivy в пайплайн
-- [Docker Cheatsheet](../../materials/cheatsheet/CHEATSHEET_DOCKER.md) — справочник по командам Docker

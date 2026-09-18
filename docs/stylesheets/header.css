@@ -211,6 +211,52 @@
   outline: none;
 }
 
+/* Brand ring: a 1px border whose gradient travels around the pill. The logo
+   ring rotates a circle; a pill cannot be rotated, so the angle of a conic
+   gradient is animated instead and a mask keeps only the border. The initial
+   value is 360deg, not 0deg: a minifier turns 0deg into 0 and the browser then
+   drops the registration. Without @property support the border stays static. */
+
+@property --search-ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 360deg;
+}
+
+@keyframes search-ring-travel {
+  to { --search-ring-angle: 720deg; }
+}
+
+@media screen and (min-width: 60em) {
+  .md-search__form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--search-ring-angle),
+      var(--brand-red),
+      var(--brand-gold),
+      var(--brand-red) 50%,
+      var(--brand-gold) 75%,
+      var(--brand-red)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0.85;
+    pointer-events: none;
+    animation: search-ring-travel 6s linear infinite;
+  }
+
+  /* the opened search is a white panel with its own shape: no ring there */
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form::before {
+    display: none;
+  }
+}
+
 /* keyboard hint: Material focuses the field on "/" */
 .md-search__form::after {
   content: "/";
@@ -415,7 +461,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .logo-glow::before,
-  .logo-glow__blur {
+  .logo-glow__blur,
+  .md-search__form::before {
     animation: none;
   }
 

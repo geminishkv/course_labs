@@ -89,6 +89,65 @@ Quality gate — условие, при невыполнении которог�
 
 В данной работе `app/` содержит намеренно уязвимое Flask-приложение из лаб 7–8. Задача пайплайна — автоматически найти те же уязвимости, что вы ранее находили вручную, и заблокировать или зафиксировать их до попадания в production.
 
+### Схема работы
+
+Схема показывает граф jobs конвейера, который нужно написать, и то, как включённые пороги влияют на результат.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Граф jobs конвейера лабораторной 09
+    accDescr: Jobs sast и sca идут параллельно, build-and-scan ждёт оба, dast ждёт сборку, а report собирает отчёты всегда, даже если предыдущие jobs упали; включённые пороги Trivy и ZAP делают конвейер красным при критичных находках.
+
+    push_event([Push или pull request])
+
+    subgraph static_stage ["Параллельно: статические проверки"]
+        job_sast[["sast:<br/>Semgrep, Checkov"]]
+        job_sca[["sca:<br/>Dependency-Check"]]
+    end
+
+    static_join((" "))
+    job_build[["build-and-scan:<br/>образ и Trivy"]]
+    job_dast[["dast:<br/>стенд и OWASP ZAP"]]
+    job_report[["report: сводный отчёт,<br/>if: always()"]]
+    unified_artifact[/"Артефакт<br/>unified-report"/]
+    gate_on{"Сработал порог<br/>Trivy или ZAP?"}
+    gate_fork((" "))
+    pipeline_red(["Конвейер красный:<br/>слияние остановлено"])
+    pipeline_green([Конвейер зелёный])
+
+    push_event --> static_stage
+    job_sast --- static_join
+    job_sca --- static_join
+    static_join --> job_build
+    job_build --> job_dast
+    job_dast --> job_report
+    job_report --> unified_artifact
+    unified_artifact --> gate_on
+    gate_on --- gate_fork
+    gate_fork -->|Да| pipeline_red
+    gate_fork -->|Нет| pipeline_green
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class static_join,gate_fork junction
+    class job_sast,job_sca,job_build,job_dast,job_report stage
+    class gate_on gate
+    class pipeline_green done
+```
+
+**Как читать схему:**
+
+- Порядок задают `needs`, а не порядок записи в файле: `sast` и `sca` независимы и идут параллельно, `build-and-scan` ждёт оба, `dast` ждёт сборку.
+- `report` помечен `if: always()`: сводный отчёт собирается, даже если какой-то job упал. Иначе именно при красном конвейере отчёта и не будет.
+- Ромб — шаги 16 и 17 задания. В режиме аудита конвейер зелёный при любых находках; с включёнными порогами критичная находка делает его красным и останавливает слияние.
+- Каждое требование к workflow закрывает один из рисков OWASP CI/CD — см. материал «OWASP — CI/CD Risks».
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

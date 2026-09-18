@@ -89,6 +89,90 @@ Software Composition Analysis — анализ сторонних библиот
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TruffleHog</span><div class="lab-card-tags"><span class="lab-tag">Secret Detection</span><span class="lab-tag">entropy</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Детекторы под форматы ключей конкретных сервисов и проверка найденного ключа запросом к API. Слабые пароли без узнаваемого формата не находит.</span></div>
 </div>
 
+### Схема работы
+
+Схема показывает, какие сканеры и на что смотрят и как разбирается каждая находка.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Сканеры и разбор находок в лабораторной 07
+    accDescr: Три группы сканеров смотрят на разное: SAST на код и Dockerfile, SCA на зависимости, сканеры секретов на историю репозитория; каждая находка проходит разбор — ложное срабатывание оформляется исключением с обоснованием, настоящая исправляется, и сканирование повторяется, пока находки SAST не устранены.
+
+    app_ready(["Уязвимое приложение<br/>развёрнуто"])
+
+    subgraph sast_stage ["SAST: код и конфигурация"]
+        direction TB
+        run_semgrep[["Semgrep: app.py"]]
+        run_checkov[["Checkov: Dockerfile"]]
+        run_semgrep --> run_checkov
+    end
+
+    subgraph sca_stage ["SCA: зависимости"]
+        direction TB
+        resolve_deps["Собрать зависимости<br/>Maven"]
+        run_depcheck[["OWASP<br/>Dependency-Check"]]
+        resolve_deps --> run_depcheck
+    end
+
+    subgraph secrets_stage ["Секреты: история репозитория"]
+        direction TB
+        run_gitleaks[["gitleaks"]]
+        run_trufflehog[["trufflehog"]]
+        add_hook["Поставить pre-commit<br/>хук с gitleaks"]
+        run_gitleaks --> run_trufflehog
+        run_trufflehog --> add_hook
+    end
+
+    triage_join((" "))
+    unified_report[/"Единый отчёт:<br/>html, csv, json"/]
+    is_real{"Находка<br/>настоящая?"}
+    real_fork((" "))
+    add_exception["Оформить исключение<br/>с обоснованием"]
+    fix_code["Исправить app.py"]
+    rescan_join((" "))
+    sast_clean{"Находки SAST<br/>устранены?"}
+    clean_fork((" "))
+    scanners_report[/"Сравнительная таблица<br/>и отчёт gist"/]
+    scanners_done([Лабораторная сдана])
+
+    app_ready --> sast_stage
+    sast_stage --> sca_stage
+    sca_stage --> secrets_stage
+    secrets_stage --- triage_join
+    triage_join --> unified_report
+    unified_report --> is_real
+    is_real --- real_fork
+    real_fork -->|Нет| add_exception
+    real_fork -->|Да| fix_code
+    add_exception --- rescan_join
+    fix_code --- rescan_join
+    rescan_join --> sast_clean
+    sast_clean --- clean_fork
+    clean_fork -->|Да| scanners_report
+    clean_fork -->|Нет| triage_join
+    scanners_report --> scanners_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class triage_join,real_fork,rescan_join,clean_fork junction
+    class run_semgrep,run_checkov,resolve_deps,run_depcheck,run_gitleaks,run_trufflehog,add_hook,add_exception,fix_code stage
+    class is_real,sast_clean gate
+    class scanners_done done
+```
+
+**Как читать схему:**
+
+- Три рамки — три разных объекта проверки: свой код и конфигурация, чужие зависимости, история репозитория. Ни один сканер не видит того, что видят два других.
+- Первый ромб — разбор находки. Ложное срабатывание не удаляют молча: его оформляют исключением с обоснованием, иначе оно вернётся при следующем прогоне.
+- Второй ромб замыкает цикл: после правок сканирование повторяется, пока находки SAST не устранены. Находки SCA при этом остаются — они лечатся обновлением зависимостей, а не правкой своего кода.
+- Хук pre-commit стоит последним в рамке секретов: он не ищет старые утечки, а не даёт появиться новым.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

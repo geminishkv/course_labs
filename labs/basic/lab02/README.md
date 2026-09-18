@@ -78,6 +78,77 @@ $ chgrp [-R] group ... file # изменение группы файла для 
 
 Базовые права при создании: **777** для каталогов и **666** для файлов, из них `umask` вычитает биты. При типичном `umask 022` новые каталоги получают **755**, а файлы **644**.
 
+### Как ядро проверяет права
+
+Схема показывает порядок, в котором Linux решает, разрешить ли процессу действие с файлом.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Как Linux решает, разрешить ли доступ к файлу
+    accDescr: Ядро сначала проверяет, не root ли процесс, затем выбирает ровно одну тройку бит — владельца, группы или остальных — и смотрит, установлен ли в ней нужный бит; выбранная тройка не суммируется с другими.
+
+    access_request(["Процесс обращается<br/>к файлу"])
+    is_root{"Процесс работает<br/>от root?"}
+    root_fork((" "))
+
+    subgraph choose_triad ["Выбор одной тройки бит"]
+        direction TB
+        is_owner{"UID процесса —<br/>владелец файла?"}
+        owner_fork((" "))
+        use_owner["Взять биты<br/>владельца: rwx------"]
+        in_group{"Процесс входит<br/>в группу файла?"}
+        group_fork((" "))
+        use_group["Взять биты<br/>группы: ---rwx---"]
+        use_other["Взять биты<br/>остальных: ------rwx"]
+        is_owner --- owner_fork
+        owner_fork -->|Да| use_owner
+        owner_fork -->|Нет| in_group
+        in_group --- group_fork
+        group_fork -->|Да| use_group
+        group_fork -->|Нет| use_other
+    end
+
+    triad_join((" "))
+    bit_set{"Нужный бит r, w или x<br/>в тройке установлен?"}
+    bit_fork((" "))
+    grant_join((" "))
+    access_granted([Доступ разрешён])
+    access_denied([Permission denied])
+
+    access_request --> is_root
+    is_root --- root_fork
+    root_fork -->|Да| grant_join
+    root_fork -->|Нет| choose_triad
+    use_owner --- triad_join
+    use_group --- triad_join
+    use_other --- triad_join
+    triad_join --> bit_set
+    bit_set --- bit_fork
+    bit_fork -->|Да| grant_join
+    grant_join --> access_granted
+    bit_fork -->|Нет| access_denied
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class root_fork,owner_fork,group_fork,triad_join,bit_fork,grant_join junction
+    class use_owner,use_group,use_other stage
+    class is_root,is_owner,in_group,bit_set gate
+    class access_granted done
+```
+
+**Как читать схему:**
+
+- Для root проверка прав не выполняется вовсе — поэтому процесс от root опасен независимо от того, как выставлены биты.
+- Ядро выбирает ровно одну тройку бит и на этом останавливается. Владелец файла с правами `---rwxrwx` доступа не получит, хотя группе и остальным он разрешён.
+- Порядок проверки — владелец, группа, остальные. Права не суммируются: применяется первая подошедшая тройка.
+- Специальные биты из следующего раздела эту схему не отменяют, а меняют то, от чьего имени работает процесс (SUID, SGID) или кто может удалять файлы в каталоге (sticky).
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ### Специальные биты
 
 - **SUID** (Set User ID, `chmod u+s`) — при запуске файла процесс получает права **владельца** файла, а не запустившего пользователя. Пример: `/usr/bin/passwd` имеет SUID, чтобы обычный пользователь мог менять свой пароль (запись в `/etc/shadow` требует root). **Риск:** если SUID-бинарник содержит уязвимость — это прямой путь к privilege escalation

@@ -66,6 +66,73 @@ Dynamic Application Security Testing обеспечивает тестирова
 
 Мы используем образ `ghcr.io/zaproxy/zaproxy:stable` (прежний `owasp/zap2docker-stable` снят с поддержки) и CLI‑скрипт `dast/zap_scan.sh` для сканирования по URL `http://localhost:8080/` уязвимого приложения Flask. Скрипт запускает `baseline‑скан`, сохраняет отчёты и передаёт JSON на генерацию `ODT/XLSX`.
 
+### Схема работы
+
+Схема показывает цикл лабораторной: ручное исследование, автоматическое сканирование, исправление и повторная проверка.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Цикл динамического тестирования в лабораторной 08
+    accDescr: Стенд сначала исследуется вручную, затем сканируется OWASP ZAP; ручные и автоматические находки сравниваются, проверяются заголовки безопасности, приложение исправляется, и сканирование повторяется, пока не исчезнут критичные находки.
+
+    stand_up(["Стенд запущен<br/>и отвечает"])
+
+    subgraph manual_stage ["Вручную: понять поведение"]
+        direction TB
+        explore_endpoints["Пройти эндпоинты<br/>из задания"]
+        record_behaviour[/"Что отвечает приложение<br/>и почему"/]
+        explore_endpoints --> record_behaviour
+    end
+
+    subgraph auto_stage ["Автоматически: OWASP ZAP"]
+        direction TB
+        scan_join((" "))
+        run_zap[["Скрипт сканирования<br/>zap-baseline"]]
+        zap_reports[/"Отчёты в dast/reports"/]
+        scan_join --> run_zap
+        run_zap --> zap_reports
+    end
+
+    compare_findings["Сравнить ручные<br/>и автоматические находки"]
+    check_headers["Проверить заголовки<br/>безопасности"]
+    fix_app["Исправить app.py,<br/>сделать коммит"]
+    critical_left{"Критичные находки<br/>остались?"}
+    critical_fork((" "))
+    dast_report[/"Отчёт gist"/]
+    dast_done([Лабораторная сдана])
+
+    stand_up --> manual_stage
+    manual_stage --> scan_join
+    zap_reports --> compare_findings
+    compare_findings --> check_headers
+    check_headers --> critical_left
+    critical_left --- critical_fork
+    critical_fork -->|Да| fix_app
+    critical_fork -->|Нет| dast_report
+    fix_app --> scan_join
+    dast_report --> dast_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class scan_join,critical_fork junction
+    class explore_endpoints,run_zap,compare_findings,check_headers,fix_app stage
+    class critical_left gate
+    class dast_done done
+```
+
+**Как читать схему:**
+
+- Ручной этап идёт первым намеренно: сначала вы понимаете, как приложение отвечает и почему, и только потом читаете отчёт сканера — иначе отчёт остаётся списком непонятных названий.
+- Сравнение ручных и автоматических находок — ядро работы: сканер видит не всё, что находит человек, и наоборот.
+- Ромб замыкает цикл: после правок в `app.py` сканирование запускается заново. Исправление считается сделанным, когда его подтвердил повторный прогон, а не когда изменён код.
+- Заголовки безопасности, которые проверяются перед ромбом, разобраны в шпаргалке HTTP Security Headers.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

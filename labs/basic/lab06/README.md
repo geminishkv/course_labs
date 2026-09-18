@@ -74,6 +74,75 @@ lab06
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">6. Docker Security Ops</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Сканирование образов, Content Trust, мониторинг, incident response</span></div>
 </div>
 
+### Схема работы
+
+Схема показывает два независимых взгляда на безопасность контейнеров, которые сравниваются в лабораторной.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Два взгляда на безопасность контейнеров в лабораторной 06
+    accDescr: Docker Bench проверяет конфигурацию хоста и демона по CIS Benchmark, Trivy ищет известные уязвимости в содержимом образов; по каждой уязвимости образа определяется, пришла ли она из базового образа или из зависимостей, и от этого зависит мера.
+
+    stands_up(["Уязвимые стенды<br/>запущены"])
+
+    subgraph config_stage ["Конфигурация: CIS Docker Benchmark"]
+        direction TB
+        run_bench[["audit.sh:<br/>Docker Bench Security"]]
+        bench_findings[/"Находки по разделам CIS"/]
+        assess_config["Описать причину, влияние<br/>и меру по каждой"]
+        run_bench --> bench_findings
+        bench_findings --> assess_config
+    end
+
+    subgraph content_stage ["Содержимое образов: Trivy"]
+        direction TB
+        scan_images[["trivy image<br/>для образов стенда"]]
+        trivy_findings[/"CVE по пакетам и слоям"/]
+        scan_images --> trivy_findings
+    end
+
+    from_base{"Уязвимость пришла<br/>из базового образа?"}
+    base_fork((" "))
+    change_base["Обновить или сменить<br/>базовый образ"]
+    update_dep["Обновить зависимость<br/>приложения"]
+    measure_join((" "))
+    compare_views["Сравнить подходы:<br/>когда нужен каждый"]
+    audit_report[/"Оценка рисков<br/>и отчёт gist"/]
+    audit_done([Лабораторная сдана])
+
+    stands_up --> config_stage
+    config_stage --> content_stage
+    content_stage --> from_base
+    from_base --- base_fork
+    base_fork -->|Да| change_base
+    base_fork -->|Нет| update_dep
+    change_base --- measure_join
+    update_dep --- measure_join
+    measure_join --> compare_views
+    compare_views --> audit_report
+    audit_report --> audit_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class base_fork,measure_join junction
+    class run_bench,assess_config,scan_images,change_base,update_dep,compare_views stage
+    class from_base gate
+    class audit_done done
+```
+
+**Как читать схему:**
+
+- Первая рамка проверяет, как Docker настроен и запущен: хост, демон, параметры контейнеров. Вторая — что лежит внутри образов. Одно не заменяет другое.
+- Ромб после Trivy определяет меру: уязвимость из базового образа лечится его обновлением или заменой, уязвимость из зависимости приложения — обновлением самой зависимости.
+- Сравнение подходов — отдельный шаг, а не вывод «для галочки»: от него зависит, какой инструмент ставить в конвейер и на каком этапе.
+- Находки обеих рамок идут в оценку рисков по схеме из Лаб. 04.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

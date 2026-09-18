@@ -87,6 +87,73 @@ lab10
 └── README.md
 ```
 
+### Схема работы
+
+Схема показывает, как из исходных данных получается аналитическая записка.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: От исходных данных к аналитической записке
+    accDescr: Описание сервиса и обрабатываемых персональных данных, известные уязвимости выбранной CMS и перечень инструментов AppSec дают список рисков; каждый риск оценивается и получает стратегию, результат сводится в матрицу рисков и аналитическую записку.
+
+    note_start(["Выбран сервис<br/>для анализа"])
+
+    subgraph inputs_stage ["Исходные данные"]
+        direction TB
+        service_data[/"Авторизация и ПДн:<br/>что собирается и зачем"/]
+        cms_cves[/"CVE выбранной CMS<br/>за последний год"/]
+        tool_list[/"Инструменты AppSec<br/>по этапам разработки"/]
+        service_data --> cms_cves
+        cms_cves --> tool_list
+    end
+
+    identify_risks["Выявить риски:<br/>вектор, актив, последствия"]
+    risk_join((" "))
+    rate_risk["Оценить вероятность<br/>и влияние"]
+    is_acceptable{"Уровень риска<br/>приемлем?"}
+    accept_fork((" "))
+    accept_risk["Принять риск:<br/>обоснование"]
+    treat_risk["Выбрать стратегию:<br/>снизить, передать,<br/>избежать"]
+    residual[/"Остаточный риск"/]
+    risk_matrix[/"Матрица рисков:<br/>риск, мера, эффективность"/]
+    write_note["Собрать записку:<br/>разделы 7.1–7.8"]
+    note_done(["Записка и отчёт<br/>gist сданы"])
+
+    note_start --> inputs_stage
+    inputs_stage --> identify_risks
+    identify_risks --- risk_join
+    risk_join --> rate_risk
+    rate_risk --> is_acceptable
+    is_acceptable --- accept_fork
+    accept_fork -->|Да| accept_risk
+    accept_fork -->|Нет| treat_risk
+    treat_risk --> residual
+    residual --> risk_join
+    accept_risk --> risk_matrix
+    risk_matrix --> write_note
+    write_note --> note_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class risk_join,accept_fork junction
+    class identify_risks,rate_risk,accept_risk,treat_risk,write_note stage
+    class is_acceptable gate
+    class note_done done
+```
+
+**Как читать схему:**
+
+- Рамка сверху — три источника рисков: что и зачем собирает сервис, какие уязвимости известны у выбранной платформы, какими инструментами проект будет проверяться.
+- Цикл в середине тот же, что в Лаб. 04: риск оценивается, и если он неприемлем, выбирается стратегия, а остаточный риск оценивается снова.
+- Принятие риска — тоже решение: у него есть обоснование, и оно попадает в раздел 7.6 записки.
+- Матрица рисков — центральный документ: остальные разделы записки либо готовят её, либо из неё следуют.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

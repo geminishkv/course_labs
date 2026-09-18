@@ -107,6 +107,78 @@ $ docker container run -d \
 
 В случае, если возникает проблема с вызовом `docker buildx` для macos `silicon`, следует использовать вот [это](https://gist.github.com/Aeonitis/cbd9f8b61eaec5a8a024c0a42f415ca3) описание: плагин `buildx` подключается через symlink в `~/.docker/cli-plugins`.
 
+### Схема работы
+
+Схема показывает путь лабораторной от Dockerfile до стенда в Docker Compose и место, где работа возвращается назад.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход лабораторной 05 от Dockerfile до Compose
+    accDescr: Dockerfile проверяется по чек-листу и дополняется файлом .dockerignore, образ собирается и разбирается по слоям, контейнер проверяется на запуск от root с возвратом к Dockerfile при необходимости, затем изучаются изоляция, лимиты и сеть, и стенд поднимается через Docker Compose.
+
+    docker_ready(["Docker и BuildKit<br/>установлены"])
+
+    subgraph image_stage ["Образ"]
+        direction TB
+        image_join((" "))
+        audit_dockerfile["Проверить Dockerfile<br/>по чек-листу"]
+        add_ignore["Создать .dockerignore"]
+        build_image[["docker build"]]
+        inspect_layers["Разобрать слои и размер:<br/>single- и multi-stage"]
+        image_join --> audit_dockerfile
+        audit_dockerfile --> add_ignore
+        add_ignore --> build_image
+        build_image --> inspect_layers
+    end
+
+    runs_as_root{"Контейнер работает<br/>от root?"}
+    root_fork((" "))
+    add_user["Добавить USER<br/>в Dockerfile"]
+
+    subgraph runtime_stage ["Контейнер"]
+        direction TB
+        check_isolation["Изучить изоляцию:<br/>namespaces изнутри"]
+        check_limits["Проверить лимиты:<br/>память через cgroups"]
+        check_network["Создать сеть, проверить<br/>связь контейнеров"]
+        check_isolation --> check_limits
+        check_limits --> check_network
+    end
+
+    run_compose[["docker compose up:<br/>стенд из двух сервисов"]]
+    docker_report[/"Коммиты по шагам<br/>и отчёт gist"/]
+    docker_done([Лабораторная сдана])
+
+    docker_ready --> image_join
+    inspect_layers --> runs_as_root
+    runs_as_root --- root_fork
+    root_fork -->|Нет| runtime_stage
+    root_fork -->|Да| add_user
+    add_user --> image_join
+    runtime_stage --> run_compose
+    run_compose --> docker_report
+    docker_report --> docker_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class image_join,root_fork junction
+    class audit_dockerfile,add_ignore,build_image,inspect_layers,add_user,check_isolation,check_limits,check_network,run_compose stage
+    class runs_as_root gate
+    class docker_done done
+```
+
+**Как читать схему:**
+
+- Первая рамка — образ: Dockerfile сначала читают по чек-листу, и только потом собирают. Разбор слоёв показывает, что именно попало внутрь.
+- Ромб проверяет один факт — от чьего имени работает процесс в контейнере. При ответе «Да» правится Dockerfile, и образ собирается заново: исправлять запущенный контейнер бессмысленно.
+- Вторая рамка — контейнер в работе: изоляция (namespaces), лимиты (cgroups) и сеть. Это те же механизмы, что описаны в материале выше, но увиденные изнутри.
+- Как писать Dockerfile — в руководстве «Dockerfile: как устроен и как его писать».
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

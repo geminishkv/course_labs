@@ -180,7 +180,16 @@ flowchart TB
 - [Введение в сети и TCP/IP](guides/networking_basics.md) — инкапсуляция по уровням TCP/IP, установка и закрытие TCP-соединения, разрешение доменного имени
 - [Основы Docker](guides/docker_basics.md) — виртуальные машины и контейнеры, слои образа, что происходит при docker run, жизненный цикл контейнера
 - [Dockerfile: как устроен и как его писать](guides/dockerfile_guide.md) — путь от Dockerfile до контейнера, остановка контейнера в двух формах CMD
+- [Лаб. 01 · Git: окружение и первый коммит](../labs/basic/lab01.md) — ход работы по веткам
+- [Лаб. 02 · Linux: права доступа и процессы](../labs/basic/lab02.md) — как ядро проверяет права
+- [Лаб. 03 · Nmap: сканирование сети и NSE](../labs/basic/lab03.md) — порядок сканирования и защита результатов
 - [Лаб. 04 · Анализ и снижение рисков ИБ](../labs/basic/lab04.md) — цепочка анализа риска
+- [Лаб. 05 · Docker: образы и контейнеры](../labs/basic/lab05.md) — от Dockerfile до стенда в Compose
+- [Лаб. 06 · Docker CIS Benchmark и Trivy](../labs/basic/lab06.md) — два взгляда на безопасность контейнеров
+- [Лаб. 07 · SAST, SCA и поиск секретов](../labs/basic/lab07.md) — сканеры и разбор находок
+- [Лаб. 08 · DAST: OWASP ZAP](../labs/basic/lab08.md) — цикл динамического тестирования
+- [Лаб. 09 · DevSecOps CI/CD на GitHub Actions](../labs/basic/lab09.md) — граф jobs конвейера
+- [Лаб. 10 · Итоговая оценка рисков ИБ](../labs/basic/lab10.md) — от исходных данных к аналитической записке
 - [MultiSig](examples/Multisignature.md) — транзакции Bitcoin в модели UTXO
 - [Порты и протоколы](ports.md) — разбор открытого порта
 - [CheatSheet: Git](cheatsheet/CHEATSHEET_GIT.md) — где живут изменения в Git

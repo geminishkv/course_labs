@@ -120,6 +120,76 @@ PORT     STATE SERVICE     REASON         VERSION
 3306/tcp open  mysql       syn-ack ttl 62 MySQL (unauthorized)
 ```
 
+### Схема работы
+
+Схема показывает порядок сканирования в лабораторной и то, что происходит с результатами.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход сканирования в лабораторной 03
+    accDescr: Сканирование начинается с проверки, что цель — собственный стенд, затем идут поиск активных хостов, сканирование портов, определение сервисов и запуск скриптов NSE; результаты сохраняются, закрываются правами доступа и исключаются из репозитория.
+
+    scan_start(["Нужно изучить<br/>сеть стенда"])
+    is_own_target{"Цель — ваш стенд или<br/>есть разрешение?"}
+    target_fork((" "))
+    stop_scan(["Сканирование<br/>не начинается"])
+
+    subgraph discover_stage ["Что есть в сети"]
+        direction TB
+        find_hosts["Найти активные хосты<br/>в своей подсети"]
+        scan_ports["Сканировать порты:<br/>какие открыты"]
+        find_hosts --> scan_ports
+    end
+
+    subgraph identify_stage ["Что за сервисы"]
+        direction TB
+        detect_versions["Определить сервисы,<br/>версии и ОС"]
+        run_nse["Запустить скрипты NSE"]
+        detect_versions --> run_nse
+    end
+
+    subgraph protect_stage ["Защита результатов"]
+        direction TB
+        save_results[/"nmapres.txt,<br/>XML и HTML-отчёт"/]
+        restrict_access["Закрыть файл правами:<br/>только владелец"]
+        ignore_results["Добавить результаты<br/>в .gitignore"]
+        save_results --> restrict_access
+        restrict_access --> ignore_results
+    end
+
+    scan_report[/"Отчёт gist:<br/>команды, флаги, выводы"/]
+    scan_done([Лабораторная сдана])
+
+    scan_start --> is_own_target
+    is_own_target --- target_fork
+    target_fork -->|Да| discover_stage
+    target_fork -->|Нет| stop_scan
+    discover_stage --> identify_stage
+    identify_stage --> protect_stage
+    protect_stage --> scan_report
+    scan_report --> scan_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class target_fork junction
+    class find_hosts,scan_ports,detect_versions,run_nse,restrict_access,ignore_results stage
+    class is_own_target gate
+    class scan_done done
+```
+
+**Как читать схему:**
+
+- Первый ромб — не формальность: сканируются только свой стенд и то, на что есть разрешение. При ответе «Нет» работа не начинается.
+- Две средние рамки отвечают на разные вопросы: сначала «что есть в сети и какие порты открыты», затем «что за сервисы за ними стоят». Определение версий без списка открытых портов — потеря времени.
+- Третья рамка — часть лабораторной, а не приложение к ней: файл с результатами описывает слабые места стенда, поэтому его закрывают правами (навык из Лаб. 02) и не кладут в репозиторий.
+- Что означает каждый найденный порт и как его проверить — в справочнике «Порты и протоколы».
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

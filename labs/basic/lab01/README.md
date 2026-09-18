@@ -48,6 +48,87 @@ Git — распределённая система контроля верси�
 
 Файл `typersteel.py` — эталон, к которому приходит ваш `hello.py` в шаге 7 tutorial: CLI на библиотеке `typer` с аргументом и опциями. Файл `hello.py` в каталоге — пример промежуточного состояния. Свой `hello.py` вы пишете с нуля: от простого «Hello World» до CLI с аргументами и опциями.
 
+### Схема работы
+
+Схема показывает, как в лабораторной чередуются ветки и что происходит в каждой из них.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Ход лабораторной 01 по веткам
+    accDescr: Работа начинается в ветке master с подписанного коммита, затем исправления делаются в ветке patch1 и попадают в master через pull request, после синхронизации то же повторяется с веткой patch2; неподписанный коммит возвращает к настройке GPG.
+
+    lab_start(["Ключи и Git настроены<br/>по руководству"])
+    start_join((" "))
+
+    subgraph master_stage ["Ветка master"]
+        direction TB
+        init_repo["Создать репозиторий:<br/>git init, gh repo create"]
+        first_commit["Подписанный коммит<br/>и push в master"]
+        is_verified{"На GitHub стоит<br/>Verified?"}
+        init_repo --> first_commit
+        first_commit --> is_verified
+    end
+
+    verified_fork((" "))
+    fix_signing["Вернуться к настройке<br/>GPG-ключа"]
+    hello_commits["hello.py: два варианта,<br/>коммит на каждый"]
+
+    subgraph patch1_stage ["Ветка patch1"]
+        direction TB
+        fix_code["Исправить код<br/>и опубликовать ветку"]
+        open_pr1[["gh pr create:<br/>patch1 в master"]]
+        add_comments["Добавить комментарии:<br/>PR обновится сам"]
+        merge_pr1[["Слить PR<br/>и удалить ветку"]]
+        fix_code --> open_pr1
+        open_pr1 --> add_comments
+        add_comments --> merge_pr1
+    end
+
+    sync_master["git pull в master,<br/>удалить patch1 локально"]
+
+    subgraph patch2_stage ["Ветка patch2"]
+        direction TB
+        restyle_code["Изменить code style,<br/>подписанный коммит"]
+        open_pr2[["gh pr create:<br/>patch2 в master"]]
+        restyle_code --> open_pr2
+    end
+
+    lab_report[/"README и отчёт gist"/]
+    lab_done([Лабораторная сдана])
+
+    lab_start --- start_join
+    start_join --> master_stage
+    is_verified --- verified_fork
+    verified_fork -->|Да| hello_commits
+    verified_fork -->|Нет| fix_signing
+    fix_signing --> start_join
+    hello_commits --> patch1_stage
+    patch1_stage --> sync_master
+    sync_master --> patch2_stage
+    patch2_stage --> lab_report
+    lab_report --> lab_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class verified_fork,start_join junction
+    class init_repo,first_commit,fix_signing,hello_commits,fix_code,open_pr1,add_comments,merge_pr1,sync_master,restyle_code,open_pr2 stage
+    class is_verified gate
+    class lab_done done
+```
+
+**Как читать схему:**
+
+- Рамки — ветки. В `master` работа только начинается; всё, что меняет уже опубликованный код, делается в отдельной ветке и возвращается через pull request.
+- Единственная развилка — проверка отметки Verified после первого же коммита. Если её нет, дальше идти нельзя: все следующие коммиты окажутся неподписанными.
+- Комментарии во второй половине ветки `patch1` добавляются в уже открытый pull request: он обновляется сам, новый создавать не нужно.
+- После слияния локальный `master` отстаёт от удалённого — отсюда обязательный `git pull` перед созданием `patch2`.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 ***
 
 ## Задание

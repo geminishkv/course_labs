@@ -351,7 +351,7 @@ $ docker compose down
 
 ## Смотри также
 
-- [Основы Docker](https://course.geminishkv.tech/labs/intro/docker_basics/) — введение в контейнеризацию перед этой лабой
+- [Основы Docker](https://course.geminishkv.tech/materials/guides/docker_basics/) — введение в контейнеризацию перед этой лабой
 - [Лаб. 06 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит безопасности Docker
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — шпаргалка по командам
 - [CheatSheet: Dockerfile Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) — безопасная сборка образов

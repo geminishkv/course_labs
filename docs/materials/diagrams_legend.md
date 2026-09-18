@@ -172,8 +172,8 @@ flowchart TB
 
 ## Где схемы в курсе
 
-- [Введение в CI/CD](../labs/intro/cicd_basics.md) — конвейер от push до релиза и порядок jobs в DevSecOps-пайплайне
-- [Введение в сети и TCP/IP](../labs/intro/networking_basics.md) — установка и закрытие TCP-соединения
-- [Основы Docker](../labs/intro/docker_basics.md) — виртуальные машины и контейнеры, слои образа, жизненный цикл контейнера
+- [Введение в CI/CD](guides/cicd_basics.md) — конвейер от push до релиза и порядок jobs в DevSecOps-пайплайне
+- [Введение в сети и TCP/IP](guides/networking_basics.md) — установка и закрытие TCP-соединения
+- [Основы Docker](guides/docker_basics.md) — виртуальные машины и контейнеры, слои образа, жизненный цикл контейнера
 - [Лаб. 04 · Анализ и снижение рисков ИБ](../labs/basic/lab04.md) — цепочка анализа риска
 - [MultiSig](examples/Multisignature.md) — транзакции Bitcoin в модели UTXO

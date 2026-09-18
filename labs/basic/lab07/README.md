@@ -93,7 +93,7 @@ Software Composition Analysis — анализ сторонних библиот
 
 ## Задание
 
-- [ ] 1. Разверните и подготовьте окружение для уязвимого приложения. Semgrep, Checkov, Dependency-Check и Gitleaks ставятся по гайду [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/)
+- [ ] 1. Разверните и подготовьте окружение для уязвимого приложения. Semgrep, Checkov, Dependency-Check и Gitleaks ставятся по гайду [Установка AppSec-инструментов](https://course.geminishkv.tech/materials/guides/appsec_tools_setup/)
 
 ```bash
 $ python3 -m venv venv
@@ -333,7 +333,7 @@ $ docker system prune -f
 - [Лаб. 06 — CIS Benchmark](https://course.geminishkv.tech/labs/basic/lab06/) — аудит конфигурации Docker
 - [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование (следующий этап)
 - [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация SAST/SCA в пайплайне
-- [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка Semgrep, Checkov, Gitleaks
+- [Установка AppSec-инструментов](https://course.geminishkv.tech/materials/guides/appsec_tools_setup/) — установка Semgrep, Checkov, Gitleaks
 - [AppSec Toolchain](https://course.geminishkv.tech/materials/appsec_tt/) — классификация инструментов
 - [Supply Chain Attacks](https://course.geminishkv.tech/materials/examples/supply_chain_attacks/) — зачем SCA: атаки через зависимости
 - [OWASP Top 10 — Command Execution](https://course.geminishkv.tech/materials/OWASPTOP10/command-execution/) — класс уязвимостей, который ловит SAST

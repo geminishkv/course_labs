@@ -246,7 +246,7 @@ $ docker system prune -f
 - [Лаб. 09 — CI/CD](https://course.geminishkv.tech/labs/basic/lab09/) — автоматизация DAST в пайплайне
 - [OWASP Top 10 — Client-side Attacks](https://course.geminishkv.tech/materials/OWASPTOP10/client-side-attacks/) — XSS и атаки на клиента
 - [CheatSheet: HTTP Security Headers](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/) — заголовки безопасности
-- [Установка AppSec-инструментов](https://course.geminishkv.tech/labs/intro/appsec_tools_setup/) — установка OWASP ZAP
+- [Установка AppSec-инструментов](https://course.geminishkv.tech/materials/guides/appsec_tools_setup/) — установка OWASP ZAP
 - [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — разведка сервисов перед DAST
 - [OWASP — Authentication](https://course.geminishkv.tech/materials/OWASPTOP10/Authentication/) — что проверяет ZAP в первую очередь
 - [OWASP — Authorization](https://course.geminishkv.tech/materials/OWASPTOP10/Authorization/) — контроль доступа и IDOR

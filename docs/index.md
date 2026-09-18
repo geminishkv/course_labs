@@ -19,7 +19,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <p class="hero-sub">Практический курс по прикладной безопасности приложений: от первого коммита до конвейера безопасности</p>
   <p class="hero-typewriter" id="typewriter-target"></p>
   <div class="hero-cta">
-  <a class="btn btn-primary" href="labs/intro/vmbox_tutorial/">Начать с Intro</a>
+  <a class="btn btn-primary" href="materials/guides/vmbox_tutorial/">Начать с Intro</a>
   <a class="btn btn-ghost" href="#pipeline">Смотреть конвейер</a>
   </div>
   </div>
@@ -129,10 +129,10 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 <ol class="track" role="list">
   <li class="stage">
   <div class="stage-mats">
-    <a class="mat mat--intro" href="labs/intro/vmbox_tutorial/">Окружение: VirtualBox, Linux</a>
-  <a class="mat mat--intro" href="labs/intro/git_setup/">Git, GPG, gh</a>
-  <a class="mat mat--intro" href="labs/intro/gistup_guide/">Отчёты gistup</a>
-  <a class="mat mat--intro" href="labs/intro/networking_basics/">Сети и TCP/IP</a>
+    <a class="mat mat--intro" href="materials/guides/vmbox_tutorial/">Окружение: VirtualBox, Linux</a>
+  <a class="mat mat--intro" href="materials/guides/git_setup/">Git, GPG, gh</a>
+  <a class="mat mat--intro" href="materials/guides/gistup_guide/">Отчёты gistup</a>
+  <a class="mat mat--intro" href="materials/guides/networking_basics/">Сети и TCP/IP</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GIT/">Git</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GITIGNORE/">.gitignore</a>
   <a class="mat mat--ref" href="materials/ports/">Порты и протоколы</a>
@@ -160,7 +160,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   </li>
   <li class="stage">
   <div class="stage-mats">
-    <a class="mat mat--intro" href="labs/intro/docker_basics/">Основы Docker</a>
+    <a class="mat mat--intro" href="materials/guides/docker_basics/">Основы Docker</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKER/">Docker</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/">Dockerfile Security</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/">.dockerignore</a>
@@ -175,7 +175,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   </li>
   <li class="stage">
   <div class="stage-mats">
-    <a class="mat mat--intro" href="labs/intro/appsec_tools_setup/">AppSec-инструменты</a>
+    <a class="mat mat--intro" href="materials/guides/appsec_tools_setup/">AppSec-инструменты</a>
   <a class="mat mat--owasp" href="materials/OWASPTOP10/Authentication/">OWASP Top 10</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_HTTP_HEADERS/">HTTP Security Headers</a>
   <a class="mat mat--case" href="materials/examples/supply_chain_attacks/">Supply Chain Attacks</a>
@@ -191,7 +191,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   </li>
   <li class="stage">
   <div class="stage-mats">
-    <a class="mat mat--intro" href="labs/intro/cicd_basics/">CI/CD и GitHub Actions</a>
+    <a class="mat mat--intro" href="materials/guides/cicd_basics/">CI/CD и GitHub Actions</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_YAML/">YAML</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/">GitHub Actions Security</a>
   <a class="mat mat--owasp" href="materials/OWASPTOP10/OWASP_Top_10_CICD_Risks/">OWASP CI/CD Risks</a>
@@ -256,14 +256,14 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 </div>
 
 <div class="entries">
-  <a class="entry" href="labs/intro/vmbox_tutorial/"><span class="entry-count">7 гайдов</span><span class="entry-title">Intro</span><span class="entry-text">Окружение, Git и GPG, отчёты в Gist, сети, Docker, CI/CD, AppSec-инструменты.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/#guides"><span class="entry-count">7 гайдов</span><span class="entry-title">Руководства</span><span class="entry-text">Окружение, Git и GPG, отчёты в Gist, сети, Docker, CI/CD, AppSec-инструменты.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="labs/tests/basic/test01/"><span class="entry-count">5 + 2 варианта</span><span class="entry-title">Тесты</span><span class="entry-text">Пять базовых вариантов по лабам и два лекционных теста по Fintech.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/OWASPTOP10/Authentication/"><span class="entry-count">7 разборов</span><span class="entry-title">OWASP Top 10</span><span class="entry-text">Authentication, Authorization, Client-side, Command Execution, Logical, Information Disclosure, CI/CD Risks.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/examples/exmpl/"><span class="entry-count">5 кейсов</span><span class="entry-title">Примеры</span><span class="entry-text">Инциденты ИБ, Supply Chain Attacks, PrintNightmare, MultiSig, пример Risk Analysis.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/cheatsheet/CHEATSHEET_GIT/"><span class="entry-count">9 шпаргалок</span><span class="entry-title">CheatSheets</span><span class="entry-text">Git, Docker, YAML, HTTP Headers, Dockerfile Security, GitHub Actions Security, gh, .gitignore, .dockerignore.</span><span class="entry-link">Открыть →</span></a>
-  <a class="entry" href="materials/appsec_tt/"><span class="entry-count">3 справочника</span><span class="entry-title">Справочники</span><span class="entry-text">AppSec Toolchain, порты и протоколы, приложение с командами и утилитами.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/appsec_tt/"><span class="entry-count">4 справочника</span><span class="entry-title">Справочники</span><span class="entry-text">AppSec Toolchain, порты и протоколы, как читать схемы курса, приложение с командами и утилитами.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/licenses/"><span class="entry-count">справочник</span><span class="entry-title">Лицензии ПО</span><span class="entry-text">Какую лицензию выбрать для репозитория и как переиспользовать чужие материалы без нарушений.</span><span class="entry-link">Открыть →</span></a>
-  <a class="entry" href="materials/troubleshooting/"><span class="entry-count">45 карточек</span><span class="entry-title">Troubleshooting</span><span class="entry-text">Частые проблемы по 13 темам: окружение, Git, Docker, сканеры, CI/CD.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/troubleshooting/"><span class="entry-count">56 карточек</span><span class="entry-title">Troubleshooting</span><span class="entry-text">Частые проблемы по 18 темам: окружение, Git, Docker, сканеры, CI/CD.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/lectures/fintech_ru/"><span class="entry-count">1 лекция</span><span class="entry-title">Fintech по-русски</span><span class="entry-text">Лекция о безопасности финтеха и два кейсовых теста к ней.</span><span class="entry-link">Открыть →</span></a>
 </div>
 

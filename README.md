@@ -243,7 +243,9 @@ flowchart TB
 **Контент.** Исходники лаб, intro и тестов живут в `labs/`, страницы сайта в `docs/` подключают их через
 `include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
 дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
-`docs/materials/index.md` собирает материалы в карточки разделов, лабы ссылаются на них из See-also.
+`docs/materials/index.md` собирает материалы в карточки по типу: руководства, шпаргалки, справочники, OWASP Top 10, кейсы,
+лекции, troubleshooting; лабы ссылаются на них из See-also. Вводные руководства — страницы `docs/materials/guides/`
+(обёртки над исходниками `labs/intro/`); раньше они жили по адресу `/labs/intro/…`, со старых адресов стоят редиректы.
 
 **Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
 её после согласия подключает `banners.js`). `partials/copyright.html` —
@@ -278,7 +280,8 @@ landmark-навигаций, которые Material оставляет безы
 Статистику репозитория в шторке рисует сам Material. Всё подписано на `document$` для instant navigation.
 
 **Сборка и зависимости.** `pyproject.toml` + `uv.lock` (хэши), группы инструментов CI (`lint`, `audit`,
-`sast`, `sbom`). `hooks.py` считает цифры hero из дерева `docs/` и дописывает sitemap. CI ставит всё через
+`sast`, `sbom`). `hooks.py` считает цифры hero из дерева `docs/`, дописывает sitemap и кладёт редиректы для переехавших страниц
+(свой код вместо `mkdocs-redirects`: с версии 1.2.3 плагин принадлежит другому проекту и тянет за собой `properdocs`). CI ставит всё через
 `uv sync --frozen`, сканеры из лока, hadolint с проверкой sha256. Dependabot: actions / npm / uv, cooldown 7 дней.
 Релиз (`release-from-notes.yml`, тег `v*.*.*`) берёт текст из `RELEASE_NOTES.md` и прикладывает CycloneDX SBOM
 рантайм-набора из лока (`.github/scripts/sbom.sh`).
@@ -376,14 +379,14 @@ flowchart TB
 │   ├── CNAME                          # course.geminishkv.tech
 │   ├── _headers                       # HTTP-заголовки безопасности для хостинга с поддержкой _headers
 │   ├── labs/
-│   │   ├── intro/                     # 7 docs-обёрток intro
 │   │   ├── basic/lab01-10.md          # 10 docs-обёрток лабораторных
 │   │   ├── pet_project.md             # Итоговый проект
 │   │   └── tests/
 │   │       ├── basic/                 # 5 вариантов базовых тестов
 │   │       └── lectures/              # 2 варианта теста Fintech
 │   ├── materials/
-│   │   ├── index.md                   # Индекс материалов: карточки разделов
+│   │   ├── index.md                   # Индекс материалов: карточки по типу материала
+│   │   ├── guides/                    # 7 вводных руководств (обёртки над labs/intro/), бывшие /labs/intro/…
 │   │   ├── lectures/fintech_ru.md     # Лекция Fintech по-русски
 │   │   ├── examples/                  # 5 кейсов ИБ
 │   │   ├── OWASPTOP10/               # 7 OWASP материалов
@@ -416,7 +419,7 @@ flowchart TB
 │   ├── scripts/sbom.sh                # SBOM рантайм-набора из лока (шаг релиза)
 │   ├── dependabot.yml                 # actions / npm / uv, cooldown 7 дней
 │   └── CODEOWNERS                     # ревью workflow и конфигов CI
-├── hooks.py                           # цифры hero при сборке + sitemap (priority, changefreq)
+├── hooks.py                           # цифры hero при сборке + sitemap (priority, changefreq) + редиректы переехавших страниц
 ├── mkdocs.yml
 ├── pyproject.toml                     # зависимости сайта и группы инструментов CI
 ├── uv.lock                            # лок с хэшами, ставится через uv sync --frozen

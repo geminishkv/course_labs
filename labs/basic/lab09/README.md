@@ -407,7 +407,7 @@ fail_action: true
 
 ## Смотри также
 
-- [Введение в CI/CD](https://course.geminishkv.tech/labs/intro/cicd_basics/) — основы GitHub Actions перед этой лабой
+- [Введение в CI/CD](https://course.geminishkv.tech/materials/guides/cicd_basics/) — основы GitHub Actions перед этой лабой
 - [Лаб. 07 — SAST/SCA](https://course.geminishkv.tech/labs/basic/lab07/) — инструменты, интегрируемые в пайплайн
 - [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — ручной DAST, автоматизируемый здесь
 - [CheatSheet: GitHub Actions Security](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY/) — безопасность пайплайнов

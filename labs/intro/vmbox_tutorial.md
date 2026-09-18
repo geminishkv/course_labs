@@ -55,7 +55,7 @@ PS> wsl --status
 - сеть WSL2 по умолчанию за NAT: сканировать локальную сеть с хоста не выйдет, нужен режим `networkingMode=mirrored` в `%UserProfile%\.wslconfig` (Windows 11 22H2+);
 - SYN-сканирование требует `sudo` внутри WSL, а Guest Additions и снапшоты недоступны.
 
-Docker в WSL2 работает штатно (см. [Основы Docker](https://course.geminishkv.tech/labs/intro/docker_basics/)).
+Docker в WSL2 работает штатно (см. [Основы Docker](https://course.geminishkv.tech/materials/guides/docker_basics/)).
 
 ***
 

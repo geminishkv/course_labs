@@ -71,8 +71,8 @@ Git — распределённая система контроля верси�
 
 > Перед началом выполните подготовительные инструкции:
 >
-> - [Подготовка рабочего окружения](https://course.geminishkv.tech/labs/intro/vmbox_tutorial/) — VirtualBox, установка Linux
-> - [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/labs/intro/git_setup/) — git config, SSH, GnuPG, gh
+> - [Подготовка рабочего окружения](https://course.geminishkv.tech/materials/guides/vmbox_tutorial/) — VirtualBox, установка Linux
+> - [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/materials/guides/git_setup/) — git config, SSH, GnuPG, gh
 
 - [ ] 1. Создайте локальный репозиторий на машине и проинициализируйте его
 - [ ] 2. Авторизуйтесь и используйте `GitHub CLI` для создания удаленного репозитория
@@ -117,8 +117,8 @@ if __name__ == "__main__":
 
 ## Смотри также
 
-- [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/labs/intro/git_setup/) — подготовка окружения перед лабой: config, SSH, подпись коммитов, gh
-- [Оформление отчётов gistup](https://course.geminishkv.tech/labs/intro/gistup_guide/) — формат отчёта, который сдаётся по каждой лабе
+- [Настройка Git, GPG и GitHub CLI](https://course.geminishkv.tech/materials/guides/git_setup/) — подготовка окружения перед лабой: config, SSH, подпись коммитов, gh
+- [Оформление отчётов gistup](https://course.geminishkv.tech/materials/guides/gistup_guide/) — формат отчёта, который сдаётся по каждой лабе
 - [Лаб. 02 — Linux](https://course.geminishkv.tech/labs/basic/lab02/) — следующий шаг: права доступа, SUID, ACL, процессы
 - [CheatSheet: Git](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GIT/) — шпаргалка по командам Git
 - [CheatSheet: GitHub CLI](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_GH_CLI/) — работа с репозиторием и PR из терминала

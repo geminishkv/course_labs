@@ -5,7 +5,7 @@ MkDocs hooks.
   with figures counted from the docs tree (labs, intro guides, tests,
   materials), so the hero never goes stale by hand.
 - on_post_build: sitemap enrichment — <changefreq> and <priority> per URL
-  pattern.
+  pattern — and redirect stubs for pages that have moved.
 """
 
 import glob
@@ -23,9 +23,10 @@ def _count_docs(docs_dir: str) -> dict[str, int]:
 
     return {
         "labs": count("labs/basic/lab*.md"),
-        "intro": count("labs/intro/*.md"),
+        "intro": count("materials/guides/*.md"),
         "tests": count("labs/tests/**/*.md"),
-        "materials": count("materials/**/*.md", exclude=("index.md",)),
+        # guides are counted as "intro", not twice
+        "materials": count("materials/**/*.md", exclude=("index.md",)) - count("materials/guides/*.md"),
     }
 
 
@@ -46,6 +47,8 @@ _RULES = [
     (r"^/labs/pet_project",           "0.7", "monthly"),
     # Lab pages
     (r"^/labs/",                      "0.8", "weekly"),
+    # Guides (the former /labs/intro/ pages keep their weight)
+    (r"^/materials/guides/",          "0.8", "weekly"),
     # OWASP materials
     (r"^/materials/OWASPTOP10/",      "0.7", "monthly"),
     # Examples
@@ -74,7 +77,45 @@ def _get_rule(path: str) -> tuple[str, str]:
     return "0.5", "monthly"
 
 
+# ─── Moved pages ───────────────────────────────────────────────────────────────
+# Old URL -> new URL, both relative to the site root. The old addresses are
+# indexed and bookmarked, so each gets a stub that forwards to the new page.
+# Done here instead of mkdocs-redirects: since 1.2.3 that plugin belongs to
+# another project and pulls in a second documentation framework.
+_GUIDES = ("vmbox_tutorial", "git_setup", "gistup_guide", "networking_basics",
+           "docker_basics", "cicd_basics", "appsec_tools_setup")
+_REDIRECTS = {f"labs/intro/{name}/": f"materials/guides/{name}/" for name in _GUIDES}
+
+_REDIRECT_PAGE = """<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Страница переехала</title>
+<link rel="canonical" href="{canonical}">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={target}">
+</head>
+<body>
+<p>Страница переехала: <a href="{target}">{canonical}</a></p>
+</body>
+</html>
+"""
+
+
+def _write_redirects(config) -> None:
+    site_url = config.get("site_url", "").rstrip("/")
+    for old, new in _REDIRECTS.items():
+        depth = old.strip("/").count("/") + 1
+        target = "../" * depth + new
+        path = os.path.join(config["site_dir"], old, "index.html")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(_REDIRECT_PAGE.format(target=target, canonical=f"{site_url}/{new}"))
+
+
 def on_post_build(config, **kwargs):
+    _write_redirects(config)
+
     sitemap_path = os.path.join(config["site_dir"], "sitemap.xml")
     if not os.path.exists(sitemap_path):
         return

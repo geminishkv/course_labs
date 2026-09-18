@@ -236,7 +236,7 @@ $ git commit -S -m "chore: ignore nmap scan results"
 - [Лаб. 04 — Risk Analysis](https://course.geminishkv.tech/labs/basic/lab04/) — анализ рисков по результатам nmap
 - [Лаб. 08 — DAST](https://course.geminishkv.tech/labs/basic/lab08/) — динамическое тестирование найденных сервисов
 - [CheatSheet: Docker](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/) — контейнеры для изоляции тестовых стендов
-- [Введение в сети и TCP/IP](https://course.geminishkv.tech/labs/intro/networking_basics/) — модель OSI, порты, DNS перед сканированием
+- [Введение в сети и TCP/IP](https://course.geminishkv.tech/materials/guides/networking_basics/) — модель OSI, порты, DNS перед сканированием
 - [Порты и протоколы](https://course.geminishkv.tech/materials/ports/) — справочник портов для чтения результатов nmap
 
 ***

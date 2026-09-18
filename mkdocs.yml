@@ -167,13 +167,7 @@ nav:
   - "geminishkv.tech": "https://geminishkv.tech/"
   - "Главная страница": index.md
   - "Лабораторные работы":
-      - "Подготовка рабочего окружения": labs/intro/vmbox_tutorial.md
-      - "Настройка Git, GPG и GitHub CLI": labs/intro/git_setup.md
-      - "Оформление отчётов gistup": labs/intro/gistup_guide.md
-      - "Введение в сети и TCP/IP": labs/intro/networking_basics.md
-      - "Основы Docker": labs/intro/docker_basics.md
-      - "Введение в CI/CD": labs/intro/cicd_basics.md
-      - "Установка AppSec-инструментов": labs/intro/appsec_tools_setup.md
+      - "С чего начать": /materials/#guides
       - "Базовое ознакомление":
           - "Лаб. 01 · Git: окружение и первый коммит": labs/basic/lab01.md
           - "Лаб. 02 · Linux: права доступа и процессы": labs/basic/lab02.md
@@ -199,19 +193,35 @@ nav:
           - "Тест №5": labs/tests/basic/test05.md
   - "Материалы":
       - materials/index.md
-      - "Лекции":
-          - "Fintech по-русски": materials/lectures/fintech_ru.md
-      - "Примеры":
-          - "Cases": materials/examples/exmpl.md
-          - "MultiSig": materials/examples/Multisignature.md
-          - "PrintNightmare": materials/examples/PrintNightmare.md
-          - "Risk Analysis": materials/examples/RA.md
-          - "Supply Chain Attacks": materials/examples/supply_chain_attacks.md
-      - "Порты и протоколы": materials/ports.md
-      - "Лицензии ПО": materials/licenses.md
-      - "Классификация инструментов": materials/appsec_tt.md
-      - "Как читать схемы курса": materials/diagrams_legend.md
-      - "OWASP Top 10":
+      - "Руководства":
+          - "Подготовка рабочего окружения": materials/guides/vmbox_tutorial.md
+          - "Настройка Git, GPG и GitHub CLI": materials/guides/git_setup.md
+          - "Оформление отчётов gistup": materials/guides/gistup_guide.md
+          - "Введение в сети и TCP/IP": materials/guides/networking_basics.md
+          - "Основы Docker": materials/guides/docker_basics.md
+          - "Введение в CI/CD": materials/guides/cicd_basics.md
+          - "Установка AppSec-инструментов": materials/guides/appsec_tools_setup.md
+      - "Шпаргалки":
+          - "Git":
+              - "GitSCM": materials/cheatsheet/CHEATSHEET_GIT.md
+              - "GitHub CLI": materials/cheatsheet/CHEATSHEET_GH_CLI.md
+              - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
+          - "Docker":
+              - "Docker": materials/cheatsheet/CHEATSHEET_DOCKER.md
+              - "Dockerfile Security": materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY.md
+              - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
+          - "CI/CD":
+              - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
+              - "GitHub Actions Security": materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY.md
+          - "Web":
+              - "HTTP Security Headers": materials/cheatsheet/CHEATSHEET_HTTP_HEADERS.md
+      - "Справочники":
+          - "Порты и протоколы": materials/ports.md
+          - "Классификация инструментов": materials/appsec_tt.md
+          - "Лицензии ПО": materials/licenses.md
+          - "Как читать схемы курса": materials/diagrams_legend.md
+          - "Приложение": materials/APPENDIX.md
+      - "Угрозы: OWASP Top 10":
           - "CI/CD Risks": materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md
           - "Authorization": materials/OWASPTOP10/Authorization.md
           - "Authentication": materials/OWASPTOP10/Authentication.md
@@ -219,17 +229,14 @@ nav:
           - "Command Execution": materials/OWASPTOP10/command-execution.md
           - "Logical Attacks": materials/OWASPTOP10/logical-attacks.md
           - "Information Disclosure": materials/OWASPTOP10/information-disclosure.md
-      - "CheatSheet":
-          - "GitHub CLI": materials/cheatsheet/CHEATSHEET_GH_CLI.md
-          - "GitSCM": materials/cheatsheet/CHEATSHEET_GIT.md
-          - "Docker": materials/cheatsheet/CHEATSHEET_DOCKER.md
-          - ".dockerignore": materials/cheatsheet/CHEATSHEET_DOCKERIGNORE.md
-          - ".gitignore": materials/cheatsheet/CHEATSHEET_GITIGNORE.md
-          - "YAML": materials/cheatsheet/CHEATSHEET_YAML.md
-          - "HTTP Security Headers": materials/cheatsheet/CHEATSHEET_HTTP_HEADERS.md
-          - "Dockerfile Security": materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY.md
-          - "GitHub Actions Security": materials/cheatsheet/CHEATSHEET_GH_ACTIONS_SECURITY.md
-      - "Приложение": materials/APPENDIX.md
+      - "Кейсы":
+          - "Cases": materials/examples/exmpl.md
+          - "MultiSig": materials/examples/Multisignature.md
+          - "PrintNightmare": materials/examples/PrintNightmare.md
+          - "Risk Analysis": materials/examples/RA.md
+          - "Supply Chain Attacks": materials/examples/supply_chain_attacks.md
+      - "Лекции":
+          - "Fintech по-русски": materials/lectures/fintech_ru.md
       - "Troubleshooting": materials/troubleshooting.md
   - "О проекте": about.md
   - "Релизы": RELEASE_NOTES.md

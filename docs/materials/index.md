@@ -13,7 +13,7 @@ keywords: "материалы AppSec, OWASP Top 10, шпаргалки DevSecOps
 
 ## Руководства {#guides}
 
-Семь вводных гайдов: с них начинается курс. Окружение и Git — до Лаб. 01, сети — до Лаб. 03, Docker — до Лаб. 05, инструменты и CI/CD — до Лаб. 06–09.
+Восемь вводных гайдов: с них начинается курс. Окружение и Git — до Лаб. 01, сети — до Лаб. 03, Docker и Dockerfile — до Лаб. 05, инструменты и CI/CD — до Лаб. 06–09.
 
 <div class="lab-grid">
 <a class="lab-card" href="guides/vmbox_tutorial/"><div class="lab-card-body"><div class="lab-card-title">Подготовка рабочего окружения</div><div class="lab-card-tags"><span class="lab-tag">VirtualBox</span><span class="lab-tag">Linux</span><span class="lab-tag">Windows</span></div></div><div class="lab-card-arrow">→</div></a>
@@ -21,6 +21,7 @@ keywords: "материалы AppSec, OWASP Top 10, шпаргалки DevSecOps
 <a class="lab-card" href="guides/gistup_guide/"><div class="lab-card-body"><div class="lab-card-title">Оформление отчётов gistup</div><div class="lab-card-tags"><span class="lab-tag">Gist</span><span class="lab-tag">Отчёт</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="guides/networking_basics/"><div class="lab-card-body"><div class="lab-card-title">Введение в сети и TCP/IP</div><div class="lab-card-tags"><span class="lab-tag">OSI</span><span class="lab-tag">TCP/IP</span><span class="lab-tag">DNS</span><span class="lab-tag">HTTP</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="guides/docker_basics/"><div class="lab-card-body"><div class="lab-card-title">Основы Docker</div><div class="lab-card-tags"><span class="lab-tag">Docker</span><span class="lab-tag">Dockerfile</span><span class="lab-tag">Compose</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="guides/dockerfile_guide/"><div class="lab-card-body"><div class="lab-card-title">Dockerfile: как устроен и как его писать</div><div class="lab-card-tags"><span class="lab-tag">Dockerfile</span><span class="lab-tag">Кэш сборки</span><span class="lab-tag">CMD</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="guides/cicd_basics/"><div class="lab-card-body"><div class="lab-card-title">Введение в CI/CD</div><div class="lab-card-tags"><span class="lab-tag">GitHub Actions</span><span class="lab-tag">workflow</span><span class="lab-tag">YAML</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="guides/appsec_tools_setup/"><div class="lab-card-body"><div class="lab-card-title">Установка AppSec-инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">SCA</span><span class="lab-tag">DAST</span><span class="lab-tag">Secrets</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>

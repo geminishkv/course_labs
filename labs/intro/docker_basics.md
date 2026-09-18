@@ -374,7 +374,7 @@ stateDiagram-v2
 - **Сканируйте образы** — Trivy, Docker Scout
 - **.dockerignore** — не копируйте `.git`, `.env`, `node_modules` в образ
 
-> Подробнее: [Dockerfile Security CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) и [Docker CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/).
+> Подробнее: руководство [Dockerfile: как устроен и как его писать](https://course.geminishkv.tech/materials/guides/dockerfile_guide/), [Dockerfile Security CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/) и [Docker CheatSheet](https://course.geminishkv.tech/materials/cheatsheet/CHEATSHEET_DOCKER/).
 
 ***
 

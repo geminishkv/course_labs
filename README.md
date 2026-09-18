@@ -22,7 +22,7 @@
 
 **Как устроен курс:**
 
-* 7 intro-руководств + 10 лабораторных работ + итоговый pet-project + 7 тестов (5 базовых + 2 лекционных)
+* 8 intro-руководств + 10 лабораторных работ + итоговый pet-project + 7 тестов (5 базовых + 2 лекционных)
 * Каждая лабораторная — отдельный репозиторий с исходным кодом и отчётом в формате `gistup`
 * Все работы выполняются в ветке `develop` → `pull request` → [approve](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review) от [geminishkv](https://github.com/geminishkv)
 * Прогрессия: `Git` → `Linux` → `Nmap` → `Risk Analysis` → `Docker` → `CIS Benchmark` → `SAST/SCA` → `DAST` → `CI/CD` → `Итоговый Risk Analysis` → `Pet-project`
@@ -43,6 +43,7 @@
     * [Оформление отчётов gistup](labs/intro/gistup_guide.md) — формат, структура, правила
     * [Введение в сети и TCP/IP](labs/intro/networking_basics.md) — OSI, порты, DNS, HTTP
     * [Основы Docker](labs/intro/docker_basics.md) — VM vs Container, Dockerfile, Compose
+    * [Dockerfile: как устроен и как его писать](labs/intro/dockerfile_guide.md) — инструкции, кэш сборки, CMD и ENTRYPOINT, от наивного к правильному
     * [Введение в CI/CD](labs/intro/cicd_basics.md) — GitHub Actions, workflow, секреты
     * [Установка AppSec-инструментов](labs/intro/appsec_tools_setup.md) — Semgrep, Trivy, ZAP, Gitleaks, Checkov
 2. Каждый репозиторий должен содержать `.gitignore`, `CODE_OF_CONDUCT`, `CONTRIBUTING`, `LICENSE`, `NOTICE`, `SECURITY`
@@ -71,10 +72,10 @@
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
     accTitle: Маршрут прохождения курса
-    accDescr: Курс начинается с семи intro-гайдов и репозитория с обвязкой, затем идёт цикл по десяти лабораторным: работа атомарными коммитами в develop, отчёт gistup, pull request и approve преподавателя с доработкой при отказе; после лабораторных — pet-project и завершение курса.
+    accDescr: Курс начинается с восьми intro-гайдов и репозитория с обвязкой, затем идёт цикл по десяти лабораторным: работа атомарными коммитами в develop, отчёт gistup, pull request и approve преподавателя с доработкой при отказе; после лабораторных — pet-project и завершение курса.
 
     course_start([Старт курса])
-    prep_guides[[Пройти 7 intro-гайдов]]
+    prep_guides[[Пройти 8 intro-гайдов]]
     repo_scaffold["Завести репозиторий<br/>с обвязкой"]
     lab_order[/"Порядок лаб 01–10:<br/>01–04 основы<br/>05–06 контейнеры<br/>07–08 AppSec<br/>09–10 DevSecOps"/]
 
@@ -386,7 +387,7 @@ flowchart TB
 │   │       └── lectures/              # 2 варианта теста Fintech
 │   ├── materials/
 │   │   ├── index.md                   # Индекс материалов: карточки по типу материала
-│   │   ├── guides/                    # 7 вводных руководств (обёртки над labs/intro/), бывшие /labs/intro/…
+│   │   ├── guides/                    # 8 вводных руководств (обёртки над labs/intro/); семь из них раньше жили в /labs/intro/…
 │   │   ├── lectures/fintech_ru.md     # Лекция Fintech по-русски
 │   │   ├── examples/                  # 5 кейсов ИБ
 │   │   ├── OWASPTOP10/               # 7 OWASP материалов
@@ -406,7 +407,7 @@ flowchart TB
 │       ├── exmpls/                    # иллюстрация к кейсу анализа рисков
 │       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/
-│   ├── intro/                         # 7 intro-руководств (исходники; Linux, macOS и Windows)
+│   ├── intro/                         # 8 intro-руководств (исходники; Linux, macOS и Windows)
 │   ├── basic/lab01-10/               # 10 лабораторных (README + код; у части — docker-compose)
 │   ├── pet_project/                   # Итоговый проект
 │   └── tests/

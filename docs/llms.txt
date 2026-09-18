@@ -7,7 +7,7 @@
 This is a practical Application Security (AppSec) and DevSecOps course created by Elijah S Shmakov for BMSTU (Bauman Moscow State Technical University) and MIPT (Moscow Institute of Physics and Technology). The course covers the full secure development lifecycle: from Git basics to CI/CD pipeline security.
 
 ## Structure
-- 7 introductory guides (VirtualBox setup, Git/GPG, Gistup reports, Networking/TCP-IP, Docker basics, CI/CD intro, AppSec tools installation)
+- 8 introductory guides (VirtualBox setup, Git/GPG, Gistup reports, Networking/TCP-IP, Docker basics, Dockerfile guide, CI/CD intro, AppSec tools installation)
 - 10 lab works (Git, Linux, Nmap, Risk Analysis, Docker, CIS Benchmark, SAST/SCA/Secret Detection, DAST, DevSecOps CI/CD, Final Risk Analysis)
 - 1 pet-project (full AppSec/DevSecOps stack)
 - 7 tests (5 basic variants + 2 Fintech lecture variants)

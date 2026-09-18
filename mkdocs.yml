@@ -199,6 +199,7 @@ nav:
           - "Оформление отчётов gistup": materials/guides/gistup_guide.md
           - "Введение в сети и TCP/IP": materials/guides/networking_basics.md
           - "Основы Docker": materials/guides/docker_basics.md
+          - "Dockerfile: как устроен и как писать": materials/guides/dockerfile_guide.md
           - "Введение в CI/CD": materials/guides/cicd_basics.md
           - "Установка AppSec-инструментов": materials/guides/appsec_tools_setup.md
       - "Шпаргалки":

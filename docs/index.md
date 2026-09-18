@@ -161,6 +161,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
   <li class="stage">
   <div class="stage-mats">
     <a class="mat mat--intro" href="materials/guides/docker_basics/">Основы Docker</a>
+    <a class="mat mat--intro" href="materials/guides/dockerfile_guide/">Dockerfile</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKER/">Docker</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERFILE_SECURITY/">Dockerfile Security</a>
   <a class="mat mat--cheat" href="materials/cheatsheet/CHEATSHEET_DOCKERIGNORE/">.dockerignore</a>
@@ -256,7 +257,7 @@ keywords: "AppSec, курс AppSec, DevSecOps, безопасность прил
 </div>
 
 <div class="entries">
-  <a class="entry" href="materials/#guides"><span class="entry-count">7 гайдов</span><span class="entry-title">Руководства</span><span class="entry-text">Окружение, Git и GPG, отчёты в Gist, сети, Docker, CI/CD, AppSec-инструменты.</span><span class="entry-link">Открыть →</span></a>
+  <a class="entry" href="materials/#guides"><span class="entry-count">8 гайдов</span><span class="entry-title">Руководства</span><span class="entry-text">Окружение, Git и GPG, отчёты в Gist, сети, Docker, Dockerfile, CI/CD, AppSec-инструменты.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="labs/tests/basic/test01/"><span class="entry-count">5 + 2 варианта</span><span class="entry-title">Тесты</span><span class="entry-text">Пять базовых вариантов по лабам и два лекционных теста по Fintech.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/OWASPTOP10/Authentication/"><span class="entry-count">7 разборов</span><span class="entry-title">OWASP Top 10</span><span class="entry-text">Authentication, Authorization, Client-side, Command Execution, Logical, Information Disclosure, CI/CD Risks.</span><span class="entry-link">Открыть →</span></a>
   <a class="entry" href="materials/examples/exmpl/"><span class="entry-count">5 кейсов</span><span class="entry-title">Примеры</span><span class="entry-text">Инциденты ИБ, Supply Chain Attacks, PrintNightmare, MultiSig, пример Risk Analysis.</span><span class="entry-link">Открыть →</span></a>

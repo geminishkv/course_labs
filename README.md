@@ -198,6 +198,48 @@ $ git push --delete origin vX.Y.Z      # удалить тот же тег на 
 
 ### Архитектура сайта
 
+Сайт — статическая сборка MkDocs Material. Первая схема показывает, из чего и в каком порядке собирается `site/`,
+вторая (в конце раздела) — как сборка попадает на GitHub Pages и в релизы.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Сборка сайта курса
+    accDescr: MkDocs Material собирает статический сайт из исходников лабораторных, страниц docs, слоя темы и конфигурации: готовит Markdown, рендерит страницы, сжимает ресурсы и дописывает sitemap.
+
+    build_start([Запуск mkdocs build])
+
+    subgraph sources [Исходники в репозитории]
+        direction TB
+        labs_src[/"labs/: intro-гайды,<br/>лабы 01–10, pet-project,<br/>тесты"/]
+        docs_pages[/"docs/: обёртки лаб,<br/>materials, glossary.md"/]
+        theme_layer[/"docs/: overrides,<br/>stylesheets, javascripts,<br/>artifacts"/]
+        build_config[/"mkdocs.yml, hooks.py,<br/>pyproject.toml, uv.lock"/]
+        labs_src --> docs_pages
+    end
+
+    prepare_markdown["Подготовить Markdown:<br/>include-markdown — labs/,<br/>hooks.py — цифры hero,<br/>snippets — глоссарий"]
+    render_pages["Отрендерить страницы:<br/>шаблоны overrides, CSP,<br/>шрифты, свой Mermaid"]
+    optimize_assets["Сжать HTML, CSS и JS,<br/>собрать social-карточки"]
+    enrich_sitemap["Дописать sitemap:<br/>priority и changefreq"]
+    site_dir[/"site/: статический сайт"/]
+    build_done([Сайт собран])
+
+    build_start --> sources
+    sources --> prepare_markdown
+    prepare_markdown --> render_pages
+    render_pages --> optimize_assets
+    optimize_assets --> enrich_sitemap
+    enrich_sitemap --> site_dir
+    site_dir --> build_done
+
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class prepare_markdown,render_pages,optimize_assets,enrich_sitemap stage
+    class build_done done
+```
+
 **Контент.** Исходники лаб, intro и тестов живут в `labs/`, страницы сайта в `docs/` подключают их через
 `include-markdown`; `docs/glossary.md` не страница, а список аббревиатур, который `pymdownx.snippets`
 дописывает к каждой странице (тултипы). `docs/overrides/` и `glossary.md` исключены из сборки (`exclude_docs`).
@@ -237,6 +279,81 @@ landmark-навигаций, которые Material оставляет безы
 `uv sync --frozen`, сканеры из лока, hadolint с проверкой sha256. Dependabot: actions / npm / uv, cooldown 7 дней.
 Релиз (`release-from-notes.yml`, тег `v*.*.*`) берёт текст из `RELEASE_NOTES.md` и прикладывает CycloneDX SBOM
 рантайм-набора из лока (`.github/scripts/sbom.sh`).
+
+**Доставка.** `ci.yml` запускается на push и pull request в `develop`: линтеры → `pip-audit` → `bandit` → сборка;
+на push сайт уходит на GitHub Pages, на pull request остаётся артефакт `site-preview`. `hadolint` идёт параллельно
+с `bandit` и в `needs` сборки не входит: его статус виден в Checks, но публикацию он не останавливает.
+`release-from-notes.yml` срабатывает на тег `v*.*.*`.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Доставка сайта и релизы
+    accDescr: Workflow ci.yml на push и pull request в develop прогоняет линтеры, аудит зависимостей и сканеры, собирает сайт и на push публикует его на GitHub Pages, а на pull request отдаёт артефакт site-preview; release-from-notes.yml по тегу версии выпускает релиз с архивом сайта и SBOM.
+
+    subgraph ci_flow [ci.yml]
+        direction TB
+        change_pushed(["Push или pull request<br/>в develop"])
+
+        subgraph lint_stage [Линтеры]
+            lint_docs["Проверить YAML и MD:<br/>yamllint, markdownlint"]
+            lint_layout["Проверить JS и CSS:<br/>eslint, stylelint"]
+        end
+
+        audit_deps["Проверить зависимости:<br/>pip-audit по uv.lock"]
+        audit_fork((" "))
+        scan_bandit["Проверить Python лаб: bandit"]
+        scan_hadolint["Проверить Dockerfile лаб: hadolint"]
+        hadolint_status(["Статус в Checks,<br/>сборку не гейтит"])
+        build_site[["Собрать сайт:<br/>mkdocs build --strict"]]
+        event_gate{"Событие —<br/>push в develop?"}
+        event_fork((" "))
+        deploy_pages["Опубликовать<br/>на GitHub Pages"]
+        site_live([course.geminishkv.tech])
+        preview_artifact[/"Артефакт site-preview"/]
+        preview_done([Превью для ревью PR])
+
+        change_pushed --> lint_stage
+        lint_stage --> audit_deps
+        audit_deps --- audit_fork
+        audit_fork --> scan_bandit
+        audit_fork --> scan_hadolint
+        scan_hadolint --> hadolint_status
+        scan_bandit --> build_site
+        build_site --> event_gate
+        event_gate --- event_fork
+        event_fork -->|Да| deploy_pages
+        event_fork -->|Нет| preview_artifact
+        deploy_pages --> site_live
+        preview_artifact --> preview_done
+    end
+
+    subgraph release_flow [release-from-notes.yml]
+        direction TB
+        tag_pushed([Подписанный тег vX.Y.Z])
+        release_build[["Собрать сайт:<br/>mkdocs build --strict"]]
+        verify_site[Проверить site/ и sitemap]
+        pack_release[/"Архив сайта<br/>и CycloneDX SBOM"/]
+        publish_release["Выпустить GitHub Release<br/>из RELEASE_NOTES.md"]
+        release_done([Релиз опубликован])
+
+        tag_pushed --> release_build
+        release_build --> verify_site
+        verify_site --> pack_release
+        pack_release --> publish_release
+        publish_release --> release_done
+    end
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class audit_fork,event_fork junction
+    class lint_docs,lint_layout,audit_deps,scan_bandit,scan_hadolint,build_site,deploy_pages,release_build,verify_site,publish_release stage
+    class event_gate gate
+    class site_live,preview_done,release_done done
+```
 
 ***
 

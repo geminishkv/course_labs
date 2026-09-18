@@ -68,52 +68,34 @@
 ### Карта
 
 ```mermaid
-flowchart TD
-    subgraph Intro["Подготовка (7 intro)"]
-        I01["VirtualBox & Linux"]
-        I02["Git, GPG, SSH, gh"]
-        I03["Gistup отчёты"]
-        I04["Сети и TCP/IP"]
-        I05["Основы Docker"]
-        I06["Введение в CI/CD"]
-        I07["AppSec Tools Setup"]
-    end
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Маршрут прохождения курса
+    accDescr: Курс начинается с семи intro-гайдов, продолжается десятью лабораторными в четырёх блоках, затем идут тесты и индивидуальный pet-project.
 
-    subgraph Foundations["Основы"]
-        L01["Lab 01 · Git SCM"]
-        L02["Lab 02 · Linux, SUID, ACL"]
-        L03["Lab 03 · Nmap, NSE"]
-        L04["Lab 04 · Risk Analysis"]
-    end
+    course_start([Старт курса])
+    prep_guides[["Подготовка: 7 intro-гайдов<br/>окружение, Git и GPG, отчёты gistup,<br/>сети, Docker, CI/CD, AppSec-инструменты"]]
+    block_foundations[["Основы: Лаб. 01–04<br/>Git, Linux, Nmap, анализ рисков"]]
+    block_containers[["Контейнеры: Лаб. 05–06<br/>Docker, CIS Benchmark, Trivy"]]
+    block_appsec[["Инструменты AppSec: Лаб. 07–08<br/>SAST, SCA, поиск секретов, DAST"]]
+    block_devsecops[["DevSecOps: Лаб. 09–10<br/>конвейер на GitHub Actions, итоговая оценка рисков"]]
+    final_tests[["Тесты: 5 базовых вариантов<br/>и 2 варианта по лекции Fintech"]]
+    pet_project[["Pet-project: полный стек AppSec/DevSecOps"]]
+    course_end([Курс завершён])
 
-    subgraph Containers["Контейнеризация"]
-        L05["Lab 05 · Docker"]
-        L06["Lab 06 · CIS Benchmark, Trivy"]
-    end
+    course_start --> prep_guides
+    prep_guides --> block_foundations
+    block_foundations --> block_containers
+    block_containers --> block_appsec
+    block_appsec --> block_devsecops
+    block_devsecops --> final_tests
+    final_tests --> pet_project
+    pet_project --> course_end
 
-    subgraph AppSec["AppSec Toolchain"]
-        L07["Lab 07 · SAST, SCA, Secret Detection\nSemgrep · Checkov · Gitleaks"]
-        L08["Lab 08 · DAST\nOWASP ZAP"]
-    end
-
-    subgraph DevSecOps["DevSecOps"]
-        L09["Lab 09 · CI/CD Pipeline\nGitHub Actions"]
-        L10["Lab 10 · Risk Analysis · Practice"]
-    end
-
-    subgraph Tests["Тесты"]
-        T01["Базовые: Вариант 1-5"]
-        T02["Лекционные: Fintech V1-V2"]
-    end
-
-    PET["Pet Project — индивидуальная работа"]
-
-    Intro --> Foundations
-    Foundations --> Containers
-    Containers --> AppSec
-    AppSec --> DevSecOps
-    DevSecOps --> Tests
-    Tests --> PET
+    classDef block fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef final fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    class prep_guides,block_foundations,block_containers,block_appsec,block_devsecops block
+    class final_tests,pet_project final
 ```
 
 ***
@@ -158,15 +140,10 @@ $ npm ci && npx stylelint "docs/stylesheets/**/*.css" && npx eslint docs/javascr
 $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 ```
 
-* Перегенерация Mermaid-диаграмм (при изменении `.mmd` файлов)
+* Схемы — блоки кода `mermaid` прямо в Markdown: сайт рендерит их через Material, GitHub — сам. Оформление по ГОСТ 19.701-90: `flowchart TB`, ортогональные линии, развилки и слияния через точку. Проверка синтаксиса локально (скопируйте блок в файл `.mmd`):
 
 ```bash
-$ cd docs/artifacts/diagrams
-$ for f in *.mmd; do
-    npx --yes @mermaid-js/mermaid-cli \
-      -i "$f" -o "${f%.mmd}.svg" \
-      -c mermaid-config.json -b transparent
-  done
+$ npx --yes @mermaid-js/mermaid-cli@11.17.0 -i schema.mmd -o /tmp/schema.svg
 ```
 
 * Очистка локального репозитория

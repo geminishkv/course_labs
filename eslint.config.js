@@ -1,6 +1,8 @@
 import js from "@eslint/js";
 
 export default [
+  // vendored third-party bundles are not ours to lint
+  { ignores: ["docs/artifacts/vendor/**"] },
   js.configs.recommended,
   {
     files: ["docs/**/*.js", "javascripts/**/*.js"],

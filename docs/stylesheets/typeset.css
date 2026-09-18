@@ -277,3 +277,17 @@
   color: var(--brand-red);
   background: rgba(243, 244, 246, 0.96);
 }
+
+/* ── Mermaid diagrams ──
+   Material derives diagram colours from --md-code-fg-color, which is light here
+   because code blocks are dark; on the white page that leaves near-invisible text
+   and lines. Material declares these on `:root > *` and resolves the derived
+   sequence/state variables there, so the override uses the same selector. */
+:root > * {
+  --md-mermaid-font-family:  var(--font-body);
+  --md-mermaid-edge-color:   #374151;
+  --md-mermaid-label-fg-color: #1f2937;
+  --md-mermaid-label-bg-color: #ffffff;
+  --md-mermaid-node-bg-color:  #f3f4f6;
+  --md-mermaid-node-fg-color:  #6b7280;
+}

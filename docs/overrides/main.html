@@ -321,3 +321,15 @@
 
 {% endblock %}
 
+{#-
+  Mermaid is served from the site itself: the CSP above allows scripts from
+  'self' only, and Material would otherwise fetch it from unpkg. The script sits
+  inside the content container on pages that have diagrams, so instant
+  navigation runs it and waits for it before the diagrams are mounted.
+-#}
+{% block content %}
+  {{ super() }}
+  {% if page and page.content and 'class="mermaid"' in page.content %}
+    <script src="{{ 'artifacts/vendor/mermaid/11.17.2/mermaid.min.js' | url }}"></script>
+  {% endif %}
+{% endblock %}

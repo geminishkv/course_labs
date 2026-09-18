@@ -270,7 +270,30 @@ $ ss -tlnp | grep :22
 
 Надёжная доставка с установлением соединения.
 
-<img class="off-glb" src="/artifacts/diagrams/tcp-handshake.svg" alt="Tcp Handshake" style="max-width:400px; width:100%;">
+```mermaid
+sequenceDiagram
+    accTitle: Установка и закрытие TCP-соединения
+    accDescr: Трёхэтапное рукопожатие SYN, SYN-ACK, ACK открывает соединение; закрытие занимает четыре сегмента, потому что каждая сторона отдельно отправляет FIN и получает ACK.
+
+    participant client as Клиент
+    participant server as Сервер
+
+    Note over client,server: Установка соединения: трёхэтапное рукопожатие
+    client->>server: SYN, seq=x
+    server->>client: SYN-ACK, seq=y, ack=x+1
+    client->>server: ACK, ack=y+1
+
+    Note over client,server: Соединение установлено
+    client->>server: Данные
+    server->>client: ACK и ответные данные
+
+    Note over client,server: Закрытие: FIN и ACK с каждой стороны
+    client->>server: FIN
+    server->>client: ACK
+    server->>client: FIN
+    client->>server: ACK
+    Note over client: TIME_WAIT, затем соединение закрыто
+```
 
 TCP гарантирует: порядок пакетов, доставку, контроль ошибок. Используется: HTTP, SSH, FTP, SMTP.
 

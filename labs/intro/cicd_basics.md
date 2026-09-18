@@ -21,7 +21,49 @@
 
 **CD (Continuous Delivery / Deployment)** — автоматическая доставка проверенного кода в staging или production.
 
-<img class="off-glb" src="/artifacts/diagrams/cicd-pipeline.svg" alt="Cicd Pipeline" style="max-width:680px; width:100%;">
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Конвейер CI/CD от push до релиза
+    accDescr: Push или pull request запускает CI со сборкой и проверками; при провале код возвращается на исправление, при успехе изменения проходят ревью и выкатываются в CD.
+
+    push_code([Push или pull request])
+    push_join((" "))
+
+    subgraph ci_stage ["CI: непрерывная интеграция"]
+        build_app[Сборка]
+        run_checks[Тесты и проверки безопасности]
+        checks_passed{Проверки пройдены?}
+    end
+
+    checks_fork((" "))
+    fix_code[Исправить код]
+
+    subgraph cd_stage ["CD: непрерывная доставка"]
+        review_pr[Ревью pull request]
+        deploy_release[[Выкатка релиза]]
+    end
+
+    release_done([Релиз в production])
+
+    push_code --- push_join
+    fix_code --> push_join
+    push_join --> build_app
+    build_app --> run_checks
+    run_checks --> checks_passed
+    checks_passed --- checks_fork
+    checks_fork -->|Нет| fix_code
+    checks_fork -->|Да| review_pr
+    review_pr --> deploy_release
+    deploy_release --> release_done
+
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef decision fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    class build_app,run_checks,review_pr,deploy_release,fix_code stage
+    class checks_passed decision
+    class push_join,checks_fork junction
+```
 
 ### Зачем это нужно
 
@@ -325,7 +367,44 @@ jobs:
       - run: echo "Deploying..."
 ```
 
-<img class="off-glb" src="/artifacts/diagrams/devsecops-dag.svg" alt="Devsecops Dag" style="max-width:360px; width:100%;">
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Порядок jobs в DevSecOps-пайплайне
+    accDescr: Job lint запускается первым, после него параллельно идут sast и container-scan, а deploy стартует только когда обе проверки прошли и сборка идёт из ветки main.
+
+    trigger_push([Push или pull request])
+    run_lint[[lint: ruff]]
+
+    subgraph parallel_checks ["Параллельно после lint"]
+        run_sast[[sast: Semgrep]]
+        scan_container[[container-scan: Trivy]]
+    end
+
+    checks_join((" "))
+    is_main{Ветка main?}
+    main_fork((" "))
+    deploy_app[[deploy]]
+    no_deploy([Конец без деплоя])
+    deploy_done([Выкатка завершена])
+
+    trigger_push --> run_lint
+    run_lint --> parallel_checks
+    run_sast --- checks_join
+    scan_container --- checks_join
+    checks_join --> is_main
+    is_main --- main_fork
+    main_fork -->|Да| deploy_app
+    main_fork -->|Нет| no_deploy
+    deploy_app --> deploy_done
+
+    classDef job fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef decision fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    class run_lint,run_sast,scan_container,deploy_app job
+    class is_main decision
+    class checks_join,main_fork junction
+```
 
 ***
 

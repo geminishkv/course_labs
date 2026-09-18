@@ -117,7 +117,49 @@ lab04
 
 ### Логическая цепочка анализа
 
-<img class="off-glb" src="/artifacts/diagrams/risk-chain.svg" alt="Risk Chain" style="max-width:720px; width:100%;">
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Цепочка анализа риска ИБ
+    accDescr: Актив, угроза и уязвимость задают сценарий риска; его уровень оценивается по вероятности и влиянию, после чего риск принимается или обрабатывается, а остаточный риск оценивается заново.
+
+    start_analysis([Начало анализа])
+    define_asset[/Актив: что ценно для бизнеса/]
+    define_threat[/Угроза: кто или что может навредить/]
+    define_vulnerability[/Уязвимость: слабое место актива/]
+    risk_scenario[Сценарий реализации риска]
+    rate_risk[Оценка уровня: вероятность и влияние]
+    rate_join((" "))
+    risk_acceptable{Уровень риска приемлем?}
+    acceptable_fork((" "))
+    treat_risk[Обработка: снизить, передать или избежать]
+    residual_risk[/Остаточный риск/]
+    accept_risk[Принять риск с обоснованием и мониторингом]
+    end_analysis([Решение зафиксировано в записке])
+
+    start_analysis --> define_asset
+    define_asset --> define_threat
+    define_threat --> define_vulnerability
+    define_vulnerability --> risk_scenario
+    risk_scenario --> rate_risk
+    rate_risk --- rate_join
+    residual_risk --> rate_join
+    rate_join --> risk_acceptable
+    risk_acceptable --- acceptable_fork
+    acceptable_fork -->|Да| accept_risk
+    acceptable_fork -->|Нет| treat_risk
+    treat_risk --> residual_risk
+    accept_risk --> end_analysis
+
+    classDef inputs fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1f2937
+    classDef decision fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef treatment fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    class define_asset,define_threat,define_vulnerability,residual_risk inputs
+    class risk_acceptable decision
+    class risk_scenario,rate_risk,treat_risk,accept_risk treatment
+    class rate_join,acceptable_fork junction
+```
 
 > Основной критерий отчёта: **проблема → решение → ценность → приоритет**. Описание должно быть понятно и техническому специалисту, и менеджменту.
 

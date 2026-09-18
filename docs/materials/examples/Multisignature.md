@@ -21,7 +21,40 @@ keywords: "мультиподпись, multisig, криптография, Bitco
 
 ## Схема как работают транзакции
 
-<div style="text-align:center;"><img src="/artifacts/exmpls/transaction.png" alt="transaction"></div>
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Транзакции Bitcoin в модели UTXO
+    accDescr: Транзакция целиком тратит непотраченные выходы прошлых транзакций и создаёт новые выходы; здесь выход 0.5 BTC первой транзакции вместе с двумя другими выходами становится входом второй, суммы входов и выходов совпадают.
+
+    utxo_50[/Выход 50 BTC: scriptPubKey 1FF.../]
+    tx_first[[Транзакция 1: вход подписан scriptSig]]
+    out_05[/Выход 0.5 BTC: scriptPubKey 1A1.../]
+    out_495[/Выход 49.5 BTC: scriptPubKey 1B2..., пока не потрачен/]
+    utxo_08[/Выход 0.8 BTC: scriptPubKey 1C3.../]
+    utxo_03[/Выход 0.3 BTC: scriptPubKey 1A1.../]
+    inputs_join((" "))
+    tx_second[[Транзакция 2: три входа, три подписи, 1.6 BTC]]
+    out_08_d4[/Выход 0.8 BTC: scriptPubKey 1D4.../]
+    out_08_e5[/Выход 0.8 BTC: scriptPubKey 1E5.../]
+
+    utxo_50 --> tx_first
+    tx_first --> out_05
+    tx_first --> out_495
+    out_05 --- inputs_join
+    utxo_08 --- inputs_join
+    utxo_03 --- inputs_join
+    inputs_join --> tx_second
+    tx_second --> out_08_d4
+    tx_second --> out_08_e5
+
+    classDef tx fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef output fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1f2937
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    class tx_first,tx_second tx
+    class utxo_50,out_05,out_495,utxo_08,utxo_03,out_08_d4,out_08_e5 output
+    class inputs_join junction
+```
 
 ## Схемы подписей
 

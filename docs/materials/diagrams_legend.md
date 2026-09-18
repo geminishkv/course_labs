@@ -180,3 +180,4 @@ flowchart TB
 - [Порты и протоколы](ports.md) — разбор открытого порта
 - [CheatSheet: Git](cheatsheet/CHEATSHEET_GIT.md) — где живут изменения в Git
 - [CheatSheet: GitHub CLI](cheatsheet/CHEATSHEET_GH_CLI.md) — цикл сдачи работы через pull request
+- [OWASP — CI/CD Risks](OWASPTOP10/OWASP_Top_10_CICD_Risks.md) — риски по этапам конвейера

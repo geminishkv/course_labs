@@ -290,4 +290,18 @@
   --md-mermaid-label-bg-color: #ffffff;
   --md-mermaid-node-bg-color:  #f3f4f6;
   --md-mermaid-node-fg-color:  #6b7280;
+
+  /* sequence diagrams: a note must read as a note, not as an empty frame on a
+     white page; lifelines stay quieter than messages */
+  --md-mermaid-sequence-note-bg-color: #fef9c3;
+  --md-mermaid-sequence-note-border-color: #ca8a04;
+  --md-mermaid-sequence-note-fg-color: #713f12;
+  --md-mermaid-sequence-actor-line-color: #9ca3af;
+}
+
+/* wide diagrams keep a readable size on phones and scroll inside their block
+   (the minimum width is set by javascripts/mermaid-loader.js) */
+
+.md-typeset div.mermaid {
+  overflow-x: auto;
 }

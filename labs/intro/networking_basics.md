@@ -280,7 +280,7 @@ sequenceDiagram
     participant client as Клиент
     participant server as Сервер
 
-    Note over client,server: Установка соединения: трёхэтапное рукопожатие
+    Note over client,server: Установка соединения:<br/>трёхэтапное рукопожатие
     client->>server: SYN, seq=x
     server->>client: SYN-ACK, seq=y, ack=x+1
     client->>server: ACK, ack=y+1
@@ -289,7 +289,7 @@ sequenceDiagram
     client->>server: Данные
     server->>client: ACK и ответные данные
 
-    Note over client,server: Закрытие: FIN и ACK с каждой стороны
+    Note over client,server: Закрытие: FIN и ACK<br/>с каждой стороны
     client->>server: FIN
     server->>client: ACK
     server->>client: FIN

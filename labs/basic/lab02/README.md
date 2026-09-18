@@ -311,7 +311,7 @@ $ getfacl nmapres.txt
 - [Лаб. 03 — Nmap](https://course.geminishkv.tech/labs/basic/lab03/) — следующий шаг: используем `nmapres.txt` из этой лабы
 - [Подготовка окружения](https://course.geminishkv.tech/materials/guides/vmbox_tutorial/) — если не настроена VM
 - [Лаб. 01 — Git](https://course.geminishkv.tech/labs/basic/lab01/) — репозиторий и отчёт, в которые складывается результат
-- [Приложение — команды и утилиты](https://course.geminishkv.tech/materials/APPENDIX/) — справочник команд Linux, Git и Docker
+- [Команды: окружение](https://course.geminishkv.tech/materials/commands_environment/) — Unix-утилиты, пакетные менеджеры, Python venv и pip
 
 ***
 

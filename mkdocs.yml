@@ -230,6 +230,10 @@ nav:
           - "CVSS и реестр рисков": materials/risk_scoring.md
           - "Разбор находок сканеров": materials/findings_triage.md
           - "Как читать схемы курса": materials/diagrams_legend.md
+          - "Команды: Git": materials/commands_git.md
+          - "Команды: окружение": materials/commands_environment.md
+          - "Команды: Docker": materials/commands_docker.md
+          - "Команды: сканеры и конвейер": materials/commands_scanners.md
           - "Приложение": materials/APPENDIX.md
       - "Угрозы: OWASP Top 10":
           - "CI/CD Risks": materials/OWASPTOP10/OWASP_Top_10_CICD_Risks.md

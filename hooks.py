@@ -130,6 +130,7 @@ _RULES = [
     (r"^/materials/appsec_tt/",       "0.7", "monthly"),
     (r"^/materials/licenses/",        "0.6", "monthly"),
     (r"^/materials/APPENDIX/",        "0.6", "monthly"),
+    (r"^/materials/commands_",        "0.6", "monthly"),
     (r"^/materials/troubleshooting/", "0.6", "monthly"),
     (r"^/materials/ports/",           "0.6", "monthly"),
     (r"^/materials/risk_scoring/",    "0.7", "monthly"),

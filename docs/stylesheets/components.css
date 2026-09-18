@@ -574,13 +574,10 @@
   display: none;
 }
 
+/* The README's opening block (title + shields badges) is for GitHub; the lab
+   hero above already names the lab, so the site skips it. */
 .lab-readme div[align="center"]:first-child {
-  margin: 0 0 var(--space-6);
-  padding: var(--space-4) var(--space-4) var(--space-3);
-  background: #f8f9fa;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  line-height: 2;
+  display: none;
 }
 
 /* ══════════════════════════════════════════
@@ -673,7 +670,7 @@
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in--visible {
@@ -681,11 +678,11 @@
   transform: translateY(0);
 }
 
-.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(2) { transition-delay: 0.06s; }
 
-.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(3) { transition-delay: 0.12s; }
 
-.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.fade-in:nth-child(4) { transition-delay: 0.18s; }
 
 /* Reduced motion: declared last so it wins over every animation above at the
    same specificity */
@@ -790,7 +787,7 @@
   background: var(--ink-card);
   border: 1px solid var(--ink-border);
   border-radius: var(--radius-md);
-  transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .md-social__link svg {
@@ -798,7 +795,7 @@
   height: 16px;
   max-height: none;
   fill: var(--ink-text-secondary);
-  transition: fill 0.3s;
+  transition: fill 0.2s;
 }
 
 .md-social__link:hover,
@@ -811,10 +808,18 @@
 .md-social__link:hover svg,
 .md-social__link:focus-visible svg {
   fill: #fff;
-  animation: social-slide-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: social-slide-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .md-social__link:active { transform: scale(0.92); }
+
+/* touch: footer tiles are full-size targets (WCAG 2.5.5) */
+@media (pointer: coarse), (max-width: 43.6875em) {
+  .md-social__link {
+    width: 44px;
+    height: 44px;
+  }
+}
 
 @keyframes social-slide-in {
   0% {

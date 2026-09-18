@@ -95,6 +95,7 @@
 /* ── Admonitions — brand colours ── */
 .md-typeset .admonition,
 .md-typeset details {
+  font-size: 0.75rem;
   border-left-width: 4px;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }

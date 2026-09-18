@@ -190,7 +190,7 @@
 
 .md-header__nav .md-header__nav-secondary {
   color: #9a9a9a;
-  font-size: 0.52rem;
+  font-size: 0.55rem;
 }
 
 .md-header__nav .md-header__nav-secondary:hover { color: #ddd; }
@@ -320,7 +320,7 @@
   width: 1.7rem;
   height: 1.7rem;
   display: block;
-  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .md-header__burger-line {
@@ -330,9 +330,9 @@
   stroke-linejoin: round;
   stroke-width: 3;
   transition:
-    stroke-dasharray 900ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 900ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke 0.3s;
+    stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.2s;
 }
 
 .md-header__burger-line--top { stroke-dasharray: 12 63; }
@@ -405,6 +405,12 @@
     width: 11px;
     height: 11px;
   }
+}
+
+/* touch: search and menu buttons are 44px targets (WCAG 2.5.5) */
+@media (pointer: coarse), (max-width: 43.6875em) {
+  .md-header__button.md-icon { padding: 0.5rem; }
+  .md-header__button.md-header__burger { padding: 0.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

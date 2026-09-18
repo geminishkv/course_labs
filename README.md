@@ -172,7 +172,7 @@ $ npx markdownlint-cli2 "docs/**/*.md" "labs/**/*.md" README.md
 $ npx --yes @mermaid-js/mermaid-cli@11.17.0 -i schema.mmd -o /tmp/schema.svg
 ```
 
-* Mermaid на сайте свой: CSP (`script-src`: `'self'`, Telegram, Метрика) не пускает unpkg, поэтому Material не может взять его оттуда. Файл `docs/artifacts/vendor/mermaid/11.17.2/mermaid.min.js` (npm `mermaid@11.17.2`, MIT, sha256 `581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8`) подключается из `overrides/main.html` только на страницах со схемами. Обновление: положить `dist/mermaid.min.js` новой версии в каталог с её номером, сверить sha256 с опубликованным пакетом и поменять путь в `main.html`.
+* Mermaid на сайте свой: CSP (`script-src`: `'self'`, Telegram, Метрика) не пускает unpkg, поэтому Material не может взять его оттуда. Файл `docs/artifacts/vendor/mermaid/11.17.2/mermaid.min.js` (npm `mermaid@11.17.2`, MIT, sha256 `581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8`) подгружает `javascripts/mermaid-loader.js`: он заранее объявляет `window.mermaid`, которым пользуется Material, и тянет файл при первом рендере схемы, так что на страницах без схем 3,5 МБ не грузятся. Тег `<script>` внутри контента не годится: при instant navigation Material ждёт только последний скрипт контейнера, схема остаётся кодом до жёсткой перезагрузки. Обновление: положить `dist/mermaid.min.js` новой версии в каталог с её номером, сверить sha256 с опубликованным пакетом и поменять путь в `mermaid-loader.js`. Проверка после правок — переход по ссылке со страницы без схем на страницу со схемой, а не только прямое открытие.
 
 * Очистка локального репозитория
 
@@ -246,7 +246,7 @@ flowchart TB
 `docs/materials/index.md` собирает материалы в карточки разделов, лабы ссылаются на них из See-also.
 
 **Шаблоны.** `overrides/main.html` — общий `<head>` (CSP-meta, `fonts.css`, JSON-LD; Метрики в шаблоне нет,
-её после согласия подключает `banners.js`) и свой Mermaid на страницах со схемами. `partials/copyright.html` —
+её после согласия подключает `banners.js`). `partials/copyright.html` —
 строка футера со ссылкой на уведомление об ответственности в политике конфиденциальности. `overrides/home.html` —
 главная без сайдбаров (`hide: [navigation, toc]`), подключает `home.css`. `partials/header.html` — шапка
 в стиле gpages поверх Material 9.7.x: логотип с кольцом, пилюли разделов с активным состоянием, штатный
@@ -266,7 +266,8 @@ woff2 по unicode-range, OFL; внешних шрифтов нет, `font-src '
 Material. `!important` только в print. Значения `@property` не нулевые (`360deg`): минификатор превращает
 `0deg` в `0` и молча отбрасывает регистрацию.
 
-**JS.** Четыре модуля без зависимостей: `header.js` (стекло шапки при скролле), `typewriter-target.js`
+**JS.** Пять модулей без зависимостей: `mermaid-loader.js` (свой Mermaid по требованию, см. Tutorial),
+`header.js` (стекло шапки при скролле), `typewriter-target.js`
 (hero, уважает `prefers-reduced-motion`), `banners.js` (карточка согласия, класс `ata-consent`, чтобы
 антибаннеры не резали; Метрика грузится только после «Принять», выбор хранится 180 дней в `ata_consent`,
 сменить его можно со страницы политики; текст уведомления об ответственности — раздел `privacy.md#notice`,
@@ -391,11 +392,11 @@ flowchart TB
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (56 карточек)
 │   ├── stylesheets/                   # fonts → tokens → header → sidebar → typeset → components → banners; home.css только на главной
-│   ├── javascripts/                   # header (стекло), typewriter-target, banners (согласие на Метрику), effects (fade-in, конвейер, landmarks)
-│   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD; Mermaid на страницах со схемами), home.html, 404.html, partials/header.html, partials/copyright.html
+│   ├── javascripts/                   # mermaid-loader (свой Mermaid по требованию), header (стекло), typewriter-target, banners (согласие на Метрику), effects (fade-in, конвейер, landmarks)
+│   ├── overrides/                     # main.html (head: CSP, шрифты, JSON-LD), home.html, 404.html, partials/header.html, partials/copyright.html
 │   └── artifacts/
 │       ├── assets/                    # логотипы (SVG, PNG 512), favicon (ICO, PNG 16/32, apple-touch-icon)
-│       ├── vendor/mermaid/11.17.2/    # Mermaid для схем (MIT), грузится только на страницах со схемами
+│       ├── vendor/mermaid/11.17.2/    # Mermaid для схем (MIT), его подгружает mermaid-loader.js при первой схеме
 │       ├── exmpls/                    # иллюстрация к кейсу анализа рисков
 │       └── fonts/                     # Roboto, Roboto Mono, Unbounded (woff2 + OFL)
 ├── labs/

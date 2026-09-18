@@ -128,6 +128,7 @@ extra_css:
   - stylesheets/banners.css
 
 extra_javascript:
+  - javascripts/mermaid-loader.js   # window.mermaid for Material: vendored bundle, loaded on demand
   - javascripts/header.js
   - javascripts/typewriter-target.js
   - javascripts/banners.js

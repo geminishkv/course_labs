@@ -77,7 +77,7 @@ flowchart TB
 
 ## Схемы подписей
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
   <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
     <span class="lab-card-num">3/5</span>

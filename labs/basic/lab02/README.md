@@ -34,7 +34,7 @@ lab02
 
 Давайте начнем с описания как это работает, но следует подойти к этому вопросу изначально с **терминов** и **основных элементов**, таких как: 
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Терминал</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Устройство ввода/вывода — интерфейс между пользователем и системой.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Оболочка</span><span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">shell (bash, zsh)</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Интерпретатор команд, обеспечивающий интерфейс для взаимодействия пользователя с функциями ОС.</span><div class="lab-card-tags"><span class="lab-tag">env</span><span class="lab-tag">export</span><span class="lab-tag">echo</span><span class="lab-tag">reset</span><span class="lab-tag">logout</span><span class="lab-tag">exit</span></div></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Консоль</span><span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">CLI commands</span></div><span style="font-size:0.75rem; color:#555; line-height:1.5;">Интерфейс командной строки с командами для работы с файлами и каталогами.</span><div class="lab-card-tags"><span class="lab-tag">ls</span><span class="lab-tag">cd</span><span class="lab-tag">touch</span><span class="lab-tag">mkdir</span><span class="lab-tag">rm</span><span class="lab-tag">cp</span><span class="lab-tag">mv</span><span class="lab-tag">ln</span><span class="lab-tag">cat</span><span class="lab-tag">df</span><span class="lab-tag">du</span><span class="lab-tag">wc</span><span class="lab-tag">uniq</span><span class="lab-tag">grep</span></div></div>
@@ -249,7 +249,7 @@ $ getfacl nmapres.txt
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://cli.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub CLI</div><div class="lab-card-tags"><span class="lab-tag">cli.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://en.wikipedia.org/wiki/Cat_(Unix)" target="_blank"><div class="lab-card-body"><div class="lab-card-title">cat</div><div class="lab-card-tags"><span class="lab-tag">en.wikipedia.org</span></div></div><div class="lab-card-arrow">→</div></a>

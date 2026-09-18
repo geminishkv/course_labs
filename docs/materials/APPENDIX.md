@@ -14,7 +14,7 @@ keywords: "Git, Docker, Linux, Python, pip, venv, команды, AppSec, шпа
   </div>
 </div>
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
   <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">

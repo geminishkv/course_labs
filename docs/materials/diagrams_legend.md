@@ -15,7 +15,7 @@ keywords: "схемы, блок-схема, ГОСТ 19.701-90, ISO 5807, mermai
 
 ## Символы
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
@@ -128,7 +128,7 @@ flowchart TB
 
 Цвет повторяет форму и не несёт смысла сам по себе: схема читается и в чёрно-белой печати.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">

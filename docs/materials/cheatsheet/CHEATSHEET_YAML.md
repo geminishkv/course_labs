@@ -271,7 +271,7 @@ $ yq eval '.jobs | keys' .github/workflows/ci.yml
 
 ## Частые ошибки
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem; border-left-color: #F9B361;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-gold-dark); margin-bottom:0.1rem;">3.10 → 3.1</div>

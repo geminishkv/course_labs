@@ -63,7 +63,7 @@ Docker в WSL2 работает штатно (см. [Основы Docker](https:
 
 Рекомендуемые дистрибутивы (любой на выбор):
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
   <a class="lab-card" href="https://ubuntu.com/download/desktop" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Ubuntu 24.04 LTS Desktop</div><div class="lab-card-tags"><span class="lab-tag">Рекомендуется</span><span class="lab-tag">GUI</span><span class="lab-tag">apt</span></div></div><div class="lab-card-arrow">→</div></a>
   <a class="lab-card" href="https://ubuntu.com/download/server" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Ubuntu 24.04 LTS Server</div><div class="lab-card-tags"><span class="lab-tag">Без GUI</span><span class="lab-tag">Минимальный</span><span class="lab-tag">apt</span></div></div><div class="lab-card-arrow">→</div></a>
   <a class="lab-card" href="https://fedoraproject.org/workstation/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Fedora Workstation 41</div><div class="lab-card-tags"><span class="lab-tag">Актуальные пакеты</span><span class="lab-tag">dnf</span></div></div><div class="lab-card-arrow">→</div></a>
@@ -215,7 +215,7 @@ $ gh --version
 
 ## Рекомендации по ресурсам
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div class="lab-card-title" style="font-weight:700;">8 GB RAM</div>
   <div class="lab-card-tags"><span class="lab-tag">VM: 2-3 GB</span><span class="lab-tag">2 CPU</span><span class="lab-tag">20 GB диск</span></div>
@@ -242,7 +242,7 @@ $ gh --version
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://www.virtualbox.org/manual/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">VirtualBox Documentation</div><div class="lab-card-tags"><span class="lab-tag">virtualbox.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://ubuntu.com/tutorials/install-ubuntu-desktop" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Ubuntu Installation Guide</div><div class="lab-card-tags"><span class="lab-tag">ubuntu.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.fedoraproject.org/en-US/fedora/latest/install-guide/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Fedora Installation Guide</div><div class="lab-card-tags"><span class="lab-tag">docs.fedoraproject.org</span></div></div><div class="lab-card-arrow">→</div></a>

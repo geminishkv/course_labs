@@ -94,7 +94,7 @@ keywords: "аналитические кейсы, ИБ, GDPR, риски, AppSec
 
 <p>Виды потерь: человеческие, перепроизводство, ожидания, запасы, излишняя обработка, аналитический паралич, лишние движения. В последствии чего получается: kaizen event – value stream mapping – visual management – retrospective – daily standup – five times why. Занимался также планирование по Lean на базе Kanban: BUILD - MEASURE - LEARN - MVP по принципу Fail-Fast. Для команд кроссфункциональных - SCRUM. Ориентация принципа на конечном результате и ответственности за микросервис.</p>
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));">
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
   <div style="display:flex; align-items:center; gap:0.7rem; width:100%;">
     <span class="lab-card-num">01</span>

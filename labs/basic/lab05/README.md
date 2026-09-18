@@ -59,7 +59,7 @@ lab05
 
 Необходимы для организации изолированных рабочих пространств — контейнеров. Когда мы запускаем контейнер, `Docker` создаёт набор пространств имен для данного контейнера, что создаёт изолированный уровень в своем пространстве имен и не имеет доступа к внешней системе.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">pid</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция процессов — контейнер видит только свои процессы</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">net</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Управление сетевыми интерфейсами — собственный сетевой стек</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">ipc</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Изоляция IPC (InterProcess Communication) ресурсов</span></div>
@@ -92,7 +92,7 @@ $ docker container run -d \
 
 ### Контекст безопасности
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Не запускать от root</span><div class="lab-card-tags"><span class="lab-tag">USER</span><span class="lab-tag">Dockerfile</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Явно прописывать учётную запись с минимальными правами. Root внутри контейнера = root на хосте при побеге.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Без --privileged</span><div class="lab-card-tags"><span class="lab-tag">capabilities</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отключает все средства изоляции, даёт доступ к ФС и устройствам хоста. Явно прописывать только нужные capabilities.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Профили безопасности</span><div class="lab-card-tags"><span class="lab-tag">AppArmor</span><span class="lab-tag">seccomp</span><span class="lab-tag">SELinux</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Не отключать профили Linux security. Ограничивают syscalls, сеть, обращения к ФС хоста.</span></div>
@@ -365,7 +365,7 @@ $ docker compose down
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/engine/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Engine overview</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/reference/dockerfile/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Dockerfile reference</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>

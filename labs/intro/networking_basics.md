@@ -18,7 +18,7 @@
 
 Две модели описывают, как данные передаются по сети:
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -108,7 +108,7 @@ $ hostname -I           # только IP, без лишнего
 
 Не маршрутизируются в интернете:
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div class="lab-card-title" style="font-weight:700;">10.0.0.0/8</div>
@@ -159,7 +159,7 @@ $ ip route show
 
 ### Диапазоны портов
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div class="lab-card-title" style="font-weight:700;">0 — 1023</div>
@@ -183,7 +183,7 @@ $ ip route show
 
 ### Ключевые порты для AppSec
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -338,7 +338,7 @@ $ dig example.com TXT    # текстовые записи (SPF, DKIM)
 
 ### Типы DNS-записей
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -406,7 +406,7 @@ Authorization: Bearer <token>  ← аутентификация
 
 ### Основные методы
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -452,7 +452,7 @@ Authorization: Bearer <token>  ← аутентификация
 
 ### Коды ответов
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -548,7 +548,7 @@ PS> netstat -ano                               # открытые порты и 
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Cloudflare — Network Layer</div><div class="lab-card-tags"><span class="lab-tag">cloudflare.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://www.iana.org/assignments/service-names-port-numbers/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">IANA — Port Numbers Registry</div><div class="lab-card-tags"><span class="lab-tag">iana.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank"><div class="lab-card-body"><div class="lab-card-title">MDN — HTTP Overview</div><div class="lab-card-tags"><span class="lab-tag">developer.mozilla.org</span></div></div><div class="lab-card-arrow">→</div></a>

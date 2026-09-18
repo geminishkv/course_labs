@@ -13,7 +13,7 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 
 ## Обязательные заголовки
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -144,7 +144,7 @@ server {
 Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3600
 ```
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">

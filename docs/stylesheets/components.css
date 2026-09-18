@@ -322,9 +322,12 @@
    Lab cards grid
 ══════════════════════════════════════════ */
 
+/* Tracks in rem, not px: the root font grows on wide screens and a px track would
+   not; min(…, 100%) keeps one column inside a 320px phone */
+
 .lab-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(14.5rem, 100%), 1fr));
   gap: var(--space-3);
   margin: var(--space-5) 0 var(--space-8);
 }
@@ -370,7 +373,26 @@
   min-width: 0;
 }
 
+/* Card text never leaves the card: flex children may shrink below their longest
+   word and long words break. Inline width:auto marks .lab-card-num used as a
+   header instead of a two-digit number, so it may shrink and wrap as well. */
+
+.lab-card {
+  overflow-wrap: break-word;
+}
+
+.lab-card :where(div, span, p, li, a) {
+  min-width: 0;
+}
+
+.lab-card-num[style*="width:auto"] {
+  flex-shrink: 1;
+  text-align: left;
+  hyphens: auto;
+}
+
 .lab-card-title {
+  hyphens: auto;
   font-size: var(--text-base);
   font-weight: 500;
   color: var(--brand-dark);
@@ -815,6 +837,13 @@
 
 /* touch: footer tiles are full-size targets (WCAG 2.5.5) */
 @media (pointer: coarse), (max-width: 43.6875em) {
+  /* seven 44px tiles are wider than a 320px phone: let the row wrap */
+  .md-social {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
   .md-social__link {
     width: 44px;
     height: 44px;

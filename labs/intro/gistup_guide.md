@@ -143,7 +143,7 @@ PORT    STATE SERVICE VERSION
 
 Эталонный пример оформления:
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://gist.github.com/MishaBary/21ab63f83292a86268e039d484a86411" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Пример gistup-отчёта</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span><span class="lab-tag">Эталон</span></div></div><div class="lab-card-arrow">→</div></a>
 </div>
 
@@ -166,7 +166,7 @@ PORT    STATE SERVICE VERSION
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists" target="_blank"><div class="lab-card-body"><div class="lab-card-title">GitHub Gist Documentation</div><div class="lab-card-tags"><span class="lab-tag">docs.github.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://www.markdownguide.org/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown Guide</div><div class="lab-card-tags"><span class="lab-tag">markdownguide.org</span></div></div><div class="lab-card-arrow">→</div></a>

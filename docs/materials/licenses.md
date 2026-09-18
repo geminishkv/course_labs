@@ -20,7 +20,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Позволяют использовать, модифицировать и распространять код практически без ограничений — в том числе в проприетарных продуктах. Требуется только сохранение уведомлений об авторских правах.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://opensource.org/license/mit/" style="color:#D51A1A; text-decoration:none;">MIT License</a></div>
@@ -84,7 +84,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Изменения в файлах/библиотеке под лицензией должны оставаться открытыми, но основной проект может быть проприетарным. Удобно для библиотек и плагинных архитектур.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/lgpl-3.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU LGPL v3.0</a></div>
@@ -142,7 +142,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Производные работы обязаны распространяться под той же лицензией с предоставлением исходного кода. Самый строгий тип — «вирусный» эффект на весь проект.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU GPL v3.0</a></div>
@@ -170,7 +170,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Закрывает «SaaS-дыру»: предоставление ПО через сеть считается распространением — пользователи должны получить исходный код.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://www.gnu.org/licenses/agpl-3.0.en.html" style="color:#D51A1A; text-decoration:none;">GNU AGPL v3.0</a></div>
@@ -186,7 +186,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Автор максимально отказывается от авторских прав. Минимум юридических ограничений.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">The Unlicense</div>
@@ -214,7 +214,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Семейство лицензий для нон-кода: документация, наборы данных, изображения, обучающие материалы. Не рекомендуются для программного кода.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.1rem;"><a href="https://creativecommons.org/licenses/by/4.0/" style="color:#D51A1A; text-decoration:none;">CC BY 4.0</a></div>
@@ -272,7 +272,7 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
 
 Исходный код доступен, но с ограничениями использования. Не признаются OSI как Open Source. Часто запрещают конкурирующее SaaS-использование.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card lab-card--gold" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
   <div style="font-size:0.82rem; font-weight:700; color:#1A1919; margin-bottom:0.1rem;">SSPL (Server Side Public License)</div>

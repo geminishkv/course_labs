@@ -229,7 +229,7 @@ $ docker system prune -f
 
 ## Рекомендации
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">XSS на /echo</span><div class="lab-card-tags"><span class="lab-tag">Reflected XSS</span><span class="lab-tag">CWE-79</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отражение входных данных без экранирования. Мера: Jinja2 autoescape.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">SQLi на /search</span><div class="lab-card-tags"><span class="lab-tag">SQL Injection</span><span class="lab-tag">CWE-89</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Конкатенация ввода в SQL. Мера: параметризованные запросы.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Небезопасные cookies</span><div class="lab-card-tags"><span class="lab-tag">HttpOnly</span><span class="lab-tag">Secure</span><span class="lab-tag">SameSite</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">session, user, role без защитных флагов. Мера: HttpOnly, Secure, SameSite.</span></div>
@@ -260,7 +260,7 @@ $ docker system prune -f
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://flask.palletsprojects.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Flask Documentation</div><div class="lab-card-tags"><span class="lab-tag">flask.palletsprojects.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://github.com/eea/odfpy" target="_blank"><div class="lab-card-body"><div class="lab-card-title">odfpy – OpenDocument API for Python</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>

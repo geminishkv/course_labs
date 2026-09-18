@@ -58,14 +58,14 @@ lab06
 
 ### Уровни CIS Docker Benchmark
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Level 1</span><div class="lab-card-tags"><span class="lab-tag">Базовый</span><span class="lab-tag">Обязательный</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Минимальный набор проверок, не влияющий на производительность. Подходит для всех окружений.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Level 2</span><div class="lab-card-tags"><span class="lab-tag">Расширенный</span><span class="lab-tag">Продвинутый</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Углублённые проверки, могут ограничивать функциональность. Для production и высокого уровня защиты.</span></div>
 </div>
 
 ### Категории проверок CIS
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">1. Host Configuration</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Аудит, файловые разрешения, логирование Docker daemon, настройки ядра хоста</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">2. Docker Daemon</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">TLS, авторизация, сетевой режим, логирование, live restore, user namespace</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">3. Docker Daemon Files</span><span style="font-size:0.72rem; color:#555; line-height:1.4;">Права на docker.sock, конфиги daemon, TLS-сертификаты, /etc/docker</span></div>
@@ -190,7 +190,7 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://docs.docker.com/engine/security/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Engine security</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://github.com/docker/docker-bench-security" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker Bench for Security</div><div class="lab-card-tags"><span class="lab-tag">github.com</span></div></div><div class="lab-card-arrow">→</div></a>

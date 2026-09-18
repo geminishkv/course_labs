@@ -80,7 +80,7 @@ Software Composition Analysis — анализ сторонних библиот
 
 ### Сравнение инструментов
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Semgrep</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">Code</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Структурный grep по AST. Python, Java, JS. Кастомные YAML-правила, OWASP Top 10. Ищет SQLi, XSS, hardcoded secrets.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Bandit</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">Python only</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Python-специфичный SAST. eval, pickle, subprocess, hardcoded passwords. Быстрый, но только Python.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">Checkov</span><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">IaC</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">IaC-сканер: Dockerfile, docker-compose, Terraform, K8s YAML. Проверяет конфигурации на мисконфигурации.</span></div>
@@ -347,7 +347,7 @@ $ docker system prune -f
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://docs.docker.com/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Docker</div><div class="lab-card-tags"><span class="lab-tag">docs.docker.com</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://stackedit.io" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Markdown</div><div class="lab-card-tags"><span class="lab-tag">stackedit.io</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://gist.github.com" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Gist</div><div class="lab-card-tags"><span class="lab-tag">gist.github.com</span></div></div><div class="lab-card-arrow">→</div></a>

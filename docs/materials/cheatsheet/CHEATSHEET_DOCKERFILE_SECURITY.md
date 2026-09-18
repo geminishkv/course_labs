@@ -141,7 +141,7 @@ keywords: "Dockerfile, Docker security, multi-stage, distroless, hadolint, USER,
 
 ## COPY vs ADD
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -228,7 +228,7 @@ hadolint Dockerfile
 docker run --rm -i hadolint/hadolint < Dockerfile
 ```
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <span class="lab-card-num" style="font-size:0.9rem; width:auto;">DL3006</span>

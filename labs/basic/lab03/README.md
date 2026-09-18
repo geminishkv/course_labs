@@ -77,7 +77,7 @@ $ nmap -iL targets.txt # множественные цели сканирова�
 
 ### Типы сканирований
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP Connect</span><div class="lab-card-tags"><span class="lab-tag">-sT</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Полное TCP-соединение (3-way handshake). Надёжный, но заметный — логируется на стороне сервера. Работает без root.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP SYN (stealth)</span><div class="lab-card-tags"><span class="lab-tag">-sS</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Отправляет SYN, получает SYN/ACK, но не завершает handshake (RST). Быстрый, менее заметный. Требует root.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">TCP NULL</span><div class="lab-card-tags"><span class="lab-tag">-sN</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Пакет без флагов. Открытый порт не отвечает, закрытый — RST. Обходит простые файрволы, не работает на Windows.</span></div>
@@ -90,7 +90,7 @@ $ nmap -iL targets.txt # множественные цели сканирова�
 
 ### Основные порты
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">20/21</span><span style="font-size:0.75rem; color:#555;">FTP (File Transfer Protocol)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Передача файлов. Данные и пароли в открытом виде — уязвим к перехвату. Заменяется на SFTP/SCP.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">22</span><span style="font-size:0.75rem; color:#555;">SSH (Secure Shell)</span><div class="lab-card-tags"><span class="lab-tag">TCP</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Защищённый удалённый доступ. Шифрованный канал. Основная цель brute-force атак — проверяйте версию и конфиг.</span></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;"><span class="lab-card-num" style="font-size:0.85rem; width:auto;">23</span><span style="font-size:0.75rem; color:#555;">Telnet</span><div class="lab-card-tags"><span class="lab-tag">TCP</span><span class="lab-tag" style="border-color:rgba(213,26,26,0.3); color:#D51A1A; background:rgba(213,26,26,0.07);">небезопасный</span></div><span style="font-size:0.72rem; color:#555; line-height:1.4;">Всё в открытом тексте — пароли, команды. Открытый порт 23 — критическая находка. Должен быть закрыт.</span></div>
@@ -247,7 +247,7 @@ $ git commit -S -m "chore: ignore nmap scan results"
 
 ## Links
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));">
 <a class="lab-card" href="https://nmap.org/book/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Official Documentation</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://nmap.org/book/man.html" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Reference Guide</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="https://nmap.org/nsedoc/" target="_blank"><div class="lab-card-body"><div class="lab-card-title">Nmap Script (NSE) Reference</div><div class="lab-card-tags"><span class="lab-tag">nmap.org</span></div></div><div class="lab-card-arrow">→</div></a>

@@ -15,7 +15,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Инструменты, работающие с исходным кодом и байткодом — до запуска приложения. Встраиваются в IDE, pre-commit hooks и ранние стадии CI/CD.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -55,7 +55,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Инструменты, работающие с запущенным приложением — от «чёрного ящика» до агентного анализа внутри процесса.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -125,7 +125,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Проверка сторонних компонентов, лицензий и формирование инвентаря ПО — ключевая часть управления рисками supply chain.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -175,7 +175,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Безопасность контейнерных образов, Docker-хостов, IaC-конфигураций и сетевой инфраструктуры.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -235,7 +235,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Управление безопасностью облачных конфигураций, рабочих нагрузок и cloud-native приложений.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -285,7 +285,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Инструменты консолидации, приоритизации и управления уязвимостями из всех источников.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -315,7 +315,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Сбор событий, корреляция, автоматизация реагирования — операционная безопасность.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">
@@ -355,7 +355,7 @@ keywords: "AppSec, DevSecOps, SAST, DAST, SCA, SBOM, IAST, RASP, MAST, инст�
 
 Безопасность моделей машинного обучения, LLM и ML-пайплайнов — относительно новое направление.
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;">

@@ -13,7 +13,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Git и GitHub (Лаб. 01, 09)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Permission denied (publickey)</div>
@@ -46,7 +46,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Linux и Shell (Лаб. 02)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">command not found</div>
@@ -66,7 +66,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Nmap (Лаб. 03)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Nmap requires root privileges</div>
@@ -104,7 +104,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Docker (Лаб. 05, 06)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Cannot connect to Docker daemon</div>
@@ -136,7 +136,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## SAST и SCA (Лаб. 07)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Semgrep: no rules found</div>
@@ -162,7 +162,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## DAST — OWASP ZAP (Лаб. 08)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">ZAP: Connection refused</div>
@@ -182,7 +182,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## CI/CD — GitHub Actions (Лаб. 09)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Workflow не запускается</div>
@@ -208,7 +208,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## VirtualBox и VM (Подготовка окружения)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">VT-x is not available</div>
@@ -240,7 +240,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## GPG и подпись коммитов (Лаб. 01)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">error: gpg failed to sign the data</div>
@@ -266,7 +266,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Gist и отчёты
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">gh gist create: 401 Unauthorized</div>
@@ -292,7 +292,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Secret Detection (Лаб. 07)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">gitleaks: command not found</div>
@@ -318,7 +318,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Trivy и Container Scanning (Лаб. 06)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">trivy: command not found</div>
@@ -338,7 +338,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Risk Analysis (Лаб. 04, 10)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Не понимаю как оценить риск</div>
@@ -358,7 +358,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Сети и TCP/IP (Intro)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">dig / nslookup: command not found</div>
@@ -390,7 +390,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Docker Compose и Dockerfile (Intro, Лаб. 05)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">docker compose vs docker-compose</div>
@@ -422,7 +422,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## GitHub Actions YAML (Intro CI/CD, Лаб. 09)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">YAML syntax error: mapping values not allowed</div>
@@ -448,7 +448,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## CMS Security (Лаб. 10)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">Где искать CVE для CMS</div>
@@ -474,7 +474,7 @@ keywords: "troubleshooting, FAQ, ошибки, AppSec, Docker, Git, Python, CI/C
 
 ## Python и venv (общее)
 
-<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
   <div style="font-size:0.82rem; font-weight:700; color:var(--brand-red); margin-bottom:0.1rem;">ModuleNotFoundError</div>

@@ -187,7 +187,154 @@ Docker в WSL2 работает штатно (см. [Основы Docker](https:
     - Нажмите на пустой диск → иконка диска справа → `Выбрать файл` → укажите скачанный ISO
 - [ ] 4.5. **Сеть:**
     - Адаптер 1: `NAT` (доступ в интернет)
-    - Для лабораторной с Nmap (Лаб. 03): добавьте Адаптер 2 → `Внутренняя сеть` или `Виртуальный адаптер хоста`
+    - Для лабораторной с Nmap (Лаб. 03): добавьте Адаптер 2 → `Виртуальный адаптер хоста` — чем режимы отличаются, разобрано ниже
+
+### Режимы сети: что выбрать
+
+Режим адаптера отвечает на два вопроса: что видит виртуальная машина и кто видит её. От ответа зависит, будет ли в ВМ интернет, сможете ли вы зайти на неё с хоста и что именно окажется «своей подсетью» при сканировании в Лаб. 03.
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">NAT</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">режим по умолчанию</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Адрес ВМ</dt><dd><code>10.0.2.15</code>; шлюз <code>10.0.2.2</code> и DNS <code>10.0.2.3</code> — виртуальные, их изображает сам VirtualBox.</dd>
+    <dt>ВМ видит</dt><dd>Интернет и сеть хоста — исходящими соединениями.</dd>
+    <dt>ВМ видят</dt><dd>Никто: снаружи к ВМ не подключиться без проброса порта. Две ВМ в NAT друг друга тоже не видят.</dd>
+    <dt>Для курса</dt><dd>Адаптер 1: обновления, пакеты, <code>git push</code>.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Виртуальный адаптер хоста</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Host-only</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Адрес ВМ</dt><dd>Из сети <code>192.168.56.0/24</code>; хост в ней — <code>192.168.56.1</code>.</dd>
+    <dt>ВМ видит</dt><dd>Хост и другие ВМ в этой же сети. Интернета нет.</dd>
+    <dt>ВМ видят</dt><dd>Хост и соседние ВМ — и больше никто.</dd>
+    <dt>Для курса</dt><dd>Адаптер 2: изолированная сеть стенда. В ней безопасно сканировать в Лаб. 03 и удобно заходить на ВМ по SSH с хоста.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Сетевой мост</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Bridged</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Адрес ВМ</dt><dd>Как у обычного устройства вашей сети: его выдаёт домашний роутер.</dd>
+    <dt>ВМ видит</dt><dd>Всю локальную сеть и интернет.</dd>
+    <dt>ВМ видят</dt><dd>Все устройства локальной сети.</dd>
+    <dt>Для курса</dt><dd>Обычно не нужен. Сканирование из такой ВМ идёт по реальным устройствам — допустимо только в собственной домашней сети.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Сеть NAT</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">NAT Network</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Адрес ВМ</dt><dd>Из общей виртуальной сети, по умолчанию <code>10.0.2.0/24</code>.</dd>
+    <dt>ВМ видит</dt><dd>Интернет и другие ВМ этой сети.</dd>
+    <dt>ВМ видят</dt><dd>Другие ВМ этой сети; хост — только через проброс портов.</dd>
+    <dt>Для курса</dt><dd>Когда нескольким ВМ нужны и интернет, и связь между собой.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Внутренняя сеть</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">Internal</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Адрес ВМ</dt><dd>Никакого: DHCP нет, адреса задаются вручную.</dd>
+    <dt>ВМ видит</dt><dd>Только ВМ с тем же именем внутренней сети.</dd>
+    <dt>ВМ видят</dt><dd>Только они же; хост в эту сеть не входит.</dd>
+    <dt>Для курса</dt><dd>Стенд из двух ВМ, полностью отрезанный от всего остального.</dd>
+  </dl>
+  </div>
+
+</div>
+
+Адаптеров у ВМ может быть до четырёх, и режимы не исключают друг друга. Схема показывает, какие адаптеры добавить и в каком порядке это решается.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Какие сетевые адаптеры нужны виртуальной машине
+    accDescr: Три независимых вопроса добавляют по адаптеру: интернет даёт NAT, изолированную сеть стенда для доступа с хоста и сканирования даёт виртуальный адаптер хоста, а сетевой мост нужен, только если машину должны видеть другие устройства собственной домашней сети; в конце адреса проверяются внутри машины.
+
+    pick_adapters(["Настройка сети<br/>виртуальной машины"])
+    needs_internet{"ВМ нужен<br/>интернет?"}
+    internet_fork((" "))
+    add_nat["Адаптер 1: NAT"]
+    internet_join((" "))
+    needs_stand{"Нужна изолированная<br/>сеть стенда?"}
+    stand_fork((" "))
+    add_host_only["Адаптер 2: виртуальный<br/>адаптер хоста"]
+    stand_join((" "))
+    needs_lan{"ВМ должна быть видна<br/>в вашей сети?"}
+    lan_fork((" "))
+    add_bridge["Сетевой мост: только<br/>в своей домашней сети"]
+    lan_join((" "))
+    check_addresses[["Проверить внутри ВМ:<br/>ip -br addr, ip route"]]
+    network_ready([Сеть настроена])
+
+    pick_adapters --> needs_internet
+    needs_internet --- internet_fork
+    internet_fork -->|Да| add_nat
+    internet_fork -->|Нет| internet_join
+    add_nat --- internet_join
+    internet_join --> needs_stand
+    needs_stand --- stand_fork
+    stand_fork -->|Да| add_host_only
+    stand_fork -->|Нет| stand_join
+    add_host_only --- stand_join
+    stand_join --> needs_lan
+    needs_lan --- lan_fork
+    lan_fork -->|Да| add_bridge
+    lan_fork -->|Нет| lan_join
+    add_bridge --- lan_join
+    lan_join --> check_addresses
+    check_addresses --> network_ready
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class internet_fork,internet_join,stand_fork,stand_join,lan_fork,lan_join junction
+    class add_nat,add_host_only,add_bridge,check_addresses stage
+    class needs_internet,needs_stand,needs_lan gate
+    class network_ready done
+```
+
+**Как читать схему:**
+
+- Три ромба — три независимых вопроса, каждый «Да» добавляет свой адаптер. Для курса достаточно первых двух: NAT для интернета и виртуальный адаптер хоста для стенда.
+- Сетевой мост стоит последним не случайно: он выводит ВМ в настоящую сеть. В сети университета, общежития или работодателя так делать нельзя — сканирование из такой ВМ затронет чужие устройства.
+- Последний шаг обязателен: режим выбирается в настройках VirtualBox, а результат виден только внутри ВМ.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
+Проверка внутри ВМ:
+
+```bash
+$ ip -br addr                 # интерфейсы и адреса: 10.0.2.15 — это NAT, 192.168.56.x — адаптер хоста
+$ ip route                    # маршрут по умолчанию должен идти через интерфейс NAT
+$ ping -c 2 192.168.56.1      # хост отвечает — сеть стенда работает
+$ ping -c 2 1.1.1.1           # интернет есть
+```
+
+> Если второй интерфейс есть, а адреса на нём нет — в VirtualBox не создана сеть хоста: `Файл → Инструменты → Менеджер сетей`, вкладка с сетями хоста, включить DHCP. На Linux и macOS VirtualBox разрешает для таких сетей только адреса из `192.168.56.0/21`.
+
+Что считать «своей подсетью» в Лаб. 03: в режиме NAT в ней нет ничего, кроме виртуальных шлюза и DNS самого VirtualBox, поэтому сканирование подсети даёт пустой результат. Сеть адаптера хоста — изолированный стенд, где есть хост и ваши ВМ; сканировать нужно её.
 
 ***
 

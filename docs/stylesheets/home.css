@@ -1168,10 +1168,13 @@ body:has(.md-content--home) .md-top {
 
 .md-typeset ol.notes { padding-left: 1.4rem; }
 
+/* Steps wrap as a flex row: every row is filled edge to edge, so an odd count never
+   leaves one card alone next to empty space (five steps sit as three and two). */
+
 .md-typeset ol.steps {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-3);
   margin: 0 0 var(--space-3);
   padding: 0;
@@ -1179,6 +1182,8 @@ body:has(.md-content--home) .md-top {
 }
 
 .md-typeset ol.steps li {
+  /* never more than three in a row: a fourth would leave the fifth step alone */
+  flex: 1 1 max(17rem, 30%);
   display: flex;
   gap: var(--space-3);
   align-items: flex-start;
@@ -1361,7 +1366,6 @@ body:has(.md-content--home) .md-top {
 
   .rules-grid { grid-template-columns: 1fr; }
 
-  .md-typeset ol.steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ══════════════════════════════════════════
@@ -1422,7 +1426,6 @@ body:has(.md-content--home) .md-top {
 
   .about-grid { grid-template-columns: 1fr; }
 
-  .md-typeset ol.steps { grid-template-columns: 1fr; }
 
   .entries { grid-template-columns: 1fr; }
 

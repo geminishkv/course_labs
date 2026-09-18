@@ -25,44 +25,49 @@
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
     accTitle: Конвейер CI/CD от push до релиза
-    accDescr: Push или pull request запускает CI со сборкой и проверками; при провале код возвращается на исправление, при успехе изменения проходят ревью и выкатываются в CD.
+    accDescr: Push или pull request запускает CI со сборкой и проверками; при провале код возвращается на исправление, при успехе pull request проходит ревью и сливается, после чего CD выкатывает релиз.
 
     push_code([Push или pull request])
     push_join((" "))
 
     subgraph ci_stage ["CI: непрерывная интеграция"]
-        build_app[Сборка]
-        run_checks[Тесты и проверки безопасности]
-        checks_passed{Проверки пройдены?}
+        direction TB
+        build_app[Собрать проект]
+        run_checks["Прогнать тесты и<br/>проверки безопасности"]
+        checks_passed{"Проверки<br/>пройдены?"}
+        build_app --> run_checks
+        run_checks --> checks_passed
     end
 
     checks_fork((" "))
     fix_code[Исправить код]
+    merge_pr["Пройти ревью и<br/>слить pull request"]
 
     subgraph cd_stage ["CD: непрерывная доставка"]
-        review_pr[Ревью pull request]
-        deploy_release[[Выкатка релиза]]
+        direction TB
+        deploy_release[["Выкатить релиз:<br/>staging или production"]]
     end
 
-    release_done([Релиз в production])
+    release_done([Релиз доставлен])
 
     push_code --- push_join
-    fix_code --> push_join
-    push_join --> build_app
-    build_app --> run_checks
-    run_checks --> checks_passed
+    push_join --> ci_stage
     checks_passed --- checks_fork
+    checks_fork -->|Да| merge_pr
     checks_fork -->|Нет| fix_code
-    checks_fork -->|Да| review_pr
-    review_pr --> deploy_release
-    deploy_release --> release_done
+    fix_code --> push_join
+    merge_pr --> cd_stage
+    cd_stage --> release_done
 
-    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
-    classDef decision fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
     classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
-    class build_app,run_checks,review_pr,deploy_release,fix_code stage
-    class checks_passed decision
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
     class push_join,checks_fork junction
+    class build_app,run_checks,fix_code,merge_pr,deploy_release stage
+    class checks_passed gate
+    class release_done done
 ```
 
 ### Зачем это нужно
@@ -371,7 +376,7 @@ jobs:
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
     accTitle: Порядок jobs в DevSecOps-пайплайне
-    accDescr: Job lint запускается первым, после него параллельно идут sast и container-scan, а deploy стартует только когда обе проверки прошли и сборка идёт из ветки main.
+    accDescr: Job lint запускается первым, после него параллельно идут sast и container-scan, а deploy стартует только когда обе проверки прошли и сборка идёт из ветки main; иначе job deploy пропускается.
 
     trigger_push([Push или pull request])
     run_lint[[lint: ruff]]
@@ -382,11 +387,11 @@ flowchart TB
     end
 
     checks_join((" "))
-    is_main{Ветка main?}
+    is_main{"Ветка<br/>main?"}
     main_fork((" "))
     deploy_app[[deploy]]
-    no_deploy([Конец без деплоя])
     deploy_done([Выкатка завершена])
+    deploy_skipped([Job deploy пропущен])
 
     trigger_push --> run_lint
     run_lint --> parallel_checks
@@ -395,15 +400,18 @@ flowchart TB
     checks_join --> is_main
     is_main --- main_fork
     main_fork -->|Да| deploy_app
-    main_fork -->|Нет| no_deploy
+    main_fork -->|Нет| deploy_skipped
     deploy_app --> deploy_done
 
-    classDef job fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
-    classDef decision fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
     classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
-    class run_lint,run_sast,scan_container,deploy_app job
-    class is_main decision
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
     class checks_join,main_fork junction
+    class run_lint,run_sast,scan_container,deploy_app stage
+    class is_main gate
+    class deploy_done done
 ```
 
 ***

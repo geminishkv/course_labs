@@ -25,14 +25,27 @@ flowchart TB
     accTitle: Виртуальные машины и контейнеры
     accDescr: Каждая виртуальная машина несёт свою гостевую ОС со своим ядром поверх гипервизора, а контейнеры делят одно ядро хостовой ОС и изолируются механизмами namespaces и cgroups.
 
+    subgraph container_stack ["Контейнеры"]
+        direction TB
+        ct_app_a["Приложение A<br/>и библиотеки"]
+        ct_app_b["Приложение B<br/>и библиотеки"]
+        ct_join((" "))
+        container_engine["Docker Engine:<br/>namespaces и cgroups"]
+        ct_host["Хостовая ОС:<br/>одно общее ядро"]
+        ct_app_a --- ct_join
+        ct_app_b --- ct_join
+        ct_join --> container_engine
+        container_engine --> ct_host
+    end
+
     subgraph vm_stack ["Виртуальные машины"]
         direction TB
-        vm_app_a[Приложение A и библиотеки]
-        vm_app_b[Приложение B и библиотеки]
-        vm_guest_a[Гостевая ОС A со своим ядром]
-        vm_guest_b[Гостевая ОС B со своим ядром]
+        vm_app_a["Приложение A<br/>и библиотеки"]
+        vm_app_b["Приложение B<br/>и библиотеки"]
+        vm_guest_a["Гостевая ОС A:<br/>своё ядро"]
+        vm_guest_b["Гостевая ОС B:<br/>своё ядро"]
         vm_join((" "))
-        hypervisor[[Гипервизор: VirtualBox]]
+        hypervisor["Гипервизор:<br/>VirtualBox"]
         vm_host[Хостовая ОС]
         vm_app_a --> vm_guest_a
         vm_app_b --> vm_guest_b
@@ -42,27 +55,15 @@ flowchart TB
         hypervisor --> vm_host
     end
 
-    subgraph container_stack ["Контейнеры"]
-        direction TB
-        ct_app_a[Приложение A и библиотеки]
-        ct_app_b[Приложение B и библиотеки]
-        ct_join((" "))
-        container_engine[[Docker Engine: namespaces и cgroups]]
-        ct_host[Хостовая ОС: одно общее ядро]
-        ct_app_a --- ct_join
-        ct_app_b --- ct_join
-        ct_join --> container_engine
-        container_engine --> ct_host
-    end
-
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
     classDef app fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
     classDef kernel fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#7c2d12
-    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
-    class vm_app_a,vm_app_b,ct_app_a,ct_app_b app
     classDef runtime fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1f2937
+
+    class vm_join,ct_join junction
+    class vm_app_a,vm_app_b,ct_app_a,ct_app_b app
     class vm_guest_a,vm_guest_b,vm_host,ct_host kernel
     class hypervisor,container_engine runtime
-    class vm_join,ct_join junction
 ```
 
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
@@ -86,32 +87,42 @@ flowchart TB
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
     accTitle: Слои образа и контейнера Docker
-    accDescr: Образ собирается сверху вниз по инструкциям Dockerfile из неизменяемых слоёв, а запуск контейнера добавляет один записываемый слой, который удаляется вместе с контейнером.
+    accDescr: Команда docker build собирает образ сверху вниз по инструкциям Dockerfile из неизменяемых слоёв, а docker run добавляет поверх один записываемый слой, который удаляется вместе с контейнером.
 
-    docker_build([docker build])
+    layers_start([Есть Dockerfile])
+    run_build[[docker build]]
 
     subgraph image_layers ["Образ: слои только для чтения"]
-        os_layer[/Слои ОС из базового образа: Debian slim/]
-        python_layer[/Слои интерпретатора: python:3.12-slim/]
-        deps_layer[/RUN pip install: зависимости/]
-        code_layer[/COPY: код приложения/]
+        direction TB
+        os_layer[/"FROM python:3.12-slim:<br/>слои ОС Debian"/]
+        python_layer[/"FROM python:3.12-slim:<br/>слои интерпретатора"/]
+        deps_layer[/"RUN pip install:<br/>зависимости"/]
+        code_layer[/"COPY:<br/>код приложения"/]
         os_layer --> python_layer
         python_layer --> deps_layer
         deps_layer --> code_layer
     end
 
-    docker_run([docker run])
+    run_container[[docker run]]
 
     subgraph container_layer ["Контейнер"]
-        writable_layer[/Записываемый слой: изменения во время работы/]
+        direction TB
+        writable_layer[/"Записываемый слой:<br/>изменения при работе"/]
     end
 
-    docker_build --> image_layers
-    code_layer --> docker_run
-    docker_run --> writable_layer
+    container_running([Контейнер работает])
 
+    layers_start --> run_build
+    run_build --> image_layers
+    image_layers --> run_container
+    run_container --> container_layer
+    container_layer --> container_running
+
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
     classDef readonly fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1f2937
     classDef writable fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class run_build,run_container stage
     class os_layer,python_layer,deps_layer,code_layer readonly
     class writable_layer writable
 ```
@@ -314,7 +325,7 @@ stateDiagram-v2
     created_state --> running_state : docker start
     running_state --> paused_state : docker pause
     paused_state --> running_state : docker unpause
-    running_state --> exited_state : docker stop или конец процесса
+    running_state --> exited_state : docker stop<br/>или конец процесса
     exited_state --> running_state : docker start
     exited_state --> [*] : docker rm
 ```

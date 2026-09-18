@@ -71,31 +71,57 @@
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
     accTitle: Маршрут прохождения курса
-    accDescr: Курс начинается с семи intro-гайдов, продолжается десятью лабораторными в четырёх блоках, затем идут тесты и индивидуальный pet-project.
+    accDescr: Курс начинается с семи intro-гайдов и репозитория с обвязкой, затем идёт цикл по десяти лабораторным: работа атомарными коммитами в develop, отчёт gistup, pull request и approve преподавателя с доработкой при отказе; после лабораторных — pet-project и завершение курса.
 
     course_start([Старт курса])
-    prep_guides[["Подготовка: 7 intro-гайдов<br/>окружение, Git и GPG, отчёты gistup,<br/>сети, Docker, CI/CD, AppSec-инструменты"]]
-    block_foundations[["Основы: Лаб. 01–04<br/>Git, Linux, Nmap, анализ рисков"]]
-    block_containers[["Контейнеры: Лаб. 05–06<br/>Docker, CIS Benchmark, Trivy"]]
-    block_appsec[["Инструменты AppSec: Лаб. 07–08<br/>SAST, SCA, поиск секретов, DAST"]]
-    block_devsecops[["DevSecOps: Лаб. 09–10<br/>конвейер на GitHub Actions, итоговая оценка рисков"]]
-    final_tests[["Тесты: 5 базовых вариантов<br/>и 2 варианта по лекции Fintech"]]
-    pet_project[["Pet-project: полный стек AppSec/DevSecOps"]]
+    prep_guides[[Пройти 7 intro-гайдов]]
+    repo_scaffold["Завести репозиторий<br/>с обвязкой"]
+    lab_order[/"Порядок лаб 01–10:<br/>01–04 основы<br/>05–06 контейнеры<br/>07–08 AppSec<br/>09–10 DevSecOps"/]
+
+    subgraph lab_cycle [Цикл по каждой лабораторной]
+        direction TB
+        next_join((" "))
+        lab_work["Выполнить следующую<br/>лабораторную в develop<br/>атомарными коммитами"]
+        lab_report[/"Отчёт gistup: команды,<br/>флаги, вывод терминала"/]
+        pr_join((" "))
+        lab_pr[Открыть pull request]
+        review_gate{"Approve<br/>преподавателя?"}
+        review_fork((" "))
+        lab_rework["Доработать<br/>по замечаниям"]
+        labs_left{"Остались<br/>лабораторные?"}
+        labs_fork((" "))
+    end
+
+    pet_project[["Pet-project:<br/>весь стек AppSec/DevSecOps"]]
     course_end([Курс завершён])
 
     course_start --> prep_guides
-    prep_guides --> block_foundations
-    block_foundations --> block_containers
-    block_containers --> block_appsec
-    block_appsec --> block_devsecops
-    block_devsecops --> final_tests
-    final_tests --> pet_project
+    prep_guides --> repo_scaffold
+    repo_scaffold --> lab_order
+    lab_order --> next_join
+    next_join --> lab_work
+    lab_work --> lab_report
+    lab_report --> pr_join
+    pr_join --> lab_pr
+    lab_pr --> review_gate
+    review_gate --- review_fork
+    review_fork -->|Да| labs_left
+    review_fork -->|Нет| lab_rework
+    lab_rework --> pr_join
+    labs_left --- labs_fork
+    labs_fork -->|Да| next_join
+    labs_fork -->|Нет| pet_project
     pet_project --> course_end
 
-    classDef block fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
-    classDef final fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
-    class prep_guides,block_foundations,block_containers,block_appsec,block_devsecops block
-    class final_tests,pet_project final
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class next_join,pr_join,review_fork,labs_fork junction
+    class prep_guides,repo_scaffold,lab_work,lab_pr,lab_rework stage
+    class review_gate,labs_left gate
+    class pet_project,course_end done
 ```
 
 ***

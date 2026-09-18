@@ -16,6 +16,150 @@ keywords: "лицензии, open source, MIT, GPL, Apache, BSD, SSPL, BUSL, App
   <span>Данная таблица носит <strong>справочный характер</strong> и не является юридической консультацией. Для принятия решений по лицензированию в продуктах и контрактах рекомендуется консультироваться с юристами.</span>
 </div>
 
+## Коротко: пять семейств
+
+Лицензии различаются не названием, а тем, что они требуют в обмен на право пользоваться кодом. Вопрос при выборе зависимости всегда один: что я буду обязан сделать, если включу этот код в свой продукт.
+
+<div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));">
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Разрешительные</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">MIT · Apache-2.0 · BSD · ISC</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Можно</dt><dd>Использовать, менять, продавать, закрывать производный код.</dd>
+    <dt>Обязан</dt><dd>Сохранить текст лицензии и уведомление об авторстве. Apache-2.0 — ещё файл NOTICE и пометки об изменениях.</dd>
+    <dt>Риск</dt><dd>Почти нет. У MIT и BSD нет явного патентного гранта, у Apache-2.0 он есть.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Слабый копилефт</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">LGPL · MPL-2.0 · EPL-2.0</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Можно</dt><dd>Подключать к закрытому продукту как библиотеку или отдельные файлы.</dd>
+    <dt>Обязан</dt><dd>Открыть изменения в самой библиотеке или в файлах под этой лицензией.</dd>
+    <dt>Риск</dt><dd>Статическая линковка с LGPL и смешение файлов под MPL требуют аккуратности.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Сильный копилефт</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">GPL-2.0 · GPL-3.0</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Можно</dt><dd>Использовать и менять, в том числе коммерчески.</dd>
+    <dt>Обязан</dt><dd>Распространять производную работу целиком под GPL и с исходным кодом.</dd>
+    <dt>Риск</dt><dd>GPL-код внутри распространяемого закрытого продукта обязывает открыть весь продукт.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Сетевой копилефт</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">AGPL-3.0</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Можно</dt><dd>То же, что с GPL.</dd>
+    <dt>Обязан</dt><dd>Отдавать исходный код и тем, кто пользуется программой по сети, а не только получил её копию.</dd>
+    <dt>Риск</dt><dd>Закрытый сервис на AGPL-компоненте. Во многих компаниях AGPL запрещена внутренней политикой.</dd>
+  </dl>
+  </div>
+
+  <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+  <div style="display:flex; align-items:baseline; gap:0.6rem; width:100%; flex-wrap:wrap;">
+    <span class="lab-card-num" style="font-size:0.9rem; width:auto;">Source-available</span>
+    <span style="font-size:0.65rem; color:#888; font-family:var(--font-code);">SSPL · BUSL</span>
+  </div>
+  <dl class="lab-card-facts">
+    <dt>Можно</dt><dd>Читать код и использовать его в оговорённых пределах.</dd>
+    <dt>Обязан</dt><dd>Соблюдать ограничения — обычно запрет предлагать продукт как конкурирующий сервис.</dd>
+    <dt>Риск</dt><dd>Это не open source: условия у каждого продукта свои, читать нужно каждую лицензию.</dd>
+  </dl>
+  </div>
+
+</div>
+
+## Как выбрать лицензию для своего репозитория
+
+Схема проводит от трёх вопросов к семейству лицензий. Она нужна уже в [Лаб. 01](../labs/basic/lab01.md): каждый репозиторий курса должен содержать `LICENSE` и `NOTICE`.
+
+```mermaid
+%%{init: {"flowchart": {"curve": "step"}}}%%
+flowchart TB
+    accTitle: Выбор лицензии для репозитория
+    accDescr: Три вопроса по порядку приводят к семейству лицензий: код это или тексты и данные, должны ли чужие правки оставаться открытыми, считать ли работу по сети распространением; в конце в корень репозитория кладутся файлы LICENSE и NOTICE.
+
+    need_license(["Нужна лицензия<br/>для репозитория"])
+    is_code{"Это код, а не<br/>тексты и данные?"}
+    code_fork((" "))
+    pick_cc["Creative Commons:<br/>CC BY или CC BY-SA"]
+    keep_open{"Чужие правки должны<br/>оставаться открытыми?"}
+    open_fork((" "))
+    pick_permissive["Разрешительная:<br/>MIT или Apache-2.0"]
+    is_network{"Работа по сети —<br/>тоже распространение?"}
+    network_fork((" "))
+    pick_agpl["Сетевой копилефт:<br/>AGPL-3.0"]
+    pick_gpl["Копилефт: GPL-3.0,<br/>для библиотек —<br/>LGPL или MPL-2.0"]
+    choice_join((" "))
+    add_files[/"Файлы LICENSE и NOTICE<br/>в корне репозитория"/]
+    license_done([Лицензия выбрана])
+
+    need_license --> is_code
+    is_code --- code_fork
+    code_fork -->|Да| keep_open
+    code_fork -->|Нет| pick_cc
+    keep_open --- open_fork
+    open_fork -->|Да| is_network
+    open_fork -->|Нет| pick_permissive
+    is_network --- network_fork
+    network_fork -->|Да| pick_agpl
+    network_fork -->|Нет| pick_gpl
+    pick_cc --- choice_join
+    pick_permissive --- choice_join
+    pick_agpl --- choice_join
+    pick_gpl --- choice_join
+    choice_join --> add_files
+    add_files --> license_done
+
+    classDef junction fill:#374151,stroke:#374151,stroke-width:1px,color:#374151,font-size:1px
+    classDef stage fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f
+    classDef gate fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef done fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+
+    class code_fork,open_fork,network_fork,choice_join junction
+    class pick_cc,pick_permissive,pick_agpl,pick_gpl stage
+    class is_code,keep_open,is_network gate
+    class license_done done
+```
+
+**Как читать схему:**
+
+- Первый вопрос отсекает не-код: для отчётов, документации и наборов данных лицензии для программ не подходят, и наоборот.
+- Второй вопрос — главный. Если вам всё равно, закроет ли кто-то доработанную версию, берите разрешительную: MIT короче, Apache-2.0 даёт патентную защиту.
+- Третий вопрос важен только для серверного ПО: обычный копилефт срабатывает при передаче копии программы, а сервис по сети копию не передаёт.
+- Все ветки сходятся в одну точку: какой бы ни была лицензия, в репозитории должны лежать её полный текст и файл с указанием авторства.
+
+Обозначения — в материале [Как читать схемы курса](diagrams_legend.md).
+
+## LICENSE и NOTICE в репозитории
+
+`LICENSE` — полный неизменённый текст выбранной лицензии с годом и именем правообладателя. Пересказ, ссылка или строка «MIT» в README лицензией не являются: без текста лицензии код по умолчанию остаётся «все права защищены», и пользоваться им формально нельзя.
+
+`NOTICE` — кто автор и чей код использован внутри: название проекта, правообладатель, перечень сторонних компонентов с их лицензиями. Для Apache-2.0 этот файл — требование самой лицензии, для остальных — хорошая практика и требование курса.
+
+```bash
+gh repo license list                          # Лицензии, тексты которых умеет выдавать GitHub
+gh repo license view mit > LICENSE            # Полный текст лицензии в файл; год и имя вписываются вручную
+gh repo create <name> --public --license mit  # Или сразу завести репозиторий с лицензией
+```
+
+Какие лицензии у ваших зависимостей, показывает анализ состава (SCA) — он разобран в [Лаб. 07](../labs/basic/lab07.md) и в классе License Policy [классификации инструментов](appsec_tt.md).
+
 ## Разрешительные (Permissive)
 
 Позволяют использовать, модифицировать и распространять код практически без ограничений — в том числе в проприетарных продуктах. Требуется только сохранение уведомлений об авторских правах.

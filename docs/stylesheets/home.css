@@ -126,7 +126,7 @@ body:has(.md-content--home) .md-top {
 }
 
 .hero-section--home .hero-stats {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 0;
 }
 
@@ -661,6 +661,7 @@ body:has(.md-content--home) .md-top {
   line-height: 1;
   color: var(--brand-gold);
   font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 .hero-stat span {
@@ -668,6 +669,7 @@ body:has(.md-content--home) .md-top {
   margin-top: 0.3rem;
   font-size: var(--text-xs);
   color: var(--text-inverse-muted);
+  overflow-wrap: anywhere;
 }
 
 /* ══════════════════════════════════════════
@@ -1047,9 +1049,11 @@ body:has(.md-content--home) .md-top {
 .md-typeset .badges a { display: inline-flex; }
 
 .about-grid,
+/* three rule cards; they stack as soon as a column gets narrower than 20rem */
+
 .rules-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   gap: var(--space-4);
   margin: var(--space-5) 0 var(--space-6);
 }
@@ -1256,6 +1260,8 @@ body:has(.md-content--home) .md-top {
   color: var(--text-inverse);
 }
 
+/* second strip: the author's main site right under the channel */
+
 .tg-strip__left {
   display: flex;
   align-items: center;
@@ -1322,8 +1328,9 @@ body:has(.md-content--home) .md-top {
 @media screen and (max-width: 99.9375em) {
   .hero-section--home { grid-template-columns: 1fr; }
 
+  /* six figures: one row while the hero is a single wide column */
   .hero-section--home .hero-stats {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       margin-top: var(--space-6);
     }
 
@@ -1337,7 +1344,7 @@ body:has(.md-content--home) .md-top {
 /* 700–960px: pipeline 2 × 3 */
 
 @media screen and (min-width: 43.75em) and (max-width: 60em) {
-  .hero-section--home .hero-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .hero-section--home .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
   .md-typeset ol.track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 

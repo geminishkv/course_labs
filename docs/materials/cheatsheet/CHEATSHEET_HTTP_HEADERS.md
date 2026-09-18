@@ -13,6 +13,8 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 
 ## Обязательные заголовки
 
+Заголовки ответа — инструкции браузеру: что разрешено загружать, можно ли встраивать страницу в чужой сайт, по какому протоколу ходить. Их отсутствие — типичные находки пассивного сканирования OWASP ZAP в [Лаб. 08](../../labs/basic/lab08.md): исправляются они конфигурацией, без правки кода.
+
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));">
 
   <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;">
@@ -71,6 +73,8 @@ keywords: "HTTP headers, CSP, HSTS, X-Frame-Options, CORS, security headers, ngi
 
 ## Настройка nginx
 
+Заголовки удобнее задавать на веб-сервере или reverse proxy — тогда они одинаковы для всего приложения. Особенность nginx: `add_header` внутри `location` отменяет заголовки, унаследованные из `server`. Либо держите все заголовки на одном уровне, либо повторяйте их; флаг `always` добавляет заголовок и к ответам с ошибками.
+
 ```nginx
 server {
     listen 443 ssl http2;
@@ -101,6 +105,8 @@ server {
 ***
 
 ## Настройка Express (Node.js)
+
+В приложении заголовки выставляет middleware. Для Express стандартное решение — `helmet`: безопасные значения по умолчанию и точечная настройка политики содержимого.
 
 === "С helmet (рекомендуется)"
 
@@ -139,6 +145,8 @@ server {
 ***
 
 ## Cookie-атрибуты безопасности
+
+Атрибуты cookie решают три вопроса: увидит ли её скрипт на странице (`HttpOnly`), уйдёт ли она по незашифрованному соединению (`Secure`) и приложится ли к запросу с чужого сайта (`SameSite`).
 
 ```
 Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3600
@@ -179,6 +187,8 @@ Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Strict; Path=/; Max-Age=3
 ***
 
 ## Проверка заголовков
+
+Проверять нужно ответ реального сервера, а не конфигурационный файл: заголовок может потеряться на прокси или быть перезаписан приложением.
 
 ```bash
 # curl — быстрая проверка

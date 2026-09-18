@@ -37,6 +37,7 @@ keywords: "материалы AppSec, OWASP Top 10, шпаргалки DevSecOps
 
 <div class="lab-grid">
 <a class="lab-card" href="appsec_tt/"><div class="lab-card-body"><div class="lab-card-title">AppSec Toolchain — классификация инструментов</div><div class="lab-card-tags"><span class="lab-tag">SAST</span><span class="lab-tag">DAST</span><span class="lab-tag">SCA</span><span class="lab-tag">SBOM</span></div></div><div class="lab-card-arrow">→</div></a>
+<a class="lab-card" href="diagrams_legend/"><div class="lab-card-body"><div class="lab-card-title">Как читать схемы курса</div><div class="lab-card-tags"><span class="lab-tag">ГОСТ 19.701-90</span><span class="lab-tag">Mermaid</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="ports/"><div class="lab-card-body"><div class="lab-card-title">Порты и протоколы</div><div class="lab-card-tags"><span class="lab-tag">TCP</span><span class="lab-tag">UDP</span><span class="lab-tag">Сервисы</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="licenses/"><div class="lab-card-body"><div class="lab-card-title">Лицензии ПО</div><div class="lab-card-tags"><span class="lab-tag">Open Source</span><span class="lab-tag">Проприетарные</span><span class="lab-tag">CC</span></div></div><div class="lab-card-arrow">→</div></a>
 <a class="lab-card" href="cheatsheet/CHEATSHEET_GIT/"><div class="lab-card-body"><div class="lab-card-title">CheatSheet: Git</div><div class="lab-card-tags"><span class="lab-tag">Git</span></div></div><div class="lab-card-arrow">→</div></a>

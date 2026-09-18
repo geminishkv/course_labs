@@ -389,6 +389,7 @@ flowchart TB
 │   │   ├── ports.md                   # Справочник портов
 │   │   ├── appsec_tt.md              # 29 классов инструментов
 │   │   ├── licenses.md               # 32 карточки лицензий
+│   │   ├── diagrams_legend.md        # Как читать схемы курса: символы ГОСТ 19.701-90, развилки, цвета
 │   │   ├── APPENDIX.md               # Команды и утилиты
 │   │   └── troubleshooting.md        # FAQ (56 карточек)
 │   ├── stylesheets/                   # fonts → tokens → header → sidebar → typeset → components → banners; home.css только на главной

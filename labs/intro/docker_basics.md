@@ -19,6 +19,8 @@
 
 ### VM vs Container
 
+Схема сравнивает, что на чём работает в виртуальной машине и в контейнере. Стрелка означает «работает поверх».
+
 ```mermaid
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
@@ -66,6 +68,14 @@ flowchart TB
     class hypervisor,container_engine runtime
 ```
 
+**Как читать схему:**
+
+- У каждой виртуальной машины своя гостевая ОС со своим ядром (оранжевые блоки). Изоляция сильнее, но каждая ОС занимает память и диск и загружается как отдельный компьютер.
+- Контейнеры делят одно ядро хостовой ОС. Изоляцию дают namespaces (что процесс видит) и cgroups (сколько ресурсов он получает).
+- Следствие для безопасности: уязвимость ядра хоста затрагивает сразу все контейнеры. Поэтому в Лаб. 05–06 столько внимания правам процесса и настройкам демона.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
+
 <div class="lab-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Изоляция</span></div><div class="lab-card-tags"><span class="lab-tag">VM: полная (отдельная ОС)</span></div><div class="lab-card-tags"><span class="lab-tag">Container: уровень процесса</span></div></div>
 <div class="lab-card" style="flex-direction: column; align-items: flex-start; gap: 0.4rem;"><div style="display:flex; align-items:baseline; gap:0.6rem; width:100%;"><span class="lab-card-num" style="font-size:0.9rem; width:auto;">Размер</span></div><div class="lab-card-tags"><span class="lab-tag">VM: гигабайты</span></div><div class="lab-card-tags"><span class="lab-tag">Container: мегабайты</span></div></div>
@@ -82,6 +92,8 @@ flowchart TB
 ### Image (образ)
 
 Неизменяемый шаблон для создания контейнеров. Состоит из слоёв (layers):
+
+Схема показывает, из каких слоёв складывается образ и что добавляет к ним запуск контейнера.
 
 ```mermaid
 %%{init: {"flowchart": {"curve": "step"}}}%%
@@ -126,6 +138,15 @@ flowchart TB
     class os_layer,python_layer,deps_layer,code_layer readonly
     class writable_layer writable
 ```
+
+**Как читать схему:**
+
+- Каждая инструкция Dockerfile, которая меняет файловую систему, даёт слой. Слои образа доступны только для чтения и переиспользуются из кэша.
+- Порядок инструкций — это порядок слоёв: если слой изменился, пересобираются он и все слои ниже по схеме. Поэтому зависимости ставят раньше, чем копируют код.
+- `docker run` добавляет поверх один записываемый слой. Он исчезает вместе с контейнером, поэтому данные, которые нужно сохранить, выносят в volume.
+- Секрет, попавший в слой, остаётся в истории образа, даже если следующая инструкция его удаляет.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ### Container (контейнер)
 
@@ -308,6 +329,8 @@ $ docker compose ps
 
 ## Жизненный цикл контейнера
 
+Схема показывает, в каких состояниях бывает контейнер и какая команда переводит его из одного в другое.
+
 ```mermaid
 stateDiagram-v2
     accTitle: Жизненный цикл контейнера Docker
@@ -329,6 +352,15 @@ stateDiagram-v2
     exited_state --> running_state : docker start
     exited_state --> [*] : docker rm
 ```
+
+**Как читать схему:**
+
+- Блок — состояние, стрелка — переход, подпись на стрелке — команда.
+- `docker run` — это `docker create` и `docker start` одной командой.
+- Остановленный контейнер можно запустить снова: его записываемый слой сохраняется до `docker rm`.
+- `docker pause` замораживает процессы контейнера, `docker stop` отправляет SIGTERM, а по истечении таймаута — SIGKILL.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ***
 

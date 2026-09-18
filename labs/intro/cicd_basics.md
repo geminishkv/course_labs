@@ -21,6 +21,8 @@
 
 **CD (Continuous Delivery / Deployment)** — автоматическая доставка проверенного кода в staging или production.
 
+Схема показывает путь изменения от `git push` до релиза и место, где конвейер его останавливает.
+
 ```mermaid
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
@@ -69,6 +71,15 @@ flowchart TB
     class checks_passed gate
     class release_done done
 ```
+
+**Как читать схему:**
+
+- Любой push или pull request запускает блок CI: сборку, затем тесты и проверки безопасности.
+- Ромб «Проверки пройдены?» — единственная развилка. При «Нет» изменение дальше не идёт: код исправляют, и цикл начинается заново с нового push.
+- При «Да» pull request проходит ревью и сливается — только после этого начинается CD.
+- CD выкатывает релиз в staging или production. Вручную подтверждается последний шаг или нет — в этом разница между Continuous Delivery и Continuous Deployment.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ### Зачем это нужно
 
@@ -372,6 +383,8 @@ jobs:
       - run: echo "Deploying..."
 ```
 
+Схема показывает порядок выполнения jobs из примера выше. Его задают `needs` и `if`, а не порядок записи в файле.
+
 ```mermaid
 %%{init: {"flowchart": {"curve": "step"}}}%%
 flowchart TB
@@ -413,6 +426,15 @@ flowchart TB
     class is_main gate
     class deploy_done done
 ```
+
+**Как читать схему:**
+
+- `lint` идёт первым: у `sast` и `container-scan` указано `needs: lint`.
+- `sast` и `container-scan` друг от друга не зависят, поэтому выполняются параллельно.
+- `deploy` ждёт обе проверки (`needs: [sast, container-scan]`): если упала хотя бы одна, до ромба дело не дойдёт.
+- Ромб — условие `if: github.ref == 'refs/heads/main'`. В остальных ветках job `deploy` помечается пропущенным, а пайплайн остаётся зелёным.
+
+Обозначения — в материале [Как читать схемы курса](https://course.geminishkv.tech/materials/diagrams_legend/).
 
 ***
 

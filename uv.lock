@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.12"
 
 [[package]]
@@ -429,16 +429,16 @@ sbom = [
 requires-dist = [
     { name = "cairosvg", specifier = ">=2.9.0" },
     { name = "mkdocs", specifier = "==1.6.1" },
-    { name = "mkdocs-glightbox", specifier = "==0.5.2" },
+    { name = "mkdocs-glightbox", specifier = "==0.5.3" },
     { name = "mkdocs-include-markdown-plugin", specifier = "==7.3.0" },
-    { name = "mkdocs-material", specifier = "==9.7.7" },
+    { name = "mkdocs-material", specifier = "==9.8.0" },
     { name = "mkdocs-material-extensions", specifier = "==1.3.1" },
     { name = "mkdocs-meta-descriptions-plugin", specifier = "==4.1.0" },
     { name = "mkdocs-minify-plugin", specifier = "==0.8.0" },
     { name = "mkdocs-pdf", specifier = "==0.1.2" },
     { name = "pillow", specifier = ">=12.3.0" },
     { name = "pygments", specifier = "==2.21.0" },
-    { name = "pymdown-extensions", specifier = "==12.0.1" },
+    { name = "pymdown-extensions", specifier = "==12.3" },
     { name = "pyyaml", specifier = "==6.0.3" },
     { name = "requests", specifier = ">=2.34.2" },
 ]
@@ -447,7 +447,7 @@ requires-dist = [
 audit = [{ name = "pip-audit", specifier = "==2.10.1" }]
 lint = [{ name = "yamllint", specifier = "==1.38.0" }]
 sast = [{ name = "bandit", specifier = "==1.9.4" }]
-sbom = [{ name = "cyclonedx-bom", specifier = "==7.4.0" }]
+sbom = [{ name = "cyclonedx-bom", specifier = "==7.5.0" }]
 
 [[package]]
 name = "csscompressor"
@@ -470,7 +470,7 @@ wheels = [
 
 [[package]]
 name = "cyclonedx-bom"
-version = "7.4.0"
+version = "7.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "chardet" },
@@ -479,9 +479,9 @@ dependencies = [
     { name = "packaging" },
     { name = "pip-requirements-parser" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e3/c2/5f3b9d4a9c548d870e5c3a78f4b87753a7fd152f973c2b2142f878195dbe/cyclonedx_bom-7.4.0.tar.gz", hash = "sha256:425862a74a6660cfa867fd4bc3dff34ca1cec49549594e4a9096663135426cfe", size = 4421893, upload-time = "2026-09-15T10:06:39.672Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/02/87/65a331687130bcd70152b345e05b6ec6b81b8d5fb7709e8aab48babcdd32/cyclonedx_bom-7.5.0.tar.gz", hash = "sha256:396cc8c9cb7533d25a21f930b45d2699a1839e3ba2be9ba88f8bd61c566b51dc", size = 4421911, upload-time = "2026-09-29T15:45:58.645Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ed/36/18ef9ef2489a76873dcbf9cc342845642fe472e77d0cfd1381f7ea0ccccc/cyclonedx_bom-7.4.0-py3-none-any.whl", hash = "sha256:75756389cef95b9bb1d9c8d0c5b884719c2bfeb595109e2ed5321598a141bf4a", size = 61388, upload-time = "2026-09-15T10:06:37.327Z" },
+    { url = "https://files.pythonhosted.org/packages/39/f6/4da2674038e1558b93872dc6a3d10172be60db05c5ca9a5e5de73b3edd7e/cyclonedx_bom-7.5.0-py3-none-any.whl", hash = "sha256:a3020e225107214a66cb9c79ae83e3a71640a06d4ff3a0e2f9cb0d238f7061fd", size = 61392, upload-time = "2026-09-29T15:45:56.567Z" },
 ]
 
 [[package]]
@@ -915,14 +915,14 @@ wheels = [
 
 [[package]]
 name = "mkdocs-glightbox"
-version = "0.5.2"
+version = "0.5.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "selectolax" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8d/26/c793459622da8e31f954c6f5fb51e8f098143fdfc147b1e3c25bf686f4aa/mkdocs_glightbox-0.5.2.tar.gz", hash = "sha256:c7622799347c32310878e01ccf14f70648445561010911c80590cec0353370ac", size = 510586, upload-time = "2025-10-23T14:55:18.909Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/98/ea/e564c6258c6fcd1719c3241b01095c6ef291755183841eca4315aca2935e/mkdocs_glightbox-0.5.3.tar.gz", hash = "sha256:e5af2b6d04494358d34e0c50f493a8fde88da5daac50a86227c2495b616b7a83", size = 10479868, upload-time = "2026-10-25T12:50:34.254Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4e/ca/03624e017e5ee2d7ce8a08d89f81c1e535eb3c30d7b2dc4a435ea3fbbeae/mkdocs_glightbox-0.5.2-py3-none-any.whl", hash = "sha256:23a431ea802b60b1030c73323db2eed6ba859df1a0822ce575afa43e0ea3f47e", size = 26458, upload-time = "2025-10-23T14:55:17.43Z" },
+    { url = "https://files.pythonhosted.org/packages/d1/48/76df0d37456538ec61772ca174ef9f12b4d35c41be2102345d2ebd2e8d62/mkdocs_glightbox-0.5.3-py3-none-any.whl", hash = "sha256:53558d34d1e0c091474a23fcde30f8080679e01d2304bd1ccc449a8c31f775d0", size = 26581, upload-time = "2026-10-25T12:50:32.495Z" },
 ]
 
 [[package]]
@@ -940,7 +940,7 @@ wheels = [
 
 [[package]]
 name = "mkdocs-material"
-version = "9.7.7"
+version = "9.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "babel" },
@@ -955,9 +955,9 @@ dependencies = [
     { name = "pymdown-extensions" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f1/cd/c05d3a530ba7934f144fb45f7203cd236adc25c7bdcc34673d202f4b0278/mkdocs_material-9.7.7.tar.gz", hash = "sha256:c0649c065b1b0512d60aad8c10f947f8e455284475239b364b610f2deb4d0855", size = 4097923, upload-time = "2026-07-17T16:21:33.156Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b9/02/3c0df248819286810d8479b3a72d9531db0cc36c042fe1ab3985f137c664/mkdocs_material-9.8.0.tar.gz", hash = "sha256:1ed4c5edaf405a3fb62e55288b8fdff592971729361548b1ffa757bf9849fb81", size = 4094495, upload-time = "2026-10-24T09:50:16.181Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ad/21/17c1bc9e6f47c972ad66fb2ac2568f99f90f1207eeb6fc3b34d094dba7b5/mkdocs_material-9.7.7-py3-none-any.whl", hash = "sha256:8ea9bb1737a5b524a5f9dcf2e1b4ebda8274ae3008aa7845720a97083bef708f", size = 9305438, upload-time = "2026-07-17T16:21:30.017Z" },
+    { url = "https://files.pythonhosted.org/packages/c8/16/360f44c7702f27ff4670a647a16c72432291e311371d72b4c34a57e990e0/mkdocs_material-9.8.0-py3-none-any.whl", hash = "sha256:19304a7263c5700428227122b3b2699aa73f432c9de8816876adaec7d7293ce3", size = 9302245, upload-time = "2026-10-24T09:50:12.636Z" },
 ]
 
 [[package]]
@@ -1288,15 +1288,15 @@ wheels = [
 
 [[package]]
 name = "pymdown-extensions"
-version = "12.0.1"
+version = "12.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/eb/7e/53144b512818c75d459523e3a91d9bf7b65cd6a1dfb964fe690adc8b3670/pymdown_extensions-12.0.1.tar.gz", hash = "sha256:88fe2c97fb9153b9f2cc1da59f1d7c7cb74971110daf33cccb2a5514e0f7e970", size = 866904, upload-time = "2026-09-15T23:20:33.187Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f3/fe/ac50ee24a80a1b344e643f6fb626063cc7041b978cd1dd9a7f9963ae1cd1/pymdown_extensions-12.3.tar.gz", hash = "sha256:a7f2a4e0bc60c6e6babfa7922cfb3b01cd640eb00fb208f3c582e12bae00ea67", size = 870532, upload-time = "2026-10-14T22:40:43.252Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8c/30/c866b3ca8ad5cca79a3ee1a55c12d61d3e72381e5eadbfdaceb6006ebc84/pymdown_extensions-12.0.1-py3-none-any.whl", hash = "sha256:15d629e8035892b93d788a8424ccea754d4aa3cec247a64cbfe7b15089c9ad7f", size = 276957, upload-time = "2026-09-15T23:20:31.551Z" },
+    { url = "https://files.pythonhosted.org/packages/8a/d0/758afe732c2da502c051b4d03ff88daa3c0fc1a1e671e6c5a6318177bab4/pymdown_extensions-12.3-py3-none-any.whl", hash = "sha256:345493a8e3497e24382902903a1c43a28e34a52f2b7571a1c9641429b820ca74", size = 277597, upload-time = "2026-10-14T22:40:41.543Z" },
 ]
 
 [[package]]
